@@ -24,6 +24,12 @@
 .DS_Store
 *.pem
 
+# npm cache
+.npm-cache/
+
+# claude
+.claude/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
