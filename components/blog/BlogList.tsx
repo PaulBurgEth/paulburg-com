@@ -9,6 +9,15 @@ interface Props {
   lang: "en" | "ru";
 }
 
+function formatDate(dateStr: string, lang: "en" | "ru"): string {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString(lang === "ru" ? "ru-RU" : "en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+}
+
 export default function BlogList({ posts, lang }: Props) {
   const readCta = lang === "ru" ? "Читать →" : "Read →";
 
@@ -76,6 +85,15 @@ export default function BlogList({ posts, lang }: Props) {
                   }}
                 >
                   {post.readingTime}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "var(--font-inconsolata), monospace",
+                    fontSize: 11,
+                    color: "var(--c-muted)",
+                  }}
+                >
+                  · {formatDate(post.date, lang)}
                 </span>
               </div>
               <h3
