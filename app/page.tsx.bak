@@ -1,0 +1,11 @@
+import { Metadata } from "next";
+import HomePageClient from "@/components/home/HomePageClient";
+
+export const metadata: Metadata = {
+  title: "Paul Burg | Serial Entrepreneur & AI Builder",
+  description: "Serial entrepreneur and digital nomad. Building AI tools, regenerative finance, and health privacy tech across Southeast Asia.",
+};
+
+export default function Page() {
+  return <HomePageClient />;
+}

@@ -1,0 +1,16 @@
+"use client";
+
+import { LanguageProvider } from "@/context/LanguageContext";
+import { IntakeModalProvider } from "@/context/IntakeModalContext";
+import IntakeModal from "@/components/IntakeModal";
+
+export default function Providers({ children }: { children: React.ReactNode }) {
+    return (
+        <LanguageProvider>
+            <IntakeModalProvider>
+                {children}
+                <IntakeModal />
+            </IntakeModalProvider>
+        </LanguageProvider>
+    );
+}

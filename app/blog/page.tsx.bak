@@ -1,0 +1,14 @@
+import type { Metadata } from "next";
+import BlogPageClient from "@/components/blog/BlogPageClient";
+import { getAllPosts } from "@/lib/posts";
+
+export const metadata: Metadata = {
+  title: "Blog | Paul Burg",
+  description: "Writing on AI, tools, and building as a founder.",
+};
+
+export default function BlogPage() {
+  const enPosts = getAllPosts("en");
+  const ruPosts = getAllPosts("ru");
+  return <BlogPageClient enPosts={enPosts} ruPosts={ruPosts} />;
+}

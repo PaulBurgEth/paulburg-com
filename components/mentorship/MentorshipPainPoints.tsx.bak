@@ -1,0 +1,124 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Wallet, Lightbulb, MessageCircle } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+
+const iconMap = {
+    Capital: Wallet,
+    Business: Lightbulb,
+    Communication: MessageCircle
+};
+
+export default function MentorshipPainPoints() {
+    const { language, t } = useLanguage();
+    const p = t.mentorship.painPoints;
+
+    const categories = [
+        { key: "card1", type: "Capital" as const },
+        { key: "card2", type: "Business" as const },
+        { key: "card3", type: "Communication" as const }
+    ];
+
+    return (
+        <section id="pain-points" className="scroll-mt-20" style={{ background: "var(--c-bg)", padding: "72px 0" }}>
+            <div className="container-custom">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    style={{ marginBottom: 48 }}
+                >
+                    <div style={{
+                        fontFamily: "var(--font-inconsolata), monospace",
+                        fontSize: 10,
+                        letterSpacing: "0.22em",
+                        textTransform: "uppercase",
+                        color: "var(--c-gold)",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 14,
+                        marginBottom: 10,
+                    }}>
+                        {language === "ru" ? "Боли" : "Challenges"}
+                        <span style={{ flex: 1, height: 1, background: "var(--c-border)", display: "block" }} />
+                    </div>
+                    <h2 style={{
+                        fontFamily: "var(--font-playfair), serif",
+                        fontWeight: 700,
+                        fontSize: "clamp(26px, 4vw, 38px)",
+                        letterSpacing: "-0.02em",
+                        color: "var(--c-heading)",
+                    }}>
+                        {p.title}
+                    </h2>
+                </motion.div>
+
+                <div className="grid md:grid-cols-3 gap-6">
+                    {categories.map((cat, idx) => {
+                        const Icon = iconMap[cat.type];
+                        const content = (p as Record<string, unknown>)[cat.key] as {
+                            title: string;
+                            points: string[];
+                        };
+
+                        return (
+                            <motion.div
+                                key={cat.key}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.1 }}
+                                style={{
+                                    background: "var(--c-card)",
+                                    border: "1px solid var(--c-border)",
+                                    borderRadius: 10,
+                                    padding: 22,
+                                }}
+                            >
+                                <div
+                                    className="w-12 h-12 rounded-lg flex items-center justify-center mb-5"
+                                    style={{ background: "rgba(200,169,110,0.1)", color: "var(--c-gold)" }}
+                                >
+                                    <Icon size={24} />
+                                </div>
+
+                                <h3
+                                    className="mb-5 uppercase tracking-wide"
+                                    style={{
+                                        fontFamily: "var(--font-inconsolata), monospace",
+                                        fontWeight: 700,
+                                        fontSize: 12,
+                                        color: "var(--c-gold)",
+                                        letterSpacing: "0.12em",
+                                    }}
+                                >
+                                    {content.title}
+                                </h3>
+
+                                <ul className="space-y-3">
+                                    {content.points.map((point: string, pIdx: number) => (
+                                        <li key={pIdx} className="flex items-start gap-3">
+                                            <div
+                                                className="w-1.5 h-1.5 rounded-full mt-2.5 flex-shrink-0"
+                                                style={{ background: "var(--c-gold)" }}
+                                            />
+                                            <span
+                                                style={{
+                                                    fontFamily: "var(--font-instrument-sans), sans-serif",
+                                                    fontSize: 13,
+                                                    color: "var(--c-text2)",
+                                                    lineHeight: 1.6,
+                                                }}
+                                            >{point}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </motion.div>
+                        );
+                    })}
+                </div>
+            </div>
+        </section>
+    );
+}

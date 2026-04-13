@@ -1,0 +1,26 @@
+# Paul Burg — AI Systems Builder
+
+## About
+Paul Burg is an entrepreneur since 2011 and an AI systems builder. Fully focused on AI-assisted development — designing and shipping production systems: chatbots, CRMs, automated workflows, and full web platforms. Works remotely with businesses and founders globally.
+
+## Services
+- **AI Chatbots**: Custom lead bots, support agents, and onboarding bots trained on client data.
+- **CRM Systems**: Custom CRM on your own server — roles, pipelines, Telegram alerts.
+- **Process Automation**: Workflow automation, integrations, and data pipelines.
+- **Websites**: Custom multilingual websites (Next.js, SEO-ready, mobile-first).
+- **Turnkey Package**: Website + Bot + CRM — complete AI-powered business presence from $3,000.
+
+## Mentorship
+- **Business Strategy**: From idea to execution, GTM, operations.
+- **Capital Management**: Managing and growing capital intelligently.
+- **AI & Automation**: Working with AI tools effectively as a founder or operator.
+- $50/hour. Free 15-min intro call.
+
+## Key Links
+- [Website](https://paulburg.com)
+- [Services](https://paulburg.com/services)
+- [Mentorship](https://paulburg.com/mentorship)
+- [Telegram](https://t.me/pasha_burg)
+- [Twitter/X](https://x.com/PaulBurg_)
+- [LinkedIn](https://www.linkedin.com/in/paul-burg)
+- [Email](mailto:office@paulburg.com)

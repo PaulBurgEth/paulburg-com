@@ -1,0 +1,199 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
+
+const en = {
+  sectionLabel: "Track record",
+  h2: "Real systems in production",
+  subtitle:
+    "Not demos, not prototypes. These are live systems serving real businesses right now.",
+  cards: [
+    {
+      title: "AI Lead Bots",
+      desc: "Deployed across visa consulting, real estate, and medical clinics. Qualify prospects 24/7, route hot leads to humans, book calls automatically.",
+      tags: ["Visa", "Real estate", "Clinics", "Multilingual"],
+    },
+    {
+      title: "AI HR Bot",
+      desc: "First-line interviewer that screens candidates, asks role-specific questions, scores answers, and forwards structured results to the hiring manager.",
+      tags: ["Screening", "Structured output", "Telegram"],
+    },
+    {
+      title: "Custom CRM",
+      desc: "Pipeline CRM built for a specific business flow — roles, deals, client history, reminders, native Telegram notifications. No SaaS lock-in.",
+      tags: ["Own server", "Roles", "Telegram alerts"],
+    },
+    {
+      title: "Rental Platform",
+      desc: "Multi-property rental system with bookings, availability, payments, and automated guest communication in multiple languages.",
+      tags: ["Bookings", "Payments", "Multilingual"],
+    },
+    {
+      title: "Custom Websites",
+      desc: "Fast, SEO-ready, multilingual sites with AI lead bots plugged in from day one. Designed for small businesses that need to ship, not tinker.",
+      tags: ["Next.js", "SEO", "AI bot included"],
+    },
+  ],
+};
+
+const ru = {
+  sectionLabel: "Портфолио",
+  h2: "Системы в продакшене",
+  subtitle:
+    "Не демо и не прототипы. Это живые системы, которые прямо сейчас работают у клиентов.",
+  cards: [
+    {
+      title: "AI-боты для лидов",
+      desc: "Запущены в визовом консалтинге, недвижимости и медклиниках. Квалифицируют лидов 24/7, передают горячие — живым сотрудникам, автоматически записывают на звонки.",
+      tags: ["Визы", "Недвижимость", "Клиники", "Многоязычность"],
+    },
+    {
+      title: "AI HR-бот",
+      desc: "Первичный интервьюер: отбирает кандидатов, задаёт вопросы под роль, оценивает ответы и пересылает структурированный результат нанимающему менеджеру.",
+      tags: ["Скрининг", "Структурированный вывод", "Telegram"],
+    },
+    {
+      title: "Кастомная CRM",
+      desc: "CRM под конкретный бизнес-процесс — роли, сделки, история клиента, напоминания, нативные уведомления в Telegram. Без привязки к SaaS.",
+      tags: ["Свой сервер", "Роли", "Уведомления в Telegram"],
+    },
+    {
+      title: "Платформа аренды",
+      desc: "Мульти-объектная система аренды: брони, календарь доступности, платежи, автоматическая переписка с гостями на нескольких языках.",
+      tags: ["Брони", "Платежи", "Многоязычность"],
+    },
+    {
+      title: "Сайты на заказ",
+      desc: "Быстрые, SEO-готовые, многоязычные сайты с AI-ботом для лидов с первого дня. Для малого бизнеса, которому нужен результат, а не тюнинг.",
+      tags: ["Next.js", "SEO", "AI-бот в комплекте"],
+    },
+  ],
+};
+
+export default function ServicesBuilt() {
+  const { language } = useLanguage();
+  const t = language === "ru" ? ru : en;
+
+  return (
+    <section style={{ background: "var(--c-bg)", padding: "72px 0" }}>
+      <div className="container-custom">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          style={{ marginBottom: 36 }}
+        >
+          <div
+            style={{
+              fontFamily: "var(--font-inconsolata), monospace",
+              fontSize: 10,
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              color: "var(--c-gold)",
+              display: "flex",
+              alignItems: "center",
+              gap: 14,
+              marginBottom: 10,
+            }}
+          >
+            {t.sectionLabel}
+            <span
+              style={{
+                flex: 1,
+                height: 1,
+                background: "var(--c-border)",
+                display: "block",
+              }}
+            />
+          </div>
+          <h2
+            style={{
+              fontFamily: "var(--font-playfair), serif",
+              fontWeight: 700,
+              fontSize: "clamp(26px, 4vw, 38px)",
+              letterSpacing: "-0.02em",
+              color: "var(--c-heading)",
+              marginBottom: 6,
+            }}
+          >
+            {t.h2}
+          </h2>
+          <p
+            style={{
+              fontFamily: "var(--font-instrument-sans), sans-serif",
+              fontSize: 13,
+              color: "var(--c-muted)",
+              maxWidth: 520,
+              lineHeight: 1.6,
+            }}
+          >
+            {t.subtitle}
+          </p>
+        </motion.div>
+
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {t.cards.map((card, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              style={{
+                background: "var(--c-card)",
+                border: "1px solid var(--c-border)",
+                borderRadius: 10,
+                padding: 22,
+              }}
+            >
+              <h3
+                style={{
+                  fontFamily: "var(--font-playfair), serif",
+                  fontWeight: 700,
+                  fontSize: 15,
+                  color: "var(--c-text)",
+                  marginBottom: 6,
+                }}
+              >
+                {card.title}
+              </h3>
+              <p
+                style={{
+                  fontFamily: "var(--font-instrument-sans), sans-serif",
+                  fontSize: 12,
+                  color: "var(--c-text2)",
+                  lineHeight: 1.6,
+                  marginBottom: 12,
+                }}
+              >
+                {card.desc}
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {card.tags.map((tag, j) => (
+                  <span
+                    key={j}
+                    style={{
+                      fontFamily: "var(--font-inconsolata), monospace",
+                      fontSize: 10,
+                      background: "rgba(255,255,255,0.03)",
+                      color: "var(--c-muted)",
+                      border: "1px solid var(--c-border)",
+                      borderRadius: 4,
+                      padding: "2px 6px",
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
