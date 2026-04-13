@@ -1,0 +1,233 @@
+import { NextResponse } from "next/server";
+
+// In-memory rate limit — 30 second window per IP.
+// Acceptable for a low-traffic portfolio site; resets on deploy.
+const RATE_LIMIT_MS = 30_000;
+const recentSubmissions = new Map<string, number>();
+
+function sanitize(value: unknown, maxLen = 500): string {
+  if (typeof value !== "string") return "";
+  // Strip control chars (except newline/tab), cap length.
+  return value
+    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, "")
+    .trim()
+    .slice(0, maxLen);
+}
+
+const NEED_LABELS: Record<string, string> = {
+  bot: "AI Bot",
+  automation: "Process Automation",
+  crm: "Custom CRM",
+  website: "Custom Website",
+  turnkey: "Turnkey (Website + Bot + CRM)",
+  other: "Other",
+};
+
+const BUDGET_LABELS: Record<string, string> = {
+  "<1k": "< $1,000",
+  "1-3k": "$1,000 – $3,000",
+  "3k+": "$3,000+",
+  "3-10k": "$3,000 – $10,000",
+  "10k+": "$10,000+",
+  "not-sure": "Not sure yet",
+};
+
+const CONTACT_LABELS: Record<string, string> = {
+  telegram: "Telegram",
+  whatsapp: "WhatsApp",
+  email: "Email",
+};
+
+const TEAM_SIZE_LABELS: Record<string, string> = {
+  solo: "Solo",
+  "2-5": "2–5",
+  "6-20": "6–20",
+  "20+": "20+",
+};
+
+const TIMELINE_LABELS: Record<string, string> = {
+  asap: "ASAP",
+  "2-4w": "2–4 weeks",
+  "1-3m": "1–3 months",
+  exploring: "Exploring",
+};
+
+const MENTORSHIP_AREA_LABELS: Record<string, string> = {
+  capital: "Capital",
+  business: "Business",
+  ai: "AI & Automation",
+};
+
+const MENTORSHIP_LEVEL_LABELS: Record<string, string> = {
+  beginner: "Beginner",
+  some: "Some experience",
+  deeper: "Want to go deeper",
+};
+
+function sanitizeNeedsArray(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((v) => sanitize(v, 32))
+    .filter((v) => v.length > 0)
+    .slice(0, 10);
+}
+
+export async function POST(req: Request) {
+  try {
+    // Rate limit by IP
+    const ip =
+      req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      req.headers.get("x-real-ip") ||
+      "unknown";
+    const now = Date.now();
+    const last = recentSubmissions.get(ip) || 0;
+    if (now - last < RATE_LIMIT_MS) {
+      return NextResponse.json(
+        { ok: false, error: "rate_limited" },
+        { status: 429 },
+      );
+    }
+
+    const raw = await req.json().catch(() => null);
+    if (!raw || typeof raw !== "object") {
+      return NextResponse.json(
+        { ok: false, error: "invalid_body" },
+        { status: 400 },
+      );
+    }
+
+    const r = raw as Record<string, unknown>;
+    const type = sanitize(r.type, 32);
+    const name = sanitize(r.name, 120);
+    const business = sanitize(r.business, 200);
+    // Legacy single-select "need" (old form) — still accepted.
+    const needRaw = sanitize(r.need, 32);
+    // New multi-select needs array (new modal).
+    const needsArr = sanitizeNeedsArray(r.needs);
+    const challenge = sanitize(r.challenge, 1000);
+    const currentSetup = sanitize(r.currentSetup, 1000);
+    const teamSizeRaw = sanitize(r.teamSize, 32);
+    const budgetRaw = sanitize(r.budget, 32);
+    const timelineRaw = sanitize(r.timeline, 32);
+    const contactMethodRaw = sanitize(r.contactMethod, 32);
+    const contactInfo = sanitize(r.contactInfo, 200);
+    const language = sanitize(r.language, 8);
+
+    // Mentorship requests: only name + contactInfo required (no business field).
+    // Services requests (default): name + business + contactInfo required.
+    if (type === "mentorship") {
+      if (!name || !contactInfo) {
+        return NextResponse.json(
+          { ok: false, error: "missing_fields" },
+          { status: 400 },
+        );
+      }
+    } else {
+      if (!name || !business || !contactInfo) {
+        return NextResponse.json(
+          { ok: false, error: "missing_fields" },
+          { status: 400 },
+        );
+      }
+    }
+
+    const need = NEED_LABELS[needRaw] || needRaw || "";
+    const needsLabels = needsArr
+      .map((n) => NEED_LABELS[n] || n)
+      .join(", ");
+    const needsDisplay = needsLabels || need || "—";
+    const budget = BUDGET_LABELS[budgetRaw] || budgetRaw || "—";
+    const teamSize = TEAM_SIZE_LABELS[teamSizeRaw] || teamSizeRaw || "";
+    const timeline = TIMELINE_LABELS[timelineRaw] || timelineRaw || "";
+    const contactMethod =
+      CONTACT_LABELS[contactMethodRaw] || contactMethodRaw || "—";
+
+    const token = process.env.TELEGRAM_BOT_TOKEN;
+    const chatId = process.env.TELEGRAM_CHAT_ID;
+
+    if (!token || !chatId) {
+      console.error("[intake] Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID");
+      return NextResponse.json(
+        { ok: false, error: "server_not_configured" },
+        { status: 500 },
+      );
+    }
+
+    // Plaintext message — no parse_mode — avoids MarkdownV2 escape bugs.
+    let lines: string[];
+    if (type === "mentorship") {
+      const areaRaw = sanitize(r.area, 32);
+      const levelRaw = sanitize(r.level, 32);
+      const achievement = sanitize(r.achievement, 1000);
+      const area = MENTORSHIP_AREA_LABELS[areaRaw] || areaRaw || "—";
+      const level = MENTORSHIP_LEVEL_LABELS[levelRaw] || levelRaw || "—";
+      lines = [
+        "🎓 New mentorship request from paulburg.com",
+        "",
+        `Name: ${name}`,
+        `Area: ${area}`,
+        `Level: ${level}`,
+      ];
+      if (achievement) lines.push(`Goal: ${achievement}`);
+      lines.push(`Contact via: ${contactMethod}`);
+      lines.push(`Contact: ${contactInfo}`);
+      lines.push(`Language: ${language || "—"}`);
+    } else {
+      lines = [
+        "🆕 New intake from paulburg.com",
+        "",
+        `Name: ${name}`,
+        `Business: ${business}`,
+      ];
+      if (challenge) lines.push(`Challenge/Goal: ${challenge}`);
+      lines.push(`Needs: ${needsDisplay}`);
+      if (currentSetup) lines.push(`Current setup: ${currentSetup}`);
+      if (teamSize) lines.push(`Team size: ${teamSize}`);
+      lines.push(`Budget: ${budget}`);
+      if (timeline) lines.push(`Timeline: ${timeline}`);
+      lines.push(`Contact via: ${contactMethod}`);
+      lines.push(`Contact: ${contactInfo}`);
+      lines.push(`Language: ${language || "—"}`);
+    }
+    const text = lines.join("\n");
+
+    const tgRes = await fetch(
+      `https://api.telegram.org/bot${token}/sendMessage`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text,
+          disable_web_page_preview: true,
+        }),
+      },
+    );
+
+    if (!tgRes.ok) {
+      const body = await tgRes.text().catch(() => "");
+      console.error("[intake] Telegram API error:", tgRes.status, body);
+      return NextResponse.json(
+        { ok: false, error: "telegram_failed" },
+        { status: 502 },
+      );
+    }
+
+    recentSubmissions.set(ip, now);
+
+    // Opportunistic cleanup — prevent unbounded growth.
+    if (recentSubmissions.size > 1000) {
+      for (const [k, ts] of recentSubmissions) {
+        if (now - ts > RATE_LIMIT_MS * 10) recentSubmissions.delete(k);
+      }
+    }
+
+    return NextResponse.json({ ok: true });
+  } catch (err) {
+    console.error("[intake] Unexpected error:", err);
+    return NextResponse.json(
+      { ok: false, error: "internal_error" },
+      { status: 500 },
+    );
+  }
+}

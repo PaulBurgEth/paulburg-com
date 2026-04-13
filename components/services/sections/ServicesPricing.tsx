@@ -1,0 +1,339 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Check } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { useIntakeModal } from "@/context/IntakeModalContext";
+
+const en = {
+  sectionLabel: "Pricing",
+  h2: "Transparent pricing",
+  subtitle: "First month of support included in every project.",
+  plans: [
+    {
+      name: "Starter",
+      amount: "$500",
+      timeline: "3 days delivery",
+      features: [
+        "AI lead bot on your site",
+        "Hot/warm/cold qualification",
+        "Telegram notifications",
+        "Auto language detection",
+        "1 revision",
+      ],
+      cta: "Get started",
+      sub: "+$100–150/mo support",
+      popular: false,
+    },
+    {
+      name: "Business",
+      amount: "$1,200",
+      timeline: "5 days delivery",
+      features: [
+        "Everything in Starter",
+        "Installed on your site",
+        "CRM + lead database",
+        "System integrations",
+        "2 revisions",
+      ],
+      cta: "Get started",
+      sub: "+$100–150/mo support",
+      popular: true,
+    },
+    {
+      name: "Full System",
+      amount: "$2,000+",
+      timeline: "7–21 days delivery",
+      features: [
+        "Everything in Business",
+        "Website from scratch",
+        "RAG — bot trained on your docs",
+        "Source code delivered",
+        "3 revisions",
+      ],
+      cta: "Discuss scope",
+      sub: "+$100–150/mo support",
+      popular: false,
+    },
+  ],
+};
+
+const ru = {
+  sectionLabel: "Цены",
+  h2: "Прозрачные цены",
+  subtitle: "Первый месяц поддержки включён в каждый проект.",
+  plans: [
+    {
+      name: "Стартер",
+      amount: "$500",
+      timeline: "Срок: 3 дня",
+      features: [
+        "AI-бот на вашем сайте",
+        "Квалификация горячий/тёплый/холодный",
+        "Уведомления в Telegram",
+        "Автоопределение языка",
+        "1 правка",
+      ],
+      cta: "Начать",
+      sub: "+$100–150/мес поддержка",
+      popular: false,
+    },
+    {
+      name: "Бизнес",
+      amount: "$1,200",
+      timeline: "Срок: 5 дней",
+      features: [
+        "Всё из Стартера",
+        "Установка на ваш сайт",
+        "CRM + база лидов",
+        "Интеграции с системами",
+        "2 правки",
+      ],
+      cta: "Начать",
+      sub: "+$100–150/мес поддержка",
+      popular: true,
+    },
+    {
+      name: "Полная система",
+      amount: "$2,000+",
+      timeline: "Срок: 7–21 день",
+      features: [
+        "Всё из Бизнеса",
+        "Сайт с нуля",
+        "RAG — бот обучен на ваших документах",
+        "Исходный код передаётся",
+        "3 правки",
+      ],
+      cta: "Обсудить объём",
+      sub: "+$100–150/мес поддержка",
+      popular: false,
+    },
+  ],
+};
+
+export default function ServicesPricing() {
+  const { language } = useLanguage();
+  const { open } = useIntakeModal();
+  const t = language === "ru" ? ru : en;
+
+  return (
+    <section id="pricing" style={{ background: "var(--c-bg2)", padding: "72px 0" }}>
+      <div className="container-custom">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          style={{ marginBottom: 36 }}
+        >
+          <div
+            style={{
+              fontFamily: "var(--font-inconsolata), monospace",
+              fontSize: 10,
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              color: "var(--c-gold)",
+              display: "flex",
+              alignItems: "center",
+              gap: 14,
+              marginBottom: 10,
+            }}
+          >
+            {t.sectionLabel}
+            <span style={{ flex: 1, height: 1, background: "var(--c-border)", display: "block" }} />
+          </div>
+          <h2
+            style={{
+              fontFamily: "var(--font-playfair), serif",
+              fontWeight: 700,
+              fontSize: "clamp(26px, 4vw, 38px)",
+              letterSpacing: "-0.02em",
+              color: "var(--c-heading)",
+              marginBottom: 6,
+            }}
+          >
+            {t.h2}
+          </h2>
+          <p
+            style={{
+              fontFamily: "var(--font-instrument-sans), sans-serif",
+              fontSize: 13,
+              color: "var(--c-muted)",
+              lineHeight: 1.6,
+            }}
+          >
+            {t.subtitle}
+          </p>
+        </motion.div>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {t.plans.map((plan, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="relative flex flex-col"
+              style={{
+                background: plan.popular
+                  ? "linear-gradient(135deg, rgba(200,169,110,0.06) 0%, rgba(200,169,110,0.01) 100%)"
+                  : "var(--c-card)",
+                border: `1px solid ${plan.popular ? "rgba(200,169,110,0.22)" : "var(--c-border)"}`,
+                borderRadius: 10,
+                padding: 22,
+              }}
+            >
+              {/* Popular badge */}
+              {plan.popular && (
+                <span
+                  className="absolute top-3 right-3"
+                  style={{
+                    fontFamily: "var(--font-inconsolata), monospace",
+                    fontWeight: 700,
+                    fontSize: 9,
+                    background: "rgba(200,169,110,0.15)",
+                    color: "var(--c-gold)",
+                    border: "1px solid rgba(200,169,110,0.3)",
+                    padding: "2px 7px",
+                    borderRadius: 4,
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {language === "ru" ? "ПОПУЛЯРНЫЙ" : "MOST POPULAR"}
+                </span>
+              )}
+
+              {/* Plan name */}
+              <span
+                style={{
+                  fontFamily: "var(--font-inconsolata), monospace",
+                  fontWeight: 600,
+                  fontSize: 11,
+                  letterSpacing: "0.15em",
+                  textTransform: "uppercase",
+                  color: "var(--c-muted)",
+                  display: "block",
+                  marginBottom: 8,
+                }}
+              >
+                {plan.name}
+              </span>
+
+              {/* Amount */}
+              <div
+                style={{
+                  fontFamily: "var(--font-playfair), serif",
+                  fontWeight: 700,
+                  fontSize: "clamp(26px, 4vw, 32px)",
+                  letterSpacing: "-0.02em",
+                  color: "var(--c-text)",
+                  marginBottom: 4,
+                }}
+              >
+                {plan.amount}
+              </div>
+
+              {/* Timeline */}
+              <span
+                style={{
+                  fontFamily: "var(--font-inconsolata), monospace",
+                  fontSize: 11,
+                  color: "var(--c-muted)",
+                  marginBottom: 16,
+                  display: "block",
+                }}
+              >
+                {plan.timeline}
+              </span>
+
+              {/* Features */}
+              <ul className="flex flex-col gap-2 mb-6 flex-1">
+                {plan.features.map((f, j) => (
+                  <li key={j} className="flex items-start gap-2">
+                    <Check
+                      style={{
+                        width: 13,
+                        height: 13,
+                        color: "var(--c-sage)",
+                        flexShrink: 0,
+                        marginTop: 2,
+                      }}
+                    />
+                    <span
+                      style={{
+                        fontFamily: "var(--font-instrument-sans), sans-serif",
+                        fontSize: 13,
+                        color: "var(--c-text2)",
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      {f}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* CTA */}
+              <button
+                type="button"
+                onClick={open}
+                style={
+                  plan.popular
+                    ? {
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        background: "var(--c-gold)",
+                        color: "var(--c-bg)",
+                        fontFamily: "var(--font-instrument-sans), sans-serif",
+                        fontWeight: 600,
+                        fontSize: 13,
+                        letterSpacing: "0.04em",
+                        padding: "11px 20px",
+                        borderRadius: 5,
+                        border: "none",
+                        cursor: "pointer",
+                      }
+                    : {
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        background: "transparent",
+                        border: "1px solid var(--c-border2)",
+                        color: "var(--c-text)",
+                        fontFamily: "var(--font-instrument-sans), sans-serif",
+                        fontWeight: 600,
+                        fontSize: 13,
+                        letterSpacing: "0.04em",
+                        padding: "11px 20px",
+                        borderRadius: 5,
+                        cursor: "pointer",
+                      }
+                }
+              >
+                {plan.cta}
+              </button>
+
+              {/* Sub */}
+              <p
+                style={{
+                  fontFamily: "var(--font-inconsolata), monospace",
+                  fontSize: 10,
+                  color: "var(--c-muted)",
+                  textAlign: "center",
+                  marginTop: 8,
+                }}
+              >
+                {plan.sub}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

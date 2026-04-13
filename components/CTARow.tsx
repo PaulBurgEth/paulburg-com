@@ -1,0 +1,91 @@
+"use client";
+
+import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
+import { useIntakeModal } from "@/context/IntakeModalContext";
+import { TELEGRAM_URL, WHATSAPP_URL } from "@/lib/constants";
+
+const en = {
+  primary: "Tell me about your project",
+  telegram: "Text me on Telegram",
+  whatsapp: "Text me on WhatsApp",
+};
+
+const ru = {
+  primary: "Расскажите о проекте",
+  telegram: "Написать в Telegram",
+  whatsapp: "Написать в WhatsApp",
+};
+
+type Props = {
+  align?: "start" | "center";
+  hidePrimary?: boolean;
+};
+
+export default function CTARow({ align = "start", hidePrimary = false }: Props) {
+  const { language } = useLanguage();
+  const { open } = useIntakeModal();
+  const t = language === "ru" ? ru : en;
+
+  const primaryStyle: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "transparent",
+    border: "1px solid var(--c-gold)",
+    color: "var(--c-text)",
+    fontFamily: "var(--font-instrument-sans), sans-serif",
+    fontWeight: 600,
+    fontSize: 13,
+    letterSpacing: "0.04em",
+    padding: "12px 24px",
+    borderRadius: 5,
+    textDecoration: "none",
+  };
+
+  const ghostStyle: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "transparent",
+    border: "1px solid var(--c-border2)",
+    color: "var(--c-text)",
+    fontFamily: "var(--font-instrument-sans), sans-serif",
+    fontWeight: 600,
+    fontSize: 13,
+    letterSpacing: "0.04em",
+    padding: "12px 24px",
+    borderRadius: 5,
+    textDecoration: "none",
+  };
+
+  return (
+    <div
+      className={`flex flex-col sm:flex-row gap-3 ${
+        align === "center" ? "justify-center" : ""
+      }`}
+    >
+      {!hidePrimary && (
+        <button type="button" onClick={open} style={{ ...primaryStyle, cursor: "pointer" }}>
+          {t.primary}
+        </button>
+      )}
+      <Link
+        href={TELEGRAM_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={ghostStyle}
+      >
+        {t.telegram}
+      </Link>
+      <Link
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={ghostStyle}
+      >
+        {t.whatsapp}
+      </Link>
+    </div>
+  );
+}

@@ -1,0 +1,610 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { X } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { useIntakeModal } from "@/context/IntakeModalContext";
+
+const en = {
+  h2: "Discuss your project",
+  subtitle:
+    "Tell me what you need. I'll reply within 24 hours with a plan and a quote.",
+  labels: {
+    name: "Your name",
+    business: "Business type",
+    challenge: "Challenge or goal",
+    needs: "What do you need?",
+    currentSetup: "Current setup (optional)",
+    teamSize: "Team size",
+    budget: "Budget range",
+    timeline: "Timeline",
+    contactMethod: "Preferred contact",
+    contactInfo: "Contact info",
+  },
+  needsOptions: [
+    { v: "bot", l: "AI Bot" },
+    { v: "automation", l: "Process Automation" },
+    { v: "crm", l: "Custom CRM" },
+    { v: "website", l: "Custom Website" },
+    { v: "turnkey", l: "Turnkey (Website + Bot + CRM)" },
+    { v: "other", l: "Other" },
+  ],
+  teamSizeOptions: [
+    { v: "solo", l: "Solo" },
+    { v: "2-5", l: "2 – 5" },
+    { v: "6-20", l: "6 – 20" },
+    { v: "20+", l: "20+" },
+  ],
+  budgetOptions: [
+    { v: "<1k", l: "Less than $1,000" },
+    { v: "1-3k", l: "$1,000 – $3,000" },
+    { v: "3-10k", l: "$3,000 – $10,000" },
+    { v: "10k+", l: "$10,000+" },
+  ],
+  timelineOptions: [
+    { v: "asap", l: "ASAP" },
+    { v: "2-4w", l: "2 – 4 weeks" },
+    { v: "1-3m", l: "1 – 3 months" },
+    { v: "exploring", l: "Exploring" },
+  ],
+  contactOptions: [
+    { v: "telegram", l: "Telegram" },
+    { v: "whatsapp", l: "WhatsApp" },
+    { v: "email", l: "Email" },
+  ],
+  placeholders: {
+    telegram: "@username",
+    whatsapp: "+66 95 627 1926",
+    email: "you@example.com",
+    business: "Real estate, clinic, SaaS, e-commerce…",
+    challenge: "What problem are you trying to solve?",
+    currentSetup: "Tools, platforms or processes you already use",
+  },
+  submit: "Send →",
+  sending: "Sending…",
+  success: "Thanks — I'll get back to you within 24h.",
+  error: "Something went wrong. Please try Telegram instead.",
+  close: "Close",
+};
+
+const ru = {
+  h2: "Обсудить проект",
+  subtitle:
+    "Расскажите, что нужно. Отвечу в течение 24 часов с планом и ценой.",
+  labels: {
+    name: "Ваше имя",
+    business: "Тип бизнеса",
+    challenge: "Задача или цель",
+    needs: "Что нужно?",
+    currentSetup: "Текущий стек (необязательно)",
+    teamSize: "Размер команды",
+    budget: "Бюджет",
+    timeline: "Сроки",
+    contactMethod: "Удобный способ связи",
+    contactInfo: "Контакт",
+  },
+  needsOptions: [
+    { v: "bot", l: "AI-бот" },
+    { v: "automation", l: "Автоматизация процессов" },
+    { v: "crm", l: "Кастомная CRM" },
+    { v: "website", l: "Сайт на заказ" },
+    { v: "turnkey", l: "Turnkey (Сайт + Бот + CRM)" },
+    { v: "other", l: "Другое" },
+  ],
+  teamSizeOptions: [
+    { v: "solo", l: "Соло" },
+    { v: "2-5", l: "2 – 5" },
+    { v: "6-20", l: "6 – 20" },
+    { v: "20+", l: "20+" },
+  ],
+  budgetOptions: [
+    { v: "<1k", l: "Менее $1,000" },
+    { v: "1-3k", l: "$1,000 – $3,000" },
+    { v: "3-10k", l: "$3,000 – $10,000" },
+    { v: "10k+", l: "$10,000+" },
+  ],
+  timelineOptions: [
+    { v: "asap", l: "Срочно" },
+    { v: "2-4w", l: "2 – 4 недели" },
+    { v: "1-3m", l: "1 – 3 месяца" },
+    { v: "exploring", l: "Пока изучаю" },
+  ],
+  contactOptions: [
+    { v: "telegram", l: "Telegram" },
+    { v: "whatsapp", l: "WhatsApp" },
+    { v: "email", l: "Email" },
+  ],
+  placeholders: {
+    telegram: "@username",
+    whatsapp: "+66 95 627 1926",
+    email: "you@example.com",
+    business: "Недвижимость, клиника, SaaS, e-commerce…",
+    challenge: "Какую задачу хотите решить?",
+    currentSetup: "Инструменты, платформы или процессы, которые уже используете",
+  },
+  submit: "Отправить →",
+  sending: "Отправка…",
+  success: "Спасибо — отвечу в течение 24 часов.",
+  error: "Что-то пошло не так. Напишите мне в Telegram.",
+  close: "Закрыть",
+};
+
+type Status = "idle" | "pending" | "success" | "error";
+type ContactMethod = "telegram" | "whatsapp" | "email";
+
+export default function IntakeModal() {
+  const { language } = useLanguage();
+  const { isOpen, close } = useIntakeModal();
+  const t = language === "ru" ? ru : en;
+
+  const [name, setName] = useState("");
+  const [business, setBusiness] = useState("");
+  const [challenge, setChallenge] = useState("");
+  const [needs, setNeeds] = useState<string[]>([]);
+  const [currentSetup, setCurrentSetup] = useState("");
+  const [teamSize, setTeamSize] = useState("solo");
+  const [budget, setBudget] = useState("1-3k");
+  const [timeline, setTimeline] = useState("2-4w");
+  const [contactMethod, setContactMethod] = useState<ContactMethod>("telegram");
+  const [contactInfo, setContactInfo] = useState("");
+  const [status, setStatus] = useState<Status>("idle");
+
+  // Lock body scroll and listen for Esc while modal is open.
+  useEffect(() => {
+    if (!isOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [isOpen, close]);
+
+  const contactPlaceholder =
+    contactMethod === "telegram"
+      ? t.placeholders.telegram
+      : contactMethod === "whatsapp"
+        ? t.placeholders.whatsapp
+        : t.placeholders.email;
+
+  function toggleNeed(v: string) {
+    setNeeds((prev) =>
+      prev.includes(v) ? prev.filter((x) => x !== v) : [...prev, v],
+    );
+  }
+
+  function resetForm() {
+    setName("");
+    setBusiness("");
+    setChallenge("");
+    setNeeds([]);
+    setCurrentSetup("");
+    setTeamSize("solo");
+    setBudget("1-3k");
+    setTimeline("2-4w");
+    setContactMethod("telegram");
+    setContactInfo("");
+    setStatus("idle");
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (status === "pending") return;
+    if (needs.length === 0) return;
+    setStatus("pending");
+    try {
+      const res = await fetch("/api/intake", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          business,
+          challenge,
+          needs,
+          currentSetup,
+          teamSize,
+          budget,
+          timeline,
+          contactMethod,
+          contactInfo,
+          language,
+        }),
+      });
+      if (!res.ok) throw new Error("bad status");
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  function handleClose() {
+    close();
+    // Reset after the fade-out so the user doesn't see a flash of empty form.
+    setTimeout(resetForm, 300);
+  }
+
+  const inputStyle: React.CSSProperties = {
+    width: "100%",
+    background: "rgba(255,255,255,0.02)",
+    border: "1px solid var(--c-border)",
+    borderRadius: 6,
+    padding: "10px 12px",
+    fontFamily: "var(--font-instrument-sans), sans-serif",
+    fontSize: 13,
+    color: "var(--c-text)",
+    outline: "none",
+  };
+
+  const textareaStyle: React.CSSProperties = {
+    ...inputStyle,
+    minHeight: 72,
+    resize: "vertical",
+    fontFamily: "var(--font-instrument-sans), sans-serif",
+  };
+
+  const labelStyle: React.CSSProperties = {
+    display: "block",
+    fontFamily: "var(--font-inconsolata), monospace",
+    fontSize: 10,
+    letterSpacing: "0.15em",
+    textTransform: "uppercase",
+    color: "var(--c-muted)",
+    marginBottom: 6,
+  };
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          key="intake-modal"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 100,
+            background: "rgba(0,0,0,0.7)",
+            backdropFilter: "blur(6px)",
+            display: "flex",
+            alignItems: "flex-start",
+            justifyContent: "center",
+            overflowY: "auto",
+            padding: "40px 16px",
+          }}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) handleClose();
+          }}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.98 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            role="dialog"
+            aria-modal="true"
+            style={{
+              width: "100%",
+              maxWidth: 640,
+              background: "var(--c-card)",
+              border: "1px solid var(--c-border)",
+              borderRadius: 12,
+              padding: 28,
+              position: "relative",
+            }}
+          >
+            <button
+              type="button"
+              onClick={handleClose}
+              aria-label={t.close}
+              style={{
+                position: "absolute",
+                top: 14,
+                right: 14,
+                background: "transparent",
+                border: "none",
+                color: "var(--c-muted)",
+                cursor: "pointer",
+                padding: 6,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <X size={20} />
+            </button>
+
+            {/* Header */}
+            <div style={{ marginBottom: 20, paddingRight: 28 }}>
+              <h2
+                style={{
+                  fontFamily: "var(--font-playfair), serif",
+                  fontWeight: 700,
+                  fontSize: "clamp(24px, 3.5vw, 32px)",
+                  letterSpacing: "-0.02em",
+                  color: "var(--c-heading)",
+                  marginBottom: 6,
+                }}
+              >
+                {t.h2}
+              </h2>
+              <p
+                style={{
+                  fontFamily: "var(--font-instrument-sans), sans-serif",
+                  fontSize: 13,
+                  color: "var(--c-muted)",
+                  lineHeight: 1.6,
+                }}
+              >
+                {t.subtitle}
+              </p>
+            </div>
+
+            {status === "success" ? (
+              <div
+                style={{
+                  background: "rgba(200,169,110,0.08)",
+                  border: "1px solid rgba(200,169,110,0.35)",
+                  borderRadius: 10,
+                  padding: 22,
+                  fontFamily: "var(--font-instrument-sans), sans-serif",
+                  fontSize: 14,
+                  color: "var(--c-text)",
+                  textAlign: "center",
+                }}
+              >
+                {t.success}
+              </div>
+            ) : (
+              <form
+                onSubmit={handleSubmit}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 16,
+                }}
+              >
+                <div>
+                  <label style={labelStyle}>{t.labels.name}</label>
+                  <input
+                    type="text"
+                    required
+                    maxLength={120}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    style={inputStyle}
+                  />
+                </div>
+
+                <div>
+                  <label style={labelStyle}>{t.labels.business}</label>
+                  <input
+                    type="text"
+                    required
+                    maxLength={200}
+                    value={business}
+                    onChange={(e) => setBusiness(e.target.value)}
+                    placeholder={t.placeholders.business}
+                    style={inputStyle}
+                  />
+                </div>
+
+                <div>
+                  <label style={labelStyle}>{t.labels.challenge}</label>
+                  <textarea
+                    required
+                    maxLength={1000}
+                    value={challenge}
+                    onChange={(e) => setChallenge(e.target.value)}
+                    placeholder={t.placeholders.challenge}
+                    style={textareaStyle}
+                  />
+                </div>
+
+                <div>
+                  <label style={labelStyle}>{t.labels.needs}</label>
+                  <div
+                    className="flex flex-wrap gap-2"
+                    style={{ marginTop: 2 }}
+                  >
+                    {t.needsOptions.map((o) => {
+                      const active = needs.includes(o.v);
+                      return (
+                        <button
+                          type="button"
+                          key={o.v}
+                          onClick={() => toggleNeed(o.v)}
+                          style={{
+                            fontFamily:
+                              "var(--font-instrument-sans), sans-serif",
+                            fontSize: 12,
+                            fontWeight: 600,
+                            padding: "8px 14px",
+                            borderRadius: 5,
+                            background: active
+                              ? "rgba(200,169,110,0.12)"
+                              : "transparent",
+                            border: active
+                              ? "1px solid rgba(200,169,110,0.5)"
+                              : "1px solid var(--c-border)",
+                            color: active
+                              ? "var(--c-gold)"
+                              : "var(--c-text2)",
+                            cursor: "pointer",
+                          }}
+                        >
+                          {o.l}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div>
+                  <label style={labelStyle}>{t.labels.currentSetup}</label>
+                  <textarea
+                    maxLength={1000}
+                    value={currentSetup}
+                    onChange={(e) => setCurrentSetup(e.target.value)}
+                    placeholder={t.placeholders.currentSetup}
+                    style={textareaStyle}
+                  />
+                </div>
+
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: 12,
+                  }}
+                >
+                  <div>
+                    <label style={labelStyle}>{t.labels.teamSize}</label>
+                    <select
+                      value={teamSize}
+                      onChange={(e) => setTeamSize(e.target.value)}
+                      style={inputStyle}
+                    >
+                      {t.teamSizeOptions.map((o) => (
+                        <option key={o.v} value={o.v}>
+                          {o.l}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label style={labelStyle}>{t.labels.budget}</label>
+                    <select
+                      value={budget}
+                      onChange={(e) => setBudget(e.target.value)}
+                      style={inputStyle}
+                    >
+                      {t.budgetOptions.map((o) => (
+                        <option key={o.v} value={o.v}>
+                          {o.l}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label style={labelStyle}>{t.labels.timeline}</label>
+                  <select
+                    value={timeline}
+                    onChange={(e) => setTimeline(e.target.value)}
+                    style={inputStyle}
+                  >
+                    {t.timelineOptions.map((o) => (
+                      <option key={o.v} value={o.v}>
+                        {o.l}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label style={labelStyle}>{t.labels.contactMethod}</label>
+                  <div
+                    className="flex flex-wrap gap-2"
+                    style={{ marginTop: 2 }}
+                  >
+                    {t.contactOptions.map((o) => {
+                      const active = contactMethod === o.v;
+                      return (
+                        <button
+                          type="button"
+                          key={o.v}
+                          onClick={() =>
+                            setContactMethod(o.v as ContactMethod)
+                          }
+                          style={{
+                            fontFamily:
+                              "var(--font-instrument-sans), sans-serif",
+                            fontSize: 12,
+                            fontWeight: 600,
+                            padding: "8px 14px",
+                            borderRadius: 5,
+                            background: active
+                              ? "rgba(200,169,110,0.12)"
+                              : "transparent",
+                            border: active
+                              ? "1px solid rgba(200,169,110,0.5)"
+                              : "1px solid var(--c-border)",
+                            color: active
+                              ? "var(--c-gold)"
+                              : "var(--c-text2)",
+                            cursor: "pointer",
+                          }}
+                        >
+                          {o.l}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div>
+                  <label style={labelStyle}>{t.labels.contactInfo}</label>
+                  <input
+                    type="text"
+                    required
+                    maxLength={200}
+                    value={contactInfo}
+                    onChange={(e) => setContactInfo(e.target.value)}
+                    placeholder={contactPlaceholder}
+                    style={inputStyle}
+                  />
+                </div>
+
+                {status === "error" && (
+                  <div
+                    style={{
+                      fontFamily: "var(--font-instrument-sans), sans-serif",
+                      fontSize: 12,
+                      color: "#e88",
+                    }}
+                  >
+                    {t.error}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={status === "pending" || needs.length === 0}
+                  style={{
+                    background: "var(--c-gold)",
+                    color: "var(--c-bg)",
+                    fontFamily: "var(--font-instrument-sans), sans-serif",
+                    fontWeight: 600,
+                    fontSize: 13,
+                    letterSpacing: "0.04em",
+                    padding: "12px 24px",
+                    borderRadius: 5,
+                    border: "none",
+                    cursor:
+                      status === "pending" || needs.length === 0
+                        ? "not-allowed"
+                        : "pointer",
+                    opacity:
+                      status === "pending" || needs.length === 0 ? 0.55 : 1,
+                    alignSelf: "flex-start",
+                  }}
+                >
+                  {status === "pending" ? t.sending : t.submit}
+                </button>
+              </form>
+            )}
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}

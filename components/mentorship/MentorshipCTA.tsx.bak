@@ -1,0 +1,136 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowRight, Send, MessageCircle } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { TELEGRAM_URL, WHATSAPP_URL } from "@/lib/constants";
+
+export default function MentorshipCTA() {
+    const { language, t } = useLanguage();
+    const c = t.mentorship.cta;
+
+    return (
+        <section
+            id="start"
+            className="scroll-mt-20"
+            style={{ background: "var(--c-bg2)", padding: "72px 0", borderTop: "1px solid var(--c-border)" }}
+        >
+            <div className="container-custom text-center">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="max-w-3xl mx-auto"
+                >
+                    <div style={{
+                        fontFamily: "var(--font-inconsolata), monospace",
+                        fontSize: 10,
+                        letterSpacing: "0.22em",
+                        textTransform: "uppercase",
+                        color: "var(--c-gold)",
+                        marginBottom: 16,
+                    }}>
+                        {language === "ru" ? "Начать" : "Get Started"}
+                    </div>
+
+                    <h2
+                        className="mb-6"
+                        style={{
+                            fontFamily: "var(--font-playfair), serif",
+                            fontWeight: 700,
+                            fontSize: "clamp(28px, 4vw, 44px)",
+                            letterSpacing: "-0.02em",
+                            color: "var(--c-heading)",
+                        }}
+                    >
+                        {c.title}
+                    </h2>
+
+                    <p
+                        className="mb-10 leading-relaxed"
+                        style={{
+                            fontFamily: "var(--font-instrument-sans), sans-serif",
+                            fontSize: "clamp(15px, 1.8vw, 18px)",
+                            color: "var(--c-text2)",
+                        }}
+                    >
+                        {c.text}
+                        <br className="hidden md:block" />
+                        {c.subtext}
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10">
+                        <motion.div
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
+                            className="w-full sm:w-auto"
+                        >
+                            <Link
+                                href={TELEGRAM_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group flex items-center justify-center gap-3 w-full sm:w-auto"
+                                style={{
+                                    background: "var(--c-gold)",
+                                    color: "var(--c-bg)",
+                                    fontFamily: "var(--font-instrument-sans), sans-serif",
+                                    fontWeight: 700,
+                                    fontSize: 16,
+                                    padding: "14px 36px",
+                                    borderRadius: 999,
+                                    textDecoration: "none",
+                                }}
+                            >
+                                <Send className="w-5 h-5" />
+                                {c.buttonText} @paul_burg
+                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            </Link>
+                        </motion.div>
+
+                        <motion.div
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
+                            className="w-full sm:w-auto"
+                        >
+                            <Link
+                                href={WHATSAPP_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-3 w-full sm:w-auto"
+                                style={{
+                                    background: "var(--c-card)",
+                                    border: "1px solid var(--c-border)",
+                                    color: "var(--c-text)",
+                                    fontFamily: "var(--font-instrument-sans), sans-serif",
+                                    fontWeight: 700,
+                                    fontSize: 16,
+                                    padding: "13px 36px",
+                                    borderRadius: 999,
+                                    textDecoration: "none",
+                                }}
+                            >
+                                <MessageCircle className="w-5 h-5" style={{ color: "#25D366" }} />
+                                {language === "ru" ? "Написать в WhatsApp" : "Message on WhatsApp"}
+                            </Link>
+                        </motion.div>
+                    </div>
+
+                    <p
+                        className="max-w-2xl mx-auto"
+                        style={{
+                            fontFamily: "var(--font-instrument-sans), sans-serif",
+                            fontSize: 13,
+                            color: "var(--c-muted)",
+                            borderTop: "1px solid var(--c-border)",
+                            paddingTop: 24,
+                        }}
+                    >
+                        {c.note}
+                    </p>
+                </motion.div>
+            </div>
+        </section>
+    );
+}

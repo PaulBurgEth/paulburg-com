@@ -1,0 +1,36 @@
+"use client";
+
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import ServicesHero from "./sections/ServicesHero";
+import ServicesProof from "./sections/ServicesProof";
+import ServicesGrid from "./sections/ServicesGrid";
+import ServicesTurnkey from "./sections/ServicesTurnkey";
+import ServicesBuilt from "./sections/ServicesBuilt";
+import ServicesCases from "./sections/ServicesCases";
+import ServicesProcess from "./sections/ServicesProcess";
+import ServicesPricing from "./sections/ServicesPricing";
+import ServicesCTA from "./sections/ServicesCTA";
+
+export default function ServicesPageClient() {
+  return (
+    <main className="min-h-screen" style={{ background: "var(--c-bg)", position: "relative" }}>
+      {/* Ambient glow */}
+      <div style={{ position: "fixed", top: "-30%", left: "-10%", width: "60%", height: "70%", background: "radial-gradient(ellipse, rgba(200,169,110,0.04) 0%, transparent 70%)", pointerEvents: "none", zIndex: 0 }} />
+      <div style={{ position: "fixed", bottom: "-20%", right: "-10%", width: "50%", height: "60%", background: "radial-gradient(ellipse, rgba(122,171,143,0.03) 0%, transparent 70%)", pointerEvents: "none", zIndex: 0 }} />
+      <div style={{ position: "relative", zIndex: 1 }}>
+        <Navbar />
+        <ServicesHero />
+        <ServicesProof />
+        <ServicesGrid />
+        <ServicesTurnkey />
+        <ServicesBuilt />
+        <ServicesCases />
+        <ServicesProcess />
+        <ServicesPricing />
+        <ServicesCTA />
+        <Footer />
+      </div>
+    </main>
+  );
+}

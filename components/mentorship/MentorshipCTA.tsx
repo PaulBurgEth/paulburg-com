@@ -1,0 +1,178 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Sparkles, MessageCircle, Calendar } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { useMentorshipModal } from "@/context/MentorshipModalContext";
+import { WHATSAPP_URL, CALENDLY_URL, TELEGRAM_URL } from "@/lib/constants";
+
+export default function MentorshipCTA() {
+    const { language, t } = useLanguage();
+    const { open } = useMentorshipModal();
+    const c = t.mentorship.cta;
+
+    return (
+        <section
+            id="start"
+            className="scroll-mt-20"
+            style={{ background: "var(--c-bg2)", padding: "72px 0", borderTop: "1px solid var(--c-border)" }}
+        >
+            <div className="container-custom text-center">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="max-w-3xl mx-auto"
+                >
+                    <div style={{
+                        fontFamily: "var(--font-inconsolata), monospace",
+                        fontSize: 10,
+                        letterSpacing: "0.22em",
+                        textTransform: "uppercase",
+                        color: "var(--c-gold)",
+                        marginBottom: 16,
+                    }}>
+                        {language === "ru" ? "Начать" : "Get Started"}
+                    </div>
+
+                    <h2
+                        className="mb-6"
+                        style={{
+                            fontFamily: "var(--font-playfair), serif",
+                            fontWeight: 700,
+                            fontSize: "clamp(28px, 4vw, 44px)",
+                            letterSpacing: "-0.02em",
+                            color: "var(--c-heading)",
+                        }}
+                    >
+                        {c.title}
+                    </h2>
+
+                    <p
+                        className="mb-10 leading-relaxed"
+                        style={{
+                            fontFamily: "var(--font-instrument-sans), sans-serif",
+                            fontSize: "clamp(15px, 1.8vw, 18px)",
+                            color: "var(--c-text2)",
+                        }}
+                    >
+                        {c.text}
+                        <br className="hidden md:block" />
+                        {c.subtext}
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10">
+                        <motion.div
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
+                            className="w-full sm:w-auto"
+                        >
+                            <Link
+                                href={TELEGRAM_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-3 w-full sm:w-auto"
+                                style={{
+                                    background: "var(--c-card)",
+                                    border: "1px solid var(--c-border)",
+                                    color: "var(--c-text)",
+                                    fontFamily: "var(--font-instrument-sans), sans-serif",
+                                    fontWeight: 700,
+                                    fontSize: 16,
+                                    padding: "14px 36px",
+                                    borderRadius: 999,
+                                    textDecoration: "none",
+                                }}
+                            >
+                                <MessageCircle className="w-5 h-5" style={{ color: "#2AABEE" }} />
+                                {c.buttonText}
+                            </Link>
+                        </motion.div>
+
+                        <motion.div
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
+                            className="w-full sm:w-auto"
+                        >
+                            <Link
+                                href={WHATSAPP_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-3 w-full sm:w-auto"
+                                style={{
+                                    background: "var(--c-card)",
+                                    border: "1px solid var(--c-border)",
+                                    color: "var(--c-text)",
+                                    fontFamily: "var(--font-instrument-sans), sans-serif",
+                                    fontWeight: 700,
+                                    fontSize: 16,
+                                    padding: "14px 36px",
+                                    borderRadius: 999,
+                                    textDecoration: "none",
+                                }}
+                            >
+                                <MessageCircle className="w-5 h-5" style={{ color: "#25D366" }} />
+                                {c.ctaWhatsApp}
+                            </Link>
+                        </motion.div>
+
+                        <motion.div
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
+                            className="w-full sm:w-auto"
+                        >
+                            <button
+                                type="button"
+                                onClick={open}
+                                className="group flex items-center justify-center gap-3 w-full sm:w-auto"
+                                style={{
+                                    background: "transparent",
+                                    border: "1px solid var(--c-gold)",
+                                    color: "var(--c-text)",
+                                    fontFamily: "var(--font-instrument-sans), sans-serif",
+                                    fontWeight: 700,
+                                    fontSize: 16,
+                                    padding: "14px 36px",
+                                    borderRadius: 999,
+                                    cursor: "pointer",
+                                }}
+                            >
+                                <Sparkles className="w-5 h-5" />
+                                {c.ctaBook}
+                            </button>
+                        </motion.div>
+
+                        <motion.div
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
+                            className="w-full sm:w-auto"
+                        >
+                            <Link
+                                href={CALENDLY_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-3 w-full sm:w-auto"
+                                style={{
+                                    background: "var(--c-card)",
+                                    border: "1px solid var(--c-border)",
+                                    color: "var(--c-text)",
+                                    fontFamily: "var(--font-instrument-sans), sans-serif",
+                                    fontWeight: 700,
+                                    fontSize: 16,
+                                    padding: "14px 36px",
+                                    borderRadius: 999,
+                                    textDecoration: "none",
+                                }}
+                            >
+                                <Calendar className="w-5 h-5" style={{ color: "var(--c-gold)" }} />
+                                {c.ctaCall}
+                            </Link>
+                        </motion.div>
+                    </div>
+                </motion.div>
+            </div>
+        </section>
+    );
+}
