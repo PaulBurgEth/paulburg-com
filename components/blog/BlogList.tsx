@@ -75,7 +75,7 @@ export default function BlogList({ posts, lang }: Props) {
                     padding: "2px 8px",
                   }}
                 >
-                  {post.tag}
+                  {post.tags.join(" · ")}
                 </span>
                 <span
                   style={{
