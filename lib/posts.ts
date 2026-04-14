@@ -10,7 +10,7 @@ export type Post = {
   title: string;
   excerpt: string;
   date: string;
-  tag: string;
+  tags: string[];
   readingTime: string;
 };
 
@@ -33,7 +33,7 @@ export function getAllPosts(lang: "en" | "ru"): Post[] {
         title: data.title as string,
         excerpt: data.excerpt as string,
         date: data.date as string,
-        tag: data.tag as string,
+        tags: Array.isArray(data.tags) ? data.tags : [data.tag as string],
         readingTime: rt.text,
       };
     })
@@ -53,7 +53,7 @@ export async function getPostBySlug(slug: string, lang: "en" | "ru") {
       title: data.title as string,
       excerpt: data.excerpt as string,
       date: data.date as string,
-      tag: data.tag as string,
+      tags: Array.isArray(data.tags) ? data.tags : [data.tag as string],
       readingTime: rt.text,
     },
   };

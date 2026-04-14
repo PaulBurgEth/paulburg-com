@@ -13,7 +13,7 @@ interface Frontmatter {
   title: string;
   excerpt: string;
   date: string;
-  tag: string;
+  tags: string[];
   readingTime: string;
 }
 
@@ -115,7 +115,7 @@ export default function ArticlePageClient({
                   padding: "4px 10px",
                 }}
               >
-                {frontmatter.tag}
+                {frontmatter.tags.join(" · ")}
               </span>
               <span
                 style={{
