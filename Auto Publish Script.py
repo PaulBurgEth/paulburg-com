@@ -2,7 +2,7 @@
 import os, re, sys, json, time
 from pathlib import Path
 
-DEEPSEEK_API_KEY = "sk-REMOVED"
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
 INPUT_DIR        = "/Users/paulburg/Vibe_coding/PaulBurg.com/articles"
 OUTPUT_DIR       = "/Users/paulburg/Vibe_coding/PaulBurg.com/content/posts"
 DEFAULT_TAG      = "AI"
