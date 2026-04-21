@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useMentorshipModal } from "@/context/MentorshipModalContext";
+import { TELEGRAM_HANDLE } from "@/lib/constants";
 
 const en = {
   h2: "Drop me a hint",
@@ -42,7 +43,7 @@ const en = {
   sending: "Sending…",
   success: "Got it.",
   successSub: "I'll reach out within a few hours.",
-  error: "Something went wrong. Message me directly: @pasha_burg on Telegram.",
+  error: `Something went wrong. Message me directly: @${TELEGRAM_HANDLE} on Telegram.`,
   close: "Close",
 };
 
@@ -82,7 +83,7 @@ const ru = {
   sending: "Отправка…",
   success: "Принято.",
   successSub: "Скоро напишу.",
-  error: "Что-то пошло не так. Напишите напрямую: @pasha_burg в Telegram.",
+  error: `Что-то пошло не так. Напишите напрямую: @${TELEGRAM_HANDLE} в Telegram.`,
   close: "Закрыть",
 };
 

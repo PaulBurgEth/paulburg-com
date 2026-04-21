@@ -90,6 +90,7 @@ export async function POST(req: Request) {
 
     const raw = await req.json().catch(() => null);
     if (!raw || typeof raw !== "object") {
+      console.error("[intake] Invalid body received from IP:", ip);
       return NextResponse.json(
         { ok: false, error: "invalid_body" },
         { status: 400 },
@@ -98,6 +99,13 @@ export async function POST(req: Request) {
 
     const r = raw as Record<string, unknown>;
     const type = sanitize(r.type, 32);
+    console.log("[intake] Incoming submission:", {
+      type: type || "services",
+      name: sanitize(r.name, 120) ? "[present]" : "[missing]",
+      contactInfo: sanitize(r.contactInfo, 200) ? "[present]" : "[missing]",
+      language: sanitize(r.language, 8) || "—",
+      ip,
+    });
     const name = sanitize(r.name, 120);
     const business = sanitize(r.business, 200);
     // Legacy single-select "need" (old form) — still accepted.
@@ -146,7 +154,7 @@ export async function POST(req: Request) {
     const chatId = process.env.TELEGRAM_CHAT_ID;
 
     if (!token || !chatId) {
-      console.error("[intake] Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID");
+      console.error("[intake] MISSING ENV VARS — set TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in Vercel → Settings → Environment Variables");
       return NextResponse.json(
         { ok: false, error: "server_not_configured" },
         { status: 500 },
@@ -191,6 +199,7 @@ export async function POST(req: Request) {
     }
     const text = lines.join("\n");
 
+    console.log("[intake] Sending to Telegram chat_id:", chatId);
     const tgRes = await fetch(
       `https://api.telegram.org/bot${token}/sendMessage`,
       {
@@ -205,13 +214,15 @@ export async function POST(req: Request) {
     );
 
     if (!tgRes.ok) {
-      const body = await tgRes.text().catch(() => "");
-      console.error("[intake] Telegram API error:", tgRes.status, body);
+      const tgBody = await tgRes.text().catch(() => "");
+      console.error("[intake] Telegram API error — status:", tgRes.status, "body:", tgBody);
       return NextResponse.json(
         { ok: false, error: "telegram_failed" },
         { status: 502 },
       );
     }
+
+    console.log("[intake] Telegram message sent OK, status:", tgRes.status);
 
     recentSubmissions.set(ip, now);
 
