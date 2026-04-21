@@ -17,4 +17,4 @@ Next.js · TypeScript · Tailwind CSS · deployed on Vercel.
 
 ## Links
 
-[Substack](https://paulburg.substack.com) · [LinkedIn](https://www.linkedin.com/in/paul-burg) · [X](https://x.com/PaulBurg_) · [Telegram](https://t.me/pasha_burg)
+[Substack](https://paulburg.substack.com) · [LinkedIn](https://www.linkedin.com/in/paul-burg) · [X](https://x.com/PaulBurg_) · [Telegram](https://t.me/paul_burg)
