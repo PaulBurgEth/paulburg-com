@@ -12,6 +12,7 @@ import Footer from "@/components/Footer";
 import { WHATSAPP_URL } from "@/lib/constants";
 import { useIntakeModal } from "@/context/IntakeModalContext";
 import { useMentorshipModal } from "@/context/MentorshipModalContext";
+import type { Post } from "@/lib/posts";
 
 const C = {
   bg:       "var(--c-bg)",
@@ -243,6 +244,23 @@ hr.div{border:none;border-top:1px solid ${C.border}}
   font-family:var(--font-inconsolata),monospace;font-size:10px;color:${C.faint};
 }
 .write-read{color:${C.gold}}
+.write-new{
+  display:inline-flex;align-items:center;gap:4px;
+  font-family:var(--font-inconsolata),monospace;
+  font-size:8px;font-weight:700;letter-spacing:0.14em;
+  color:${C.gold};
+  background:rgba(200,169,110,0.10);
+  border:1px solid rgba(200,169,110,0.30);
+  border-radius:3px;padding:2px 5px;
+  margin-left:auto;
+}
+.write-new-dot{
+  width:4px;height:4px;border-radius:50%;
+  background:${C.gold};
+  animation:pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:0.3}}
+.write-card-new{border-color:rgba(200,169,110,0.20)!important}
 .sub-bar{
   background:${C.card2};border:1px solid ${C.border2};
   border-radius:10px;padding:18px 22px;
@@ -486,12 +504,22 @@ const communityEvents = [
   { name:"BTC Pizza Day", src:"Community Gathering", url:"https://x.com/PaulBurg_/status/1926320701163589792" },
 ];
 
-export default function HomePageClient() {
+const NEW_DAYS = 30;
+function isNew(dateStr: string) {
+  return (Date.now() - new Date(dateStr).getTime()) / 86_400_000 < NEW_DAYS;
+}
+
+interface HomePageClientProps {
+  latestPosts?: { en: Post[]; ru: Post[] };
+}
+
+export default function HomePageClient({ latestPosts }: HomePageClientProps) {
   const { language } = useLanguage();
   const { open: openIntake } = useIntakeModal();
   const { open: openMentorshipModal } = useMentorshipModal();
 
-  const visible = articles.slice(0, 3);
+  const blogPosts = latestPosts?.[language] ?? latestPosts?.en ?? [];
+  const visible = blogPosts.length > 0 ? blogPosts : articles.slice(0, 3);
 
   return (
     <>
@@ -747,20 +775,49 @@ export default function HomePageClient() {
           <h2 className="sec-title">Articles & Insights</h2>
           <p className="sec-sub">On impact markets, health tech, and building in public</p>
           <div className="write-grid">
-            {visible.map((a,i)=>(
-              <a key={i} className="write-card" href={a.url} target="_blank" rel="noopener noreferrer" style={{textDecoration:"none",color:"inherit"}}>
-                <div className="write-src">
-                  <span className="write-dot" style={{background:a.color}}/>
-                  <span style={{color:a.color}}>{a.src}</span>
-                </div>
-                <div className="write-title">{a.title}</div>
-                <div className="write-excerpt">{a.excerpt}</div>
-                <div className="write-foot">
-                  <span>{a.date}</span>
-                  <span className="write-read">Read →</span>
-                </div>
-              </a>
-            ))}
+            {blogPosts.length > 0
+              ? blogPosts.map((post, i) => {
+                  const fresh = isNew(post.date);
+                  const formattedDate = new Date(post.date).toLocaleDateString(
+                    language === "ru" ? "ru-RU" : "en-US",
+                    { month: "short", year: "numeric" }
+                  );
+                  return (
+                    <Link key={i} href={`/blog/${post.slug}`} className={`write-card${fresh ? " write-card-new" : ""}`} style={{textDecoration:"none",color:"inherit",display:"block"}}>
+                      <div className="write-src">
+                        <span className="write-dot" style={{background:C.gold}}/>
+                        <span style={{color:C.gold}}>paulburg.com</span>
+                        {fresh && (
+                          <span className="write-new">
+                            <span className="write-new-dot"/>
+                            NEW
+                          </span>
+                        )}
+                      </div>
+                      <div className="write-title">{post.title}</div>
+                      <div className="write-excerpt">{post.excerpt}</div>
+                      <div className="write-foot">
+                        <span>{formattedDate}</span>
+                        <span className="write-read">{language === "ru" ? "Читать →" : "Read →"}</span>
+                      </div>
+                    </Link>
+                  );
+                })
+              : visible.map((a,i)=>(
+                <a key={i} className="write-card" href={(a as {url:string}).url} target="_blank" rel="noopener noreferrer" style={{textDecoration:"none",color:"inherit"}}>
+                  <div className="write-src">
+                    <span className="write-dot" style={{background:(a as {color:string}).color}}/>
+                    <span style={{color:(a as {color:string}).color}}>{(a as {src:string}).src}</span>
+                  </div>
+                  <div className="write-title">{a.title}</div>
+                  <div className="write-excerpt">{(a as {excerpt:string}).excerpt}</div>
+                  <div className="write-foot">
+                    <span>{(a as {date:string}).date}</span>
+                    <span className="write-read">Read →</span>
+                  </div>
+                </a>
+              ))
+            }
           </div>
           <div style={{textAlign:"center",marginBottom:"14px"}}>
             <Link href="/blog" className="btn-ghost" style={{margin:"0 auto",fontSize:"12px",padding:"8px 20px",textDecoration:"none",display:"inline-flex"}}>
