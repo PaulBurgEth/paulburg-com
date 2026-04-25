@@ -78,7 +78,7 @@ export default function ServicesProof() {
             >
               <span
                 style={{
-                  fontFamily: "var(--font-playfair), serif",
+                  fontFamily: "var(--font-fraunces), serif",
                   fontWeight: 700,
                   fontSize: 22,
                   color: "var(--c-gold)",

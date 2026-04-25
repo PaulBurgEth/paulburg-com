@@ -69,7 +69,7 @@ export default function MentorshipBridge() {
                         <div className="pt-8">
                             <p
                                 style={{
-                                    fontFamily: "var(--font-playfair), serif",
+                                    fontFamily: "var(--font-fraunces), serif",
                                     fontStyle: "italic",
                                     fontSize: "clamp(16px, 2vw, 20px)",
                                     color: "var(--c-gold)",

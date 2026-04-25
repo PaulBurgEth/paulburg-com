@@ -98,9 +98,9 @@ export default function BlogList({ posts, lang }: Props) {
               </div>
               <h3
                 style={{
-                  fontFamily: "var(--font-playfair), serif",
+                  fontFamily: "var(--font-fraunces), serif",
                   fontWeight: 700,
-                  fontSize: 18,
+                  fontSize: 20,
                   color: "var(--c-text)",
                   marginBottom: 8,
                   lineHeight: 1.3,
@@ -111,8 +111,8 @@ export default function BlogList({ posts, lang }: Props) {
               <p
                 style={{
                   fontFamily: "var(--font-instrument-sans), sans-serif",
-                  fontSize: 13,
-                  color: "var(--c-text2)",
+                  fontSize: 14,
+                  color: "var(--c-body)",
                   lineHeight: 1.6,
                   marginBottom: 14,
                 }}

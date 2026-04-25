@@ -47,7 +47,7 @@ export default function MentorshipFormats() {
                     <h2
                         className="mb-10"
                         style={{
-                            fontFamily: "var(--font-playfair), serif",
+                            fontFamily: "var(--font-fraunces), serif",
                             fontWeight: 700,
                             fontSize: "clamp(22px, 3vw, 32px)",
                             letterSpacing: "-0.02em",

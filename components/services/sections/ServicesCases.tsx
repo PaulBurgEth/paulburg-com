@@ -115,7 +115,7 @@ export default function ServicesCases() {
           </div>
           <h2
             style={{
-              fontFamily: "var(--font-playfair), serif",
+              fontFamily: "var(--font-fraunces), serif",
               fontWeight: 700,
               fontSize: "clamp(26px, 4vw, 38px)",
               letterSpacing: "-0.02em",
@@ -194,7 +194,7 @@ export default function ServicesCases() {
                 {/* Title */}
                 <h3
                   style={{
-                    fontFamily: "var(--font-playfair), serif",
+                    fontFamily: "var(--font-fraunces), serif",
                     fontWeight: 700,
                     fontSize: 16,
                     color: "var(--c-text)",
@@ -209,7 +209,7 @@ export default function ServicesCases() {
                   style={{
                     fontFamily: "var(--font-instrument-sans), sans-serif",
                     fontSize: 13,
-                    color: "var(--c-text2)",
+                    color: "var(--c-body)",
                     lineHeight: 1.6,
                     marginBottom: 8,
                   }}
@@ -257,7 +257,7 @@ export default function ServicesCases() {
               >
                 <span
                   style={{
-                    fontFamily: "var(--font-playfair), serif",
+                    fontFamily: "var(--font-fraunces), serif",
                     fontWeight: 700,
                     fontSize: c.metricValue.length > 8 ? 14 : 26,
                     color: "var(--c-gold)",

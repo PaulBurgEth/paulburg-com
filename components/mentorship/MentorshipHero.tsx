@@ -6,11 +6,15 @@ import { MessageCircle, Sparkles } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useMentorshipModal } from "@/context/MentorshipModalContext";
 import { WHATSAPP_URL, TELEGRAM_URL } from "@/lib/constants";
+import BurgMark from "@/components/BurgMark";
 
 export default function MentorshipHero() {
     const { t } = useLanguage();
     const { open } = useMentorshipModal();
     const h = t.mentorship.hero;
+    const h1Match = h.headline.match(/^(.*\s)(\S+)$/);
+    const h1Head = h1Match ? h1Match[1] : h.headline;
+    const h1Tail = h1Match ? h1Match[2] : "";
 
     return (
         <section
@@ -27,22 +31,23 @@ export default function MentorshipHero() {
                     <h1
                         className="mb-6 leading-tight"
                         style={{
-                            fontFamily: "var(--font-playfair), serif",
+                            fontFamily: "var(--font-fraunces), serif",
                             fontWeight: 700,
                             fontSize: "clamp(36px, 7vw, 72px)",
                             letterSpacing: "-0.02em",
                             color: "var(--c-heading)",
                         }}
                     >
-                        {h.headline}
+                        {h1Head}<BurgMark weight={1.2}>{h1Tail}</BurgMark>
                     </h1>
 
                     <p
                         className="mb-12 max-w-4xl leading-relaxed"
                         style={{
-                            fontFamily: "var(--font-instrument-sans), sans-serif",
-                            fontSize: "clamp(16px, 2.5vw, 22px)",
-                            color: "var(--c-text2)",
+                            fontFamily: "var(--font-newsreader), serif",
+                            fontStyle: "italic",
+                            fontSize: 21,
+                            color: "var(--c-body-lede)",
                         }}
                     >
                         {h.subheadline}

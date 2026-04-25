@@ -109,7 +109,7 @@ export default function ServicesGrid() {
           </div>
           <h2
             style={{
-              fontFamily: "var(--font-playfair), serif",
+              fontFamily: "var(--font-fraunces), serif",
               fontWeight: 700,
               fontSize: "clamp(26px, 4vw, 38px)",
               letterSpacing: "-0.02em",
@@ -123,7 +123,7 @@ export default function ServicesGrid() {
             style={{
               fontFamily: "var(--font-instrument-sans), sans-serif",
               fontSize: 13,
-              color: "var(--c-text2)",
+              color: "var(--c-body)",
               lineHeight: 1.6,
             }}
           >
@@ -169,7 +169,7 @@ export default function ServicesGrid() {
                 {/* Title */}
                 <h3
                   style={{
-                    fontFamily: "var(--font-playfair), serif",
+                    fontFamily: "var(--font-fraunces), serif",
                     fontWeight: 700,
                     fontSize: 15,
                     color: "var(--c-text)",
@@ -185,7 +185,7 @@ export default function ServicesGrid() {
                     fontFamily: "var(--font-instrument-sans), sans-serif",
                     fontWeight: 400,
                     fontSize: 12,
-                    color: "var(--c-text2)",
+                    color: "var(--c-body)",
                     lineHeight: 1.6,
                     marginBottom: 12,
                   }}

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { useIntakeModal } from "@/context/IntakeModalContext";
 import { TELEGRAM_URL, WHATSAPP_URL } from "@/lib/constants";
+import BurgMark from "@/components/BurgMark";
 
 const en = {
   badge: "Built for your process",
@@ -34,6 +35,9 @@ export default function ServicesHero() {
   const { language } = useLanguage();
   const { open } = useIntakeModal();
   const t = language === "ru" ? ru : en;
+  const h1bMatch = t.h1b.match(/^(.*\s)(\S+)$/);
+  const h1bHead = h1bMatch ? h1bMatch[1] : t.h1b;
+  const h1bTail = h1bMatch ? h1bMatch[2] : "";
 
   return (
     <section
@@ -81,7 +85,7 @@ export default function ServicesHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             style={{
-              fontFamily: "var(--font-playfair), serif",
+              fontFamily: "var(--font-fraunces), serif",
               fontWeight: 700,
               fontSize: "clamp(30px, 5vw, 52px)",
               letterSpacing: "-0.02em",
@@ -91,7 +95,7 @@ export default function ServicesHero() {
           >
             {t.h1a}
             <span style={{ color: "var(--c-gold)" }}>{t.h1gold}</span>
-            {t.h1b}
+            {h1bHead}<BurgMark weight={1.2}>{h1bTail}</BurgMark>
           </motion.h1>
 
           {/* Subtitle */}
@@ -100,10 +104,11 @@ export default function ServicesHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             style={{
-              fontFamily: "var(--font-instrument-sans), sans-serif",
+              fontFamily: "var(--font-newsreader), serif",
+              fontStyle: "italic",
               fontWeight: 400,
-              fontSize: 15,
-              color: "var(--c-text2)",
+              fontSize: 21,
+              color: "var(--c-body-lede)",
               maxWidth: 500,
               lineHeight: 1.7,
             }}

@@ -44,7 +44,7 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                 <h3
                     className="mb-5 flex items-center justify-center"
                     style={{
-                        fontFamily: "var(--font-playfair), serif",
+                        fontFamily: "var(--font-fraunces), serif",
                         fontWeight: 700,
                         fontSize: 20,
                         color: "var(--c-gold)",
@@ -59,7 +59,7 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                     style={{
                         fontFamily: "var(--font-instrument-sans), sans-serif",
                         fontSize: 14,
-                        color: "var(--c-text2)",
+                        color: "var(--c-body)",
                         lineHeight: 1.6,
                         minHeight: 64,
                     }}
@@ -182,7 +182,7 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                                                     style={{
                                                         fontFamily: "var(--font-instrument-sans), sans-serif",
                                                         fontSize: 13,
-                                                        color: "var(--c-text2)",
+                                                        color: "var(--c-body)",
                                                         lineHeight: 1.5,
                                                     }}
                                                 >{item}</span>

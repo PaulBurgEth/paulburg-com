@@ -99,7 +99,7 @@ export default function ServicesTurnkey() {
           {/* Title */}
           <h2
             style={{
-              fontFamily: "var(--font-playfair), serif",
+              fontFamily: "var(--font-fraunces), serif",
               fontWeight: 700,
               fontSize: "clamp(28px, 4.5vw, 42px)",
               letterSpacing: "-0.02em",
@@ -114,7 +114,7 @@ export default function ServicesTurnkey() {
             style={{
               fontFamily: "var(--font-instrument-sans), sans-serif",
               fontSize: 14,
-              color: "var(--c-text2)",
+              color: "var(--c-body)",
               lineHeight: 1.6,
               maxWidth: 620,
               marginBottom: 22,
@@ -141,7 +141,7 @@ export default function ServicesTurnkey() {
                 style={{
                   fontFamily: "var(--font-instrument-sans), sans-serif",
                   fontSize: 13,
-                  color: "var(--c-text2)",
+                  color: "var(--c-body)",
                   lineHeight: 1.5,
                   display: "flex",
                   gap: 10,
@@ -160,7 +160,7 @@ export default function ServicesTurnkey() {
             <div>
               <div
                 style={{
-                  fontFamily: "var(--font-playfair), serif",
+                  fontFamily: "var(--font-fraunces), serif",
                   fontWeight: 700,
                   fontSize: 32,
                   color: "var(--c-gold)",

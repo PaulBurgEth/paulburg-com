@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Globe } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import ThemeToggle from "@/components/ThemeToggle";
+import BurgMark from "@/components/BurgMark";
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -74,7 +75,7 @@ export default function Navbar() {
                         className="text-2xl font-serif font-bold tracking-tight leading-none transition-colors"
                         style={{ color: "var(--c-text)" }}
                     >
-                        Paul<br />Burg
+                        Paul<br /><BurgMark weight={1.2}>Burg</BurgMark>
                     </Link>
 
                     {/* Desktop Nav */}

@@ -44,7 +44,7 @@ export default function ServicesCTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
           style={{
-            fontFamily: "var(--font-playfair), serif",
+            fontFamily: "var(--font-fraunces), serif",
             fontWeight: 700,
             fontSize: "clamp(28px, 4vw, 44px)",
             letterSpacing: "-0.02em",
@@ -62,7 +62,7 @@ export default function ServicesCTA() {
           style={{
             fontFamily: "var(--font-instrument-sans), sans-serif",
             fontSize: 15,
-            color: "var(--c-text2)",
+            color: "var(--c-body)",
             maxWidth: 420,
             lineHeight: 1.6,
           }}

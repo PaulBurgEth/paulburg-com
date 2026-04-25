@@ -264,7 +264,7 @@ export default function IntakeModal() {
             <div style={{ marginBottom: 20, paddingRight: 28 }}>
               <h2
                 style={{
-                  fontFamily: "var(--font-playfair), serif",
+                  fontFamily: "var(--font-fraunces), serif",
                   fontWeight: 700,
                   fontSize: "clamp(24px, 3.5vw, 28px)",
                   letterSpacing: "-0.02em",
@@ -296,7 +296,7 @@ export default function IntakeModal() {
                   textAlign: "center",
                 }}
               >
-                <div style={{ fontFamily: "var(--font-playfair), serif", fontSize: 22, fontWeight: 700, color: "var(--c-heading)", marginBottom: 6 }}>
+                <div style={{ fontFamily: "var(--font-fraunces), serif", fontSize: 22, fontWeight: 700, color: "var(--c-heading)", marginBottom: 6 }}>
                   {t.success}
                 </div>
                 <div style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 14, color: "var(--c-text2)" }}>
