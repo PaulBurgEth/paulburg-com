@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import HomePageClient from "@/components/home/HomePageClient";
+import { getAllPosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "Paul Burg — AI Systems for Business",
@@ -8,5 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <HomePageClient />;
+  const enPosts = getAllPosts("en").slice(0, 3);
+  const ruPosts = getAllPosts("ru").slice(0, 3);
+  return <HomePageClient latestPosts={{ en: enPosts, ru: ruPosts }} />;
 }
