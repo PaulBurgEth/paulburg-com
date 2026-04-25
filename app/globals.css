@@ -4,13 +4,9 @@
 :root {
   --background: #f9fafb;
   --foreground: #111827;
-  --color-primary: #409891;
+  --color-primary: var(--c-gold);
   --color-primary-dark: #327a74;
   --color-secondary: #E5E7EB;
-  --font-inter: var(--font-inter);
-  --font-playfair: var(--font-playfair);
-  --font-outfit: var(--font-outfit);
-
   /* Legacy dark vars (kept for compatibility) */
   --dark-bg: #0a0a0f;
   --dark-surface: #12121a;
@@ -38,9 +34,21 @@
   --c-gold-dim:  rgba(160,120,64,0.1);
   --c-gold-glow: rgba(160,120,64,0.15);
   --c-sage:      #3d7a5a;
+  /* Body / lede tokens — used by .prose-blog */
+  --c-body:      #3d3833;
+  --c-body-lede: #1a1714;
   --c-sage-dim:  rgba(61,122,90,0.1);
   --c-violet:    #7060a0;
   --c-shadow:    rgba(0,0,0,0.08);
+
+  /* ── Heading scale ── */
+  --t-hero:    clamp(48px, 7vw, 88px);
+  --t-h1:      clamp(36px, 5vw, 60px);
+  --t-h2:      clamp(26px, 3.5vw, 40px);
+  --t-h3:      clamp(18px, 2.2vw, 24px);
+  --ls-tight:  -0.03em;
+  --ls-snug:   -0.02em;
+  --ls-normal: -0.01em;
 }
 
 /* ── DARK THEME ── */
@@ -53,15 +61,18 @@
   --c-border2:   #222730;
   --c-heading:   #ffffff;
   --c-text:      #ddd8cf;
-  --c-text2:     #8a8880;
+  --c-text2:     #a8a39a;
   --c-text3:     #b0aba3;
-  --c-muted:     #5a5c62;
+  --c-muted:     #6a6e78;
   --c-faint:     #23262c;
   --c-subtle:    #4a5060;
   --c-gold:      #c8a96e;
   --c-gold-dim:  rgba(200,169,110,0.1);
   --c-gold-glow: rgba(200,169,110,0.18);
   --c-sage:      #7aab8f;
+  /* Body / lede tokens — used by .prose-blog */
+  --c-body:      #c5bfb3;
+  --c-body-lede: #e5e0d6;
   --c-sage-dim:  rgba(122,171,143,0.1);
   --c-violet:    #9b8ec4;
   --c-shadow:    rgba(0,0,0,0.3);
@@ -72,8 +83,10 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--color-primary);
 
-  --font-sans: var(--font-outfit), var(--font-inter), sans-serif;
-  --font-serif: var(--font-playfair), serif;
+  --font-sans: var(--font-instrument-sans), sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, serif;
+  --font-serif-display: var(--font-fraunces);
+  --font-serif-body: var(--font-newsreader);
 }
 
 body {
@@ -217,9 +230,9 @@ h6 {
 }
 
 .pill-badge:hover {
-  background: rgba(64, 152, 145, 0.15);
-  border-color: rgba(64, 152, 145, 0.3);
-  color: #409891;
+  background: rgba(200, 169, 110, 0.15);
+  border-color: rgba(200, 169, 110, 0.3);
+  color: var(--c-gold);
 }
 
 /* Smooth scrollbar for dark theme */
@@ -243,7 +256,7 @@ h6 {
 /* Focus-visible styles for keyboard navigation (a11y) */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid #409891;
+  outline: 2px solid var(--c-gold);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -394,4 +407,9 @@ button:focus-visible {
 }
 .nav-link.nav-active::after {
   width: 100%;
+}
+
+/* BurgMark: in light mode use gold stroke so the outline reads against the light background */
+:root:not(.dark) .burg-mark {
+  -webkit-text-stroke-color: var(--c-gold);
 }

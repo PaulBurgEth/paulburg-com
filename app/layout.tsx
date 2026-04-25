@@ -1,24 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, Outfit, Inconsolata, Instrument_Sans } from "next/font/google";
+import { Inconsolata, Instrument_Sans, Newsreader, Fraunces } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 import ScrollProgress from "@/components/ScrollProgress";
 import { TELEGRAM_URL } from "@/lib/constants";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin", "cyrillic"],
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin", "cyrillic"],
-});
-
-const outfit = Outfit({
-  variable: "--font-outfit",
-  subsets: ["latin"],
-});
 
 const inconsolata = Inconsolata({
   variable: "--font-inconsolata",
@@ -30,6 +15,22 @@ const instrumentSans = Instrument_Sans({
   variable: "--font-instrument-sans",
   subsets: ["latin"],
   display: "swap",
+});
+
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+});
+
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -77,7 +78,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.classList.toggle('dark',t==='dark');})();` }} />
       </head>
       <body
-        className={`${inter.variable} ${playfair.variable} ${outfit.variable} ${inconsolata.variable} ${instrumentSans.variable} antialiased overflow-x-hidden`}
+        className={`${inconsolata.variable} ${instrumentSans.variable} ${newsreader.variable} ${fraunces.variable} antialiased overflow-x-hidden`}
       >
         <Providers>
           <ScrollProgress />

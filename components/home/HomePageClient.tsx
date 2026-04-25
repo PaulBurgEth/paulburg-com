@@ -78,7 +78,8 @@ body::after{
 }
 .hero-kicker::before{content:'';width:32px;height:1px;background:${C.gold};opacity:0.6}
 .hero-name{
-  font-family:var(--font-playfair),serif;
+  font-family:var(--font-fraunces),serif;
+  font-feature-settings:"ss01","liga","kern";
   font-size:clamp(64px,10vw,108px);
   font-weight:700;line-height:0.9;
   letter-spacing:-0.02em;color:${C.heading};
@@ -96,7 +97,9 @@ body::after{
   text-transform:uppercase;
 }
 .hero-desc{
-  font-size:16px;color:${C.text2};
+  font-family:var(--font-newsreader),serif;
+  font-style:italic;
+  font-size:18px;color:var(--c-body-lede);
   max-width:480px;line-height:1.75;
   margin-bottom:36px;
 }
@@ -151,11 +154,11 @@ body::after{
 }
 .eyebrow::after{content:'';flex:1;height:1px;background:${C.border}}
 .sec-title{
-  font-family:var(--font-playfair),serif;
+  font-family:var(--font-fraunces),serif;
   font-size:clamp(26px,4vw,38px);font-weight:700;
   color:${C.heading};margin-bottom:6px;letter-spacing:-0.01em;
 }
-.sec-sub{font-size:13px;color:${C.text2};margin-bottom:36px}
+.sec-sub{font-size:13px;color:var(--c-body);margin-bottom:36px}
 hr.div{border:none;border-top:1px solid ${C.border}}
 
 /* ── PODCAST CARDS ── */
@@ -230,7 +233,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 }
 .write-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
 .write-title{
-  font-family:var(--font-playfair),serif;
+  font-family:var(--font-fraunces),serif;
   font-size:13px;font-weight:700;color:${C.text};
   line-height:1.45;margin-bottom:10px;
 }
@@ -294,7 +297,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
   .mentor-card-inner{flex-direction:row;align-items:center;justify-content:space-between;gap:32px;}
 }
 .mentor-content{flex:1;}
-.mentor-title{font-family:var(--font-playfair),serif;font-size:24px;color:${C.gold};margin-bottom:8px;}
+.mentor-title{font-family:var(--font-fraunces),serif;font-size:24px;color:${C.gold};margin-bottom:8px;}
 .mentor-desc{font-size:14px;color:${C.text2};line-height:1.6;}
 .mentor-features{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;}
 .mentor-btn{
@@ -358,7 +361,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
   .footer{flex-direction:column;align-items:flex-start;gap:20px}
 }
 .footer-brand{
-  font-family:var(--font-playfair),serif;
+  font-family:var(--font-fraunces),serif;
   font-size:18px;font-weight:700;color:${C.text};letter-spacing:-0.01em;
 }
 .footer-year{font-size:11px;color:${C.faint};margin-top:3px;font-family:var(--font-inconsolata),monospace}
@@ -387,7 +390,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
   transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .follow-card:hover{border-color:rgba(200,169,110,0.25);transform:translateY(-2px)}
-.follow-title{font-family:var(--font-playfair),serif;font-size:20px;color:${C.gold};margin-bottom:12px}
+.follow-title{font-family:var(--font-fraunces),serif;font-size:20px;color:${C.gold};margin-bottom:12px}
 .follow-desc{font-size:14px;color:${C.text2};line-height:1.6;margin-bottom:24px;flex:1}
 .badge-ru{
   background:rgba(200,169,110,0.1);color:${C.gold};
@@ -549,7 +552,7 @@ export default function HomePageClient() {
                     <div style={{ width: 32, height: 32, background: C.goldDim, border: "1px solid rgba(200,169,110,0.22)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 10 }}>
                       <Icon size={15} color={C.gold} />
                     </div>
-                    <div style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontSize: 14, color: C.text, marginBottom: 5 }}>{card.title}</div>
+                    <div style={{ fontFamily: "var(--font-fraunces), serif", fontWeight: 700, fontSize: 14, color: C.text, marginBottom: 5 }}>{card.title}</div>
                     <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 12, color: C.text2, lineHeight: 1.6, marginBottom: 10 }}>{card.desc}</p>
                     <span style={{ fontFamily: "var(--font-inconsolata), monospace", fontWeight: 700, fontSize: 12, color: C.gold }}>{card.price}</span>
                   </motion.div>
@@ -595,7 +598,7 @@ export default function HomePageClient() {
                 >
                   {language === "ru" ? "ФЛАГМАН" : "FLAGSHIP"}
                 </span>
-                <div style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 700, fontSize: 18, color: C.heading, marginBottom: 6, paddingRight: 90 }}>
+                <div style={{ fontFamily: "var(--font-fraunces), serif", fontWeight: 700, fontSize: 18, color: C.heading, marginBottom: 6, paddingRight: 90 }}>
                   {language === "ru" ? "Turnkey: Сайт + Бот + CRM" : "Turnkey: Website + Bot + CRM"}
                 </div>
                 <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 13, color: C.text2, lineHeight: 1.6, marginBottom: 14 }}>

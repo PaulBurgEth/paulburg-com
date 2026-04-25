@@ -7,6 +7,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import BlogList from "@/components/blog/BlogList";
 import type { Post } from "@/lib/posts";
 import Link from "next/link";
+import BurgMark from "@/components/BurgMark";
 
 const SUBSTACK = "https://paulburg.substack.com";
 
@@ -49,7 +50,7 @@ export default function BlogPageClient({ enPosts, ruPosts }: Props) {
           >
             <h1
               style={{
-                fontFamily: "var(--font-playfair), serif",
+                fontFamily: "var(--font-fraunces), serif",
                 fontWeight: 700,
                 fontSize: "clamp(32px, 6vw, 56px)",
                 letterSpacing: "-0.02em",
@@ -57,13 +58,14 @@ export default function BlogPageClient({ enPosts, ruPosts }: Props) {
                 marginTop: 8,
               }}
             >
-              {copy.h1}
+              <BurgMark weight={1.2}>{copy.h1}</BurgMark>
             </h1>
             <p
               style={{
-                fontFamily: "var(--font-instrument-sans), sans-serif",
-                fontSize: 16,
-                color: "var(--c-text2)",
+                fontFamily: "var(--font-newsreader), serif",
+                fontStyle: "italic",
+                fontSize: 19,
+                color: "var(--c-body)",
                 maxWidth: 480,
                 lineHeight: 1.6,
               }}

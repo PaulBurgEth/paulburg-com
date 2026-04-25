@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { Twitter, Mail, Send, Linkedin, BookOpen } from "lucide-react";
 import { TELEGRAM_URL } from "@/lib/constants";
+import BurgMark from "@/components/BurgMark";
 
-const linkClass = "flex items-center gap-2 transition-colors hover:text-[#409891]";
+const linkClass = "flex items-center gap-2 transition-colors";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -14,10 +15,10 @@ export default function Footer() {
             <div className="container-custom">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-8">
                     <div className="mb-4 md:mb-0">
-                        <Link href="/" className="text-2xl font-serif font-bold tracking-tight" style={{ color: "var(--c-heading)" }}>
-                            Paul Burg
+                        <Link href="/" className="text-2xl font-serif font-bold tracking-tight" style={{ color: "var(--c-heading)", fontFamily: "var(--font-fraunces), serif" }}>
+                            Paul <BurgMark weight={1}>Burg</BurgMark>
                         </Link>
-                        <p className="text-sm mt-2 text-gray-600">
+                        <p className="text-sm mt-2" style={{ color: "var(--c-text3)" }}>
                             © {currentYear} Paul Burg. All rights reserved.
                         </p>
                     </div>

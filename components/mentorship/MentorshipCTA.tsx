@@ -40,7 +40,7 @@ export default function MentorshipCTA() {
                     <h2
                         className="mb-6"
                         style={{
-                            fontFamily: "var(--font-playfair), serif",
+                            fontFamily: "var(--font-fraunces), serif",
                             fontWeight: 700,
                             fontSize: "clamp(28px, 4vw, 44px)",
                             letterSpacing: "-0.02em",
@@ -55,7 +55,7 @@ export default function MentorshipCTA() {
                         style={{
                             fontFamily: "var(--font-instrument-sans), sans-serif",
                             fontSize: "clamp(15px, 1.8vw, 18px)",
-                            color: "var(--c-text2)",
+                            color: "var(--c-body)",
                         }}
                     >
                         {c.text}
