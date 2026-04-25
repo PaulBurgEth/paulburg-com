@@ -17,10 +17,17 @@ interface Frontmatter {
   readingTime: string;
 }
 
+interface TocItem {
+  id: string;
+  text: string;
+  level: 2 | 3;
+}
+
 interface Props {
   slug: string;
   lang: "en" | "ru";
   frontmatter: Frontmatter;
+  toc?: TocItem[];
   children: ReactNode;
 }
 
@@ -49,6 +56,7 @@ export default function ArticlePageClient({
   slug,
   lang,
   frontmatter,
+  toc,
   children,
 }: Props) {
   const { language } = useLanguage();
@@ -164,6 +172,63 @@ export default function ArticlePageClient({
             />
           </div>
         </section>
+
+        {/* Table of contents */}
+        {toc && toc.length > 1 && (
+          <section style={{ paddingBottom: 0, background: "var(--c-bg)" }}>
+            <div className="container-custom" style={{ maxWidth: 680 }}>
+              <nav
+                style={{
+                  border: "1px solid var(--c-border)",
+                  borderRadius: 8,
+                  padding: "20px 24px",
+                  marginBottom: 48,
+                  background: "var(--c-card)",
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: "var(--font-inconsolata), monospace",
+                    fontSize: 10,
+                    fontWeight: 600,
+                    letterSpacing: "0.2em",
+                    textTransform: "uppercase",
+                    color: "var(--c-muted)",
+                    margin: "0 0 12px",
+                  }}
+                >
+                  {lang === "ru" ? "Содержание" : "Contents"}
+                </p>
+                <ol style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                  {toc.map((item, i) => (
+                    <li key={item.id} style={{ padding: "3px 0", paddingLeft: item.level === 3 ? 16 : 0 }}>
+                      <a
+                        href={`#${item.id}`}
+                        style={{
+                          fontFamily: "var(--font-instrument-sans), sans-serif",
+                          fontSize: item.level === 3 ? 13 : 14,
+                          color: "var(--c-text2)",
+                          textDecoration: "none",
+                          display: "flex",
+                          gap: 10,
+                          alignItems: "baseline",
+                          transition: "color 0.15s",
+                        }}
+                        onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--c-gold)"; }}
+                        onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--c-text2)"; }}
+                      >
+                        <span style={{ color: "var(--c-gold)", fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, flexShrink: 0 }}>
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        {item.text}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            </div>
+          </section>
+        )}
 
         {/* Article body */}
         <section style={{ paddingBottom: 80, background: "var(--c-bg)" }}>
