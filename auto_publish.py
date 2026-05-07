@@ -153,10 +153,17 @@ def extract_metadata(opening_en, opening_ru, base_name):
             "tags":       [DEFAULT_TAG],
         }
 
+def sanitize_mdx(text):
+    # Escape < and > followed by digits to prevent MDX JSX parsing (e.g. <100, >20%)
+    text = re.sub(r'<(\d)', r'&lt;\1', text)
+    text = re.sub(r'(\s)>(\d)', r'\1&gt;\2', text)
+    return text
+
 def build_mdx(title, date_str, tags, excerpt, content):
     t = title.replace('"', '\\"')
     e = excerpt.replace('"', '\\"')
     tags_yaml = "[" + ", ".join('"' + tag + '"' for tag in tags) + "]"
+    content = sanitize_mdx(content)
     return "\n".join([
         '---',
         'title: "' + t + '"',
