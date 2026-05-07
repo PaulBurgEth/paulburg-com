@@ -3,8 +3,6 @@ import os, re, sys, json, time
 from pathlib import Path
 
 DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
-if not DEEPSEEK_API_KEY:
-    print("Error: DEEPSEEK_API_KEY environment variable not set"); sys.exit(1)
 INPUT_DIR        = "/Users/paulburg/Vibe_coding/PaulBurg.com/articles"
 OUTPUT_DIR       = "/Users/paulburg/Vibe_coding/PaulBurg.com/content/posts"
 DEFAULT_TAG      = "AI"
@@ -95,6 +93,13 @@ def find_pairs(input_dir):
             print("  WARNING: No RU pair for " + en.name + " — skipping")
     return pairs
 
+def load_sidecar_seo(en_filepath):
+    seo_path = Path(en_filepath).parent / (re.sub(r'[_\-]en$', '', Path(en_filepath).stem, flags=re.I) + ".seo.json")
+    if seo_path.exists():
+        print("  Using sidecar SEO file: " + seo_path.name)
+        return json.loads(seo_path.read_text(encoding="utf-8"))
+    return None
+
 def extract_metadata(opening_en, opening_ru, base_name):
     suggested_slug = re.sub(r'[^a-z0-9]+', '-', base_name.lower()).strip('-')
     prompt = (
@@ -114,6 +119,16 @@ def extract_metadata(opening_en, opening_ru, base_name):
         "tags: 2-4 short free-form English tags describing the article topic, audience, or theme (e.g. Politics, Travel, Society, AI, Business, Vietnam).\n"
         "Return ONLY the JSON."
     )
+    if not DEEPSEEK_API_KEY:
+        print("  WARNING: DEEPSEEK_API_KEY not set, using filename fallback")
+        return {
+            "slug":       suggested_slug,
+            "title_en":   base_name.replace("-", " ").replace("_", " ").title(),
+            "title_ru":   base_name.replace("-", " ").replace("_", " ").title(),
+            "excerpt_en": "Article on paulburg.com",
+            "excerpt_ru": "Article on paulburg.com",
+            "tags":       [DEFAULT_TAG],
+        }
     try:
         import requests
         r = requests.post(
@@ -169,10 +184,12 @@ def main():
         print("[" + str(i) + "/" + str(len(pairs)) + "] " + base)
         print("  Reading openings...")
         doc_date = read_doc_date(pair["en"]) or today
-        opening_en = read_opening(pair["en"])
-        opening_ru = read_opening(pair["ru"])
-        print("  Extracting metadata via DeepSeek...")
-        meta    = extract_metadata(opening_en, opening_ru, base)
+        meta = load_sidecar_seo(pair["en"])
+        if meta is None:
+            opening_en = read_opening(pair["en"])
+            opening_ru = read_opening(pair["ru"])
+            print("  Extracting metadata via DeepSeek...")
+            meta = extract_metadata(opening_en, opening_ru, base)
         slug    = meta["slug"]
         out_dir = Path(OUTPUT_DIR) / slug
         if (out_dir / "en.mdx").exists():
