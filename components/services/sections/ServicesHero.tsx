@@ -13,7 +13,7 @@ const en = {
   h1gold: "AI systems",
   h1b: " that run your business",
   subtitle:
-    "Custom chatbots, AI agents, CRMs, websites — built from scratch around your process. Not a template. Not a no-code tool. Ready in days.",
+    "Custom chatbots, AI agents, CRMs and BI dashboards, matching engines, websites — built from scratch around your process. Not a template. Not a no-code tool. Ready in days.",
   ctaPrimary: "Tell me about your project",
   ctaTelegram: "Text me on Telegram",
   ctaWhatsApp: "Text me on WhatsApp",
@@ -25,7 +25,7 @@ const ru = {
   h1gold: "AI-системы",
   h1b: ", которые работают за вас",
   subtitle:
-    "Чат-боты, AI-агенты, CRM, сайты — с нуля под ваш процесс. Не шаблон. Не конструктор. Готово за дни.",
+    "Чат-боты, AI-агенты, CRM и BI-дашборды, matching-движки, сайты — с нуля под ваш процесс. Не шаблон. Не конструктор. Готово за дни.",
   ctaPrimary: "Расскажите о проекте",
   ctaTelegram: "Написать в Telegram",
   ctaWhatsApp: "Написать в WhatsApp",
@@ -96,6 +96,19 @@ export default function ServicesHero() {
             {t.h1a}
             <span style={{ color: "var(--c-gold)" }}>{t.h1gold}</span>
             {h1bHead}<BurgMark weight={1.2}>{h1bTail}</BurgMark>
+            <span
+              className="pb-cursor-blink"
+              aria-hidden="true"
+              style={{
+                display: "inline-block",
+                width: 4,
+                height: 36,
+                marginLeft: 8,
+                background: "var(--c-gold)",
+                boxShadow: "0 0 14px rgba(200,169,110,0.5)",
+                verticalAlign: "middle",
+              }}
+            />
           </motion.h1>
 
           {/* Subtitle */}

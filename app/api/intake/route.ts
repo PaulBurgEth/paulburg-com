@@ -17,9 +17,10 @@ function sanitize(value: unknown, maxLen = 500): string {
 const NEED_LABELS: Record<string, string> = {
   bot: "AI Bot",
   automation: "Process Automation",
-  crm: "Custom CRM",
+  crm: "Custom CRM & BI Systems",
+  matching: "AI Matching Engine",
   website: "Custom Website",
-  turnkey: "Turnkey (Website + Bot + CRM)",
+  turnkey: "Turnkey (AI Bot + Custom CRM + BI)",
   other: "Other",
 };
 

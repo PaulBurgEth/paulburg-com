@@ -15,14 +15,15 @@ export default function MentorshipCTA() {
     return (
         <section
             id="start"
-            className="scroll-mt-20"
-            style={{ background: "var(--c-bg2)", padding: "72px 0", borderTop: "1px solid var(--c-border)" }}
+            className="scroll-mt-20 pb-reveal"
+            style={{ background: "var(--c-bg2)", padding: "72px 0", borderTop: "1px solid var(--c-border)", position: "relative" }}
         >
+            <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 06</span>
             <div className="container-custom text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.1 }}
                     transition={{ duration: 0.6 }}
                     className="max-w-3xl mx-auto"
                 >

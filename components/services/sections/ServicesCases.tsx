@@ -10,9 +10,9 @@ const en = {
   cases: [
     {
       flagship: true,
-      badges: ["Flagship", "Website + Bot + CRM"],
+      badges: ["Flagship", "AI Matching Engine"],
       title: "HelpRent Phangan — Property Rental",
-      desc: "Search site in 4 languages, AI intake agent (full brief in one conversation), CRM with dual roles (account manager + sales), property database, full client history, real-time Telegram notifications.",
+      desc: "Vertical AI matching engine for property rental — search site in 4 languages, AI intake agent (full brief in one conversation), smart ranking that matches tenant requirements to listings, CRM with dual roles (account manager + sales), manager BI dashboard, property database, full client history, real-time Telegram notifications.",
       result:
         "→ Visitor to structured lead in under 2 minutes. Zero manual data entry.",
       stack: ["Next.js", "FastAPI", "PostgreSQL", "DeepSeek", "Telegram"],
@@ -21,9 +21,9 @@ const en = {
     },
     {
       flagship: false,
-      badges: ["Lead Bot + CRM + Site"],
+      badges: ["AI Lead Bot + CRM"],
       title: "Guide Phangan — Visa Service",
-      desc: "AI bot qualifies applicants, collects documents, classifies by visa type. 4-language site, Telegram notifications, mini-CRM.",
+      desc: "AI bot qualifies applicants, collects documents, classifies by visa type. 4-language site, Telegram notifications, mini-CRM + applicant matching engine.",
       result: "→ 200+ visas processed. Bot runs 24/7 in EN, RU, DE, HE.",
       stack: ["Python", "Django", "PostgreSQL", "Telegram"],
       metricValue: "24/7",
@@ -49,9 +49,9 @@ const ru = {
   cases: [
     {
       flagship: true,
-      badges: ["Flagship", "Сайт + Бот + CRM"],
+      badges: ["Flagship", "AI Matching Engine"],
       title: "HelpRent Phangan — Аренда недвижимости",
-      desc: "Сайт с поиском на 4 языках, AI intake agent (полный бриф за один разговор), CRM с двумя ролями (account manager + sales), база объектов, история клиента, уведомления в Telegram.",
+      desc: "Вертикальный AI matching-движок под аренду недвижимости — сайт с поиском на 4 языках, AI intake agent (полный бриф за один разговор), умный ранкинг под требования арендатора, CRM с двумя ролями (account manager + sales), менеджерский BI-дашборд, база объектов, история клиента, уведомления в Telegram.",
       result:
         "→ От захода на сайт до структурированной заявки — меньше 2 минут. Без ручного ввода.",
       stack: ["Next.js", "FastAPI", "PostgreSQL", "DeepSeek", "Telegram"],
@@ -60,9 +60,9 @@ const ru = {
     },
     {
       flagship: false,
-      badges: ["Lead Bot + CRM + Сайт"],
+      badges: ["AI Lead Bot + CRM"],
       title: "Guide Phangan — Визовый сервис",
-      desc: "AI-бот квалифицирует заявителей, собирает документы, классифицирует по типу визы. Мультиязычный сайт, уведомления в Telegram, мини-CRM.",
+      desc: "AI-бот квалифицирует заявителей, собирает документы, классифицирует по типу визы. Мультиязычный сайт, уведомления в Telegram, мини-CRM + matching-движок для заявителей.",
       result: "→ 200+ виз обработано. Бот работает 24/7 на EN, RU, DE, HE.",
       stack: ["Python", "Django", "PostgreSQL", "Telegram"],
       metricValue: "24/7",
@@ -87,13 +87,14 @@ export default function ServicesCases() {
   const t = language === "ru" ? ru : en;
 
   return (
-    <section id="cases" style={{ background: "var(--c-bg2)", padding: "72px 0" }}>
+    <section id="cases" className="pb-reveal" style={{ background: "var(--c-bg2)", padding: "72px 0", position: "relative" }}>
+      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 04</span>
       <div className="container-custom">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5 }}
           style={{ marginBottom: 36 }}
         >
@@ -144,7 +145,7 @@ export default function ServicesCases() {
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               style={{
                 background: c.flagship

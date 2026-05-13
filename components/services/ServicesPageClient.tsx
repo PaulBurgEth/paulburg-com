@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import ServicesHero from "./sections/ServicesHero";
 import ServicesProof from "./sections/ServicesProof";
 import ServicesGrid from "./sections/ServicesGrid";
+import { useRevealObserver } from "@/lib/useStageReveal";
 
 const ServicesTurnkey = dynamic(() => import("./sections/ServicesTurnkey"), { ssr: false });
 const ServicesCases   = dynamic(() => import("./sections/ServicesCases"),   { ssr: false });
@@ -14,6 +15,7 @@ const ServicesPricing = dynamic(() => import("./sections/ServicesPricing"), { ss
 const ServicesCTA     = dynamic(() => import("./sections/ServicesCTA"),     { ssr: false });
 
 export default function ServicesPageClient() {
+  useRevealObserver();
   return (
     <main className="min-h-screen" style={{ background: "var(--c-bg)", position: "relative" }}>
       {/* Ambient glow */}

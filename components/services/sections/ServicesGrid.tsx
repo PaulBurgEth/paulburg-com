@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Bot, Workflow, Database, Globe } from "lucide-react";
+import { Bot, Workflow, Database, Globe, Network } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useIntakeModal } from "@/context/IntakeModalContext";
 
 const en = {
   sectionLabel: "What I build",
-  h2: "Four types of AI systems",
+  h2: "Production AI systems I ship",
   subtitle:
     "Each built from scratch. No platform lock-in. Your data on your server.",
   getQuote: "Get a quote →",
@@ -25,8 +25,8 @@ const en = {
       price: "from $1,000",
     },
     {
-      title: "Custom CRM",
-      desc: "Not Notion. Not HubSpot. Your own CRM built around your exact pipeline: roles, deals, client history, automatic notifications, native Telegram integration.",
+      title: "Custom CRM & BI Systems",
+      desc: "Not Notion. Not HubSpot. Your own CRM, BI dashboards, manager dashboards built around your exact pipeline: roles, deals, client history, automatic notifications, native Telegram integration.",
       tags: ["Sales teams", "Service businesses", "2–15 people"],
       price: "from $1,500",
     },
@@ -36,12 +36,18 @@ const en = {
       tags: ["Services", "Retail", "Real estate"],
       price: "from $800",
     },
+    {
+      title: "AI Matching Engines",
+      desc: "Vertical matching infrastructure for two-sided marketplaces — real estate, accommodation, hiring, services. AI-driven scoring, smart ranking, structured intake. Already powering HelpRent Phangan; demand for Dubai property matching is here.",
+      tags: ["Real estate", "Marketplaces", "Hiring", "Vertical SaaS"],
+      price: "from $2,500",
+    },
   ],
 };
 
 const ru = {
   sectionLabel: "Что я строю",
-  h2: "Четыре типа AI-систем",
+  h2: "Продакшен AI-системы, которые я делаю",
   subtitle:
     "Каждая с нуля. Без привязки к платформам. Ваши данные на вашем сервере.",
   getQuote: "Запросить цену →",
@@ -59,8 +65,8 @@ const ru = {
       price: "от $1,000",
     },
     {
-      title: "Кастомная CRM",
-      desc: "Не Notion. Не HubSpot. Своя CRM под ваш конкретный pipeline: роли, сделки, история клиента, автоуведомления, нативная интеграция с Telegram.",
+      title: "Кастомная CRM и BI",
+      desc: "Не Notion. Не HubSpot. Своя CRM, BI-дашборды, менеджерские панели — под ваш конкретный pipeline: роли, сделки, история клиента, автоуведомления, нативная интеграция с Telegram.",
       tags: ["Отделы продаж", "Сервисный бизнес", "2–15 человек"],
       price: "от $1,500",
     },
@@ -70,10 +76,16 @@ const ru = {
       tags: ["Услуги", "Ритейл", "Недвижимость"],
       price: "от $800",
     },
+    {
+      title: "AI Matching Engines",
+      desc: "Вертикальная matching-инфраструктура для двусторонних маркетплейсов — недвижимость, аренда жилья, найм, услуги. AI-скоринг, умный ранкинг, структурированный intake. Уже работает в HelpRent Phangan; спрос на property matching в Дубае уже здесь.",
+      tags: ["Недвижимость", "Маркетплейсы", "HR", "Vertical SaaS"],
+      price: "от $2,500",
+    },
   ],
 };
 
-const ICONS = [Bot, Workflow, Database, Globe];
+const ICONS = [Bot, Workflow, Database, Globe, Network];
 
 export default function ServicesGrid() {
   const { language } = useLanguage();
@@ -81,13 +93,14 @@ export default function ServicesGrid() {
   const t = language === "ru" ? ru : en;
 
   return (
-    <section id="services" style={{ background: "var(--c-bg)", padding: "72px 0" }}>
+    <section id="services" className="pb-reveal" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
+      <span aria-hidden="true" className="section-number" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 02</span>
       <div className="container-custom">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5 }}
           style={{ marginBottom: 36 }}
         >
@@ -131,18 +144,18 @@ export default function ServicesGrid() {
           </p>
         </motion.div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Grid — 5 cards: 1col mobile, 2col tablet, 3col desktop (3+2 rows) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {t.cards.map((card, i) => {
             const Icon = ICONS[i];
 
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                initial={{ y: 16 }}
+                whileInView={{ y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
                 whileHover={{ y: -3, boxShadow: "0 10px 36px rgba(0,0,0,0.3)", borderColor: "rgba(200,169,110,0.22)" }}
                 className="relative flex flex-col"
                 style={{
