@@ -9,8 +9,10 @@ import MentorshipTestimonial from "@/components/mentorship/MentorshipTestimonial
 import MentorshipServices from "@/components/mentorship/MentorshipServices";
 import MentorshipFormats from "@/components/mentorship/MentorshipFormats";
 import MentorshipCTA from "@/components/mentorship/MentorshipCTA";
+import { useRevealObserver } from "@/lib/useStageReveal";
 
 export default function MentorshipPageClient() {
+    useRevealObserver();
     return (
         <main className="min-h-screen" style={{ background: "var(--c-bg)" }}>
             <Navbar />

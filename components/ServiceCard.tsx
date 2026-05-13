@@ -29,7 +29,7 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
         <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.5, delay }}
             whileHover={{ y: -3, boxShadow: "0 10px 36px rgba(0,0,0,0.3)", borderColor: "rgba(200,169,110,0.22)" }}
             className="flex flex-col overflow-hidden relative cursor-pointer"

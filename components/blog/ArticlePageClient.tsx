@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
 import type { ReactNode } from "react";
 import { splitLastWord } from "@/lib/text";
+import { useRevealObserver } from "@/lib/useStageReveal";
 
 interface Frontmatter {
   title: string;
@@ -63,6 +64,7 @@ export default function ArticlePageClient({
   const { language } = useLanguage();
   const router = useRouter();
   const backLinkRef = useRef<HTMLAnchorElement>(null);
+  useRevealObserver();
 
   // Sync language context with URL param
   useEffect(() => {

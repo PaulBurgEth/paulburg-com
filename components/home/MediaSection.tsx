@@ -34,7 +34,7 @@ export default function MediaSection() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.1 }}
                     className="mb-2"
                 >
                     <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#fafafa] mb-3">
@@ -52,7 +52,7 @@ export default function MediaSection() {
                             key={i}
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: true, amount: 0.1 }}
                             transition={{ delay: i * 0.05 }}
                         >
                             <Link
