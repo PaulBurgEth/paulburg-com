@@ -5,7 +5,7 @@ import { getAllPosts } from "@/lib/posts";
 export const metadata: Metadata = {
   title: "Paul Burg — AI Systems for Business",
   description:
-    "Custom chatbots, CRMs, process automation, and websites — built from scratch around your process. Not a template. Not a no-code tool. Ready in days.",
+    "Custom chatbots, CRMs, BI dashboards, manager dashboards, matching engines, process automation, and websites — built from scratch around your process. Not a template. Not a no-code tool. Ready in days.",
 };
 
 export default function Page() {

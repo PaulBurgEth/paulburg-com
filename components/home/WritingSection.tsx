@@ -29,7 +29,7 @@ export default function WritingSection() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.1 }}
                     className="mb-8"
                 >
                     <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#fafafa] mb-1 section-title-accent block">
@@ -46,7 +46,7 @@ export default function WritingSection() {
                             key={i}
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: true, amount: 0.1 }}
                             transition={{ delay: i * 0.05 }}
                             whileHover={{ y: -4, transition: { duration: 0.2 } }}
                             className="bento-card group flex flex-col p-6 cursor-pointer h-full min-h-[220px] hover:border-l-4 hover:border-l-[#2dd4bf]"

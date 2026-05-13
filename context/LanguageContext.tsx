@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import { translations, Language } from "@/lib/translations";
 
 interface LanguageContextType {
@@ -13,6 +13,13 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
     const [language, setLanguage] = useState<Language>("en");
+
+    // Sync <html lang> so CSS selectors like html[lang="ru"] can swap primary fonts.
+    useEffect(() => {
+        if (typeof document !== "undefined") {
+            document.documentElement.lang = language;
+        }
+    }, [language]);
 
     const value = {
         language,

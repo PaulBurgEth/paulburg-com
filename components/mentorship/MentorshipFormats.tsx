@@ -15,12 +15,13 @@ export default function MentorshipFormats() {
     ];
 
     return (
-        <section id="formats" className="scroll-mt-20" style={{ background: "var(--c-bg)", padding: "72px 0" }}>
+        <section id="formats" className="scroll-mt-20 pb-reveal" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
+            <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 05</span>
             <div className="container-custom max-w-4xl">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.97 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.1 }}
                     transition={{ duration: 0.5 }}
                     style={{
                         background: "var(--c-card)",

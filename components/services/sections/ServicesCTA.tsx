@@ -31,17 +31,20 @@ export default function ServicesCTA() {
 
   return (
     <section
+      className="pb-reveal"
       style={{
         borderTop: "1px solid var(--c-border)",
         padding: "72px 32px",
         background: "var(--c-bg)",
+        position: "relative",
       }}
     >
+      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 07</span>
       <div className="container-custom flex flex-col items-center text-center gap-5">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5 }}
           style={{
             fontFamily: "var(--font-fraunces), serif",
@@ -57,7 +60,7 @@ export default function ServicesCTA() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           style={{
             fontFamily: "var(--font-instrument-sans), sans-serif",
@@ -73,7 +76,7 @@ export default function ServicesCTA() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="flex flex-col sm:flex-row gap-3"
         >
