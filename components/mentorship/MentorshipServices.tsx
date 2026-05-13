@@ -15,12 +15,13 @@ export default function MentorshipServices() {
     ];
 
     return (
-        <section id="services" className="scroll-mt-20" style={{ background: "var(--c-bg)", padding: "72px 0" }}>
+        <section id="services" className="scroll-mt-20 pb-reveal" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
+            <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 04</span>
             <div className="container-custom">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.1 }}
                     style={{ marginBottom: 48 }}
                 >
                     <div style={{

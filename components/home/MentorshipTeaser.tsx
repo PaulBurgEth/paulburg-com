@@ -11,7 +11,7 @@ export default function MentorshipTeaser() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.1 }}
                     transition={{ duration: 0.5 }}
                     className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 py-10 border-t border-b border-[#27272a]"
                 >

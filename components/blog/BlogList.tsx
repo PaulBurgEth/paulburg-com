@@ -28,7 +28,7 @@ export default function BlogList({ posts, lang }: Props) {
           key={post.slug}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5, delay: i * 0.1 }}
           whileHover={{ y: -3, boxShadow: "0 10px 36px rgba(0,0,0,0.3)" }}
         >

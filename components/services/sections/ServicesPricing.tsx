@@ -32,7 +32,7 @@ const en = {
       features: [
         "Everything in Starter",
         "Installed on your site",
-        "CRM + lead database",
+        "CRM + BI dashboards + lead database",
         "System integrations",
         "2 revisions",
       ],
@@ -85,7 +85,7 @@ const ru = {
       features: [
         "Всё из Стартера",
         "Установка на ваш сайт",
-        "CRM + база лидов",
+        "CRM + BI-дашборды + база лидов",
         "Интеграции с системами",
         "2 правки",
       ],
@@ -117,13 +117,14 @@ export default function ServicesPricing() {
   const t = language === "ru" ? ru : en;
 
   return (
-    <section id="pricing" style={{ background: "var(--c-bg2)", padding: "72px 0" }}>
+    <section id="pricing" className="pb-reveal" style={{ background: "var(--c-bg2)", padding: "72px 0", position: "relative" }}>
+      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 06</span>
       <div className="container-custom">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5 }}
           style={{ marginBottom: 36 }}
         >
@@ -174,7 +175,7 @@ export default function ServicesPricing() {
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="relative flex flex-col"
               style={{

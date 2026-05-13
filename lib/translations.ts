@@ -101,20 +101,21 @@ export const translations = {
                 title: "Услуги",
                 more: "Узнать больше",
                 card1: {
-                    title: "Низкорисковые крипто-стратегии",
-                    description: "Спокойные стратегии парковки капитала в крипто. Никакого трейдинга и «иксов».",
+                    title: "DeFi-стратегии пассивного дохода",
+                    description: "Стабильная доходность на простаивающий капитал через DeFi-протоколы — дисциплинированно, с открытыми глазами на риски, без трейдинга и иксов.",
                     lists: {
                         howItWorks: [
-                            "Стабильная доходность 5–10% годовых в долларах.",
-                            "Staking, lending, liquidity providing на проверенных протоколах.",
-                            "Минимизация рисков: аудит, диверсификация, защита от волатильности."
+                            "Стабильная доходность 5–10% годовых в долларах через DeFi-протоколы.",
+                            "Staking, lending, liquidity providing на аудированных платформах с историей.",
+                            "Реалистично про риски — у DeFi есть реальное exposure (баги в смарт-контрактах, эксплоиты протоколов, depeg'и стейблкоинов; даже у зрелых протоколов вроде Aave были инциденты). Сайзим позиции и диверсифицируем под worst-case.",
+                            "Минимизация рисков: due diligence по протоколам, диверсификация по протоколам и чейнам, защита от волатильности через стейблкоины."
                         ],
                         whatYouGet: [
-                            "Индивидуальный план под твой капитал и уровень комфорта.",
-                            "Полный контроль над своими средствами 24/7."
+                            "Индивидуальный план под твой капитал и уровень комфорта с рисками.",
+                            "Полный контроль над своими средствами 24/7 — non-custodial кошельки, никаких посредников."
                         ],
                         whoIsThisFor: [
-                            "Для тех, у кого есть $10k+, которые лежат без дела, и кто хочет сохранить + пассивный рост."
+                            "Для тех, у кого есть $10k+, которые лежат без дела на банковском счёте, и кто хочет сохранить капитал + получать стабильный пассивный доход через DeFi — с открытыми глазами на риски."
                         ]
                     },
                     prices: [
@@ -314,20 +315,21 @@ export const translations = {
                 title: "Services",
                 more: "Learn more",
                 card1: {
-                    title: "Low-risk crypto strategies",
-                    description: "Calm capital parking strategies in crypto. No trading or \"X's\".",
+                    title: "DeFi Income Strategies",
+                    description: "Stable yields on idle capital through DeFi protocols — disciplined, eyes-open about real risks, no trading or pumps.",
                     lists: {
                         howItWorks: [
-                            "Stable yield 5–10% APY in dollars.",
-                            "Staking, lending, liquidity providing on proven protocols.",
-                            "Risk minimization: audit, diversification, protection against volatility."
+                            "Stable 5–10% APY in dollars through DeFi protocols.",
+                            "Staking, lending, liquidity providing on audited platforms with track record.",
+                            "Realistic about risks — DeFi has real exposure (smart-contract bugs, protocol exploits, stablecoin depegs; even mature protocols like Aave have seen incidents). We size positions and diversify around worst-case.",
+                            "Risk minimization: protocol due diligence, diversification across protocols and chains, volatility protection via stablecoins."
                         ],
                         whatYouGet: [
-                            "Individual plan for your capital and comfort level.",
-                            "Full control over your funds 24/7."
+                            "Individual plan tailored to your capital and risk comfort level.",
+                            "Full control over your funds 24/7 — non-custodial wallets, no intermediaries."
                         ],
                         whoIsThisFor: [
-                            "For those who have $10k+ sitting idle and want to preserve + get passive growth."
+                            "For those with $10k+ sitting idle in a bank account who want to preserve capital and earn stable passive income through DeFi — with eyes open to the risks involved."
                         ]
                     },
                     prices: [

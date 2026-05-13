@@ -84,15 +84,37 @@
   --color-primary: var(--color-primary);
 
   --font-sans: var(--font-instrument-sans), sans-serif;
-  --font-serif: var(--font-fraunces), Georgia, serif;
-  --font-serif-display: var(--font-fraunces);
-  --font-serif-body: var(--font-newsreader);
+  /* Cyrillic glyphs fall through to Source Serif 4 (Fraunces/Newsreader lack Cyrillic subsets). */
+  --font-serif: var(--font-fraunces), var(--font-source-serif), Georgia, serif;
+  --font-serif-display: var(--font-fraunces), var(--font-source-serif), Georgia, serif;
+  --font-serif-body: var(--font-newsreader), var(--font-source-serif), Georgia, serif;
+}
+
+/* RU mode — swap primary serif faces to Source Serif 4 for metric consistency.
+   Fraunces Latin and Source Serif 4 Cyrillic have different x-heights; in RU we want
+   one face everywhere. EN mode (default) keeps Fraunces/Newsreader. */
+html[lang="ru"] body {
+  font-family: var(--font-source-serif), Georgia, serif;
+}
+html[lang="ru"] h1,
+html[lang="ru"] h2,
+html[lang="ru"] h3,
+html[lang="ru"] h4,
+html[lang="ru"] h5,
+html[lang="ru"] h6 {
+  font-family: var(--font-source-serif), Georgia, serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
+  /* Theme-aware body — uses --c-bg/--c-text tokens that flip with :root.dark.
+     Previous version used hardcoded --background (always #f9fafb) which made
+     pages with transparent section wrappers show light bg in dark mode. */
+  background: var(--c-bg);
+  color: var(--c-text);
+  /* Default body face matches the redesign mockup: Newsreader serif with
+     Source Serif 4 / Georgia fallbacks. Per-element overrides (Fraunces for
+     headings, Instrument Sans for UI labels, Inconsolata for mono) win. */
+  font-family: var(--font-newsreader), var(--font-source-serif), Georgia, serif;
 }
 
 /* Custom Utilities */
@@ -412,4 +434,145 @@ button:focus-visible {
 /* BurgMark: in light mode use gold stroke so the outline reads against the light background */
 :root:not(.dark) .burg-mark {
   -webkit-text-stroke-color: var(--c-gold);
+}
+
+/* ─── REDESIGN PRIMITIVES (pb-*) ──────────────────────────────────────────
+   Used by the sitewide redesign: blinking cursor, scroll-reveal, stage cascade.
+   All animations respect prefers-reduced-motion. */
+
+@keyframes pb-cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes pb-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pb-cascade {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Blinking gold cursor — used after italic Burg in hero and beside footer brand.
+   Visual (width/height/box-shadow) is set inline by callers so different
+   surfaces can use different sizes; this class only attaches the blink. */
+.pb-cursor-blink {
+  display: inline-block;
+  vertical-align: baseline;
+  animation: pb-cursor-blink 1.05s steps(1, end) infinite;
+}
+
+/* Scroll-reveal: starts hidden, becomes visible when JS adds .is-in
+   (mockup naming). Matches mockup timing of 720ms + 18px offset. */
+.pb-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 720ms cubic-bezier(.2, .7, .3, 1),
+    transform 720ms cubic-bezier(.2, .7, .3, 1);
+}
+.pb-reveal.is-in,
+.pb-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card hover — subtle lift + gold edge. Per mockup. */
+.pb-card-hover {
+  transition:
+    border-color 240ms ease,
+    transform 240ms ease,
+    box-shadow 240ms ease;
+}
+.pb-card-hover:hover {
+  border-color: rgba(200, 169, 110, 0.45) !important;
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(200, 169, 110, 0.06);
+}
+
+/* Section dividers — 1px hairline between numbered sections. */
+.pb-section {
+  border-top: 1px solid var(--c-border);
+}
+
+/* Section eyebrow — two-part: hairline + label on left, § NN on top-right. */
+.pb-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-inconsolata), monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-text2);
+}
+.pb-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--c-gold);
+}
+.pb-section-number {
+  font-family: var(--font-inconsolata), monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--c-muted);
+}
+
+/* Hero decorative left-rail pin — 96px gold gradient hairline + 13px circle + dot. */
+.pb-pin {
+  position: absolute;
+  left: -28px;
+  top: 4px;
+  display: none;
+  pointer-events: none;
+}
+@media (min-width: 768px) {
+  .pb-pin { display: block; }
+}
+.pb-pin-line {
+  position: absolute;
+  left: 6px;
+  top: 14px;
+  width: 1px;
+  height: 96px;
+  background: linear-gradient(to bottom, var(--c-gold), transparent);
+}
+.pb-pin-circle {
+  width: 13px;
+  height: 13px;
+  border: 1px solid var(--c-gold);
+  border-radius: 50%;
+  position: relative;
+}
+.pb-pin-dot {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 3px;
+  height: 3px;
+  background: var(--c-gold);
+  border-radius: 50%;
+}
+
+/* Reduced motion — disable all redesign animation. */
+@media (prefers-reduced-motion: reduce) {
+  .pb-cursor-blink {
+    animation: none;
+    opacity: 1;
+  }
+  .pb-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .pb-card-hover:hover {
+    transform: none;
+  }
 }

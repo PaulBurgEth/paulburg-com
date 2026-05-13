@@ -55,16 +55,19 @@ export default function ServicesProof() {
 
   return (
     <motion.section
+      className="pb-reveal"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.5 }}
       style={{
         background: "var(--c-bg)",
         borderTop: "1px solid var(--c-border)",
         borderBottom: "1px solid var(--c-border)",
+        position: "relative",
       }}
     >
+      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 01</span>
       <div className="container-custom">
         <div className="flex flex-wrap">
           {t.metrics.map((item, i) => (
