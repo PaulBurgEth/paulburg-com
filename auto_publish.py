@@ -157,6 +157,8 @@ def sanitize_mdx(text):
     # Escape < and > followed by digits to prevent MDX JSX parsing (e.g. <100, >20%)
     text = re.sub(r'<(\d)', r'&lt;\1', text)
     text = re.sub(r'(\s)>(\d)', r'\1&gt;\2', text)
+    # Strip leading H1 — frontmatter title is already shown in page header
+    text = re.sub(r'^\s*# [^\n]+\n+', '', text)
     return text
 
 def build_mdx(title, date_str, tags, excerpt, content):
