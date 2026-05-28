@@ -52,17 +52,17 @@ export default function MentorshipBridge() {
                         >
                             <span
                                 className="font-bold hover:scale-105 inline-block transition-transform duration-300"
-                                style={{ color: "var(--c-gold)" }}
+                                style={{ color: "var(--c-heading)" }}
                             >{b.p1}</span> {b.p1_text},
                             <br className="hidden md:block" />
                             <span
                                 className="font-bold hover:scale-105 inline-block transition-transform duration-300"
-                                style={{ color: "var(--c-gold)" }}
+                                style={{ color: "var(--c-heading)" }}
                             >{b.p2}</span> {b.p2_text},
                             <br className="hidden md:block" />
                             <span
                                 className="font-bold hover:scale-105 inline-block transition-transform duration-300"
-                                style={{ color: "var(--c-gold)" }}
+                                style={{ color: "var(--c-heading)" }}
                             >{b.p3}</span> {b.p3_text}.
                         </p>
 
@@ -72,7 +72,7 @@ export default function MentorshipBridge() {
                                     fontFamily: "var(--font-fraunces), serif",
                                     fontStyle: "italic",
                                     fontSize: "clamp(16px, 2vw, 20px)",
-                                    color: "var(--c-gold)",
+                                    color: "var(--c-heading)",
                                 }}
                             >
                                 {b.outro}

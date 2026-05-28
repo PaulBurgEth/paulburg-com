@@ -80,7 +80,7 @@ body{
   display:flex;align-items:center;gap:14px;flex-wrap:wrap;
 }
 .hero-role{display:inline-flex;align-items:center;gap:7px}
-.hero-role svg{color:${C.gold};flex-shrink:0}
+.hero-role svg{color:${C.muted};flex-shrink:0}
 .hero-role-sep{color:${C.muted};opacity:0.6}
 .hero-desc{
   font-family:var(--font-instrument-sans),sans-serif;
@@ -97,12 +97,11 @@ body{
   padding:5px 12px;border-radius:4px;
   font-family:var(--font-instrument-sans),sans-serif;
   font-size:11px;letter-spacing:0.07em;
-  border:1px solid rgba(200,169,110,0.4);color:${C.text};
+  border:1px solid ${C.border2};color:${C.text2};
 }
-.tag.gold{border-color:rgba(200,169,110,0.5);color:${C.gold};background:rgba(200,169,110,0.05)}
-.tag.sage{border-color:rgba(122,171,143,0.3);color:${C.sage};background:rgba(122,171,143,0.05)}
+.tag.gold,.tag.sage{border-color:${C.border2};color:${C.text2};background:transparent}
 .tag.tag-icon{display:inline-flex;align-items:center;gap:7px;padding:6px 12px}
-.tag.tag-icon svg{color:${C.gold};flex-shrink:0}
+.tag.tag-icon svg{color:${C.text2};flex-shrink:0}
 .ctas{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:44px}
 .btn-gold{
   background:${C.gold};color:${C.bg};border:none;
@@ -318,10 +317,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
   font-size:8px;letter-spacing:0.1em;text-transform:uppercase;
   padding:3px 7px;border-radius:3px;
 }
-.st-live{background:rgba(122,171,143,0.1);color:${C.sage};border:1px solid rgba(122,171,143,0.25)}
-.st-active{background:rgba(122,171,143,0.1);color:${C.sage};border:1px solid rgba(122,171,143,0.25)}
-.st-paused{background:rgba(90,92,98,0.15);color:${C.muted};border:1px solid ${C.border2}}
-.st-dev{background:rgba(155,142,196,0.10);color:${C.violet};border:1px solid rgba(155,142,196,0.33)}
+.st-live,.st-active,.st-dev,.st-paused{color:${C.muted};border:1px solid ${C.border2}}
 
 /* Wide card */
 .proj-card.wide{grid-column:1/-1;display:flex;align-items:flex-start;gap:16px}
@@ -924,7 +920,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             {communities.map((c, i) => (
               <a key={i} className="proj-card" href={c.url} target="_blank" rel="noopener noreferrer">
                 <span className="status st-live">active</span>
-                <div className="proj-name" style={{ fontSize: "16px", color: c.color }}>{c.name}</div>
+                <div className="proj-name" style={{ fontSize: "16px" }}>{c.name}</div>
                 <div className="proj-desc" style={{ fontSize: "13px" }}>{c.desc}</div>
               </a>
             ))}
