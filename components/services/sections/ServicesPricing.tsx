@@ -129,7 +129,7 @@ export default function ServicesPricing() {
         >
           <div
             style={{
-              fontFamily: "var(--font-inconsolata), monospace",
+              fontFamily: "var(--font-instrument-sans), sans-serif",
               fontSize: 10,
               letterSpacing: "0.08em",
               textTransform: "uppercase",
@@ -187,7 +187,7 @@ export default function ServicesPricing() {
                 <span
                   className="absolute top-3 right-3"
                   style={{
-                    fontFamily: "var(--font-inconsolata), monospace",
+                    fontFamily: "var(--font-instrument-sans), sans-serif",
                     fontWeight: 700,
                     fontSize: 9,
                     background: "rgba(200,169,110,0.15)",
@@ -206,7 +206,7 @@ export default function ServicesPricing() {
               {/* Plan name */}
               <span
                 style={{
-                  fontFamily: "var(--font-inconsolata), monospace",
+                  fontFamily: "var(--font-instrument-sans), sans-serif",
                   fontWeight: 600,
                   fontSize: 11,
                   letterSpacing: "0.15em",
@@ -236,7 +236,7 @@ export default function ServicesPricing() {
               {/* Timeline */}
               <span
                 style={{
-                  fontFamily: "var(--font-inconsolata), monospace",
+                  fontFamily: "var(--font-instrument-sans), sans-serif",
                   fontSize: 11,
                   color: "var(--c-muted)",
                   marginBottom: 16,
@@ -317,7 +317,7 @@ export default function ServicesPricing() {
               {/* Sub */}
               <p
                 style={{
-                  fontFamily: "var(--font-inconsolata), monospace",
+                  fontFamily: "var(--font-instrument-sans), sans-serif",
                   fontSize: 10,
                   color: "var(--c-muted)",
                   textAlign: "center",

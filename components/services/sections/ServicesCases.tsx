@@ -99,7 +99,7 @@ export default function ServicesCases() {
         >
           <div
             style={{
-              fontFamily: "var(--font-inconsolata), monospace",
+              fontFamily: "var(--font-instrument-sans), sans-serif",
               fontSize: 10,
               letterSpacing: "0.08em",
               textTransform: "uppercase",
@@ -166,7 +166,7 @@ export default function ServicesCases() {
                     <span
                       key={j}
                       style={{
-                        fontFamily: "var(--font-inconsolata), monospace",
+                        fontFamily: "var(--font-instrument-sans), sans-serif",
                         fontSize: 10,
                         fontWeight: 600,
                         background:
@@ -231,7 +231,7 @@ export default function ServicesCases() {
                     <span
                       key={j}
                       style={{
-                        fontFamily: "var(--font-inconsolata), monospace",
+                        fontFamily: "var(--font-instrument-sans), sans-serif",
                         fontSize: 10,
                         background: "rgba(255,255,255,0.03)",
                         color: "var(--c-muted)",

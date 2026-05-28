@@ -105,7 +105,7 @@ export default function ServicesGrid() {
         >
           <div
             style={{
-              fontFamily: "var(--font-inconsolata), monospace",
+              fontFamily: "var(--font-instrument-sans), sans-serif",
               fontSize: 10,
               letterSpacing: "0.08em",
               textTransform: "uppercase",
@@ -207,7 +207,7 @@ export default function ServicesGrid() {
                     <span
                       key={j}
                       style={{
-                        fontFamily: "var(--font-inconsolata), monospace",
+                        fontFamily: "var(--font-instrument-sans), sans-serif",
                         fontSize: 10,
                         background: "rgba(255,255,255,0.03)",
                         color: "var(--c-text)",
@@ -224,7 +224,7 @@ export default function ServicesGrid() {
                 {/* Price */}
                 <span
                   style={{
-                    fontFamily: "var(--font-inconsolata), monospace",
+                    fontFamily: "var(--font-instrument-sans), sans-serif",
                     fontWeight: 700,
                     fontSize: 13,
                     color: "var(--c-gold)",

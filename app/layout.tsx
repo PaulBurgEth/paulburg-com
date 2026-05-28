@@ -1,33 +1,17 @@
 import type { Metadata } from "next";
-import { Inconsolata, Instrument_Sans, Newsreader, Fraunces, Source_Serif_4 } from "next/font/google";
+import { Instrument_Sans, Fraunces, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 import ScrollProgress from "@/components/ScrollProgress";
 import { TELEGRAM_URL } from "@/lib/constants";
 
-const inconsolata = Inconsolata({
-  variable: "--font-inconsolata",
-  subsets: ["latin"],
-  display: "swap",
-});
-
 const instrumentSans = Instrument_Sans({
   variable: "--font-instrument-sans",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   display: "swap",
 });
 
-// Variable fonts — load full variable-weight axis + opsz axis so the browser
-// auto-selects display-optimized optical sizes at large hero scales (matches
-// the mockup which uses Fraunces opsz 9..144).
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
-  subsets: ["latin"],
-  display: "swap",
-  axes: ["opsz"],
-  style: ["normal", "italic"],
-});
-
+// Fraunces — Latin headings only. Lacks full Cyrillic; RU swaps to Source Serif via CSS.
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
@@ -36,8 +20,7 @@ const fraunces = Fraunces({
   style: ["normal", "italic"],
 });
 
-// Source Serif 4 — Cyrillic-capable serif. Acts as fallback for Fraunces/Newsreader
-// for Cyrillic glyphs, and is the primary face for RU mode (via html[lang="ru"] CSS rule).
+// Source Serif 4 — Cyrillic fallback for headings in RU mode. Not used for Latin.
 const sourceSerif = Source_Serif_4({
   variable: "--font-source-serif",
   subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],
@@ -109,7 +92,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.classList.toggle('dark',t==='dark');})();` }} />
       </head>
       <body
-        className={`${inconsolata.variable} ${instrumentSans.variable} ${newsreader.variable} ${fraunces.variable} ${sourceSerif.variable} antialiased overflow-x-hidden`}
+        className={`${instrumentSans.variable} ${fraunces.variable} ${sourceSerif.variable} antialiased overflow-x-hidden`}
       >
         <Providers>
           <ScrollProgress />

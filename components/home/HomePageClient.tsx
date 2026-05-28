@@ -44,7 +44,7 @@ body{
   /* Body face matches the mockup — Newsreader serif. Per-element fonts
      (Fraunces for headings, Instrument Sans for UI labels, Inconsolata
      for mono) override locally. */
-  font-family:var(--font-newsreader),var(--font-source-serif),Georgia,serif;
+  font-family:var(--font-instrument-sans),system-ui,sans-serif;
   -webkit-font-smoothing:antialiased;
 }
 
@@ -73,7 +73,7 @@ body{
   color:${C.heading};
 }
 .hero-roles{
-  font-family:var(--font-inconsolata),monospace;
+  font-family:var(--font-instrument-sans),sans-serif;
   font-size:12px;letter-spacing:0.12em;
   color:${C.text};margin-bottom:20px;
   text-transform:uppercase;
@@ -83,22 +83,19 @@ body{
 .hero-role svg{color:${C.gold};flex-shrink:0}
 .hero-role-sep{color:${C.muted};opacity:0.6}
 .hero-desc{
-  font-family:var(--font-newsreader),serif;
-  font-style:italic;
-  font-size:18px;color:var(--c-body-lede);
-  max-width:480px;line-height:1.75;
+  font-family:var(--font-instrument-sans),sans-serif;
+  font-size:18px;color:${C.text};
+  max-width:520px;line-height:1.65;
   margin-bottom:36px;
 }
 .hero-desc strong{
-  color:${C.text};font-weight:500;
-  font-style:normal;
-  font-family:var(--font-newsreader),serif;
+  color:${C.heading};font-weight:600;
 }
 
 .tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:40px}
 .tag{
   padding:5px 12px;border-radius:4px;
-  font-family:var(--font-inconsolata),monospace;
+  font-family:var(--font-instrument-sans),sans-serif;
   font-size:11px;letter-spacing:0.07em;
   border:1px solid rgba(200,169,110,0.4);color:${C.text};
 }
@@ -130,7 +127,7 @@ body{
   border-top:1px solid ${C.border2};
 }
 .social{
-  font-family:var(--font-inconsolata),monospace;font-size:11px;
+  font-family:var(--font-instrument-sans),sans-serif;font-size:11px;
   color:${C.subtle};cursor:pointer;transition:color 0.2s;
   letter-spacing:0.08em;text-transform:uppercase;
   text-decoration:none;
@@ -181,7 +178,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
   position:absolute;top:9px;left:9px;z-index:2;
   background:rgba(7,8,10,0.85);border:1px solid ${C.border2};
   border-radius:4px;padding:3px 8px;
-  font-family:var(--font-inconsolata),monospace;font-size:10px;color:${C.muted};
+  font-family:var(--font-instrument-sans),sans-serif;font-size:10px;color:${C.muted};
 }
 .pod-play{
   position:relative;z-index:2;
@@ -202,7 +199,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 }
 .pod-body{padding:14px 16px}
 .pod-src{
-  font-family:var(--font-inconsolata),monospace;
+  font-family:var(--font-instrument-sans),sans-serif;
   font-size:9px;letter-spacing:0.15em;text-transform:uppercase;
   color:${C.gold};margin-bottom:7px;
 }
@@ -223,7 +220,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .write-card:hover{border-color:rgba(200,169,110,0.28);transform:translateY(-2px)}
 .write-src{
   display:flex;align-items:center;gap:6px;
-  font-family:var(--font-inconsolata),monospace;
+  font-family:var(--font-instrument-sans),sans-serif;
   font-size:9px;letter-spacing:0.15em;text-transform:uppercase;
   margin-bottom:11px;
 }
@@ -236,12 +233,12 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .write-excerpt{font-size:11px;color:${C.muted};line-height:1.6;margin-bottom:12px}
 .write-foot{
   display:flex;align-items:center;justify-content:space-between;
-  font-family:var(--font-inconsolata),monospace;font-size:10px;color:${C.faint};
+  font-family:var(--font-instrument-sans),sans-serif;font-size:10px;color:${C.faint};
 }
 .write-read{color:${C.gold}}
 .write-new{
   display:inline-flex;align-items:center;gap:4px;
-  font-family:var(--font-inconsolata),monospace;
+  font-family:var(--font-instrument-sans),sans-serif;
   font-size:8px;font-weight:700;letter-spacing:0.14em;
   color:${C.gold};
   background:rgba(200,169,110,0.10);
@@ -317,7 +314,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 /* ── MEDIA ── */
 .status{
   position:absolute;top:12px;right:12px;
-  font-family:var(--font-inconsolata),monospace;
+  font-family:var(--font-instrument-sans),sans-serif;
   font-size:8px;letter-spacing:0.1em;text-transform:uppercase;
   padding:3px 7px;border-radius:3px;
 }
@@ -371,7 +368,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .badge-ru{
   background:rgba(200,169,110,0.1);color:${C.gold};
   padding:2px 6px;border-radius:4px;font-size:9px;
-  font-family:var(--font-inconsolata),monospace;vertical-align:middle;margin-left:8px;
+  font-family:var(--font-instrument-sans),sans-serif;vertical-align:middle;margin-left:8px;
 }
 `;
 
@@ -559,7 +556,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: 20, position: "relative" }}>
                     <span aria-hidden="true" style={{
                       position: "absolute", top: 14, right: 16,
-                      fontFamily: "var(--font-inconsolata), monospace", fontSize: 9,
+                      fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 9,
                       letterSpacing: "0.14em", color: C.muted,
                     }}>
                       /{String(i + 1).padStart(2, "0")}
@@ -569,7 +566,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     </div>
                     <div style={{ fontFamily: "var(--font-fraunces), serif", fontWeight: 700, fontSize: 14, color: C.text, marginBottom: 6 }}>{card.title}</div>
                     <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 12, color: C.text2, lineHeight: 1.6, marginBottom: 10 }}>{card.desc}</p>
-                    <span style={{ fontFamily: "var(--font-inconsolata), monospace", fontWeight: 700, fontSize: 12, color: C.gold }}>{card.price}</span>
+                    <span style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontWeight: 700, fontSize: 12, color: C.gold }}>{card.price}</span>
                   </motion.div>
                 );
               })}
@@ -605,7 +602,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     ? "Пять продакшен-систем под ключ: сайт, AI-бот и автоматизация, кастомная CRM, BI и менеджерские дашборды. AI-assisted разработка — готово за 3–14 дней."
                     : "Five production systems, end to end: website, AI bot & automation, custom CRM, BI, and manager dashboards. AI-assisted development — ready in 3–14 days."}
                 </p>
-                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 14, fontFamily: "var(--font-inconsolata), monospace", fontWeight: 700, fontSize: 13 }}>
+                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 14, fontFamily: "var(--font-instrument-sans), sans-serif", fontWeight: 700, fontSize: 13 }}>
                   <span style={{ color: C.gold }}>
                     {language === "ru" ? "от $3,000" : "from $3,000"}
                   </span>
@@ -843,7 +840,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <div className="follow-title" style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 Telegram Channel
                 <span style={{
-                  fontFamily: "var(--font-inconsolata), monospace", fontSize: 9, padding: "2px 7px", borderRadius: 3,
+                  fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 9, padding: "2px 7px", borderRadius: 3,
                   background: "rgba(155,142,196,0.12)", color: C.violet, border: "1px solid rgba(155,142,196,0.33)",
                   letterSpacing: "0.14em", fontWeight: 700,
                 }}>RU</span>
@@ -942,7 +939,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   <span style={{ color: C.gold }}>{e.src}</span>
                 </div>
                 <div className="proj-name" style={{ fontSize: "14px", paddingRight: 0 }}>{e.name}</div>
-                <div style={{ fontFamily: "var(--font-inconsolata),monospace", fontSize: "10px", color: C.faint, marginTop: "12px" }}>
+                <div style={{ fontFamily: "var(--font-instrument-sans),sans-serif", fontSize: "10px", color: C.faint, marginTop: "12px" }}>
                   <span className="write-read">{language === "ru" ? "Открыть в X →" : "View on X →"}</span>
                 </div>
               </a>

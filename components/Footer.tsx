@@ -66,7 +66,7 @@ export default function Footer() {
                         <p
                             style={{
                                 marginTop: 14,
-                                fontFamily: "var(--font-newsreader), serif",
+                                fontFamily: "var(--font-instrument-sans), sans-serif",
                                 fontStyle: "italic",
                                 fontSize: 15,
                                 lineHeight: 1.55,

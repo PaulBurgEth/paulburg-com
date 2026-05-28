@@ -131,7 +131,7 @@ export default function Navbar() {
                                 border: "none",
                                 cursor: "pointer",
                                 color: "var(--c-text2)",
-                                fontFamily: "var(--font-inconsolata), monospace",
+                                fontFamily: "var(--font-instrument-sans), sans-serif",
                                 fontSize: 11,
                                 letterSpacing: "0.1em",
                                 padding: 0,
@@ -164,7 +164,7 @@ export default function Navbar() {
                             className="font-medium uppercase"
                             style={{
                                 color: "var(--c-text2)",
-                                fontFamily: "var(--font-inconsolata), monospace",
+                                fontFamily: "var(--font-instrument-sans), sans-serif",
                                 fontSize: 11,
                                 letterSpacing: "0.1em",
                                 background: "transparent",

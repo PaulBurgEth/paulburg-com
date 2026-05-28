@@ -30,7 +30,7 @@ export default function MentorshipFormats() {
                     }}
                 >
                     <div style={{
-                        fontFamily: "var(--font-inconsolata), monospace",
+                        fontFamily: "var(--font-instrument-sans), sans-serif",
                         fontSize: 10,
                         letterSpacing: "0.08em",
                         textTransform: "uppercase",

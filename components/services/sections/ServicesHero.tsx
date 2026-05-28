@@ -62,7 +62,7 @@ export default function ServicesHero() {
           >
             <span
               style={{
-                fontFamily: "var(--font-inconsolata), monospace",
+                fontFamily: "var(--font-instrument-sans), sans-serif",
                 fontWeight: 600,
                 fontSize: 10,
                 letterSpacing: "0.18em",
@@ -104,13 +104,12 @@ export default function ServicesHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             style={{
-              fontFamily: "var(--font-newsreader), serif",
-              fontStyle: "italic",
+              fontFamily: "var(--font-instrument-sans), sans-serif",
               fontWeight: 400,
-              fontSize: 21,
-              color: "var(--c-body-lede)",
-              maxWidth: 500,
-              lineHeight: 1.7,
+              fontSize: 18,
+              color: "var(--c-text)",
+              maxWidth: 540,
+              lineHeight: 1.6,
             }}
           >
             {t.subtitle}

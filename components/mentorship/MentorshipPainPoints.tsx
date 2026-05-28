@@ -30,7 +30,7 @@ export default function MentorshipPainPoints() {
                     style={{ marginBottom: 48 }}
                 >
                     <div style={{
-                        fontFamily: "var(--font-inconsolata), monospace",
+                        fontFamily: "var(--font-instrument-sans), sans-serif",
                         fontSize: 10,
                         letterSpacing: "0.08em",
                         textTransform: "uppercase",
@@ -82,7 +82,7 @@ export default function MentorshipPainPoints() {
                                 <h3
                                     className="mb-5 uppercase tracking-wide"
                                     style={{
-                                        fontFamily: "var(--font-inconsolata), monospace",
+                                        fontFamily: "var(--font-instrument-sans), sans-serif",
                                         fontWeight: 700,
                                         fontSize: 12,
                                         color: "var(--c-gold)",

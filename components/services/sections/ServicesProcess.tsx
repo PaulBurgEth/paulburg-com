@@ -82,7 +82,7 @@ export default function ServicesProcess() {
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.4 }}
             style={{
-              fontFamily: "var(--font-inconsolata), monospace",
+              fontFamily: "var(--font-instrument-sans), sans-serif",
               fontSize: 10,
               letterSpacing: "0.08em",
               textTransform: "uppercase",
@@ -136,7 +136,7 @@ export default function ServicesProcess() {
             >
               <span
                 style={{
-                  fontFamily: "var(--font-inconsolata), monospace",
+                  fontFamily: "var(--font-instrument-sans), sans-serif",
                   fontWeight: 700,
                   fontSize: 10,
                   color: "var(--c-gold)",

@@ -104,7 +104,7 @@ export default function ServicesTurnkey() {
           <div
             style={{
               display: "inline-block",
-              fontFamily: "var(--font-inconsolata), monospace",
+              fontFamily: "var(--font-instrument-sans), sans-serif",
               fontSize: 10,
               fontWeight: 700,
               letterSpacing: "0.22em",
@@ -122,7 +122,7 @@ export default function ServicesTurnkey() {
           {/* Section label */}
           <div
             style={{
-              fontFamily: "var(--font-inconsolata), monospace",
+              fontFamily: "var(--font-instrument-sans), sans-serif",
               fontSize: 10,
               letterSpacing: "0.22em",
               textTransform: "uppercase",
@@ -188,7 +188,7 @@ export default function ServicesTurnkey() {
                 <span
                   aria-hidden="true"
                   style={{
-                    fontFamily: "var(--font-inconsolata), monospace",
+                    fontFamily: "var(--font-instrument-sans), sans-serif",
                     fontSize: 11,
                     fontWeight: 700,
                     letterSpacing: "0.08em",
@@ -230,7 +230,7 @@ export default function ServicesTurnkey() {
           {/* Timing line */}
           <p
             style={{
-              fontFamily: "var(--font-inconsolata), monospace",
+              fontFamily: "var(--font-instrument-sans), sans-serif",
               fontSize: 11,
               letterSpacing: "0.14em",
               textTransform: "uppercase",
@@ -259,7 +259,7 @@ export default function ServicesTurnkey() {
               </div>
               <div
                 style={{
-                  fontFamily: "var(--font-inconsolata), monospace",
+                  fontFamily: "var(--font-instrument-sans), sans-serif",
                   fontSize: 10,
                   letterSpacing: "0.15em",
                   textTransform: "uppercase",

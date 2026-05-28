@@ -104,7 +104,7 @@ export default function ArticlePageClient({
               href="/blog"
               ref={backLinkRef}
               style={{
-                fontFamily: "var(--font-inconsolata), monospace",
+                fontFamily: "var(--font-instrument-sans), sans-serif",
                 fontSize: 12,
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
@@ -152,11 +152,10 @@ export default function ArticlePageClient({
 
             <p
               style={{
-                fontFamily: "var(--font-newsreader), serif",
-                fontStyle: "italic",
-                fontSize: 21,
-                lineHeight: 1.45,
-                color: "var(--c-body-lede)",
+                fontFamily: "var(--font-instrument-sans), sans-serif",
+                fontSize: 18,
+                lineHeight: 1.55,
+                color: "var(--c-text)",
                 fontWeight: 400,
                 margin: "0 0 24px",
               }}
@@ -166,7 +165,7 @@ export default function ArticlePageClient({
 
             <div style={{
               display: "flex", gap: 18, flexWrap: "wrap", alignItems: "baseline",
-              fontFamily: "var(--font-inconsolata), monospace",
+              fontFamily: "var(--font-instrument-sans), sans-serif",
               fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase",
               color: "var(--c-text2)",
               marginBottom: 32,
@@ -195,7 +194,7 @@ export default function ArticlePageClient({
               >
                 <p
                   style={{
-                    fontFamily: "var(--font-inconsolata), monospace",
+                    fontFamily: "var(--font-instrument-sans), sans-serif",
                     fontSize: 10,
                     fontWeight: 600,
                     letterSpacing: "0.2em",
@@ -224,7 +223,7 @@ export default function ArticlePageClient({
                         onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--c-gold)"; }}
                         onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--c-text2)"; }}
                       >
-                        <span style={{ color: "var(--c-gold)", fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, flexShrink: 0 }}>
+                        <span style={{ color: "var(--c-gold)", fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 11, flexShrink: 0 }}>
                           {String(i + 1).padStart(2, "0")}
                         </span>
                         {item.text}
@@ -258,7 +257,7 @@ export default function ArticlePageClient({
             >
               <p
                 style={{
-                  fontFamily: "var(--font-inconsolata), monospace",
+                  fontFamily: "var(--font-instrument-sans), sans-serif",
                   fontSize: 11,
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
@@ -309,11 +308,11 @@ export default function ArticlePageClient({
 
       <style>{`
         .prose-blog {
-          font-family: var(--font-newsreader), Georgia, serif;
+          font-family: var(--font-source-serif), Georgia, serif;
           font-size: 19.5px;
           line-height: 1.65;
           color: var(--c-body);
-          font-feature-settings: "ss01", "kern";
+          font-feature-settings: "kern";
         }
 
         .prose-blog p {
@@ -362,7 +361,7 @@ export default function ArticlePageClient({
 
         .prose-blog h2 .h2-numeral {
           display: block;
-          font-family: var(--font-inconsolata), monospace;
+          font-family: var(--font-instrument-sans), sans-serif;
           font-weight: 600;
           font-size: 11px;
           letter-spacing: 0.25em;
@@ -372,7 +371,7 @@ export default function ArticlePageClient({
         }
 
         .prose-blog h3 {
-          font-family: var(--font-newsreader), serif;
+          font-family: var(--font-source-serif), serif;
           font-weight: 600;
           font-style: italic;
           font-size: 19px;
@@ -414,7 +413,7 @@ export default function ArticlePageClient({
 
         .prose-blog ol li::marker {
           color: var(--c-gold);
-          font-family: var(--font-inconsolata), monospace;
+          font-family: var(--font-instrument-sans), sans-serif;
           font-weight: 600;
         }
 
@@ -448,7 +447,7 @@ export default function ArticlePageClient({
         .prose-blog blockquote p { margin: 0; }
 
         .prose-blog code {
-          font-family: var(--font-inconsolata), monospace;
+          font-family: var(--font-instrument-sans), sans-serif;
           font-size: 0.85em;
           background: var(--c-card);
           border: 1px solid var(--c-border);

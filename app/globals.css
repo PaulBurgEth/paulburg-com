@@ -84,15 +84,13 @@
   --color-primary: var(--color-primary);
 
   --font-sans: var(--font-instrument-sans), sans-serif;
-  /* Cyrillic glyphs fall through to Source Serif 4 (Fraunces/Newsreader lack Cyrillic subsets). */
+  /* Cyrillic headings fall through to Source Serif 4 (Fraunces lacks Cyrillic). */
   --font-serif: var(--font-fraunces), var(--font-source-serif), Georgia, serif;
   --font-serif-display: var(--font-fraunces), var(--font-source-serif), Georgia, serif;
-  --font-serif-body: var(--font-newsreader), var(--font-source-serif), Georgia, serif;
 }
 
-/* RU mode — swap primary serif faces to Source Serif 4 for metric consistency.
-   Fraunces Latin and Source Serif 4 Cyrillic have different x-heights; in RU we want
-   one face everywhere. EN mode (default) keeps Fraunces/Newsreader. */
+/* RU mode — Instrument Sans + Fraunces lack Cyrillic, so we swap to
+   Source Serif 4 (cyrillic-capable) for both body and headings. */
 html[lang="ru"] body {
   font-family: var(--font-source-serif), Georgia, serif;
 }
@@ -106,15 +104,12 @@ html[lang="ru"] h6 {
 }
 
 body {
-  /* Theme-aware body — uses --c-bg/--c-text tokens that flip with :root.dark.
-     Previous version used hardcoded --background (always #f9fafb) which made
-     pages with transparent section wrappers show light bg in dark mode. */
+  /* Theme-aware body uses --c-bg/--c-text tokens that flip with :root.dark.
+     Body face is Instrument Sans (cyrillic-capable). Headings override
+     to Fraunces (Latin) / Source Serif 4 (Cyrillic, via html[lang=ru] rule). */
   background: var(--c-bg);
   color: var(--c-text);
-  /* Default body face matches the redesign mockup: Newsreader serif with
-     Source Serif 4 / Georgia fallbacks. Per-element overrides (Fraunces for
-     headings, Instrument Sans for UI labels, Inconsolata for mono) win. */
-  font-family: var(--font-newsreader), var(--font-source-serif), Georgia, serif;
+  font-family: var(--font-instrument-sans), system-ui, sans-serif;
 }
 
 /* Custom Utilities */

@@ -64,11 +64,10 @@ export default function BlogPageClient({ enPosts, ruPosts }: Props) {
             </h1>
             <p
               style={{
-                fontFamily: "var(--font-newsreader), serif",
-                fontStyle: "italic",
-                fontSize: 19,
-                color: "var(--c-body)",
-                maxWidth: 480,
+                fontFamily: "var(--font-instrument-sans), sans-serif",
+                fontSize: 17,
+                color: "var(--c-text)",
+                maxWidth: 520,
                 lineHeight: 1.6,
               }}
             >

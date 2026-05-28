@@ -44,10 +44,10 @@ export default function MentorshipHero() {
                     <p
                         className="mb-12 max-w-4xl leading-relaxed"
                         style={{
-                            fontFamily: "var(--font-newsreader), serif",
-                            fontStyle: "italic",
-                            fontSize: 21,
-                            color: "var(--c-body-lede)",
+                            fontFamily: "var(--font-instrument-sans), sans-serif",
+                            fontSize: 18,
+                            color: "var(--c-text)",
+                            lineHeight: 1.6,
                         }}
                     >
                         {h.subheadline}
@@ -62,7 +62,7 @@ export default function MentorshipHero() {
                     >
                         <span
                             style={{
-                                fontFamily: "var(--font-inconsolata), monospace",
+                                fontFamily: "var(--font-instrument-sans), sans-serif",
                                 fontWeight: 600,
                                 fontSize: 13,
                                 letterSpacing: "0.08em",
