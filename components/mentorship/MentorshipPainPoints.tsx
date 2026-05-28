@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Wallet, Lightbulb, Brain } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -21,14 +20,9 @@ export default function MentorshipPainPoints() {
     ];
 
     return (
-        <section id="pain-points" className="scroll-mt-20 pb-reveal" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
+        <section id="pain-points" className="scroll-mt-20" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
             <div className="container-custom">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.1 }}
-                    style={{ marginBottom: 48 }}
-                >
+                <div style={{ marginBottom: 48 }}>
                     <div style={{
                         fontFamily: "var(--font-instrument-sans), sans-serif",
                         fontSize: 10,
@@ -48,10 +42,10 @@ export default function MentorshipPainPoints() {
                     }}>
                         {p.title}
                     </h2>
-                </motion.div>
+                </div>
 
                 <div className="grid md:grid-cols-3 gap-6">
-                    {categories.map((cat, idx) => {
+                    {categories.map((cat) => {
                         const Icon = iconMap[cat.type];
                         const content = (p as Record<string, unknown>)[cat.key] as {
                             title: string;
@@ -59,12 +53,8 @@ export default function MentorshipPainPoints() {
                         };
 
                         return (
-                            <motion.div
+                            <div
                                 key={cat.key}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, amount: 0.1 }}
-                                transition={{ delay: idx * 0.1 }}
                                 style={{
                                     background: "var(--c-card)",
                                     border: "1px solid var(--c-border)",
@@ -110,7 +100,7 @@ export default function MentorshipPainPoints() {
                                         </li>
                                     ))}
                                 </ul>
-                            </motion.div>
+                            </div>
                         );
                     })}
                 </div>

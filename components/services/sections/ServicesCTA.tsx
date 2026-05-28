@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { useIntakeModal } from "@/context/IntakeModalContext";
@@ -31,7 +30,6 @@ export default function ServicesCTA() {
 
   return (
     <section
-      className="pb-reveal"
       style={{
         borderTop: "1px solid var(--c-border)",
         padding: "72px 32px",
@@ -40,11 +38,7 @@ export default function ServicesCTA() {
       }}
     >
       <div className="container-custom flex flex-col items-center text-center gap-5">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.5 }}
+        <h2
           style={{
             fontFamily: "var(--font-fraunces), serif",
             fontWeight: 700,
@@ -54,13 +48,9 @@ export default function ServicesCTA() {
           }}
         >
           {t.h2}
-        </motion.h2>
+        </h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+        <p
           style={{
             fontFamily: "var(--font-instrument-sans), sans-serif",
             fontSize: 15,
@@ -70,15 +60,9 @@ export default function ServicesCTA() {
           }}
         >
           {t.subtitle}
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-col sm:flex-row gap-3"
-        >
+        <div className="flex flex-col sm:flex-row gap-3">
           <button
             type="button"
             onClick={open}
@@ -144,7 +128,7 @@ export default function ServicesCTA() {
           >
             {t.ctaWhatsApp}
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

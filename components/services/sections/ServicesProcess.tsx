@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
 const en = {
@@ -66,21 +65,11 @@ export default function ServicesProcess() {
   const t = language === "ru" ? ru : en;
 
   return (
-    <section className="pb-reveal" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
+    <section style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
       <div className="container-custom">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.5 }}
-          style={{ marginBottom: 36 }}
-        >
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.4 }}
+        <div style={{ marginBottom: 36 }}>
+          <div
             style={{
               fontFamily: "var(--font-instrument-sans), sans-serif",
               fontSize: 10,
@@ -91,7 +80,7 @@ export default function ServicesProcess() {
             }}
           >
             {t.sectionLabel}
-          </motion.div>
+          </div>
           <h2
             style={{
               fontFamily: "var(--font-fraunces), serif",
@@ -115,18 +104,13 @@ export default function ServicesProcess() {
           >
             {t.subtitle}
           </p>
-        </motion.div>
+        </div>
 
         {/* Steps grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {t.steps.map((step, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              whileHover={{ y: -3, boxShadow: "0 10px 36px rgba(0,0,0,0.3)", borderColor: "rgba(200,169,110,0.22)" }}
               style={{
                 background: "var(--c-card)",
                 border: "1px solid var(--c-border)",
@@ -168,7 +152,7 @@ export default function ServicesProcess() {
               >
                 {step.desc}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

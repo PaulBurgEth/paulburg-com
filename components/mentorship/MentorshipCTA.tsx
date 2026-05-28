@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { Sparkles, MessageCircle, Calendar } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -15,17 +14,11 @@ export default function MentorshipCTA() {
     return (
         <section
             id="start"
-            className="scroll-mt-20 pb-reveal"
+            className="scroll-mt-20"
             style={{ background: "var(--c-bg2)", padding: "72px 0", borderTop: "1px solid var(--c-border)", position: "relative" }}
         >
             <div className="container-custom text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.1 }}
-                    transition={{ duration: 0.6 }}
-                    className="max-w-3xl mx-auto"
-                >
+                <div className="max-w-3xl mx-auto">
                     <div style={{
                         fontFamily: "var(--font-instrument-sans), sans-serif",
                         fontSize: 10,
@@ -64,11 +57,7 @@ export default function MentorshipCTA() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10">
-                        <motion.div
-                            whileHover={{ scale: 1.03 }}
-                            whileTap={{ scale: 0.97 }}
-                            className="w-full sm:w-auto"
-                        >
+                        <div className="w-full sm:w-auto">
                             <Link
                                 href={TELEGRAM_URL}
                                 target="_blank"
@@ -89,13 +78,9 @@ export default function MentorshipCTA() {
                                 <MessageCircle className="w-5 h-5" style={{ color: "#2AABEE" }} />
                                 {c.buttonText}
                             </Link>
-                        </motion.div>
+                        </div>
 
-                        <motion.div
-                            whileHover={{ scale: 1.03 }}
-                            whileTap={{ scale: 0.97 }}
-                            className="w-full sm:w-auto"
-                        >
+                        <div className="w-full sm:w-auto">
                             <Link
                                 href={WHATSAPP_URL}
                                 target="_blank"
@@ -116,13 +101,9 @@ export default function MentorshipCTA() {
                                 <MessageCircle className="w-5 h-5" style={{ color: "#25D366" }} />
                                 {c.ctaWhatsApp}
                             </Link>
-                        </motion.div>
+                        </div>
 
-                        <motion.div
-                            whileHover={{ scale: 1.03 }}
-                            whileTap={{ scale: 0.97 }}
-                            className="w-full sm:w-auto"
-                        >
+                        <div className="w-full sm:w-auto">
                             <button
                                 type="button"
                                 onClick={open}
@@ -142,13 +123,9 @@ export default function MentorshipCTA() {
                                 <Sparkles className="w-5 h-5" />
                                 {c.ctaBook}
                             </button>
-                        </motion.div>
+                        </div>
 
-                        <motion.div
-                            whileHover={{ scale: 1.03 }}
-                            whileTap={{ scale: 0.97 }}
-                            className="w-full sm:w-auto"
-                        >
+                        <div className="w-full sm:w-auto">
                             <Link
                                 href={CALENDLY_URL}
                                 target="_blank"
@@ -169,9 +146,9 @@ export default function MentorshipCTA() {
                                 <Calendar className="w-5 h-5" style={{ color: "var(--c-gold)" }} />
                                 {c.ctaCall}
                             </Link>
-                        </motion.div>
+                        </div>
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { useIntakeModal } from "@/context/IntakeModalContext";
@@ -48,18 +47,9 @@ export default function ServicesHero() {
         className="container-custom flex flex-col items-center text-center"
         style={{ maxWidth: 720 }}
       >
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col items-center gap-6"
-        >
+        <div className="flex flex-col items-center gap-6">
           {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.05 }}
-          >
+          <div>
             <span
               style={{
                 fontFamily: "var(--font-instrument-sans), sans-serif",
@@ -77,13 +67,10 @@ export default function ServicesHero() {
             >
               {t.badge}
             </span>
-          </motion.div>
+          </div>
 
           {/* H1 */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+          <h1
             style={{
               fontFamily: "var(--font-fraunces), serif",
               fontWeight: 700,
@@ -96,13 +83,10 @@ export default function ServicesHero() {
             {t.h1a}
             <span style={{ color: "var(--c-gold)" }}>{t.h1gold}</span>
             {h1bHead}<BurgMark>{h1bTail}</BurgMark>
-          </motion.h1>
+          </h1>
 
           {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+          <p
             style={{
               fontFamily: "var(--font-instrument-sans), sans-serif",
               fontWeight: 400,
@@ -113,15 +97,10 @@ export default function ServicesHero() {
             }}
           >
             {t.subtitle}
-          </motion.p>
+          </p>
 
           {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-3 w-full justify-center"
-          >
+          <div className="flex flex-col sm:flex-row gap-3 w-full justify-center">
             <button
               type="button"
               onClick={open}
@@ -187,8 +166,8 @@ export default function ServicesHero() {
             >
               {t.ctaWhatsApp}
             </Link>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

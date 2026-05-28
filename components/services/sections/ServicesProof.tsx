@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
 function CountUp({ target, suffix = "" }: { target: number; suffix?: string }) {
@@ -54,12 +53,7 @@ export default function ServicesProof() {
   const t = language === "ru" ? ru : en;
 
   return (
-    <motion.section
-      className="pb-reveal"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.5 }}
+    <section
       style={{
         background: "var(--c-bg)",
         borderTop: "1px solid var(--c-border)",
@@ -105,6 +99,6 @@ export default function ServicesProof() {
           ))}
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

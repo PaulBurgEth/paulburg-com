@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
@@ -8,7 +7,6 @@ import BlogList from "@/components/blog/BlogList";
 import type { Post } from "@/lib/posts";
 import Link from "next/link";
 import BurgMark from "@/components/BurgMark";
-import { useRevealObserver } from "@/lib/useStageReveal";
 
 const SUBSTACK = "https://paulburg.substack.com";
 
@@ -20,7 +18,6 @@ interface Props {
 export default function BlogPageClient({ enPosts, ruPosts }: Props) {
   const { language } = useLanguage();
   const posts = language === "ru" ? ruPosts : enPosts;
-  useRevealObserver();
 
   const copy = {
     en: {
@@ -44,10 +41,7 @@ export default function BlogPageClient({ enPosts, ruPosts }: Props) {
       {/* Hero */}
       <section style={{ paddingTop: 96, paddingBottom: 56, background: "var(--c-bg)" }}>
         <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+          <div
             className="flex flex-col items-center text-center gap-3"
           >
             <h1
@@ -91,12 +85,12 @@ export default function BlogPageClient({ enPosts, ruPosts }: Props) {
                 {copy.substackCta}
               </Link>
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Articles */}
-      <section id="articles" className="pb-reveal" style={{ paddingBottom: 80, background: "var(--c-bg)", position: "relative" }}>
+      <section id="articles" style={{ paddingBottom: 80, background: "var(--c-bg)", position: "relative" }}>
         <div className="container-custom">
           <BlogList posts={posts} lang={language} />
         </div>

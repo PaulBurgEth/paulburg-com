@@ -1,18 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 export default function MentorshipTestimonial() {
     return (
-        <section className="pb-reveal" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
+        <section style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
             <div className="container-custom max-w-3xl">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.1 }}
-                    transition={{ duration: 0.6 }}
-                    className="flex flex-col items-center text-center"
-                >
+                <div className="flex flex-col items-center text-center">
                     <div style={{ width: 48, height: 1, background: "var(--c-border2)", marginBottom: 32 }} />
 
                     <blockquote
@@ -49,7 +41,7 @@ export default function MentorshipTestimonial() {
                     >
                         Worked with Pavel on the same team · October 2020
                     </p>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

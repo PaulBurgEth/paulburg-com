@@ -3,7 +3,6 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Bot, Workflow, Database, Globe, Lightbulb, Coffee } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import Navbar from "@/components/Navbar";
@@ -11,7 +10,6 @@ import CTARow from "@/components/CTARow";
 import Footer from "@/components/Footer";
 import { useIntakeModal } from "@/context/IntakeModalContext";
 import { useMentorshipModal } from "@/context/MentorshipModalContext";
-import { useRevealObserver } from "@/lib/useStageReveal";
 import type { Post } from "@/lib/posts";
 
 const C = {
@@ -469,9 +467,6 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
   const { open: openIntake } = useIntakeModal();
   const { open: openMentorshipModal } = useMentorshipModal();
 
-  // Reveal on scroll for all .pb-reveal elements.
-  useRevealObserver();
-
   const blogPosts = latestPosts?.[language] ?? latestPosts?.en ?? [];
 
   return (
@@ -526,7 +521,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         <hr className="div" />
 
         {/* ══════════ SERVICES TEASER ══════════ */}
-        <section className="section pb-reveal" id="services-teaser" style={{ background: C.bg2, borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`, margin: "0 -28px", padding: "72px 28px" }}>
+        <section className="section" id="services-teaser" style={{ background: C.bg2, borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`, margin: "0 -28px", padding: "72px 28px" }}>
           <div style={{ maxWidth: 940, margin: "0 auto" }}>
             <div style={{ marginBottom: 32 }}>
               <div className="eyebrow">{language === "ru" ? "Услуги" : "Services"}</div>
@@ -547,7 +542,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               ] as { icon: React.ElementType; title: string; desc: string; price: string }[]).map((card, i) => {
                 const Icon = card.icon;
                 return (
-                  <motion.div key={i} initial={{ y: 16 }} whileInView={{ y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.5, delay: i * 0.08 }}
+                  <div key={i}
                     className="pb-card-hover"
                     style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: 20, position: "relative" }}>
                     <span aria-hidden="true" style={{
@@ -563,19 +558,13 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     <div style={{ fontFamily: "var(--font-fraunces), serif", fontWeight: 700, fontSize: 14, color: C.text, marginBottom: 6 }}>{card.title}</div>
                     <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 12, color: C.text2, lineHeight: 1.6, marginBottom: 10 }}>{card.desc}</p>
                     <span style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontWeight: 700, fontSize: 12, color: C.gold }}>{card.price}</span>
-                  </motion.div>
+                  </div>
                 );
               })}
             </div>
 
             {/* Turnkey flagship banner */}
-            <motion.div
-              initial={{ y: 20 }}
-              whileInView={{ y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              style={{ marginTop: 24 }}
-            >
+            <div style={{ marginTop: 24 }}>
               <div
                 className="turnkey-banner"
                 style={{
@@ -641,18 +630,18 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   </Link>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div initial={{ y: 10 }} whileInView={{ y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.5 }} style={{ marginTop: 28 }}>
+            <div style={{ marginTop: 28 }}>
               <CTARow align="center" hidePrimary />
-            </motion.div>
+            </div>
           </div>
         </section>
 
         <hr className="div" />
 
         {/* ══════════ MENTORSHIP ══════════ */}
-        <section className="section pb-reveal" id="mentorship">
+        <section className="section" id="mentorship">
           <div className="eyebrow">{language === "ru" ? "Менторство" : "Mentorship"}</div>
           <h2 className="sec-title">{language === "ru" ? "Капитал · Бизнес · AI и Автоматизация" : "Capital · Business · AI & Automation"}</h2>
           <p className="sec-sub">{language === "ru" ? "Индивидуальные сессии для предпринимателей и цифровых номадов" : "1-on-1 sessions for entrepreneurs and digital nomads"}</p>
@@ -696,7 +685,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         <hr className="div" />
 
         {/* ══════════ PODCASTS & TALKS ══════════ */}
-        <section className="section pb-reveal" id="media">
+        <section className="section" id="media">
           <div className="eyebrow">{language === "ru" ? "Медиа" : "Media"}</div>
           <h2 className="sec-title">{language === "ru" ? "Подкасты и выступления" : "Podcasts & Talks"}</h2>
           <p className="sec-sub">{language === "ru" ? "Разговоры про ReFi, impact-рынки и публичное строительство" : "Conversations on ReFi, impact markets, and building in public"}</p>
@@ -734,7 +723,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         <hr className="div" />
 
         {/* ══════════ WRITING ══════════ */}
-        <section className="section pb-reveal" id="writing">
+        <section className="section" id="writing">
           <div className="eyebrow">{language === "ru" ? "Статьи" : "Writing"}</div>
           <h2 className="sec-title">{language === "ru" ? "Статьи и заметки" : "Articles & Insights"}</h2>
           <p className="sec-sub">{language === "ru" ? "Про impact-рынки, health tech и публичное строительство" : "On impact markets, health tech, and building in public"}</p>
@@ -802,7 +791,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         <hr className="div" />
 
         {/* ══════════ FOLLOW THE JOURNEY ══════════ */}
-        <section className="section pb-reveal" id="follow">
+        <section className="section" id="follow">
           <div className="eyebrow">{language === "ru" ? "Контакты" : "Connect"}</div>
           <h2 className="sec-title">{language === "ru" ? "Следить за журналом" : "Follow the Journey"}</h2>
           <p className="sec-sub">{language === "ru" ? "Выберите формат и язык" : "Choose your format and language"}</p>
@@ -856,7 +845,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         <hr className="div" />
 
         {/* ══════════ PROJECTS ══════════ */}
-        <section className="section pb-reveal" id="projects">
+        <section className="section" id="projects">
           <div className="eyebrow">{language === "ru" ? "Проекты" : "Projects"}</div>
           <h2 className="sec-title">{language === "ru" ? "Что я строю" : "What I Build"}</h2>
           <p className="sec-sub">{language === "ru" ? "Стартапы и инициативы в impact, health и локальной инфраструктуре" : "Startups and initiatives across impact, health, and local infrastructure"}</p>
@@ -911,7 +900,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         <hr className="div" />
 
         {/* ══════════ COMMUNITIES ══════════ */}
-        <section className="section pb-reveal" id="communities" style={{ background: C.bg2, borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`, margin: "0 -28px", padding: "72px 28px" }}>
+        <section className="section" id="communities" style={{ background: C.bg2, borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`, margin: "0 -28px", padding: "72px 28px" }}>
           <div className="eyebrow">{language === "ru" ? "Сообщества" : "Communities"}</div>
           <h2 className="sec-title">{language === "ru" ? "Локальная Web3-экосистема" : "Local Web3 Ecosystem"}</h2>
           <p className="sec-sub">{language === "ru" ? "Регенеративная инфраструктура и децентрализованная координация на Ко Панган" : "Building regenerative infrastructure and decentralized coordination on Koh Phangan"}</p>
@@ -946,7 +935,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         <hr className="div" />
 
         {/* ══════════ ABOUT ══════════ */}
-        <section className="section pb-reveal" id="about">
+        <section className="section" id="about">
           <div className="eyebrow">{language === "ru" ? "О себе" : "About"}</div>
           <h2 className="sec-title">{language === "ru" ? "Кто я" : "Who I Am"}</h2>
           <div className="about-layout">

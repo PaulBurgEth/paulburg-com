@@ -3,13 +3,11 @@
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
 import type { ReactNode } from "react";
 import { splitLastWord } from "@/lib/text";
-import { useRevealObserver } from "@/lib/useStageReveal";
 
 interface Frontmatter {
   title: string;
@@ -64,7 +62,6 @@ export default function ArticlePageClient({
   const { language } = useLanguage();
   const router = useRouter();
   const backLinkRef = useRef<HTMLAnchorElement>(null);
-  useRevealObserver();
 
   // Sync language context with URL param
   useEffect(() => {
@@ -92,11 +89,7 @@ export default function ArticlePageClient({
     <main style={{ background: "var(--c-bg)", minHeight: "100vh" }}>
       <Navbar />
 
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
-      >
+      <div>
         {/* Article header */}
         <section style={{ paddingTop: 96, paddingBottom: 40, background: "var(--c-bg)" }}>
           <div className="container-custom" style={{ maxWidth: 680 }}>
@@ -141,8 +134,6 @@ export default function ArticlePageClient({
                   {head}
                   <em style={{
                     fontStyle: "italic",
-                    color: "transparent",
-                    WebkitTextStroke: "1.5px rgba(200,169,110,0.7)",
                     fontFamily: "var(--font-fraunces), serif",
                     fontWeight: 600,
                   }}>{tail}</em>
@@ -304,7 +295,7 @@ export default function ArticlePageClient({
             </div>
           </div>
         </section>
-      </motion.div>
+      </div>
 
       <style>{`
         .prose-blog {

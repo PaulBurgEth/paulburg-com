@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { useIntakeModal } from "@/context/IntakeModalContext";
 
@@ -81,14 +80,9 @@ export default function ServicesTurnkey() {
   const t = language === "ru" ? ru : en;
 
   return (
-    <section className="pb-reveal" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
+    <section style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
       <div className="container-custom">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.5 }}
-          whileHover={{ boxShadow: "0 0 48px rgba(200,169,110,0.08)" }}
+        <div
           className="turnkey-banner"
           style={{
             position: "relative",
@@ -289,7 +283,7 @@ export default function ServicesTurnkey() {
               {language === "ru" ? "Запросить цену →" : "Get a quote →"}
             </button>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

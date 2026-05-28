@@ -76,10 +76,7 @@ export default function ProjectsGrid() {
     return (
         <section id="projects" className="py-24 scroll-mt-20">
             <div className="container-custom">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.1 }}
+                <div
                     className="mb-8"
                 >
                     <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#fafafa] mb-1 section-title-accent block">
@@ -88,7 +85,7 @@ export default function ProjectsGrid() {
                     <p className="text-[#A1A1AA] text-base font-light">
                         Startups and initiatives I&apos;m building
                     </p>
-                </motion.div>
+                </div>
 
                 {/* Ecosystem Label */}
                 <div className="mb-6 mt-12">
@@ -105,10 +102,6 @@ export default function ProjectsGrid() {
                         return (
                             <motion.div
                                 key={project.id}
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true, amount: 0.1 }}
-                                transition={{ delay: index * 0.05 }}
                                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
                                 className={`bento-card group flex flex-col p-6 cursor-pointer ${project.className}`}
                             >
@@ -161,10 +154,6 @@ export default function ProjectsGrid() {
                         return (
                             <motion.div
                                 key={project.id}
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true, amount: 0.1 }}
-                                transition={{ delay: index * 0.05 }}
                                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
                                 className={`bento-card group flex p-6 cursor-pointer ${project.horizontal ? 'flex-row items-center gap-6' : 'flex-col'} ${project.className}`}
                             >

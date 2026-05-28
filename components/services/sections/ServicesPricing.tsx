@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useIntakeModal } from "@/context/IntakeModalContext";
@@ -117,16 +116,10 @@ export default function ServicesPricing() {
   const t = language === "ru" ? ru : en;
 
   return (
-    <section id="pricing" className="pb-reveal" style={{ background: "var(--c-bg2)", padding: "72px 0", position: "relative" }}>
+    <section id="pricing" style={{ background: "var(--c-bg2)", padding: "72px 0", position: "relative" }}>
       <div className="container-custom">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.5 }}
-          style={{ marginBottom: 36 }}
-        >
+        <div style={{ marginBottom: 36 }}>
           <div
             style={{
               fontFamily: "var(--font-instrument-sans), sans-serif",
@@ -161,17 +154,13 @@ export default function ServicesPricing() {
           >
             {t.subtitle}
           </p>
-        </motion.div>
+        </div>
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {t.plans.map((plan, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
               className="relative flex flex-col"
               style={{
                 background: plan.popular
@@ -326,7 +315,7 @@ export default function ServicesPricing() {
               >
                 {plan.sub}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

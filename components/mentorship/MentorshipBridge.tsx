@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function MentorshipBridge() {
@@ -9,16 +8,11 @@ export default function MentorshipBridge() {
 
     return (
         <section
-            className="py-24 pb-reveal"
+            className="py-24"
             style={{ background: "var(--c-card)", borderTop: "1px solid var(--c-border)", borderBottom: "1px solid var(--c-border)", position: "relative" }}
         >
             <div className="container-custom">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.1 }}
-                    className="max-w-4xl mx-auto text-center relative"
-                >
+                <div className="max-w-4xl mx-auto text-center relative">
                     <span
                         className="absolute -top-12 -left-4 text-9xl font-serif leading-none select-none"
                         style={{ color: "rgba(200,169,110,0.08)" }}
@@ -79,7 +73,7 @@ export default function MentorshipBridge() {
                             </p>
                         </div>
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

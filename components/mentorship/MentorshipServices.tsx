@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import ServiceCard from "@/components/ServiceCard";
 
@@ -15,14 +14,9 @@ export default function MentorshipServices() {
     ];
 
     return (
-        <section id="services" className="scroll-mt-20 pb-reveal" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
+        <section id="services" className="scroll-mt-20" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
             <div className="container-custom">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.1 }}
-                    style={{ marginBottom: 48 }}
-                >
+                <div style={{ marginBottom: 48 }}>
                     <div style={{
                         fontFamily: "var(--font-instrument-sans), sans-serif",
                         fontSize: 10,
@@ -42,7 +36,7 @@ export default function MentorshipServices() {
                     }}>
                         {s.title}
                     </h2>
-                </motion.div>
+                </div>
 
                 <div className="grid lg:grid-cols-3 gap-8 items-start">
                     {services.map((service, index) => (

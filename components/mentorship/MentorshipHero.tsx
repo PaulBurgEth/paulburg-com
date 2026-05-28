@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { MessageCircle, Sparkles } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -22,12 +21,7 @@ export default function MentorshipHero() {
             style={{ background: "var(--c-bg)" }}
         >
             <div className="container-custom relative z-10 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="flex flex-col items-center"
-                >
+                <div className="flex flex-col items-center">
                     <h1
                         className="mb-6 leading-tight"
                         style={{
@@ -74,7 +68,7 @@ export default function MentorshipHero() {
                     </div>
 
                     <div className="flex flex-col sm:flex-row items-center gap-4 mb-10 w-full justify-center">
-                        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
+                        <div className="w-full sm:w-auto">
                             <Link
                                 href={TELEGRAM_URL}
                                 target="_blank"
@@ -95,9 +89,9 @@ export default function MentorshipHero() {
                                 <MessageCircle className="w-5 h-5" style={{ color: "#2AABEE" }} />
                                 {h.ctaTelegram}
                             </Link>
-                        </motion.div>
+                        </div>
 
-                        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
+                        <div className="w-full sm:w-auto">
                             <Link
                                 href={WHATSAPP_URL}
                                 target="_blank"
@@ -118,9 +112,9 @@ export default function MentorshipHero() {
                                 <MessageCircle className="w-5 h-5" style={{ color: "#25D366" }} />
                                 {h.ctaWhatsApp}
                             </Link>
-                        </motion.div>
+                        </div>
 
-                        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
+                        <div className="w-full sm:w-auto">
                             <button
                                 type="button"
                                 onClick={open}
@@ -140,7 +134,7 @@ export default function MentorshipHero() {
                                 <Sparkles className="w-5 h-5" />
                                 {h.ctaBook}
                             </button>
-                        </motion.div>
+                        </div>
                     </div>
 
                     <p
@@ -153,7 +147,7 @@ export default function MentorshipHero() {
                     >
                         {h.smallText}
                     </p>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

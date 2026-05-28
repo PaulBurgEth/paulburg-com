@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Video, MapPin, CreditCard } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -15,13 +14,9 @@ export default function MentorshipFormats() {
     ];
 
     return (
-        <section id="formats" className="scroll-mt-20 pb-reveal" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
+        <section id="formats" className="scroll-mt-20" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
             <div className="container-custom max-w-4xl">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.97 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true, amount: 0.1 }}
-                    transition={{ duration: 0.5 }}
+                <div
                     style={{
                         background: "var(--c-card)",
                         border: "1px solid var(--c-border)",
@@ -82,7 +77,7 @@ export default function MentorshipFormats() {
                             );
                         })}
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

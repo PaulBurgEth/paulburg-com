@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Bot, Workflow, Database, Globe, Network } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useIntakeModal } from "@/context/IntakeModalContext";
@@ -93,16 +92,10 @@ export default function ServicesGrid() {
   const t = language === "ru" ? ru : en;
 
   return (
-    <section id="services" className="pb-reveal" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
+    <section id="services" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
       <div className="container-custom">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.5 }}
-          style={{ marginBottom: 36 }}
-        >
+        <div style={{ marginBottom: 36 }}>
           <div
             style={{
               fontFamily: "var(--font-instrument-sans), sans-serif",
@@ -137,7 +130,7 @@ export default function ServicesGrid() {
           >
             {t.subtitle}
           </p>
-        </motion.div>
+        </div>
 
         {/* Grid — 5 cards: 1col mobile, 2col tablet, 3col desktop (3+2 rows) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -145,13 +138,8 @@ export default function ServicesGrid() {
             const Icon = ICONS[i];
 
             return (
-              <motion.div
+              <div
                 key={i}
-                initial={{ y: 16 }}
-                whileInView={{ y: 0 }}
-                viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                whileHover={{ y: -3, boxShadow: "0 10px 36px rgba(0,0,0,0.3)", borderColor: "rgba(200,169,110,0.22)" }}
                 className="relative flex flex-col"
                 style={{
                   background: "var(--c-card)",
@@ -257,7 +245,7 @@ export default function ServicesGrid() {
                 >
                   {t.getQuote}
                 </button>
-              </motion.div>
+              </div>
             );
           })}
         </div>
