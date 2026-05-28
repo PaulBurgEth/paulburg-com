@@ -39,7 +39,6 @@ export default function ServicesCTA() {
         position: "relative",
       }}
     >
-      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 07</span>
       <div className="container-custom flex flex-col items-center text-center gap-5">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

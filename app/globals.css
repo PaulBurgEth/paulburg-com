@@ -431,11 +431,6 @@ button:focus-visible {
   width: 100%;
 }
 
-/* BurgMark: in light mode use gold stroke so the outline reads against the light background */
-:root:not(.dark) .burg-mark {
-  -webkit-text-stroke-color: var(--c-gold);
-}
-
 /* ─── REDESIGN PRIMITIVES (pb-*) ──────────────────────────────────────────
    Used by the sitewide redesign: blinking cursor, scroll-reveal, stage cascade.
    All animations respect prefers-reduced-motion. */

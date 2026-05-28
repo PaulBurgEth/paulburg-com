@@ -60,20 +60,7 @@ export default function BlogPageClient({ enPosts, ruPosts }: Props) {
                 marginTop: 8,
               }}
             >
-              <BurgMark weight={1.2}>{copy.h1}</BurgMark>
-              <span
-                className="pb-cursor-blink"
-                aria-hidden="true"
-                style={{
-                  display: "inline-block",
-                  width: 5,
-                  height: 40,
-                  marginLeft: 10,
-                  background: "var(--c-gold)",
-                  boxShadow: "0 0 14px rgba(200,169,110,0.5)",
-                  verticalAlign: "middle",
-                }}
-              />
+              <BurgMark>{copy.h1}</BurgMark>
             </h1>
             <p
               style={{
@@ -111,7 +98,6 @@ export default function BlogPageClient({ enPosts, ruPosts }: Props) {
 
       {/* Articles */}
       <section id="articles" className="pb-reveal" style={{ paddingBottom: 80, background: "var(--c-bg)", position: "relative" }}>
-        <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 01</span>
         <div className="container-custom">
           <BlogList posts={posts} lang={language} />
         </div>

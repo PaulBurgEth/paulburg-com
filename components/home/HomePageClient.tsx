@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -11,7 +11,7 @@ import CTARow from "@/components/CTARow";
 import Footer from "@/components/Footer";
 import { useIntakeModal } from "@/context/IntakeModalContext";
 import { useMentorshipModal } from "@/context/MentorshipModalContext";
-import { useStageReveal, useRevealObserver } from "@/lib/useStageReveal";
+import { useRevealObserver } from "@/lib/useStageReveal";
 import type { Post } from "@/lib/posts";
 
 const C = {
@@ -48,21 +48,6 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
-/* ── GRAIN ── */
-body::after{
-  content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-  opacity:0.5;mix-blend-mode:overlay;
-}
-
-/* ── WARM GLOW ── */
-.ambient{
-  position:fixed;inset:0;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(ellipse 60% 40% at 20% 0%, rgba(200,169,110,0.05) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 80% 100%, rgba(122,171,143,0.04) 0%, transparent 55%);
-}
-
 .wrap{position:relative;z-index:1;max-width:940px;margin:0 auto;padding:0 28px}
 
 /* ── HERO ── */
@@ -72,14 +57,6 @@ body::after{
   max-width:940px;margin:0 auto;
 }
 .hero-inner{position:relative}
-.hero-kicker{
-  font-family:var(--font-inconsolata),monospace;
-  font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
-  color:${C.gold};margin-bottom:24px;
-  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
-}
-.hero-kicker::before{content:'';width:32px;height:1px;background:${C.gold};opacity:0.6}
-.hero-kicker-coord{color:${C.muted};letter-spacing:0.12em;font-size:10px;margin-left:4px}
 .hero-name{
   font-family:var(--font-fraunces),serif;
   font-feature-settings:"ss01","liga","kern";
@@ -93,8 +70,7 @@ body::after{
   font-style:italic;
   font-family:var(--font-fraunces),serif;
   font-weight:600;
-  color:transparent;
-  -webkit-text-stroke:1.5px rgba(200,169,110,0.7);
+  color:${C.heading};
 }
 .hero-roles{
   font-family:var(--font-inconsolata),monospace;
@@ -117,46 +93,6 @@ body::after{
   color:${C.text};font-weight:500;
   font-style:normal;
   font-family:var(--font-newsreader),serif;
-}
-
-/* Hero coordinate pin — two separate absolute elements per mockup. */
-.hero-pin-line{
-  display:none;
-  position:absolute;
-  top:144px;left:28px;
-  width:1px;height:96px;
-  background:linear-gradient(180deg, rgba(200,169,110,0.67), transparent);
-  pointer-events:none;
-}
-.hero-pin-circle{
-  display:none;
-  position:absolute;
-  top:248px;left:22px;
-  width:13px;height:13px;
-  border:1px solid ${C.gold};
-  border-radius:50%;
-  align-items:center;justify-content:center;
-  background:${C.bg};
-  pointer-events:none;
-}
-.hero-pin-dot{
-  width:5px;height:5px;border-radius:50%;
-  background:${C.gold};
-  box-shadow:0 0 8px ${C.gold};
-}
-@media (min-width: 768px){
-  .hero-pin-line{display:block}
-  .hero-pin-circle{display:flex}
-}
-
-/* Hero stage cascade — gated by data-stage attribute (set by JS via inline style). */
-.pb-stage{
-  opacity:0;transform:translateY(8px);
-  transition:opacity 540ms cubic-bezier(.2,.7,.3,1), transform 540ms cubic-bezier(.2,.7,.3,1);
-}
-.pb-stage[data-visible="1"]{opacity:1;transform:translateY(0)}
-@media (prefers-reduced-motion: reduce){
-  .pb-stage{opacity:1;transform:none;transition:none}
 }
 
 .tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:40px}
@@ -203,13 +139,6 @@ body::after{
 
 /* ── SECTION ── */
 .section{padding:72px 0;position:relative}
-.section-number{
-  position:absolute;top:24px;right:28px;
-  font-family:var(--font-inconsolata),monospace;
-  font-size:11px;letter-spacing:0.18em;color:${C.muted};
-  pointer-events:none;
-}
-@media(max-width:600px){.section-number{display:none}}
 .eyebrow{
   font-family:var(--font-inconsolata),monospace;
   font-size:11px;letter-spacing:0.22em;text-transform:uppercase;
@@ -325,9 +254,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .write-new-dot{
   width:4px;height:4px;border-radius:50%;
   background:${C.gold};
-  animation:pulse-dot 2s ease-in-out infinite;
 }
-@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:0.3}}
 .write-card-new{border-color:rgba(200,169,110,0.20)!important}
 .sub-bar{
   background:${C.card2};border:1px solid ${C.border2};
@@ -367,17 +294,11 @@ hr.div{border:none;border-top:1px solid ${C.border}}
   transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position:relative;overflow:hidden;
 }
-.mentor-card::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(200,169,110,0.08), transparent 40%);
-  opacity:0;transition:opacity 0.3s;
-}
 .mentor-card:hover{
   border-color:rgba(200,169,110,0.3);
   transform:translateY(-2px);
   box-shadow:0 12px 30px rgba(0,0,0,0.3), 0 0 48px rgba(200,169,110,0.05);
 }
-.mentor-card:hover::before{opacity:1}
 .mentor-card-inner{position:relative;z-index:1;display:flex;flex-direction:column;gap:16px;}
 @media (min-width:768px){
   .mentor-card-inner{flex-direction:row;align-items:center;justify-content:space-between;gap:32px;}
@@ -434,10 +355,6 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .about-bio p{font-size:13px;color:${C.muted};line-height:1.8;margin-bottom:11px}
 .about-bio p:first-child{color:${C.text2};font-size:14px}
 .about-bio strong{color:${C.text3};font-weight:500}
-
-/* ── LIGHT MODE OVERRIDES ── */
-:root:not(.dark) body::after{opacity:0.2}
-:root:not(.dark) .ambient{opacity:0}
 
 /* ── SERVICES TEASER ── */
 .services-mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -557,112 +474,46 @@ interface HomePageClientProps {
   latestPosts?: { en: Post[]; ru: Post[] };
 }
 
-/** Decorative section number marker — top-right corner of each section. aria-hidden. */
-function SectionNumber({ n }: { n: string }) {
-  return <span aria-hidden="true" className="section-number">§ {n}</span>;
-}
-
-/** GoldCursor — solid gold bar with glow, optionally blinking. Used in hero + footer brand. */
-function GoldCursor({ h = 56, w = 4, blink = false, style }: { h?: number; w?: number; blink?: boolean; style?: React.CSSProperties }) {
-  return (
-    <span
-      aria-hidden="true"
-      className={blink ? "pb-cursor-blink" : undefined}
-      style={{
-        display: "inline-block",
-        width: w,
-        height: h,
-        background: C.gold,
-        boxShadow: `0 0 14px rgba(200,169,110,0.5)`,
-        verticalAlign: "middle",
-        ...style,
-      }}
-    />
-  );
-}
-
 export default function HomePageClient({ latestPosts }: HomePageClientProps) {
   const { language } = useLanguage();
   const { open: openIntake } = useIntakeModal();
   const { open: openMentorshipModal } = useMentorshipModal();
 
-  // 4-stage hero cascade with absolute delays matching the mockup
-  // (mockup defines 5 stages; the 5th is the "selected ventures" strip
-  // that the user excluded, so we stop at stage 4).
-  const stage = useStageReveal([220, 520, 880, 1180]);
-
   // Reveal on scroll for all .pb-reveal elements.
   useRevealObserver();
 
   const blogPosts = latestPosts?.[language] ?? latestPosts?.en ?? [];
-  const visible = blogPosts.length > 0 ? blogPosts : articles.slice(0, 3);
-
-  // Mentorship card mouse-glow: update --mouse-x/y on the card element.
-  const handleMentorMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    e.currentTarget.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
-    e.currentTarget.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
-  }, []);
 
   return (
     <>
       <style>{CSS}</style>
-      <div className="ambient" />
 
       <Navbar />
 
       {/* ══════════ HERO ══════════ */}
       <section className="hero">
-        {/* Left-rail coordinate pin — 96px gold gradient hairline + 13px circle outline + dot.
-            Two separate absolute-positioned elements per the mockup.
-            Hidden under md: breakpoint via CSS. */}
-        <span
-          aria-hidden="true"
-          className="pb-stage hero-pin-line"
-          data-visible={stage >= 1 ? "1" : "0"}
-        />
-        <span
-          aria-hidden="true"
-          className="pb-stage hero-pin-circle"
-          data-visible={stage >= 1 ? "1" : "0"}
-        >
-          <span className="hero-pin-dot" />
-        </span>
-
         <div className="hero-inner">
-          <div className="pb-stage" data-visible={stage >= 1 ? "1" : "0"}>
-            <div className="hero-kicker">
-              <span>{language === "ru" ? "Сейчас в Да Нанге, Вьетнам" : "Currently in Da Nang, Vietnam"}</span>
-              <span aria-hidden="true" className="hero-kicker-coord">· 16°N 108°E</span>
-            </div>
+          <h1 className="hero-name">
+            Paul<br />
+            <em>Burg</em>
+          </h1>
+          <div className="hero-roles">
+            <span className="hero-role">
+              <Bot size={12} strokeWidth={1.5} aria-hidden="true" />
+              {language === "ru" ? "AI-ASSISTED РАЗРАБОТКА" : "AI-ASSISTED DEVELOPMENT"}
+            </span>
+            <span className="hero-role-sep" aria-hidden="true">·</span>
+            <span className="hero-role">
+              <Lightbulb size={12} strokeWidth={1.5} aria-hidden="true" />
+              {language === "ru" ? "СЕРИЙНЫЙ ПРЕДПРИНИМАТЕЛЬ" : "SERIAL ENTREPRENEUR"}
+            </span>
+            <span className="hero-role-sep" aria-hidden="true">·</span>
+            <span className="hero-role">
+              <Coffee size={12} strokeWidth={1.5} aria-hidden="true" />
+              {language === "ru" ? "КОФЕ И КОД" : "COFFEE & CODE"}
+            </span>
           </div>
-          <div className="pb-stage" data-visible={stage >= 2 ? "1" : "0"}>
-            <h1 className="hero-name">
-              Paul<br />
-              <em>Burg</em>
-              <GoldCursor h={68} w={5} blink style={{ marginLeft: 12, verticalAlign: "baseline", transform: "translateY(8px)" }} />
-            </h1>
-          </div>
-          <div className="pb-stage" data-visible={stage >= 3 ? "1" : "0"}>
-            <div className="hero-roles">
-              <span className="hero-role">
-                <Bot size={12} strokeWidth={1.5} aria-hidden="true" />
-                {language === "ru" ? "AI-ASSISTED РАЗРАБОТКА" : "AI-ASSISTED DEVELOPMENT"}
-              </span>
-              <span className="hero-role-sep" aria-hidden="true">·</span>
-              <span className="hero-role">
-                <Lightbulb size={12} strokeWidth={1.5} aria-hidden="true" />
-                {language === "ru" ? "СЕРИЙНЫЙ ПРЕДПРИНИМАТЕЛЬ" : "SERIAL ENTREPRENEUR"}
-              </span>
-              <span className="hero-role-sep" aria-hidden="true">·</span>
-              <span className="hero-role">
-                <Coffee size={12} strokeWidth={1.5} aria-hidden="true" />
-                {language === "ru" ? "КОФЕ И КОД" : "COFFEE & CODE"}
-              </span>
-            </div>
-          </div>
-          <div className="pb-stage" data-visible={stage >= 4 ? "1" : "0"}>
-            <p className="hero-desc">
+          <p className="hero-desc">
               {language === "ru"
                 ? "Проектирую и запускаю AI-системы для бизнеса — боты, CRM и BI-дашборды, автоматизация, matching-движки, сайты. С нуля под ваш процесс. "
                 : "I design and ship AI-powered systems for businesses — bots, CRMs and BI dashboards, automation, matching engines, websites. Built from scratch around your process. "}
@@ -678,7 +529,6 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <span className="tag">{language === "ru" ? "Автоматизация" : "Process Automation"}</span>
               <span className="tag">{language === "ru" ? "Сайты на заказ" : "Custom Websites"}</span>
             </div>
-          </div>
         </div>
       </section>
 
@@ -687,7 +537,6 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ SERVICES TEASER ══════════ */}
         <section className="section pb-reveal" id="services-teaser" style={{ background: C.bg2, borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`, margin: "0 -28px", padding: "72px 28px" }}>
-          <SectionNumber n="01" />
           <div style={{ maxWidth: 940, margin: "0 auto" }}>
             <div style={{ marginBottom: 32 }}>
               <div className="eyebrow">{language === "ru" ? "Услуги" : "Services"}</div>
@@ -751,27 +600,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   boxShadow: "0 0 40px rgba(200,169,110,0.06)",
                 }}
               >
-                {/* L-bracket corner ticks — cover-image motif. */}
-                <span aria-hidden="true" style={{ position: "absolute", top: 8, left: 8, width: 12, height: 12, borderTop: `1px solid ${C.gold}`, borderLeft: `1px solid ${C.gold}` }} />
-                <span aria-hidden="true" style={{ position: "absolute", bottom: 8, right: 8, width: 12, height: 12, borderBottom: `1px solid ${C.gold}`, borderRight: `1px solid ${C.gold}` }} />
-                <span
-                  style={{
-                    position: "absolute",
-                    top: 12,
-                    right: 12,
-                    fontFamily: "var(--font-inconsolata), monospace",
-                    fontWeight: 700,
-                    fontSize: 9,
-                    background: C.gold,
-                    color: C.bg,
-                    padding: "2px 8px",
-                    borderRadius: 4,
-                    letterSpacing: "0.12em",
-                  }}
-                >
-                  {language === "ru" ? "ФЛАГМАН" : "FLAGSHIP"}
-                </span>
-                <div style={{ fontFamily: "var(--font-fraunces), serif", fontWeight: 700, fontSize: 18, color: C.heading, marginBottom: 6, paddingRight: 90 }}>
+                <div style={{ fontFamily: "var(--font-fraunces), serif", fontWeight: 700, fontSize: 18, color: C.heading, marginBottom: 6 }}>
                   {language === "ru" ? "Turnkey: AI-бот + Кастомная CRM + BI" : "Turnkey: AI Bot + Custom CRM + BI"}
                 </div>
                 <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 13, color: C.text2, lineHeight: 1.6, marginBottom: 14 }}>
@@ -834,26 +663,11 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ MENTORSHIP ══════════ */}
         <section className="section pb-reveal" id="mentorship">
-          <SectionNumber n="02" />
           <div className="eyebrow">{language === "ru" ? "Менторство" : "Mentorship"}</div>
           <h2 className="sec-title">{language === "ru" ? "Капитал · Бизнес · AI и Автоматизация" : "Capital · Business · AI & Automation"}</h2>
           <p className="sec-sub">{language === "ru" ? "Индивидуальные сессии для предпринимателей и цифровых номадов" : "1-on-1 sessions for entrepreneurs and digital nomads"}</p>
 
-          <div className="mentor-card" onMouseMove={handleMentorMove}>
-            {/* Decorative gold rule top-right + 3 terminal dots — cover-image motif. */}
-            <span aria-hidden="true" style={{
-              position: "absolute", top: 0, right: 0, width: 120, height: 1,
-              background: `linear-gradient(270deg, rgba(200,169,110,0.67), transparent)`,
-              pointerEvents: "none",
-            }} />
-            <span aria-hidden="true" style={{
-              position: "absolute", top: 14, right: 14, display: "flex", gap: 5,
-              pointerEvents: "none", zIndex: 2,
-            }}>
-              <span style={{ width: 5, height: 5, borderRadius: "50%", background: C.gold, opacity: 0.7 }} />
-              <span style={{ width: 5, height: 5, borderRadius: "50%", background: C.gold, opacity: 0.5 }} />
-              <span style={{ width: 5, height: 5, borderRadius: "50%", background: C.gold, opacity: 0.3 }} />
-            </span>
+          <div className="mentor-card">
             <div className="mentor-card-inner">
               <div className="mentor-content">
                 <div className="mentor-title">{language === "ru" ? "Прокачайте своё преимущество" : "Accelerate Your Edge"}</div>
@@ -893,7 +707,6 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ PODCASTS & TALKS ══════════ */}
         <section className="section pb-reveal" id="media">
-          <SectionNumber n="03" />
           <div className="eyebrow">{language === "ru" ? "Медиа" : "Media"}</div>
           <h2 className="sec-title">{language === "ru" ? "Подкасты и выступления" : "Podcasts & Talks"}</h2>
           <p className="sec-sub">{language === "ru" ? "Разговоры про ReFi, impact-рынки и публичное строительство" : "Conversations on ReFi, impact markets, and building in public"}</p>
@@ -932,7 +745,6 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ WRITING ══════════ */}
         <section className="section pb-reveal" id="writing">
-          <SectionNumber n="04" />
           <div className="eyebrow">{language === "ru" ? "Статьи" : "Writing"}</div>
           <h2 className="sec-title">{language === "ru" ? "Статьи и заметки" : "Articles & Insights"}</h2>
           <p className="sec-sub">{language === "ru" ? "Про impact-рынки, health tech и публичное строительство" : "On impact markets, health tech, and building in public"}</p>
@@ -1001,7 +813,6 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ FOLLOW THE JOURNEY ══════════ */}
         <section className="section pb-reveal" id="follow">
-          <SectionNumber n="05" />
           <div className="eyebrow">{language === "ru" ? "Контакты" : "Connect"}</div>
           <h2 className="sec-title">{language === "ru" ? "Следить за журналом" : "Follow the Journey"}</h2>
           <p className="sec-sub">{language === "ru" ? "Выберите формат и язык" : "Choose your format and language"}</p>
@@ -1056,7 +867,6 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ PROJECTS ══════════ */}
         <section className="section pb-reveal" id="projects">
-          <SectionNumber n="06" />
           <div className="eyebrow">{language === "ru" ? "Проекты" : "Projects"}</div>
           <h2 className="sec-title">{language === "ru" ? "Что я строю" : "What I Build"}</h2>
           <p className="sec-sub">{language === "ru" ? "Стартапы и инициативы в impact, health и локальной инфраструктуре" : "Startups and initiatives across impact, health, and local infrastructure"}</p>
@@ -1124,7 +934,6 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ COMMUNITIES ══════════ */}
         <section className="section pb-reveal" id="communities" style={{ background: C.bg2, borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`, margin: "0 -28px", padding: "72px 28px" }}>
-          <SectionNumber n="07" />
           <div className="eyebrow">{language === "ru" ? "Сообщества" : "Communities"}</div>
           <h2 className="sec-title">{language === "ru" ? "Локальная Web3-экосистема" : "Local Web3 Ecosystem"}</h2>
           <p className="sec-sub">{language === "ru" ? "Регенеративная инфраструктура и децентрализованная координация на Ко Панган" : "Building regenerative infrastructure and decentralized coordination on Koh Phangan"}</p>
@@ -1163,7 +972,6 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ ABOUT ══════════ */}
         <section className="section pb-reveal" id="about">
-          <SectionNumber n="08" />
           <div className="eyebrow">{language === "ru" ? "О себе" : "About"}</div>
           <h2 className="sec-title">{language === "ru" ? "Кто я" : "Who I Am"}</h2>
           <div className="about-layout">

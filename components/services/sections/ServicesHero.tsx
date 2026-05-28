@@ -95,20 +95,7 @@ export default function ServicesHero() {
           >
             {t.h1a}
             <span style={{ color: "var(--c-gold)" }}>{t.h1gold}</span>
-            {h1bHead}<BurgMark weight={1.2}>{h1bTail}</BurgMark>
-            <span
-              className="pb-cursor-blink"
-              aria-hidden="true"
-              style={{
-                display: "inline-block",
-                width: 4,
-                height: 36,
-                marginLeft: 8,
-                background: "var(--c-gold)",
-                boxShadow: "0 0 14px rgba(200,169,110,0.5)",
-                verticalAlign: "middle",
-              }}
-            />
+            {h1bHead}<BurgMark>{h1bTail}</BurgMark>
           </motion.h1>
 
           {/* Subtitle */}

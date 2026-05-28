@@ -63,20 +63,7 @@ export default function Footer() {
                                 textDecoration: "none",
                             }}
                         >
-                            Paul <BurgMark weight={1.2}>Burg</BurgMark>
-                            <span
-                                className="pb-cursor-blink"
-                                aria-hidden="true"
-                                style={{
-                                    display: "inline-block",
-                                    width: 3,
-                                    height: 16,
-                                    marginLeft: 6,
-                                    background: "var(--c-gold)",
-                                    boxShadow: "0 0 14px rgba(200,169,110,0.5)",
-                                    verticalAlign: "middle",
-                                }}
-                            />
+                            Paul <BurgMark>Burg</BurgMark>
                         </Link>
 
                         <p

@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 export default function MentorshipTestimonial() {
     return (
         <section className="pb-reveal" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
-            <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 03</span>
             <div className="container-custom max-w-3xl">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

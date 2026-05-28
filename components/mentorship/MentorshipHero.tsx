@@ -38,20 +38,7 @@ export default function MentorshipHero() {
                             color: "var(--c-heading)",
                         }}
                     >
-                        {h1Head}<BurgMark weight={1.2}>{h1Tail}</BurgMark>
-                        <span
-                            className="pb-cursor-blink"
-                            aria-hidden="true"
-                            style={{
-                                display: "inline-block",
-                                width: 5,
-                                height: 48,
-                                marginLeft: 10,
-                                background: "var(--c-gold)",
-                                boxShadow: "0 0 14px rgba(200,169,110,0.5)",
-                                verticalAlign: "middle",
-                            }}
-                        />
+                        {h1Head}<BurgMark>{h1Tail}</BurgMark>
                     </h1>
 
                     <p

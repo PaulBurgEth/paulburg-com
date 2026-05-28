@@ -18,7 +18,6 @@ export default function MentorshipCTA() {
             className="scroll-mt-20 pb-reveal"
             style={{ background: "var(--c-bg2)", padding: "72px 0", borderTop: "1px solid var(--c-border)", position: "relative" }}
         >
-            <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 06</span>
             <div className="container-custom text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
