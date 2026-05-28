@@ -29,15 +29,12 @@ export default function Footer() {
     };
 
     const eyebrowStyle: React.CSSProperties = {
-        fontFamily: "var(--font-inconsolata), monospace",
+        fontFamily: "var(--font-instrument-sans), sans-serif",
         fontSize: 11,
-        letterSpacing: "0.16em",
+        letterSpacing: "0.08em",
         textTransform: "uppercase",
-        color: "var(--c-text2)",
+        color: "var(--c-muted)",
         marginBottom: 14,
-        display: "flex",
-        alignItems: "center",
-        gap: 10,
     };
 
     return (
@@ -94,7 +91,6 @@ export default function Footer() {
                     {/* Middle — Pages */}
                     <div>
                         <div style={eyebrowStyle} aria-hidden="true">
-                            <span style={{ width: 24, height: 1, background: "var(--c-gold)", display: "inline-block" }} />
                             {t.pagesHeading}
                         </div>
                         <ul className="flex flex-col gap-2">
@@ -124,7 +120,6 @@ export default function Footer() {
                     {/* Right — Connect */}
                     <div>
                         <div style={eyebrowStyle} aria-hidden="true">
-                            <span style={{ width: 24, height: 1, background: "var(--c-gold)", display: "inline-block" }} />
                             {t.connectHeading}
                         </div>
                         <ul className="flex flex-col gap-2">

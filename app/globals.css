@@ -494,29 +494,13 @@ button:focus-visible {
   border-top: 1px solid var(--c-border);
 }
 
-/* Section eyebrow — two-part: hairline + label on left, § NN on top-right. */
+/* Section eyebrow — small uppercase label, no decoration. */
 .pb-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--font-inconsolata), monospace;
+  font-family: var(--font-instrument-sans), sans-serif;
   font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--c-text2);
-}
-.pb-eyebrow::before {
-  content: "";
-  display: inline-block;
-  width: 32px;
-  height: 1px;
-  background: var(--c-gold);
-}
-.pb-section-number {
-  font-family: var(--font-inconsolata), monospace;
-  font-size: 11px;
-  letter-spacing: 0.16em;
   color: var(--c-muted);
 }
 

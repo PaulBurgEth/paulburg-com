@@ -32,16 +32,12 @@ export default function MentorshipFormats() {
                     <div style={{
                         fontFamily: "var(--font-inconsolata), monospace",
                         fontSize: 10,
-                        letterSpacing: "0.22em",
+                        letterSpacing: "0.08em",
                         textTransform: "uppercase",
-                        color: "var(--c-gold)",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 14,
+                        color: "var(--c-muted)",
                         marginBottom: 10,
                     }}>
                         {language === "ru" ? "Форматы" : "Formats"}
-                        <span style={{ flex: 1, height: 1, background: "var(--c-border)", display: "block" }} />
                     </div>
 
                     <h2

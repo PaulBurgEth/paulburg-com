@@ -13,7 +13,7 @@ export default function MentorshipTestimonial() {
                     transition={{ duration: 0.6 }}
                     className="flex flex-col items-center text-center"
                 >
-                    <div style={{ width: 48, height: 1, background: "var(--c-gold)", marginBottom: 32 }} />
+                    <div style={{ width: 48, height: 1, background: "var(--c-border2)", marginBottom: 32 }} />
 
                     <blockquote
                         className="leading-relaxed mb-8"
@@ -27,7 +27,7 @@ export default function MentorshipTestimonial() {
                         &ldquo;I experienced Pavel as a highly driven and efficient individual. A joyful character, always willing to help, cogitate, and carry out on ideas.&rdquo;
                     </blockquote>
 
-                    <div style={{ width: 48, height: 1, background: "var(--c-gold)", marginBottom: 24 }} />
+                    <div style={{ width: 48, height: 1, background: "var(--c-border2)", marginBottom: 24 }} />
 
                     <p
                         style={{

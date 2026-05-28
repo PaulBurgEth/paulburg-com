@@ -29,9 +29,9 @@ export default function MentorshipCTA() {
                     <div style={{
                         fontFamily: "var(--font-inconsolata), monospace",
                         fontSize: 10,
-                        letterSpacing: "0.22em",
+                        letterSpacing: "0.08em",
                         textTransform: "uppercase",
-                        color: "var(--c-gold)",
+                        color: "var(--c-muted)",
                         marginBottom: 16,
                     }}>
                         {language === "ru" ? "Начать" : "Get Started"}

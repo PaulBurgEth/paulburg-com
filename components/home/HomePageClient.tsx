@@ -140,12 +140,10 @@ body{
 /* ── SECTION ── */
 .section{padding:72px 0;position:relative}
 .eyebrow{
-  font-family:var(--font-inconsolata),monospace;
-  font-size:11px;letter-spacing:0.22em;text-transform:uppercase;
-  color:${C.gold};margin-bottom:14px;
-  display:flex;align-items:center;gap:14px;
+  font-family:var(--font-instrument-sans),sans-serif;
+  font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+  color:${C.muted};margin-bottom:14px;
 }
-.eyebrow::before{content:'';width:32px;height:1px;background:${C.gold};opacity:0.6}
 .sec-title{
   font-family:var(--font-fraunces),serif;
   font-size:clamp(26px,4vw,38px);font-weight:700;
@@ -266,12 +264,11 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 
 /* ── PROJECTS ── */
 .cat-head{
-  display:flex;align-items:center;gap:10px;
   margin-bottom:13px;margin-top:36px;
-  font-family:var(--font-inconsolata),monospace;
-  font-size:9px;letter-spacing:0.2em;text-transform:uppercase;
+  font-family:var(--font-instrument-sans),sans-serif;
+  font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+  color:${C.muted};
 }
-.cat-tick{width:2px;height:14px;border-radius:2px;flex-shrink:0}
 .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
 @media(max-width:500px){.proj-grid{grid-template-columns:1fr}}
 .proj-card{
@@ -871,10 +868,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
           <h2 className="sec-title">{language === "ru" ? "Что я строю" : "What I Build"}</h2>
           <p className="sec-sub">{language === "ru" ? "Стартапы и инициативы в impact, health и локальной инфраструктуре" : "Startups and initiatives across impact, health, and local infrastructure"}</p>
 
-          <div className="cat-head">
-            <div className="cat-tick" style={{ background: C.sage }} />
-            <span style={{ color: C.sage }}>01 — Impact & Public Goods Ecosystem</span>
-          </div>
+          <div className="cat-head">01 — Impact & Public Goods Ecosystem</div>
           <div className="proj-grid">
             {projects.impact.map((p, i) => (
               <a key={i} className="proj-card" href={p.url} target="_blank" rel="noopener noreferrer">
@@ -887,10 +881,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             ))}
           </div>
 
-          <div className="cat-head">
-            <div className="cat-tick" style={{ background: "var(--c-sage)" }} />
-            <span style={{ color: "var(--c-sage)" }}>02 — NGO Impact Products · Proof of Concept</span>
-          </div>
+          <div className="cat-head">02 — NGO Impact Products · Proof of Concept</div>
           <div className="proj-grid">
             {projects.ngo.map((p, i) => (
               <a key={i} className="proj-card" href={p.url} target="_blank" rel="noopener noreferrer">
@@ -901,10 +892,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             ))}
           </div>
 
-          <div className="cat-head">
-            <div className="cat-tick" style={{ background: C.gold }} />
-            <span style={{ color: C.gold }}>03 — Phangan Ecosystem · Local Infrastructure & AI Tools</span>
-          </div>
+          <div className="cat-head">03 — Phangan Ecosystem · Local Infrastructure & AI Tools</div>
           <div className="proj-grid">
             {projects.phangan.map((p, i) => (
               <a key={i} className="proj-card" href={p.url} target="_blank" rel="noopener noreferrer">
@@ -915,10 +903,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             ))}
           </div>
 
-          <div className="cat-head">
-            <div className="cat-tick" style={{ background: C.violet }} />
-            <span style={{ color: C.violet }}>04 — Health & Privacy Technology</span>
-          </div>
+          <div className="cat-head">04 — Health & Privacy Technology</div>
           <div className="proj-grid" style={{ gridTemplateColumns: "1fr" }}>
             {projects.health.map((p, i) => (
               <a key={i} className="proj-card" href={p.url} target="_blank" rel="noopener noreferrer">
@@ -948,10 +933,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             ))}
           </div>
 
-          <div className="cat-head">
-            <div className="cat-tick" style={{ background: C.gold }} />
-            <span style={{ color: C.gold }}>{language === "ru" ? "События и встречи" : "Events & Gatherings"}</span>
-          </div>
+          <div className="cat-head">{language === "ru" ? "События и встречи" : "Events & Gatherings"}</div>
           <div className="proj-grid">
             {communityEvents.map((e, i) => (
               <a key={i} className="proj-card" href={e.url} target="_blank" rel="noopener noreferrer">
