@@ -74,12 +74,11 @@ body::after{
 .hero-inner{position:relative}
 .hero-kicker{
   font-family:var(--font-inconsolata),monospace;
-  font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+  font-size:11px;letter-spacing:0.14em;text-transform:uppercase;
   color:${C.gold};margin-bottom:24px;
   display:flex;align-items:center;gap:12px;flex-wrap:wrap;
 }
 .hero-kicker::before{content:'';width:32px;height:1px;background:${C.gold};opacity:0.6}
-.hero-kicker-coord{color:${C.muted};letter-spacing:0.12em;font-size:10px;margin-left:4px}
 .hero-name{
   font-family:var(--font-fraunces),serif;
   font-feature-settings:"ss01","liga","kern";
@@ -96,6 +95,11 @@ body::after{
   color:transparent;
   -webkit-text-stroke:1.5px rgba(200,169,110,0.7);
 }
+.hero-dot{
+  display:inline-block;width:16px;height:16px;border-radius:50%;
+  background:${C.gold};margin-left:16px;vertical-align:baseline;
+  box-shadow:0 0 18px rgba(200,169,110,0.45);
+}
 .hero-roles{
   font-family:var(--font-inconsolata),monospace;
   font-size:12px;letter-spacing:0.12em;
@@ -108,14 +112,13 @@ body::after{
 .hero-role-sep{color:${C.muted};opacity:0.6}
 .hero-desc{
   font-family:var(--font-newsreader),serif;
-  font-style:italic;
-  font-size:18px;color:var(--c-body-lede);
-  max-width:480px;line-height:1.75;
+  font-size:20px;color:var(--c-body-lede);
+  max-width:540px;line-height:1.6;
   margin-bottom:36px;
 }
 .hero-desc strong{
-  color:${C.text};font-weight:500;
-  font-style:normal;
+  color:${C.heading};font-weight:600;
+  font-style:italic;
   font-family:var(--font-newsreader),serif;
 }
 
@@ -212,7 +215,7 @@ body::after{
 @media(max-width:600px){.section-number{display:none}}
 .eyebrow{
   font-family:var(--font-inconsolata),monospace;
-  font-size:11px;letter-spacing:0.22em;text-transform:uppercase;
+  font-size:11px;letter-spacing:0.14em;text-transform:uppercase;
   color:${C.gold};margin-bottom:14px;
   display:flex;align-items:center;gap:14px;
 }
@@ -222,7 +225,7 @@ body::after{
   font-size:clamp(26px,4vw,38px);font-weight:700;
   color:${C.heading};margin-bottom:6px;letter-spacing:-0.01em;
 }
-.sec-sub{font-size:13px;color:var(--c-body);margin-bottom:36px}
+.sec-sub{font-size:15px;color:var(--c-body);line-height:1.6;max-width:560px;margin-bottom:36px}
 hr.div{border:none;border-top:1px solid ${C.border}}
 
 /* ── PODCAST CARDS ── */
@@ -562,25 +565,6 @@ function SectionNumber({ n }: { n: string }) {
   return <span aria-hidden="true" className="section-number">§ {n}</span>;
 }
 
-/** GoldCursor — solid gold bar with glow, optionally blinking. Used in hero + footer brand. */
-function GoldCursor({ h = 56, w = 4, blink = false, style }: { h?: number; w?: number; blink?: boolean; style?: React.CSSProperties }) {
-  return (
-    <span
-      aria-hidden="true"
-      className={blink ? "pb-cursor-blink" : undefined}
-      style={{
-        display: "inline-block",
-        width: w,
-        height: h,
-        background: C.gold,
-        boxShadow: `0 0 14px rgba(200,169,110,0.5)`,
-        verticalAlign: "middle",
-        ...style,
-      }}
-    />
-  );
-}
-
 export default function HomePageClient({ latestPosts }: HomePageClientProps) {
   const { language } = useLanguage();
   const { open: openIntake } = useIntakeModal();
@@ -633,14 +617,13 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
           <div className="pb-stage" data-visible={stage >= 1 ? "1" : "0"}>
             <div className="hero-kicker">
               <span>{language === "ru" ? "Сейчас в Да Нанге, Вьетнам" : "Currently in Da Nang, Vietnam"}</span>
-              <span aria-hidden="true" className="hero-kicker-coord">· 16°N 108°E</span>
             </div>
           </div>
           <div className="pb-stage" data-visible={stage >= 2 ? "1" : "0"}>
             <h1 className="hero-name">
               Paul<br />
               <em>Burg</em>
-              <GoldCursor h={68} w={5} blink style={{ marginLeft: 12, verticalAlign: "baseline", transform: "translateY(8px)" }} />
+              <span aria-hidden="true" className="hero-dot" />
             </h1>
           </div>
           <div className="pb-stage" data-visible={stage >= 3 ? "1" : "0"}>
@@ -721,8 +704,8 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     <div style={{ width: 32, height: 32, background: C.goldDim, border: "1px solid rgba(200,169,110,0.22)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
                       <Icon size={15} color={C.gold} />
                     </div>
-                    <div style={{ fontFamily: "var(--font-fraunces), serif", fontWeight: 700, fontSize: 14, color: C.text, marginBottom: 6 }}>{card.title}</div>
-                    <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 12, color: C.text2, lineHeight: 1.6, marginBottom: 10 }}>{card.desc}</p>
+                    <div style={{ fontFamily: "var(--font-fraunces), serif", fontWeight: 700, fontSize: 15, color: C.text, marginBottom: 6 }}>{card.title}</div>
+                    <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 14, color: C.text2, lineHeight: 1.6, marginBottom: 10 }}>{card.desc}</p>
                     <span style={{ fontFamily: "var(--font-inconsolata), monospace", fontWeight: 700, fontSize: 12, color: C.gold }}>{card.price}</span>
                   </motion.div>
                 );
