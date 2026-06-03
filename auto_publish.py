@@ -159,6 +159,10 @@ def sanitize_mdx(text):
     text = re.sub(r'(\s)>(\d)', r'\1&gt;\2', text)
     # Strip leading H1 — frontmatter title is already shown in page header
     text = re.sub(r'^\s*# [^\n]+\n+', '', text)
+    # Strip editorial author-notes in the sources/footnotes block (not for publication)
+    text = re.sub(r'(?im)^(use|использование)\s*:.*$\n?', '', text)
+    # Collapse any runs of 3+ blank lines left behind into a single blank line
+    text = re.sub(r'\n{3,}', '\n\n', text)
     return text
 
 def build_mdx(title, date_str, tags, excerpt, content):
