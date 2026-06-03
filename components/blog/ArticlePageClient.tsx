@@ -30,6 +30,7 @@ interface Props {
   lang: "en" | "ru";
   frontmatter: Frontmatter;
   toc?: TocItem[];
+  sources?: ReactNode;
   children: ReactNode;
 }
 
@@ -59,6 +60,7 @@ export default function ArticlePageClient({
   lang,
   frontmatter,
   toc,
+  sources,
   children,
 }: Props) {
   const { language } = useLanguage();
@@ -238,7 +240,7 @@ export default function ArticlePageClient({
         )}
 
         {/* Article body */}
-        <section style={{ paddingBottom: 80, background: "var(--c-bg)" }}>
+        <section style={{ paddingBottom: sources ? 40 : 80, background: "var(--c-bg)" }}>
           <div
             className="container-custom prose-blog"
             style={{ maxWidth: 680 }}
@@ -246,6 +248,15 @@ export default function ArticlePageClient({
             {children}
           </div>
         </section>
+
+        {/* Sources */}
+        {sources && (
+          <section style={{ paddingBottom: 80, background: "var(--c-bg)" }}>
+            <div className="container-custom article-sources" style={{ maxWidth: 680 }}>
+              {sources}
+            </div>
+          </section>
+        )}
 
         {/* Bottom CTA */}
         <section style={{ paddingBottom: 80, background: "var(--c-bg)" }}>
@@ -523,6 +534,47 @@ export default function ArticlePageClient({
           .prose-blog > p:first-of-type::first-letter { font-size: 60px; padding: 4px 10px 0 0; }
           .prose-blog h2 { font-size: 24px; margin-top: 44px; }
           .prose-blog blockquote { font-size: 22px; }
+        }
+
+        .article-sources {
+          padding-top: 32px;
+          border-top: 1px solid var(--c-border);
+        }
+        .article-sources h2,
+        .article-sources h3 {
+          font-family: var(--font-inconsolata), monospace;
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: var(--c-muted);
+          margin: 0 0 24px;
+        }
+        .article-sources p {
+          font-family: var(--font-instrument-sans), sans-serif;
+          font-size: 13px;
+          line-height: 1.6;
+          color: var(--c-body);
+          margin: 0 0 12px;
+        }
+        .article-sources a {
+          color: var(--c-gold);
+          text-decoration: none;
+          word-break: break-word;
+        }
+        .article-sources a:hover {
+          text-decoration: underline;
+        }
+        .article-sources ol,
+        .article-sources ul {
+          padding-left: 20px;
+          margin: 0 0 12px;
+        }
+        .article-sources li {
+          font-size: 13px;
+          line-height: 1.6;
+          color: var(--c-body);
+          margin-bottom: 8px;
         }
       `}</style>
 
