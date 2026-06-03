@@ -161,6 +161,13 @@ def sanitize_mdx(text):
     text = re.sub(r'^\s*# [^\n]+\n+', '', text)
     # Strip editorial author-notes in the sources/footnotes block (not for publication)
     text = re.sub(r'(?im)^(use|использование)\s*:.*$\n?', '', text)
+    # Detach a sources label that the docx converter glued onto the prior sentence
+    # (e.g. "...you're already in one.Sources" -> heading on its own line)
+    text = re.sub(r'(?m)([.!?…])(Sources|Footnotes|References)[ \t]*$', r'\1\n\n## Sources', text)
+    text = re.sub(r'(?m)([.!?…])(Источники|Сноски)[ \t]*$', r'\1\n\n## Источники', text)
+    # Normalize the sources-section heading to a canonical form, per language
+    text = re.sub(r'(?im)^[ \t]*#{0,3}[ \t]*(?:sources and research basis|sources|footnotes|references)[ \t]*$', '## Sources', text)
+    text = re.sub(r'(?im)^[ \t]*#{0,3}[ \t]*(?:источники и исследовательская база|источники|сноски)[ \t]*$', '## Источники', text)
     # Collapse any runs of 3+ blank lines left behind into a single blank line
     text = re.sub(r'\n{3,}', '\n\n', text)
     return text

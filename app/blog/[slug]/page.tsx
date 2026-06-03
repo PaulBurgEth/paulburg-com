@@ -63,6 +63,34 @@ function makeHeading(level: 2 | 3) {
   };
 }
 
+// Split off the trailing Sources/Footnotes/References/Источники section so it
+// can be rendered in its own styled block.
+// Note: no \b after the keyword — \b is ASCII-only in JS regex and fails after
+// Cyrillic "источники". Headings are normalized to exactly these words.
+const SOURCES_HEADING =
+  /^#{1,3}[ \t]+(?:sources|footnotes|references|источники)[ \t]*$/im;
+
+function splitSources(content: string): { body: string; sources: string | null } {
+  const m = content.match(SOURCES_HEADING);
+  if (m?.index == null) return { body: content, sources: null };
+  return {
+    body: content.slice(0, m.index).trimEnd(),
+    sources: content.slice(m.index),
+  };
+}
+
+// Prepare the sources block for rendering: put each [N] reference on its own
+// line (some articles inline the whole list in one paragraph) and make bare
+// URLs clickable (no remark-gfm in the pipeline).
+function formatSources(md: string): string {
+  // Break before an inline " [N] " marker (space-prefixed) so each reference
+  // starts a new paragraph. Refs already at line-start are unaffected.
+  md = md.replace(/ (\[\d+\]) /g, "\n\n$1 ");
+  // Linkify bare URLs not already inside markdown link syntax.
+  md = md.replace(/(?<![([\]])\bhttps?:\/\/[^\s<>)\]]+/g, (url) => `[${url}](${url})`);
+  return md;
+}
+
 export default async function ArticlePage({
   params,
   searchParams,
@@ -76,15 +104,32 @@ export default async function ArticlePage({
 
   try {
     const { content, frontmatter } = await getPostBySlug(slug, lang);
-    const toc = extractToc(content);
+    const { body, sources } = splitSources(content);
+    const toc = extractToc(body);
     const { content: mdxContent } = await compileMDX({
-      source: content,
+      source: body,
       options: { parseFrontmatter: false },
       components: { h2: makeHeading(2), h3: makeHeading(3) },
     });
 
+    let sourcesContent = null;
+    if (sources) {
+      const compiled = await compileMDX({
+        source: formatSources(sources),
+        options: { parseFrontmatter: false },
+        components: { h2: makeHeading(2), h3: makeHeading(3) },
+      });
+      sourcesContent = compiled.content;
+    }
+
     return (
-      <ArticlePageClient slug={slug} lang={lang} frontmatter={frontmatter} toc={toc}>
+      <ArticlePageClient
+        slug={slug}
+        lang={lang}
+        frontmatter={frontmatter}
+        toc={toc}
+        sources={sourcesContent}
+      >
         {mdxContent}
       </ArticlePageClient>
     );
