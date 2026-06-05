@@ -47,7 +47,7 @@ const sourceSerif = Source_Serif_4({
 });
 
 const SEO_DESCRIPTION =
-  "I build custom AI systems for businesses: chatbots, CRMs and BI dashboards, manager dashboards, matching engines, process automation, and web platforms. Ready in days, built around your process.";
+  "I build custom AI systems for business: chatbots, CRMs, BI and manager dashboards, matching engines, and process automation. Ready in days.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://paulburg.com"),
