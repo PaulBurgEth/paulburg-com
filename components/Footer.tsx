@@ -8,6 +8,13 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const linkRowClass = "flex items-center gap-2 text-sm transition-colors";
 
+// Email assembled at click time so the literal mailto never reaches the
+// server-rendered HTML. This stops Cloudflare Email Obfuscation from rewriting
+// it into a /cdn-cgi/l/email-protection link (which 404s and made Ahrefs flag
+// "page links to broken page" across every footer-bearing page).
+const EMAIL_USER = "office";
+const EMAIL_DOMAIN = "paulburg.com";
+
 export default function Footer() {
     const { language } = useLanguage();
     const currentYear = new Date().getFullYear();
@@ -202,14 +209,24 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link
-                                    href="mailto:office@paulburg.com"
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        window.location.href = `mailto:${EMAIL_USER}@${EMAIL_DOMAIN}`;
+                                    }}
                                     className={linkRowClass}
-                                    style={{ color: "var(--c-text2)" }}
+                                    style={{
+                                        color: "var(--c-text2)",
+                                        background: "none",
+                                        border: "none",
+                                        padding: 0,
+                                        font: "inherit",
+                                        cursor: "pointer",
+                                    }}
                                 >
                                     <Mail size={14} />
                                     <span>Email</span>
-                                </Link>
+                                </button>
                             </li>
                         </ul>
                     </div>
