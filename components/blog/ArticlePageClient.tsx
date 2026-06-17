@@ -524,6 +524,43 @@ export default function ArticlePageClient({
           margin: 32px 0;
         }
 
+        .prose-blog table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 32px 0;
+          font-size: 14px;
+          font-family: var(--font-instrument-sans), sans-serif;
+        }
+        .prose-blog table th,
+        .prose-blog table td {
+          border: 1px solid var(--c-border);
+          padding: 10px 12px;
+          text-align: left;
+          vertical-align: top;
+          line-height: 1.45;
+        }
+        .prose-blog table th {
+          font-family: var(--font-inconsolata), monospace;
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: var(--c-gold);
+          background: var(--c-card);
+        }
+        .prose-blog table td:first-child {
+          color: var(--c-heading);
+          font-weight: 600;
+        }
+        .prose-blog table tbody tr:nth-child(even) {
+          background: var(--c-card);
+        }
+        @media (max-width: 640px) {
+          .prose-blog table { font-size: 12px; }
+          .prose-blog table th,
+          .prose-blog table td { padding: 7px 8px; }
+        }
+
         :root:not(.dark) .prose-blog > p:first-of-type::first-letter {
           color: #8a6432;
         }
