@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inconsolata, Instrument_Sans, Newsreader, Fraunces, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
@@ -73,9 +74,6 @@ export const metadata: Metadata = {
     icon: "/favicon.png",
     apple: "/apple-icon.png",
   },
-  alternates: {
-    canonical: "https://paulburg.com",
-  },
   robots: {
     index: true,
     follow: true,
@@ -133,6 +131,16 @@ export default function RootLayout({
             }),
           }}
         />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-K8D4TS6Q7B"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-K8D4TS6Q7B');`}
+        </Script>
       </body>
     </html>
   );

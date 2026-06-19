@@ -29,6 +29,9 @@ export async function generateMetadata({
     return {
       title: `${frontmatter.title} | Paul Burg`,
       description: frontmatter.excerpt,
+      alternates: {
+        canonical: `https://paulburg.com/blog/${slug}`,
+      },
     };
   } catch {
     return { title: "Blog | Paul Burg" };

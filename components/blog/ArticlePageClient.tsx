@@ -71,7 +71,7 @@ export default function ArticlePageClient({
   // Sync language context with URL param
   useEffect(() => {
     if (language !== lang) {
-      router.replace(`/blog/${slug}?lang=${language}`);
+      router.replace(language === "ru" ? `/blog/${slug}?lang=ru` : `/blog/${slug}`);
     }
   }, [language, lang, slug, router]);
 

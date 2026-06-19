@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Mentorship for Business, Capital, and AI — Paul Burg",
   description:
     "Individual mentorship in business strategy, capital management, and working with AI effectively. $50/hour. Free 15-min intro call.",
+  alternates: {
+    canonical: "https://paulburg.com/mentorship",
+  },
   openGraph: {
     title: "Mentorship for Business, Capital, and AI — Paul Burg",
     description:
