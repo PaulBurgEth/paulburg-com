@@ -7,6 +7,9 @@ const SERVICES_DESCRIPTION =
 export const metadata: Metadata = {
   title: "AI Systems & Automation — Paul Burg",
   description: SERVICES_DESCRIPTION,
+  alternates: {
+    canonical: "https://paulburg.com/services",
+  },
   openGraph: {
     title: "AI Systems & Automation — Paul Burg",
     description: SERVICES_DESCRIPTION,

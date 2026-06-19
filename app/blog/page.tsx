@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Blog — Paul Burg",
   description:
     "Thoughts on AI-assisted development, business, and building systems.",
+  alternates: {
+    canonical: "https://paulburg.com/blog",
+  },
 };
 
 export default function BlogPage() {

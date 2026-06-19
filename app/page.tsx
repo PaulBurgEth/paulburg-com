@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Paul Burg — AI Systems for Business",
   description:
     "Custom AI chatbots, CRMs, BI and manager dashboards, matching engines, and process automation, built from scratch around your process. Ready in days.",
+  alternates: {
+    canonical: "https://paulburg.com",
+  },
 };
 
 export default function Page() {
