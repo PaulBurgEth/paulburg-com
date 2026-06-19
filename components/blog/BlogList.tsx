@@ -33,7 +33,7 @@ export default function BlogList({ posts, lang }: Props) {
           whileHover={{ y: -3, boxShadow: "0 10px 36px rgba(0,0,0,0.3)" }}
         >
           <Link
-            href={`/blog/${post.slug}?lang=${lang}`}
+            href={lang === "ru" ? `/blog/${post.slug}?lang=ru` : `/blog/${post.slug}`}
             style={{ textDecoration: "none" }}
           >
             <div
