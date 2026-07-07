@@ -5,7 +5,12 @@ Reads EN+RU article pairs from articles/ and writes MDX to content/posts/
 (or content/drafts/ with --draft). Handoff docs (files starting with a ═══
 divider) are auto-extracted: body + sources are kept, all editorial scaffolding
 (SEO block, working notes, changelog, "VERIFIED"/"NEEDS PAUL" markers) is dropped.
-Source .md/.docx files are never modified.
+Sources keep bibliography only: grant ledgers / project-structure working
+materials are filtered out. Source .md/.docx files are never modified.
+
+Metadata comes from a sidecar articles/<base>.seo.json (preferred) or the
+handoff SEO block; if neither exists the script exits — it never invents
+titles/excerpts (no LLM calls).
 
 Usage:
   python3 auto_publish.py                      # all pairs, interactive
@@ -16,12 +21,10 @@ Usage:
 import os, re, sys, json, time, argparse
 from pathlib import Path
 
-DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
 INPUT_DIR    = "/Users/paulburg/Vibe_coding/PaulBurg.com/articles"
 POSTS_DIR    = "/Users/paulburg/Vibe_coding/PaulBurg.com/content/posts"
 DRAFTS_DIR   = "/Users/paulburg/Vibe_coding/PaulBurg.com/content/drafts"
 DEFAULT_TAG  = "AI"
-EXCERPT_CHARS = 800
 
 HANDOFF_MARK = "═"
 # Section headings that mark the end of the article body / start of editorial scaffolding.
@@ -101,20 +104,6 @@ def read_full(filepath, lang):
             body, _seo, _date = extract_handoff(text, lang)
             return body
         return text
-
-
-def read_opening(filepath, max_chars=EXCERPT_CHARS):
-    ext = Path(filepath).suffix.lower()
-    if ext == ".docx":
-        from docx import Document
-        doc = Document(filepath)
-        return "\n".join(p.text for p in doc.paragraphs if p.text.strip())[:max_chars]
-    if ext == ".doc":
-        import mammoth
-        with open(filepath, "rb") as f:
-            return mammoth.extract_raw_text(f).value[:max_chars]
-    if ext == ".md":
-        return Path(filepath).read_text(encoding="utf-8")[:max_chars]
 
 
 # ─── handoff extraction ───────────────────────────────────────────────────
@@ -202,6 +191,10 @@ EDIT_PAREN_RE = re.compile(
     r"|for the record|pending clarification|screenshots from paul|kept here)"
     r"[^()]*)\)", re.I)
 EDIT_TAIL_RE = re.compile(r"\s*(?:VERIFIED|NEEDS PAUL|Spot-check)[^.\n]*\.?", re.I)
+# working materials (grant ledgers, project structure, pilot notes) — bibliography only
+WORKING_MATERIAL_RE = re.compile(
+    r"karmahq|grants? ledger|paul'?s own projects|проекты и гранты"
+    r"|пилоты:|regenbazaar\.com|уточняется у пола", re.I)
 
 
 def _clean_sources(text):
@@ -211,11 +204,14 @@ def _clean_sources(text):
     text = EDIT_PAREN_RE.sub("", text)
     # drop trailing editorial status clauses (e.g. "... VERIFIED previous rounds.")
     text = EDIT_TAIL_RE.sub("", text)
-    # drop standalone parenthetical lines that are editorial status notes
     out = []
     for ln in text.split("\n"):
         s = ln.strip()
+        # standalone parenthetical lines that are editorial status notes
         if s.startswith("(") and s.endswith(")") and EDIT_KW_RE.search(s):
+            continue
+        # working-material entries never publish
+        if WORKING_MATERIAL_RE.search(s):
             continue
         out.append(ln)
     return "\n".join(out)
@@ -266,40 +262,6 @@ def load_sidecar_seo(en_filepath):
         print("  Using sidecar SEO file: " + seo_path.name)
         return json.loads(seo_path.read_text(encoding="utf-8"))
     return None
-
-
-def extract_metadata(opening_en, opening_ru, base_name):
-    slug = re.sub(r"[^a-z0-9]+", "-", base_name.lower()).strip("-")
-    fallback = {
-        "slug": slug,
-        "title_en": base_name.replace("-", " ").replace("_", " ").title(),
-        "title_ru": base_name.replace("-", " ").replace("_", " ").title(),
-        "excerpt_en": "Article on paulburg.com",
-        "excerpt_ru": "Article on paulburg.com",
-        "tags": [DEFAULT_TAG],
-    }
-    if not DEEPSEEK_API_KEY:
-        print("  WARNING: DEEPSEEK_API_KEY not set, using filename fallback")
-        return fallback
-    try:
-        import requests
-        prompt = (
-            "Extract metadata from these article openings. Return ONLY a JSON object.\n\n"
-            "English:\n" + opening_en + "\n\nRussian:\n" + opening_ru + "\n\n"
-            '{"slug":"' + slug + '","title_en":"","title_ru":"","excerpt_en":"",'
-            '"excerpt_ru":"","tags":["tag1","tag2","tag3"]}\n'
-            "excerpt: max 155 chars. tags: 2-4 short English tags. Return ONLY JSON.")
-        r = requests.post("https://api.deepseek.com/v1/chat/completions",
-            headers={"Authorization": "Bearer " + DEEPSEEK_API_KEY,
-                     "Content-Type": "application/json"},
-            json={"model": "deepseek-chat", "messages": [{"role": "user", "content": prompt}],
-                  "max_tokens": 400, "temperature": 0.1}, timeout=30)
-        r.raise_for_status()
-        raw = re.sub(r"^```json\s*|^```\s*|\s*```$", "", r.json()["choices"][0]["message"]["content"].strip())
-        return json.loads(raw)
-    except Exception as e:
-        print("  WARNING: DeepSeek failed (" + str(e) + "), using fallback")
-        return fallback
 
 
 # ─── mdx build ────────────────────────────────────────────────────────────
@@ -354,12 +316,13 @@ def main():
         print("No EN+RU pairs found."); sys.exit(0)
     print("Found " + str(len(pairs)) + " pair(s): " + str([p["base"] for p in pairs]) + "\n")
 
+    failed = False
     for i, pair in enumerate(pairs, 1):
         base = pair["base"]
         print("[" + str(i) + "/" + str(len(pairs)) + "] " + base)
         meta = load_sidecar_seo(pair["en"])
         if meta is None:
-            # try handoff SEO, then DeepSeek
+            # fall back to the handoff SEO block; otherwise demand a sidecar
             en_text = Path(pair["en"]).read_text(encoding="utf-8") if pair["en"].endswith(".md") else ""
             ru_text = Path(pair["ru"]).read_text(encoding="utf-8") if pair["ru"].endswith(".md") else ""
             if en_text.lstrip().startswith(HANDOFF_MARK):
@@ -371,7 +334,11 @@ def main():
                         "tags": [DEFAULT_TAG]}
                 print("  Using handoff SEO block")
             else:
-                meta = extract_metadata(read_opening(pair["en"]), read_opening(pair["ru"]), base)
+                # No metadata source: never invent titles/excerpts — demand a sidecar.
+                print("  ERROR: no metadata for '" + base + "'. Create articles/"
+                      + base + ".seo.json (slug, title_en/ru, excerpt_en/ru, tags[, date]) and rerun.")
+                failed = True
+                continue
 
         slug = meta["slug"]
         out_dir = Path(out_root) / slug
@@ -408,6 +375,9 @@ def main():
             build_mdx(meta["title_ru"], doc_date, tags, meta["excerpt_ru"], content_ru), encoding="utf-8")
         print("  ✓ " + str(out_dir))
 
+    if failed:
+        print("\n✗ Some pairs had no metadata (see ERRORs above).")
+        sys.exit(1)
     print("\n✓ Done.")
 
 
