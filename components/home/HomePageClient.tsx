@@ -63,13 +63,13 @@ body::after{
     radial-gradient(ellipse 50% 50% at 80% 100%, rgba(122,171,143,0.04) 0%, transparent 55%);
 }
 
-.wrap{position:relative;z-index:1;max-width:940px;margin:0 auto;padding:0 28px}
+.wrap{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:0 28px}
 
 /* ── HERO ── */
 .hero{
   position:relative;
   padding:140px 28px 72px;
-  max-width:940px;margin:0 auto;
+  max-width:1060px;margin:0 auto;
 }
 .hero-inner{position:relative}
 .hero-kicker{
@@ -212,17 +212,17 @@ body::after{
 @media(max-width:600px){.section-number{display:none}}
 .eyebrow{
   font-family:var(--font-inconsolata),monospace;
-  font-size:11px;letter-spacing:0.22em;text-transform:uppercase;
+  font-size:12px;letter-spacing:0.22em;text-transform:uppercase;
   color:${C.gold};margin-bottom:14px;
   display:flex;align-items:center;gap:14px;
 }
 .eyebrow::before{content:'';width:32px;height:1px;background:${C.gold};opacity:0.6}
 .sec-title{
   font-family:var(--font-fraunces),serif;
-  font-size:clamp(26px,4vw,38px);font-weight:700;
+  font-size:clamp(28px,4vw,38px);font-weight:700;
   color:${C.heading};margin-bottom:6px;letter-spacing:-0.01em;
 }
-.sec-sub{font-size:13px;color:var(--c-body);margin-bottom:36px}
+.sec-sub{font-size:15px;color:var(--c-body);margin-bottom:36px}
 hr.div{border:none;border-top:1px solid ${C.border}}
 
 /* ── PODCAST CARDS ── */
@@ -279,7 +279,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
   font-size:9px;letter-spacing:0.15em;text-transform:uppercase;
   color:${C.gold};margin-bottom:7px;
 }
-.pod-title{font-size:12px;font-weight:500;color:${C.text3};line-height:1.55}
+.pod-title{font-size:13px;font-weight:500;color:${C.text3};line-height:1.55}
 .pod-ext{float:right;color:${C.faint};font-size:14px;margin-top:1px;transition:color 0.2s}
 .pod-card:hover .pod-ext{color:${C.gold}}
 
@@ -303,10 +303,10 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .write-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
 .write-title{
   font-family:var(--font-fraunces),serif;
-  font-size:13px;font-weight:700;color:${C.text};
+  font-size:15px;font-weight:700;color:${C.text};
   line-height:1.45;margin-bottom:10px;
 }
-.write-excerpt{font-size:11px;color:${C.muted};line-height:1.6;margin-bottom:12px}
+.write-excerpt{font-size:13px;color:${C.muted};line-height:1.6;margin-bottom:12px}
 .write-foot{
   display:flex;align-items:center;justify-content:space-between;
   font-family:var(--font-inconsolata),monospace;font-size:10px;color:${C.faint};
@@ -342,7 +342,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
   display:flex;align-items:center;gap:10px;
   margin-bottom:13px;margin-top:36px;
   font-family:var(--font-inconsolata),monospace;
-  font-size:9px;letter-spacing:0.2em;text-transform:uppercase;
+  font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
 }
 .cat-tick{width:2px;height:14px;border-radius:2px;flex-shrink:0}
 .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
@@ -355,8 +355,8 @@ hr.div{border:none;border-top:1px solid ${C.border}}
   display:block;
 }
 .proj-card:hover{border-color:rgba(200,169,110,0.25);background:${C.card2}}
-.proj-name{font-weight:600;font-size:13px;color:${C.text};margin-bottom:5px;padding-right:52px}
-.proj-desc{font-size:13px;color:${C.text2};line-height:1.6}
+.proj-name{font-weight:600;font-size:15px;color:${C.text};margin-bottom:5px;padding-right:52px}
+.proj-desc{font-size:14px;color:${C.text2};line-height:1.6}
 
 /* ── MENTORSHIP ── */
 .mentor-card{
@@ -400,7 +400,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .status{
   position:absolute;top:12px;right:12px;
   font-family:var(--font-inconsolata),monospace;
-  font-size:8px;letter-spacing:0.1em;text-transform:uppercase;
+  font-size:9px;letter-spacing:0.1em;text-transform:uppercase;
   padding:3px 7px;border-radius:3px;
 }
 .st-live{background:rgba(122,171,143,0.1);color:${C.sage};border:1px solid rgba(122,171,143,0.25)}
@@ -431,8 +431,8 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 }
 @media(max-width:680px){.photo-frame{width:100%;max-width:300px}}
 .about-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
-.about-bio p{font-size:13px;color:${C.muted};line-height:1.8;margin-bottom:11px}
-.about-bio p:first-child{color:${C.text2};font-size:14px}
+.about-bio p{font-size:15px;color:${C.muted};line-height:1.8;margin-bottom:11px}
+.about-bio p:first-child{color:${C.text2};font-size:16px}
 .about-bio strong{color:${C.text3};font-weight:500}
 
 /* ── LIGHT MODE OVERRIDES ── */
@@ -518,11 +518,12 @@ const projects = {
     { name:"EcoThailand Foundation Impact Product", desc:"Impact product framework built for EcoThailand Foundation — tokenizing volunteer contributions and environmental education into fundable, verifiable on-chain capital.", status:"live", url:"https://ecothailand.regenbazaar.com/" },
   ],
   phangan: [
+    { name:"HelpRent Da Nang", desc:"Da Nang's whole rental market on one board — fresh listings, mapped buildings with direct manager contacts, and Mai, an AI concierge that searches by plain sentence or map screenshot in EN, VI & RU.", status:"live", url:"https://helprentdanang.com" },
     { name:"HelpRent Phangan", desc:"Real estate ecosystem for digital nomads on Koh Phangan — long-term rentals, local tours, and island guides in one platform.", status:"dev", url:"https://helprentphangan.com" },
     { name:"Guide Phangan", desc:"Authentic local guide and AI-driven infrastructure platform for nomads and expats navigating Koh Phangan — transport, food, stays, and community.", status:"dev", url:"https://guidephangan.com" },
   ],
   health: [
-    { name:"Vita Crypt", desc:"Personal Health Intelligence with Blind Computing (FHE) — giving individuals true ownership and intelligence from their health data without ever exposing it. Your data stays encrypted, even during computation.", status:"dev", url:"https://vitacrypt.xyz", wide:true },
+    { name:"VitaCrypt", desc:"Your whole health in one intelligent profile — DNA, wearables, labs, microbiome and environment fused into evidence-cited, AI-driven guidance. Verified citations only, private by design.", status:"mvp", url:"https://vitacrypt.xyz" },
   ],
 };
 
@@ -1093,12 +1094,14 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
           <div className="cat-head">
             <div className="cat-tick" style={{ background: C.gold }} />
-            <span style={{ color: C.gold }}>03 — Phangan Ecosystem · Local Infrastructure & AI Tools</span>
+            <span style={{ color: C.gold }}>03 — Rentals & Local Services · AI-Powered Platforms</span>
           </div>
           <div className="proj-grid">
             {projects.phangan.map((p, i) => (
               <a key={i} className="proj-card" href={p.url} target="_blank" rel="noopener noreferrer">
-                <span className="status st-dev">dev</span>
+                <span className={`status ${p.status === "live" ? "st-live" : p.status === "active" ? "st-active" : p.status === "paused" ? "st-paused" : "st-dev"}`}>
+                  {p.status}
+                </span>
                 <div className="proj-name">{p.name}</div>
                 <div className="proj-desc">{p.desc}</div>
               </a>
@@ -1107,14 +1110,16 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
           <div className="cat-head">
             <div className="cat-tick" style={{ background: C.violet }} />
-            <span style={{ color: C.violet }}>04 — Health & Privacy Technology</span>
+            <span style={{ color: C.violet }}>04 — Health Intelligence</span>
           </div>
           <div className="proj-grid" style={{ gridTemplateColumns: "1fr" }}>
             {projects.health.map((p, i) => (
               <a key={i} className="proj-card" href={p.url} target="_blank" rel="noopener noreferrer">
-                <span className="status st-dev">dev</span>
-                <div className="proj-name" style={{ fontSize: "15px", paddingRight: 60 }}>{p.name}</div>
-                <div className="proj-desc" style={{ fontSize: "12px", maxWidth: "560px" }}>{p.desc}</div>
+                <span className={`status ${p.status === "live" ? "st-live" : p.status === "active" ? "st-active" : p.status === "paused" ? "st-paused" : "st-dev"}`}>
+                  {p.status}
+                </span>
+                <div className="proj-name">{p.name}</div>
+                <div className="proj-desc" style={{ maxWidth: "640px" }}>{p.desc}</div>
               </a>
             ))}
           </div>
@@ -1134,7 +1139,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <a key={i} className="proj-card" href={c.url} target="_blank" rel="noopener noreferrer">
                 <span className="status st-live">active</span>
                 <div className="proj-name" style={{ fontSize: "16px", color: c.color }}>{c.name}</div>
-                <div className="proj-desc" style={{ fontSize: "13px" }}>{c.desc}</div>
+                <div className="proj-desc">{c.desc}</div>
               </a>
             ))}
           </div>
@@ -1150,7 +1155,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   <span className="write-dot" style={{ background: C.gold }} />
                   <span style={{ color: C.gold }}>{e.src}</span>
                 </div>
-                <div className="proj-name" style={{ fontSize: "14px", paddingRight: 0 }}>{e.name}</div>
+                <div className="proj-name" style={{ paddingRight: 0 }}>{e.name}</div>
                 <div style={{ fontFamily: "var(--font-inconsolata),monospace", fontSize: "10px", color: C.faint, marginTop: "12px" }}>
                   <span className="write-read">{language === "ru" ? "Открыть в X →" : "View on X →"}</span>
                 </div>
@@ -1168,7 +1173,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
           <h2 className="sec-title">{language === "ru" ? "Кто я" : "Who I Am"}</h2>
           <div className="about-layout">
             <div className="photo-frame">
-              <Image src="/hero.webp" alt="Paul Burg" width={600} height={745} priority style={{ width: "100%", height: "auto" }} />
+              <Image src="/about.webp" alt="Paul Burg" width={800} height={922} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
             </div>
             <div>
               <div className="about-tags">

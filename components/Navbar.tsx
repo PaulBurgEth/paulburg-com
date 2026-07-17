@@ -75,7 +75,7 @@ export default function Navbar() {
             >
                 <div
                     className="mx-auto flex items-center justify-between"
-                    style={{ maxWidth: 940, padding: "16px 28px" }}
+                    style={{ maxWidth: 1060, padding: "16px 28px" }}
                 >
                     <Link
                         href="/"
