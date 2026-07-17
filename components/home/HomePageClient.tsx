@@ -511,7 +511,7 @@ const projects = {
   impact: [
     { name:"EcoSynthesisX", desc:"Web3 public good studio collaborating with real-world NGOs to tokenize environmental and community impact into verifiable on-chain assets.", status:"active", url:"https://ecosynthesisx.xyz" },
     { name:"DeCleanup Network", desc:"Transforms environmental cleanups into transparent, verifiable digital impact. Your cleanups become tokenized assets that unlock rewards, reputation, and community recognition.", status:"live", url:"https://decleanup.net" },
-    { name:"Regen Bazaar", desc:"Marketplace where real-world impact meets market value — tokenizing NGO activities such as cleanups, reforestation, and animal care, bridging nonprofits with global buyers.", status:"paused", url:"https://regenbazaar.com" },
+    { name:"Regen Bazaar", desc:"Marketplace where real-world impact meets market value — tokenizing NGO activities such as cleanups, reforestation, and animal care, bridging nonprofits with global buyers.", status:"mvp", url:"https://regenbazaar.com" },
   ],
   ngo: [
     { name:"Clean Phangan Impact Product", desc:"First MVP Impact Product built with the Clean Phangan NGO — 224+ weekly cleanups, 90+ tons of trash collected, now tokenized as sellable impact assets for impact investors.", status:"live", url:"https://cleanphangan.regenbazaar.com/" },
@@ -519,8 +519,8 @@ const projects = {
   ],
   phangan: [
     { name:"HelpRent Da Nang", desc:"Da Nang's whole rental market on one board — fresh listings, mapped buildings with direct manager contacts, and Mai, an AI concierge that searches by plain sentence or map screenshot in EN, VI & RU.", status:"live", url:"https://helprentdanang.com" },
-    { name:"HelpRent Phangan", desc:"Real estate ecosystem for digital nomads on Koh Phangan — long-term rentals, local tours, and island guides in one platform.", status:"dev", url:"https://helprentphangan.com" },
-    { name:"Guide Phangan", desc:"Authentic local guide and AI-driven infrastructure platform for nomads and expats navigating Koh Phangan — transport, food, stays, and community.", status:"dev", url:"https://guidephangan.com" },
+    { name:"HelpRent Phangan", desc:"Real estate ecosystem for digital nomads on Koh Phangan — long-term rentals, local tours, and island guides in one platform.", status:"live", url:"https://helprentphangan.com" },
+    { name:"Guide Phangan", desc:"Authentic local guide and AI-driven infrastructure platform for nomads and expats navigating Koh Phangan — transport, food, stays, and community.", status:"live", url:"https://guidephangan.com" },
   ],
   health: [
     { name:"VitaCrypt", desc:"Your whole health in one intelligent profile — DNA, wearables, labs, microbiome and environment fused into evidence-cited, AI-driven guidance. Verified citations only, private by design.", status:"mvp", url:"https://vitacrypt.xyz" },
