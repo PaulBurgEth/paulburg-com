@@ -188,7 +188,6 @@ export const translations = {
                 ctaBook: "Оставить заявку",
                 buttonText: "Написать в Telegram",
                 ctaWhatsApp: "Написать в WhatsApp",
-                ctaCall: "Бесплатный звонок",
             },
         },
         // ─── SHARED ──────────────────────────────────────
@@ -402,7 +401,6 @@ export const translations = {
                 ctaBook: "Drop me a hint",
                 buttonText: "Text me on Telegram",
                 ctaWhatsApp: "Text me on WhatsApp",
-                ctaCall: "Book a free call",
             },
         },
         // ─── SHARED ──────────────────────────────────────

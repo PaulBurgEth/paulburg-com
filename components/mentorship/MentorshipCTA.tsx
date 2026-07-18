@@ -2,10 +2,10 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Sparkles, MessageCircle, Calendar } from "lucide-react";
+import { Sparkles, MessageCircle } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useMentorshipModal } from "@/context/MentorshipModalContext";
-import { WHATSAPP_URL, CALENDLY_URL, TELEGRAM_URL } from "@/lib/constants";
+import { WHATSAPP_URL, TELEGRAM_URL } from "@/lib/constants";
 
 export default function MentorshipCTA() {
     const { language, t } = useLanguage();
@@ -143,33 +143,6 @@ export default function MentorshipCTA() {
                                 <Sparkles className="w-5 h-5" />
                                 {c.ctaBook}
                             </button>
-                        </motion.div>
-
-                        <motion.div
-                            whileHover={{ scale: 1.03 }}
-                            whileTap={{ scale: 0.97 }}
-                            className="w-full sm:w-auto"
-                        >
-                            <Link
-                                href={CALENDLY_URL}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-3 w-full sm:w-auto"
-                                style={{
-                                    background: "var(--c-card)",
-                                    border: "1px solid var(--c-border)",
-                                    color: "var(--c-text)",
-                                    fontFamily: "var(--font-instrument-sans), sans-serif",
-                                    fontWeight: 700,
-                                    fontSize: 16,
-                                    padding: "14px 36px",
-                                    borderRadius: 999,
-                                    textDecoration: "none",
-                                }}
-                            >
-                                <Calendar className="w-5 h-5" style={{ color: "var(--c-gold)" }} />
-                                {c.ctaCall}
-                            </Link>
                         </motion.div>
                     </div>
                 </motion.div>

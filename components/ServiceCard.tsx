@@ -4,7 +4,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { CALENDLY_URL } from "@/lib/constants";
 
 interface ServiceProps {
     title: string;
@@ -22,7 +21,7 @@ interface ServiceProps {
 
 export default function ServiceCard({ title, description, lists, prices, buttonText, delay = 0 }: ServiceProps) {
     const [isExpanded, setIsExpanded] = useState(false);
-    const { t, language } = useLanguage();
+    const { t } = useLanguage();
     const s = t.mentorship.services;
 
     return (
@@ -104,7 +103,7 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                             e.stopPropagation();
                             document.querySelector('#start')?.scrollIntoView({ behavior: 'smooth' });
                         }}
-                        className="w-full py-3 rounded-[5px] font-bold transition-all mb-2"
+                        className="w-full py-3 rounded-[5px] font-bold transition-all mb-5"
                         style={{
                             background: "var(--c-gold)",
                             color: "var(--c-bg)",
@@ -116,26 +115,6 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                     >
                         {buttonText}
                     </button>
-
-                    <a
-                        href={CALENDLY_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="w-full py-3 rounded-[5px] text-center transition-all mb-5 block"
-                        style={{
-                            background: "transparent",
-                            color: "var(--c-gold)",
-                            border: "1px solid var(--c-gold)",
-                            fontFamily: "var(--font-instrument-sans), sans-serif",
-                            fontWeight: 600,
-                            fontSize: 13,
-                            letterSpacing: "0.04em",
-                            textDecoration: "none",
-                        }}
-                    >
-                        {language === "ru" ? "Записаться на звонок →" : "Book a free call →"}
-                    </a>
 
                     <div
                         className="flex items-center justify-center gap-2 font-medium transition-colors"
