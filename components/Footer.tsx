@@ -29,6 +29,7 @@ export default function Footer() {
         pagesHeading: language === "ru" ? "Страницы" : "Pages",
         connectHeading: language === "ru" ? "Контакты" : "Connect",
         services: language === "ru" ? "Услуги" : "Services",
+        outbound: language === "ru" ? "Аутбаунд" : "Outbound",
         mentorship: language === "ru" ? "Менторство" : "Mentorship",
         blog: language === "ru" ? "Блог" : "Blog",
         projects: language === "ru" ? "Проекты" : "Projects",
@@ -121,6 +122,11 @@ export default function Footer() {
                             <li>
                                 <Link href="/services" className={linkRowClass} style={{ color: "var(--c-text2)" }}>
                                     {t.services}
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/outbound" className={linkRowClass} style={{ color: "var(--c-text2)" }}>
+                                    {t.outbound}
                                 </Link>
                             </li>
                             <li>

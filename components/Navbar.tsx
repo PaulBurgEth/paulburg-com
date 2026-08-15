@@ -33,6 +33,7 @@ export default function Navbar() {
     // Order matches the redesign mockup: Services → Mentorship → Blog → Projects.
     const navLinks = [
         { name: language === "ru" ? "Услуги" : "Services", href: "/services" },
+        { name: language === "ru" ? "Аутбаунд" : "Outbound", href: "/outbound" },
         { name: language === "ru" ? "Менторство" : "Mentorship", href: "/mentorship" },
         { name: language === "ru" ? "Блог" : "Blog", href: "/blog" },
         { name: language === "ru" ? "Проекты" : "Projects", href: "/#projects" },

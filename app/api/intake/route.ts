@@ -65,6 +65,37 @@ const MENTORSHIP_LEVEL_LABELS: Record<string, string> = {
   deeper: "Want to go deeper",
 };
 
+const SDR_FORMAT_LABELS: Record<string, string> = {
+  leads: "Leads (stages 01-06)",
+  deal: "Leads + Deal (stages 01-09)",
+  "not-sure": "Not sure yet",
+};
+
+const SDR_MARKET_LABELS: Record<string, string> = {
+  ru: "Russia & CIS",
+  eu: "Europe",
+  us: "North America",
+  latam: "Latin America",
+  mena: "Middle East & Africa",
+  apac: "Asia-Pacific",
+  global: "No restriction",
+};
+
+const SDR_CYCLE_LABELS: Record<string, string> = {
+  lt1m: "Under a month",
+  "1-3m": "1-3 months",
+  "3-6m": "3-6 months",
+  "6m+": "Over 6 months",
+};
+
+const SDR_CHANNEL_LABELS: Record<string, string> = {
+  inbound: "Inbound / SEO",
+  ads: "Paid ads",
+  referrals: "Referrals",
+  ownsales: "Own sales team",
+  none: "No steady channel",
+};
+
 function sanitizeNeedsArray(value: unknown): string[] {
   if (!Array.isArray(value)) return [];
   return value
@@ -181,6 +212,33 @@ export async function POST(req: Request) {
       lines.push(`Contact via: ${contactMethod}`);
       lines.push(`Contact: ${contactInfo}`);
       lines.push(`Language: ${language || "—"}`);
+    } else if (type === "sdr") {
+      const sdrFormatRaw = sanitize(r.sdrFormat, 32);
+      const cycleRaw = sanitize(r.cycle, 32);
+      const channelRaw = sanitize(r.channel, 32);
+      const marketsArr = sanitizeNeedsArray(r.markets);
+      // Collapse newlines — a multi-line answer would otherwise break the
+      // "Key: value" layout of the plaintext Telegram message.
+      const bestClient = sanitize(r.bestClient, 1000).replace(/\s*\n+\s*/g, " · ");
+      const markets = marketsArr
+        .map((m) => SDR_MARKET_LABELS[m] || m)
+        .join(", ");
+      lines = [
+        "📣 New outbound/SDR request from paulburg.com",
+        "",
+        `Name: ${name}`,
+        `Company: ${business}`,
+        `Format: ${SDR_FORMAT_LABELS[sdrFormatRaw] || sdrFormatRaw || "—"}`,
+      ];
+      if (markets) lines.push(`Markets: ${markets}`);
+      if (cycleRaw) lines.push(`Sales cycle: ${SDR_CYCLE_LABELS[cycleRaw] || cycleRaw}`);
+      if (channelRaw) lines.push(`Current channel: ${SDR_CHANNEL_LABELS[channelRaw] || channelRaw}`);
+      lines.push(`Contact via: ${contactMethod}`);
+      lines.push(`Contact: ${contactInfo}`);
+      lines.push(`Language: ${language || "—"}`);
+      // Last, after a blank line, so a long answer cannot push the contact
+      // details out of the Telegram notification preview.
+      if (bestClient) lines.push("", `Best client: ${bestClient}`);
     } else {
       lines = [
         "🆕 New intake from paulburg.com",
