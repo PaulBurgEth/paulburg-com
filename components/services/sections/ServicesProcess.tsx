@@ -71,17 +71,23 @@ export default function ServicesProcess() {
       <div className="container-custom">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+          }}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.5 }}
           style={{ marginBottom: 36 }}
         >
+          {/* Driven by the parent variant, not its own whileInView: a nested
+              observer can miss on a fast scroll and leave this at opacity 0
+              while the parent is already visible. */}
           <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.4 }}
+            variants={{
+              hidden: { opacity: 0, x: -10 },
+              visible: { opacity: 1, x: 0, transition: { duration: 0.4 } },
+            }}
             style={{
               fontFamily: "var(--font-inconsolata), monospace",
               fontSize: 10,

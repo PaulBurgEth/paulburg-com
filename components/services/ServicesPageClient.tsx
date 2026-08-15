@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import ServicesHero from "./sections/ServicesHero";
 import ServicesProof from "./sections/ServicesProof";
 import ServicesGrid from "./sections/ServicesGrid";
+import ServicesOutbound from "./sections/ServicesOutbound";
 import { useRevealObserver } from "@/lib/useStageReveal";
 
 const ServicesTurnkey = dynamic(() => import("./sections/ServicesTurnkey"), { ssr: false });
@@ -30,6 +31,7 @@ export default function ServicesPageClient() {
         <ServicesCases />
         <ServicesProcess />
         <ServicesPricing />
+        <ServicesOutbound />
         <ServicesCTA />
         <Footer />
       </div>

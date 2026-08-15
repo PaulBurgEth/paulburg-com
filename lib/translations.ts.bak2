@@ -51,22 +51,24 @@ export const translations = {
                 description: "Менторство для жизни и бизнеса в глобальном мире. Капитал, Бизнес, Коммуникация.",
             },
             hero: {
-                headline: "Менторство для жизни и бизнеса в глобальном мире",
+                headline: "Менторство для бизнеса, капитала и AI в современном мире",
                 subheadline: "Три направления — одна цель: ваша свобода",
-                pills: "Капитал • Бизнес • Коммуникация",
+                pills: "Капитал · Бизнес · AI и Автоматизация",
+                ctaBook: "Оставить заявку",
                 ctaTelegram: "Написать в Telegram",
                 ctaWhatsApp: "Написать в WhatsApp",
+                ctaCall: "Бесплатный звонок",
                 smallText: "Онлайн по всему миру • Оффлайн по договорённости",
             },
             bridge: {
                 intro: "Я верю, что современному человеку для успеха нужны три опоры:",
-                p1: "способность договариваться",
-                p1_text: "и уверенно общаться с миром на глобальном языке",
+                p1: "умение использовать AI",
+                p1_text: "чтобы усилить работу, автоматизировать рутину и масштабировать результат",
                 p2: "финансовый фундамент",
                 p2_text: "как залог спокойствия и возможности ждать нужного момента",
                 p3: "бизнес как инструмент",
                 p3_text: "реализации таланта и создания ценности для других",
-                outro: "Этим трём опорам — Коммуникации, Капиталу и Бизнесу — я и обучаю в своём менторстве."
+                outro: "Этим трём опорам — AI и Автоматизации, Капиталу и Бизнесу — я и обучаю в своём менторстве."
             },
             painPoints: {
                 title: "Узнаёшь себя?",
@@ -99,20 +101,21 @@ export const translations = {
                 title: "Услуги",
                 more: "Узнать больше",
                 card1: {
-                    title: "Низкорисковые крипто-стратегии",
-                    description: "Спокойные стратегии парковки капитала в крипто. Никакого трейдинга и «иксов».",
+                    title: "DeFi-стратегии пассивного дохода",
+                    description: "Стабильная доходность на простаивающий капитал через DeFi-протоколы — дисциплинированно, с открытыми глазами на риски, без трейдинга и иксов.",
                     lists: {
                         howItWorks: [
-                            "Стабильная доходность 5–10% годовых в долларах.",
-                            "Staking, lending, liquidity providing на проверенных протоколах.",
-                            "Минимизация рисков: аудит, диверсификация, защита от волатильности."
+                            "Стабильная доходность 5–10% годовых в долларах через DeFi-протоколы.",
+                            "Staking, lending, liquidity providing на аудированных платформах с историей.",
+                            "Реалистично про риски — у DeFi есть реальное exposure (баги в смарт-контрактах, эксплоиты протоколов, depeg'и стейблкоинов; даже у зрелых протоколов вроде Aave были инциденты). Сайзим позиции и диверсифицируем под worst-case.",
+                            "Минимизация рисков: due diligence по протоколам, диверсификация по протоколам и чейнам, защита от волатильности через стейблкоины."
                         ],
                         whatYouGet: [
-                            "Индивидуальный план под твой капитал и уровень комфорта.",
-                            "Полный контроль над своими средствами 24/7."
+                            "Индивидуальный план под твой капитал и уровень комфорта с рисками.",
+                            "Полный контроль над своими средствами 24/7 — non-custodial кошельки, никаких посредников."
                         ],
                         whoIsThisFor: [
-                            "Для тех, у кого есть $10k+, которые лежат без дела, и кто хочет сохранить + пассивный рост."
+                            "Для тех, у кого есть $10k+, которые лежат без дела на банковском счёте, и кто хочет сохранить капитал + получать стабильный пассивный доход через DeFi — с открытыми глазами на риски."
                         ]
                     },
                     prices: [
@@ -180,10 +183,12 @@ export const translations = {
             },
             cta: {
                 title: "Готов начать?",
-                text: "Напиши мне в Telegram — обсудим твою ситуацию, подберём тему и время.",
-                subtext: "Первые вопросы и 15-минутный intro-call (для крипто-стратегий и бизнес-упаковки) бесплатно.",
+                text: "Забронируй бесплатный 15-минутный звонок или напиши напрямую.",
+                subtext: "Разберём твою ситуацию, подберём направление и время. Без продаж — просто разговор.",
+                ctaBook: "Оставить заявку",
                 buttonText: "Написать в Telegram",
-                note: "Все сессии конфиденциальны. Работаю по принципам ICF-коучинга — фокус на твоих целях и устойчивом результате.",
+                ctaWhatsApp: "Написать в WhatsApp",
+                ctaCall: "Бесплатный звонок",
             },
         },
         // ─── SHARED ──────────────────────────────────────
@@ -260,22 +265,24 @@ export const translations = {
                 description: "Mentorship for life and business in a global world. Capital, Business, Communication.",
             },
             hero: {
-                headline: "Mentorship for Life and Business in a Global World",
+                headline: "Mentorship for Business, Capital, and AI in a Modern World",
                 subheadline: "Three Areas — One Goal: Your Freedom",
-                pills: "Capital • Business • Communication",
-                ctaTelegram: "Message on Telegram",
-                ctaWhatsApp: "Message on WhatsApp",
+                pills: "Capital · Business · AI & Automation",
+                ctaBook: "Drop me a hint",
+                ctaTelegram: "Text me on Telegram",
+                ctaWhatsApp: "Text me on WhatsApp",
+                ctaCall: "Book a free call",
                 smallText: "Online worldwide • Offline by agreement",
             },
             bridge: {
                 intro: "I believe that a modern person needs three pillars for success:",
-                p1: "the ability to negotiate",
-                p1_text: "and communicate confidently with the world in a global language",
+                p1: "the ability to leverage AI",
+                p1_text: "to amplify your work, automate routine, and scale your impact",
                 p2: "a financial foundation",
                 p2_text: "as a guarantee of peace of mind and the ability to wait for the right moment",
                 p3: "business as a tool",
                 p3_text: "for realizing talent and creating value for others",
-                outro: "In my mentorship, I teach these three pillars: Communication, Capital, and Business."
+                outro: "In my mentorship, I teach these three pillars: AI & Automation, Capital, and Business."
             },
             painPoints: {
                 title: "Do you recognize yourself?",
@@ -308,20 +315,21 @@ export const translations = {
                 title: "Services",
                 more: "Learn more",
                 card1: {
-                    title: "Low-risk crypto strategies",
-                    description: "Calm capital parking strategies in crypto. No trading or \"X's\".",
+                    title: "DeFi Income Strategies",
+                    description: "Stable yields on idle capital through DeFi protocols — disciplined, eyes-open about real risks, no trading or pumps.",
                     lists: {
                         howItWorks: [
-                            "Stable yield 5–10% APY in dollars.",
-                            "Staking, lending, liquidity providing on proven protocols.",
-                            "Risk minimization: audit, diversification, protection against volatility."
+                            "Stable 5–10% APY in dollars through DeFi protocols.",
+                            "Staking, lending, liquidity providing on audited platforms with track record.",
+                            "Realistic about risks — DeFi has real exposure (smart-contract bugs, protocol exploits, stablecoin depegs; even mature protocols like Aave have seen incidents). We size positions and diversify around worst-case.",
+                            "Risk minimization: protocol due diligence, diversification across protocols and chains, volatility protection via stablecoins."
                         ],
                         whatYouGet: [
-                            "Individual plan for your capital and comfort level.",
-                            "Full control over your funds 24/7."
+                            "Individual plan tailored to your capital and risk comfort level.",
+                            "Full control over your funds 24/7 — non-custodial wallets, no intermediaries."
                         ],
                         whoIsThisFor: [
-                            "For those who have $10k+ sitting idle and want to preserve + get passive growth."
+                            "For those with $10k+ sitting idle in a bank account who want to preserve capital and earn stable passive income through DeFi — with eyes open to the risks involved."
                         ]
                     },
                     prices: [
@@ -389,10 +397,12 @@ export const translations = {
             },
             cta: {
                 title: "Ready to start?",
-                text: "Message me on Telegram — we'll discuss your situation, pick a topic and time.",
-                subtext: "First questions and 15-minute intro call (for crypto strategies and business packaging) are free.",
-                buttonText: "Message on Telegram",
-                note: "All sessions are confidential. I work on ICF coaching principles — focus on your goals and sustainable results.",
+                text: "Book a free 15-minute call or message me directly.",
+                subtext: "We'll map your situation, pick the right direction, and set a time. No sales pitch — just a conversation.",
+                ctaBook: "Drop me a hint",
+                buttonText: "Text me on Telegram",
+                ctaWhatsApp: "Text me on WhatsApp",
+                ctaCall: "Book a free call",
             },
         },
         // ─── SHARED ──────────────────────────────────────

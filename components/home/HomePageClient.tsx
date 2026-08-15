@@ -4,7 +4,7 @@ import React, { useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Bot, Workflow, Database, Globe, Lightbulb, Coffee } from "lucide-react";
+import { Bot, Workflow, Database, Globe, Lightbulb, Coffee, Crosshair } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import Navbar from "@/components/Navbar";
 import CTARow from "@/components/CTARow";
@@ -833,9 +833,55 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         <hr className="div" />
 
+        {/* ══════════ OUTBOUND ══════════ */}
+        <section className="section pb-reveal" id="outbound">
+          <SectionNumber n="02" />
+          <div className="eyebrow">{language === "ru" ? "Аутбаунд" : "Outbound"}</div>
+          <h2 className="sec-title">{language === "ru" ? "Не система, а поток клиентов" : "Not a system — a stream of clients"}</h2>
+          <p className="sec-sub">{language === "ru" ? "Холодный канал под ключ: нахожу компании, выхожу на ЛПР и пишу от вашего имени" : "A cold channel, end to end: I find the companies, reach the decision-maker, and write in your name"}</p>
+
+          <div style={{ background: C.card, border: `1px solid ${C.border}`, borderLeft: `2px solid ${C.gold}`, borderRadius: 10, padding: 24 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+              <span style={{ width: 32, height: 32, background: C.goldDim, border: "1px solid rgba(200,169,110,0.22)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <Crosshair size={15} color={C.gold} />
+              </span>
+              <div style={{ fontFamily: "var(--font-fraunces), var(--font-source-serif), serif", fontWeight: 700, fontSize: 18, color: C.heading }}>
+                {language === "ru" ? "Клиенты, которые вас ещё не ищут" : "Clients who are not looking for you yet"}
+              </div>
+            </div>
+
+            <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 13, color: C.text2, lineHeight: 1.7, marginBottom: 14, maxWidth: 640 }}>
+              {language === "ru"
+                ? "Реклама доходит до тех, кто уже ищет. Остальных можно собрать по открытым реестрам, выйти на нужного человека и написать ему на его языке — пока повод свежий. Только переписка, без звонков."
+                : "Ads reach whoever is already searching. The rest can be found in open registries, reached by name and written to in their own language while the reason is still fresh. Correspondence only, no calls."}
+            </p>
+
+            <div className="mentor-features" style={{ marginBottom: 16 }}>
+              <span className="tag gold" style={{ background: "transparent", borderColor: "rgba(200,169,110,0.2)" }}>{language === "ru" ? "Русский · English · Español" : "Russian · English · Spanish"}</span>
+              <span className="tag gold" style={{ background: "transparent", borderColor: "rgba(200,169,110,0.2)" }}>{language === "ru" ? "Пилот 6 недель" : "6-week pilot"}</span>
+              <span className="tag gold" style={{ background: "transparent", borderColor: "rgba(200,169,110,0.2)" }}>{language === "ru" ? "Ваши домены и данные" : "Your domains, your data"}</span>
+            </div>
+
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 14 }}>
+              <span style={{ fontFamily: "var(--font-inconsolata), monospace", fontWeight: 700, fontSize: 13, color: C.gold }}>
+                {language === "ru" ? "2,0% отклик · 67% до расчёта" : "2.0% reply rate · 67% to a quote"}
+              </span>
+              <Link
+                href="/outbound"
+                className="btn-primary"
+                style={{ padding: "12px 24px", background: C.gold, border: `1px solid ${C.gold}`, borderRadius: 8, color: "#07080a", fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 13, fontWeight: 600, textDecoration: "none", display: "inline-block" }}
+              >
+                {language === "ru" ? "Как устроен канал →" : "How the channel works →"}
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <hr className="div" />
+
         {/* ══════════ MENTORSHIP ══════════ */}
         <section className="section pb-reveal" id="mentorship">
-          <SectionNumber n="02" />
+          <SectionNumber n="03" />
           <div className="eyebrow">{language === "ru" ? "Менторство" : "Mentorship"}</div>
           <h2 className="sec-title">{language === "ru" ? "Капитал · Бизнес · AI и Автоматизация" : "Capital · Business · AI & Automation"}</h2>
           <p className="sec-sub">{language === "ru" ? "Индивидуальные сессии для предпринимателей и цифровых номадов" : "1-on-1 sessions for entrepreneurs and digital nomads"}</p>
@@ -894,7 +940,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ PODCASTS & TALKS ══════════ */}
         <section className="section pb-reveal" id="media">
-          <SectionNumber n="03" />
+          <SectionNumber n="04" />
           <div className="eyebrow">{language === "ru" ? "Медиа" : "Media"}</div>
           <h2 className="sec-title">{language === "ru" ? "Подкасты и выступления" : "Podcasts & Talks"}</h2>
           <p className="sec-sub">{language === "ru" ? "Разговоры про ReFi, impact-рынки и публичное строительство" : "Conversations on ReFi, impact markets, and building in public"}</p>
@@ -933,7 +979,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ WRITING ══════════ */}
         <section className="section pb-reveal" id="writing">
-          <SectionNumber n="04" />
+          <SectionNumber n="05" />
           <div className="eyebrow">{language === "ru" ? "Статьи" : "Writing"}</div>
           <h2 className="sec-title">{language === "ru" ? "Статьи и заметки" : "Articles & Insights"}</h2>
           <p className="sec-sub">{language === "ru" ? "Про impact-рынки, health tech и публичное строительство" : "On impact markets, health tech, and building in public"}</p>
@@ -1002,7 +1048,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ FOLLOW THE JOURNEY ══════════ */}
         <section className="section pb-reveal" id="follow">
-          <SectionNumber n="05" />
+          <SectionNumber n="06" />
           <div className="eyebrow">{language === "ru" ? "Контакты" : "Connect"}</div>
           <h2 className="sec-title">{language === "ru" ? "Следить за журналом" : "Follow the Journey"}</h2>
           <p className="sec-sub">{language === "ru" ? "Выберите формат и язык" : "Choose your format and language"}</p>
@@ -1057,7 +1103,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ PROJECTS ══════════ */}
         <section className="section pb-reveal" id="projects">
-          <SectionNumber n="06" />
+          <SectionNumber n="07" />
           <div className="eyebrow">{language === "ru" ? "Проекты" : "Projects"}</div>
           <h2 className="sec-title">{language === "ru" ? "Что я строю" : "What I Build"}</h2>
           <p className="sec-sub">{language === "ru" ? "Стартапы и инициативы в impact, health и локальной инфраструктуре" : "Startups and initiatives across impact, health, and local infrastructure"}</p>
@@ -1129,7 +1175,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ COMMUNITIES ══════════ */}
         <section className="section pb-reveal" id="communities" style={{ background: C.bg2, borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`, margin: "0 -28px", padding: "72px 28px" }}>
-          <SectionNumber n="07" />
+          <SectionNumber n="08" />
           <div className="eyebrow">{language === "ru" ? "Сообщества" : "Communities"}</div>
           <h2 className="sec-title">{language === "ru" ? "Локальная Web3-экосистема" : "Local Web3 Ecosystem"}</h2>
           <p className="sec-sub">{language === "ru" ? "Регенеративная инфраструктура и децентрализованная координация на Ко Панган" : "Building regenerative infrastructure and decentralized coordination on Koh Phangan"}</p>
@@ -1168,7 +1214,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ ABOUT ══════════ */}
         <section className="section pb-reveal" id="about">
-          <SectionNumber n="08" />
+          <SectionNumber n="09" />
           <div className="eyebrow">{language === "ru" ? "О себе" : "About"}</div>
           <h2 className="sec-title">{language === "ru" ? "Кто я" : "Who I Am"}</h2>
           <div className="about-layout">

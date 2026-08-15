@@ -65,30 +65,53 @@ export function useStageReveal(
 }
 
 /**
- * useRevealObserver — attaches a single IntersectionObserver on mount
- * that adds `.is-visible` to every `.pb-reveal` element as it scrolls
- * into view. Used by every page that ships scroll-reveal sections.
+ * useRevealObserver — attaches a single IntersectionObserver on mount that adds
+ * `.is-in` to every `.pb-reveal` element as it scrolls into view. Used by every
+ * page that ships scroll-reveal sections.
  *
- * Under reduced-motion, immediately marks every `.pb-reveal` as visible.
+ * Two things this has to survive, both of which used to break it:
+ *
+ * 1. Sections imported via `dynamic(..., { ssr: false })` mount AFTER this
+ *    effect runs. A one-shot querySelectorAll never sees them, so they keep
+ *    `.pb-reveal`'s `opacity: 0` forever. A MutationObserver picks them up as
+ *    they arrive.
+ * 2. Such a chunk can also land after the user has already scrolled past its
+ *    slot. The IntersectionObserver would then never fire for it, so anything
+ *    already above the viewport is revealed immediately instead of observed.
+ *
+ * Under reduced-motion, everything is marked visible at once — now and later.
  */
 export function useRevealObserver(): void {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const els = document.querySelectorAll<HTMLElement>(".pb-reveal");
-    if (els.length === 0) return;
+    const reveal = (el: Element) => el.classList.add("is-in");
+    const watchLateArrivals = (handle: (el: Element) => void) => {
+      const mo = new MutationObserver((records) => {
+        for (const record of records) {
+          record.addedNodes.forEach((node) => {
+            if (!(node instanceof Element)) return;
+            if (node.classList.contains("pb-reveal")) handle(node);
+            node.querySelectorAll(".pb-reveal").forEach(handle);
+          });
+        }
+      });
+      mo.observe(document.body, { childList: true, subtree: true });
+      return mo;
+    };
 
     const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
     if (prefersReduced || !("IntersectionObserver" in window)) {
-      els.forEach((el) => el.classList.add("is-in"));
-      return;
+      document.querySelectorAll(".pb-reveal").forEach(reveal);
+      const mo = watchLateArrivals(reveal);
+      return () => mo.disconnect();
     }
 
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-in");
+            reveal(entry.target);
             io.unobserve(entry.target);
           }
         });
@@ -97,8 +120,24 @@ export function useRevealObserver(): void {
       { threshold: 0.05, rootMargin: "-8% 0px -8% 0px" },
     );
 
-    els.forEach((el) => io.observe(el));
+    const track = (el: Element) => {
+      if (el.classList.contains("is-in")) return;
+      // Entirely above the viewport already — the observer would never fire.
+      if (el.getBoundingClientRect().bottom < 0) {
+        reveal(el);
+        return;
+      }
+      io.observe(el);
+    };
 
-    return () => io.disconnect();
+    // No early return on an empty list: a page whose only .pb-reveal sections
+    // are dynamically imported would otherwise never get an observer at all.
+    document.querySelectorAll(".pb-reveal").forEach(track);
+    const mo = watchLateArrivals(track);
+
+    return () => {
+      io.disconnect();
+      mo.disconnect();
+    };
   }, []);
 }
