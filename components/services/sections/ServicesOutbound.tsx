@@ -95,7 +95,7 @@ export default function ServicesOutbound() {
                 </span>
                 <h2
                   style={{
-                    fontFamily: "var(--font-fraunces), var(--font-source-serif), serif",
+                    fontFamily: "var(--font-display)",
                     fontWeight: 700,
                     fontSize: "clamp(22px, 3vw, 30px)",
                     letterSpacing: "-0.02em",
@@ -149,7 +149,7 @@ export default function ServicesOutbound() {
                 padding: 20,
               }}
             >
-              <div style={{ fontFamily: "var(--font-fraunces), var(--font-source-serif), serif", fontWeight: 700, fontSize: 34, color: "var(--c-gold)", lineHeight: 1, marginBottom: 8 }}>
+              <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 34, color: "var(--c-gold)", lineHeight: 1, marginBottom: 8 }}>
                 {t.metric}
               </div>
               <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 12.5, color: "var(--c-text2)", lineHeight: 1.6 }}>

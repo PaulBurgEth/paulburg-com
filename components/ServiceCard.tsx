@@ -43,7 +43,7 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                 <h3
                     className="mb-5 flex items-center justify-center"
                     style={{
-                        fontFamily: "var(--font-fraunces), serif",
+                        fontFamily: "var(--font-display)",
                         fontWeight: 700,
                         fontSize: 20,
                         color: "var(--c-gold)",

@@ -45,7 +45,7 @@ export default function MentorshipPainPoints() {
                         <span style={{ flex: 1, height: 1, background: "var(--c-border)", display: "block" }} />
                     </div>
                     <h2 style={{
-                        fontFamily: "var(--font-fraunces), serif",
+                        fontFamily: "var(--font-display)",
                         fontWeight: 700,
                         fontSize: "clamp(26px, 4vw, 38px)",
                         letterSpacing: "-0.02em",

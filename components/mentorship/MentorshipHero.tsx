@@ -31,7 +31,7 @@ export default function MentorshipHero() {
                     <h1
                         className="mb-6 leading-tight"
                         style={{
-                            fontFamily: "var(--font-fraunces), serif",
+                            fontFamily: "var(--font-display)",
                             fontWeight: 700,
                             fontSize: "clamp(36px, 7vw, 72px)",
                             letterSpacing: "-0.02em",
@@ -57,7 +57,7 @@ export default function MentorshipHero() {
                     <p
                         className="mb-12 max-w-4xl leading-relaxed"
                         style={{
-                            fontFamily: "var(--font-newsreader), serif",
+                            fontFamily: "var(--font-lede)",
                             fontStyle: "italic",
                             fontSize: 21,
                             color: "var(--c-body-lede)",

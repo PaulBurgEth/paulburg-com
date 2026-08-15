@@ -19,7 +19,7 @@ export default function MentorshipTestimonial() {
                     <blockquote
                         className="leading-relaxed mb-8"
                         style={{
-                            fontFamily: "var(--font-fraunces), serif",
+                            fontFamily: "var(--font-display)",
                             fontSize: "clamp(18px, 2vw, 24px)",
                             color: "var(--c-body-lede)",
                             fontStyle: "italic",

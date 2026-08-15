@@ -85,7 +85,7 @@ export default function ServicesHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             style={{
-              fontFamily: "var(--font-fraunces), serif",
+              fontFamily: "var(--font-display)",
               fontWeight: 700,
               fontSize: "clamp(30px, 5vw, 52px)",
               letterSpacing: "-0.02em",
@@ -117,7 +117,7 @@ export default function ServicesHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             style={{
-              fontFamily: "var(--font-newsreader), serif",
+              fontFamily: "var(--font-lede)",
               fontStyle: "italic",
               fontWeight: 400,
               fontSize: 21,

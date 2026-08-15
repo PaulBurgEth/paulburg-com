@@ -67,7 +67,7 @@ export default function Footer() {
                             className="text-2xl font-serif font-bold tracking-tight inline-flex items-baseline gap-1"
                             style={{
                                 color: "var(--c-heading)",
-                                fontFamily: "var(--font-fraunces), serif",
+                                fontFamily: "var(--font-display)",
                                 textDecoration: "none",
                             }}
                         >
@@ -90,7 +90,7 @@ export default function Footer() {
                         <p
                             style={{
                                 marginTop: 14,
-                                fontFamily: "var(--font-newsreader), serif",
+                                fontFamily: "var(--font-lede)",
                                 fontStyle: "italic",
                                 fontSize: 15,
                                 lineHeight: 1.55,

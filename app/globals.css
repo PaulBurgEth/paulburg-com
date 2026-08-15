@@ -90,6 +90,27 @@
   --font-serif-body: var(--font-newsreader), var(--font-source-serif), Georgia, serif;
 }
 
+/* Display faces resolve per language.
+   Fraunces and Newsreader ship no Cyrillic subset, so a Russian heading would mix a
+   Fraunces "AI" with a system-serif "боты" inside one word. Source Serif 4 is already
+   loaded with Cyrillic and matches Fraunces closely in weight and colour, so RU uses
+   it for the whole string and EN is left untouched.
+   These are plain custom properties, not @theme tokens, so the inline styles the
+   sections use (`fontFamily: "var(--font-display)"`) resolve per language — a rule
+   targeting h1..h6 cannot, because an inline style always wins. */
+/* Declared on body, not :root — next/font puts --font-fraunces and friends on the
+   <body> className, so at :root they are undefined, which would make the whole
+   declaration invalid at computed-value time and silently drop headings back to
+   the inherited face. */
+body {
+  --font-display: var(--font-fraunces), var(--font-source-serif), Georgia, serif;
+  --font-lede: var(--font-newsreader), var(--font-source-serif), Georgia, serif;
+}
+html[lang="ru"] body {
+  --font-display: var(--font-source-serif), Georgia, serif;
+  --font-lede: var(--font-source-serif), Georgia, serif;
+}
+
 /* RU mode — swap primary serif faces to Source Serif 4 for metric consistency.
    Fraunces Latin and Source Serif 4 Cyrillic have different x-heights; in RU we want
    one face everywhere. EN mode (default) keeps Fraunces/Newsreader. */

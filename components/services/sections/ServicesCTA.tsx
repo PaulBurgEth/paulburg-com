@@ -47,7 +47,7 @@ export default function ServicesCTA() {
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5 }}
           style={{
-            fontFamily: "var(--font-fraunces), serif",
+            fontFamily: "var(--font-display)",
             fontWeight: 700,
             fontSize: "clamp(28px, 4vw, 44px)",
             letterSpacing: "-0.02em",

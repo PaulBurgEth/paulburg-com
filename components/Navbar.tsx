@@ -83,7 +83,7 @@ export default function Navbar() {
                         className="font-serif font-bold leading-none transition-colors inline-flex items-baseline gap-1"
                         style={{
                             color: "var(--c-text)",
-                            fontFamily: "var(--font-fraunces), serif",
+                            fontFamily: "var(--font-display)",
                             fontSize: 18,
                             letterSpacing: "-0.01em",
                             textDecoration: "none",

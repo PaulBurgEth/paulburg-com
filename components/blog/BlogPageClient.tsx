@@ -52,7 +52,7 @@ export default function BlogPageClient({ enPosts, ruPosts }: Props) {
           >
             <h1
               style={{
-                fontFamily: "var(--font-fraunces), serif",
+                fontFamily: "var(--font-display)",
                 fontWeight: 700,
                 fontSize: "clamp(32px, 6vw, 56px)",
                 letterSpacing: "-0.02em",
@@ -77,7 +77,7 @@ export default function BlogPageClient({ enPosts, ruPosts }: Props) {
             </h1>
             <p
               style={{
-                fontFamily: "var(--font-newsreader), serif",
+                fontFamily: "var(--font-lede)",
                 fontStyle: "italic",
                 fontSize: 19,
                 color: "var(--c-body)",

@@ -134,7 +134,7 @@ export default function ArticlePageClient({
               return (
                 <h1
                   style={{
-                    fontFamily: "var(--font-fraunces), serif",
+                    fontFamily: "var(--font-display)",
                     fontWeight: 600,
                     fontSize: "clamp(34px, 5.5vw, 52px)",
                     letterSpacing: "-0.022em",
@@ -148,7 +148,7 @@ export default function ArticlePageClient({
                     fontStyle: "italic",
                     color: "transparent",
                     WebkitTextStroke: "1.5px rgba(200,169,110,0.7)",
-                    fontFamily: "var(--font-fraunces), serif",
+                    fontFamily: "var(--font-display)",
                     fontWeight: 600,
                   }}>{tail}</em>
                 </h1>
@@ -157,7 +157,7 @@ export default function ArticlePageClient({
 
             <p
               style={{
-                fontFamily: "var(--font-newsreader), serif",
+                fontFamily: "var(--font-lede)",
                 fontStyle: "italic",
                 fontSize: 21,
                 lineHeight: 1.45,
@@ -323,7 +323,7 @@ export default function ArticlePageClient({
 
       <style>{`
         .prose-blog {
-          font-family: var(--font-newsreader), Georgia, serif;
+          font-family: var(--font-lede);
           font-size: 19.5px;
           line-height: 1.65;
           color: var(--c-body);
@@ -342,7 +342,7 @@ export default function ArticlePageClient({
         }
 
         .prose-blog > p:first-of-type::first-letter {
-          font-family: var(--font-fraunces), Georgia, serif;
+          font-family: var(--font-display);
           font-weight: 700;
           font-style: normal;
           font-size: 76px;
@@ -354,7 +354,7 @@ export default function ArticlePageClient({
         }
 
         .prose-blog h1 {
-          font-family: var(--font-fraunces), serif;
+          font-family: var(--font-display);
           font-weight: 600;
           font-size: 30px;
           color: var(--c-heading);
@@ -364,7 +364,7 @@ export default function ArticlePageClient({
         }
 
         .prose-blog h2 {
-          font-family: var(--font-fraunces), serif;
+          font-family: var(--font-display);
           font-weight: 600;
           font-size: clamp(24px, 3vw, 30px);
           letter-spacing: -0.015em;
@@ -386,7 +386,7 @@ export default function ArticlePageClient({
         }
 
         .prose-blog h3 {
-          font-family: var(--font-newsreader), serif;
+          font-family: var(--font-lede);
           font-weight: 600;
           font-style: italic;
           font-size: 19px;
@@ -437,7 +437,7 @@ export default function ArticlePageClient({
           margin: 40px 0;
           padding: 24px 0;
           position: relative;
-          font-family: var(--font-fraunces), serif;
+          font-family: var(--font-display);
           font-style: italic;
           font-weight: 500;
           font-size: 26px;

@@ -14,10 +14,10 @@ import type { CSSProperties, ReactNode } from "react";
 
 // Headings add Source Serif as a Cyrillic fallback — the global
 // html[lang="ru"] rule is overridden by the inline fontFamily below.
-export const SERIF = "var(--font-fraunces), var(--font-source-serif), serif";
+export const SERIF = "var(--font-display)";
 export const SANS = "var(--font-instrument-sans), sans-serif";
 export const MONO = "var(--font-inconsolata), monospace";
-export const LEDE = "var(--font-newsreader), var(--font-source-serif), serif";
+export const LEDE = "var(--font-lede)";
 
 export const cardStyle: CSSProperties = {
   background: "var(--c-card)",
