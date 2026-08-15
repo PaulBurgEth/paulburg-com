@@ -6,13 +6,13 @@ import { useIntakeModal } from "@/context/IntakeModalContext";
 import { TELEGRAM_URL, WHATSAPP_URL } from "@/lib/constants";
 
 const en = {
-  primary: "Tell me about your project",
+  primary: "Tell me about your task",
   telegram: "Text me on Telegram",
   whatsapp: "Text me on WhatsApp",
 };
 
 const ru = {
-  primary: "Расскажите о проекте",
+  primary: "Расскажите о задаче",
   telegram: "Написать в Telegram",
   whatsapp: "Написать в WhatsApp",
 };

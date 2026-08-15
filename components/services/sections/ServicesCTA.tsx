@@ -7,19 +7,19 @@ import { useIntakeModal } from "@/context/IntakeModalContext";
 import { TELEGRAM_URL, WHATSAPP_URL } from "@/lib/constants";
 
 const en = {
-  h2: "Ready to automate?",
+  h2: "Which half do you need?",
   subtitle:
-    "Tell me about your business — I'll say what can be automated in 5 minutes.",
-  ctaPrimary: "Tell me about your project",
+    "Systems, clients, or both. Tell me about your business and I will say what is worth doing first.",
+  ctaPrimary: "Tell me about your task",
   ctaTelegram: "Text me on Telegram",
   ctaWhatsApp: "Text me on WhatsApp",
 };
 
 const ru = {
-  h2: "Готовы к автоматизации?",
+  h2: "Что из этого вам нужно?",
   subtitle:
-    "Расскажите о бизнесе — скажу что можно автоматизировать за 5 минут.",
-  ctaPrimary: "Расскажите о проекте",
+    "Системы, клиенты или и то и другое. Расскажите о бизнесе — скажу, с чего начать.",
+  ctaPrimary: "Расскажите о задаче",
   ctaTelegram: "Написать в Telegram",
   ctaWhatsApp: "Написать в WhatsApp",
 };

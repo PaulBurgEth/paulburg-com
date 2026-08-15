@@ -131,6 +131,7 @@ export const translations = {
                         howItWorks: [
                             "Анализ рынка, конкурентов, монетизации.",
                             "Простая GTM-стратегия: первые шаги, MVP, каналы.",
+                            "Холодный канал: где брать компании и как до них дойти.",
                             "Разбор текущих блоков (продажи, продукт, мотивация)."
                         ],
                         whatYouGet: [
@@ -344,6 +345,7 @@ export const translations = {
                         howItWorks: [
                             "Market analysis, competitors, monetization.",
                             "Simple GTM strategy: first steps, MVP, channels.",
+                            "A cold channel: where the companies come from and how to reach them.",
                             "Breakdown of current blocks (sales, product, motivation)."
                         ],
                         whatYouGet: [

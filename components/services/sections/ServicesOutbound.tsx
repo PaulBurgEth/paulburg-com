@@ -6,7 +6,7 @@ import { Crosshair } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 const en = {
-  sectionLabel: "Also available",
+  sectionLabel: "Line two — clients",
   h2: "Not a system — a stream of clients",
   subtitle:
     "Everything above builds the machine. This fills it: I find the companies, reach the decision-maker, and write in your name until a client is ready to talk terms.",
@@ -21,7 +21,7 @@ const en = {
 };
 
 const ru = {
-  sectionLabel: "Ещё есть",
+  sectionLabel: "Линия вторая — клиенты",
   h2: "Не система, а поток клиентов",
   subtitle:
     "Всё выше собирает машину. Это её наполняет: нахожу компании, выхожу на ЛПР и пишу от вашего имени, пока клиент не будет готов обсуждать условия.",

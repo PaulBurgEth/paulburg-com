@@ -8,7 +8,7 @@ import { useIntakeModal } from "@/context/IntakeModalContext";
 import { TELEGRAM_HANDLE } from "@/lib/constants";
 
 const en = {
-  h2: "Tell me about your project",
+  h2: "Tell me about your task",
   subtitle: "A few lines is enough. I'll take it from there.",
   labels: {
     name: "Your name",
@@ -45,7 +45,7 @@ const en = {
 };
 
 const ru = {
-  h2: "Расскажите о проекте",
+  h2: "Расскажите о задаче",
   subtitle: "Пары строк достаточно. Остальное — моя работа.",
   labels: {
     name: "Ваше имя",

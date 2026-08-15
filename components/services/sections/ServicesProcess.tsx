@@ -7,7 +7,7 @@ const en = {
   sectionLabel: "Process",
   h2: "How we work",
   subtitle:
-    "You don't write code or configure platforms. I handle everything.",
+    "You do not write code, configure platforms or chase leads. I handle everything.",
   steps: [
     {
       num: "01 — 30 MIN",

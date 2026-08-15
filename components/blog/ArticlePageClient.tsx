@@ -89,7 +89,7 @@ export default function ArticlePageClient({
   }, [slug]);
 
   const backLabel = lang === "ru" ? "← Все заметки" : "← Blog";
-  const ctaLabel = lang === "ru" ? "Хотите что-то подобное?" : "Want to build something like this?";
+  const ctaLabel = lang === "ru" ? "Нужны такие системы или клиенты к ним?" : "Need systems like this — or the clients to fill them?";
   const ctaTelegram = lang === "ru" ? "Написать в Telegram" : "Text me on Telegram";
   const ctaWhatsApp = lang === "ru" ? "Написать в WhatsApp" : "Text me on WhatsApp";
 

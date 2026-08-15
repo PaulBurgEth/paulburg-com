@@ -648,7 +648,12 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             <div className="hero-roles">
               <span className="hero-role">
                 <Bot size={12} strokeWidth={1.5} aria-hidden="true" />
-                {language === "ru" ? "AI-ASSISTED РАЗРАБОТКА" : "AI-ASSISTED DEVELOPMENT"}
+                {language === "ru" ? "AI-СИСТЕМЫ" : "AI SYSTEMS"}
+              </span>
+              <span className="hero-role-sep" aria-hidden="true">·</span>
+              <span className="hero-role">
+                <Crosshair size={12} strokeWidth={1.5} aria-hidden="true" />
+                {language === "ru" ? "ХОЛОДНЫЙ АУТБАУНД" : "COLD OUTBOUND"}
               </span>
               <span className="hero-role-sep" aria-hidden="true">·</span>
               <span className="hero-role">
@@ -665,17 +670,17 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
           <div className="pb-stage" data-visible={stage >= 4 ? "1" : "0"}>
             <p className="hero-desc">
               {language === "ru"
-                ? "Проектирую и запускаю AI-системы для бизнеса — боты, CRM и BI-дашборды, автоматизация, matching-движки, сайты. С нуля под ваш процесс. "
-                : "I design and ship AI-powered systems for businesses — bots, CRMs and BI dashboards, automation, matching engines, websites. Built from scratch around your process. "}
+                ? "Делаю две вещи для B2B. Строю системы, на которых держится бизнес: боты, CRM и BI-дашборды, автоматизация, сайты. И строю холодный канал, который приводит клиентов, чтобы эти системы было кем наполнять. "
+                : "Two things for B2B. I build the systems a business runs on: bots, CRMs and BI dashboards, automation, websites. And I build the cold channel that brings the clients to fill them. "}
               <strong>
                 {language === "ru" ? "Не шаблон. Не no-code." : "Not a template. Not a no-code tool."}
               </strong>
-              {language === "ru" ? " Готово за дни." : " Ready in days."}
             </p>
             <div className="tags">
+              <span className="tag gold">{language === "ru" ? "Холодный аутбаунд" : "Cold Outbound"}</span>
               <span className="tag gold">{language === "ru" ? "AI-боты" : "AI Bots"}</span>
               <span className="tag gold">{language === "ru" ? "CRM и BI" : "CRM & BI"}</span>
-              <span className="tag gold">{language === "ru" ? "AI Matching" : "AI Matching"}</span>
+              <span className="tag">{language === "ru" ? "AI Matching" : "AI Matching"}</span>
               <span className="tag">{language === "ru" ? "Автоматизация" : "Process Automation"}</span>
               <span className="tag">{language === "ru" ? "Сайты на заказ" : "Custom Websites"}</span>
             </div>
@@ -691,7 +696,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
           <SectionNumber n="01" />
           <div style={{ maxWidth: 1240, margin: "0 auto" }}>
             <div style={{ marginBottom: 32 }}>
-              <div className="eyebrow">{language === "ru" ? "Услуги" : "Services"}</div>
+              <div className="eyebrow">{language === "ru" ? "Первое — системы" : "First — the systems"}</div>
               <h2 className="sec-title">
                 {language === "ru" ? "AI-системы под ключ" : "AI systems, end to end"}
               </h2>
@@ -836,7 +841,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         {/* ══════════ OUTBOUND ══════════ */}
         <section className="section pb-reveal" id="outbound">
           <SectionNumber n="02" />
-          <div className="eyebrow">{language === "ru" ? "Аутбаунд" : "Outbound"}</div>
+          <div className="eyebrow">{language === "ru" ? "Второе — клиенты" : "Second — the clients"}</div>
           <h2 className="sec-title">{language === "ru" ? "Не система, а поток клиентов" : "Not a system — a stream of clients"}</h2>
           <p className="sec-sub">{language === "ru" ? "Холодный канал под ключ: нахожу компании, выхожу на ЛПР и пишу от вашего имени" : "A cold channel, end to end: I find the companies, reach the decision-maker, and write in your name"}</p>
 
@@ -1225,7 +1230,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <div className="about-tags">
                 <span className="tag tag-icon">
                   <Bot size={13} strokeWidth={1.4} aria-hidden="true" />
-                  {language === "ru" ? "AI-Assisted разработка" : "AI-Assisted Development"}
+                  {language === "ru" ? "AI-системы" : "AI Systems"}
                 </span>
                 <span className="tag tag-icon">
                   <Lightbulb size={13} strokeWidth={1.4} aria-hidden="true" />
@@ -1233,7 +1238,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 </span>
                 <span className="tag tag-icon">
                   <Coffee size={13} strokeWidth={1.4} aria-hidden="true" />
-                  {language === "ru" ? "Кофе и код" : "Coffee & Code"}
+                  {language === "ru" ? "Холодный аутбаунд" : "Cold Outbound"}
                 </span>
               </div>
               <div className="about-bio">

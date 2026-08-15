@@ -48,11 +48,11 @@ const sourceSerif = Source_Serif_4({
 });
 
 const SEO_DESCRIPTION =
-  "I build custom AI systems for business: chatbots, CRMs, BI and manager dashboards, matching engines, and process automation. Ready in days.";
+  "I build custom AI systems — chatbots, CRMs, BI dashboards, automation — and run the cold outbound channel that fills them with B2B clients.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://paulburg.com"),
-  title: "Paul Burg — AI Systems for Business",
+  title: "Paul Burg — AI Systems & B2B Outbound",
   description: SEO_DESCRIPTION,
   keywords: [
     "Paul Burg",
@@ -69,6 +69,12 @@ export const metadata: Metadata = {
     "AI builder",
     "custom AI",
     "PropTech AI",
+    "cold outbound",
+    "B2B lead generation",
+    "SDR as a service",
+    "sales pipeline",
+    "cold email",
+    "outbound agency",
   ],
   icons: {
     icon: "/favicon.png",
@@ -79,7 +85,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: "Paul Burg — AI Systems for Business",
+    title: "Paul Burg — AI Systems & B2B Outbound",
     description: SEO_DESCRIPTION,
     url: "https://paulburg.com",
     siteName: "Paul Burg",
@@ -89,7 +95,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Paul Burg — AI Systems for Business",
+    title: "Paul Burg — AI Systems & B2B Outbound",
     description: SEO_DESCRIPTION,
     images: ["https://paulburg.com/og-image.png"],
     creator: "@PaulBurg_",
@@ -126,8 +132,8 @@ export default function RootLayout({
                 "https://www.linkedin.com/in/paul-burg",
                 TELEGRAM_URL
               ],
-              "jobTitle": "AI Systems Builder",
-              "description": "I build custom AI systems for businesses — chatbots, CRMs and BI dashboards, manager dashboards, matching engines, automated workflows, and web platforms. Entrepreneur since 2011."
+              "jobTitle": "AI Systems Builder & B2B Outbound",
+              "description": "Two things for B2B companies: I build the systems that run the business — chatbots, CRMs and BI dashboards, matching engines, automated workflows, web platforms — and I run the cold outbound channel that fills them with clients. Entrepreneur since 2011."
             }),
           }}
         />

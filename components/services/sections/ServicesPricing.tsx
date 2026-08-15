@@ -8,7 +8,7 @@ import { useIntakeModal } from "@/context/IntakeModalContext";
 const en = {
   sectionLabel: "Pricing",
   h2: "Transparent pricing",
-  subtitle: "First month of support included in every project.",
+  subtitle: "Build tiers below. The outbound channel is priced separately — a fixed six-week pilot, then a monthly retainer plus a share of the result.",
   plans: [
     {
       name: "Starter",
@@ -61,7 +61,7 @@ const en = {
 const ru = {
   sectionLabel: "Цены",
   h2: "Прозрачные цены",
-  subtitle: "Первый месяц поддержки включён в каждый проект.",
+  subtitle: "Ниже — тарифы на разработку. Холодный канал считается отдельно: фиксированный пилот на шесть недель, дальше месячный фикс плюс доля с результата.",
   plans: [
     {
       name: "Стартер",

@@ -21,8 +21,8 @@ export default function Footer() {
 
     const t = {
         tagline: language === "ru"
-            ? "Строю AI-системы из Дананга."
-            : "Building AI-powered systems from Da Nang.",
+            ? "Строю системы для бизнеса и привожу клиентов, которые их наполняют. Из Дананга."
+            : "Building the systems that run your business — and the pipeline that fills them. From Da Nang.",
         copyright: language === "ru"
             ? `© ${currentYear} Paul Burg. Все права защищены.`
             : `© ${currentYear} Paul Burg. All rights reserved.`,

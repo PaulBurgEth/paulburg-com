@@ -6,7 +6,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { useIntakeModal } from "@/context/IntakeModalContext";
 
 const en = {
-  sectionLabel: "What I build",
+  sectionLabel: "Line one — systems",
   h2: "Production AI systems I ship",
   subtitle:
     "Each built from scratch. No platform lock-in. Your data on your server.",
@@ -46,7 +46,7 @@ const en = {
 };
 
 const ru = {
-  sectionLabel: "Что я строю",
+  sectionLabel: "Линия первая — системы",
   h2: "Продакшен AI-системы, которые я делаю",
   subtitle:
     "Каждая с нуля. Без привязки к платформам. Ваши данные на вашем сервере.",
