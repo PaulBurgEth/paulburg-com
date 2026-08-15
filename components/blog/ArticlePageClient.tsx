@@ -10,6 +10,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import type { ReactNode } from "react";
 import { splitLastWord } from "@/lib/text";
 import { useRevealObserver } from "@/lib/useStageReveal";
+import { TELEGRAM_URL, WHATSAPP_URL } from "@/lib/constants";
 
 interface Frontmatter {
   title: string;
@@ -89,6 +90,8 @@ export default function ArticlePageClient({
 
   const backLabel = lang === "ru" ? "← Все заметки" : "← Blog";
   const ctaLabel = lang === "ru" ? "Хотите что-то подобное?" : "Want to build something like this?";
+  const ctaTelegram = lang === "ru" ? "Написать в Telegram" : "Text me on Telegram";
+  const ctaWhatsApp = lang === "ru" ? "Написать в WhatsApp" : "Text me on WhatsApp";
 
   return (
     <main style={{ background: "var(--c-bg)", minHeight: "100vh" }}>
@@ -281,7 +284,7 @@ export default function ArticlePageClient({
               </p>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                 <a
-                  href="https://t.me/paul_burg"
+                  href={TELEGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={ghostButtonStyle}
@@ -294,10 +297,10 @@ export default function ArticlePageClient({
                     (e.currentTarget as HTMLElement).style.color = "var(--c-text)";
                   }}
                 >
-                  Text me on Telegram
+                  {ctaTelegram}
                 </a>
                 <a
-                  href="https://calendly.com/paul_burg/15-minutes-free-call-clone"
+                  href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={ghostButtonStyle}
@@ -310,7 +313,7 @@ export default function ArticlePageClient({
                     (e.currentTarget as HTMLElement).style.color = "var(--c-text)";
                   }}
                 >
-                  Book a free call
+                  {ctaWhatsApp}
                 </a>
               </div>
             </div>
