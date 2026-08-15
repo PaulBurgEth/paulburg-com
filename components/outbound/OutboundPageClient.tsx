@@ -12,13 +12,12 @@ import OutboundFormats from "./sections/OutboundFormats";
 // tries to resolve /outbound#intake on a cold load.
 import OutboundForm from "./sections/OutboundForm";
 
-const OutboundSources  = dynamic(() => import("./sections/OutboundSources"),  { ssr: false });
-const OutboundTriggers = dynamic(() => import("./sections/OutboundTriggers"), { ssr: false });
-const OutboundProof    = dynamic(() => import("./sections/OutboundProof"),    { ssr: false });
-const OutboundRules    = dynamic(() => import("./sections/OutboundRules"),    { ssr: false });
-const OutboundPilot    = dynamic(() => import("./sections/OutboundPilot"),    { ssr: false });
-const OutboundTerms    = dynamic(() => import("./sections/OutboundTerms"),    { ssr: false });
-const OutboundStart    = dynamic(() => import("./sections/OutboundStart"),    { ssr: false });
+const OutboundHow   = dynamic(() => import("./sections/OutboundHow"),   { ssr: false });
+const OutboundProof = dynamic(() => import("./sections/OutboundProof"), { ssr: false });
+const OutboundRules = dynamic(() => import("./sections/OutboundRules"), { ssr: false });
+const OutboundPilot = dynamic(() => import("./sections/OutboundPilot"), { ssr: false });
+const OutboundTerms = dynamic(() => import("./sections/OutboundTerms"), { ssr: false });
+const OutboundStart = dynamic(() => import("./sections/OutboundStart"), { ssr: false });
 
 export default function OutboundPageClient() {
   // No useRevealObserver here: every section animates itself via whileInView,
@@ -34,8 +33,7 @@ export default function OutboundPageClient() {
         <OutboundNumbers />
         <OutboundWhy />
         <OutboundFormats />
-        <OutboundSources />
-        <OutboundTriggers />
+        <OutboundHow />
         <OutboundProof />
         <OutboundRules />
         <OutboundPilot />

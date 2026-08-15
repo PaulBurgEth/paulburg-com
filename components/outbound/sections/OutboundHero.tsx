@@ -67,7 +67,7 @@ export default function OutboundHero() {
             style={{
               fontFamily: MONO,
               fontWeight: 600,
-              fontSize: 10,
+              fontSize: 12,
               letterSpacing: "0.18em",
               textTransform: "uppercase",
               background: "rgba(200,169,110,0.08)",
@@ -106,7 +106,7 @@ export default function OutboundHero() {
               fontFamily: LEDE,
               fontStyle: "italic",
               fontWeight: 400,
-              fontSize: 19,
+              fontSize: 20,
               color: "var(--c-body-lede)",
               maxWidth: 600,
               lineHeight: 1.7,
@@ -154,7 +154,7 @@ export default function OutboundHero() {
                 key={i}
                 style={{
                   fontFamily: MONO,
-                  fontSize: 10,
+                  fontSize: 12,
                   letterSpacing: "0.16em",
                   textTransform: "uppercase",
                   color: "var(--c-muted)",

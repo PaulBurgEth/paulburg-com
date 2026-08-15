@@ -27,7 +27,7 @@
   --c-text:      #2d2a26;
   --c-text2:     #6a6560;
   --c-text3:     #8a8480;
-  --c-muted:     #9a9088;
+  --c-muted:     #736a62; /* 4.67:1 on --c-bg — was #9a9088 at 2.76:1 */
   --c-faint:     #c0b8b0;
   --c-subtle:    #a09890;
   --c-gold:      #a07840;
@@ -63,7 +63,7 @@
   --c-text:      #ddd8cf;
   --c-text2:     #a8a39a;
   --c-text3:     #b0aba3;
-  --c-muted:     #6a6e78;
+  --c-muted:     #767a85; /* 4.67:1 on --c-bg — was #6a6e78 at 3.93:1 */
   --c-faint:     #23262c;
   --c-subtle:    #4a5060;
   --c-gold:      #c8a96e;

@@ -148,7 +148,7 @@ const inputStyle: React.CSSProperties = {
   borderRadius: 6,
   padding: "10px 12px",
   fontFamily: SANS,
-  fontSize: 13,
+  fontSize: 16,
   color: "var(--c-text)",
   outline: "none",
 };
@@ -158,7 +158,7 @@ const textareaStyle: React.CSSProperties = { ...inputStyle, minHeight: 96, resiz
 const labelStyle: React.CSSProperties = {
   display: "block",
   fontFamily: MONO,
-  fontSize: 10,
+  fontSize: 12,
   letterSpacing: "0.22em",
   textTransform: "uppercase",
   color: "var(--c-muted)",
@@ -167,9 +167,9 @@ const labelStyle: React.CSSProperties = {
 
 const toggleBtnStyle = (active: boolean): React.CSSProperties => ({
   fontFamily: SANS,
-  fontSize: 12,
+  fontSize: 14,
   fontWeight: 600,
-  padding: "8px 14px",
+  padding: "10px 16px",
   borderRadius: 5,
   background: active ? "rgba(200,169,110,0.12)" : "transparent",
   border: active ? "1px solid rgba(200,169,110,0.5)" : "1px solid var(--c-border)",
@@ -242,7 +242,7 @@ export default function OutboundForm() {
   }
 
   return (
-    <SectionShell num="11" id="intake">
+    <SectionShell num="10" id="intake">
       <SectionHead eyebrow={t.eyebrow} h2={t.h2} sub={t.sub} />
 
       <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-6 items-start">
@@ -405,7 +405,7 @@ export default function OutboundForm() {
         </div>
 
         <div style={{ background: "var(--c-card2)", border: "1px solid var(--c-border)", borderRadius: 12, padding: 22 }}>
-          <span style={{ fontFamily: MONO, fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--c-muted)", display: "block", marginBottom: 14 }}>
+          <span style={{ fontFamily: MONO, fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--c-muted)", display: "block", marginBottom: 14 }}>
             {t.orWrite}
           </span>
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>

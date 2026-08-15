@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import CountUp from "@/components/CountUp";
-import { SERIF, SANS, MONO, sectionVariants } from "../shared";
+import { SERIF, SANS, MONO, T, sectionVariants } from "../shared";
 
 type Metric = { count?: number; value: string; suffix?: string; label: string };
 
@@ -14,7 +14,7 @@ const en: { metrics: Metric[]; caption: string } = {
     { value: "67%", label: "of replies taken through to a quote" },
     { value: "0.3%", label: "unsubscribes, against ~2% market" },
   ],
-  caption: "One pilot, 19 working days, from zero — no list, no domain, no copy. Full funnel in § 06.",
+  caption: "From zero to the first agreed quotes — 19 working days. No list, no domain and no copy at the start.",
 };
 
 const ru: { metrics: Metric[]; caption: string } = {
@@ -24,7 +24,7 @@ const ru: { metrics: Metric[]; caption: string } = {
     { value: "67%", label: "ответов доведено до расчёта" },
     { value: "0,3%", label: "отписок против ~2% по рынку" },
   ],
-  caption: "Один пилот, 19 рабочих дней, с нуля — ни базы, ни домена, ни текстов. Полная воронка в § 06.",
+  caption: "От нуля до первых согласованных расчётов — 19 рабочих дней. На старте не было ни базы, ни домена, ни текстов.",
 };
 
 // Space-separated thousands, matching the static strings above. Written by
@@ -52,7 +52,7 @@ export default function OutboundNumbers() {
         aria-hidden="true"
         style={{
           position: "absolute", top: 24, right: 28, fontFamily: MONO,
-          fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)",
+          fontSize: T.caption, letterSpacing: "0.18em", color: "var(--c-muted)",
         }}
       >
         § 01
@@ -65,14 +65,14 @@ export default function OutboundNumbers() {
               className="flex flex-col items-center justify-center py-8 flex-1 min-w-[140px]"
               style={{ borderRight: i < t.metrics.length - 1 ? "1px solid var(--c-border)" : "none" }}
             >
-              <span style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 24, color: "var(--c-gold)", lineHeight: 1.2 }}>
+              <span style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 30, color: "var(--c-gold)", lineHeight: 1.2 }}>
                 {m.count ? <CountUp target={m.count} format={group} /> : m.value}
               </span>
               <span
                 style={{
-                  fontFamily: SANS, fontWeight: 400, fontSize: 11,
-                  color: "var(--c-muted)", marginTop: 6, textAlign: "center",
-                  maxWidth: 190, lineHeight: 1.5,
+                  fontFamily: SANS, fontWeight: 400, fontSize: T.bodySm,
+                  color: "var(--c-text2)", marginTop: 8, textAlign: "center",
+                  maxWidth: 210, lineHeight: 1.5,
                 }}
               >
                 {m.label}
@@ -82,8 +82,8 @@ export default function OutboundNumbers() {
         </div>
         <p
           style={{
-            fontFamily: MONO, fontSize: 10, letterSpacing: "0.1em",
-            color: "var(--c-muted)", textAlign: "center", paddingBottom: 20,
+            fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.08em",
+            color: "var(--c-text2)", textAlign: "center", paddingBottom: 22,
           }}
         >
           {t.caption}
