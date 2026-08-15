@@ -62,17 +62,16 @@ export default function OutboundNumbers() {
           {t.metrics.map((m, i) => (
             <div
               key={i}
-              className="flex flex-col items-center justify-center py-8 flex-1 min-w-[140px]"
-              style={{ borderRight: i < t.metrics.length - 1 ? "1px solid var(--c-border)" : "none" }}
+              className="flex flex-col justify-center py-9 flex-1 min-w-[190px]"
+              style={{ borderRight: i < t.metrics.length - 1 ? "1px solid var(--c-border)" : "none", paddingLeft: i === 0 ? 0 : 28, paddingRight: 28 }}
             >
-              <span style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 30, color: "var(--c-gold)", lineHeight: 1.2 }}>
+              <span style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 44, color: "var(--c-gold)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
                 {m.count ? <CountUp target={m.count} format={group} /> : m.value}
               </span>
               <span
                 style={{
-                  fontFamily: SANS, fontWeight: 400, fontSize: T.bodySm,
-                  color: "var(--c-text2)", marginTop: 8, textAlign: "center",
-                  maxWidth: 210, lineHeight: 1.5,
+                  fontFamily: SANS, fontWeight: 400, fontSize: T.body,
+                  color: "var(--c-text2)", marginTop: 10, maxWidth: 260, lineHeight: 1.45,
                 }}
               >
                 {m.label}
@@ -83,7 +82,7 @@ export default function OutboundNumbers() {
         <p
           style={{
             fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.08em",
-            color: "var(--c-text2)", textAlign: "center", paddingBottom: 22,
+            color: "var(--c-text2)", paddingBottom: 24, paddingTop: 4,
           }}
         >
           {t.caption}

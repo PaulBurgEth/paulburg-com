@@ -142,18 +142,29 @@ export default function OutboundHow() {
       <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "38px 0 14px" }}>
         {t.triggerTitle}
       </h3>
-      <div role="table" style={{ border: "1px solid var(--c-border)", borderRadius: 10, overflow: "hidden" }}>
-        <div role="row" className="hidden sm:grid sm:grid-cols-[1fr_1.2fr_0.9fr]" style={{ background: "var(--c-card2)", borderBottom: "1px solid var(--c-border)" }}>
-          {t.triggerCols.map((c) => (
-            <div key={c} role="columnheader" style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--c-text2)", padding: "11px 16px" }}>{c}</div>
-          ))}
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {t.triggers.map((row, i) => (
-          <div key={i} role="row" className="grid grid-cols-1 sm:grid-cols-[1fr_1.2fr_0.9fr]" style={{ background: i % 2 ? "var(--c-card2)" : "var(--c-card)", borderTop: i ? "1px solid var(--c-border)" : "none", padding: "13px 0" }}>
-            <div role="cell" style={{ padding: "3px 16px", fontFamily: SANS, fontSize: T.body, fontWeight: 600, color: "var(--c-heading)", lineHeight: 1.5 }}>{row.a}</div>
-            <div role="cell" style={{ padding: "3px 16px", fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-body)", lineHeight: 1.55 }}>{row.b}</div>
-            <div role="cell" style={{ padding: "3px 16px", fontFamily: MONO, fontSize: T.caption, color: "var(--c-text2)", lineHeight: 1.55 }}>{row.c}</div>
-          </div>
+          <motion.div
+            key={i}
+            variants={itemVariants}
+            style={{ background: "var(--c-card)", border: "1px solid var(--c-border)", borderRadius: 10, padding: 20 }}
+          >
+            <div className="flex items-baseline gap-3" style={{ marginBottom: 10 }}>
+              <span style={{ fontFamily: MONO, fontSize: T.caption, fontWeight: 700, letterSpacing: "0.14em", color: "var(--c-gold)", flexShrink: 0 }}>
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span style={{ fontFamily: SERIF, fontSize: T.h3, fontWeight: 700, color: "var(--c-heading)", lineHeight: 1.3 }}>
+                {row.a}
+              </span>
+            </div>
+            <div className="flex items-start gap-2" style={{ marginBottom: 10 }}>
+              <span aria-hidden="true" style={{ fontFamily: MONO, fontSize: T.caption, color: "var(--c-gold)", flexShrink: 0, paddingTop: 2 }}>→</span>
+              <span style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.55 }}>{row.b}</span>
+            </div>
+            <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.08em", color: "var(--c-text2)" }}>
+              {t.triggerCols[2]}: {row.c}
+            </span>
+          </motion.div>
         ))}
       </div>
 
