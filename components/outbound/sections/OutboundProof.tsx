@@ -13,8 +13,8 @@ type Bench = { metric: string; mine: string; market: string };
 const en = {
   eyebrow: "Result",
   h2: "From a cold list to agreed quotes",
-  sub: "Metals trading, B2B. Nineteen working days from the first email to eighteen quotes agreed with buyers.",
-  tags: ["Metals trading", "B2B", "19 working days"],
+  sub: "3 854 companies in, eighteen quotes agreed with buyers out. Every step in between is below.",
+  tags: ["Metals trading", "B2B", "Cold start"],
   funnel: [
     { n: 3854, value: "3 854", label: "companies sourced" },
     { n: 1320, value: "1 320", label: "passed selection", conv: "34%" },
@@ -48,8 +48,8 @@ const en = {
 const ru = {
   eyebrow: "Результат",
   h2: "От холодного списка до согласованных расчётов",
-  sub: "Металлопрокат, B2B. Девятнадцать рабочих дней от первого письма до восемнадцати расчётов, согласованных с покупателями.",
-  tags: ["Металлопрокат", "B2B", "19 рабочих дней"],
+  sub: "3 854 компании на входе, восемнадцать расчётов, согласованных с покупателями, на выходе. Ниже — каждый шаг между ними.",
+  tags: ["Металлопрокат", "B2B", "Холодный старт"],
   funnel: [
     { n: 3854, value: "3 854", label: "компании собрано" },
     { n: 1320, value: "1 320", label: "прошли отбор", conv: "34%" },

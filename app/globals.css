@@ -140,7 +140,10 @@ body {
 
 /* Custom Utilities */
 .container-custom {
-  @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  /* Was max-w-6xl (1152px), which used only 67% of a 1710px screen and
+     44% in the hero. Prose keeps its own measure via maxWidth; grids and
+     tables now get the room. */
+  @apply max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10;
 }
 
 h1,

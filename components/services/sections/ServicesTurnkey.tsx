@@ -82,7 +82,7 @@ export default function ServicesTurnkey() {
 
   return (
     <section className="pb-reveal" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
-      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 03</span>
+      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 16, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 03</span>
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -106,7 +106,7 @@ export default function ServicesTurnkey() {
             style={{
               display: "inline-block",
               fontFamily: "var(--font-inconsolata), monospace",
-              fontSize: 10,
+              fontSize: 16,
               fontWeight: 700,
               letterSpacing: "0.22em",
               color: "var(--c-gold)",
@@ -124,7 +124,7 @@ export default function ServicesTurnkey() {
           <div
             style={{
               fontFamily: "var(--font-inconsolata), monospace",
-              fontSize: 10,
+              fontSize: 16,
               letterSpacing: "0.22em",
               textTransform: "uppercase",
               color: "var(--c-muted)",
@@ -151,7 +151,7 @@ export default function ServicesTurnkey() {
           <p
             style={{
               fontFamily: "var(--font-instrument-sans), sans-serif",
-              fontSize: 14,
+              fontSize: 16,
               color: "var(--c-body)",
               lineHeight: 1.6,
               maxWidth: 620,
@@ -190,7 +190,7 @@ export default function ServicesTurnkey() {
                   aria-hidden="true"
                   style={{
                     fontFamily: "var(--font-inconsolata), monospace",
-                    fontSize: 11,
+                    fontSize: 16,
                     fontWeight: 700,
                     letterSpacing: "0.08em",
                     color: "var(--c-gold)",
@@ -204,7 +204,7 @@ export default function ServicesTurnkey() {
                     style={{
                       fontFamily: "var(--font-display)",
                       fontWeight: 700,
-                      fontSize: 15,
+                      fontSize: 17,
                       color: "var(--c-text)",
                       marginBottom: 6,
                       letterSpacing: "-0.005em",
@@ -215,7 +215,7 @@ export default function ServicesTurnkey() {
                   <p
                     style={{
                       fontFamily: "var(--font-instrument-sans), sans-serif",
-                      fontSize: 13,
+                      fontSize: 16,
                       color: "var(--c-body)",
                       lineHeight: 1.65,
                       margin: 0,
@@ -232,7 +232,7 @@ export default function ServicesTurnkey() {
           <p
             style={{
               fontFamily: "var(--font-inconsolata), monospace",
-              fontSize: 11,
+              fontSize: 16,
               letterSpacing: "0.14em",
               textTransform: "uppercase",
               color: "var(--c-gold)",
@@ -261,7 +261,7 @@ export default function ServicesTurnkey() {
               <div
                 style={{
                   fontFamily: "var(--font-inconsolata), monospace",
-                  fontSize: 10,
+                  fontSize: 16,
                   letterSpacing: "0.15em",
                   textTransform: "uppercase",
                   color: "var(--c-muted)",
@@ -281,7 +281,7 @@ export default function ServicesTurnkey() {
                 color: "#07080a",
                 fontFamily: "var(--font-instrument-sans), sans-serif",
                 fontWeight: 600,
-                fontSize: 13,
+                fontSize: 16,
                 letterSpacing: "0.04em",
                 padding: "10px 22px",
                 borderRadius: 5,

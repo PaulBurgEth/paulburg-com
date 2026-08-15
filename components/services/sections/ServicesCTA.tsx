@@ -39,7 +39,7 @@ export default function ServicesCTA() {
         position: "relative",
       }}
     >
-      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 08</span>
+      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 16, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 08</span>
       <div className="container-custom flex flex-col items-center text-center gap-5">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -64,7 +64,7 @@ export default function ServicesCTA() {
           transition={{ duration: 0.5, delay: 0.1 }}
           style={{
             fontFamily: "var(--font-instrument-sans), sans-serif",
-            fontSize: 15,
+            fontSize: 17,
             color: "var(--c-body)",
             maxWidth: 420,
             lineHeight: 1.6,
@@ -92,7 +92,7 @@ export default function ServicesCTA() {
               color: "var(--c-text)",
               fontFamily: "var(--font-instrument-sans), sans-serif",
               fontWeight: 600,
-              fontSize: 13,
+              fontSize: 16,
               letterSpacing: "0.04em",
               padding: "12px 24px",
               borderRadius: 5,
@@ -114,7 +114,7 @@ export default function ServicesCTA() {
               color: "var(--c-text)",
               fontFamily: "var(--font-instrument-sans), sans-serif",
               fontWeight: 600,
-              fontSize: 13,
+              fontSize: 16,
               letterSpacing: "0.04em",
               padding: "12px 24px",
               borderRadius: 5,
@@ -136,7 +136,7 @@ export default function ServicesCTA() {
               color: "var(--c-text)",
               fontFamily: "var(--font-instrument-sans), sans-serif",
               fontWeight: 600,
-              fontSize: 13,
+              fontSize: 16,
               letterSpacing: "0.04em",
               padding: "12px 24px",
               borderRadius: 5,

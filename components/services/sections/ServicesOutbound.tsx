@@ -15,8 +15,8 @@ const en = {
     "Emails in the recipient's own language — Russian, English, Spanish",
     "Correspondence only, no calls. Your domains, your data, from day one",
   ],
-  metric: "2.0%",
-  metricLabel: "reply rate on the first pilot, 67% of replies taken to a quote",
+  metric: "6 weeks",
+  metricLabel: "from a cold list to quotes agreed with buyers, with your own funnel numbers at the end",
   cta: "How the channel works →",
 };
 
@@ -30,8 +30,8 @@ const ru = {
     "Письма на языке получателя: русский, английский, испанский",
     "Только переписка, без звонков. Ваши домены и данные с первого дня",
   ],
-  metric: "2,0%",
-  metricLabel: "отклик на первом пилоте, 67% ответов доведено до расчёта",
+  metric: "6 недель",
+  metricLabel: "от холодного списка до расчётов, согласованных с покупателями, и ваши собственные цифры воронки на выходе",
   cta: "Как устроен канал →",
 };
 
@@ -45,7 +45,7 @@ export default function ServicesOutbound() {
       className="scroll-mt-20 pb-reveal"
       style={{ background: "var(--c-bg2)", borderTop: "1px solid var(--c-border)", padding: "72px 0", position: "relative" }}
     >
-      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 07</span>
+      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 16, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 05</span>
       <div className="container-custom">
         <motion.div
           variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}
@@ -56,7 +56,7 @@ export default function ServicesOutbound() {
           <div
             style={{
               fontFamily: "var(--font-inconsolata), monospace",
-              fontSize: 10,
+              fontSize: 16,
               letterSpacing: "0.22em",
               textTransform: "uppercase",
               color: "var(--c-gold)",
@@ -106,17 +106,17 @@ export default function ServicesOutbound() {
                 </h2>
               </div>
 
-              <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 13.5, color: "var(--c-body)", lineHeight: 1.7, marginBottom: 16, maxWidth: 620 }}>
+              <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 17, color: "var(--c-body)", lineHeight: 1.7, marginBottom: 16, maxWidth: 620 }}>
                 {t.subtitle}
               </p>
 
               <ul style={{ display: "flex", flexDirection: "column", gap: 9, marginBottom: 20 }}>
                 {t.points.map((p, i) => (
                   <li key={i} className="flex gap-3">
-                    <span aria-hidden="true" style={{ fontFamily: "var(--font-inconsolata), monospace", fontSize: 10, color: "var(--c-gold)", paddingTop: 3, flexShrink: 0, letterSpacing: "0.1em" }}>
+                    <span aria-hidden="true" style={{ fontFamily: "var(--font-inconsolata), monospace", fontSize: 16, color: "var(--c-gold)", paddingTop: 3, flexShrink: 0, letterSpacing: "0.1em" }}>
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 13, color: "var(--c-body)", lineHeight: 1.6 }}>{p}</span>
+                    <span style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16, color: "var(--c-body)", lineHeight: 1.6 }}>{p}</span>
                   </li>
                 ))}
               </ul>
@@ -130,7 +130,7 @@ export default function ServicesOutbound() {
                   color: "var(--c-text)",
                   fontFamily: "var(--font-instrument-sans), sans-serif",
                   fontWeight: 600,
-                  fontSize: 13,
+                  fontSize: 16,
                   letterSpacing: "0.04em",
                   padding: "12px 24px",
                   borderRadius: 5,
@@ -149,10 +149,10 @@ export default function ServicesOutbound() {
                 padding: 20,
               }}
             >
-              <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 34, color: "var(--c-gold)", lineHeight: 1, marginBottom: 8 }}>
+              <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 30, color: "var(--c-gold)", lineHeight: 1, marginBottom: 8 }}>
                 {t.metric}
               </div>
-              <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 12.5, color: "var(--c-text2)", lineHeight: 1.6 }}>
+              <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16, color: "var(--c-text2)", lineHeight: 1.6 }}>
                 {t.metricLabel}
               </p>
             </div>

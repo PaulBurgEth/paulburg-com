@@ -689,7 +689,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         {/* ══════════ SERVICES TEASER ══════════ */}
         <section className="section pb-reveal" id="services-teaser" style={{ background: C.bg2, borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`, margin: "0 -28px", padding: "72px 28px" }}>
           <SectionNumber n="01" />
-          <div style={{ maxWidth: 940, margin: "0 auto" }}>
+          <div style={{ maxWidth: 1240, margin: "0 auto" }}>
             <div style={{ marginBottom: 32 }}>
               <div className="eyebrow">{language === "ru" ? "Услуги" : "Services"}</div>
               <h2 className="sec-title">
@@ -864,7 +864,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
             <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 14 }}>
               <span style={{ fontFamily: "var(--font-inconsolata), monospace", fontWeight: 700, fontSize: 13, color: C.gold }}>
-                {language === "ru" ? "2,0% отклик · 67% до расчёта" : "2.0% reply rate · 67% to a quote"}
+                {language === "ru" ? "Пилот 6 недель · ваши цифры на выходе" : "6-week pilot · your own numbers at the end"}
               </span>
               <Link
                 href="/outbound"

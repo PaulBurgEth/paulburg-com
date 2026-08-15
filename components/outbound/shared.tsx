@@ -26,13 +26,13 @@ export const LEDE = "var(--font-lede)";
  * the sizes every section must use — no ad-hoc numbers.
  */
 export const T = {
-  lede: 18,
-  body: 16,
-  bodySm: 15,
-  h3: 19,
-  h2: "clamp(28px, 4vw, 40px)",
-  caption: 12,
-  eyebrow: 12,
+  lede: 20,
+  body: 17,
+  bodySm: 16,
+  h3: 21,
+  h2: "clamp(30px, 4vw, 44px)",
+  caption: 13,
+  eyebrow: 13,
 } as const;
 
 
@@ -186,7 +186,7 @@ export function SectionHead({
           lineHeight: 1.15,
           color: "var(--c-heading)",
           marginBottom: sub ? 10 : 0,
-          maxWidth: 780,
+          maxWidth: 900,
         }}
       >
         {h2}
@@ -197,7 +197,7 @@ export function SectionHead({
             fontFamily: SANS,
             fontSize: T.lede,
             color: "var(--c-text2)",
-            maxWidth: 680,
+            maxWidth: 820,
             lineHeight: 1.65,
           }}
         >
@@ -217,7 +217,7 @@ export function Note({ children }: { children: ReactNode }) {
         lineHeight: 1.7,
         color: "var(--c-text2)",
         marginTop: 16,
-        maxWidth: 720,
+        maxWidth: 880,
       }}
     >
       {children}
@@ -241,7 +241,7 @@ export function MidCTA({ label, note }: { label: string; note?: string }) {
         borderRadius: 10,
         padding: "20px 24px",
         margin: "0 auto",
-        maxWidth: 1152,
+        maxWidth: 1440,
       }}
     >
       {note && (

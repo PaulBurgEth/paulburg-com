@@ -118,7 +118,7 @@ export default function ServicesPricing() {
 
   return (
     <section id="pricing" className="pb-reveal" style={{ background: "var(--c-bg2)", padding: "72px 0", position: "relative" }}>
-      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 06</span>
+      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 16, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 07</span>
       <div className="container-custom">
         {/* Header */}
         <motion.div
@@ -131,7 +131,7 @@ export default function ServicesPricing() {
           <div
             style={{
               fontFamily: "var(--font-inconsolata), monospace",
-              fontSize: 10,
+              fontSize: 16,
               letterSpacing: "0.22em",
               textTransform: "uppercase",
               color: "var(--c-gold)",
@@ -159,7 +159,7 @@ export default function ServicesPricing() {
           <p
             style={{
               fontFamily: "var(--font-instrument-sans), sans-serif",
-              fontSize: 13,
+              fontSize: 16,
               color: "var(--c-muted)",
               lineHeight: 1.6,
             }}
@@ -194,7 +194,7 @@ export default function ServicesPricing() {
                   style={{
                     fontFamily: "var(--font-inconsolata), monospace",
                     fontWeight: 700,
-                    fontSize: 9,
+                    fontSize: 16,
                     background: "rgba(200,169,110,0.15)",
                     color: "var(--c-gold)",
                     border: "1px solid rgba(200,169,110,0.3)",
@@ -213,7 +213,7 @@ export default function ServicesPricing() {
                 style={{
                   fontFamily: "var(--font-inconsolata), monospace",
                   fontWeight: 600,
-                  fontSize: 11,
+                  fontSize: 16,
                   letterSpacing: "0.15em",
                   textTransform: "uppercase",
                   color: "var(--c-muted)",
@@ -242,7 +242,7 @@ export default function ServicesPricing() {
               <span
                 style={{
                   fontFamily: "var(--font-inconsolata), monospace",
-                  fontSize: 11,
+                  fontSize: 16,
                   color: "var(--c-muted)",
                   marginBottom: 16,
                   display: "block",
@@ -267,7 +267,7 @@ export default function ServicesPricing() {
                     <span
                       style={{
                         fontFamily: "var(--font-instrument-sans), sans-serif",
-                        fontSize: 13,
+                        fontSize: 16,
                         color: "var(--c-body)",
                         lineHeight: 1.5,
                       }}
@@ -292,7 +292,7 @@ export default function ServicesPricing() {
                         color: "var(--c-bg)",
                         fontFamily: "var(--font-instrument-sans), sans-serif",
                         fontWeight: 600,
-                        fontSize: 13,
+                        fontSize: 16,
                         letterSpacing: "0.04em",
                         padding: "11px 20px",
                         borderRadius: 5,
@@ -308,7 +308,7 @@ export default function ServicesPricing() {
                         color: "var(--c-text)",
                         fontFamily: "var(--font-instrument-sans), sans-serif",
                         fontWeight: 600,
-                        fontSize: 13,
+                        fontSize: 16,
                         letterSpacing: "0.04em",
                         padding: "11px 20px",
                         borderRadius: 5,
@@ -323,7 +323,7 @@ export default function ServicesPricing() {
               <p
                 style={{
                   fontFamily: "var(--font-inconsolata), monospace",
-                  fontSize: 10,
+                  fontSize: 16,
                   color: "var(--c-muted)",
                   textAlign: "center",
                   marginTop: 8,

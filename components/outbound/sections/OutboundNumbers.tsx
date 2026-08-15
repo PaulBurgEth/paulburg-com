@@ -14,7 +14,7 @@ const en: { metrics: Metric[]; caption: string } = {
     { value: "67%", label: "of replies taken through to a quote" },
     { value: "0.3%", label: "unsubscribes, against ~2% market" },
   ],
-  caption: "From zero to the first agreed quotes — 19 working days. No list, no domain and no copy at the start.",
+  caption: "Metals trading, B2B. One channel, built from nothing — no list, no domain, no copy.",
 };
 
 const ru: { metrics: Metric[]; caption: string } = {
@@ -24,7 +24,7 @@ const ru: { metrics: Metric[]; caption: string } = {
     { value: "67%", label: "ответов доведено до расчёта" },
     { value: "0,3%", label: "отписок против ~2% по рынку" },
   ],
-  caption: "От нуля до первых согласованных расчётов — 19 рабочих дней. На старте не было ни базы, ни домена, ни текстов.",
+  caption: "Металлопрокат, B2B. Один канал, построенный с нуля — без базы, без домена, без текстов.",
 };
 
 // Space-separated thousands, matching the static strings above. Written by

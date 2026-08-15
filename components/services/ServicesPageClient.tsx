@@ -29,9 +29,9 @@ export default function ServicesPageClient() {
         <ServicesGrid />
         <ServicesTurnkey />
         <ServicesCases />
+        <ServicesOutbound />
         <ServicesProcess />
         <ServicesPricing />
-        <ServicesOutbound />
         <ServicesCTA />
         <Footer />
       </div>

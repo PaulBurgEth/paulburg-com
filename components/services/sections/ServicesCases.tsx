@@ -88,7 +88,7 @@ export default function ServicesCases() {
 
   return (
     <section id="cases" className="pb-reveal" style={{ background: "var(--c-bg2)", padding: "72px 0", position: "relative" }}>
-      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 04</span>
+      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 16, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 04</span>
       <div className="container-custom">
         {/* Header */}
         <motion.div
@@ -101,7 +101,7 @@ export default function ServicesCases() {
           <div
             style={{
               fontFamily: "var(--font-inconsolata), monospace",
-              fontSize: 10,
+              fontSize: 16,
               letterSpacing: "0.22em",
               textTransform: "uppercase",
               color: "var(--c-gold)",
@@ -129,7 +129,7 @@ export default function ServicesCases() {
           <p
             style={{
               fontFamily: "var(--font-instrument-sans), sans-serif",
-              fontSize: 13,
+              fontSize: 16,
               color: "var(--c-muted)",
               lineHeight: 1.6,
             }}
@@ -172,7 +172,7 @@ export default function ServicesCases() {
                       key={j}
                       style={{
                         fontFamily: "var(--font-inconsolata), monospace",
-                        fontSize: 10,
+                        fontSize: 16,
                         fontWeight: 600,
                         background:
                           j === 0 && c.flagship
@@ -209,7 +209,7 @@ export default function ServicesCases() {
                 <p
                   style={{
                     fontFamily: "var(--font-instrument-sans), sans-serif",
-                    fontSize: 13,
+                    fontSize: 16,
                     color: "var(--c-body)",
                     lineHeight: 1.6,
                     marginBottom: 8,
@@ -222,7 +222,7 @@ export default function ServicesCases() {
                 <p
                   style={{
                     fontFamily: "var(--font-instrument-sans), sans-serif",
-                    fontSize: 13,
+                    fontSize: 16,
                     color: "var(--c-sage)",
                     marginBottom: 10,
                   }}
@@ -237,7 +237,7 @@ export default function ServicesCases() {
                       key={j}
                       style={{
                         fontFamily: "var(--font-inconsolata), monospace",
-                        fontSize: 10,
+                        fontSize: 16,
                         background: "rgba(255,255,255,0.03)",
                         color: "var(--c-muted)",
                         border: "1px solid var(--c-border)",
@@ -271,7 +271,7 @@ export default function ServicesCases() {
                 <span
                   style={{
                     fontFamily: "var(--font-instrument-sans), sans-serif",
-                    fontSize: 10,
+                    fontSize: 16,
                     color: "var(--c-muted)",
                     textAlign: "center",
                     marginTop: 4,

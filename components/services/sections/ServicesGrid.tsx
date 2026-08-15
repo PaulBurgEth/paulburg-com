@@ -94,7 +94,7 @@ export default function ServicesGrid() {
 
   return (
     <section id="services" className="pb-reveal" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
-      <span aria-hidden="true" className="section-number" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 02</span>
+      <span aria-hidden="true" className="section-number" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 16, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 02</span>
       <div className="container-custom">
         {/* Header */}
         <motion.div
@@ -107,7 +107,7 @@ export default function ServicesGrid() {
           <div
             style={{
               fontFamily: "var(--font-inconsolata), monospace",
-              fontSize: 10,
+              fontSize: 16,
               letterSpacing: "0.22em",
               textTransform: "uppercase",
               color: "var(--c-gold)",
@@ -135,7 +135,7 @@ export default function ServicesGrid() {
           <p
             style={{
               fontFamily: "var(--font-instrument-sans), sans-serif",
-              fontSize: 13,
+              fontSize: 16,
               color: "var(--c-body)",
               lineHeight: 1.6,
             }}
@@ -184,7 +184,7 @@ export default function ServicesGrid() {
                   style={{
                     fontFamily: "var(--font-display)",
                     fontWeight: 700,
-                    fontSize: 15,
+                    fontSize: 17,
                     color: "var(--c-text)",
                     marginBottom: 6,
                   }}
@@ -197,7 +197,7 @@ export default function ServicesGrid() {
                   style={{
                     fontFamily: "var(--font-instrument-sans), sans-serif",
                     fontWeight: 400,
-                    fontSize: 12,
+                    fontSize: 17,
                     color: "var(--c-body)",
                     lineHeight: 1.6,
                     marginBottom: 12,
@@ -213,7 +213,7 @@ export default function ServicesGrid() {
                       key={j}
                       style={{
                         fontFamily: "var(--font-inconsolata), monospace",
-                        fontSize: 10,
+                        fontSize: 16,
                         background: "rgba(255,255,255,0.03)",
                         color: "var(--c-text)",
                         border: "1px solid rgba(200,169,110,0.3)",
@@ -231,7 +231,7 @@ export default function ServicesGrid() {
                   style={{
                     fontFamily: "var(--font-inconsolata), monospace",
                     fontWeight: 700,
-                    fontSize: 13,
+                    fontSize: 16,
                     color: "var(--c-gold)",
                     marginBottom: 12,
                   }}
@@ -250,7 +250,7 @@ export default function ServicesGrid() {
                     alignSelf: "flex-start",
                     fontFamily: "var(--font-instrument-sans), sans-serif",
                     fontWeight: 600,
-                    fontSize: 12,
+                    fontSize: 17,
                     color: "#07080a",
                     border: "1px solid var(--c-gold)",
                     background: "var(--c-gold)",

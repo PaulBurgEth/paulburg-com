@@ -38,7 +38,7 @@ export default function ServicesProof() {
         position: "relative",
       }}
     >
-      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 01</span>
+      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 16, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 01</span>
       <div className="container-custom">
         <div className="flex flex-wrap">
           {t.metrics.map((item, i) => (
@@ -65,7 +65,7 @@ export default function ServicesProof() {
                 style={{
                   fontFamily: "var(--font-instrument-sans), sans-serif",
                   fontWeight: 400,
-                  fontSize: 11,
+                  fontSize: 16,
                   color: "var(--c-muted)",
                   marginTop: 4,
                   textAlign: "center",

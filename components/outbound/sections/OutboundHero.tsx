@@ -53,7 +53,7 @@ export default function OutboundHero() {
       className="w-full flex items-center justify-center"
       style={{ background: "var(--c-bg)", paddingTop: 80, paddingBottom: 56 }}
     >
-      <div className="container-custom flex flex-col items-center text-center" style={{ maxWidth: 760 }}>
+      <div className="container-custom flex flex-col items-center text-center" style={{ maxWidth: 1040 }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -67,7 +67,7 @@ export default function OutboundHero() {
             style={{
               fontFamily: MONO,
               fontWeight: 600,
-              fontSize: 12,
+              fontSize: 13,
               letterSpacing: "0.18em",
               textTransform: "uppercase",
               background: "rgba(200,169,110,0.08)",
@@ -88,7 +88,7 @@ export default function OutboundHero() {
             style={{
               fontFamily: SERIF,
               fontWeight: 700,
-              fontSize: "clamp(30px, 5vw, 52px)",
+              fontSize: "clamp(34px, 5.2vw, 62px)",
               letterSpacing: "-0.02em",
               lineHeight: 1.12,
               color: "var(--c-heading)",
@@ -106,9 +106,9 @@ export default function OutboundHero() {
               fontFamily: LEDE,
               fontStyle: "italic",
               fontWeight: 400,
-              fontSize: 20,
+              fontSize: 21,
               color: "var(--c-body-lede)",
-              maxWidth: 600,
+              maxWidth: 720,
               lineHeight: 1.7,
             }}
           >
@@ -154,7 +154,7 @@ export default function OutboundHero() {
                 key={i}
                 style={{
                   fontFamily: MONO,
-                  fontSize: 12,
+                  fontSize: 13,
                   letterSpacing: "0.16em",
                   textTransform: "uppercase",
                   color: "var(--c-muted)",
