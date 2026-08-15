@@ -118,7 +118,7 @@ export default function ServicesPricing() {
 
   return (
     <section id="pricing" className="pb-reveal" style={{ background: "var(--c-bg2)", padding: "72px 0", position: "relative" }}>
-      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 13, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 07</span>
+      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 14, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 07</span>
       <div className="container-custom">
         {/* Header */}
         <motion.div
@@ -131,7 +131,7 @@ export default function ServicesPricing() {
           <div
             style={{
               fontFamily: "var(--font-inconsolata), monospace",
-              fontSize: 13,
+              fontSize: 14,
               letterSpacing: "0.22em",
               textTransform: "uppercase",
               color: "var(--c-gold)",
@@ -194,7 +194,7 @@ export default function ServicesPricing() {
                   style={{
                     fontFamily: "var(--font-inconsolata), monospace",
                     fontWeight: 700,
-                    fontSize: 13,
+                    fontSize: 14,
                     background: "rgba(200,169,110,0.15)",
                     color: "var(--c-gold)",
                     border: "1px solid rgba(200,169,110,0.3)",
@@ -213,7 +213,7 @@ export default function ServicesPricing() {
                 style={{
                   fontFamily: "var(--font-inconsolata), monospace",
                   fontWeight: 600,
-                  fontSize: 13,
+                  fontSize: 14,
                   letterSpacing: "0.15em",
                   textTransform: "uppercase",
                   color: "var(--c-muted)",
@@ -242,7 +242,7 @@ export default function ServicesPricing() {
               <span
                 style={{
                   fontFamily: "var(--font-inconsolata), monospace",
-                  fontSize: 13,
+                  fontSize: 14,
                   color: "var(--c-muted)",
                   marginBottom: 16,
                   display: "block",
@@ -323,7 +323,7 @@ export default function ServicesPricing() {
               <p
                 style={{
                   fontFamily: "var(--font-inconsolata), monospace",
-                  fontSize: 13,
+                  fontSize: 14,
                   color: "var(--c-muted)",
                   textAlign: "center",
                   marginTop: 8,

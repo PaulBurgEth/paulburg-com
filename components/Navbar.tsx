@@ -36,7 +36,6 @@ export default function Navbar() {
         { name: language === "ru" ? "Аутбаунд" : "Outbound", href: "/outbound" },
         { name: language === "ru" ? "Менторство" : "Mentorship", href: "/mentorship" },
         { name: language === "ru" ? "Блог" : "Blog", href: "/blog" },
-        { name: language === "ru" ? "Проекты" : "Projects", href: "/#projects" },
     ];
 
     const isActiveLink = (href: string) => {
@@ -133,7 +132,7 @@ export default function Navbar() {
                                 cursor: "pointer",
                                 color: "var(--c-text2)",
                                 fontFamily: "var(--font-inconsolata), monospace",
-                                fontSize: 13,
+                                fontSize: 14,
                                 letterSpacing: "0.1em",
                                 padding: 0,
                             }}
@@ -166,7 +165,7 @@ export default function Navbar() {
                             style={{
                                 color: "var(--c-text2)",
                                 fontFamily: "var(--font-inconsolata), monospace",
-                                fontSize: 13,
+                                fontSize: 14,
                                 letterSpacing: "0.1em",
                                 background: "transparent",
                                 border: "none",

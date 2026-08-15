@@ -31,8 +31,8 @@ export const T = {
   bodySm: 16,
   h3: 21,
   h2: "clamp(30px, 4vw, 44px)",
-  caption: 13,
-  eyebrow: 13,
+  caption: 14,
+  eyebrow: 14,
 } as const;
 
 

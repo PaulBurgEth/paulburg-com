@@ -38,7 +38,7 @@ export default function Footer() {
 
     const eyebrowStyle: React.CSSProperties = {
         fontFamily: "var(--font-inconsolata), monospace",
-        fontSize: 13,
+        fontSize: 14,
         letterSpacing: "0.16em",
         textTransform: "uppercase",
         color: "var(--c-text2)",
@@ -137,11 +137,6 @@ export default function Footer() {
                             <li>
                                 <Link href="/blog" className={linkRowClass} style={{ color: "var(--c-text2)" }}>
                                     {t.blog}
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/#projects" className={linkRowClass} style={{ color: "var(--c-text2)" }}>
-                                    {t.projects}
                                 </Link>
                             </li>
                         </ul>

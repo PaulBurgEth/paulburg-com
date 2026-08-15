@@ -54,7 +54,7 @@ export default function ChannelDiagram() {
               </div>
               <div style={{ paddingBottom: last ? 0 : 18 }}>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 9 }}>
-                  <span style={{ fontFamily: "var(--font-inconsolata), monospace", fontSize: 13, letterSpacing: "0.14em", color: "var(--c-gold)" }}>
+                  <span style={{ fontFamily: "var(--font-inconsolata), monospace", fontSize: 14, letterSpacing: "0.14em", color: "var(--c-gold)" }}>
                     {s.k}
                   </span>
                   <span style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16, fontWeight: 600, color: "var(--c-heading)" }}>
@@ -72,7 +72,7 @@ export default function ChannelDiagram() {
       <p
         style={{
           fontFamily: "var(--font-inconsolata), monospace",
-          fontSize: 13, lineHeight: 1.6, color: "var(--c-muted)",
+          fontSize: 14, lineHeight: 1.6, color: "var(--c-muted)",
           marginTop: 18, paddingTop: 14, borderTop: "1px solid var(--c-border)",
         }}
       >

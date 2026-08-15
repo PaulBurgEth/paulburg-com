@@ -82,18 +82,18 @@ body::after{
   background:var(--c-card);transition:border-color .24s ease,transform .24s ease;
 }
 .line-card:hover{border-color:rgba(200,169,110,0.35);transform:translateY(-2px)}
-.line-card .lc-k{font-family:var(--font-inconsolata),monospace;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--c-gold)}
+.line-card .lc-k{font-family:var(--font-inconsolata),monospace;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--c-gold)}
 .line-card .lc-t{font-family:var(--font-display);font-weight:700;font-size:21px;color:var(--c-heading);margin:8px 0 6px}
 .line-card .lc-d{font-family:var(--font-instrument-sans),sans-serif;font-size:16px;line-height:1.55;color:var(--c-text2)}
-.line-card .lc-m{font-family:var(--font-inconsolata),monospace;font-size:13px;color:var(--c-muted);margin-top:12px;display:block}
+.line-card .lc-m{font-family:var(--font-inconsolata),monospace;font-size:14px;color:var(--c-muted);margin-top:12px;display:block}
 .hero-kicker{
   font-family:var(--font-inconsolata),monospace;
-  font-size:13px;letter-spacing:0.2em;text-transform:uppercase;
+  font-size:14px;letter-spacing:0.2em;text-transform:uppercase;
   color:${C.gold};margin-bottom:24px;
   display:flex;align-items:center;gap:12px;flex-wrap:wrap;
 }
 .hero-kicker::before{content:'';width:32px;height:1px;background:${C.gold};opacity:0.6}
-.hero-kicker-coord{color:${C.muted};letter-spacing:0.12em;font-size:13px;margin-left:4px}
+.hero-kicker-coord{color:${C.muted};letter-spacing:0.12em;font-size:14px;margin-left:4px}
 .hero-name{
   font-family:var(--font-display);
   font-feature-settings:"ss01","liga","kern";
@@ -112,7 +112,7 @@ body::after{
 }
 .hero-roles{
   font-family:var(--font-inconsolata),monospace;
-  font-size:13px;letter-spacing:0.12em;
+  font-size:14px;letter-spacing:0.12em;
   color:${C.text};margin-bottom:20px;
   text-transform:uppercase;
   display:flex;align-items:center;gap:14px;flex-wrap:wrap;
@@ -177,7 +177,7 @@ body::after{
 .tag{
   padding:5px 12px;border-radius:4px;
   font-family:var(--font-inconsolata),monospace;
-  font-size:13px;letter-spacing:0.07em;
+  font-size:14px;letter-spacing:0.07em;
   border:1px solid rgba(200,169,110,0.4);color:${C.text};
 }
 .tag.gold{border-color:rgba(200,169,110,0.5);color:${C.gold};background:rgba(200,169,110,0.05)}
@@ -188,7 +188,7 @@ body::after{
 .btn-gold{
   background:${C.gold};color:${C.bg};border:none;
   border-radius:5px;padding:12px 24px;
-  font-size:13px;font-weight:600;cursor:pointer;
+  font-size:15px;font-weight:600;cursor:pointer;
   font-family:var(--font-instrument-sans),sans-serif;
   display:flex;align-items:center;gap:8px;
   letter-spacing:0.04em;transition:all 0.2s;
@@ -197,7 +197,7 @@ body::after{
 .btn-ghost{
   background:transparent;color:${C.text};
   border:1px solid ${C.border2};border-radius:5px;
-  padding:12px 24px;font-size:13px;cursor:pointer;
+  padding:12px 24px;font-size:15px;cursor:pointer;
   font-family:var(--font-instrument-sans),sans-serif;
   display:flex;align-items:center;gap:8px;
   letter-spacing:0.04em;transition:all 0.2s;
@@ -208,7 +208,7 @@ body::after{
   border-top:1px solid ${C.border2};
 }
 .social{
-  font-family:var(--font-inconsolata),monospace;font-size:13px;
+  font-family:var(--font-inconsolata),monospace;font-size:14px;
   color:${C.subtle};cursor:pointer;transition:color 0.2s;
   letter-spacing:0.08em;text-transform:uppercase;
   text-decoration:none;
@@ -220,13 +220,13 @@ body::after{
 .section-number{
   position:absolute;top:24px;right:28px;
   font-family:var(--font-inconsolata),monospace;
-  font-size:13px;letter-spacing:0.18em;color:${C.muted};
+  font-size:14px;letter-spacing:0.18em;color:${C.muted};
   pointer-events:none;
 }
 @media(max-width:600px){.section-number{display:none}}
 .eyebrow{
   font-family:var(--font-inconsolata),monospace;
-  font-size:13px;letter-spacing:0.22em;text-transform:uppercase;
+  font-size:14px;letter-spacing:0.22em;text-transform:uppercase;
   color:${C.gold};margin-bottom:14px;
   display:flex;align-items:center;gap:14px;
 }
@@ -268,7 +268,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
   position:absolute;top:9px;left:9px;z-index:2;
   background:rgba(7,8,10,0.85);border:1px solid ${C.border2};
   border-radius:4px;padding:3px 8px;
-  font-family:var(--font-inconsolata),monospace;font-size:13px;color:${C.muted};
+  font-family:var(--font-inconsolata),monospace;font-size:14px;color:${C.muted};
 }
 .pod-play{
   position:relative;z-index:2;
@@ -290,7 +290,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .pod-body{padding:14px 16px}
 .pod-src{
   font-family:var(--font-inconsolata),monospace;
-  font-size:13px;letter-spacing:0.15em;text-transform:uppercase;
+  font-size:14px;letter-spacing:0.15em;text-transform:uppercase;
   color:${C.gold};margin-bottom:7px;
 }
 .pod-title{font-size:16px;font-weight:500;color:${C.text3};line-height:1.55}
@@ -311,7 +311,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .write-src{
   display:flex;align-items:center;gap:6px;
   font-family:var(--font-inconsolata),monospace;
-  font-size:13px;letter-spacing:0.15em;text-transform:uppercase;
+  font-size:14px;letter-spacing:0.15em;text-transform:uppercase;
   margin-bottom:11px;
 }
 .write-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
@@ -323,13 +323,13 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .write-excerpt{font-size:16px;color:${C.muted};line-height:1.6;margin-bottom:12px}
 .write-foot{
   display:flex;align-items:center;justify-content:space-between;
-  font-family:var(--font-inconsolata),monospace;font-size:13px;color:${C.faint};
+  font-family:var(--font-inconsolata),monospace;font-size:14px;color:${C.faint};
 }
 .write-read{color:${C.gold}}
 .write-new{
   display:inline-flex;align-items:center;gap:4px;
   font-family:var(--font-inconsolata),monospace;
-  font-size:13px;font-weight:700;letter-spacing:0.14em;
+  font-size:14px;font-weight:700;letter-spacing:0.14em;
   color:${C.gold};
   background:rgba(200,169,110,0.10);
   border:1px solid rgba(200,169,110,0.30);
@@ -356,7 +356,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
   display:flex;align-items:center;gap:10px;
   margin-bottom:13px;margin-top:36px;
   font-family:var(--font-inconsolata),monospace;
-  font-size:13px;letter-spacing:0.2em;text-transform:uppercase;
+  font-size:14px;letter-spacing:0.2em;text-transform:uppercase;
 }
 .cat-tick{width:2px;height:14px;border-radius:2px;flex-shrink:0}
 .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
@@ -402,7 +402,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .mentor-features{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;}
 .mentor-btn{
   background:transparent;border:1px solid ${C.gold};color:${C.gold};
-  padding:10px 24px;border-radius:6px;font-size:13px;font-family:var(--font-instrument-sans),sans-serif;
+  padding:10px 24px;border-radius:6px;font-size:15px;font-family:var(--font-instrument-sans),sans-serif;
   letter-spacing:0.04em;transition:all 0.2s;white-space:nowrap;
   display:flex;align-items:center;gap:8px;align-self:flex-start;
 }
@@ -414,7 +414,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .status{
   position:absolute;top:12px;right:12px;
   font-family:var(--font-inconsolata),monospace;
-  font-size:13px;letter-spacing:0.1em;text-transform:uppercase;
+  font-size:14px;letter-spacing:0.1em;text-transform:uppercase;
   padding:3px 7px;border-radius:3px;
 }
 .st-live{background:rgba(122,171,143,0.1);color:${C.sage};border:1px solid rgba(122,171,143,0.25)}
@@ -470,7 +470,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .follow-desc{font-size:16px;color:${C.text2};line-height:1.6;margin-bottom:24px;flex:1}
 .badge-ru{
   background:rgba(200,169,110,0.1);color:${C.gold};
-  padding:2px 6px;border-radius:4px;font-size:13px;
+  padding:2px 6px;border-radius:4px;font-size:14px;
   font-family:var(--font-inconsolata),monospace;vertical-align:middle;margin-left:8px;
 }
 `;
@@ -758,7 +758,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: 20, position: "relative" }}>
                     <span aria-hidden="true" style={{
                       position: "absolute", top: 14, right: 16,
-                      fontFamily: "var(--font-inconsolata), monospace", fontSize: 13,
+                      fontFamily: "var(--font-inconsolata), monospace", fontSize: 14,
                       letterSpacing: "0.14em", color: C.muted,
                     }}>
                       /{String(i + 1).padStart(2, "0")}
@@ -768,7 +768,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     </div>
                     <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 16, color: C.text, marginBottom: 6 }}>{card.title}</div>
                     <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16, color: C.text2, lineHeight: 1.6, marginBottom: 10 }}>{card.desc}</p>
-                    <span style={{ fontFamily: "var(--font-inconsolata), monospace", fontWeight: 700, fontSize: 13, color: C.gold }}>{card.price}</span>
+                    <span style={{ fontFamily: "var(--font-inconsolata), monospace", fontWeight: 700, fontSize: 14, color: C.gold }}>{card.price}</span>
                   </motion.div>
                 );
               })}
@@ -806,7 +806,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     right: 12,
                     fontFamily: "var(--font-inconsolata), monospace",
                     fontWeight: 700,
-                    fontSize: 13,
+                    fontSize: 14,
                     background: C.gold,
                     color: C.bg,
                     padding: "2px 8px",
@@ -824,7 +824,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     ? "Пять продакшен-систем под ключ: сайт, AI-бот и автоматизация, кастомная CRM, BI и менеджерские дашборды. AI-assisted разработка — готово за 3–14 дней."
                     : "Five production systems, end to end: website, AI bot & automation, custom CRM, BI, and manager dashboards. AI-assisted development — ready in 3–14 days."}
                 </p>
-                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 14, fontFamily: "var(--font-inconsolata), monospace", fontWeight: 700, fontSize: 13 }}>
+                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 14, fontFamily: "var(--font-inconsolata), monospace", fontWeight: 700, fontSize: 14 }}>
                   <span style={{ color: C.gold }}>
                     {language === "ru" ? "от $3,000" : "from $3,000"}
                   </span>
@@ -907,13 +907,13 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             </div>
 
             <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 14 }}>
-              <span style={{ fontFamily: "var(--font-inconsolata), monospace", fontWeight: 700, fontSize: 13, color: C.gold }}>
+              <span style={{ fontFamily: "var(--font-inconsolata), monospace", fontWeight: 700, fontSize: 14, color: C.gold }}>
                 {language === "ru" ? "Пилот 6 недель · ваши цифры на выходе" : "6-week pilot · your own numbers at the end"}
               </span>
               <Link
                 href="/outbound"
                 className="btn-primary"
-                style={{ padding: "12px 24px", background: C.gold, border: `1px solid ${C.gold}`, borderRadius: 8, color: "#07080a", fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 13, fontWeight: 600, textDecoration: "none", display: "inline-block" }}
+                style={{ padding: "12px 24px", background: C.gold, border: `1px solid ${C.gold}`, borderRadius: 8, color: "#07080a", fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 15, fontWeight: 600, textDecoration: "none", display: "inline-block" }}
               >
                 {language === "ru" ? "Как устроен канал →" : "How the channel works →"}
               </Link>
@@ -963,7 +963,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 <Link
                   href="/mentorship"
                   className="btn-primary"
-                  style={{ padding: "12px 24px", background: C.gold, border: `1px solid ${C.gold}`, borderRadius: 8, color: "#07080a", fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 13, fontWeight: 600, textDecoration: "none", display: "inline-block" }}
+                  style={{ padding: "12px 24px", background: C.gold, border: `1px solid ${C.gold}`, borderRadius: 8, color: "#07080a", fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 15, fontWeight: 600, textDecoration: "none", display: "inline-block" }}
                 >
                   {language === "ru" ? "Узнать подробнее →" : "Explore Programs →"}
                 </Link>
@@ -971,7 +971,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   type="button"
                   onClick={openMentorshipModal}
                   className="btn-ghost"
-                  style={{ padding: "12px 24px", border: `1px solid ${C.border}`, borderRadius: 8, color: C.text2, fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 13, fontWeight: 500, background: "transparent", cursor: "pointer" }}
+                  style={{ padding: "12px 24px", border: `1px solid ${C.border}`, borderRadius: 8, color: C.text2, fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 15, fontWeight: 500, background: "transparent", cursor: "pointer" }}
                 >
                   {language === "ru" ? "Оставить заявку →" : "Drop me a hint →"}
                 </button>
@@ -1126,7 +1126,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <div className="follow-title" style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 Telegram Channel
                 <span style={{
-                  fontFamily: "var(--font-inconsolata), monospace", fontSize: 13, padding: "2px 7px", borderRadius: 3,
+                  fontFamily: "var(--font-inconsolata), monospace", fontSize: 14, padding: "2px 7px", borderRadius: 3,
                   background: "rgba(155,142,196,0.12)", color: C.violet, border: "1px solid rgba(155,142,196,0.33)",
                   letterSpacing: "0.14em", fontWeight: 700,
                 }}>RU</span>
@@ -1246,7 +1246,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   <span style={{ color: C.gold }}>{e.src}</span>
                 </div>
                 <div className="proj-name" style={{ paddingRight: 0 }}>{e.name}</div>
-                <div style={{ fontFamily: "var(--font-inconsolata),monospace", fontSize: "13px", color: C.faint, marginTop: "12px" }}>
+                <div style={{ fontFamily: "var(--font-inconsolata),monospace", fontSize: "14px", color: C.faint, marginTop: "12px" }}>
                   <span className="write-read">{language === "ru" ? "Открыть в X →" : "View on X →"}</span>
                 </div>
               </a>

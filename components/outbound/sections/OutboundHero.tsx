@@ -38,7 +38,7 @@ const btnBase: React.CSSProperties = {
   color: "var(--c-text)",
   fontFamily: SANS,
   fontWeight: 600,
-  fontSize: 13,
+  fontSize: 15,
   letterSpacing: "0.04em",
   padding: "12px 24px",
   borderRadius: 5,
@@ -68,7 +68,7 @@ export default function OutboundHero() {
             style={{
               fontFamily: MONO,
               fontWeight: 600,
-              fontSize: 13,
+              fontSize: 15,
               letterSpacing: "0.18em",
               textTransform: "uppercase",
               background: "rgba(200,169,110,0.08)",
@@ -155,7 +155,7 @@ export default function OutboundHero() {
                 key={i}
                 style={{
                   fontFamily: MONO,
-                  fontSize: 13,
+                  fontSize: 14,
                   letterSpacing: "0.16em",
                   textTransform: "uppercase",
                   color: "var(--c-muted)",

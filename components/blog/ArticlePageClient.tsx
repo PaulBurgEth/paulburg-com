@@ -110,7 +110,7 @@ export default function ArticlePageClient({
               ref={backLinkRef}
               style={{
                 fontFamily: "var(--font-inconsolata), monospace",
-                fontSize: 13,
+                fontSize: 14,
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
                 color: "var(--c-muted)",
@@ -172,7 +172,7 @@ export default function ArticlePageClient({
             <div style={{
               display: "flex", gap: 18, flexWrap: "wrap", alignItems: "baseline",
               fontFamily: "var(--font-inconsolata), monospace",
-              fontSize: 13, letterSpacing: "0.15em", textTransform: "uppercase",
+              fontSize: 14, letterSpacing: "0.15em", textTransform: "uppercase",
               color: "var(--c-text2)",
               marginBottom: 32,
             }}>
@@ -201,7 +201,7 @@ export default function ArticlePageClient({
                 <p
                   style={{
                     fontFamily: "var(--font-inconsolata), monospace",
-                    fontSize: 13,
+                    fontSize: 14,
                     fontWeight: 600,
                     letterSpacing: "0.2em",
                     textTransform: "uppercase",
@@ -229,7 +229,7 @@ export default function ArticlePageClient({
                         onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--c-gold)"; }}
                         onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--c-text2)"; }}
                       >
-                        <span style={{ color: "var(--c-gold)", fontFamily: "var(--font-inconsolata), monospace", fontSize: 13, flexShrink: 0 }}>
+                        <span style={{ color: "var(--c-gold)", fontFamily: "var(--font-inconsolata), monospace", fontSize: 14, flexShrink: 0 }}>
                           {String(i + 1).padStart(2, "0")}
                         </span>
                         {item.text}
@@ -273,7 +273,7 @@ export default function ArticlePageClient({
               <p
                 style={{
                   fontFamily: "var(--font-inconsolata), monospace",
-                  fontSize: 13,
+                  fontSize: 14,
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
                   color: "var(--c-muted)",
@@ -378,7 +378,7 @@ export default function ArticlePageClient({
           display: block;
           font-family: var(--font-inconsolata), monospace;
           font-weight: 600;
-          font-size: 13px;
+          font-size: 14px;
           letter-spacing: 0.25em;
           text-transform: uppercase;
           color: var(--c-gold);
@@ -544,7 +544,7 @@ export default function ArticlePageClient({
         }
         .prose-blog table th {
           font-family: var(--font-inconsolata), monospace;
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 600;
           letter-spacing: 0.06em;
           text-transform: uppercase;
@@ -583,7 +583,7 @@ export default function ArticlePageClient({
         .article-sources h2,
         .article-sources h3 {
           font-family: var(--font-inconsolata), monospace;
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 600;
           letter-spacing: 0.18em;
           text-transform: uppercase;

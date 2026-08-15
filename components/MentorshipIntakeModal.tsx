@@ -180,7 +180,7 @@ export default function MentorshipIntakeModal() {
   const labelStyle: React.CSSProperties = {
     display: "block",
     fontFamily: "var(--font-inconsolata), monospace",
-    fontSize: 13,
+    fontSize: 14,
     letterSpacing: "0.22em",
     textTransform: "uppercase",
     color: "var(--c-muted)",

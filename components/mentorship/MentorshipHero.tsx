@@ -77,7 +77,7 @@ export default function MentorshipHero() {
                             style={{
                                 fontFamily: "var(--font-inconsolata), monospace",
                                 fontWeight: 600,
-                                fontSize: 13,
+                                fontSize: 14,
                                 letterSpacing: "0.08em",
                                 color: "var(--c-gold)",
                             }}

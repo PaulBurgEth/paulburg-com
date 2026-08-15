@@ -67,7 +67,7 @@ export default function ServicesProcess() {
 
   return (
     <section className="pb-reveal" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
-      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 13, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 06</span>
+      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 14, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 06</span>
       <div className="container-custom">
         {/* Header */}
         <motion.div
@@ -90,7 +90,7 @@ export default function ServicesProcess() {
             }}
             style={{
               fontFamily: "var(--font-inconsolata), monospace",
-              fontSize: 13,
+              fontSize: 14,
               letterSpacing: "0.22em",
               textTransform: "uppercase",
               color: "var(--c-gold)",
@@ -149,7 +149,7 @@ export default function ServicesProcess() {
                 style={{
                   fontFamily: "var(--font-inconsolata), monospace",
                   fontWeight: 700,
-                  fontSize: 13,
+                  fontSize: 14,
                   color: "var(--c-gold)",
                   letterSpacing: "0.15em",
                   display: "block",

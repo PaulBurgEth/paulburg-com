@@ -64,7 +64,7 @@ export default function BlogList({ posts, lang }: Props) {
                 <span
                   style={{
                     fontFamily: "var(--font-inconsolata), monospace",
-                    fontSize: 13,
+                    fontSize: 14,
                     fontWeight: 600,
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
@@ -80,7 +80,7 @@ export default function BlogList({ posts, lang }: Props) {
                 <span
                   style={{
                     fontFamily: "var(--font-inconsolata), monospace",
-                    fontSize: 13,
+                    fontSize: 14,
                     color: "var(--c-muted)",
                   }}
                 >
@@ -89,7 +89,7 @@ export default function BlogList({ posts, lang }: Props) {
                 <span
                   style={{
                     fontFamily: "var(--font-inconsolata), monospace",
-                    fontSize: 13,
+                    fontSize: 14,
                     color: "var(--c-muted)",
                   }}
                 >
@@ -122,7 +122,7 @@ export default function BlogList({ posts, lang }: Props) {
               <span
                 style={{
                   fontFamily: "var(--font-inconsolata), monospace",
-                  fontSize: 13,
+                  fontSize: 14,
                   fontWeight: 600,
                   color: "var(--c-gold)",
                 }}

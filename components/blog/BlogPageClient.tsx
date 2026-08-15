@@ -111,7 +111,7 @@ export default function BlogPageClient({ enPosts, ruPosts }: Props) {
 
       {/* Articles */}
       <section id="articles" className="pb-reveal" style={{ paddingBottom: 80, background: "var(--c-bg)", position: "relative" }}>
-        <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 13, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 01</span>
+        <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 14, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 01</span>
         <div className="container-custom">
           <BlogList posts={posts} lang={language} />
         </div>

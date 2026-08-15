@@ -12,7 +12,7 @@ export default function MentorshipBridge() {
             className="py-24 pb-reveal"
             style={{ background: "var(--c-card)", borderTop: "1px solid var(--c-border)", borderBottom: "1px solid var(--c-border)", position: "relative" }}
         >
-            <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 13, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 01</span>
+            <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 14, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 01</span>
             <div className="container-custom">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

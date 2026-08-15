@@ -75,7 +75,7 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                             className="mb-3 uppercase"
                             style={{
                                 fontFamily: "var(--font-inconsolata), monospace",
-                                fontSize: 13,
+                                fontSize: 14,
                                 fontWeight: 700,
                                 letterSpacing: "0.15em",
                                 color: "var(--c-muted)",
@@ -146,7 +146,7 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                                         className="mb-3"
                                         style={{
                                             fontFamily: "var(--font-inconsolata), monospace",
-                                            fontSize: 13,
+                                            fontSize: 14,
                                             fontWeight: 700,
                                             letterSpacing: "0.12em",
                                             textTransform: "uppercase",

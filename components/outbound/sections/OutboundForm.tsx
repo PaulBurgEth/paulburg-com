@@ -158,7 +158,7 @@ const textareaStyle: React.CSSProperties = { ...inputStyle, minHeight: 96, resiz
 const labelStyle: React.CSSProperties = {
   display: "block",
   fontFamily: MONO,
-  fontSize: 13,
+  fontSize: 14,
   letterSpacing: "0.22em",
   textTransform: "uppercase",
   color: "var(--c-muted)",
@@ -375,7 +375,7 @@ export default function OutboundForm() {
               </div>
 
               {(status === "error" || status === "ratelimited") && (
-                <div style={{ fontFamily: SANS, fontSize: 13, color: status === "error" ? "#e88" : "var(--c-text2)" }}>
+                <div style={{ fontFamily: SANS, fontSize: 15, color: status === "error" ? "#e88" : "var(--c-text2)" }}>
                   {status === "error" ? t.error : t.ratelimited}
                 </div>
               )}
@@ -388,7 +388,7 @@ export default function OutboundForm() {
                   color: "var(--c-bg)",
                   fontFamily: SANS,
                   fontWeight: 600,
-                  fontSize: 13,
+                  fontSize: 15,
                   letterSpacing: "0.04em",
                   padding: "12px 28px",
                   borderRadius: 5,
@@ -405,7 +405,7 @@ export default function OutboundForm() {
         </div>
 
         <div style={{ background: "var(--c-card2)", border: "1px solid var(--c-border)", borderRadius: 12, padding: 22 }}>
-          <span style={{ fontFamily: MONO, fontSize: 13, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--c-muted)", display: "block", marginBottom: 14 }}>
+          <span style={{ fontFamily: MONO, fontSize: 14, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--c-muted)", display: "block", marginBottom: 14 }}>
             {t.orWrite}
           </span>
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -421,7 +421,7 @@ export default function OutboundForm() {
                 style={{
                   display: "flex", alignItems: "center", justifyContent: "center",
                   background: "transparent", border: "1px solid var(--c-border2)",
-                  color: "var(--c-text)", fontFamily: SANS, fontWeight: 600, fontSize: 13,
+                  color: "var(--c-text)", fontFamily: SANS, fontWeight: 600, fontSize: 15,
                   letterSpacing: "0.04em", padding: "12px 20px", borderRadius: 5, textDecoration: "none",
                 }}
               >
