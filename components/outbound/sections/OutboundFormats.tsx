@@ -65,33 +65,48 @@ export default function OutboundFormats() {
       <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "38px 0 16px" }}>
         {t.stagesTitle}
       </h3>
-      <div className="flex flex-wrap gap-2">
-        {t.stages.map((stage, i) => {
-          const isDeal = i >= 6;
-          return (
-            <motion.div
-              key={stage}
-              variants={itemVariants}
-              className="flex items-center gap-2.5"
-              style={{
-                background: isDeal ? "var(--c-card2)" : "var(--c-card)",
-                border: `1px solid ${isDeal ? "rgba(200,169,110,0.28)" : "var(--c-border)"}`,
-                borderRadius: 8,
-                padding: "11px 15px",
-                flex: "1 1 auto",
-                minWidth: 150,
-              }}
-            >
-              <span style={{ fontFamily: MONO, fontWeight: 700, fontSize: T.caption, letterSpacing: "0.1em", color: isDeal ? "var(--c-gold)" : "var(--c-text2)" }}>
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <span style={{ fontFamily: SANS, fontSize: T.bodySm, fontWeight: 600, color: "var(--c-heading)" }}>{stage}</span>
-            </motion.div>
-          );
-        })}
+      {/* A conveyor, not a chip cloud: a rail runs behind the numbers so the
+          nine stages read as one sequence, and 07-09 sit visibly past the
+          handover point where the second format begins. */}
+      <div style={{ position: "relative" }}>
+        <div
+          aria-hidden="true"
+          className="hidden md:block"
+          style={{ position: "absolute", left: 0, right: 0, top: 17, height: 1, background: "var(--c-border2)" }}
+        />
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-9 gap-x-2 gap-y-6" style={{ position: "relative" }}>
+          {t.stages.map((stage, i) => {
+            const isDeal = i >= 6;
+            return (
+              <motion.div key={stage} variants={itemVariants} className="flex flex-col items-start">
+                <span
+                  className="flex items-center justify-center"
+                  style={{
+                    width: 34, height: 34, borderRadius: "50%",
+                    background: isDeal ? "var(--c-gold)" : "var(--c-bg)",
+                    border: `1px solid ${isDeal ? "var(--c-gold)" : "var(--c-border2)"}`,
+                    color: isDeal ? "var(--c-bg)" : "var(--c-text2)",
+                    fontFamily: MONO, fontWeight: 700, fontSize: T.caption, letterSpacing: "0.06em",
+                    flexShrink: 0, position: "relative", zIndex: 1,
+                  }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span
+                  style={{
+                    fontFamily: SANS, fontSize: T.bodySm, fontWeight: 600,
+                    color: "var(--c-heading)", marginTop: 11, lineHeight: 1.3,
+                  }}
+                >
+                  {stage}
+                </span>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
       <div className="flex items-center gap-2" style={{ marginTop: 12 }}>
-        <span style={{ width: 11, height: 11, borderRadius: 3, background: "var(--c-card2)", border: "1px solid rgba(200,169,110,0.28)", display: "inline-block" }} />
+        <span style={{ width: 13, height: 13, borderRadius: "50%", background: "var(--c-gold)", display: "inline-block" }} />
         <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--c-text2)" }}>{t.dealBadge}</span>
       </div>
 
