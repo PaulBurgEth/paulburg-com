@@ -165,7 +165,7 @@ export default function IntakeModal() {
     borderRadius: 6,
     padding: "10px 12px",
     fontFamily: "var(--font-instrument-sans), sans-serif",
-    fontSize: 13,
+    fontSize: 16,
     color: "var(--c-text)",
     outline: "none",
   };
@@ -179,7 +179,7 @@ export default function IntakeModal() {
   const labelStyle: React.CSSProperties = {
     display: "block",
     fontFamily: "var(--font-inconsolata), monospace",
-    fontSize: 10,
+    fontSize: 13,
     letterSpacing: "0.22em",
     textTransform: "uppercase",
     color: "var(--c-muted)",
@@ -188,7 +188,7 @@ export default function IntakeModal() {
 
   const toggleBtnStyle = (active: boolean): React.CSSProperties => ({
     fontFamily: "var(--font-instrument-sans), sans-serif",
-    fontSize: 12,
+    fontSize: 16,
     fontWeight: 600,
     padding: "8px 14px",
     borderRadius: 5,
@@ -277,7 +277,7 @@ export default function IntakeModal() {
               <p
                 style={{
                   fontFamily: "var(--font-instrument-sans), sans-serif",
-                  fontSize: 13,
+                  fontSize: 16,
                   color: "var(--c-text2)",
                   lineHeight: 1.6,
                 }}
@@ -299,7 +299,7 @@ export default function IntakeModal() {
                 <div style={{ fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 700, color: "var(--c-heading)", marginBottom: 6 }}>
                   {t.success}
                 </div>
-                <div style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 14, color: "var(--c-text2)" }}>
+                <div style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16, color: "var(--c-text2)" }}>
                   {t.successSub}
                 </div>
               </div>
@@ -395,7 +395,7 @@ export default function IntakeModal() {
                   <div
                     style={{
                       fontFamily: "var(--font-instrument-sans), sans-serif",
-                      fontSize: 12,
+                      fontSize: 16,
                       color: "#e88",
                     }}
                   >
@@ -411,7 +411,7 @@ export default function IntakeModal() {
                     color: "var(--c-bg)",
                     fontFamily: "var(--font-instrument-sans), sans-serif",
                     fontWeight: 600,
-                    fontSize: 13,
+                    fontSize: 16,
                     letterSpacing: "0.04em",
                     padding: "12px 24px",
                     borderRadius: 5,

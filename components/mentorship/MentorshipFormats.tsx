@@ -16,7 +16,7 @@ export default function MentorshipFormats() {
 
     return (
         <section id="formats" className="scroll-mt-20 pb-reveal" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
-            <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 05</span>
+            <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 13, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 05</span>
             <div className="container-custom max-w-4xl">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.97 }}
@@ -32,7 +32,7 @@ export default function MentorshipFormats() {
                 >
                     <div style={{
                         fontFamily: "var(--font-inconsolata), monospace",
-                        fontSize: 10,
+                        fontSize: 13,
                         letterSpacing: "0.22em",
                         textTransform: "uppercase",
                         color: "var(--c-gold)",
@@ -75,7 +75,7 @@ export default function MentorshipFormats() {
                                     <p
                                         style={{
                                             fontFamily: "var(--font-instrument-sans), sans-serif",
-                                            fontSize: 14,
+                                            fontSize: 16,
                                             color: "var(--c-text2)",
                                             fontWeight: 500,
                                             lineHeight: 1.5,

@@ -38,7 +38,7 @@ export default function Footer() {
 
     const eyebrowStyle: React.CSSProperties = {
         fontFamily: "var(--font-inconsolata), monospace",
-        fontSize: 11,
+        fontSize: 13,
         letterSpacing: "0.16em",
         textTransform: "uppercase",
         color: "var(--c-text2)",
@@ -92,7 +92,7 @@ export default function Footer() {
                                 marginTop: 14,
                                 fontFamily: "var(--font-lede)",
                                 fontStyle: "italic",
-                                fontSize: 15,
+                                fontSize: 17,
                                 lineHeight: 1.55,
                                 color: "var(--c-text2)",
                                 maxWidth: 280,
@@ -104,7 +104,7 @@ export default function Footer() {
                         <p
                             style={{
                                 marginTop: 18,
-                                fontSize: 12,
+                                fontSize: 16,
                                 color: "var(--c-text3)",
                             }}
                         >
@@ -211,7 +211,7 @@ export default function Footer() {
                                     style={{ color: "var(--c-text2)" }}
                                 >
                                     <Send size={14} />
-                                    <span>{t.channelLabel} <span className="opacity-60" style={{ fontSize: 11 }}>(RU)</span></span>
+                                    <span>{t.channelLabel} <span className="opacity-60" style={{ fontSize: 16 }}>(RU)</span></span>
                                 </Link>
                             </li>
                             <li>

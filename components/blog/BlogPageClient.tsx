@@ -90,7 +90,7 @@ export default function BlogPageClient({ enPosts, ruPosts }: Props) {
             <p
               style={{
                 fontFamily: "var(--font-instrument-sans), sans-serif",
-                fontSize: 13,
+                fontSize: 16,
                 color: "var(--c-muted)",
                 marginTop: 4,
               }}
@@ -111,7 +111,7 @@ export default function BlogPageClient({ enPosts, ruPosts }: Props) {
 
       {/* Articles */}
       <section id="articles" className="pb-reveal" style={{ paddingBottom: 80, background: "var(--c-bg)", position: "relative" }}>
-        <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 01</span>
+        <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 13, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 01</span>
         <div className="container-custom">
           <BlogList posts={posts} lang={language} />
         </div>

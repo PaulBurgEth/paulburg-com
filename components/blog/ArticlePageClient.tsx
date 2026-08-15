@@ -50,7 +50,7 @@ const ghostButtonStyle: React.CSSProperties = {
   borderRadius: "8px",
   color: "var(--c-text)",
   fontFamily: "var(--font-instrument-sans), sans-serif",
-  fontSize: "14px",
+  fontSize: "16px",
   textDecoration: "none",
   transition: "border-color 0.2s, color 0.2s",
   display: "inline-block",
@@ -110,7 +110,7 @@ export default function ArticlePageClient({
               ref={backLinkRef}
               style={{
                 fontFamily: "var(--font-inconsolata), monospace",
-                fontSize: 12,
+                fontSize: 13,
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
                 color: "var(--c-muted)",
@@ -172,7 +172,7 @@ export default function ArticlePageClient({
             <div style={{
               display: "flex", gap: 18, flexWrap: "wrap", alignItems: "baseline",
               fontFamily: "var(--font-inconsolata), monospace",
-              fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase",
+              fontSize: 13, letterSpacing: "0.15em", textTransform: "uppercase",
               color: "var(--c-text2)",
               marginBottom: 32,
             }}>
@@ -201,7 +201,7 @@ export default function ArticlePageClient({
                 <p
                   style={{
                     fontFamily: "var(--font-inconsolata), monospace",
-                    fontSize: 10,
+                    fontSize: 13,
                     fontWeight: 600,
                     letterSpacing: "0.2em",
                     textTransform: "uppercase",
@@ -229,7 +229,7 @@ export default function ArticlePageClient({
                         onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--c-gold)"; }}
                         onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--c-text2)"; }}
                       >
-                        <span style={{ color: "var(--c-gold)", fontFamily: "var(--font-inconsolata), monospace", fontSize: 11, flexShrink: 0 }}>
+                        <span style={{ color: "var(--c-gold)", fontFamily: "var(--font-inconsolata), monospace", fontSize: 13, flexShrink: 0 }}>
                           {String(i + 1).padStart(2, "0")}
                         </span>
                         {item.text}
@@ -273,7 +273,7 @@ export default function ArticlePageClient({
               <p
                 style={{
                   fontFamily: "var(--font-inconsolata), monospace",
-                  fontSize: 11,
+                  fontSize: 13,
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
                   color: "var(--c-muted)",
@@ -378,7 +378,7 @@ export default function ArticlePageClient({
           display: block;
           font-family: var(--font-inconsolata), monospace;
           font-weight: 600;
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.25em;
           text-transform: uppercase;
           color: var(--c-gold);
@@ -484,7 +484,7 @@ export default function ArticlePageClient({
           background: none;
           border: none;
           padding: 0;
-          font-size: 14px;
+          font-size: 16px;
           color: var(--c-body);
         }
 
@@ -518,7 +518,7 @@ export default function ArticlePageClient({
           content: '· · ·';
           color: var(--c-gold);
           letter-spacing: 0.8em;
-          font-size: 14px;
+          font-size: 16px;
         }
 
         .prose-blog hr:not(.ornament) {
@@ -531,7 +531,7 @@ export default function ArticlePageClient({
           width: 100%;
           border-collapse: collapse;
           margin: 32px 0;
-          font-size: 14px;
+          font-size: 16px;
           font-family: var(--font-instrument-sans), sans-serif;
         }
         .prose-blog table th,
@@ -544,7 +544,7 @@ export default function ArticlePageClient({
         }
         .prose-blog table th {
           font-family: var(--font-inconsolata), monospace;
-          font-size: 11px;
+          font-size: 13px;
           font-weight: 600;
           letter-spacing: 0.06em;
           text-transform: uppercase;
@@ -559,7 +559,7 @@ export default function ArticlePageClient({
           background: var(--c-card);
         }
         @media (max-width: 640px) {
-          .prose-blog table { font-size: 12px; }
+          .prose-blog table { font-size: 16px; }
           .prose-blog table th,
           .prose-blog table td { padding: 7px 8px; }
         }
@@ -583,7 +583,7 @@ export default function ArticlePageClient({
         .article-sources h2,
         .article-sources h3 {
           font-family: var(--font-inconsolata), monospace;
-          font-size: 12px;
+          font-size: 13px;
           font-weight: 600;
           letter-spacing: 0.18em;
           text-transform: uppercase;
@@ -592,7 +592,7 @@ export default function ArticlePageClient({
         }
         .article-sources p {
           font-family: var(--font-instrument-sans), sans-serif;
-          font-size: 13px;
+          font-size: 16px;
           line-height: 1.6;
           color: var(--c-body);
           margin: 0 0 12px;
@@ -611,7 +611,7 @@ export default function ArticlePageClient({
           margin: 0 0 12px;
         }
         .article-sources li {
-          font-size: 13px;
+          font-size: 16px;
           line-height: 1.6;
           color: var(--c-body);
           margin-bottom: 8px;

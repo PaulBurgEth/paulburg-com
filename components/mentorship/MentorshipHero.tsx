@@ -159,7 +159,7 @@ export default function MentorshipHero() {
                     <p
                         style={{
                             fontFamily: "var(--font-instrument-sans), sans-serif",
-                            fontSize: 14,
+                            fontSize: 16,
                             color: "var(--c-text2)",
                             letterSpacing: "0.02em",
                         }}

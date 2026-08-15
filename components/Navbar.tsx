@@ -76,7 +76,7 @@ export default function Navbar() {
             >
                 <div
                     className="mx-auto flex items-center justify-between"
-                    style={{ maxWidth: 1060, padding: "16px 28px" }}
+                    style={{ maxWidth: 1440, padding: "16px 40px" }}
                 >
                     <Link
                         href="/"
@@ -95,7 +95,7 @@ export default function Navbar() {
                     {/* Desktop nav */}
                     <nav
                         className="hidden md:flex items-center"
-                        style={{ gap: 26, fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 13 }}
+                        style={{ gap: 26, fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16 }}
                     >
                         {navLinks.map((link) => (
                             <Link
@@ -133,7 +133,7 @@ export default function Navbar() {
                                 cursor: "pointer",
                                 color: "var(--c-text2)",
                                 fontFamily: "var(--font-inconsolata), monospace",
-                                fontSize: 11,
+                                fontSize: 13,
                                 letterSpacing: "0.1em",
                                 padding: 0,
                             }}
@@ -166,7 +166,7 @@ export default function Navbar() {
                             style={{
                                 color: "var(--c-text2)",
                                 fontFamily: "var(--font-inconsolata), monospace",
-                                fontSize: 11,
+                                fontSize: 13,
                                 letterSpacing: "0.1em",
                                 background: "transparent",
                                 border: "none",

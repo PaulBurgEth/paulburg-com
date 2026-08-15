@@ -57,7 +57,7 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                     className="mb-6"
                     style={{
                         fontFamily: "var(--font-instrument-sans), sans-serif",
-                        fontSize: 14,
+                        fontSize: 16,
                         color: "var(--c-body)",
                         lineHeight: 1.6,
                         minHeight: 64,
@@ -75,7 +75,7 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                             className="mb-3 uppercase"
                             style={{
                                 fontFamily: "var(--font-inconsolata), monospace",
-                                fontSize: 10,
+                                fontSize: 13,
                                 fontWeight: 700,
                                 letterSpacing: "0.15em",
                                 color: "var(--c-muted)",
@@ -88,7 +88,7 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                                     style={{
                                         fontFamily: "var(--font-instrument-sans), sans-serif",
                                         fontWeight: 600,
-                                        fontSize: 14,
+                                        fontSize: 16,
                                         color: "var(--c-text)",
                                     }}
                                 >
@@ -109,7 +109,7 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                             color: "var(--c-bg)",
                             fontFamily: "var(--font-instrument-sans), sans-serif",
                             fontWeight: 600,
-                            fontSize: 13,
+                            fontSize: 16,
                             letterSpacing: "0.04em",
                         }}
                     >
@@ -118,7 +118,7 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
 
                     <div
                         className="flex items-center justify-center gap-2 font-medium transition-colors"
-                        style={{ color: "var(--c-muted)", fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 13 }}
+                        style={{ color: "var(--c-muted)", fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16 }}
                     >
                         <span>{s.more}</span>
                         <motion.div animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.3 }}>
@@ -146,7 +146,7 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                                         className="mb-3"
                                         style={{
                                             fontFamily: "var(--font-inconsolata), monospace",
-                                            fontSize: 11,
+                                            fontSize: 13,
                                             fontWeight: 700,
                                             letterSpacing: "0.12em",
                                             textTransform: "uppercase",
@@ -160,7 +160,7 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                                                 <span
                                                     style={{
                                                         fontFamily: "var(--font-instrument-sans), sans-serif",
-                                                        fontSize: 13,
+                                                        fontSize: 16,
                                                         color: "var(--c-body)",
                                                         lineHeight: 1.5,
                                                     }}
