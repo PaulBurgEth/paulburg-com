@@ -82,7 +82,7 @@ export default function ServicesTurnkey() {
 
   return (
     <section className="pb-reveal" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
-      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 16, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 03</span>
+      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 13, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 03</span>
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -106,7 +106,7 @@ export default function ServicesTurnkey() {
             style={{
               display: "inline-block",
               fontFamily: "var(--font-inconsolata), monospace",
-              fontSize: 16,
+              fontSize: 13,
               fontWeight: 700,
               letterSpacing: "0.22em",
               color: "var(--c-gold)",
@@ -124,7 +124,7 @@ export default function ServicesTurnkey() {
           <div
             style={{
               fontFamily: "var(--font-inconsolata), monospace",
-              fontSize: 16,
+              fontSize: 13,
               letterSpacing: "0.22em",
               textTransform: "uppercase",
               color: "var(--c-muted)",
@@ -190,7 +190,7 @@ export default function ServicesTurnkey() {
                   aria-hidden="true"
                   style={{
                     fontFamily: "var(--font-inconsolata), monospace",
-                    fontSize: 16,
+                    fontSize: 13,
                     fontWeight: 700,
                     letterSpacing: "0.08em",
                     color: "var(--c-gold)",
@@ -232,7 +232,7 @@ export default function ServicesTurnkey() {
           <p
             style={{
               fontFamily: "var(--font-inconsolata), monospace",
-              fontSize: 16,
+              fontSize: 13,
               letterSpacing: "0.14em",
               textTransform: "uppercase",
               color: "var(--c-gold)",
@@ -261,7 +261,7 @@ export default function ServicesTurnkey() {
               <div
                 style={{
                   fontFamily: "var(--font-inconsolata), monospace",
-                  fontSize: 16,
+                  fontSize: 13,
                   letterSpacing: "0.15em",
                   textTransform: "uppercase",
                   color: "var(--c-muted)",

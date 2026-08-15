@@ -171,7 +171,7 @@ export default function OutboundHow() {
               </span>
               <span className="min-w-0">
                 <span style={{ fontFamily: SANS, fontSize: T.bodySm, fontWeight: 600, color: "var(--c-heading)", display: "block", lineHeight: 1.35 }}>{s.name}</span>
-                <span style={{ fontFamily: MONO, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--c-text2)" }}>{s.cadence}</span>
+                <span style={{ fontFamily: MONO, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--c-text2)" }}>{s.cadence}</span>
               </span>
             </motion.div>
           );

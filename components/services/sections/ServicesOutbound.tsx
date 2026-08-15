@@ -45,7 +45,7 @@ export default function ServicesOutbound() {
       className="scroll-mt-20 pb-reveal"
       style={{ background: "var(--c-bg2)", borderTop: "1px solid var(--c-border)", padding: "72px 0", position: "relative" }}
     >
-      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 16, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 05</span>
+      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 13, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 05</span>
       <div className="container-custom">
         <motion.div
           variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}
@@ -56,7 +56,7 @@ export default function ServicesOutbound() {
           <div
             style={{
               fontFamily: "var(--font-inconsolata), monospace",
-              fontSize: 16,
+              fontSize: 13,
               letterSpacing: "0.22em",
               textTransform: "uppercase",
               color: "var(--c-gold)",
@@ -113,7 +113,7 @@ export default function ServicesOutbound() {
               <ul style={{ display: "flex", flexDirection: "column", gap: 9, marginBottom: 20 }}>
                 {t.points.map((p, i) => (
                   <li key={i} className="flex gap-3">
-                    <span aria-hidden="true" style={{ fontFamily: "var(--font-inconsolata), monospace", fontSize: 16, color: "var(--c-gold)", paddingTop: 3, flexShrink: 0, letterSpacing: "0.1em" }}>
+                    <span aria-hidden="true" style={{ fontFamily: "var(--font-inconsolata), monospace", fontSize: 13, color: "var(--c-gold)", paddingTop: 3, flexShrink: 0, letterSpacing: "0.1em" }}>
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16, color: "var(--c-body)", lineHeight: 1.6 }}>{p}</span>

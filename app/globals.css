@@ -26,14 +26,14 @@
   --c-heading:   #1a1714;
   --c-text:      #2d2a26;
   --c-text2:     #6a6560;
-  --c-text3:     #8a8480;
+  --c-text3:     #6f665f; /* 4.95:1 on --c-bg — was #8a8480 at 3.25:1 */
   --c-muted:     #736a62; /* 4.67:1 on --c-bg — was #9a9088 at 2.76:1 */
   --c-faint:     #c0b8b0;
   --c-subtle:    #a09890;
-  --c-gold:      #a07840;
+  --c-gold:      #856230; /* 4.89:1 on --c-bg — was #a07840 at 3.52:1 */
   --c-gold-dim:  rgba(160,120,64,0.1);
   --c-gold-glow: rgba(160,120,64,0.15);
-  --c-sage:      #3d7a5a;
+  --c-sage:      #387052; /* 5.13:1 on --c-bg — was #3d7a5a at 4.48:1 */
   /* Body / lede tokens — used by .prose-blog */
   --c-body:      #3d3833;
   --c-body-lede: #1a1714;

@@ -64,7 +64,7 @@ export default function ServicesHero() {
               style={{
                 fontFamily: "var(--font-inconsolata), monospace",
                 fontWeight: 600,
-                fontSize: 16,
+                fontSize: 13,
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
                 background: "rgba(200,169,110,0.08)",

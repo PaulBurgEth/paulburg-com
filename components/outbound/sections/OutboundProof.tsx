@@ -175,7 +175,7 @@ export default function OutboundProof() {
                 { cap: t.benchCols[2], v: row.market, color: "var(--c-text2)", weight: 400 },
               ].map((cell) => (
                 <div key={cell.cap} className="sm:px-4 sm:py-[2px]">
-                  <span className="block sm:hidden" style={{ fontFamily: MONO, fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--c-muted)", marginBottom: 1 }}>
+                  <span className="block sm:hidden" style={{ fontFamily: MONO, fontSize: 13, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--c-muted)", marginBottom: 1 }}>
                     {cell.cap}
                   </span>
                   <span style={{ fontFamily: MONO, fontSize: T.body, fontWeight: cell.weight, color: cell.color }}>{cell.v}</span>
