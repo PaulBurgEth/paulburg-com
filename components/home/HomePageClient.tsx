@@ -72,6 +72,20 @@ body::after{
   max-width:1440px;margin:0 auto;
 }
 .hero-inner{position:relative}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:44px;align-items:center}
+@media(min-width:1024px){.hero-grid{grid-template-columns:1.15fr 0.85fr;gap:64px}}
+.hero-lines{display:flex;flex-direction:column;gap:14px}
+@media(max-width:1023px){.hero-lines{display:none}}
+.line-card{
+  display:block;text-decoration:none;
+  border:1px solid var(--c-border);border-radius:10px;padding:20px 22px;
+  background:var(--c-card);transition:border-color .24s ease,transform .24s ease;
+}
+.line-card:hover{border-color:rgba(200,169,110,0.35);transform:translateY(-2px)}
+.line-card .lc-k{font-family:var(--font-inconsolata),monospace;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--c-gold)}
+.line-card .lc-t{font-family:var(--font-display);font-weight:700;font-size:21px;color:var(--c-heading);margin:8px 0 6px}
+.line-card .lc-d{font-family:var(--font-instrument-sans),sans-serif;font-size:16px;line-height:1.55;color:var(--c-text2)}
+.line-card .lc-m{font-family:var(--font-inconsolata),monospace;font-size:13px;color:var(--c-muted);margin-top:12px;display:block}
 .hero-kicker{
   font-family:var(--font-inconsolata),monospace;
   font-size:13px;letter-spacing:0.2em;text-transform:uppercase;
@@ -630,7 +644,8 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
           <span className="hero-pin-dot" />
         </span>
 
-        <div className="hero-inner">
+        <div className="hero-inner hero-grid">
+          <div>
           <div className="pb-stage" data-visible={stage >= 1 ? "1" : "0"}>
             <div className="hero-kicker">
               <span>{language === "ru" ? "Сейчас в Да Нанге, Вьетнам" : "Currently in Da Nang, Vietnam"}</span>
@@ -684,6 +699,30 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <span className="tag">{language === "ru" ? "Автоматизация" : "Process Automation"}</span>
               <span className="tag">{language === "ru" ? "Сайты на заказ" : "Custom Websites"}</span>
             </div>
+          </div>
+          </div>
+
+          <div className="hero-lines pb-stage" data-visible={stage >= 3 ? "1" : "0"}>
+            <Link href="/services" className="line-card">
+              <span className="lc-k">{language === "ru" ? "Линия первая" : "Line one"}</span>
+              <div className="lc-t">{language === "ru" ? "Системы" : "The systems"}</div>
+              <div className="lc-d">
+                {language === "ru"
+                  ? "Боты, CRM и BI-дашборды, автоматизация, сайты. С нуля под ваш процесс."
+                  : "Bots, CRMs and BI dashboards, automation, websites. Built from scratch around your process."}
+              </div>
+              <span className="lc-m">{language === "ru" ? "10+ систем в продакшене · 3–14 дней" : "10+ systems in production · 3–14 days"}</span>
+            </Link>
+            <Link href="/outbound" className="line-card">
+              <span className="lc-k">{language === "ru" ? "Линия вторая" : "Line two"}</span>
+              <div className="lc-t">{language === "ru" ? "Клиенты" : "The clients"}</div>
+              <div className="lc-d">
+                {language === "ru"
+                  ? "Нахожу компании в открытых реестрах, выхожу на ЛПР и пишу от вашего имени."
+                  : "I find companies in open registries, reach the decision-maker and write in your name."}
+              </div>
+              <span className="lc-m">{language === "ru" ? "Пилот 6 недель · ваши цифры на выходе" : "6-week pilot · your own numbers"}</span>
+            </Link>
           </div>
         </div>
       </section>

@@ -6,6 +6,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { TELEGRAM_URL, WHATSAPP_URL, INTAKE_ANCHOR } from "@/lib/constants";
 import BurgMark from "@/components/BurgMark";
 import { SERIF, SANS, MONO, LEDE } from "../shared";
+import ChannelDiagram from "../ChannelDiagram";
 
 const en = {
   badge: "Cold outbound · email only",
@@ -53,12 +54,12 @@ export default function OutboundHero() {
       className="w-full flex items-center justify-center"
       style={{ background: "var(--c-bg)", paddingTop: 80, paddingBottom: 56 }}
     >
-      <div className="container-custom flex flex-col items-center text-center" style={{ maxWidth: 1040 }}>
+      <div className="container-custom grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-14 items-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col items-center gap-6"
+          className="flex flex-col items-start gap-6"
         >
           <motion.span
             initial={{ opacity: 0, y: 20 }}
@@ -119,7 +120,7 @@ export default function OutboundHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-3 w-full justify-center"
+            className="flex flex-col sm:flex-row gap-3 w-full"
           >
             <Link href={INTAKE_ANCHOR} style={{ ...btnBase, border: "1px solid var(--c-gold)" }}>
               {t.ctaPrimary}
@@ -146,7 +147,7 @@ export default function OutboundHero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-wrap justify-center gap-x-5 gap-y-2"
+            className="flex flex-wrap gap-x-5 gap-y-2"
             style={{ marginTop: 4 }}
           >
             {t.strip.map((s, i) => (
@@ -164,6 +165,15 @@ export default function OutboundHero() {
               </span>
             ))}
           </motion.div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 16 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="hidden lg:flex justify-end"
+        >
+          <ChannelDiagram />
         </motion.div>
       </div>
     </section>
