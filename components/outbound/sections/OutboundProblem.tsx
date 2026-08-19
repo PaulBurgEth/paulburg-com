@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { SERIF, SANS, MONO, T, sectionVariants } from "../shared";
 
@@ -36,13 +37,16 @@ const ru: { items: Item[]; caption: string } = {
 export default function OutboundProblem() {
   const { language } = useLanguage();
   const t = language === "ru" ? ru : en;
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.05 });
+  const reduced = useReducedMotion();
 
   return (
     <motion.section
+      ref={ref}
       variants={sectionVariants}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.05 }}
+      animate={inView || reduced ? "visible" : "hidden"}
       style={{
         background: "var(--c-bg)",
         borderTop: "1px solid var(--c-border)",

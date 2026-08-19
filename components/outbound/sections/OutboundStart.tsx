@@ -8,29 +8,29 @@ import { SectionShell, SectionHead, SERIF, SANS, MONO, LEDE, T, itemVariants } f
 const en = {
   eyebrow: "Start",
   h2: "Three moves to the first email",
-  sub: "No call needed to begin.",
+  sub: "You can start in writing today.",
   steps: [
     { n: "01", t: "Ten questions", d: "Which services are the priority, who your best client is, which markets are closed. You answer in writing." },
     { n: "02", t: "A six-week plan", d: "Concrete segments with volume estimates, launch order, correspondence language, and the first email drafts for approval." },
     { n: "03", t: "We start", d: "The first email goes out in week three, the first replies land in week four, your own numbers in week six." },
   ],
   whoTitle: "Who you would be working with",
-  whoRole: "Cold outbound for B2B · correspondence only · RU, EN, ES",
-  about: "I do cold client acquisition for B2B companies — correspondence only, in Russian, English and Spanish. Before this: my own projects since 2011 and contract development — bots, CRMs, dashboards, automation. That background is why this is built as a system you own rather than a service you rent.",
+  whoRole: "Cold outbound for B2B · RU, EN, ES",
+  about: "I do cold client acquisition for B2B companies, in Russian, English and Spanish. Before this: my own projects since 2011 and contract development — bots, CRMs, dashboards, automation. That background is why this is built as a system you own rather than a service you rent.",
 };
 
 const ru = {
   eyebrow: "Старт",
   h2: "Три шага до первого письма",
-  sub: "Чтобы начать, созвон не нужен.",
+  sub: "Начать можно письмом, сегодня.",
   steps: [
     { n: "01", t: "Десять вопросов", d: "Какие услуги приоритетны, кто ваш лучший клиент, какие рынки закрыты. Отвечаете письменно." },
     { n: "02", t: "План на шесть недель", d: "Конкретные сегменты с оценкой объёма, порядок запуска, язык переписки и тексты первых писем на согласование." },
     { n: "03", t: "Стартуем", d: "Первое письмо уходит на третьей неделе, первые ответы — на четвёртой, ваши собственные цифры — на шестой." },
   ],
   whoTitle: "С кем вы будете работать",
-  whoRole: "Холодный аутбаунд для B2B · только переписка · RU, EN, ES",
-  about: "Занимаюсь холодным поиском клиентов для B2B — только переписка, на русском, английском и испанском. До этого: свои проекты с 2011 года и разработка на заказ — боты, CRM, дашборды, автоматизация. Из-за этого фона канал и построен как система, которая принадлежит вам, а не услуга в аренду.",
+  whoRole: "Холодный аутбаунд для B2B · RU, EN, ES",
+  about: "Занимаюсь холодным поиском клиентов для B2B на русском, английском и испанском. До этого: свои проекты с 2011 года и разработка на заказ — боты, CRM, дашборды, автоматизация. Из-за этого фона канал и построен как система, которая принадлежит вам, а не услуга в аренду.",
 };
 
 export default function OutboundStart() {

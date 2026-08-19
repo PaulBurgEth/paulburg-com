@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Ship, Gavel, Building2, BadgeCheck, ShieldAlert, Store } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { INTAKE_ANCHOR } from "@/lib/constants";
 import { SectionShell, SectionHead, MidCTA, SERIF, SANS, MONO, T, itemVariants } from "../shared";
 
 const ICONS = [Ship, Gavel, Building2, BadgeCheck, ShieldAlert, Store];
@@ -23,8 +24,12 @@ type Variant = { label: string; meta: string[]; subject: string; body: string[] 
 const en = {
   eyebrow: "The mechanism",
   h2: "Every email has a reason attached to that company",
-  sub: "Nothing goes out as a template. Something happened at that company, it is on public record, and the email is about that. Pick your market and read the actual email.",
-  pick: "Pick your market",
+  sub: "Nothing goes out as a template. Something happened at that company, it is on public record, and the email is about that. Read the real email for any of these markets — or ask for the one written for yours.",
+  pick: "Five examples. Yours works the same way",
+  openLabel: "Your market",
+  openTitle: "Your market is not on that list",
+  openBody: "Those five are examples, not the boundary. The mechanism needs one thing: that whatever creates demand in your market leaves a public trace. In most of B2B it does — a contract awarded, a filing made, a shipment cleared, a licence granted, a plant hired. Tell me what you sell and I will write the example email for your market, with the trigger it is built on, before you commit to anything.",
+  openCta: "Write the example for my market →",
   variants: [
     {
       label: "Metals & industrial supply",
@@ -108,8 +113,12 @@ const en = {
 const ru = {
   eyebrow: "Механика",
   h2: "У каждого письма есть повод, привязанный к этой компании",
-  sub: "Ничего не уходит шаблоном. В компании что-то произошло, это есть в открытом источнике, и письмо про это. Выберите ваш рынок и прочитайте само письмо.",
-  pick: "Выберите ваш рынок",
+  sub: "Ничего не уходит шаблоном. В компании что-то произошло, это есть в открытом источнике, и письмо про это. Прочитайте настоящее письмо по любому из этих рынков — или запросите то, что написано под ваш.",
+  pick: "Пять примеров. Ваш работает так же",
+  openLabel: "Ваша ниша",
+  openTitle: "Вашего рынка в этом списке нет",
+  openBody: "Эти пять — примеры, а не граница. Механике нужно одно: чтобы то, что рождает спрос на вашем рынке, оставляло публичный след. В большинстве B2B оно оставляет — выигранный контракт, поданная заявка, прошедшая таможню поставка, полученная лицензия, набор людей на производство. Напишите, что вы продаёте, и я соберу пример письма под ваш рынок вместе с поводом, на котором оно построено, до любых обязательств.",
+  openCta: "Собрать пример под мой рынок →",
   variants: [
     {
       label: "Металлопрокат и промснабжение",
@@ -194,7 +203,11 @@ export default function OutboundHow() {
   const { language } = useLanguage();
   const t = language === "ru" ? ru : en;
   const [active, setActive] = useState(0);
-  const v = t.variants[active];
+  // The last chip is not a market, it is the way out of the list: five examples
+  // read as five limits unless the reader is told their own market fits too.
+  const openIndex = t.variants.length;
+  const isOpen = active === openIndex;
+  const v = t.variants[Math.min(active, openIndex - 1)];
 
   return (
     <SectionShell num="03" id="how">
@@ -212,11 +225,12 @@ export default function OutboundHow() {
           {t.pick}
         </span>
         <div className="flex flex-wrap gap-2" role="tablist" aria-label={t.pick}>
-          {t.variants.map((item, i) => {
+          {[...t.variants.map((x) => x.label), t.openLabel].map((label, i) => {
             const on = i === active;
+            const isOpenChip = i === openIndex;
             return (
               <button
-                key={item.label}
+                key={label}
                 type="button"
                 role="tab"
                 aria-selected={on}
@@ -224,148 +238,189 @@ export default function OutboundHow() {
                 style={{
                   fontFamily: MONO,
                   fontSize: T.caption,
-                  fontWeight: on ? 700 : 400,
+                  fontWeight: on || isOpenChip ? 700 : 400,
                   letterSpacing: "0.1em",
-                  color: on ? "var(--c-bg)" : "var(--c-text2)",
+                  color: on ? "var(--c-bg)" : isOpenChip ? "var(--c-gold)" : "var(--c-text2)",
                   background: on ? "var(--c-gold)" : "var(--c-card2)",
-                  border: `1px solid ${on ? "var(--c-gold)" : "var(--c-border)"}`,
+                  border: `1px solid ${on || isOpenChip ? "var(--c-gold)" : "var(--c-border)"}`,
+                  borderStyle: isOpenChip && !on ? "dashed" : "solid",
                   borderRadius: 4,
                   padding: "6px 12px",
                   cursor: "pointer",
                   transition: "background 160ms, color 160ms, border-color 160ms",
                 }}
               >
-                {item.label}
+                {isOpenChip ? `+ ${label}` : label}
               </button>
             );
           })}
         </div>
       </div>
 
-      {/* The marked-up document.
-          Email paragraphs and their annotations share one grid, so each note
-          sits on the same row as the line it refers to and the 1px gold leader
-          between them is always aligned — no measuring, no SVG overlay. The
-          card background is a single element spanning column 1 across all rows.
-          Below lg the annotations fall under the email, as they did before. */}
-      <div
-        className="grid grid-cols-1 lg:grid-cols-[1.7fr_1fr] lg:gap-x-0"
-        style={{ position: "relative", alignItems: "start" }}
-      >
+      {isOpen ? (
+        /* Not a sixth email — the answer to "my market is not on that list". */
         <div
-          aria-hidden="true"
           style={{
-            gridColumn: 1,
-            gridRow: "1 / 7",
-            // The wrapper is align-items:start, so an empty backdrop would
-            // collapse to its border height. Stretch it back over the rows.
-            alignSelf: "stretch",
-            background: "var(--c-card2)",
-            border: "1px solid var(--c-border)",
+            background: "var(--c-card)",
+            border: "1px solid var(--c-gold)",
             borderLeft: "2px solid var(--c-gold)",
             borderRadius: 10,
-          }}
-        />
-
-        <motion.div
-          key={`meta-${active}`}
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.28 }}
-          style={{ gridColumn: 1, gridRow: 1, position: "relative", padding: "24px 24px 0", display: "flex", flexDirection: "column", gap: 3 }}
-        >
-          {v.meta.map((m) => (
-            <span key={m} style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.06em", color: "var(--c-text2)" }}>
-              {m}
-            </span>
-          ))}
-        </motion.div>
-
-        <motion.p
-          key={`subj-${active}`}
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.28, delay: 0.03 }}
-          style={{
-            gridColumn: 1, gridRow: 2, position: "relative",
-            margin: "14px 24px 15px", paddingBottom: 13,
-            borderBottom: "1px solid var(--c-border)",
-            fontFamily: MONO, fontSize: T.bodySm, fontWeight: 600, color: "var(--c-heading)",
+            padding: 28,
           }}
         >
-          {v.subject}
-        </motion.p>
-
-        {v.body.map((line, i) => (
-          <motion.p
-            key={`${active}-${i}`}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.28, delay: 0.05 + i * 0.03 }}
+          <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 26, color: "var(--c-heading)", marginBottom: 12, lineHeight: 1.25 }}>
+            {t.openTitle}
+          </h3>
+          <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.7, maxWidth: 820, marginBottom: 20 }}>
+            {t.openBody}
+          </p>
+          <a
+            href={INTAKE_ANCHOR}
             style={{
-              gridColumn: 1,
-              gridRow: 3 + i,
-              position: "relative",
-              padding: `0 24px ${i === v.body.length - 1 ? 24 : 13}px`,
+              display: "inline-block",
+              background: "var(--c-gold)",
+              color: "var(--c-bg)",
+              border: "1px solid var(--c-gold)",
               fontFamily: SANS,
-              fontSize: T.body,
-              color: "var(--c-body)",
-              lineHeight: 1.65,
+              fontWeight: 600,
+              fontSize: T.bodySm,
+              letterSpacing: "0.02em",
+              padding: "13px 26px",
+              borderRadius: 6,
+              textDecoration: "none",
             }}
           >
-            {line.split(/(\[[^\]]+\])/g).map((part, j) =>
-              part.startsWith("[")
-                ? <span key={j} style={{ color: "var(--c-gold)", fontWeight: 600 }}>{part}</span>
-                : <span key={j}>{part}</span>,
-            )}
-          </motion.p>
-        ))}
-
-        {/* Margin notes. Same grid, same row as the line they mark, so the 1px
-            gold leader between the two is aligned by construction. */}
-        {t.annotations.map((a, i) => (
+            {t.openCta}
+          </a>
+        </div>
+      ) : (
+        <>
+      {/* The marked-up document.
+            Email paragraphs and their annotations share one grid, so each note
+            sits on the same row as the line it refers to and the 1px gold leader
+            between them is always aligned — no measuring, no SVG overlay. The
+            card background is a single element spanning column 1 across all rows.
+            Below lg the annotations fall under the email, as they did before. */}
+        <div
+          className="grid grid-cols-1 lg:grid-cols-[1.7fr_1fr] lg:gap-x-0"
+          style={{ position: "relative", alignItems: "start" }}
+        >
           <div
-            key={a}
-            className="hidden lg:flex items-start gap-3"
-            style={{ gridColumn: 2, gridRow: 3 + i, position: "relative", paddingLeft: 0, paddingBottom: 13 }}
+            aria-hidden="true"
+            style={{
+              gridColumn: 1,
+              gridRow: "1 / 7",
+              // The wrapper is align-items:start, so an empty backdrop would
+              // collapse to its border height. Stretch it back over the rows.
+              alignSelf: "stretch",
+              background: "var(--c-card2)",
+              border: "1px solid var(--c-border)",
+              borderLeft: "2px solid var(--c-gold)",
+              borderRadius: 10,
+            }}
+          />
+
+          <motion.div
+            key={`meta-${active}`}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.28 }}
+            style={{ gridColumn: 1, gridRow: 1, position: "relative", padding: "24px 24px 0", display: "flex", flexDirection: "column", gap: 3 }}
           >
-            <span
-              aria-hidden="true"
-              style={{ width: 34, height: 1, background: "var(--c-gold)", flexShrink: 0, marginTop: 13, opacity: 0.55 }}
-            />
-            <span
-              aria-hidden="true"
-              style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--c-gold)", flexShrink: 0, marginTop: 11, marginLeft: -3 }}
-            />
-            {/* Number and note on one line: a stacked note is taller than the
-                email line it marks, and the shared grid row would stretch the
-                paragraph spacing along with it. */}
-            <span className="flex items-baseline gap-2 min-w-0" style={{ paddingTop: 3 }}>
-              <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.14em", color: "var(--c-gold)", flexShrink: 0 }}>
+            {v.meta.map((m) => (
+              <span key={m} style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.06em", color: "var(--c-text2)" }}>
+                {m}
+              </span>
+            ))}
+          </motion.div>
+
+          <motion.p
+            key={`subj-${active}`}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.28, delay: 0.03 }}
+            style={{
+              gridColumn: 1, gridRow: 2, position: "relative",
+              margin: "14px 24px 15px", paddingBottom: 13,
+              borderBottom: "1px solid var(--c-border)",
+              fontFamily: MONO, fontSize: T.bodySm, fontWeight: 600, color: "var(--c-heading)",
+            }}
+          >
+            {v.subject}
+          </motion.p>
+
+          {v.body.map((line, i) => (
+            <motion.p
+              key={`${active}-${i}`}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.28, delay: 0.05 + i * 0.03 }}
+              style={{
+                gridColumn: 1,
+                gridRow: 3 + i,
+                position: "relative",
+                padding: `0 24px ${i === v.body.length - 1 ? 24 : 13}px`,
+                fontFamily: SANS,
+                fontSize: T.body,
+                color: "var(--c-body)",
+                lineHeight: 1.65,
+              }}
+            >
+              {line.split(/(\[[^\]]+\])/g).map((part, j) =>
+                part.startsWith("[")
+                  ? <span key={j} style={{ color: "var(--c-gold)", fontWeight: 600 }}>{part}</span>
+                  : <span key={j}>{part}</span>,
+              )}
+            </motion.p>
+          ))}
+
+          {/* Margin notes. Same grid, same row as the line they mark, so the 1px
+              gold leader between the two is aligned by construction. */}
+          {t.annotations.map((a, i) => (
+            <div
+              key={a}
+              className="hidden lg:flex items-start gap-3"
+              style={{ gridColumn: 2, gridRow: 3 + i, position: "relative", paddingLeft: 0, paddingBottom: 13 }}
+            >
+              <span
+                aria-hidden="true"
+                style={{ width: 34, height: 1, background: "var(--c-gold)", flexShrink: 0, marginTop: 13, opacity: 0.55 }}
+              />
+              <span
+                aria-hidden="true"
+                style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--c-gold)", flexShrink: 0, marginTop: 11, marginLeft: -3 }}
+              />
+              {/* Number and note on one line: a stacked note is taller than the
+                  email line it marks, and the shared grid row would stretch the
+                  paragraph spacing along with it. */}
+              <span className="flex items-baseline gap-2 min-w-0" style={{ paddingTop: 3 }}>
+                <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.14em", color: "var(--c-gold)", flexShrink: 0 }}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span style={{ fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-body)", lineHeight: 1.45 }}>
+                  {a}
+                </span>
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <ul className="lg:hidden flex flex-col gap-2" style={{ marginTop: 12 }}>
+          {t.annotations.map((a, i) => (
+            <li
+              key={a}
+              className="flex gap-3 items-start"
+              style={{ background: "var(--c-card)", border: "1px solid var(--c-border)", borderRadius: 8, padding: "12px 14px" }}
+            >
+              <span style={{ fontFamily: MONO, fontSize: T.caption, color: "var(--c-gold)", letterSpacing: "0.1em", flexShrink: 0, paddingTop: 2 }}>
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span style={{ fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-body)", lineHeight: 1.45 }}>
-                {a}
-              </span>
-            </span>
-          </div>
-        ))}
-      </div>
-
-      <ul className="lg:hidden flex flex-col gap-2" style={{ marginTop: 12 }}>
-        {t.annotations.map((a, i) => (
-          <li
-            key={a}
-            className="flex gap-3 items-start"
-            style={{ background: "var(--c-card)", border: "1px solid var(--c-border)", borderRadius: 8, padding: "12px 14px" }}
-          >
-            <span style={{ fontFamily: MONO, fontSize: T.caption, color: "var(--c-gold)", letterSpacing: "0.1em", flexShrink: 0, paddingTop: 2 }}>
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <span style={{ fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-body)", lineHeight: 1.5 }}>{a}</span>
-          </li>
-        ))}
-      </ul>
+              <span style={{ fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-body)", lineHeight: 1.5 }}>{a}</span>
+            </li>
+          ))}
+        </ul>
+        </>
+      )}
 
       {/* Triggers — four, not six; the event and the addressee are the point. */}
       <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "38px 0 14px" }}>

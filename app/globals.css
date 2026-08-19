@@ -109,6 +109,17 @@ body {
 html[lang="ru"] body {
   --font-display: var(--font-source-serif), Georgia, serif;
   --font-lede: var(--font-source-serif), Georgia, serif;
+
+  /* Cyrillic swap for the two Latin-only workhorses.
+     Redefining the next/font variable names themselves, rather than adding new
+     ones, means every existing `var(--font-instrument-sans)` and
+     `var(--font-inconsolata)` in the components resolves to a Cyrillic face in
+     RU without touching a single component file. Specificity is what makes it
+     work: next/font sets these on `body` through a generated class (0,1,0),
+     and `html[lang="ru"] body` is (0,1,2), so this wins. */
+  --font-instrument-sans: var(--font-inter);
+  --font-inconsolata: var(--font-jetbrains-mono);
+  --font-newsreader: var(--font-source-serif);
 }
 
 /* RU mode — swap primary serif faces to Source Serif 4 for metric consistency.

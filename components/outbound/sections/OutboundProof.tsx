@@ -19,7 +19,7 @@ type Turn = { side: "out" | "in"; who: string; when: string; text: string };
 const en = {
   eyebrow: "In practice",
   h2: "From a cold email to a company asking for a price",
-  sub: "The email does not sell anything. Its whole job is to earn a reply from the person who decides — everything after that is an ordinary conversation about a deal, run in writing.",
+  sub: "The email does not sell anything. Its whole job is to earn a reply from the person who decides — everything after that is an ordinary conversation about a deal.",
   disclaimer: "An example of how it goes.",
   turns: [
     {
@@ -54,7 +54,7 @@ const en = {
 const ru = {
   eyebrow: "В работе",
   h2: "От холодного письма до компании, которая просит расчёт",
-  sub: "Письмо ничего не продаёт. Его единственная задача — получить ответ от того, кто решает. Всё дальше — обычный разговор о сделке, только в переписке.",
+  sub: "Письмо ничего не продаёт. Его единственная задача — получить ответ от того, кто решает. Всё дальше — обычный разговор о сделке.",
   disclaimer: "Пример того, как это идёт.",
   turns: [
     {

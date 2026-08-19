@@ -9,7 +9,7 @@ import { SectionShell, SectionHead, SERIF, SANS, MONO } from "../shared";
 const en = {
   eyebrow: "Talk to me",
   h2: "Tell me who your best client is",
-  sub: "Two minutes. I answer in writing, usually within a few hours. No call unless you want one.",
+  sub: "Two minutes. I answer personally, usually within a few hours.",
   labels: {
     name: "Your name",
     business: "Company or product",
@@ -73,16 +73,16 @@ const en = {
   nextTitle: "What happens after you send",
   next: [
     "I read it and answer in writing, usually within a few hours.",
-    "If it does not fit, I say so in that first reply. No call, no pitch.",
+    "If it does not fit, I say so in that first reply, and tell you what would.",
     "If it does, you get the ten questions and a six-week plan with segments and volumes.",
   ],
-  nextNote: "No call is needed at any point before you decide.",
+  nextNote: "You are answered by me, not by an assistant or a sequence.",
 };
 
 const ru = {
   eyebrow: "Связаться",
   h2: "Расскажите, кто ваш лучший клиент",
-  sub: "Две минуты. Отвечаю письменно, обычно в течение нескольких часов. Созвон — только если сами захотите.",
+  sub: "Две минуты. Отвечаю лично, обычно в течение нескольких часов.",
   labels: {
     name: "Ваше имя",
     business: "Компания или продукт",
@@ -146,10 +146,10 @@ const ru = {
   nextTitle: "Что будет после отправки",
   next: [
     "Читаю и отвечаю письмом, обычно в течение нескольких часов.",
-    "Если не подходит — скажу это в первом же ответе. Без созвона и презентации.",
+    "Если не подходит — скажу это в первом же ответе и скажу, что подошло бы.",
     "Если подходит — присылаю десять вопросов и план на шесть недель с сегментами и объёмами.",
   ],
-  nextNote: "Созвон не нужен ни на одном шаге до вашего решения.",
+  nextNote: "Отвечаю я, а не ассистент и не автоворонка.",
 };
 
 type Status = "idle" | "pending" | "success" | "error" | "ratelimited";

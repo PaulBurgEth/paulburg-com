@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Inconsolata, Instrument_Sans, Newsreader, Fraunces, Source_Serif_4 } from "next/font/google";
+import { Inconsolata, Instrument_Sans, Newsreader, Fraunces, Source_Serif_4, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -45,6 +45,26 @@ const sourceSerif = Source_Serif_4({
   display: "swap",
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
+});
+
+// Cyrillic counterparts. Inconsolata, Instrument Sans, Newsreader and Fraunces
+// ship Latin only — no subset flag can add Cyrillic, the glyphs do not exist in
+// those families. In RU the browser was therefore falling back to a system mono
+// and a system grotesque for every label, caption, eyebrow and body paragraph,
+// which is why Russian pages looked unrelated to the English ones. These two
+// are swapped in by an html[lang="ru"] rule in globals.css; Inter matches
+// Instrument Sans in proportion and JetBrains Mono keeps the terminal register
+// the section markers depend on.
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],
+  display: "swap",
 });
 
 const SEO_DESCRIPTION =
@@ -113,7 +133,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.classList.toggle('dark',t==='dark');})();` }} />
       </head>
       <body
-        className={`${inconsolata.variable} ${instrumentSans.variable} ${newsreader.variable} ${fraunces.variable} ${sourceSerif.variable} antialiased overflow-x-hidden`}
+        className={`${inconsolata.variable} ${instrumentSans.variable} ${newsreader.variable} ${fraunces.variable} ${sourceSerif.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased overflow-x-hidden`}
       >
         <Providers>
           <ScrollProgress />

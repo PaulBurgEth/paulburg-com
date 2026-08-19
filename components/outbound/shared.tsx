@@ -1,16 +1,17 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
 import type { CSSProperties, ReactNode } from "react";
 import { INTAKE_ANCHOR } from "@/lib/constants";
 
 /**
  * Shared shell for /outbound sections.
  *
- * Every section animates itself via `whileInView` rather than the global
- * `.pb-reveal` class: `useRevealObserver` queries the DOM once on mount, so
- * a dynamically imported section would never be observed and would stay at
- * opacity 0 forever. Self-contained motion has no such ordering dependency.
+ * Every section animates itself, rather than through the global `.pb-reveal`
+ * class: `useRevealObserver` queries the DOM once on mount, so a dynamically
+ * imported section would never be observed and would stay at opacity 0
+ * forever. Self-contained motion has no such ordering dependency.
  */
 
 // Headings add Source Serif as a Cyrillic fallback — the global
@@ -79,11 +80,13 @@ export const tagStyle: CSSProperties = {
 /**
  * One observer per section, never per card.
  *
- * Children must NOT carry their own `whileInView`: each one would spin up its
+ * Children must NOT carry their own in-view trigger: each one would spin up its
  * own IntersectionObserver, and on a fast scroll some of them never fire, so
  * the card stays stuck at its initial opacity 0. Instead the section drives the
  * animation and children inherit the state through `variants` — framer
  * propagates the active variant down the tree, through plain DOM nodes too.
+ * For that inheritance to be reliable the section must drive it with `animate`
+ * rather than `whileInView`; see the note on SectionShell below.
  */
 export const sectionVariants = {
   hidden: { opacity: 0, y: 18 },
@@ -114,16 +117,29 @@ export function SectionShell({
   alt?: boolean;
   children: ReactNode;
 }) {
+  const ref = useRef<HTMLElement>(null);
+  // amount must stay small: several of these sections are taller than the
+  // viewport, and a section taller than the root never reaches a high ratio.
+  const inView = useInView(ref, { once: true, amount: 0.05 });
+  const reduced = useReducedMotion();
+  const state = inView || reduced ? "visible" : "hidden";
+
   return (
     <motion.section
+      ref={ref}
       id={id}
       className={id ? "scroll-mt-20" : undefined}
       variants={sectionVariants}
       initial="hidden"
-      whileInView="visible"
-      // amount must stay small: several of these sections are taller than the
-      // viewport, and a section taller than the root never reaches a high ratio.
-      viewport={{ once: true, amount: 0.05 }}
+      // `animate`, not `whileInView`. whileInView is a gesture prop: the child
+      // variants it pushes down are resolved once, when the observer fires, so
+      // a subtree that was display:none at that moment (the responsive table
+      // here has both a desktop and a mobile tree) could stay stuck at its
+      // hidden variant forever, with `once: true` preventing any retry. The
+      // section itself animated, its rows did not, and the table rendered as a
+      // tall blank box. A declarative `animate` is re-resolved on every render,
+      // so every child picks the state up regardless of when it mounts.
+      animate={state}
       style={{
         background: alt ? "var(--c-bg2)" : "var(--c-bg)",
         borderTop: "1px solid var(--c-border)",

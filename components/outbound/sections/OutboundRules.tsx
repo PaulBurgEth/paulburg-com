@@ -19,7 +19,7 @@ const en = {
     { t: "Positioning stays yours", d: "Copy, prices and service wording are approved by you before the first send." },
   ],
   brakeTitle: "Why none of this is a target",
-  brake: "Sending pauses itself before bounces can reach the domain. That is the whole point of the ramp — it is not a number to hit, it is a brake. The same applies to the exclusion list and the unsubscribe rule: they are wired in before the first send, not monitored afterwards.",
+  brake: "Sending pauses itself before bounces can reach the domain. That is the whole point of the ramp — it is not a number to hit, it is a brake. The rest works the same way: the lists are built from public registries, the emails go to companies at business addresses, and an unsubscribe blocks a whole domain rather than one mailbox. None of it is checked after the fact. All of it is wired in before the first send.",
 };
 
 const ru = {
@@ -34,7 +34,7 @@ const ru = {
     { t: "Позиционирование за вами", d: "Тексты, цены и формулировки услуг согласуются с вами до первой отправки." },
   ],
   brakeTitle: "Почему всё это не показатели",
-  brake: "Отправка встаёт на паузу раньше, чем отказы дойдут до домена. В этом и смысл ступеней: это не цифра, которую надо выдержать, это тормоз. То же со списком исключений и правилом отписки — они зашиты до первой отправки, а не отслеживаются после.",
+  brake: "Отправка встаёт на паузу раньше, чем отказы дойдут до домена. В этом и смысл ступеней: это не цифра, которую надо выдержать, это тормоз. С остальным так же: списки собираются из открытых реестров, письма уходят компаниям на служебные адреса, а отписка блокирует домен целиком, а не один ящик. Ничего из этого не проверяется постфактум — всё зашито до первой отправки.",
 };
 
 export default function OutboundRules() {

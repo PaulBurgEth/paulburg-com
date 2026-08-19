@@ -9,18 +9,18 @@ import { SERIF, SANS, MONO, LEDE } from "../shared";
 import ChannelDiagram from "../ChannelDiagram";
 
 const en = {
-  badge: "Cold outbound · email only",
+  badge: "Cold outbound · B2B",
   h1a: "New clients, found by name — ",
   h1gold: "before they start looking",
   lede: "Right now your pipeline is referrals plus whoever happens to find you. This is the third source: companies that just had a reason to buy what you sell, reached by name, in their own language, in an email that comes from your domain and carries your signature.",
   ctaPrimary: "Tell me about your market",
   ctaTelegram: "Text me on Telegram",
   ctaWhatsApp: "Text me on WhatsApp",
-  strip: ["RU · EN · ES", "Email only, no calls", "Your domains, your data"],
+  strip: ["RU · EN · ES", "Email, LinkedIn, Telegram", "Your domains, your data"],
 };
 
 const ru = {
-  badge: "Холодный аутбаунд · только почта",
+  badge: "Холодный аутбаунд · B2B",
   // RU runs 15-25% longer: the English headline is three lines here and the
   // buttons drop below the fold, so this one is cut to the same line count.
   h1a: "Клиенты, найденные поимённо — ",
@@ -29,7 +29,7 @@ const ru = {
   ctaPrimary: "Расскажите о вашем рынке",
   ctaTelegram: "Написать в Telegram",
   ctaWhatsApp: "Написать в WhatsApp",
-  strip: ["RU · EN · ES", "Только почта, без звонков", "Ваши домены, ваши данные"],
+  strip: ["RU · EN · ES", "Почта, LinkedIn, Telegram", "Ваши домены, ваши данные"],
 };
 
 const btnBase: React.CSSProperties = {

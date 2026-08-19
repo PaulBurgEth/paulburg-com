@@ -112,8 +112,8 @@ function MobileCTA() {
 }
 
 export default function OutboundPageClient() {
-  // No useRevealObserver here: every section animates itself via whileInView,
-  // so nothing depends on a one-shot querySelectorAll at mount time.
+  // No useRevealObserver here: every section observes itself, so nothing
+  // depends on a one-shot querySelectorAll at mount time.
   return (
     <main className="min-h-screen" style={{ background: "var(--c-bg)", position: "relative" }}>
       {/* Ambient glow */}

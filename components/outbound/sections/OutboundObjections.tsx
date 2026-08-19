@@ -9,14 +9,20 @@ import { SectionShell, SectionHead, MidCTA, SERIF, SANS, MONO, T, itemVariants }
  * reached the form was still holding at least one of these unanswered. Set as a
  * two-column editorial Q&A on hairlines — no cards, deliberately, because this
  * is the one block on the page that should read as plain text.
+ *
+ * "Is this legal?" was dropped on 2026-08-19: asking it on the buyer's behalf
+ * plants a doubt most of them did not arrive with. The facts that answered it
+ * — public registries, business addresses, domain-wide unsubscribe — moved into
+ * §06, where they read as rules that protect the client rather than as a
+ * defence.
  */
 
 type QA = { q: string; a: string };
 
 const en = {
   eyebrow: "Straight answers",
-  h2: "The eight things people ask before they say yes",
-  sub: "Asked in these words, more or less, on every first call. Answered here so you do not have to spend a call on them.",
+  h2: "The seven things people ask before they say yes",
+  sub: "Asked in these words, more or less, by everyone who got this far. Answered here so you can decide on the substance.",
   qa: [
     {
       q: "Cold email does not work any more. Everyone gets two hundred of these.",
@@ -27,12 +33,8 @@ const en = {
       a: "Usually because the domains were theirs, the database was shared across their whole client list, and the copy was a template with your name dropped into it. Here the domains and mailboxes are yours, the list is built for you alone, and you approve every line before the first send. If we part ways, all of it stays with you.",
     },
     {
-      q: "Is this legal?",
-      a: "I write to companies rather than private individuals, at business addresses, with a stated reason and a working unsubscribe that blocks the entire company domain, not one mailbox. The lists come from public registries. Nothing is bought from a list broker and nothing is scraped out of someone's inbox.",
-    },
-    {
       q: "Our product is too complex to sell over email.",
-      a: "The email does not sell it. Its job is to get an answer from the person who owns the budget. What follows is an ordinary conversation — in writing, and with a call from your side whenever you want one.",
+      a: "The email does not sell it. Its job is to get an answer from the person who owns the budget. What follows is an ordinary conversation, in whichever format suits the two of you.",
     },
     {
       q: "Why not just hire an SDR?",
@@ -44,7 +46,7 @@ const en = {
     },
     {
       q: "How much is it?",
-      a: "Three parts, all of them in the next section: a fixed fee for the pilot, a monthly retainer after it, and a share of the result on clients I brought. The exact number depends on how many segments and languages are in play, so I quote it after the ten questions rather than before them.",
+      a: "Three parts, all of them in the next section: a fixed fee for the pilot, a monthly retainer after it, and a share of the result on clients I brought. Two things move the number — how many segments you want running, and how many languages they run in. One segment in one language sits at the floor of the range; four segments across three languages sits at the top. I put the figure in writing as soon as I know which of those you need.",
     },
     {
       q: "Is this you, or a team?",
@@ -57,8 +59,8 @@ const en = {
 
 const ru = {
   eyebrow: "Прямые ответы",
-  h2: "Восемь вопросов, которые задают до того, как согласиться",
-  sub: "Примерно в этих формулировках, на каждом первом разговоре. Отвечено здесь, чтобы вам не пришлось тратить на них созвон.",
+  h2: "Семь вопросов, которые задают до того, как согласиться",
+  sub: "Примерно в этих формулировках их задаёт каждый, кто дочитал до сюда. Отвечено здесь, чтобы вы решали по существу.",
   qa: [
     {
       q: "Холодные письма больше не работают. Всем приходит по двести таких.",
@@ -69,12 +71,8 @@ const ru = {
       a: "Обычно потому, что домены были их, база — общая на всех их клиентов, а текст — шаблон с подставленным названием. Здесь домены и ящики ваши, список собирается только под вас, и каждую строку вы согласуете до первой отправки. Если расходимся, всё это остаётся у вас.",
     },
     {
-      q: "Это законно?",
-      a: "Я пишу компаниям, а не физлицам, на служебные адреса, с указанным поводом и работающей отпиской, которая блокирует весь домен компании, а не один ящик. Списки — из открытых реестров. Ничего не покупается у продавцов баз и не выгребается из чужих почтовых ящиков.",
-    },
-    {
       q: "Наш продукт слишком сложный, чтобы продавать его письмом.",
-      a: "Письмо его и не продаёт. Его задача — получить ответ от того, у кого бюджет. Дальше идёт обычный разговор: в переписке, а созвон с вашей стороны в любой момент, когда он вам нужен.",
+      a: "Письмо его и не продаёт. Его задача — получить ответ от того, у кого бюджет. Дальше идёт обычный разговор, в том формате, который удобен вам обоим.",
     },
     {
       q: "Почему просто не нанять SDR?",
@@ -86,7 +84,7 @@ const ru = {
     },
     {
       q: "Сколько это стоит?",
-      a: "Три части, все в следующей секции: фиксированная стоимость пилота, месячный фикс после него и доля с результата по клиентам, которых привёл я. Точная сумма зависит от количества сегментов и языков, поэтому называю я её после десяти вопросов, а не до них.",
+      a: "Три части, все в следующей секции: фиксированная стоимость пилота, месячный фикс после него и доля с результата по клиентам, которых привёл я. Сумму двигают две вещи — сколько сегментов вы хотите запустить и на скольких языках. Один сегмент на одном языке — нижняя граница диапазона, четыре сегмента на трёх языках — верхняя. Цифру называю письмом, как только понимаю, что именно из этого вам нужно.",
     },
     {
       q: "Это вы или команда?",
