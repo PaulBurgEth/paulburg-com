@@ -13,7 +13,7 @@ const en = {
   points: [
     "Companies found in open registries, each with a reason to be written to",
     "Emails in the recipient's own language — Russian, English, Spanish",
-    "Email, LinkedIn, Telegram. Your domains, your data, from day one",
+    "Cold digital outbound. Your domains, your data, from day one",
   ],
   metric: "6 weeks",
   metricLabel: "from a cold list to quotes agreed with buyers, with your own funnel numbers at the end",
@@ -28,7 +28,7 @@ const ru = {
   points: [
     "Компании из открытых реестров, у каждой — повод для письма",
     "Письма на языке получателя: русский, английский, испанский",
-    "Почта, LinkedIn, Telegram. Ваши домены и данные с первого дня",
+    "Холодный цифровой аутбаунд. Ваши домены и данные с первого дня",
   ],
   metric: "6 недель",
   metricLabel: "от холодного списка до расчётов, согласованных с покупателями, и ваши собственные цифры воронки на выходе",
