@@ -1,31 +1,46 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { INTAKE_ANCHOR } from "@/lib/constants";
 import { useLanguage } from "@/context/LanguageContext";
+
+/**
+ * Every section is a static import, and that is a deliberate reversal.
+ *
+ * Eight of the twelve used to load through `dynamic(..., { ssr: false })`, which
+ * meant the offer, the proof, the five rules, the fit lists, the pilot, all
+ * seven objections and the commercial terms were absent from the served HTML —
+ * present only after JS ran. On a page whose entire job is to be read, and for a
+ * site that ships an llms.txt so language models can describe these services,
+ * that is not a performance trade, it is half the sales copy withheld from every
+ * reader that does not execute scripts.
+ *
+ * The saving was smaller than it looks: these are all "use client" components,
+ * so ssr:false never reduced the JavaScript a scrolling reader downloads. It
+ * only split it into chunks fetched mid-scroll and removed the text from the
+ * document. Front-loading it costs a little first-paint work and removes the
+ * chunk-fetch jank between sections.
+ *
+ * The form was already static for a different reason worth keeping in mind: it
+ * is the #intake anchor for every CTA on the page, and an ssr:false chunk would
+ * not exist yet when the browser tries to resolve /outbound#intake on a cold
+ * load.
+ */
 import OutboundHero from "./sections/OutboundHero";
 import OutboundProblem from "./sections/OutboundProblem";
 import OutboundWhy from "./sections/OutboundWhy";
-// The mechanism section is static as well: it is the third block on the page,
-// it carries the pitch that everything below depends on, and an ssr:false chunk
-// would keep the sample email out of the served HTML entirely.
 import OutboundHow from "./sections/OutboundHow";
-// The form stays a static import on purpose: it is the #intake anchor for every
-// CTA on the page, and an ssr:false chunk would not exist yet when the browser
-// tries to resolve /outbound#intake on a cold load.
+import OutboundFormats from "./sections/OutboundFormats";
+import OutboundProof from "./sections/OutboundProof";
+import OutboundRules from "./sections/OutboundRules";
+import OutboundFit from "./sections/OutboundFit";
+import OutboundPilot from "./sections/OutboundPilot";
+import OutboundObjections from "./sections/OutboundObjections";
+import OutboundTerms from "./sections/OutboundTerms";
+import OutboundStart from "./sections/OutboundStart";
 import OutboundForm from "./sections/OutboundForm";
-
-const OutboundFormats    = dynamic(() => import("./sections/OutboundFormats"),    { ssr: false });
-const OutboundProof      = dynamic(() => import("./sections/OutboundProof"),      { ssr: false });
-const OutboundRules      = dynamic(() => import("./sections/OutboundRules"),      { ssr: false });
-const OutboundFit        = dynamic(() => import("./sections/OutboundFit"),        { ssr: false });
-const OutboundPilot      = dynamic(() => import("./sections/OutboundPilot"),      { ssr: false });
-const OutboundObjections = dynamic(() => import("./sections/OutboundObjections"), { ssr: false });
-const OutboundTerms      = dynamic(() => import("./sections/OutboundTerms"),      { ssr: false });
-const OutboundStart      = dynamic(() => import("./sections/OutboundStart"),      { ssr: false });
 
 /**
  * Persistent CTA for small screens. The page runs twelve sections; on a phone

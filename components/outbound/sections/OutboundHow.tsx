@@ -242,8 +242,12 @@ export default function OutboundHow() {
                   letterSpacing: "0.1em",
                   color: on ? "var(--c-bg)" : isOpenChip ? "var(--c-gold)" : "var(--c-text2)",
                   background: on ? "var(--c-gold)" : "var(--c-card2)",
-                  border: `1px solid ${on || isOpenChip ? "var(--c-gold)" : "var(--c-border)"}`,
+                  // Longhands only: React warns when a shorthand and a longhand
+                  // for the same value are both updated on a rerender, and the
+                  // winner is not guaranteed.
+                  borderWidth: 1,
                   borderStyle: isOpenChip && !on ? "dashed" : "solid",
+                  borderColor: on || isOpenChip ? "var(--c-gold)" : "var(--c-border)",
                   borderRadius: 4,
                   padding: "6px 12px",
                   cursor: "pointer",
