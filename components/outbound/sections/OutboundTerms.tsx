@@ -37,7 +37,7 @@ export default function OutboundTerms() {
   const t = language === "ru" ? ru : en;
 
   return (
-    <SectionShell num="08" id="terms">
+    <SectionShell num="10" id="terms" alt>
       <SectionHead eyebrow={t.eyebrow} h2={t.h2} sub={t.sub} />
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">

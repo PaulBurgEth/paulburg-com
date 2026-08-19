@@ -12,8 +12,8 @@ const en = {
     { k: "01", t: "Registries", d: "customs, tenders, filings" },
     { k: "02", t: "Filter", d: "a reason to write" },
     { k: "03", t: "The email", d: "one company, its language" },
-    { k: "04", t: "Reply", d: "triaged same day" },
-    { k: "05", t: "Handover", d: "client + whole thread" },
+    { k: "04", t: "Reply", d: "answered same day" },
+    { k: "05", t: "Handover", d: "a client ready to talk terms" },
   ],
   caption: "Open data in, a client ready to talk out",
 };
@@ -23,8 +23,8 @@ const ru = {
     { k: "01", t: "Реестры", d: "таможня, тендеры, знаки" },
     { k: "02", t: "Отбор", d: "повод для письма" },
     { k: "03", t: "Письмо", d: "одна компания, её язык" },
-    { k: "04", t: "Ответ", d: "разбор в тот же день" },
-    { k: "05", t: "Передача", d: "клиент и вся переписка" },
+    { k: "04", t: "Ответ", d: "ответ в тот же день" },
+    { k: "05", t: "Передача", d: "клиент, готовый обсуждать условия" },
   ],
   caption: "На входе открытые данные, на выходе готовый к разговору клиент",
 };

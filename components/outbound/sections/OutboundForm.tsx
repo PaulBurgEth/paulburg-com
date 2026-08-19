@@ -70,6 +70,13 @@ const en = {
   error: `Something went wrong. Message me directly: @${TELEGRAM_HANDLE} on Telegram.`,
   ratelimited: "You just sent one — give it a minute and try again.",
   orWrite: "Or write to me directly:",
+  nextTitle: "What happens after you send",
+  next: [
+    "I read it and answer in writing, usually within a few hours.",
+    "If it does not fit, I say so in that first reply. No call, no pitch.",
+    "If it does, you get the ten questions and a six-week plan with segments and volumes.",
+  ],
+  nextNote: "No call is needed at any point before you decide.",
 };
 
 const ru = {
@@ -136,6 +143,13 @@ const ru = {
   error: `Что-то пошло не так. Напишите напрямую: @${TELEGRAM_HANDLE} в Telegram.`,
   ratelimited: "Только что уже отправляли — подождите минуту и попробуйте снова.",
   orWrite: "Или напишите напрямую:",
+  nextTitle: "Что будет после отправки",
+  next: [
+    "Читаю и отвечаю письмом, обычно в течение нескольких часов.",
+    "Если не подходит — скажу это в первом же ответе. Без созвона и презентации.",
+    "Если подходит — присылаю десять вопросов и план на шесть недель с сегментами и объёмами.",
+  ],
+  nextNote: "Созвон не нужен ни на одном шаге до вашего решения.",
 };
 
 type Status = "idle" | "pending" | "success" | "error" | "ratelimited";
@@ -242,7 +256,7 @@ export default function OutboundForm() {
   }
 
   return (
-    <SectionShell num="10" id="intake">
+    <SectionShell num="12" id="intake" alt>
       <SectionHead eyebrow={t.eyebrow} h2={t.h2} sub={t.sub} />
 
       <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-6 items-start">
@@ -404,6 +418,10 @@ export default function OutboundForm() {
           )}
         </div>
 
+        {/* Sidebar is one grid child: the parent is a two-column grid, so a
+            second card added at this level would drop into the next row under
+            the form instead of stacking beside it. */}
+        <div className="flex flex-col gap-4">
         <div style={{ background: "var(--c-card2)", border: "1px solid var(--c-border)", borderRadius: 12, padding: 22 }}>
           <span style={{ fontFamily: MONO, fontSize: 14, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--c-muted)", display: "block", marginBottom: 14 }}>
             {t.orWrite}
@@ -429,6 +447,29 @@ export default function OutboundForm() {
               </Link>
             ))}
           </div>
+        </div>
+
+        {/* The sidebar held only the two contact buttons and left a tall void
+            beside the form on desktop. This is the slot where a reader decides
+            whether sending costs them a sales call. */}
+        <div style={{ background: "var(--c-card)", border: "1px solid var(--c-border)", borderLeft: "2px solid var(--c-sage)", borderRadius: 12, padding: 22 }}>
+          <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 21, color: "var(--c-heading)", marginBottom: 13, lineHeight: 1.3 }}>
+            {t.nextTitle}
+          </h3>
+          <ol style={{ display: "flex", flexDirection: "column", gap: 11 }}>
+            {t.next.map((n, i) => (
+              <li key={n} className="flex gap-3">
+                <span style={{ fontFamily: MONO, fontSize: 14, fontWeight: 700, letterSpacing: "0.14em", color: "var(--c-gold)", flexShrink: 0, paddingTop: 2 }}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span style={{ fontFamily: SANS, fontSize: 16, color: "var(--c-body)", lineHeight: 1.55 }}>{n}</span>
+              </li>
+            ))}
+          </ol>
+          <p style={{ fontFamily: MONO, fontSize: 14, letterSpacing: "0.06em", color: "var(--c-text2)", lineHeight: 1.6, marginTop: 16, paddingTop: 14, borderTop: "1px solid var(--c-border)" }}>
+            {t.nextNote}
+          </p>
+        </div>
         </div>
       </div>
     </SectionShell>

@@ -896,8 +896,8 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
             <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16, color: C.text2, lineHeight: 1.7, marginBottom: 14, maxWidth: 640 }}>
               {language === "ru"
-                ? "Реклама доходит до тех, кто уже ищет. Остальных можно собрать по открытым реестрам, выйти на нужного человека и написать ему на его языке — пока повод свежий. Только переписка, без звонков."
-                : "Ads reach whoever is already searching. The rest can be found in open registries, reached by name and written to in their own language while the reason is still fresh. Correspondence only, no calls."}
+                ? "Сейчас ваш поток — рекомендации плюс те, кто сам вас нашёл. Третий источник собирается по открытым реестрам: компании, у которых только что появился повод покупать. Выход на нужного человека, письмо на его языке — пока повод свежий. Только переписка, без звонков."
+                : "Right now your pipeline is referrals plus whoever happens to find you. The third source is built from open registries: companies that just had a reason to buy. The right person, reached by name, written to in their own language while the reason is still fresh. Correspondence only, no calls."}
             </p>
 
             <div className="mentor-features" style={{ marginBottom: 16 }}>

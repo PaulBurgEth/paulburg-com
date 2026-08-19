@@ -7,7 +7,7 @@ import CountUp from "@/components/CountUp";
 const en = {
   metrics: [
     { value: "10+", label: "systems built & shipped" },
-    { value: "3 854", label: "companies sourced in the outbound channel" },
+    { value: "6 weeks", label: "from a cold list to a client ready to talk" },
     { value: "3–14 days", label: "from call to launch" },
   ],
 };
@@ -15,7 +15,7 @@ const en = {
 const ru = {
   metrics: [
     { value: "10+", label: "систем в продакшене" },
-    { value: "3 854", label: "компании собрано в холодном канале" },
+    { value: "6 недель", label: "от холодного списка до клиента, готового обсуждать" },
     { value: "3–14 дней", label: "от звонка до запуска" },
   ],
 };

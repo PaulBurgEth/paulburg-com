@@ -6,30 +6,30 @@ import { SectionShell, SectionHead, Note, SERIF, SANS, MONO, T, cardHover, itemV
 
 const en = {
   eyebrow: "What you get",
-  h2: "Two formats. The difference is where I hand the client over.",
-  sub: "At the first real conversation, or at an agreed price and lead time.",
+  h2: "Two formats. Pick by who is going to work the replies.",
+  sub: "The work is the same up to the handover. The only question is whether you have someone free to take the conversation from there.",
   formats: [
-    { range: "01 — 06", name: "Leads", body: "Selection, contact finding, emails, correspondence, qualification. You get a client who confirmed a need and is ready to talk, with the whole thread. Your manager takes it from there." },
-    { range: "01 — 09", name: "Leads + deal", body: "All of the above plus the deal: pinning the specification, requesting terms from your suppliers, assembling the quote, and running the correspondence to an agreed price and lead time. Your account manager receives a finished order." },
+    { range: "01 — 06", situation: "You have someone to work the replies", name: "Leads", body: "Selection, contact finding, emails, correspondence, qualification. You get a client who confirmed a need and is ready to talk terms. Your manager picks up a conversation that is already running." },
+    { range: "01 — 09", situation: "You do not, and one more inbound only gets in the way", name: "Leads + deal", body: "All of the above plus the deal: pinning the specification, requesting terms from your suppliers, assembling the quote, and running the correspondence to an agreed price and lead time. Your account manager receives a finished order." },
   ],
   stagesTitle: "Nine stages, every company goes through them in order",
   stages: ["Selection", "Contact", "Email", "Correspondence", "Reply triage", "Handover", "Specification", "Terms", "Agreement"],
   dealBadge: "Deal format only",
-  note: "The second format is for when your managers are already buried and one more inbound only gets in the way. Full stage-by-stage breakdown on request.",
+  note: "Nothing is skipped in either format — the second one simply does not stop at the handover. Full stage-by-stage breakdown on request.",
 };
 
 const ru = {
   eyebrow: "Что вы получаете",
-  h2: "Два формата. Разница в том, где я передаю клиента.",
-  sub: "На первом предметном разговоре или на согласованных цене и сроках.",
+  h2: "Два формата. Выбирают по тому, кто будет разбирать ответы.",
+  sub: "До передачи работа одинаковая. Вопрос только в том, есть ли у вас свободный человек, чтобы вести разговор дальше.",
   formats: [
-    { range: "01 — 06", name: "Лиды", body: "Отбор, поиск контактов, письма, переписка, квалификация. Вы получаете клиента, который подтвердил потребность и готов обсуждать, вместе со всей перепиской. Дальше работает ваш менеджер." },
-    { range: "01 — 09", name: "Лиды и сделка", body: "Всё то же плюс работа по сделке: уточнение спецификации, запрос условий у ваших поставщиков, сбор расчёта и переписка до согласованных цены и сроков. Аккаунт-менеджер получает готовый заказ." },
+    { range: "01 — 06", situation: "Есть кому разбирать ответы", name: "Лиды", body: "Отбор, поиск контактов, письма, переписка, квалификация. Вы получаете клиента, который подтвердил потребность и готов обсуждать условия. Ваш менеджер продолжает разговор, который уже идёт." },
+    { range: "01 — 09", situation: "Некому, и лишний входящий только мешает", name: "Лиды и сделка", body: "Всё то же плюс работа по сделке: уточнение спецификации, запрос условий у ваших поставщиков, сбор расчёта и переписка до согласованных цены и сроков. Аккаунт-менеджер получает готовый заказ." },
   ],
   stagesTitle: "Девять этапов, каждая компания проходит их по порядку",
   stages: ["Отбор", "Контакт", "Письмо", "Переписка", "Разбор ответов", "Передача", "Уточнение", "Условия", "Согласование"],
   dealBadge: "Только формат со сделкой",
-  note: "Второй формат — если менеджеры и так завалены и лишний входящий им только мешает. Подробная раскладка по этапам — по запросу.",
+  note: "Ни один этап не пропускается ни в одном из форматов — второй просто не останавливается на передаче. Подробная раскладка по этапам — по запросу.",
 };
 
 export default function OutboundFormats() {
@@ -37,10 +37,10 @@ export default function OutboundFormats() {
   const t = language === "ru" ? ru : en;
 
   return (
-    <SectionShell num="03">
+    <SectionShell num="04" alt>
       <SectionHead eyebrow={t.eyebrow} h2={t.h2} sub={t.sub} />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-[1.15fr_0.85fr] gap-4">
         {t.formats.map((f, i) => (
           <motion.div
             key={f.name}
@@ -55,7 +55,12 @@ export default function OutboundFormats() {
             }}
           >
             <span style={{ fontFamily: MONO, fontSize: T.caption, fontWeight: 700, letterSpacing: "0.16em", color: "var(--c-gold)" }}>{f.range}</span>
-            <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 22, color: "var(--c-heading)", margin: "9px 0 11px" }}>{f.name}</h3>
+            {/* The situation first, the product name second: the reader picks by
+                which sentence describes their office, not by a handover point. */}
+            <p style={{ fontFamily: SANS, fontSize: T.body, fontWeight: 600, color: "var(--c-heading)", margin: "11px 0 4px", lineHeight: 1.4 }}>
+              {f.situation}
+            </p>
+            <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 22, color: "var(--c-gold)", margin: "0 0 11px" }}>{f.name}</h3>
             <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65 }}>{f.body}</p>
           </motion.div>
         ))}

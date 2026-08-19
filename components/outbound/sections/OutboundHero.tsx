@@ -10,9 +10,9 @@ import ChannelDiagram from "../ChannelDiagram";
 
 const en = {
   badge: "Cold outbound · email only",
-  h1a: "I find the companies, reach the decision-maker, and write ",
-  h1gold: "in your name",
-  lede: "Open registries say which companies just had a reason to buy. I build the list, verify the addresses, write each email for one company, run the correspondence, and hand you a client who is ready to talk terms.",
+  h1a: "New clients, found by name — ",
+  h1gold: "before they start looking",
+  lede: "Right now your pipeline is referrals plus whoever happens to find you. This is the third source: companies that just had a reason to buy what you sell, reached by name, in their own language, in an email that comes from your domain and carries your signature.",
   ctaPrimary: "Tell me about your market",
   ctaTelegram: "Text me on Telegram",
   ctaWhatsApp: "Text me on WhatsApp",
@@ -21,9 +21,11 @@ const en = {
 
 const ru = {
   badge: "Холодный аутбаунд · только почта",
-  h1a: "Нахожу компании, выхожу на ЛПР и пишу ",
-  h1gold: "от вашего имени",
-  lede: "Открытые реестры показывают, у каких компаний только что появился повод покупать. Я собираю список, проверяю адреса, пишу каждое письмо под одну компанию, веду переписку и передаю вам клиента, готового обсуждать условия.",
+  // RU runs 15-25% longer: the English headline is three lines here and the
+  // buttons drop below the fold, so this one is cut to the same line count.
+  h1a: "Клиенты, найденные поимённо — ",
+  h1gold: "до того, как начнут искать",
+  lede: "Сейчас ваш поток — рекомендации плюс те, кто сам вас нашёл. Третий источник: компании, у которых только что появился повод покупать то, что вы продаёте. Поимённо, на их языке, письмом с вашего домена и за вашей подписью.",
   ctaPrimary: "Расскажите о вашем рынке",
   ctaTelegram: "Написать в Telegram",
   ctaWhatsApp: "Написать в WhatsApp",
@@ -51,6 +53,7 @@ export default function OutboundHero() {
 
   return (
     <section
+      id="outbound-top"
       className="w-full flex items-center justify-center"
       style={{ background: "var(--c-bg)", paddingTop: 80, paddingBottom: 56 }}
     >

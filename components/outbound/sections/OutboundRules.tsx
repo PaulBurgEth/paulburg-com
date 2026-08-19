@@ -18,12 +18,8 @@ const en = {
     { t: "Volume ramps in steps", d: "Each step only after bounces are checked. Above the threshold, sending pauses automatically." },
     { t: "Positioning stays yours", d: "Copy, prices and service wording are approved by you before the first send." },
   ],
-  evidenceTitle: "On the metals project",
-  evidence: [
-    { v: "4", l: "times sending paused, each before bounces reached the domain" },
-    { v: "5", l: "unsubscribes across 1 500+ emails" },
-    { v: "0", l: "spam-button complaints" },
-  ],
+  brakeTitle: "Why none of this is a target",
+  brake: "Sending pauses itself before bounces can reach the domain. That is the whole point of the ramp — it is not a number to hit, it is a brake. The same applies to the exclusion list and the unsubscribe rule: they are wired in before the first send, not monitored afterwards.",
 };
 
 const ru = {
@@ -37,12 +33,8 @@ const ru = {
     { t: "Темп поднимается ступенями", d: "Каждая ступень — только после проверки отказов. При превышении порога отправка встаёт на паузу." },
     { t: "Позиционирование за вами", d: "Тексты, цены и формулировки услуг согласуются с вами до первой отправки." },
   ],
-  evidenceTitle: "На проекте по металлопрокату",
-  evidence: [
-    { v: "4", l: "раза отправка вставала на паузу, каждый раз до того, как отказы дошли до домена" },
-    { v: "5", l: "отписок на 1 500+ писем" },
-    { v: "0", l: "жалоб через кнопку «спам»" },
-  ],
+  brakeTitle: "Почему всё это не показатели",
+  brake: "Отправка встаёт на паузу раньше, чем отказы дойдут до домена. В этом и смысл ступеней: это не цифра, которую надо выдержать, это тормоз. То же со списком исключений и правилом отписки — они зашиты до первой отправки, а не отслеживаются после.",
 };
 
 export default function OutboundRules() {
@@ -50,7 +42,7 @@ export default function OutboundRules() {
   const t = language === "ru" ? ru : en;
 
   return (
-    <SectionShell num="06">
+    <SectionShell num="06" alt>
       <SectionHead eyebrow={t.eyebrow} h2={t.h2} sub={t.sub} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -69,7 +61,7 @@ export default function OutboundRules() {
                 gridColumn: i === t.rules.length - 1 ? "1 / -1" : undefined,
               }}
             >
-              <span className="flex items-center justify-center" style={{ width: 34, height: 34, borderRadius: 8, background: "rgba(200,169,110,0.08)", border: "1px solid rgba(200,169,110,0.15)", flexShrink: 0 }}>
+              <span className="flex items-center justify-center" style={{ width: 34, height: 34, borderRadius: 8, background: "var(--c-gold-dim)", border: "1px solid var(--c-gold-glow)", flexShrink: 0 }}>
                 <Icon size={16} color="var(--c-gold)" />
               </span>
               <div>
@@ -81,19 +73,15 @@ export default function OutboundRules() {
         })}
       </div>
 
-      <div style={{ marginTop: 24, background: "var(--c-card2)", border: "1px solid var(--c-border)", borderRadius: 10, padding: 24 }}>
-        <span style={{ fontFamily: "var(--font-inconsolata), monospace", fontSize: T.caption, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--c-gold)", display: "block", marginBottom: 18 }}>
-          {t.evidenceTitle}
-        </span>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {t.evidence.map((e) => (
-            <div key={e.l} className="flex items-baseline gap-3">
-              <span style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 34, color: "var(--c-gold)", lineHeight: 1, flexShrink: 0 }}>{e.v}</span>
-              <span style={{ fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-body)", lineHeight: 1.5 }}>{e.l}</span>
-            </div>
-          ))}
-        </div>
+      <div style={{ marginTop: 24, background: "var(--c-card2)", border: "1px solid var(--c-border)", borderLeft: "2px solid var(--c-sage)", borderRadius: 10, padding: 24 }}>
+        <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 9 }}>
+          {t.brakeTitle}
+        </h3>
+        <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65, maxWidth: 820 }}>
+          {t.brake}
+        </p>
       </div>
+
     </SectionShell>
   );
 }

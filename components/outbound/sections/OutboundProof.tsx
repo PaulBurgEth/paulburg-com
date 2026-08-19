@@ -1,81 +1,87 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { SectionShell, SectionHead, Note, MidCTA, SERIF, SANS, MONO, T, tagStyle, itemVariants } from "../shared";
 
-const TOTAL = 3854;
+/**
+ * This section used to be a pilot funnel plus a deliverability table with a
+ * "market" column. Three problems. The reader could divide two of the rows and
+ * get a reply rate that reads as weak, the funnel stopped short of any money,
+ * and bounce rates are a vendor-side concern the buyer never bought on.
+ * Exact figures and the reasoning are in docs/DECISIONS.md.
+ * What replaces them is the artifact — the shape of a real exchange — and one
+ * line offering the numbers to anyone who actually wants them.
+ */
 
-type Step = { n: number; value: string; label: string; conv?: string };
-type Bench = { metric: string; mine: string; market: string };
+type Turn = { side: "out" | "in"; who: string; when: string; text: string };
 
 const en = {
-  eyebrow: "Result",
-  h2: "From a cold list to agreed quotes",
-  sub: "3 854 companies in, eighteen quotes agreed with buyers out. Every step in between is below.",
-  tags: ["Metals trading", "B2B", "Cold start"],
-  funnel: [
-    { n: 3854, value: "3 854", label: "companies sourced" },
-    { n: 1320, value: "1 320", label: "passed selection", conv: "34%" },
-    { n: 1373, value: "1 373", label: "received an email" },
-    { n: 27, value: "27", label: "replied" },
-    { n: 18, value: "18", label: "taken to an agreed quote", conv: "67% of replies" },
-  ] as Step[],
-  workTitle: "What that took",
-  work: [
-    "1 373 working addresses found and verified",
-    "1 556 emails, each written for one company",
-    "61 inbound replies handled",
-    "20 quotes assembled and agreed",
-    "612 companies screened out into a stop-list",
-  ],
-  repliedTitle: "Who replied",
+  eyebrow: "In practice",
+  h2: "From a cold email to a company asking for a price",
+  sub: "The email does not sell anything. Its whole job is to earn a reply from the person who decides — everything after that is an ordinary conversation about a deal, run in writing.",
+  disclaimer: "An example of how it goes.",
+  turns: [
+    {
+      side: "out",
+      who: "You",
+      when: "Week 3 · first touch",
+      text: "Saw you switched suppliers around April. We are on the ground where your factories are, and inspection is live — you join by video and watch the cartons opened. Worth a look at your next order?",
+    },
+    {
+      side: "in",
+      who: "Them",
+      when: "Week 4 · their reply",
+      text: "We do have a batch going out in about six weeks. What does inspection cost, and can you cover two factories in the same window?",
+    },
+    {
+      side: "out",
+      who: "You",
+      when: "Weeks 4–5 · into the deal",
+      text: "Both factories, one window, one invoice. Sending the checklist and a price for that batch today — if it fits, we book the window.",
+    },
+  ] as Turn[],
+  afterTitle: "Where you come in",
+  after: "Not at the first email, and not at the tenth. You come in when a company has agreed on the substance and wants to talk terms. Everything before that point is mine.",
+  repliedTitle: "The kind of company that answers",
+  repliedNote: "Metals trading, B2B, from a cold start:",
   replied: ["Large metallurgical holding", "Lift equipment maker", "Electrical engineering plant", "Regional gas and heating utilities", "Leaf-spring maker", "Toolmaking plant"],
-  benchTitle: "What it did to the sending domain",
-  benchCols: ["", "This channel", "Market"],
-  bench: [
-    { metric: "Delivery bounces", mine: "1,4–2,9%", market: "7–8%" },
-    { metric: "Unsubscribes", mine: "0,3%", market: "~2%" },
-    { metric: "Spam complaints", mine: "0", market: "—" },
-    { metric: "Replies taken to a quote", mine: "67%", market: "—" },
-  ] as Bench[],
-  benchNote: "Market figures are 2025 industry email-deliverability benchmarks.",
+  numbersLine: "Want the numbers — funnel by stage, deliverability, cost per client? I send them in writing on request, before you commit to anything.",
   ctaNote: "Your segment gets its own list and its own copy in the first week.",
   cta: "Tell me about your market →",
 };
 
 const ru = {
-  eyebrow: "Результат",
-  h2: "От холодного списка до согласованных расчётов",
-  sub: "3 854 компании на входе, восемнадцать расчётов, согласованных с покупателями, на выходе. Ниже — каждый шаг между ними.",
-  tags: ["Металлопрокат", "B2B", "Холодный старт"],
-  funnel: [
-    { n: 3854, value: "3 854", label: "компании собрано" },
-    { n: 1320, value: "1 320", label: "прошли отбор", conv: "34%" },
-    { n: 1373, value: "1 373", label: "получили письмо" },
-    { n: 27, value: "27", label: "ответили" },
-    { n: 18, value: "18", label: "доведены до согласованного расчёта", conv: "67% от ответов" },
-  ] as Step[],
-  workTitle: "Чего это стоило",
-  work: [
-    "1 373 рабочих адреса найдено и проверено",
-    "1 556 писем, каждое под одну компанию",
-    "61 входящий ответ разобран",
-    "20 расчётов собрано и согласовано",
-    "612 компаний отсеяно в стоп-лист",
-  ],
-  repliedTitle: "Кто отвечал",
+  eyebrow: "В работе",
+  h2: "От холодного письма до компании, которая просит расчёт",
+  sub: "Письмо ничего не продаёт. Его единственная задача — получить ответ от того, кто решает. Всё дальше — обычный разговор о сделке, только в переписке.",
+  disclaimer: "Пример того, как это идёт.",
+  turns: [
+    {
+      side: "out",
+      who: "Вы",
+      when: "Неделя 3 · первое касание",
+      text: "Увидел, что примерно в апреле вы сменили поставщика. Мы на земле там, где ваши фабрики, и инспекция идёт вживую: вы подключаетесь по видео и смотрите, как вскрывают коробки. Посмотрим на следующем заказе?",
+    },
+    {
+      side: "in",
+      who: "Они",
+      when: "Неделя 4 · их ответ",
+      text: "Партия действительно уходит примерно через шесть недель. Сколько стоит инспекция и можете ли вы закрыть две фабрики в одно окно?",
+    },
+    {
+      side: "out",
+      who: "Вы",
+      when: "Недели 4–5 · переход в сделку",
+      text: "Обе фабрики, одно окно, один счёт. Сегодня отправляю чек-лист и цену под эту партию — если подходит, бронируем окно.",
+    },
+  ] as Turn[],
+  afterTitle: "Где вступаете вы",
+  after: "Не на первом письме и не на десятом. Вы вступаете, когда компания уже согласилась по сути и хочет обсуждать условия. Всё до этой точки — на мне.",
+  repliedTitle: "Кто отвечает",
+  repliedNote: "Металлопрокат, B2B, с холодного старта:",
   replied: ["Крупный металлургический холдинг", "Производитель лифтового оборудования", "Завод электротехники", "Региональные газовые и тепловые сети", "Производитель рессор", "Инструментальный завод"],
-  benchTitle: "Что это сделало с отправляющим доменом",
-  benchCols: ["", "Этот канал", "Рынок"],
-  bench: [
-    { metric: "Отказы доставки", mine: "1,4–2,9%", market: "7–8%" },
-    { metric: "Отписки", mine: "0,3%", market: "~2%" },
-    { metric: "Жалобы на спам", mine: "0", market: "—" },
-    { metric: "Ответов доведено до расчёта", mine: "67%", market: "—" },
-  ] as Bench[],
-  benchNote: "Рыночные цифры — отраслевые бенчмарки доставляемости за 2025 год.",
+  numbersLine: "Нужны цифры — воронка по этапам, доставляемость, стоимость клиента? Высылаю письмом по запросу, до любых обязательств.",
   ctaNote: "Для вашего сегмента список и тексты составляются в первую неделю.",
   cta: "Расскажите о вашем рынке →",
 };
@@ -85,64 +91,87 @@ export default function OutboundProof() {
   const t = language === "ru" ? ru : en;
 
   return (
-    <SectionShell num="05" id="proof" alt>
+    <SectionShell num="05" id="proof">
       <SectionHead eyebrow={t.eyebrow} h2={t.h2} sub={t.sub} />
 
-      <div className="flex flex-wrap gap-2" style={{ marginBottom: 28 }}>
-        {t.tags.map((tag) => (
-          <span key={tag} style={tagStyle}>{tag}</span>
-        ))}
-      </div>
-
-      {/* Funnel — linear scale, so the last two steps really are slivers. */}
-      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-        {t.funnel.map((s, i) => {
-          const pct = (s.n / TOTAL) * 100;
-          return (
-            <motion.div key={i} variants={itemVariants} className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-4">
-              <div className="w-full sm:w-[38%] sm:shrink-0">
-                <div
+      {/* Transcript, not cards: a vertical spine with the two sides indented
+          against each other, so the exchange reads as correspondence. */}
+      <div style={{ position: "relative", paddingLeft: 2 }}>
+        <div
+          aria-hidden="true"
+          className="hidden sm:block"
+          style={{ position: "absolute", left: 7, top: 10, bottom: 10, width: 1, background: "var(--c-border2)" }}
+        />
+        <div className="flex flex-col gap-3">
+          {t.turns.map((turn, i) => {
+            const out = turn.side === "out";
+            return (
+              <motion.div
+                key={i}
+                variants={itemVariants}
+                className="relative flex flex-col sm:pl-8"
+                style={{ marginLeft: out ? 0 : undefined }}
+              >
+                <span
+                  aria-hidden="true"
+                  className="hidden sm:block"
                   style={{
-                    width: `max(${pct}%, 3px)`,
-                    height: 32,
-                    borderRadius: 4,
-                    background: "linear-gradient(90deg, rgba(200,169,110,0.4), rgba(200,169,110,0.08))",
-                    border: "1px solid rgba(200,169,110,0.22)",
+                    position: "absolute", left: 0, top: 14, width: 15, height: 15, borderRadius: "50%",
+                    background: out ? "var(--c-gold)" : "var(--c-bg)",
+                    border: `1px solid ${out ? "var(--c-gold)" : "var(--c-border2)"}`,
                   }}
                 />
-              </div>
-              <div className="flex items-baseline gap-2 flex-wrap min-w-0">
-                <span style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 20, color: "var(--c-gold)" }}>{s.value}</span>
-                <span style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)" }}>{s.label}</span>
-                {s.conv && (
-                  <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.08em", color: "var(--c-text2)" }}>
-                    · {s.conv}
-                  </span>
-                )}
-              </div>
-            </motion.div>
-          );
-        })}
+                <div
+                  className="sm:max-w-[86%]"
+                  style={{
+                    alignSelf: out ? "flex-start" : "flex-end",
+                    background: out ? "var(--c-card)" : "var(--c-card2)",
+                    border: "1px solid var(--c-border)",
+                    borderLeft: out ? "2px solid var(--c-gold)" : "1px solid var(--c-border)",
+                    borderRight: out ? "1px solid var(--c-border)" : "2px solid var(--c-sage)",
+                    borderRadius: 10,
+                    padding: "16px 20px",
+                    width: "100%",
+                  }}
+                >
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1" style={{ marginBottom: 9 }}>
+                    <span
+                      style={{
+                        fontFamily: MONO, fontSize: T.caption, fontWeight: 700, letterSpacing: "0.16em",
+                        textTransform: "uppercase", color: out ? "var(--c-gold)" : "var(--c-sage)",
+                      }}
+                    >
+                      {turn.who}
+                    </span>
+                    <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.06em", color: "var(--c-muted)" }}>
+                      {turn.when}
+                    </span>
+                  </div>
+                  <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65 }}>
+                    {turn.text}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
+      <Note>{t.disclaimer}</Note>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4" style={{ marginTop: 32 }}>
         <div style={{ background: "var(--c-card)", border: "1px solid var(--c-border)", borderRadius: 10, padding: 22 }}>
-          <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 14 }}>
-            {t.workTitle}
+          <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 10 }}>
+            {t.afterTitle}
           </h3>
-          <ul style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-            {t.work.map((w) => (
-              <li key={w} className="flex gap-2.5 items-start">
-                <Check size={15} color="var(--c-sage)" style={{ flexShrink: 0, marginTop: 3 }} />
-                <span style={{ fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-body)", lineHeight: 1.55 }}>{w}</span>
-              </li>
-            ))}
-          </ul>
+          <p style={{ fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-body)", lineHeight: 1.6 }}>{t.after}</p>
         </div>
         <div style={{ background: "var(--c-card)", border: "1px solid var(--c-border)", borderRadius: 10, padding: 22 }}>
-          <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 14 }}>
+          <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 6 }}>
             {t.repliedTitle}
           </h3>
+          <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.08em", color: "var(--c-muted)", display: "block", marginBottom: 12 }}>
+            {t.repliedNote}
+          </span>
           <div className="flex flex-wrap gap-2">
             {t.replied.map((r) => (
               <span key={r} style={tagStyle}>{r}</span>
@@ -151,41 +180,22 @@ export default function OutboundProof() {
         </div>
       </div>
 
-      {/* Domain health — every row here is a strength, and reply rate is absent
-          because it belongs to the funnel above, not to deliverability. */}
-      <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "36px 0 14px" }}>
-        {t.benchTitle}
-      </h3>
-      <div role="table" style={{ border: "1px solid var(--c-border)", borderRadius: 10, overflow: "hidden" }}>
-        <div role="row" className="hidden sm:grid sm:grid-cols-[2fr_1fr_1fr]" style={{ background: "var(--c-card2)", borderBottom: "1px solid var(--c-border)" }}>
-          {t.benchCols.map((c, i) => (
-            <div key={i} role="columnheader" style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--c-text2)", padding: "11px 16px" }}>
-              {c}
-            </div>
-          ))}
-        </div>
-        {t.bench.map((row, i) => (
-          <div key={row.metric} role="row" className="grid grid-cols-1 sm:grid-cols-[2fr_1fr_1fr]" style={{ background: i % 2 ? "var(--c-card2)" : "var(--c-card)", borderTop: i ? "1px solid var(--c-border)" : "none", padding: "13px 0" }}>
-            <div role="cell" style={{ padding: "2px 16px", fontFamily: SANS, fontSize: T.body, fontWeight: 600, color: "var(--c-heading)" }}>
-              {row.metric}
-            </div>
-            <div role="cell" className="flex gap-6 sm:contents" style={{ padding: "6px 16px 0" }}>
-              {[
-                { cap: t.benchCols[1], v: row.mine, color: "var(--c-sage)", weight: 700 },
-                { cap: t.benchCols[2], v: row.market, color: "var(--c-text2)", weight: 400 },
-              ].map((cell) => (
-                <div key={cell.cap} className="sm:px-4 sm:py-[2px]">
-                  <span className="block sm:hidden" style={{ fontFamily: MONO, fontSize: 14, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--c-muted)", marginBottom: 1 }}>
-                    {cell.cap}
-                  </span>
-                  <span style={{ fontFamily: MONO, fontSize: T.body, fontWeight: cell.weight, color: cell.color }}>{cell.v}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
+      {/* The numbers are not hidden, they are moved off the sales page and into
+          the conversation, where their one-niche origin can be stated. */}
+      <div
+        style={{
+          marginTop: 24,
+          background: "var(--c-card2)",
+          border: "1px solid var(--c-border)",
+          borderLeft: "2px solid var(--c-sage)",
+          borderRadius: 10,
+          padding: 22,
+        }}
+      >
+        <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65, maxWidth: 820 }}>
+          {t.numbersLine}
+        </p>
       </div>
-      <Note>{t.benchNote}</Note>
 
       <div style={{ marginTop: 36 }}>
         <MidCTA label={t.cta} note={t.ctaNote} />
