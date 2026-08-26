@@ -528,7 +528,7 @@ const projects = {
     { name:"Regen Bazaar", desc:"Marketplace where real-world impact meets market value — tokenizing NGO activities such as cleanups, reforestation, and animal care, bridging nonprofits with global buyers.", status:"mvp", url:"https://regenbazaar.com" },
   ],
   ngo: [
-    { name:"Clean Phangan Impact Product", desc:"First MVP Impact Product built with the Clean Phangan NGO — 224+ weekly cleanups, 90+ tons of trash collected, now tokenized as sellable impact assets for impact investors.", status:"live", url:"https://cleanphangan.regenbazaar.com/" },
+    { name:"Clean Phangan Impact Product", desc:"First MVP Impact Product built with the Clean Phangan NGO: the community runs cleanups every week, and the verified result is tokenized into sellable impact assets for impact investors. Live totals are on the collection page.", status:"live", url:"https://cleanphangan.regenbazaar.com/" },
     { name:"EcoThailand Foundation Impact Product", desc:"Impact product framework built for EcoThailand Foundation — tokenizing volunteer contributions and environmental education into fundable, verifiable on-chain capital.", status:"live", url:"https://ecothailand.regenbazaar.com/" },
   ],
   phangan: [
@@ -746,10 +746,10 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
             <div className="services-mini-grid">
               {([
-                { icon: Bot, title: language === "ru" ? "AI-боты" : "AI-Powered Bots", desc: language === "ru" ? "Чат-боты и агенты: квалификация лидов, ответы 24/7, запуск процессов, уведомления. Многоязычны по умолчанию." : "Chatbots and AI agents: lead qualification, 24/7 answers, workflow triggers, structured alerts. Multilingual by default.", price: language === "ru" ? "от $500" : "from $500" },
-                { icon: Workflow, title: language === "ru" ? "Автоматизация процессов" : "Process Automation", desc: language === "ru" ? "AI-агенты двигают данные между системами, обрабатывают заявки, запускают действия. Zapier/Make на стероидах." : "AI agents move data between systems, process applications, trigger cross-stack actions. Zapier/Make on steroids.", price: language === "ru" ? "от $1,000" : "from $1,000" },
-                { icon: Database, title: language === "ru" ? "Кастомная CRM и BI" : "Custom CRM & BI Systems", desc: language === "ru" ? "Не Notion, не HubSpot. Своя CRM, BI-дашборды, менеджерские панели и matching-движки под ваш pipeline: роли, сделки, история клиента, Telegram." : "Not Notion. Not HubSpot. Your own CRM, BI dashboards, manager panels, and matching engines around your pipeline: roles, deals, client history, Telegram.", price: language === "ru" ? "от $1,500" : "from $1,500" },
-                { icon: Globe, title: language === "ru" ? "Сайт на заказ" : "Custom Website", desc: language === "ru" ? "Быстрые, SEO-готовые, многоязычные. В комплекте — AI-бот для лидов с первого дня." : "Fast, SEO-ready, multilingual. Ships with an AI lead bot plugged in from day one.", price: language === "ru" ? "от $800" : "from $800" },
+                { icon: Bot, title: language === "ru" ? "AI-боты" : "AI-Powered Bots", desc: language === "ru" ? "Чат-боты и агенты: квалификация лидов, ответы 24/7, запуск процессов, уведомления. Многоязычны по умолчанию." : "Chatbots and AI agents: lead qualification, 24/7 answers, workflow triggers, structured alerts. Multilingual by default.", price: language === "ru" ? "по объёму задачи" : "scoped per project" },
+                { icon: Workflow, title: language === "ru" ? "Автоматизация процессов" : "Process Automation", desc: language === "ru" ? "AI-агенты двигают данные между системами, обрабатывают заявки, запускают действия. Zapier/Make на стероидах." : "AI agents move data between systems, process applications, trigger cross-stack actions. Zapier/Make on steroids.", price: language === "ru" ? "по объёму задачи" : "scoped per project" },
+                { icon: Database, title: language === "ru" ? "Кастомная CRM и BI" : "Custom CRM & BI Systems", desc: language === "ru" ? "Не Notion, не HubSpot. Своя CRM, BI-дашборды, менеджерские панели и matching-движки под ваш pipeline: роли, сделки, история клиента, Telegram." : "Not Notion. Not HubSpot. Your own CRM, BI dashboards, manager panels, and matching engines around your pipeline: roles, deals, client history, Telegram.", price: language === "ru" ? "по объёму задачи" : "scoped per project" },
+                { icon: Globe, title: language === "ru" ? "Сайт на заказ" : "Custom Website", desc: language === "ru" ? "Быстрые, SEO-готовые, многоязычные. В комплекте — AI-бот для лидов с первого дня." : "Fast, SEO-ready, multilingual. Ships with an AI lead bot plugged in from day one.", price: language === "ru" ? "по объёму задачи" : "scoped per project" },
               ] as { icon: React.ElementType; title: string; desc: string; price: string }[]).map((card, i) => {
                 const Icon = card.icon;
                 return (
@@ -826,7 +826,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 </p>
                 <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 14, fontFamily: "var(--font-inconsolata), monospace", fontWeight: 700, fontSize: 14 }}>
                   <span style={{ color: C.gold }}>
-                    {language === "ru" ? "от $3,000" : "from $3,000"}
+                    {language === "ru" ? "по объёму задачи" : "scoped per project"}
                   </span>
                   <button
                     type="button"
