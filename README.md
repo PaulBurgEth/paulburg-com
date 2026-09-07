@@ -1,15 +1,14 @@
 # paulburg.com
 
-Personal website of Paul Burg — AI Systems for Business · Serial Entrepreneur.
+Personal website of Paul Burg — projects, writing, contact.
 
 **Live:** [paulburg.com](https://paulburg.com)
 
 ## What's here
 
-- Services — AI bots, process automation, custom CRM, turnkey website + bot + CRM systems
-- Mentorship — Capital · Business · Communication
-- Projects — active initiatives across impact, health, and local infrastructure
-- Blog — essays on AI, nomad founder life, impact markets (mirrored on [Substack](https://paulburg.substack.com))
+- Projects — active work across rental platforms, impact/public goods and health tech
+- Blog — essays on AI, impact markets and building from Southeast Asia (mirrored on [Substack](https://paulburg.substack.com))
+- Static pages, contact form, sitemap and RSS
 
 ## Stack
 
