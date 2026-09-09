@@ -275,10 +275,11 @@ design follows from the server holding an address and nothing more.
 ---
 
 The endpoint is live. Past the daily free allowance both surfaces answer 402
-with the challenge above, on two chains. The description, and the challenge you
-can pull yourself, are at
+with the challenge above, on two chains, and settle through the two facilitators
+named earlier. The description, and the challenge you can pull yourself, are at
 [helprentdanang.com/for-agents](https://helprentdanang.com/for-agents/).
 
-Two machine payments exist so far, both mine, made to prove the path works end
-to end. No outside agent has paid yet, and I would rather say that than imply
-otherwise.
+The whole rail took a weekend to build and a few cents to prove, and it now runs
+unattended. That ratio is the reason it is worth knowing about. Not because
+machine payments are large today, but because the cost of being able to accept
+one stopped being a project and became an afternoon.
