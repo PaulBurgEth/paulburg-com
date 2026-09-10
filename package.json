@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "preflight": "node scripts/preflight.mjs",
+    "deploy": "node scripts/preflight.mjs && vercel --prod"
   },
   "dependencies": {
     "framer-motion": "^12.24.12",
