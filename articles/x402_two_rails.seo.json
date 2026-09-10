@@ -1,0 +1,8 @@
+{
+  "slug": "two-payment-rails-in-one-402",
+  "title_en": "Two Payment Rails in One HTTP 402",
+  "title_ru": "Два платёжных рельса в одном ответе 402",
+  "excerpt_en": "An ordinary rental site started charging software: one 402 challenge carrying USDC on both Base and Solana, the four gates that keep the second rail honest, and the three bugs that only real money could find.",
+  "excerpt_ru": "Обычный сайт про аренду начал брать деньги с софта: один запрос 402 с USDC сразу на Base и на Solana, четыре гейта, которые держат второй рельс честным, и три бага, которые нашлись только за настоящие деньги.",
+  "tags": ["AI", "Payments", "x402", "Engineering"]
+}
