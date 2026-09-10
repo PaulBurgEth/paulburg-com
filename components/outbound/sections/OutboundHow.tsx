@@ -272,10 +272,10 @@ export default function OutboundHow() {
             padding: 28,
           }}
         >
-          <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 26, color: "var(--c-heading)", marginBottom: 12, lineHeight: 1.25 }}>
+          <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 21, color: "var(--c-heading)", marginBottom: 12, lineHeight: 1.25 }}>
             {t.openTitle}
           </h3>
-          <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.7, maxWidth: 820, marginBottom: 20 }}>
+          <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.7, maxWidth: "58ch", marginBottom: 20 }}>
             {t.openBody}
           </p>
           <a
@@ -306,7 +306,7 @@ export default function OutboundHow() {
             card background is a single element spanning column 1 across all rows.
             Below lg the annotations fall under the email, as they did before. */}
         <div
-          className="grid grid-cols-1 lg:grid-cols-[1.7fr_1fr] lg:gap-x-0"
+          className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] lg:gap-x-0"
           style={{ position: "relative", alignItems: "start" }}
         >
           <div
@@ -368,6 +368,7 @@ export default function OutboundHow() {
                 fontSize: T.body,
                 color: "var(--c-body)",
                 lineHeight: 1.65,
+                maxWidth: "58ch",
               }}
             >
               {line.split(/(\[[^\]]+\])/g).map((part, j) =>
@@ -484,7 +485,7 @@ export default function OutboundHow() {
           );
         })}
       </div>
-      <p style={{ fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-text2)", lineHeight: 1.6, marginTop: 16, maxWidth: 780 }}>
+      <p style={{ fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-text2)", lineHeight: 1.6, marginTop: 16, maxWidth: "58ch" }}>
         {t.sourceNote}
       </p>
 

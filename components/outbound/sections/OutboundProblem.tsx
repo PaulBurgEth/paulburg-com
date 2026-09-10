@@ -80,7 +80,7 @@ export default function OutboundProblem() {
             >
               <span
                 style={{
-                  fontFamily: SERIF, fontWeight: 700, fontSize: 28, color: "var(--c-gold)",
+                  fontFamily: SERIF, fontWeight: 700, fontSize: 21, color: "var(--c-gold)",
                   lineHeight: 1.15, letterSpacing: "-0.02em",
                 }}
               >
@@ -100,7 +100,7 @@ export default function OutboundProblem() {
         <p
           style={{
             fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.08em",
-            color: "var(--c-gold)", paddingBottom: 24, paddingTop: 4,
+            color: "var(--c-gold)", paddingBottom: 24, paddingTop: 4, maxWidth: "68ch",
           }}
         >
           {t.caption}

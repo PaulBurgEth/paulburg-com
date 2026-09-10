@@ -112,7 +112,7 @@ export default function OutboundHero() {
               fontWeight: 400,
               fontSize: 21,
               color: "var(--c-body-lede)",
-              maxWidth: 720,
+              maxWidth: "58ch",
               lineHeight: 1.7,
             }}
           >

@@ -30,10 +30,14 @@ export const T = {
   lede: 20,
   body: 17,
   bodySm: 16,
+  button: 15,
   h3: 21,
   h2: "clamp(30px, 4vw, 44px)",
   caption: 14,
   eyebrow: 14,
+  /** Крупное число как объект, а не как заголовок: воронка, счётчики, суммы. */
+  figure: 44,
+  figureSm: 40,
 } as const;
 
 
@@ -202,7 +206,7 @@ export function SectionHead({
           lineHeight: 1.15,
           color: "var(--c-heading)",
           marginBottom: sub ? 10 : 0,
-          maxWidth: 900,
+          maxWidth: "58ch",
         }}
       >
         {h2}
@@ -213,7 +217,9 @@ export function SectionHead({
             fontFamily: SANS,
             fontSize: T.lede,
             color: "var(--c-text2)",
-            maxWidth: 820,
+            // Крупному кеглю — более короткая мера: на 58ch лид выходил 83
+            // знака в английском.
+            maxWidth: "50ch",
             lineHeight: 1.65,
           }}
         >
@@ -233,7 +239,10 @@ export function Note({ children }: { children: ReactNode }) {
         lineHeight: 1.7,
         color: "var(--c-text2)",
         marginTop: 16,
-        maxWidth: 880,
+        // Для моноширинного ch — это ровно ширина знака, поэтому 68ch даёт
+        // 68 знаков и в русском, и в английском. В пикселях это не сходилось:
+        // 880px давали 105 знаков, 640px — 91 в английском.
+        maxWidth: "68ch",
       }}
     >
       {children}

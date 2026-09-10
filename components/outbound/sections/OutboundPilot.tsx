@@ -96,7 +96,7 @@ export default function OutboundPilot() {
                 style={{
                   width: 20, height: 20, borderRadius: "50%", flexShrink: 0,
                   border: "1px solid var(--c-gold)", background: "var(--c-bg2)",
-                  color: "var(--c-gold)", fontFamily: MONO, fontSize: 12, fontWeight: 700, lineHeight: 1,
+                  color: "var(--c-gold)", fontFamily: MONO, fontSize: 14, fontWeight: 700, lineHeight: 1,
                 }}
               >
                 ✓
@@ -124,7 +124,7 @@ export default function OutboundPilot() {
           </motion.div>
         ))}
       </div>
-      <p style={{ fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-text2)", lineHeight: 1.6, maxWidth: 820, marginBottom: 38 }}>
+      <p style={{ fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-text2)", lineHeight: 1.6, maxWidth: "58ch", marginBottom: 38 }}>
         {t.scheduleNote}
       </p>
 
@@ -195,12 +195,12 @@ export default function OutboundPilot() {
 
       <div style={{ marginTop: 34, background: "var(--c-card)", border: "1px solid var(--c-border)", borderLeft: "2px solid var(--c-gold)", borderRadius: 10, padding: 22 }}>
         <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 9 }}>{t.exclusiveTitle}</h3>
-        <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65, maxWidth: 820 }}>{t.exclusive}</p>
+        <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65, maxWidth: "58ch" }}>{t.exclusive}</p>
       </div>
 
       <div style={{ marginTop: 12, background: "var(--c-card2)", border: "1px solid var(--c-border)", borderLeft: "2px solid var(--c-sage)", borderRadius: 10, padding: 22 }}>
         <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 9 }}>{t.deliverTitle}</h3>
-        <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65, maxWidth: 820 }}>{t.deliver}</p>
+        <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65, maxWidth: "58ch" }}>{t.deliver}</p>
       </div>
     </SectionShell>
   );

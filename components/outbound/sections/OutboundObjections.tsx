@@ -139,7 +139,7 @@ export default function OutboundObjections() {
                 aria-hidden="true"
                 className="pb-qa-chevron"
                 style={{
-                  fontFamily: MONO, fontSize: 18, color: "var(--c-gold)", flexShrink: 0,
+                  fontFamily: MONO, fontSize: 21, color: "var(--c-gold)", flexShrink: 0,
                   lineHeight: 1, transition: "transform 200ms",
                 }}
               >
@@ -149,7 +149,7 @@ export default function OutboundObjections() {
             <p
               style={{
                 fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.7,
-                maxWidth: 820, padding: "0 0 22px 36px",
+                maxWidth: "58ch", padding: "0 0 22px 36px",
               }}
             >
               {item.a}

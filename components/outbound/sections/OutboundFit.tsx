@@ -106,7 +106,7 @@ export default function OutboundFit() {
         </div>
       </div>
 
-      <p style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: T.lede, color: "var(--c-body-lede)", lineHeight: 1.6, marginTop: 34, maxWidth: 780 }}>
+      <p style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: T.lede, color: "var(--c-body-lede)", lineHeight: 1.6, marginTop: 34, maxWidth: "58ch" }}>
         {t.note}
       </p>
     </SectionShell>

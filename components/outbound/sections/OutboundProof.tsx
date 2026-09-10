@@ -187,7 +187,7 @@ export default function OutboundProof() {
                       {turn.when}
                     </span>
                   </div>
-                  <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65 }}>
+                  <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65, maxWidth: "58ch" }}>
                     {turn.text}
                   </p>
                 </div>
@@ -238,7 +238,7 @@ export default function OutboundProof() {
                     <span
                       style={{
                         fontFamily: SERIF, fontWeight: 700, lineHeight: 1, letterSpacing: "-0.02em",
-                        fontSize: last ? 40 : 24,
+                        fontSize: last ? T.figureSm : T.h3,
                         color: last ? "var(--c-gold)" : "var(--c-text2)",
                       }}
                     >
@@ -297,7 +297,7 @@ export default function OutboundProof() {
           padding: 22,
         }}
       >
-        <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65, maxWidth: 820 }}>
+        <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65, maxWidth: "58ch" }}>
           {t.numbersLine}
         </p>
       </div>

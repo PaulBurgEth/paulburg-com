@@ -89,11 +89,11 @@ export default function OutboundStart() {
           <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--c-text2)", display: "block", marginBottom: 7 }}>
             {t.whoTitle}
           </span>
-          <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 24, color: "var(--c-heading)", lineHeight: 1.2 }}>Paul Burg</h3>
+          <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 21, color: "var(--c-heading)", lineHeight: 1.2 }}>Paul Burg</h3>
           <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.08em", color: "var(--c-gold)", display: "block", margin: "6px 0 13px" }}>
             {t.whoRole}
           </span>
-          <p style={{ fontFamily: LEDE, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.7, maxWidth: 780 }}>
+          <p style={{ fontFamily: LEDE, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.7, maxWidth: "58ch" }}>
             {t.about}
           </p>
         </div>

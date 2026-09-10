@@ -281,7 +281,7 @@ export default function OutboundWhy() {
         <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 10 }}>
           {t.shortTitle}
         </h3>
-        <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.7, maxWidth: 820 }}>
+        <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.7, maxWidth: "58ch" }}>
           {t.shortBody}
         </p>
         <Note>{t.source}</Note>

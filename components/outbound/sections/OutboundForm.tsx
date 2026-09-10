@@ -278,7 +278,7 @@ export default function OutboundForm() {
                 textAlign: "center",
               }}
             >
-              <div style={{ fontFamily: SERIF, fontSize: 22, fontWeight: 700, color: "var(--c-heading)", marginBottom: 6 }}>
+              <div style={{ fontFamily: SERIF, fontSize: 21, fontWeight: 700, color: "var(--c-heading)", marginBottom: 6 }}>
                 {t.success}
               </div>
               <div style={{ fontFamily: SANS, fontSize: 14, color: "var(--c-text2)" }}>{t.successSub}</div>

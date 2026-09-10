@@ -60,8 +60,8 @@ export default function OutboundFormats() {
             <p style={{ fontFamily: SANS, fontSize: T.body, fontWeight: 600, color: "var(--c-heading)", margin: "11px 0 4px", lineHeight: 1.4 }}>
               {f.situation}
             </p>
-            <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 22, color: "var(--c-gold)", margin: "0 0 11px" }}>{f.name}</h3>
-            <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65 }}>{f.body}</p>
+            <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 21, color: "var(--c-gold)", margin: "0 0 11px" }}>{f.name}</h3>
+            <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65, maxWidth: "58ch" }}>{f.body}</p>
           </motion.div>
         ))}
       </div>
