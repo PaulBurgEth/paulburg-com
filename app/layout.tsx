@@ -4,6 +4,7 @@ import { Inconsolata, Instrument_Sans, Newsreader, Fraunces, Source_Serif_4, Int
 import "./globals.css";
 import Providers from "@/components/Providers";
 import ScrollProgress from "@/components/ScrollProgress";
+import SectionRail from "@/components/SectionRail";
 import { TELEGRAM_URL } from "@/lib/constants";
 
 const inconsolata = Inconsolata({
@@ -137,6 +138,7 @@ export default function RootLayout({
       >
         <Providers>
           <ScrollProgress />
+          <SectionRail />
           {children}
         </Providers>
         <script

@@ -103,23 +103,26 @@ export default function OutboundObjections() {
     <SectionShell num="09" id="objections">
       <SectionHead eyebrow={t.eyebrow} h2={t.h2} sub={t.sub} />
 
-      <div>
+      {/* Native <details>, not a JS accordion. The answers stay in the document
+          either way, so this stays crawlable — the section was made server-
+          rendered for exactly that reason — and it works with the keyboard and
+          without scripts. Collapsed, seven questions read in one screen instead
+          of 364 words across nearly two. */}
+      <div className="pb-qa">
         {t.qa.map((item, i) => (
-          <motion.div
+          <motion.details
             key={item.q}
             variants={itemVariants}
-            className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-x-12 gap-y-3"
-            style={{
-              borderTop: "1px solid var(--c-border)",
-              paddingTop: 22,
-              paddingBottom: 22,
-            }}
+            style={{ borderTop: "1px solid var(--c-border)" }}
           >
-            <div className="flex gap-4">
+            <summary
+              className="flex gap-4 items-baseline"
+              style={{ cursor: "pointer", padding: "18px 0", listStyle: "none" }}
+            >
               <span
                 style={{
                   fontFamily: MONO, fontSize: T.caption, fontWeight: 700, letterSpacing: "0.14em",
-                  color: "var(--c-gold)", flexShrink: 0, paddingTop: 6,
+                  color: "var(--c-gold)", flexShrink: 0,
                 }}
               >
                 {String(i + 1).padStart(2, "0")}
@@ -127,16 +130,31 @@ export default function OutboundObjections() {
               <h3
                 style={{
                   fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, lineHeight: 1.35,
-                  color: "var(--c-heading)", letterSpacing: "-0.01em",
+                  color: "var(--c-heading)", letterSpacing: "-0.01em", flex: 1,
                 }}
               >
                 {item.q}
               </h3>
-            </div>
-            <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.7 }}>
+              <span
+                aria-hidden="true"
+                className="pb-qa-chevron"
+                style={{
+                  fontFamily: MONO, fontSize: 18, color: "var(--c-gold)", flexShrink: 0,
+                  lineHeight: 1, transition: "transform 200ms",
+                }}
+              >
+                +
+              </span>
+            </summary>
+            <p
+              style={{
+                fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.7,
+                maxWidth: 820, padding: "0 0 22px 36px",
+              }}
+            >
               {item.a}
             </p>
-          </motion.div>
+          </motion.details>
         ))}
         <div style={{ borderTop: "1px solid var(--c-border)" }} />
       </div>

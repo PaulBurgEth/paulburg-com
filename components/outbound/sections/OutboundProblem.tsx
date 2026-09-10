@@ -16,7 +16,8 @@ import { SERIF, SANS, MONO, T, sectionVariants } from "../shared";
 
 type Item = { k: string; d: string };
 
-const en: { items: Item[]; caption: string } = {
+const en: { railLabel: string; items: Item[]; caption: string } = {
+  railLabel: "Where clients come from now",
   items: [
     { k: "Referrals", d: "They come when they come. Two good months, then a quiet one, and neither one was something you did." },
     { k: "Inbound", d: "Reaches whoever is already searching. By then they have four quotes open and you are one of them." },
@@ -25,7 +26,8 @@ const en: { items: Item[]; caption: string } = {
   caption: "There is a fourth source, and it is the only one you can switch on deliberately.",
 };
 
-const ru: { items: Item[]; caption: string } = {
+const ru: { railLabel: string; items: Item[]; caption: string } = {
+  railLabel: "Откуда клиенты приходят сейчас",
   items: [
     { k: "Рекомендации", d: "Приходят когда приходят. Два хороших месяца, потом тихий — и ни то, ни другое не вы сделали." },
     { k: "Входящие", d: "Доходят до тех, кто уже ищет. К этому моменту у них открыто четыре предложения, и вы одно из них." },
@@ -47,6 +49,7 @@ export default function OutboundProblem() {
       variants={sectionVariants}
       initial="hidden"
       animate={inView || reduced ? "visible" : "hidden"}
+      data-rail-label={t.railLabel}
       style={{
         background: "var(--c-bg)",
         borderTop: "1px solid var(--c-border)",

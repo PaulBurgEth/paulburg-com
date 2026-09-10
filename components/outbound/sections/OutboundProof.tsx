@@ -43,8 +43,22 @@ const en = {
   ] as Turn[],
   pilotsTitle: "Two runs, two different industries",
   pilots: [
-    { tag: "Industrial supply", n: "68", label: "companies received a priced quote", support: "of the 75 that replied · 4 235 companies worked · 5 404 letters" },
-    { tag: "A services business, nine sectors at once", n: "25", label: "companies asked for terms", support: "of the 62 that replied · 2 082 companies worked · 2 325 letters" },
+    {
+      tag: "Industrial supply",
+      steps: [
+        { n: "4 235", l: "companies written to" },
+        { n: "75", l: "came back with a real reply" },
+        { n: "68", l: "received a priced quote" },
+      ],
+    },
+    {
+      tag: "A services business, nine sectors at once",
+      steps: [
+        { n: "2 082", l: "companies written to" },
+        { n: "62", l: "came back with a real reply" },
+        { n: "25", l: "asked for terms" },
+      ],
+    },
   ],
   pilotsNote: "Two industries rather than one, because the first thing anyone wants to know is whether this only works where it was built. The segments are not named here because the businesses behind them are not.",
   afterTitle: "Where you come in",
@@ -84,8 +98,22 @@ const ru = {
   ] as Turn[],
   pilotsTitle: "Два прогона, две разные отрасли",
   pilots: [
-    { tag: "Промышленное снабжение", n: "68", label: "компаний получили расчёт с ценой", support: "из 75 ответивших · 4 235 компаний в работе · 5 404 письма" },
-    { tag: "Сервисный бизнес, девять направлений сразу", n: "25", label: "компаний запросили условия", support: "из 62 ответивших · 2 082 компании в работе · 2 325 писем" },
+    {
+      tag: "Промышленное снабжение",
+      steps: [
+        { n: "4 235", l: "компаниям написали" },
+        { n: "75", l: "ответили по существу" },
+        { n: "68", l: "получили расчёт с ценой" },
+      ],
+    },
+    {
+      tag: "Сервисный бизнес, девять направлений сразу",
+      steps: [
+        { n: "2 082", l: "компаниям написали" },
+        { n: "62", l: "ответили по существу" },
+        { n: "25", l: "запросили условия" },
+      ],
+    },
   ],
   pilotsNote: "Две отрасли, а не одна, потому что первое, что хотят понять — работает ли это где-то кроме того места, где строилось. Сегменты здесь не названы, потому что не названы стоящие за ними бизнесы.",
   afterTitle: "Где вступаете вы",
@@ -182,20 +210,54 @@ export default function OutboundProof() {
             variants={itemVariants}
             style={{ background: "var(--c-card)", border: "1px solid var(--c-border)", borderLeft: "2px solid var(--c-gold)", borderRadius: 10, padding: 24 }}
           >
-            <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--c-text2)", display: "block", marginBottom: 14 }}>
+            <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--c-text2)", display: "block", marginBottom: 18 }}>
               {pl.tag}
             </span>
-            <div className="flex items-baseline gap-3" style={{ flexWrap: "wrap" }}>
-              <span style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 46, lineHeight: 1, color: "var(--c-gold)", letterSpacing: "-0.02em" }}>
-                {pl.n}
-              </span>
-              <span style={{ fontFamily: SANS, fontSize: T.body, fontWeight: 600, color: "var(--c-body-lede)", lineHeight: 1.35, maxWidth: 260 }}>
-                {pl.label}
-              </span>
-            </div>
-            <p style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.04em", color: "var(--c-text2)", lineHeight: 1.7, marginTop: 14, paddingTop: 12, borderTop: "1px solid var(--c-border)" }}>
-              {pl.support}
-            </p>
+            {/* Шаги, а не пропорциональные полосы: 75 из 4 235 линейной шкалой
+                превращается в невидимую полоску, и весь блок начинает читаться
+                как провал вместо результата. */}
+            {pl.steps.map((st, si) => {
+              const last = si === pl.steps.length - 1;
+              return (
+                <div key={st.l} className="flex gap-4" style={{ position: "relative" }}>
+                  <div className="flex flex-col items-center" style={{ flexShrink: 0, width: 14 }}>
+                    <span
+                      aria-hidden="true"
+                      style={{
+                        width: last ? 12 : 8, height: last ? 12 : 8, borderRadius: "50%",
+                        marginTop: last ? 12 : 8,
+                        background: last ? "var(--c-gold)" : "transparent",
+                        border: `1px solid ${last ? "var(--c-gold)" : "var(--c-border2)"}`,
+                      }}
+                    />
+                    {!last && (
+                      <span aria-hidden="true" style={{ flex: 1, width: 1, background: "var(--c-border2)", minHeight: 26 }} />
+                    )}
+                  </div>
+                  <div className="flex items-baseline gap-3" style={{ flexWrap: "wrap", paddingBottom: last ? 0 : 14 }}>
+                    <span
+                      style={{
+                        fontFamily: SERIF, fontWeight: 700, lineHeight: 1, letterSpacing: "-0.02em",
+                        fontSize: last ? 40 : 24,
+                        color: last ? "var(--c-gold)" : "var(--c-text2)",
+                      }}
+                    >
+                      {st.n}
+                    </span>
+                    <span
+                      style={{
+                        fontFamily: SANS, fontSize: last ? T.body : T.bodySm,
+                        fontWeight: last ? 600 : 400,
+                        color: last ? "var(--c-body-lede)" : "var(--c-text2)",
+                        lineHeight: 1.4, maxWidth: 240,
+                      }}
+                    >
+                      {st.l}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
           </motion.div>
         ))}
       </div>

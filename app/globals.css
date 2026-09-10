@@ -616,3 +616,10 @@ button:focus-visible {
     transform: none;
   }
 }
+
+/* Q&A на /outbound: нативный <details> без дефолтного маркера.
+   Контент остаётся в документе, поэтому секция по-прежнему индексируется. */
+.pb-qa summary::-webkit-details-marker { display: none; }
+.pb-qa summary::marker { content: ""; }
+.pb-qa details[open] .pb-qa-chevron { transform: rotate(45deg); }
+.pb-qa summary:focus-visible { outline: 2px solid var(--c-gold); outline-offset: 3px; border-radius: 4px; }

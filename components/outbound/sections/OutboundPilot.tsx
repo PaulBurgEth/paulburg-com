@@ -17,6 +17,13 @@ const en = {
   eyebrow: "The pilot",
   h2: "Six weeks, one fixed price, and three points where you can stop",
   sub: "Not a retainer that quietly renews. You pay in thirds, each one two weeks ahead of the work it covers, so what you have at risk at any moment is a third. Everything built along the way is on your accounts from day one.",
+  scheduleTitle: "How the six weeks are paid",
+  schedule: [
+    { w: "Weeks 1–2", pay: "You pay the first third", gate: "You decide to start" },
+    { w: "Weeks 3–4", pay: "You pay the second third", gate: "You decide again" },
+    { w: "Weeks 5–6", pay: "You pay the last third", gate: "You decide again" },
+  ],
+  scheduleNote: "Each third is paid two weeks ahead of the work it covers, so there is a decision in front of every one of them. Stop after any block and the work stops there — what you had at risk was a third.",
   holdTitle: "What you hold at week six",
   hold: [
     "Your list of companies, every address found and verified",
@@ -40,6 +47,13 @@ const ru = {
   eyebrow: "Пилот",
   h2: "Шесть недель, одна фиксированная цена и три точки, где можно остановиться",
   sub: "Не абонентка, которая тихо продлевается. Оплата третями, каждая — за две недели вперёд той работы, которую покрывает, поэтому под риском у вас в любой момент треть. Всё, что построено по дороге, лежит на ваших аккаунтах с первого дня.",
+  scheduleTitle: "Как оплачиваются шесть недель",
+  schedule: [
+    { w: "Недели 1–2", pay: "Платите первую треть", gate: "Решаете начать" },
+    { w: "Недели 3–4", pay: "Платите вторую треть", gate: "Решаете снова" },
+    { w: "Недели 5–6", pay: "Платите последнюю треть", gate: "Решаете снова" },
+  ],
+  scheduleNote: "Каждая треть платится за две недели вперёд той работы, которую покрывает, поэтому перед каждой стоит решение. Остановитесь после любого блока — работа на этом прекращается, а под риском была треть.",
   holdTitle: "Что у вас на руках к шестой неделе",
   hold: [
     "Ваш список компаний, у каждой найден и проверен адрес",
@@ -66,6 +80,53 @@ export default function OutboundPilot() {
   return (
     <SectionShell num="08" id="pilot" alt>
       <SectionHead eyebrow={t.eyebrow} h2={t.h2} sub={t.sub} />
+
+      {/* Оплата третями — сильнейший механизм секции, и до этого он был одним
+          предложением. Три блока по две недели, перед каждым точка решения. */}
+      <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 18 }}>
+        {t.scheduleTitle}
+      </h3>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3" style={{ marginBottom: 14 }}>
+        {t.schedule.map((b, i) => (
+          <motion.div key={b.w} variants={itemVariants} style={{ position: "relative" }}>
+            <div className="flex items-center gap-2" style={{ marginBottom: 9 }}>
+              <span
+                aria-hidden="true"
+                className="flex items-center justify-center"
+                style={{
+                  width: 20, height: 20, borderRadius: "50%", flexShrink: 0,
+                  border: "1px solid var(--c-gold)", background: "var(--c-bg2)",
+                  color: "var(--c-gold)", fontFamily: MONO, fontSize: 12, fontWeight: 700, lineHeight: 1,
+                }}
+              >
+                ✓
+              </span>
+              <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.1em", color: "var(--c-gold)" }}>
+                {b.gate}
+              </span>
+            </div>
+            <div
+              style={{
+                border: "1px solid var(--c-border2)",
+                borderTop: "3px solid var(--c-gold)",
+                borderRadius: 8,
+                background: "var(--c-card)",
+                padding: "14px 16px",
+              }}
+            >
+              <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--c-text2)", display: "block", marginBottom: 6 }}>
+                {b.w}
+              </span>
+              <span style={{ fontFamily: SANS, fontSize: T.bodySm, fontWeight: 600, color: "var(--c-body-lede)", lineHeight: 1.4 }}>
+                {b.pay}
+              </span>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+      <p style={{ fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-text2)", lineHeight: 1.6, maxWidth: 820, marginBottom: 38 }}>
+        {t.scheduleNote}
+      </p>
 
       <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 16 }}>
         {t.holdTitle}
