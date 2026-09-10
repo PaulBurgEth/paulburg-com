@@ -7,12 +7,12 @@ import { useIntakeModal } from "@/context/IntakeModalContext";
 
 const en = {
   sectionLabel: "Pricing",
-  h2: "Transparent pricing",
-  subtitle: "Build tiers below. The outbound channel is priced separately — one fixed price for a six-week pilot, paid in thirds, with a decision point before each.",
+  h2: "How the price is put together",
+  subtitle: "Three scopes below. The figure is assembled per task after a short call — what it covers, what it touches, and what it has to integrate with. The outbound channel is priced separately: one fixed price for a six-week pilot, paid in thirds, with a decision point before each.",
   plans: [
     {
       name: "Starter",
-      amount: "$500",
+      amount: "A bot",
       timeline: "3 days delivery",
       features: [
         "AI lead bot on your site",
@@ -22,12 +22,12 @@ const en = {
         "1 revision",
       ],
       cta: "Get started",
-      sub: "+$100–150/mo support",
+      sub: "priced per task · support quoted with it",
       popular: false,
     },
     {
       name: "Business",
-      amount: "$1,200",
+      amount: "Bot + CRM",
       timeline: "5 days delivery",
       features: [
         "Everything in Starter",
@@ -37,12 +37,12 @@ const en = {
         "2 revisions",
       ],
       cta: "Get started",
-      sub: "+$100–150/mo support",
+      sub: "priced per task · support quoted with it",
       popular: true,
     },
     {
       name: "Full System",
-      amount: "$2,000+",
+      amount: "All of it",
       timeline: "7–21 days delivery",
       features: [
         "Everything in Business",
@@ -52,7 +52,7 @@ const en = {
         "3 revisions",
       ],
       cta: "Discuss scope",
-      sub: "+$100–150/mo support",
+      sub: "priced per task · support quoted with it",
       popular: false,
     },
   ],
@@ -60,12 +60,12 @@ const en = {
 
 const ru = {
   sectionLabel: "Цены",
-  h2: "Прозрачные цены",
-  subtitle: "Ниже — тарифы на разработку. Холодный канал считается отдельно: одна фиксированная цена за пилот на шесть недель, оплата третями, перед каждой — точка решения.",
+  h2: "Как считается цена",
+  subtitle: "Ниже — три объёма. Сумма собирается под задачу после короткого разговора: что входит, чего касается и с чем должно связаться. Холодный канал считается отдельно: одна фиксированная цена за пилот на шесть недель, оплата третями, перед каждой — точка решения.",
   plans: [
     {
       name: "Стартер",
-      amount: "$500",
+      amount: "Бот",
       timeline: "Срок: 3 дня",
       features: [
         "AI-бот на вашем сайте",
@@ -75,12 +75,12 @@ const ru = {
         "1 правка",
       ],
       cta: "Начать",
-      sub: "+$100–150/мес поддержка",
+      sub: "цена под задачу · поддержка в смете",
       popular: false,
     },
     {
       name: "Бизнес",
-      amount: "$1,200",
+      amount: "Бот и CRM",
       timeline: "Срок: 5 дней",
       features: [
         "Всё из Стартера",
@@ -90,12 +90,12 @@ const ru = {
         "2 правки",
       ],
       cta: "Начать",
-      sub: "+$100–150/мес поддержка",
+      sub: "цена под задачу · поддержка в смете",
       popular: true,
     },
     {
       name: "Полная система",
-      amount: "$2,000+",
+      amount: "Всё сразу",
       timeline: "Срок: 7–21 день",
       features: [
         "Всё из Бизнеса",
@@ -105,7 +105,7 @@ const ru = {
         "3 правки",
       ],
       cta: "Обсудить объём",
-      sub: "+$100–150/мес поддержка",
+      sub: "цена под задачу · поддержка в смете",
       popular: false,
     },
   ],
@@ -118,7 +118,7 @@ export default function ServicesPricing() {
 
   return (
     <section id="pricing" className="pb-reveal" style={{ background: "var(--c-bg2)", padding: "72px 0", position: "relative" }}>
-      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 14, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 07</span>
+      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 14, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 08</span>
       <div className="container-custom">
         {/* Header */}
         <motion.div

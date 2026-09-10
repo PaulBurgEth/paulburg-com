@@ -14,7 +14,7 @@ const en = {
   badge: "TURNKEY",
   h2: "AI Bot + Custom CRM + BI",
   subtitle:
-    "One package. One contact. Five production-grade systems wired end-to-end — website, AI bot & automation, custom CRM, business intelligence, and manager dashboards — that turn your business into a measurable, automated machine ready to sell on day one.",
+    "One package. One contact. Five production-grade systems wired end to end — website, AI bot & automation, custom CRM, business intelligence, and manager dashboards. The enquiry lands in the CRM, the CRM lands on the dashboard, and the dashboard shows you where it stalled.",
   pillars: [
     {
       heading: "Custom multilingual website",
@@ -38,8 +38,8 @@ const en = {
     },
   ] as Pillar[],
   timing: "AI-assisted development — production-ready in 3–14 days.",
-  price: "$3,000",
-  priceNote: "complete bundle · base scope",
+  price: "scoped per project",
+  priceNote: "the whole bundle · scope set on the call",
 };
 
 const ru = {
@@ -47,7 +47,7 @@ const ru = {
   badge: "TURNKEY",
   h2: "AI-бот + Кастомная CRM + BI",
   subtitle:
-    "Один пакет. Один контакт. Пять продакшен-систем, связанных в единую цепочку — сайт, AI-бот и автоматизация, кастомная CRM, business intelligence и менеджерские дашборды — превращающие бизнес в измеримую автоматизированную машину, готовую продавать с первого дня.",
+    "Один пакет. Один контакт. Пять продакшен-систем, связанных в единую цепочку: сайт, AI-бот и автоматизация, кастомная CRM, business intelligence и менеджерские дашборды. Заявка попадает в CRM, CRM попадает в дашборд, дашборд показывает, где встало.",
   pillars: [
     {
       heading: "Кастомный многоязычный сайт",
@@ -71,8 +71,8 @@ const ru = {
     },
   ] as Pillar[],
   timing: "AI-assisted разработка — продакшен-готовность за 3–14 дней.",
-  price: "$3,000",
-  priceNote: "весь пакет · базовый объём",
+  price: "по объёму задачи",
+  priceNote: "весь пакет · объём определяем на созвоне",
 };
 
 export default function ServicesTurnkey() {
@@ -251,9 +251,9 @@ export default function ServicesTurnkey() {
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 700,
-                  fontSize: 32,
+                  fontSize: 24,
                   color: "var(--c-gold)",
-                  lineHeight: 1,
+                  lineHeight: 1.15,
                 }}
               >
                 {t.price}

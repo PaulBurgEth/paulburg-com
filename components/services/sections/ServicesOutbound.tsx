@@ -14,6 +14,7 @@ const en = {
     "Companies found in open registries, each with a reason to be written to",
     "Emails in the recipient's own language — Russian, English, Spanish",
     "Cold digital outbound. Your domains, your data, from day one",
+    "Three pipelines run in parallel — a client's and my own",
   ],
   metric: "6 weeks",
   metricLabel: "from a cold list to quotes agreed with buyers, with your own funnel numbers at the end",
@@ -29,6 +30,7 @@ const ru = {
     "Компании из открытых реестров, у каждой — повод для письма",
     "Письма на языке получателя: русский, английский, испанский",
     "Холодный цифровой аутбаунд. Ваши домены и данные с первого дня",
+    "Три пайплайна идут параллельно — клиентский и мои собственные",
   ],
   metric: "6 недель",
   metricLabel: "от холодного списка до расчётов, согласованных с покупателями, и ваши собственные цифры воронки на выходе",
@@ -45,7 +47,7 @@ export default function ServicesOutbound() {
       className="scroll-mt-20 pb-reveal"
       style={{ background: "var(--c-bg2)", borderTop: "1px solid var(--c-border)", padding: "72px 0", position: "relative" }}
     >
-      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 14, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 05</span>
+      <span aria-hidden="true" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 14, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 06</span>
       <div className="container-custom">
         <motion.div
           variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}

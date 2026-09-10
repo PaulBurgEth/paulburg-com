@@ -11,6 +11,7 @@ import { useRevealObserver } from "@/lib/useStageReveal";
 
 const ServicesTurnkey = dynamic(() => import("./sections/ServicesTurnkey"), { ssr: false });
 const ServicesCases   = dynamic(() => import("./sections/ServicesCases"),   { ssr: false });
+const ServicesMachines = dynamic(() => import("./sections/ServicesMachines"), { ssr: false });
 const ServicesProcess = dynamic(() => import("./sections/ServicesProcess"), { ssr: false });
 const ServicesPricing = dynamic(() => import("./sections/ServicesPricing"), { ssr: false });
 const ServicesCTA     = dynamic(() => import("./sections/ServicesCTA"),     { ssr: false });
@@ -29,6 +30,7 @@ export default function ServicesPageClient() {
         <ServicesGrid />
         <ServicesTurnkey />
         <ServicesCases />
+        <ServicesMachines />
         <ServicesOutbound />
         <ServicesProcess />
         <ServicesPricing />

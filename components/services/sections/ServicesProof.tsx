@@ -6,17 +6,17 @@ import CountUp from "@/components/CountUp";
 
 const en = {
   metrics: [
-    { value: "10+", label: "systems built & shipped" },
     { value: "6 weeks", label: "from a cold list to a client ready to talk" },
-    { value: "3–14 days", label: "from call to launch" },
+    { value: "3–14 days", label: "from call to production" },
+    { value: "EN · VI · RU · DE · HE", label: "languages the systems already run in" },
   ],
 };
 
 const ru = {
   metrics: [
-    { value: "10+", label: "систем в продакшене" },
     { value: "6 недель", label: "от холодного списка до клиента, готового обсуждать" },
-    { value: "3–14 дней", label: "от звонка до запуска" },
+    { value: "3–14 дней", label: "от звонка до продакшена" },
+    { value: "EN · VI · RU · DE · HE", label: "языки, на которых системы уже работают" },
   ],
 };
 
@@ -54,12 +54,13 @@ export default function ServicesProof() {
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 700,
-                  fontSize: 22,
+                  fontSize: item.value.length > 12 ? 16 : 22,
                   color: "var(--c-gold)",
                   lineHeight: 1.2,
+                  textAlign: "center",
                 }}
               >
-                {i === 0 ? <CountUp target={10} suffix="+" /> : item.value}
+                {i === 0 ? <CountUp target={6} suffix={language === "ru" ? " недель" : " weeks"} /> : item.value}
               </span>
               <span
                 style={{

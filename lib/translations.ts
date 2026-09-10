@@ -18,14 +18,14 @@ export const translations = {
         home: {
             hero: {
                 name: "Павел Burg",
-                tagline: "Серийный предприниматель • Founder/CEO • Цифровой номад",
+                tagline: "Строю с 2011 • Founder/CEO • Цифровой номад",
                 description: "Создаю на пересечении Web3, ReFi, AI и инфраструктуры реального воздействия",
             },
             about: {
                 title: "Обо мне",
                 name: "Павел Burg",
                 p1: "Цифровой номад с 2015 года: жил и работал в России, США, Китае, Таиланде и других странах.",
-                p2: "Серийный основатель стартапов с опытом в электронной коммерции, цепочках поставок и международных операциях. По образованию — учёный-эколог.",
+                p2: "С 2011 года запускаю и веду собственные проекты: электронная коммерция, цепочки поставок и международные операции. По образованию — учёный-эколог.",
                 p3: "Более трёх лет глубоко погружён в блокчейн, общественные блага и реальное воздействие на мир — основал студию EcoSynthesisX, ReFi Phangan и GreenPill Phangan, разработал маркетплейс для токенизированных общественных благ Regen Bazaar, сеть DeCleanup и концепцию продуктов воздействия.",
                 p4: "Преподавал английский язык в Китае — работал с детьми и взрослыми, с акцентом на разговорных навыках и уверенности в общении.",
             },
@@ -238,9 +238,9 @@ export const translations = {
             about: {
                 title: "About Me",
                 name: "Paul Burg",
-                p1: "Pioneering entrepreneur and strategy leader with 10+ years in business development, operations, and digital transformation. Expert in AI-driven automation, marketplace platforms, and sustainable impact projects. I build at the intersection of AI, Web3, and real-world impact.",
+                p1: "I have been launching and running my own projects since 2011 — business development, operations, and supply chain across Asia. Now I design and ship production AI systems and automation. I build at the intersection of AI, Web3, and real-world impact.",
                 p2: "Digital nomad since 2015 — lived and worked across Russia, USA, China, and Thailand. Founded EcoSynthesisX, ReFi Phangan, GreenPill Phangan, DeCleanup Network, and Regen Bazaar. Speaker at Devcon 7 SEA Bangkok. Environmental scientist by education.",
-                p3: "Proven in team leadership, fundraising, international partnerships, and delivering measurable results in remote and global environments. Currently based in Koh Phangan, Thailand.",
+                p3: "Team leadership, fundraising, and international partnerships, run remotely across time zones. Currently in Da Nang, Vietnam.",
                 p4: "Open to collaborations, partnerships, and building with people who care about real impact.",
             },
             projects: {
@@ -497,7 +497,7 @@ export const projectTranslations = {
         },
         vitacrypt: {
             name: "VitaCrypt",
-            description: "Платформа персонального здоровья нового поколения с полностью гомоморфным шифрованием (FHE) для максимальной приватности данных.",
+            description: "Платформа персонального здоровья нового поколения: генетика, носимые устройства, лаборатории и среда в одном профиле. Статус — MVP.",
         },
         helprent: {
             name: "HelpRent Phangan",
@@ -523,7 +523,7 @@ export const projectTranslations = {
         },
         vitacrypt: {
             name: "VitaCrypt",
-            description: "A next-generation personal health intelligence platform leveraging Fully Homomorphic Encryption (FHE) for ultimate data privacy.",
+            description: "A next-generation personal health intelligence platform: DNA, wearables, labs and environment in one queryable profile. Status: MVP.",
         },
         helprent: {
             name: "HelpRent Phangan",

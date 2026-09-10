@@ -526,7 +526,7 @@ const articles = [
 
 const projects = {
   impact: [
-    { name:"EcoSynthesisX", desc:"Web3 public good studio collaborating with real-world NGOs to tokenize environmental and community impact into verifiable on-chain assets.", status:"active", url:"https://ecosynthesisx.xyz" },
+    { name:"EcoSynthesisX", desc:"Web3 public good studio collaborating with real-world NGOs to tokenize environmental and community impact into verifiable on-chain assets.", status:"active", url:"https://ecosynthesisx.com" },
     { name:"DeCleanup Network", desc:"Transforms environmental cleanups into transparent, verifiable digital impact. Your cleanups become tokenized assets that unlock rewards, reputation, and community recognition.", status:"live", url:"https://decleanup.net" },
     { name:"Regen Bazaar", desc:"Marketplace where real-world impact meets market value — tokenizing NGO activities such as cleanups, reforestation, and animal care, bridging nonprofits with global buyers.", status:"mvp", url:"https://regenbazaar.com" },
   ],
@@ -537,7 +537,7 @@ const projects = {
   phangan: [
     { name:"HelpRent Da Nang", desc:"Da Nang's whole rental market on one board — fresh listings, mapped buildings with direct manager contacts, and Mai, an AI concierge that searches by plain sentence or map screenshot in EN, VI & RU.", status:"live", url:"https://helprentdanang.com" },
     { name:"HelpRent Phangan", desc:"Real estate ecosystem for digital nomads on Koh Phangan — long-term rentals, local tours, and island guides in one platform.", status:"live", url:"https://helprentphangan.com" },
-    { name:"Guide Phangan", desc:"Authentic local guide and AI-driven infrastructure platform for nomads and expats navigating Koh Phangan — transport, food, stays, and community.", status:"live", url:"https://guidephangan.com" },
+    { name:"Guide Phangan", desc:"Island directory for nomads and expats on Koh Phangan — districts, housing, transport, money and local services, reachable through bots. Offers come from partner providers who deliver them; the platform lists them.", status:"live", url:"https://guidephangan.com" },
   ],
   health: [
     { name:"VitaCrypt", desc:"Your whole health in one intelligent profile — DNA, wearables, labs, microbiome and environment fused into evidence-cited, AI-driven guidance. Verified citations only, private by design.", status:"mvp", url:"https://vitacrypt.xyz" },
@@ -676,7 +676,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <span className="hero-role-sep" aria-hidden="true">·</span>
               <span className="hero-role">
                 <Lightbulb size={12} strokeWidth={1.5} aria-hidden="true" />
-                {language === "ru" ? "СЕРИЙНЫЙ ПРЕДПРИНИМАТЕЛЬ" : "SERIAL ENTREPRENEUR"}
+                {language === "ru" ? "СТРОЮ С 2011" : "BUILDING SINCE 2011"}
               </span>
               <span className="hero-role-sep" aria-hidden="true">·</span>
               <span className="hero-role">
@@ -714,7 +714,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   ? "Боты, CRM и BI-дашборды, автоматизация, сайты. С нуля под ваш процесс."
                   : "Bots, CRMs and BI dashboards, automation, websites. Built from scratch around your process."}
               </div>
-              <span className="lc-m">{language === "ru" ? "10+ систем в продакшене · 3–14 дней" : "10+ systems in production · 3–14 days"}</span>
+              <span className="lc-m">{language === "ru" ? "От звонка до продакшена — 3–14 дней" : "Call to production — 3–14 days"}</span>
             </Link>
             <Link href="/outbound" className="line-card">
               <span className="lc-k">{language === "ru" ? "Линия вторая" : "Line two"}</span>
@@ -750,7 +750,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             <div className="services-mini-grid">
               {([
                 { icon: Bot, title: language === "ru" ? "AI-боты" : "AI-Powered Bots", desc: language === "ru" ? "Чат-боты и агенты: квалификация лидов, ответы 24/7, запуск процессов, уведомления. Многоязычны по умолчанию." : "Chatbots and AI agents: lead qualification, 24/7 answers, workflow triggers, structured alerts. Multilingual by default.", price: language === "ru" ? "по объёму задачи" : "scoped per project" },
-                { icon: Workflow, title: language === "ru" ? "Автоматизация процессов" : "Process Automation", desc: language === "ru" ? "AI-агенты двигают данные между системами, обрабатывают заявки, запускают действия. Zapier/Make на стероидах." : "AI agents move data between systems, process applications, trigger cross-stack actions. Zapier/Make on steroids.", price: language === "ru" ? "по объёму задачи" : "scoped per project" },
+                { icon: Workflow, title: language === "ru" ? "Автоматизация процессов" : "Process Automation", desc: language === "ru" ? "AI-агенты двигают данные между системами, обрабатывают заявки, запускают действия. Не конструктор со сценариями, а свой код на вашем сервере." : "AI agents move data between systems, process applications, trigger cross-stack actions. Not a scenario builder — your own code on your own server.", price: language === "ru" ? "по объёму задачи" : "scoped per project" },
                 { icon: Database, title: language === "ru" ? "Кастомная CRM и BI" : "Custom CRM & BI Systems", desc: language === "ru" ? "Не Notion, не HubSpot. Своя CRM, BI-дашборды, менеджерские панели и matching-движки под ваш pipeline: роли, сделки, история клиента, Telegram." : "Not Notion. Not HubSpot. Your own CRM, BI dashboards, manager panels, and matching engines around your pipeline: roles, deals, client history, Telegram.", price: language === "ru" ? "по объёму задачи" : "scoped per project" },
                 { icon: Globe, title: language === "ru" ? "Сайт на заказ" : "Custom Website", desc: language === "ru" ? "Быстрые, SEO-готовые, многоязычные. В комплекте — AI-бот для лидов с первого дня." : "Fast, SEO-ready, multilingual. Ships with an AI lead bot plugged in from day one.", price: language === "ru" ? "по объёму задачи" : "scoped per project" },
               ] as { icon: React.ElementType; title: string; desc: string; price: string }[]).map((card, i) => {
@@ -953,8 +953,8 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 <div className="mentor-title">{language === "ru" ? "Прокачайте своё преимущество" : "Accelerate Your Edge"}</div>
                 <div className="mentor-desc">
                   {language === "ru"
-                    ? "Ищете пассивный доход в крипте без риска, хотите вывести бизнес-идею на рынок или научиться встраивать AI в свои процессы — я помогу разобраться и дать конкретный следующий шаг."
-                    : "Whether you are looking for risk-free crypto yield, need help packaging and launching your business idea, or want to embed AI into your workflow — I offer structured, high-agency mentorship to help you break through."}
+                    ? "Ищете, куда поставить простаивающий капитал, хотите вывести бизнес-идею на рынок или встроить AI в свои процессы — разберём ситуацию и найдём конкретный следующий шаг."
+                    : "Whether you are working out where to put idle capital, packaging a business idea for market, or embedding AI into your workflow — we map the situation and find the concrete next step."}
                 </div>
                 <div className="mentor-features">
                   <span className="tag gold" style={{ background: "transparent", borderColor: "rgba(200,169,110,0.2)" }}>DeFi Strategy</span>
@@ -1276,7 +1276,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 </span>
                 <span className="tag tag-icon">
                   <Lightbulb size={13} strokeWidth={1.4} aria-hidden="true" />
-                  {language === "ru" ? "Серийный предприниматель" : "Serial Entrepreneur"}
+                  {language === "ru" ? "Строю с 2011" : "Building since 2011"}
                 </span>
                 <span className="tag tag-icon">
                   <Coffee size={13} strokeWidth={1.4} aria-hidden="true" />
@@ -1293,7 +1293,10 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                       Работаю на стыке продуктового мышления и AI-исполнения — формирую архитектуру, оркестрирую сборку с AI-инструментами и несу ответственность за результат от начала до конца.
                     </p>
                     <p>
-                      До этого: управление международными цепочками поставок в Азии, Web3 public goods, медиастартапы в России. Академический фон — экологические науки.
+                      До этого — пять лет в сорсинге и контроле качества по Азии: три года жил в Шэньчжэне и ездил на фабрики Гуандуна как представитель заказчика, дальше вёл портфель клиентов удалённо. Параллельно с партнёром поставлял товар частной марки на Amazon США под ключ: подбор производителя, образцы, упаковка, три итерации до запуска, партия на складе клиента.
+                    </p>
+                    <p>
+                      Ещё раньше — антикризисное управление площадкой в центре Петербурга, Web3 public goods и собственные проекты с 2011 года. Образование: M.Sc. по экологической безопасности, докторантура пройдена без защиты.
                     </p>
                     <p>
                       Работаю удалённо, действую глобально, сотрудничаю с бизнесами и фаундерами из разных отраслей и часовых поясов.
@@ -1308,7 +1311,10 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                       I work at the intersection of product thinking and AI execution — I scope the architecture, orchestrate the build with AI tools, and own the delivery end-to-end.
                     </p>
                     <p>
-                      Previously: international supply chain management across Asia, Web3 public goods, media startups in Russia. Environmental science background.
+                      Before that, five years in sourcing and quality control across Asia: three years living in Shenzhen, visiting Guangdong factories in person as the client&rsquo;s representative, then running a client portfolio remotely. Alongside it, with a partner, private-label supply into Amazon US end to end: manufacturer selection, samples, packaging, three iterations before launch, the batch on the client&rsquo;s shelf.
+                    </p>
+                    <p>
+                      Earlier still: turnaround management of a venue in central St Petersburg, Web3 public goods, and my own projects since 2011. M.Sc. Environmental Safety; doctoral coursework completed, no dissertation.
                     </p>
                     <p>
                       Work remotely, operate globally, collaborate with businesses and founders across different industries and time zones.
