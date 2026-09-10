@@ -46,7 +46,7 @@ const en = {
     },
     {
       q: "How much is it?",
-      a: "Three parts, all of them in the next section: a fixed fee for the pilot, a monthly retainer after it, and a share of the result on clients I brought. Two things move the number — how many segments you want running, and how many languages they run in. One segment in one language sits at the floor of the range; four segments across three languages sits at the top. I put the figure in writing as soon as I know which of those you need.",
+      a: "One fixed price for the pilot, and the next section has how it is paid: in thirds, each one two weeks ahead, with a decision point in front of each. Two things move the number — how many segments you want running, and how many languages they run in. One segment in one language sits at the floor; four segments across three languages sits at the top. What happens after the six weeks gets settled at week six, on your own numbers, rather than guessed at now.",
     },
     {
       q: "Is this you, or a team?",
@@ -84,7 +84,7 @@ const ru = {
     },
     {
       q: "Сколько это стоит?",
-      a: "Три части, все в следующей секции: фиксированная стоимость пилота, месячный фикс после него и доля с результата по клиентам, которых привёл я. Сумму двигают две вещи — сколько сегментов вы хотите запустить и на скольких языках. Один сегмент на одном языке — нижняя граница диапазона, четыре сегмента на трёх языках — верхняя. Цифру называю письмом, как только понимаю, что именно из этого вам нужно.",
+      a: "Одна фиксированная цена за пилот, а в следующей секции — схема оплаты: третями, каждая за две недели вперёд, и перед каждой точка решения. Сумму двигают две вещи — сколько сегментов вы хотите запустить и на скольких языках. Один сегмент на одном языке — нижняя граница, четыре сегмента на трёх языках — верхняя. Что будет после шести недель, решается на шестой неделе, на ваших цифрах, а не угадывается сейчас.",
     },
     {
       q: "Это вы или команда?",

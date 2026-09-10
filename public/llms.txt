@@ -15,7 +15,7 @@ Cold outbound built and run end to end for B2B companies. Companies are found in
 - **Leads format (stages 01-06)**: selection, contact finding, emails, correspondence, qualification, handover of a client who confirmed a need.
 - **Leads + deal format (stages 01-09)**: the above plus specification, requesting terms from suppliers, quote assembly, and correspondence up to agreed price and lead time.
 - **Six-week pilot**: a fixed scope at a fixed fee. Selection with verified addresses, stepped sending with bounce control, same-working-day inbound triage, and a week-six report with the full funnel and cost per client. The list, domains, mailboxes, copy and stop-list are set up on the client's own accounts and stay with them either way.
-- Pricing: fixed pilot fee, then a monthly retainer plus a 10-20% share of gross profit on introduced clients for their first 12 months.
+- Pricing: one fixed price for the six-week pilot, paid in thirds, each two weeks ahead of the work it covers, with a decision point before each — the client can stop after any two-week block. Terms for continuing are settled at week six on the client's own funnel numbers. Exclusivity: one business per niche while the work runs.
 
 ## Mentorship
 - **Business Strategy**: From idea to execution, GTM, operations.

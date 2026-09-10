@@ -105,7 +105,7 @@ const en = {
     "Recall & safety registries",
     "Catalogs & storefronts",
   ],
-  sourceNote: "Registries refresh at different speeds, so a reason that appears on Monday is written to the same week. All of it is public record — nothing is bought from a list broker, and nothing comes from a scraped inbox.",
+  sourceNote: "Every first line has to be traceable back to a source you could open yourself — most often the company's own site: what it sells, how it describes itself, where it is listed. An event makes the letter sharper, but a company is never written to on an event nobody can check. Registries refresh at different speeds, so a reason that appears on Monday is written to the same week. All of it is public record: nothing is bought from a list broker, and nothing comes from a scraped inbox.",
   ctaNote: "Want the trigger list for your segment?",
   cta: "Ask for it →",
 };
@@ -194,7 +194,7 @@ const ru = {
     "Реестры отзывов и безопасности",
     "Каталоги и витрины",
   ],
-  sourceNote: "Реестры обновляются с разной скоростью, поэтому повод, появившийся в понедельник, отрабатывается на той же неделе. Всё это открытые данные — ничего не покупается у продавцов баз и не собирается из чужих почтовых ящиков.",
+  sourceNote: "Каждая первая строка должна прослеживаться до источника, который вы можете открыть сами — чаще всего это сайт самой компании: что она продаёт, как себя описывает, где числится. Событие делает письмо острее, но на непроверяемом событии компании не пишут. Реестры обновляются с разной скоростью, поэтому повод, появившийся в понедельник, отрабатывается на той же неделе. Всё это открытые данные: ничего не покупается у продавцов баз и не собирается из чужих почтовых ящиков.",
   ctaNote: "Нужен список триггеров под ваш сегмент?",
   cta: "Запросить →",
 };

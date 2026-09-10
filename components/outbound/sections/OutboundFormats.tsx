@@ -15,7 +15,7 @@ const en = {
   stagesTitle: "Nine stages, every company goes through them in order",
   stages: ["Selection", "Contact", "Email", "Correspondence", "Reply triage", "Handover", "Specification", "Terms", "Agreement"],
   dealBadge: "Deal format only",
-  note: "Nothing is skipped in either format — the second one simply does not stop at the handover. Full stage-by-stage breakdown on request.",
+  note: "Both formats include the correspondence with everyone who replies, and a weekly report on what went out, what came back and what I am changing because of it. Nothing is skipped in either — the second simply does not stop at the handover. Full stage-by-stage breakdown on request.",
 };
 
 const ru = {
@@ -29,7 +29,7 @@ const ru = {
   stagesTitle: "Девять этапов, каждая компания проходит их по порядку",
   stages: ["Отбор", "Контакт", "Письмо", "Переписка", "Разбор ответов", "Передача", "Уточнение", "Условия", "Согласование"],
   dealBadge: "Только формат со сделкой",
-  note: "Ни один этап не пропускается ни в одном из форматов — второй просто не останавливается на передаче. Подробная раскладка по этапам — по запросу.",
+  note: "В оба формата входит дальнейшая переписка со всеми, кто ответил, и еженедельный отчёт: что ушло, что вернулось и что я по этому меняю. Ни один этап не пропускается ни в одном из них — второй просто не останавливается на передаче. Подробная раскладка по этапам — по запросу.",
 };
 
 export default function OutboundFormats() {

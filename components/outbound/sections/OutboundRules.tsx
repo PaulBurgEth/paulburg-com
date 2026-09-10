@@ -1,21 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShieldCheck, Ban, GitCompareArrows, GaugeCircle, PenLine } from "lucide-react";
+import { ShieldCheck, Ban, GitCompareArrows, GaugeCircle, PenLine, Users, AtSign, Fingerprint } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { SectionShell, SectionHead, SERIF, SANS, T, itemVariants } from "../shared";
 
-const ICONS = [ShieldCheck, Ban, GitCompareArrows, GaugeCircle, PenLine];
+const ICONS = [ShieldCheck, Ban, GitCompareArrows, Users, AtSign, GaugeCircle, Fingerprint, PenLine];
 
 const en = {
   eyebrow: "Your domain",
-  h2: "Five rules that protect your name",
+  h2: "Eight rules that protect your name",
   sub: "Writing to the wrong person or dropping into spam damages your brand, not mine. So the rules are fixed before the first send.",
   rules: [
     { t: "Your own clients never get a cold email", d: "You set the exclusion list. Anything on it drops out of every send, permanently." },
     { t: "Unsubscribe is absolute", d: "It blocks the company's whole domain, not one address. No exceptions." },
     { t: "One company, one email", d: "Deduplicated across the whole database, so no one is contacted twice from two segments." },
+    { t: "Competitors and middlemen are filtered out", d: "They come out of the list before anything is sent, not after someone points it out." },
+    { t: "Every address is verified before it is written to", d: "An unverified address is a bounce, and bounces are what damage a domain." },
     { t: "Volume ramps in steps", d: "Each step only after bounces are checked. Above the threshold, sending pauses automatically." },
+    { t: "Every letter is written once", d: "No two companies receive the same text. That is the work, and it is also what keeps the domain clean." },
     { t: "Positioning stays yours", d: "Copy, prices and service wording are approved by you before the first send." },
   ],
   brakeTitle: "Why none of this is a target",
@@ -24,7 +27,7 @@ const en = {
 
 const ru = {
   eyebrow: "Ваш домен",
-  h2: "Пять правил, которые защищают ваше имя",
+  h2: "Восемь правил, которые защищают ваше имя",
   sub: "Письмо не тому человеку или падение в спам ударят по вашему бренду, не по моему. Поэтому правила фиксируются до первой отправки.",
   rules: [
     { t: "Ваши клиенты не получат холодное письмо", d: "Список исключений задаёте вы. Всё, что в нём, выпадает из рассылки навсегда." },

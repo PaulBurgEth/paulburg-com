@@ -41,12 +41,18 @@ const en = {
       text: "Both factories, one window, one invoice. Sending the checklist and a price for that batch today — if it fits, we book the window.",
     },
   ] as Turn[],
+  pilotsTitle: "Two runs, two different industries",
+  pilots: [
+    { tag: "Industrial supply", n: "68", label: "companies received a priced quote", support: "of the 75 that replied · 4 235 companies worked · 5 404 letters" },
+    { tag: "A services business, nine sectors at once", n: "25", label: "companies asked for terms", support: "of the 62 that replied · 2 082 companies worked · 2 325 letters" },
+  ],
+  pilotsNote: "Two industries rather than one, because the first thing anyone wants to know is whether this only works where it was built. The segments are not named here because the businesses behind them are not.",
   afterTitle: "Where you come in",
   after: "Not at the first email, and not at the tenth. You come in when a company has agreed on the substance and wants to talk terms. Everything before that point is mine.",
   repliedTitle: "The kind of company that answers",
   repliedNote: "Metals trading, B2B, from a cold start:",
   replied: ["Large metallurgical holding", "Lift equipment maker", "Electrical engineering plant", "Regional gas and heating utilities", "Leaf-spring maker", "Toolmaking plant"],
-  numbersLine: "Want the numbers — funnel by stage, deliverability, cost per client? I send them in writing on request, before you commit to anything.",
+  numbersLine: "Want the rest of it — the funnel stage by stage, deliverability, cost per client, and which segments returned what? I send the full breakdown in writing on request, before you commit to anything.",
   ctaNote: "Your segment gets its own list and its own copy in the first week.",
   cta: "Tell me about your market →",
 };
@@ -76,12 +82,18 @@ const ru = {
       text: "Обе фабрики, одно окно, один счёт. Сегодня отправляю чек-лист и цену под эту партию — если подходит, бронируем окно.",
     },
   ] as Turn[],
+  pilotsTitle: "Два прогона, две разные отрасли",
+  pilots: [
+    { tag: "Промышленное снабжение", n: "68", label: "компаний получили расчёт с ценой", support: "из 75 ответивших · 4 235 компаний в работе · 5 404 письма" },
+    { tag: "Сервисный бизнес, девять направлений сразу", n: "25", label: "компаний запросили условия", support: "из 62 ответивших · 2 082 компании в работе · 2 325 писем" },
+  ],
+  pilotsNote: "Две отрасли, а не одна, потому что первое, что хотят понять — работает ли это где-то кроме того места, где строилось. Сегменты здесь не названы, потому что не названы стоящие за ними бизнесы.",
   afterTitle: "Где вступаете вы",
   after: "Не на первом письме и не на десятом. Вы вступаете, когда компания уже согласилась по сути и хочет обсуждать условия. Всё до этой точки — на мне.",
   repliedTitle: "Кто отвечает",
   repliedNote: "Металлопрокат, B2B, с холодного старта:",
   replied: ["Крупный металлургический холдинг", "Производитель лифтового оборудования", "Завод электротехники", "Региональные газовые и тепловые сети", "Производитель рессор", "Инструментальный завод"],
-  numbersLine: "Нужны цифры — воронка по этапам, доставляемость, стоимость клиента? Высылаю письмом по запросу, до любых обязательств.",
+  numbersLine: "Нужно остальное — воронка по этапам, доставляемость, стоимость клиента и что принёс каждый сегмент? Полную раскладку высылаю письмом по запросу, до любых обязательств.",
   ctaNote: "Для вашего сегмента список и тексты составляются в первую неделю.",
   cta: "Расскажите о вашем рынке →",
 };
@@ -157,6 +169,37 @@ export default function OutboundProof() {
         </div>
       </div>
       <Note>{t.disclaimer}</Note>
+
+      {/* Two runs, led by the end of the funnel. The volume is context under it,
+          not the headline: what closes is how many companies reached a price. */}
+      <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "36px 0 14px" }}>
+        {t.pilotsTitle}
+      </h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {t.pilots.map((pl) => (
+          <motion.div
+            key={pl.tag}
+            variants={itemVariants}
+            style={{ background: "var(--c-card)", border: "1px solid var(--c-border)", borderLeft: "2px solid var(--c-gold)", borderRadius: 10, padding: 24 }}
+          >
+            <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--c-text2)", display: "block", marginBottom: 14 }}>
+              {pl.tag}
+            </span>
+            <div className="flex items-baseline gap-3" style={{ flexWrap: "wrap" }}>
+              <span style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 46, lineHeight: 1, color: "var(--c-gold)", letterSpacing: "-0.02em" }}>
+                {pl.n}
+              </span>
+              <span style={{ fontFamily: SANS, fontSize: T.body, fontWeight: 600, color: "var(--c-body-lede)", lineHeight: 1.35, maxWidth: 260 }}>
+                {pl.label}
+              </span>
+            </div>
+            <p style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.04em", color: "var(--c-text2)", lineHeight: 1.7, marginTop: 14, paddingTop: 12, borderTop: "1px solid var(--c-border)" }}>
+              {pl.support}
+            </p>
+          </motion.div>
+        ))}
+      </div>
+      <Note>{t.pilotsNote}</Note>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4" style={{ marginTop: 32 }}>
         <div style={{ background: "var(--c-card)", border: "1px solid var(--c-border)", borderRadius: 10, padding: 22 }}>

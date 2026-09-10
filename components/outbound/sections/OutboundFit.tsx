@@ -30,8 +30,9 @@ const en = {
   no: [
     "You sell to consumers, or the decision is made by a person rather than a company",
     "The average deal is small enough that a month of correspondence costs more than it returns",
-    "You need volume this week — the first emails go out in week three",
+    "You need signed business this week. Letters go out in week one, but a considered purchase does not turn around that fast",
     "You want everyone who clicked. This channel is narrow by design and stays narrow",
+    "Buying this needs vendor onboarding, a security questionnaire or a tender. You would be buying work from one contractor, and that process is not built for it",
     "A decision-maker's answer takes weeks to approve on your side. The company moves on before you reply",
   ],
   note: "If you are not sure which column you are in, that is a two-message conversation, not a project. Write and I will tell you if it does not fit.",
@@ -53,8 +54,9 @@ const ru = {
   no: [
     "Вы продаёте физлицам или решение принимает человек, а не компания",
     "Средний чек такой, что месяц переписки стоит дороже, чем приносит",
-    "Объём нужен на этой неделе — первые письма уходят на третьей",
+    "Подписанные сделки нужны на этой неделе. Письма уходят с первой, но обдуманная покупка так быстро не разворачивается",
     "Нужны все, кто кликнул. Этот канал узкий по устройству и таким остаётся",
+    "Покупка проходит через вендорский онбординг, опросник по безопасности или тендер. Вы покупали бы работу у одного подрядчика, а эта процедура сделана не под это",
     "Ответ ЛПР согласуется у вас неделями. Компания уйдёт раньше, чем вы ответите",
   ],
   note: "Если непонятно, в какой вы колонке — это разговор на два сообщения, а не проект. Напишите, и я скажу, если не подходит.",

@@ -34,7 +34,7 @@ const en = {
         "Three months of ramp, paid throughout",
         "A month or two, on domains that are not yours",
         "Immediately, but only against active demand",
-        "First email in week three, first replies in week four",
+        "Letters go out in week one; replies build across the six",
       ],
     },
     {
@@ -92,7 +92,7 @@ const ru = {
         "Три месяца разгона, зарплата всё это время",
         "Месяц-два, на чужих доменах",
         "Сразу, но только по активному спросу",
-        "Первое письмо на третьей неделе, первые ответы на четвёртой",
+        "Письма уходят с первой недели, ответы набираются за шесть",
       ],
     },
     {
