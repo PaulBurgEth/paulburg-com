@@ -266,9 +266,12 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 }
 .pod-ep{
   position:absolute;top:9px;left:9px;z-index:2;
-  background:rgba(7,8,10,0.85);border:1px solid ${C.border2};
+  background:rgba(7,8,10,0.85);border:1px solid rgba(255,255,255,0.18);
   border-radius:4px;padding:3px 8px;
-  font-family:var(--font-inconsolata),monospace;font-size:14px;color:${C.muted};
+  /* Плашка тёмная в обеих темах — она лежит поверх обложки, — поэтому текст
+     здесь фиксированно светлый. Тематический --c-muted давал в светлой теме
+     3,8:1 на этом фоне. */
+  font-family:var(--font-inconsolata),monospace;font-size:14px;color:rgba(255,255,255,0.82);
 }
 .pod-play{
   position:relative;z-index:2;

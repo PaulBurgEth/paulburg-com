@@ -67,7 +67,7 @@ export default function Navbar() {
             <header
                 className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
                 style={{
-                    background: isScrolled || isMobileMenuOpen ? "rgba(7,8,10,0.78)" : "transparent",
+                    background: isScrolled || isMobileMenuOpen ? "var(--c-nav-bg)" : "transparent",
                     backdropFilter: isScrolled || isMobileMenuOpen ? "saturate(140%) blur(14px)" : "none",
                     WebkitBackdropFilter: isScrolled || isMobileMenuOpen ? "saturate(140%) blur(14px)" : "none",
                     borderBottom: `1px solid ${isScrolled || isMobileMenuOpen ? "var(--c-border)" : "transparent"}`,
