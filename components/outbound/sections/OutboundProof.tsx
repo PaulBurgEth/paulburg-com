@@ -61,6 +61,10 @@ const en = {
     },
   ],
   pilotsNote: "Two industries rather than one, because the first thing anyone wants to know is whether this only works where it was built. The segments are not named here because the businesses behind them are not.",
+  compareTitle: "What one reply is worth here",
+  compareOurs: { n: "91%", l: "of replies reached a priced quote", sub: "68 of the 75 companies that replied" },
+  compareMarket: { n: "14%", l: "of replies carry any interest at all", sub: "market average, cold email" },
+  compareNote: "Our bar is the higher one: not a reply that sounds interested, a company that got as far as a price. And the market figure is measured on sequences that run email together with LinkedIn and calls — this is email on its own. Market data: aggregated platform benchmarks, Growth Engineer, 2026.",
   afterTitle: "Where you come in",
   after: "Not at the first email, and not at the tenth. You come in when a company has agreed on the substance and wants to talk terms. Everything before that point is mine.",
   repliedTitle: "The kind of company that answers",
@@ -116,6 +120,10 @@ const ru = {
     },
   ],
   pilotsNote: "Две отрасли, а не одна, потому что первое, что хотят понять — работает ли это где-то кроме того места, где строилось. Сегменты здесь не названы, потому что не названы стоящие за ними бизнесы.",
+  compareTitle: "Чего стоит здесь один ответ",
+  compareOurs: { n: "91%", l: "ответов дошли до расчёта с ценой", sub: "68 из 75 ответивших компаний" },
+  compareMarket: { n: "14%", l: "ответов вообще содержат интерес", sub: "среднее по рынку холодной почты" },
+  compareNote: "Планка у нас выше: не ответ, который звучит заинтересованно, а компания, дошедшая до цены. И рыночная цифра снята на последовательностях, где почта идёт вместе с LinkedIn и звонками — здесь одна почта. Рыночные данные: агрегация платформенных бенчмарков, Growth Engineer, 2026.",
   afterTitle: "Где вступаете вы",
   after: "Не на первом письме и не на десятом. Вы вступаете, когда компания уже согласилась по сути и хочет обсуждать условия. Всё до этой точки — на мне.",
   repliedTitle: "Кто отвечает",
@@ -262,6 +270,66 @@ export default function OutboundProof() {
         ))}
       </div>
       <Note>{t.pilotsNote}</Note>
+
+      {/* Единственное место на странице, где пропорциональная полоса работает
+          на нас: 91 против 14 читается мгновенно. В воронке та же полоса читалась
+          бы как провал, поэтому там шаги. */}
+      <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "34px 0 16px" }}>
+        {t.compareTitle}
+      </h3>
+      <div
+        style={{
+          background: "var(--c-card)",
+          border: "1px solid var(--c-border)",
+          borderLeft: "2px solid var(--c-gold)",
+          borderRadius: 10,
+          padding: 24,
+        }}
+      >
+        {[
+          { ...t.compareOurs, pct: 91, ours: true },
+          { ...t.compareMarket, pct: 14, ours: false },
+        ].map((row) => (
+          <motion.div key={row.l} variants={itemVariants} style={{ marginBottom: row.ours ? 22 : 0 }}>
+            <div className="flex items-baseline gap-3" style={{ flexWrap: "wrap", marginBottom: 8 }}>
+              <span
+                style={{
+                  fontFamily: SERIF, fontWeight: 700, lineHeight: 1, letterSpacing: "-0.02em",
+                  fontSize: row.ours ? T.figureSm : T.h3,
+                  color: row.ours ? "var(--c-gold)" : "var(--c-text2)",
+                }}
+              >
+                {row.n}
+              </span>
+              <span
+                style={{
+                  fontFamily: SANS, fontSize: T.body, lineHeight: 1.4,
+                  fontWeight: row.ours ? 600 : 400,
+                  color: row.ours ? "var(--c-body-lede)" : "var(--c-text2)",
+                }}
+              >
+                {row.l}
+              </span>
+            </div>
+            <div
+              aria-hidden="true"
+              style={{
+                height: row.ours ? 12 : 8,
+                width: `${row.pct}%`,
+                borderRadius: 3,
+                background: row.ours
+                  ? "linear-gradient(90deg, var(--c-gold), var(--c-gold-glow))"
+                  : "var(--c-border2)",
+                border: row.ours ? "none" : "1px solid var(--c-border2)",
+              }}
+            />
+            <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.06em", color: "var(--c-muted)", display: "block", marginTop: 7 }}>
+              {row.sub}
+            </span>
+          </motion.div>
+        ))}
+      </div>
+      <Note>{t.compareNote}</Note>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4" style={{ marginTop: 32 }}>
         <div style={{ background: "var(--c-card)", border: "1px solid var(--c-border)", borderRadius: 10, padding: 22 }}>
