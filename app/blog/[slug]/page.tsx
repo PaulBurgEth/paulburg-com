@@ -30,7 +30,21 @@ export async function generateMetadata({
       title: `${frontmatter.title} | Paul Burg`,
       description: frontmatter.excerpt,
       alternates: {
-        canonical: `https://paulburg.com/blog/${slug}`,
+        // Each language gets its own canonical instead of both pointing at the
+        // English URL, and the pair is declared with hreflang. Without this the
+        // Russian article — a full translation, not a variant — was telling
+        // search engines it was a duplicate of the English one.
+        canonical:
+          lang === "ru"
+            ? `https://paulburg.com/blog/${slug}?lang=ru`
+            : `https://paulburg.com/blog/${slug}`,
+        languages: {
+          en: `https://paulburg.com/blog/${slug}`,
+          ru: `https://paulburg.com/blog/${slug}?lang=ru`,
+        },
+      },
+      openGraph: {
+        locale: lang === "ru" ? "ru_RU" : "en_US",
       },
     };
   } catch {

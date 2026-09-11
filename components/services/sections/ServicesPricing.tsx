@@ -289,7 +289,7 @@ export default function ServicesPricing() {
                         alignItems: "center",
                         justifyContent: "center",
                         background: "var(--c-gold)",
-                        color: "var(--c-bg)",
+                        color: "var(--c-on-gold)",
                         fontFamily: "var(--font-instrument-sans), sans-serif",
                         fontWeight: 600,
                         fontSize: 16,

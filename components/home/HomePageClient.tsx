@@ -186,7 +186,7 @@ body::after{
 .tag.tag-icon svg{color:${C.gold};flex-shrink:0}
 .ctas{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:44px}
 .btn-gold{
-  background:${C.gold};color:${C.bg};border:none;
+  background:${C.gold};color:var(--c-on-gold);border:none;
   border-radius:5px;padding:12px 24px;
   font-size:15px;font-weight:600;cursor:pointer;
   font-family:var(--font-instrument-sans),sans-serif;
@@ -297,7 +297,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
   color:${C.gold};margin-bottom:7px;
 }
 .pod-title{font-size:16px;font-weight:500;color:${C.text3};line-height:1.55}
-.pod-ext{float:right;color:${C.faint};font-size:14px;margin-top:1px;transition:color 0.2s}
+.pod-ext{float:right;color:${C.text2};font-size:14px;margin-top:1px;transition:color 0.2s}
 .pod-card:hover .pod-ext{color:${C.gold}}
 
 /* ── WRITING CARDS ── editorial layout: 1.2fr featured + 1fr stacked list */
@@ -326,7 +326,9 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .write-excerpt{font-size:16px;color:${C.muted};line-height:1.6;margin-bottom:12px}
 .write-foot{
   display:flex;align-items:center;justify-content:space-between;
-  font-family:var(--font-inconsolata),monospace;font-size:14px;color:${C.faint};
+  /* text2, not faint: --c-faint is the hairline token (1.24:1 on --c-card) and
+     this row carries the publication date, which is content. */
+  font-family:var(--font-inconsolata),monospace;font-size:14px;color:${C.text2};
 }
 .write-read{color:${C.gold}}
 .write-new{
@@ -410,7 +412,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
   display:flex;align-items:center;gap:8px;align-self:flex-start;
 }
 .mentor-card:hover .mentor-btn{
-  background:${C.gold};color:${C.bg};
+  background:${C.gold};color:var(--c-on-gold);
 }
 
 /* ── MEDIA ── */
@@ -524,23 +526,24 @@ const articles = [
     date:"Nov 2024", url:"https://paragraph.com/@paulburg/ecosynthesisx-from-crisis-to-innovation" },
 ];
 
+/* Card copy carries both languages. Project and community names stay as they are
+   in both — they are the products' own names, not labels. */
 const projects = {
   impact: [
-    { name:"EcoSynthesisX", desc:"Web3 public good studio collaborating with real-world NGOs to tokenize environmental and community impact into verifiable on-chain assets.", status:"active", url:"https://ecosynthesisx.com" },
-    { name:"DeCleanup Network", desc:"Transforms environmental cleanups into transparent, verifiable digital impact. Your cleanups become tokenized assets that unlock rewards, reputation, and community recognition.", status:"live", url:"https://decleanup.net" },
-    { name:"Regen Bazaar", desc:"Marketplace where real-world impact meets market value — tokenizing NGO activities such as cleanups, reforestation, and animal care, bridging nonprofits with global buyers.", status:"mvp", url:"https://regenbazaar.com" },
+    { name:"EcoSynthesisX", desc:"Web3 public good studio collaborating with real-world NGOs to tokenize environmental and community impact into verifiable on-chain assets.", descRu:"Студия общественных благ на Web3: вместе с реальными НКО превращает экологический и социальный результат в проверяемые он-чейн активы.", status:"paused", url:"https://ecosynthesisx.com" },
+    { name:"DeCleanup Network", desc:"Transforms environmental cleanups into transparent, verifiable digital impact. Your cleanups become tokenized assets that unlock rewards, reputation, and community recognition.", descRu:"Превращает уборки территорий в прозрачный проверяемый цифровой результат. Уборка становится токеном, который даёт вознаграждение, репутацию и признание сообщества.", status:"live", url:"https://decleanup.net" },
+    { name:"Regen Bazaar", desc:"Marketplace where real-world impact meets market value — tokenizing NGO activities such as cleanups, reforestation, and animal care, bridging nonprofits with global buyers.", descRu:"Маркетплейс, где реальный результат встречается с рыночной ценой: работа НКО — уборки, высадка леса, помощь животным — становится токеном и находит покупателя по всему миру.", status:"mvp", url:"https://regenbazaar.com" },
   ],
   ngo: [
-    { name:"Clean Phangan Impact Product", desc:"First MVP Impact Product built with the Clean Phangan NGO: the community runs cleanups every week, and the verified result is tokenized into sellable impact assets for impact investors. Live totals are on the collection page.", status:"live", url:"https://cleanphangan.regenbazaar.com/" },
-    { name:"EcoThailand Foundation Impact Product", desc:"Impact product framework built for EcoThailand Foundation — tokenizing volunteer contributions and environmental education into fundable, verifiable on-chain capital.", status:"live", url:"https://ecothailand.regenbazaar.com/" },
+    { name:"Clean Phangan Impact Product", desc:"First MVP Impact Product built with the Clean Phangan NGO: the community runs cleanups every week, and the verified result is tokenized into sellable impact assets for impact investors. Live totals are on the collection page.", descRu:"Первый Impact Product, собранный с НКО Clean Phangan: сообщество проводит уборки каждую неделю, проверенный результат превращается в актив для impact-инвесторов. Текущие цифры — на странице коллекции.", status:"live", url:"https://cleanphangan.regenbazaar.com/" },
+    { name:"EcoThailand Foundation Impact Product", desc:"Impact product framework built for EcoThailand Foundation — tokenizing volunteer contributions and environmental education into fundable, verifiable on-chain capital.", descRu:"Каркас impact-продукта для фонда EcoThailand: вклад волонтёров и экологическое просвещение становятся проверяемым он-чейн капиталом, который можно профинансировать.", status:"live", url:"https://ecothailand.regenbazaar.com/" },
   ],
   phangan: [
-    { name:"HelpRent Da Nang", desc:"Da Nang's whole rental market on one board — fresh listings, mapped buildings with direct manager contacts, and Mai, an AI concierge that searches by plain sentence or map screenshot in EN, VI & RU.", status:"live", url:"https://helprentdanang.com" },
-    { name:"HelpRent Phangan", desc:"Real estate ecosystem for digital nomads on Koh Phangan — long-term rentals, local tours, and island guides in one platform.", status:"live", url:"https://helprentphangan.com" },
-    { name:"Guide Phangan", desc:"Island directory for nomads and expats on Koh Phangan — districts, housing, transport, money and local services, reachable through bots. Offers come from partner providers who deliver them; the platform lists them.", status:"live", url:"https://guidephangan.com" },
+    { name:"HelpRent Da Nang", desc:"Da Nang's whole rental market on one board — fresh listings, mapped buildings with direct manager contacts, and Mai, an AI concierge that searches by plain sentence or map screenshot in EN, VI & RU.", descRu:"Весь рынок аренды Да Нанга на одной доске: свежие объявления, здания на карте с прямыми контактами менеджеров и Mai — AI-консьерж, который ищет обычной фразой или по скриншоту карты на EN, VI и RU.", status:"live", url:"https://helprentdanang.com" },
+    { name:"HelpRent Phangan", desc:"Rental platform for Koh Phangan, built around an AI matching engine: intake agent, smart ranking against the tenant's requirements, custom CRM and a manager dashboard behind it.", descRu:"Платформа аренды для Ко Пангана вокруг AI matching-движка: агент собирает бриф, ранкинг подбирает объекты под требования арендатора, за ними — кастомная CRM и менеджерский дашборд.", status:"live", url:"https://helprentphangan.com" },
   ],
   health: [
-    { name:"VitaCrypt", desc:"Your whole health in one intelligent profile — DNA, wearables, labs, microbiome and environment fused into evidence-cited, AI-driven guidance. Verified citations only, private by design.", status:"mvp", url:"https://vitacrypt.xyz" },
+    { name:"VitaCrypt", desc:"Your whole health in one intelligent profile — DNA, wearables, labs, microbiome and environment fused into evidence-cited, AI-driven guidance. Verified citations only, private by design.", descRu:"Здоровье целиком в одном профиле: генетика, носимые устройства, анализы, микробиом и среда сводятся в рекомендации со ссылками на исследования. Только проверяемые источники, приватность по умолчанию.", status:"mvp", url:"https://vitacrypt.xyz" },
   ],
 };
 
@@ -548,12 +551,14 @@ const communities = [
   {
     name:"ReFi Phangan",
     desc:"Empowering sustainability through decentralized coordination, connecting NGOs, and fostering a regenerative local economy.",
+    descRu:"Устойчивое развитие через децентрализованную координацию: связываем НКО между собой и выращиваем регенеративную локальную экономику.",
     url:"https://x.com/ReFiPhangan",
     color: C.sage
   },
   {
     name:"GreenPill Phangan",
     desc:"Local chapter of the GreenPill Network focused on building local regeneration infrastructure and public good funding.",
+    descRu:"Локальное отделение сети GreenPill: строим инфраструктуру регенерации на острове и финансируем общественные блага.",
     url:"https://x.com/GreenPillKPG",
     color: C.sage
   }
@@ -629,6 +634,13 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
       <Navbar />
 
+      {/* The nine sections below live inside <main> so a screen reader has a
+          landmark to jump to, and so "skip to content" means something. It is a
+          plain static block with no styles of its own: the ambient layers are
+          position:fixed and unaffected, there is no sticky element on this page,
+          and a static ancestor does not change the containing block for the
+          absolutely positioned pins and § markers inside. */}
+      <main id="content">
       {/* ══════════ HERO ══════════ */}
       <section className="hero">
         {/* Left-rail coordinate pin — 96px gold gradient hairline + 13px circle outline + dot.
@@ -838,7 +850,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     style={{
                       background: C.gold,
                       border: `1px solid ${C.gold}`,
-                      color: "#07080a",
+                      color: "var(--c-on-gold)",
                       fontFamily: "var(--font-instrument-sans), sans-serif",
                       fontWeight: 600,
                       fontSize: 15,
@@ -916,7 +928,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <Link
                 href="/outbound"
                 className="btn-primary"
-                style={{ padding: "12px 24px", background: C.gold, border: `1px solid ${C.gold}`, borderRadius: 8, color: "#07080a", fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 15, fontWeight: 600, textDecoration: "none", display: "inline-block" }}
+                style={{ padding: "12px 24px", background: C.gold, border: `1px solid ${C.gold}`, borderRadius: 8, color: "var(--c-on-gold)", fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 15, fontWeight: 600, textDecoration: "none", display: "inline-block" }}
               >
                 {language === "ru" ? "Как устроен канал →" : "How the channel works →"}
               </Link>
@@ -966,7 +978,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 <Link
                   href="/mentorship"
                   className="btn-primary"
-                  style={{ padding: "12px 24px", background: C.gold, border: `1px solid ${C.gold}`, borderRadius: 8, color: "#07080a", fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 15, fontWeight: 600, textDecoration: "none", display: "inline-block" }}
+                  style={{ padding: "12px 24px", background: C.gold, border: `1px solid ${C.gold}`, borderRadius: 8, color: "var(--c-on-gold)", fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 15, fontWeight: 600, textDecoration: "none", display: "inline-block" }}
                 >
                   {language === "ru" ? "Узнать подробнее →" : "Explore Programs →"}
                 </Link>
@@ -1157,7 +1169,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
           <div className="cat-head">
             <div className="cat-tick" style={{ background: C.sage }} />
-            <span style={{ color: C.sage }}>01 — Impact & Public Goods Ecosystem</span>
+            <span style={{ color: C.sage }}>{language === "ru" ? "01 — Impact и экосистема общественных благ" : "01 — Impact & Public Goods Ecosystem"}</span>
           </div>
           <div className="proj-grid">
             {projects.impact.map((p, i) => (
@@ -1166,28 +1178,28 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   {p.status}
                 </span>
                 <div className="proj-name">{p.name}</div>
-                <div className="proj-desc">{p.desc}</div>
+                <div className="proj-desc">{language === "ru" ? p.descRu : p.desc}</div>
               </a>
             ))}
           </div>
 
           <div className="cat-head">
             <div className="cat-tick" style={{ background: "var(--c-sage)" }} />
-            <span style={{ color: "var(--c-sage)" }}>02 — NGO Impact Products · Proof of Concept</span>
+            <span style={{ color: "var(--c-sage)" }}>{language === "ru" ? "02 — Impact-продукты для НКО · проверка концепции" : "02 — NGO Impact Products · Proof of Concept"}</span>
           </div>
           <div className="proj-grid">
             {projects.ngo.map((p, i) => (
               <a key={i} className="proj-card" href={p.url} target="_blank" rel="noopener noreferrer">
                 <span className="status st-live">live</span>
                 <div className="proj-name">{p.name}</div>
-                <div className="proj-desc">{p.desc}</div>
+                <div className="proj-desc">{language === "ru" ? p.descRu : p.desc}</div>
               </a>
             ))}
           </div>
 
           <div className="cat-head">
             <div className="cat-tick" style={{ background: C.gold }} />
-            <span style={{ color: C.gold }}>03 — Rentals & Local Services · AI-Powered Platforms</span>
+            <span style={{ color: C.gold }}>{language === "ru" ? "03 — Аренда недвижимости · платформы с AI" : "03 — Property Rental · AI-Powered Platforms"}</span>
           </div>
           <div className="proj-grid">
             {projects.phangan.map((p, i) => (
@@ -1196,14 +1208,14 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   {p.status}
                 </span>
                 <div className="proj-name">{p.name}</div>
-                <div className="proj-desc">{p.desc}</div>
+                <div className="proj-desc">{language === "ru" ? p.descRu : p.desc}</div>
               </a>
             ))}
           </div>
 
           <div className="cat-head">
             <div className="cat-tick" style={{ background: C.violet }} />
-            <span style={{ color: C.violet }}>04 — Health Intelligence</span>
+            <span style={{ color: C.violet }}>{language === "ru" ? "04 — Здоровье и данные" : "04 — Health Intelligence"}</span>
           </div>
           <div className="proj-grid" style={{ gridTemplateColumns: "1fr" }}>
             {projects.health.map((p, i) => (
@@ -1212,7 +1224,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   {p.status}
                 </span>
                 <div className="proj-name">{p.name}</div>
-                <div className="proj-desc" style={{ maxWidth: "640px" }}>{p.desc}</div>
+                <div className="proj-desc" style={{ maxWidth: "640px" }}>{language === "ru" ? p.descRu : p.desc}</div>
               </a>
             ))}
           </div>
@@ -1232,7 +1244,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <a key={i} className="proj-card" href={c.url} target="_blank" rel="noopener noreferrer">
                 <span className="status st-live">active</span>
                 <div className="proj-name" style={{ fontSize: "16px", color: c.color }}>{c.name}</div>
-                <div className="proj-desc">{c.desc}</div>
+                <div className="proj-desc">{language === "ru" ? c.descRu : c.desc}</div>
               </a>
             ))}
           </div>
@@ -1249,7 +1261,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   <span style={{ color: C.gold }}>{e.src}</span>
                 </div>
                 <div className="proj-name" style={{ paddingRight: 0 }}>{e.name}</div>
-                <div style={{ fontFamily: "var(--font-inconsolata),monospace", fontSize: "14px", color: C.faint, marginTop: "12px" }}>
+                <div style={{ fontFamily: "var(--font-inconsolata),monospace", fontSize: "14px", color: C.text2, marginTop: "12px" }}>
                   <span className="write-read">{language === "ru" ? "Открыть в X →" : "View on X →"}</span>
                 </div>
               </a>
@@ -1266,7 +1278,9 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
           <h2 className="sec-title">{language === "ru" ? "Кто я" : "Who I Am"}</h2>
           <div className="about-layout">
             <div className="photo-frame">
-              <Image src="/about.webp" alt="Paul Burg" width={800} height={922} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
+              {/* sizes, because without it next/image assumes full viewport width and
+                  builds a 828w/1920w srcset for a box that is 185 px wide here. */}
+              <Image src="/about.webp" alt="Paul Burg" width={800} height={922} sizes="(max-width: 900px) 60vw, 320px" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
             </div>
             <div>
               <div className="about-tags">
@@ -1328,6 +1342,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ FOOTER ══════════ */}
       </div>
+      </main>
       <Footer />
     </>
   );

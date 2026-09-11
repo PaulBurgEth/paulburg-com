@@ -96,7 +96,11 @@ export default function BlogList({ posts, lang }: Props) {
                   · {formatDate(post.date, lang)}
                 </span>
               </div>
-              <h3
+              {/* h2, not h3: the page has one h1 and nothing between it and the
+                  post titles, so every card was a level-3 heading under a
+                  level-1 — the only heading-level skip on the site. Size is
+                  unchanged; this is the outline, not the type. */}
+              <h2
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 700,
@@ -107,7 +111,7 @@ export default function BlogList({ posts, lang }: Props) {
                 }}
               >
                 {post.title}
-              </h3>
+              </h2>
               <p
                 style={{
                   fontFamily: "var(--font-instrument-sans), sans-serif",

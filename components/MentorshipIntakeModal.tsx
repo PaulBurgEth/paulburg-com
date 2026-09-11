@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
+import { useFocusTrap } from "@/lib/useFocusTrap";
 import { useLanguage } from "@/context/LanguageContext";
 import { useMentorshipModal } from "@/context/MentorshipModalContext";
 import { TELEGRAM_HANDLE } from "@/lib/constants";
@@ -103,6 +104,8 @@ export default function MentorshipIntakeModal() {
   const [contactInfo, setContactInfo] = useState("");
   const [status, setStatus] = useState<Status>("idle");
 
+  const dialogRef = useFocusTrap(isOpen);
+
   useEffect(() => {
     if (!isOpen) return;
     const prevOverflow = document.body.style.overflow;
@@ -174,7 +177,9 @@ export default function MentorshipIntakeModal() {
     fontFamily: "var(--font-instrument-sans), sans-serif",
     fontSize: 16,
     color: "var(--c-text)",
-    outline: "none",
+    // No `outline: "none"` here: an inline style beats the focus-visible rule
+    // in globals.css, and killing it left a keyboard user with no way to tell
+    // which field was live.
   };
 
   const labelStyle: React.CSSProperties = {
@@ -229,8 +234,10 @@ export default function MentorshipIntakeModal() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.98 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
+            aria-labelledby="mentorship-modal-title"
             style={{
               width: "100%",
               maxWidth: 480,
@@ -264,6 +271,7 @@ export default function MentorshipIntakeModal() {
 
             <div style={{ marginBottom: 20, paddingRight: 28 }}>
               <h2
+                id="mentorship-modal-title"
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 700,
@@ -416,7 +424,7 @@ export default function MentorshipIntakeModal() {
                   disabled={status === "pending"}
                   style={{
                     background: "var(--c-gold)",
-                    color: "var(--c-bg)",
+                    color: "var(--c-on-gold)",
                     fontFamily: "var(--font-instrument-sans), sans-serif",
                     fontWeight: 600,
                     fontSize: 16,

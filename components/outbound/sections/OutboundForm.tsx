@@ -164,7 +164,9 @@ const inputStyle: React.CSSProperties = {
   fontFamily: SANS,
   fontSize: 16,
   color: "var(--c-text)",
-  outline: "none",
+  // No `outline: "none"` here: an inline style beats the focus-visible rule in
+  // globals.css, and killing it left a keyboard user with no way to tell which
+  // field was live on the page's only conversion form.
 };
 
 const textareaStyle: React.CSSProperties = { ...inputStyle, minHeight: 96, resize: "vertical" };
@@ -399,7 +401,7 @@ export default function OutboundForm() {
                 disabled={status === "pending"}
                 style={{
                   background: "var(--c-gold)",
-                  color: "var(--c-bg)",
+                  color: "var(--c-on-gold)",
                   fontFamily: SANS,
                   fontWeight: 600,
                   fontSize: 15,

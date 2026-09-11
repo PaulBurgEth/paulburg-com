@@ -140,7 +140,11 @@ export default function SectionRail() {
               type="button"
               onClick={() => go(item)}
               aria-current={on ? "true" : undefined}
-              title={item.label}
+              // Some sections are bands with no heading, so `label` comes back
+              // empty and the button announced nothing at all. The § number is
+              // always there and is what the marker on the page says.
+              title={item.label || undefined}
+              aria-label={item.label ? undefined : `§ ${item.num}`}
               className="flex items-center justify-end gap-2.5"
               style={{
                 background: "none",

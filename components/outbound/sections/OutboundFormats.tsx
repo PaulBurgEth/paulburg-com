@@ -90,7 +90,7 @@ export default function OutboundFormats() {
                     width: 34, height: 34, borderRadius: "50%",
                     background: isDeal ? "var(--c-gold)" : "var(--c-bg)",
                     border: `1px solid ${isDeal ? "var(--c-gold)" : "var(--c-border2)"}`,
-                    color: isDeal ? "var(--c-bg)" : "var(--c-text2)",
+                    color: isDeal ? "var(--c-on-gold)" : "var(--c-text2)",
                     fontFamily: MONO, fontWeight: 700, fontSize: T.caption, letterSpacing: "0.06em",
                     flexShrink: 0, position: "relative", zIndex: 1,
                   }}

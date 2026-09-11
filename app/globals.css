@@ -31,10 +31,24 @@
   --c-text:      #2d2a26;
   --c-text2:     #6a6560;
   --c-text3:     #6f665f; /* 4.95:1 on --c-bg — was #8a8480 at 3.25:1 */
-  --c-muted:     #736a62; /* 4.67:1 on --c-bg — was #9a9088 at 2.76:1 */
+  /* 4.88:1 on --c-bg and 4.54:1 on --c-bg2, the darkest surface it lands on.
+     The previous #736a62 was calibrated against the page background alone and
+     read 4.34:1 on every alternating band and 4.49:1 inside a card — and cards
+     are where most of it actually lives: form labels, § markers, "13 min read".
+     Calibrate a text token against the darkest surface it sits on, not the page. */
+  --c-muted:     #70675f;
   --c-faint:     #c0b8b0;
   --c-subtle:    #a09890;
-  --c-gold:      #856230; /* 4.89:1 on --c-bg — was #a07840 at 3.52:1 */
+  /* 5.28:1 on --c-bg, 4.91 on --c-bg2, 4.52 on the gold-tinted pricing cards.
+     #856230 held 4.89 against the page but only 4.18 for the "MOST POPULAR"
+     and "Flagship" badges, which sit on a gold wash rather than on the page. */
+  --c-gold:      #7f5d2d;
+  /* Text on a gold fill. The primary CTA hardcoded near-black in both themes:
+     8.93:1 on the light-gold dark-theme fill, but 3.61:1 on the dark-gold light
+     one — the site's main button, failing in the light theme. Light text is the
+     answer there, and this token is the only way to say that per theme, since
+     the buttons are styled inline. */
+  --c-on-gold:   #ffffff;
   --c-gold-dim:  rgba(160,120,64,0.1);
   --c-gold-glow: rgba(160,120,64,0.15);
   --c-sage:      #387052; /* 5.13:1 on --c-bg — was #3d7a5a at 4.48:1 */
@@ -68,10 +82,14 @@
   --c-text:      #ddd8cf;
   --c-text2:     #a8a39a;
   --c-text3:     #b0aba3;
-  --c-muted:     #767a85; /* 4.67:1 on --c-bg — was #6a6e78 at 3.93:1 */
+  /* 5.14:1 on --c-bg, 4.53:1 on the lightest card it lands on (#16191c in the
+     /services grid). The previous #767a85 held 4.67:1 against the page only and
+     fell to 4.38 on --c-card, 4.23 on --c-card2 and 4.11 on the services cards. */
+  --c-muted:     #7d818c;
   --c-faint:     #23262c;
   --c-subtle:    #4a5060;
   --c-gold:      #c8a96e;
+  --c-on-gold:   #07080a; /* 8.93:1 — near-black on the light-gold dark fill */
   --c-gold-dim:  rgba(200,169,110,0.1);
   --c-gold-glow: rgba(200,169,110,0.18);
   --c-sage:      #7aab8f;
@@ -315,12 +333,28 @@ h6 {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* Focus-visible styles for keyboard navigation (a11y) */
+/* Focus-visible styles for keyboard navigation (a11y).
+   Fields are included on purpose: the intake form and the modal both set
+   `outline: none` inline, and an inline style beats a class but not this — the
+   rule reinstates a ring for the one place on the site where a keyboard user
+   has several controls in a row and no other way to tell which one is live. */
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible {
   outline: 2px solid var(--c-gold);
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--c-gold);
+  /* Sits inside the field rather than around it: these are edge-to-edge in a
+     narrow modal, and an outset ring would collide with the neighbour. */
+  outline-offset: -1px;
+  border-color: var(--c-gold) !important;
 }
 
 /* Subtle section divider */
@@ -616,6 +650,18 @@ button:focus-visible {
     transform: none;
   }
 }
+
+/* content-visibility: auto — попробовано и отклонено 2026-09-10.
+   Выигрыш реальный: полный проход layout на /outbound 20,3 мс → 1,06 мс.
+   Цена оказалась дороже. С пропущенными секциями placeholder
+   `contain-intrinsic-size: auto 900px` расходится с настоящей высотой до
+   +1 149 px на секцию (§05 — 2 194 px против 1 045 заявленных), а суммарная
+   высота документа занижается на 1 257 px. Переход по рельсу разделов на
+   секцию, мимо которой читатель ещё не прокручивал, промахивается больше чем
+   на экран — то есть ломается ровно та навигация, ради которой рельс делали.
+   Ключевое слово `auto` чинит это только после первой отрисовки секции.
+   Возвращаться — только с точными `contain-intrinsic-size` на секцию, а они
+   поедут при первой же правке текста. */
 
 /* Q&A на /outbound: нативный <details> без дефолтного маркера.
    Контент остаётся в документе, поэтому секция по-прежнему индексируется. */

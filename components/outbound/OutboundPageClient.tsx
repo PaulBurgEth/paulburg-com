@@ -109,7 +109,7 @@ function MobileCTA() {
           display: "block",
           textAlign: "center",
           background: "var(--c-gold)",
-          color: "var(--c-bg)",
+          color: "var(--c-on-gold)",
           border: "1px solid var(--c-gold)",
           borderRadius: 6,
           fontFamily: "var(--font-instrument-sans), sans-serif",

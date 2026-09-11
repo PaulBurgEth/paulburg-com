@@ -251,7 +251,7 @@ export default function ServicesGrid() {
                     fontFamily: "var(--font-instrument-sans), sans-serif",
                     fontWeight: 600,
                     fontSize: 17,
-                    color: "#07080a",
+                    color: "var(--c-on-gold)",
                     border: "1px solid var(--c-gold)",
                     background: "var(--c-gold)",
                     padding: "7px 14px",

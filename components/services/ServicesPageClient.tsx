@@ -1,6 +1,5 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ServicesHero from "./sections/ServicesHero";
@@ -9,12 +8,23 @@ import ServicesGrid from "./sections/ServicesGrid";
 import ServicesOutbound from "./sections/ServicesOutbound";
 import { useRevealObserver } from "@/lib/useStageReveal";
 
-const ServicesTurnkey = dynamic(() => import("./sections/ServicesTurnkey"), { ssr: false });
-const ServicesCases   = dynamic(() => import("./sections/ServicesCases"),   { ssr: false });
-const ServicesMachines = dynamic(() => import("./sections/ServicesMachines"), { ssr: false });
-const ServicesProcess = dynamic(() => import("./sections/ServicesProcess"), { ssr: false });
-const ServicesPricing = dynamic(() => import("./sections/ServicesPricing"), { ssr: false });
-const ServicesCTA     = dynamic(() => import("./sections/ServicesCTA"),     { ssr: false });
+// Static imports, not `dynamic(..., { ssr: false })`.
+//
+// Seven of the ten sections used to load lazily with SSR off, and the served
+// document was 420 words against 1 020 rendered — the turnkey banner, the
+// cases, the machines, the process, the price table and the closing CTA were
+// absent from the HTML entirely. Nothing that reads the page without running
+// JS, search engines included, ever saw the flagship offer or a single price.
+//
+// This is the same fix /outbound got on 2026-08-19; it was never carried over
+// here. Cost is the same shape too: a bigger first-screen bundle, against a
+// page that is actually complete when it arrives.
+import ServicesTurnkey from "./sections/ServicesTurnkey";
+import ServicesCases from "./sections/ServicesCases";
+import ServicesMachines from "./sections/ServicesMachines";
+import ServicesProcess from "./sections/ServicesProcess";
+import ServicesPricing from "./sections/ServicesPricing";
+import ServicesCTA from "./sections/ServicesCTA";
 
 export default function ServicesPageClient() {
   useRevealObserver();

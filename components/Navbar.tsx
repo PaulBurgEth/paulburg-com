@@ -86,6 +86,13 @@ export default function Navbar() {
                             fontSize: 18,
                             letterSpacing: "-0.01em",
                             textDecoration: "none",
+                            /* The brand link was 84x18 — an 18px tap target for
+                               the only way back to the home page. Padding only;
+                               the negative margin keeps the header optics. */
+                            paddingTop: 5,
+                            paddingBottom: 5,
+                            marginTop: -5,
+                            marginBottom: -5,
                         }}
                     >
                         Paul <BurgMark weight={1.1}>Burg</BurgMark>
@@ -134,7 +141,11 @@ export default function Navbar() {
                                 fontFamily: "var(--font-inconsolata), monospace",
                                 fontSize: 14,
                                 letterSpacing: "0.1em",
-                                padding: 0,
+                                /* Was padding: 0, which made the control 20x21 —
+                                   below the 24x24 minimum. Padding, not a bigger
+                                   label, so the type is untouched. */
+                                padding: "6px 8px",
+                                margin: "-6px -8px",
                             }}
                         >
                             {language === "ru" ? "EN" : "RU"}
@@ -170,6 +181,8 @@ export default function Navbar() {
                                 background: "transparent",
                                 border: "none",
                                 cursor: "pointer",
+                                padding: "6px 8px",
+                                margin: "-6px -8px",
                             }}
                             aria-label={language === "ru" ? "Switch to English" : "Переключить на русский"}
                         >

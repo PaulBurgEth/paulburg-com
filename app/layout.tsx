@@ -30,22 +30,33 @@ const newsreader = Newsreader({
   style: ["normal", "italic"],
 });
 
+// SOFT and WONK are dropped. Neither is ever set: there is no
+// font-variation-settings anywhere in the project, so both axes shipped as pure
+// payload inside the variable font. Measured against Google's own files, the
+// latin face is 120 800 bytes carrying all three axes and 67 388 bytes with
+// opsz alone — 53 KB per style, 116 KB across the roman and the italic, for a
+// face that renders identically. opsz stays: it is applied automatically and it
+// is what gives the hero its display cut.
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
   display: "swap",
-  axes: ["opsz", "SOFT", "WONK"],
+  axes: ["opsz"],
   style: ["normal", "italic"],
 });
 
 // Source Serif 4 — Cyrillic-capable serif. Acts as fallback for Fraunces/Newsreader
 // for Cyrillic glyphs, and is the primary face for RU mode (via html[lang="ru"] CSS rule).
+// preload: false — see the note above `inter` below. Weight 500 is gone: it was
+// used three times in the whole project, and each static weight is another eight
+// files (four subsets x roman and italic) in the preload set.
 const sourceSerif = Source_Serif_4({
   variable: "--font-source-serif",
   subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600", "700"],
   style: ["normal", "italic"],
+  preload: false,
 });
 
 // Cyrillic counterparts. Inconsolata, Instrument Sans, Newsreader and Fraunces
@@ -56,16 +67,33 @@ const sourceSerif = Source_Serif_4({
 // are swapped in by an html[lang="ru"] rule in globals.css; Inter matches
 // Instrument Sans in proportion and JetBrains Mono keeps the terminal register
 // the section markers depend on.
+//
+// They carry preload: false, and so does Source Serif 4 above.
+//
+// next/font emits a high-priority <link rel="preload"> for every declared family,
+// on every page, in both languages. Measured on /outbound: 22 font files and
+// 1 126 KB, against 273 KB of gzipped JS — fonts were 79% of the first screen.
+// Of that, 531 KB never rendered a glyph in English (Inter 174, JetBrains Mono
+// 68, Source Serif 289), and mirror-image in Russian 591 KB of Fraunces,
+// Newsreader, Instrument Sans and Inconsolata never rendered either.
+//
+// The @font-face declarations stay, so the browser still fetches these the
+// moment a Cyrillic glyph or the html[lang="ru"] rule asks for one — they are
+// simply no longer racing the LCP text for bandwidth on a page that will not
+// use them. Russian pays a swap for it, and already did: the server always
+// renders lang="en" and the switch happens after hydration.
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],
   display: "swap",
+  preload: false,
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],
   display: "swap",
+  preload: false,
 });
 
 const SEO_DESCRIPTION =
@@ -131,7 +159,15 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.classList.toggle('dark',t==='dark');})();` }} />
+        {/* Theme and language both have to be settled before the first paint.
+            Language was not: it was applied in an effect after hydration, so a
+            Russian reader got a frame of Latin-only Fraunces and Inconsolata
+            with no Cyrillic in them — every heading, eyebrow and § marker drawn
+            in a system fallback — and only then the html[lang="ru"] rule in
+            globals.css swapped the faces. <html> already carries
+            suppressHydrationWarning, and LanguageContext sets the same value on
+            mount, so the two agree. */}
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var d=document.documentElement;var t=localStorage.getItem('theme')||'dark';d.classList.toggle('dark',t==='dark');var q=new URLSearchParams(location.search).get('lang');var l=(q==='ru'||q==='en')?q:localStorage.getItem('pb-lang');if(l==='ru'||l==='en')d.lang=l;}catch(e){}})();` }} />
       </head>
       <body
         className={`${inconsolata.variable} ${instrumentSans.variable} ${newsreader.variable} ${fraunces.variable} ${sourceSerif.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased overflow-x-hidden`}

@@ -37,7 +37,11 @@ const REQUIRED_SOURCES = [
 const REQUIRED_ROUTES = [
   { file: ".next/server/app/index.html", min: 40_000 },
   { file: ".next/server/app/outbound.html", min: 100_000 },
-  { file: ".next/server/app/services.html", min: 30_000 },
+  // Was 30 000, which was read off an already-broken page: seven of the ten
+  // sections loaded with `ssr: false`, so a complete /services was 54 KB of
+  // HTML and the floor could never have caught the missing two thirds. With
+  // static imports the page is 92 KB.
+  { file: ".next/server/app/services.html", min: 75_000 },
   { file: ".next/server/app/mentorship.html", min: 20_000 },
   { file: ".next/server/app/blog.html", min: 10_000 },
 ];

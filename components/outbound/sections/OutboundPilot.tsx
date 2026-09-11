@@ -175,7 +175,7 @@ export default function OutboundPilot() {
                     width: 34, height: 34, borderRadius: "50%",
                     background: last ? "var(--c-gold)" : "var(--c-bg2)",
                     border: `1px solid ${last ? "var(--c-gold)" : "var(--c-border2)"}`,
-                    color: last ? "var(--c-bg)" : "var(--c-text2)",
+                    color: last ? "var(--c-on-gold)" : "var(--c-text2)",
                     fontFamily: MONO, fontWeight: 700, fontSize: T.caption, letterSpacing: "0.04em",
                     flexShrink: 0, position: "relative", zIndex: 1,
                   }}

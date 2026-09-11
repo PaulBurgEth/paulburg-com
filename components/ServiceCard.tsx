@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { Check, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -17,12 +17,26 @@ interface ServiceProps {
     buttonText: string;
     delay?: number;
     color: string;
+    /** Lets the row know a card opened, so the grid can stop stretching. */
+    onToggle?: (isExpanded: boolean) => void;
 }
 
-export default function ServiceCard({ title, description, lists, prices, buttonText, delay = 0 }: ServiceProps) {
+export default function ServiceCard({ title, description, lists, prices, buttonText, delay = 0, onToggle }: ServiceProps) {
     const [isExpanded, setIsExpanded] = useState(false);
+    const [panelHeight, setPanelHeight] = useState(0);
+    const panelRef = useRef<HTMLDivElement>(null);
     const { t } = useLanguage();
     const s = t.mentorship.services;
+
+    // Measured in the handler: refs must not be read during render, and an
+    // effect that only calls setState is the other thing to avoid. scrollHeight
+    // is the full content height even while max-height holds the panel at 0.
+    const toggle = () => {
+        const next = !isExpanded;
+        setPanelHeight(next ? panelRef.current?.scrollHeight ?? 0 : 0);
+        setIsExpanded(next);
+        onToggle?.(next);
+    };
 
     return (
         <motion.div
@@ -37,9 +51,9 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                 border: "1px solid var(--c-border)",
                 borderRadius: 10,
             }}
-            onClick={() => setIsExpanded(!isExpanded)}
+            onClick={toggle}
         >
-            <div className="p-8 flex flex-col items-center text-center">
+            <div className="p-8 flex flex-col items-center text-center flex-1 w-full">
                 <h3
                     className="mb-5 flex items-center justify-center"
                     style={{
@@ -66,7 +80,12 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                     {description}
                 </p>
 
-                <div className="w-full">
+                {/* mt-auto rather than flex-1 on the description above. An auto margin
+                    soaks up the leftover height so the price block and CTA sit on a
+                    common line across the row, but it collapses to zero the moment the
+                    card is expanded — flex-1 kept its claim on the space instead and
+                    squeezed the panel that opens below down to its padding. */}
+                <div className="w-full mt-auto">
                     <div
                         className="mb-6 pt-5 text-left"
                         style={{ borderTop: "1px solid var(--c-border)" }}
@@ -106,7 +125,7 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                         className="w-full py-3 rounded-[5px] font-bold transition-all mb-5"
                         style={{
                             background: "var(--c-gold)",
-                            color: "var(--c-bg)",
+                            color: "var(--c-on-gold)",
                             fontFamily: "var(--font-instrument-sans), sans-serif",
                             fontWeight: 600,
                             fontSize: 16,
@@ -121,21 +140,37 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                         style={{ color: "var(--c-muted)", fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16 }}
                     >
                         <span>{s.more}</span>
-                        <motion.div animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.3 }}>
+                        {/* CSS for the same reason as the panel: the framer rotate wrote
+                            no inline style in production, so the chevron never turned. */}
+                        <div
+                            className="transition-transform duration-300"
+                            style={{ transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)" }}
+                        >
                             <ChevronDown size={18} />
-                        </motion.div>
+                        </div>
                     </div>
                 </div>
 
-                <AnimatePresence>
-                    {isExpanded && (
-                        <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.4, ease: "easeInOut" }}
-                            className="w-full overflow-hidden text-left pt-6 space-y-6"
-                        >
+                {/* CSS, not framer. The old panel animated height 0 → "auto" through
+                    framer, and in production that animation never ran: the element sat
+                    at its initial `height: 0px` for good, so "Узнать больше" opened onto
+                    nothing and all three detail sections — 755px of the actual offer —
+                    were unreachable.
+
+                    max-height off the measured scrollHeight rather than the usual
+                    grid-template-rows 0fr → 1fr trick: this panel is a flex child inside
+                    a flex column, and there `1fr` resolved against zero free space and
+                    computed to 0px, which is the same failure in a new costume. A
+                    measured pixel value has no such dependency. shrink-0 because flex
+                    children shrink by default. */}
+                <div
+                    ref={panelRef}
+                    className="w-full shrink-0 overflow-hidden transition-[max-height] duration-300 ease-in-out"
+                    style={{ maxHeight: panelHeight }}
+                    aria-hidden={!isExpanded}
+                >
+                    <div className="text-left">
+                        <div className="pt-6 space-y-6">
                             {[
                                 { heading: s.howTitle, items: lists.howItWorks },
                                 { heading: s.getTitle, items: lists.whatYouGet },
@@ -170,9 +205,9 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                                     </ul>
                                 </div>
                             ))}
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             {!isExpanded && (

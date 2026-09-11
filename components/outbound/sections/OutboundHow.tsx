@@ -240,7 +240,7 @@ export default function OutboundHow() {
                   fontSize: T.caption,
                   fontWeight: on || isOpenChip ? 700 : 400,
                   letterSpacing: "0.1em",
-                  color: on ? "var(--c-bg)" : isOpenChip ? "var(--c-gold)" : "var(--c-text2)",
+                  color: on ? "var(--c-on-gold)" : isOpenChip ? "var(--c-gold)" : "var(--c-text2)",
                   background: on ? "var(--c-gold)" : "var(--c-card2)",
                   // Longhands only: React warns when a shorthand and a longhand
                   // for the same value are both updated on a rerender, and the
@@ -283,7 +283,7 @@ export default function OutboundHow() {
             style={{
               display: "inline-block",
               background: "var(--c-gold)",
-              color: "var(--c-bg)",
+              color: "var(--c-on-gold)",
               border: "1px solid var(--c-gold)",
               fontFamily: SANS,
               fontWeight: 600,

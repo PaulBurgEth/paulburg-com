@@ -279,7 +279,7 @@ export function MidCTA({ label, note }: { label: string; note?: string }) {
         style={{
           display: "inline-block",
           background: "var(--c-gold)",
-          color: "var(--c-bg)",
+          color: "var(--c-on-gold)",
           border: "1px solid var(--c-gold)",
           fontFamily: SANS,
           fontWeight: 600,

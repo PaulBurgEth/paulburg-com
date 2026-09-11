@@ -94,7 +94,13 @@ export default function ArticlePageClient({
   const ctaWhatsApp = lang === "ru" ? "Написать в WhatsApp" : "Text me on WhatsApp";
 
   return (
-    <main style={{ background: "var(--c-bg)", minHeight: "100vh" }}>
+    /* lang on <main>: this route is the one place the server already knows the
+       language — it reads ?lang= and renders the Russian body — but the root
+       layout cannot, so a Russian article ships 22 000 Cyrillic characters
+       inside <html lang="en">. A screen reader then reads Russian with English
+       phonetics. Marking the subtree is the standard fix for a language change
+       inside a document, and unlike <html lang> it works without JS. */
+    <main lang={lang} style={{ background: "var(--c-bg)", minHeight: "100vh" }}>
       <Navbar />
 
       <motion.div
@@ -218,7 +224,11 @@ export default function ArticlePageClient({
                         href={`#${item.id}`}
                         style={{
                           fontFamily: "var(--font-instrument-sans), sans-serif",
-                          fontSize: item.level === 3 ? 13 : 14,
+                          // Both levels at 14, the site's floor. The nesting is
+                          // already carried by the indent on the <li>; 13px made
+                          // nine interactive links smaller than anything else on
+                          // the site to save a distinction that was redundant.
+                          fontSize: 14,
                           color: "var(--c-text2)",
                           textDecoration: "none",
                           display: "flex",

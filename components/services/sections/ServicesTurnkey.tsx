@@ -278,7 +278,7 @@ export default function ServicesTurnkey() {
               style={{
                 background: "var(--c-gold)",
                 border: "1px solid var(--c-gold)",
-                color: "#07080a",
+                color: "var(--c-on-gold)",
                 fontFamily: "var(--font-instrument-sans), sans-serif",
                 fontWeight: 600,
                 fontSize: 16,

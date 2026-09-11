@@ -57,7 +57,7 @@ export default function OutboundStart() {
                   width: 34, height: 34, borderRadius: "50%",
                   background: i === 2 ? "var(--c-gold)" : "var(--c-bg)",
                   border: `1px solid ${i === 2 ? "var(--c-gold)" : "var(--c-border2)"}`,
-                  color: i === 2 ? "var(--c-bg)" : "var(--c-text2)",
+                  color: i === 2 ? "var(--c-on-gold)" : "var(--c-text2)",
                   fontFamily: MONO, fontWeight: 700, fontSize: T.caption, letterSpacing: "0.04em",
                   flexShrink: 0, position: "relative", zIndex: 1,
                 }}
@@ -83,7 +83,7 @@ export default function OutboundStart() {
             border: "1px solid var(--c-gold)", boxShadow: "0 0 0 4px var(--c-gold-dim)",
           }}
         >
-          <Image src="/about.webp" alt="Paul Burg" width={168} height={168} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 28%" }} />
+          <Image src="/about.webp" alt="Paul Burg" width={168} height={168} sizes="168px" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 28%" }} />
         </span>
         <div className="min-w-0">
           <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--c-text2)", display: "block", marginBottom: 7 }}>
