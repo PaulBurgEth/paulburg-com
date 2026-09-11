@@ -203,39 +203,6 @@ body::after{
 }
 .btn-ghost:hover{border-color:${C.gold};color:${C.gold}}
 
-/* Era rail over the bio. Same dot-and-hairline device as the section rails,
-   turned into a timeline: the hairline runs behind the dots, the last era is
-   filled because it is the one that is current. */
-.era-rail{
-  list-style:none;padding:0;margin:0 0 20px;position:relative;
-  display:grid;grid-template-columns:repeat(2,1fr);gap:16px 12px;
-}
-@media (min-width:640px){.era-rail{grid-template-columns:repeat(4,1fr)}}
-.era-rail::before{
-  content:'';position:absolute;left:0;right:0;top:5px;height:1px;
-  background:${C.border2};display:none;
-}
-@media (min-width:640px){.era-rail::before{display:block}}
-.era{position:relative;display:flex;flex-direction:column;gap:2px}
-.era-dot{
-  width:11px;height:11px;border-radius:50%;
-  border:1px solid ${C.gold};background:${C.bg};
-  position:relative;z-index:1;margin-bottom:9px;
-}
-.era-on .era-dot{background:${C.gold}}
-.era-y{
-  font-family:var(--font-inconsolata),monospace;font-size:14px;
-  letter-spacing:0.12em;color:${C.gold};
-}
-.era-k{
-  font-family:var(--font-instrument-sans),sans-serif;font-size:14px;
-  font-weight:600;color:${C.heading};line-height:1.3;
-}
-.era-n{
-  font-family:var(--font-instrument-sans),sans-serif;font-size:14px;
-  color:${C.text2};line-height:1.4;
-}
-
 /* Three-source band. Same geometry as the /outbound §01 band: equal columns
    split by hairlines, the last one carrying the argument. */
 .src-band{
@@ -1370,37 +1337,6 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   {language === "ru" ? "Холодный аутбаунд" : "Cold Outbound"}
                 </span>
               </div>
-              {/* An era rail over the prose, not instead of it. The bio is the
-                  largest prose block on the page — 161 words — and inside it
-                  sit three nested chronologies: since 2011, then five years in
-                  Asia of which three in Shenzhen, then remote. The only
-                  structural cue was the word order: "for the past year",
-                  "before that", "earlier still". The prose keeps every word;
-                  this gives it a spine a scanning reader can catch. */}
-              <ol className="era-rail" aria-hidden="true">
-                {(language === "ru"
-                  ? [
-                      { y: "2011", k: "Свои проекты" },
-                      { y: "2015", k: "5 лет в Азии", n: "3 из них в Шэньчжэне" },
-                      { y: "2020", k: "Портфель удалённо" },
-                      { y: "2025", k: "AI-разработка", on: true },
-                    ]
-                  : [
-                      { y: "2011", k: "Own projects" },
-                      { y: "2015", k: "5 years in Asia", n: "3 of them in Shenzhen" },
-                      { y: "2020", k: "Portfolio, remotely" },
-                      { y: "2025", k: "AI-assisted builds", on: true },
-                    ]
-                ).map((e) => (
-                  <li key={e.y} className={e.on ? "era era-on" : "era"}>
-                    <span className="era-dot" />
-                    <span className="era-y">{e.y}</span>
-                    <span className="era-k">{e.k}</span>
-                    {e.n && <span className="era-n">{e.n}</span>}
-                  </li>
-                ))}
-              </ol>
-
               <div className="about-bio">
                 {language === "ru" ? (
                   <>
