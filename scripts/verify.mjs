@@ -43,6 +43,17 @@ const PAGES = [
 const THEMES = ["dark", "light"];
 const LANGS = ["en", "ru"];
 
+/**
+ * Both widths. The first version of this ran at 1440 only, and a note in
+ * KNOWN_ISSUES had to say so — which is the wrong place for a gap that costs
+ * one loop. 375 is where the rail collapses to a sheet, the tables fall back to
+ * stacked lists and the header's controls are tightest.
+ */
+const VIEWPORTS = [
+  { name: "1440", width: 1440, height: 900, isMobile: false },
+  { name: "375", width: 375, height: 812, isMobile: true },
+];
+
 const failures = [];
 const notes = [];
 function fail(area, msg) { failures.push({ area, msg }); }
@@ -469,18 +480,31 @@ async function main() {
   const browser = await chromium.launch();
 
   try {
-    console.log("\n  ── 2. axe: 5 страниц × 2 темы × 2 языка ──────────────────────\n");
+    console.log("\n  ── 2. axe: 5 страниц × 2 темы × 2 языка × 2 ширины ───────────\n");
     for (const p of PAGES) {
-      for (const theme of THEMES) {
+      for (const vp of VIEWPORTS) {
+        for (const theme of THEMES) {
         for (const lang of LANGS) {
-          const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+          const context = await browser.newContext({
+            viewport: { width: vp.width, height: vp.height },
+            isMobile: vp.isMobile,
+            hasTouch: vp.isMobile,
+          });
           const page = await context.newPage();
           const url = `${base}${p.path}${lang === "ru" ? "?lang=ru" : ""}`;
           await preparePage(page, url, theme);
           const res = await runAxe(page);
-          const label = `${p.name} · ${theme} · ${lang}`.padEnd(34);
+          const overflow = await page.evaluate(() => {
+            const de = document.documentElement;
+            return de.scrollWidth > de.clientWidth ? de.scrollWidth : 0;
+          });
+          if (overflow) {
+            fail("вёрстка", `${p.name}/${theme}/${lang} @${vp.name}: горизонтальный скролл, ${overflow}px`);
+            console.log(`   ✗ ${`${p.name} · ${theme} · ${lang} @${vp.name}`.padEnd(40)} горизонтальный скролл ${overflow}px`);
+          }
+          const label = `${p.name} · ${theme} · ${lang} @${vp.name}`.padEnd(40);
           if (res.visibleText < 80) {
-            fail("прогон", `${label} axe увидел только ${res.visibleText} слов — раскрытие секций не сработало, результат недостоверен`);
+            fail("прогон", `${label} axe увидел только ${res.visibleText} слов — раскрытие секций не сработало`);
             console.log(`   ✗ ${label} ТОЛЬКО ${res.visibleText} слов видно`);
           } else if (res.violations.length === 0) {
             console.log(`   ✓ ${label} 0 нарушений (${res.visibleText} слов)`);
@@ -490,10 +514,11 @@ async function main() {
             for (const v of res.violations) {
               console.log(`       ${v.impact ?? "?"}  ${v.id} ×${v.n} — ${v.help}`);
               for (const s of v.sample) console.log(`           ${s.slice(0, 96)}`);
-              fail("axe", `${p.name}/${theme}/${lang}: ${v.id} ×${v.n} (${v.help})`);
+              fail("axe", `${p.name}/${theme}/${lang}@${vp.name}: ${v.id} ×${v.n} (${v.help})`);
             }
           }
           await context.close();
+        }
         }
       }
     }
