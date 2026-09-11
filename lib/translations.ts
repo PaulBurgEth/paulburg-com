@@ -21,21 +21,13 @@ export const translations = {
                 tagline: "Строю с 2011 • Founder/CEO • Цифровой номад",
                 description: "Создаю на пересечении Web3, ReFi, AI и инфраструктуры реального воздействия",
             },
-            about: {
-                title: "Обо мне",
-                name: "Павел Burg",
-                p1: "Цифровой номад с 2015 года: жил и работал в России, США, Китае, Таиланде и других странах.",
-                p2: "С 2011 года запускаю и веду собственные проекты: электронная коммерция, цепочки поставок и международные операции. По образованию — учёный-эколог.",
-                p3: "Более трёх лет глубоко погружён в блокчейн, общественные блага и реальное воздействие на мир — основал студию EcoSynthesisX, ReFi Phangan и GreenPill Phangan, разработал маркетплейс для токенизированных общественных благ Regen Bazaar, сеть DeCleanup и концепцию продуктов воздействия.",
-                p4: "Преподавал английский язык в Китае — работал с детьми и взрослыми, с акцентом на разговорных навыках и уверенности в общении.",
-            },
             projects: {
                 title: "Проекты",
                 subtitle: "Стартапы и инициативы, которые я создаю",
             },
             mentorshipTeaser: {
                 title: "Менторство",
-                description: "Три направления — одна цель: ваша свобода. Капитал, Бизнес, Коммуникация.",
+                description: "Три направления — одна цель: ваша свобода. Капитал, бизнес, AI и автоматизация.",
                 cta: "Узнать подробнее",
             },
             media: {
@@ -48,7 +40,7 @@ export const translations = {
         mentorship: {
             meta: {
                 title: "Менторство | Павел Burg",
-                description: "Менторство для жизни и бизнеса в глобальном мире. Капитал, Бизнес, Коммуникация.",
+                description: "Менторство для жизни и бизнеса в глобальном мире. Капитал, бизнес, AI и автоматизация.",
             },
             hero: {
                 headline: "Менторство для бизнеса, капитала и AI в современном мире",
@@ -235,21 +227,13 @@ export const translations = {
                 tagline: "Building AI tools and Web3 infrastructure for the real world",
                 description: "",
             },
-            about: {
-                title: "About Me",
-                name: "Paul Burg",
-                p1: "I have been launching and running my own projects since 2011 — business development, operations, and supply chain across Asia. Now I design and ship production AI systems and automation. I build at the intersection of AI, Web3, and real-world impact.",
-                p2: "Digital nomad since 2015 — lived and worked across Russia, USA, China, and Thailand. Founded EcoSynthesisX, ReFi Phangan, GreenPill Phangan, DeCleanup Network, and Regen Bazaar. Speaker at Devcon 7 SEA Bangkok. Environmental scientist by education.",
-                p3: "Team leadership, fundraising, and international partnerships, run remotely across time zones. Currently in Da Nang, Vietnam.",
-                p4: "Open to collaborations, partnerships, and building with people who care about real impact.",
-            },
             projects: {
                 title: "Projects",
                 subtitle: "Startups and initiatives I'm building",
             },
             mentorshipTeaser: {
                 title: "Mentorship",
-                description: "Three Areas — One Goal: Your Freedom. Capital, Business, Communication.",
+                description: "Three Areas — One Goal: Your Freedom. Capital, Business, AI & Automation.",
                 cta: "Learn More",
             },
             media: {
@@ -262,7 +246,7 @@ export const translations = {
         mentorship: {
             meta: {
                 title: "Mentorship | Paul Burg",
-                description: "Mentorship for life and business in a global world. Capital, Business, Communication.",
+                description: "Mentorship for life and business in a global world. Capital, Business, AI & Automation.",
             },
             hero: {
                 headline: "Mentorship for Business, Capital, and AI in a Modern World",

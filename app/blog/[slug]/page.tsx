@@ -5,6 +5,7 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import { getPostBySlug } from "@/lib/posts";
 import ArticlePageClient from "@/components/blog/ArticlePageClient";
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   const postsDir = path.join(process.cwd(), "content/posts");
@@ -26,27 +27,12 @@ export async function generateMetadata({
   const lang = langParam === "ru" ? "ru" : "en";
   try {
     const { frontmatter } = await getPostBySlug(slug, lang);
-    return {
+    return pageMetadata({
       title: `${frontmatter.title} | Paul Burg`,
       description: frontmatter.excerpt,
-      alternates: {
-        // Each language gets its own canonical instead of both pointing at the
-        // English URL, and the pair is declared with hreflang. Without this the
-        // Russian article — a full translation, not a variant — was telling
-        // search engines it was a duplicate of the English one.
-        canonical:
-          lang === "ru"
-            ? `https://paulburg.com/blog/${slug}?lang=ru`
-            : `https://paulburg.com/blog/${slug}`,
-        languages: {
-          en: `https://paulburg.com/blog/${slug}`,
-          ru: `https://paulburg.com/blog/${slug}?lang=ru`,
-        },
-      },
-      openGraph: {
-        locale: lang === "ru" ? "ru_RU" : "en_US",
-      },
-    };
+      path: `/blog/${slug}`,
+      lang,
+    });
   } catch {
     return { title: "Blog | Paul Burg" };
   }

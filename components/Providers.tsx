@@ -7,7 +7,13 @@ import { MentorshipModalProvider } from "@/context/MentorshipModalContext";
 import IntakeModal from "@/components/IntakeModal";
 import MentorshipIntakeModal from "@/components/MentorshipIntakeModal";
 
-export default function Providers({ children }: { children: React.ReactNode }) {
+export default function Providers({
+    children,
+    initialLanguage,
+}: {
+    children: React.ReactNode;
+    initialLanguage: "en" | "ru";
+}) {
     return (
         /* reducedMotion="user" makes every framer-motion animation on the site
            honour prefers-reduced-motion. The @media block in globals.css only
@@ -17,7 +23,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
            call useReducedMotion by hand. Transforms are dropped, opacity is
            kept, so nothing disappears. */
         <MotionConfig reducedMotion="user">
-        <LanguageProvider>
+        <LanguageProvider initialLanguage={initialLanguage}>
             <IntakeModalProvider>
                 <MentorshipModalProvider>
                     {children}

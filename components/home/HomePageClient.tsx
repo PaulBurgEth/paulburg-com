@@ -1145,12 +1145,18 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                   letterSpacing: "0.14em", fontWeight: 700,
                 }}>RU</span>
               </h3>
+              {/* The channel is Russian-language, so an English reader needs to
+                  be told that in English rather than shown Russian. The
+                  description and the button used to be hardcoded Russian on
+                  both versions of the page. */}
               <p className="follow-desc">
-                Русскоязычный канал о жизни цифрового кочевника, технологиях и Web3. Без фильтров.
+                {language === "ru"
+                  ? "Русскоязычный канал о жизни цифрового кочевника, технологиях и Web3. Без фильтров."
+                  : "A Russian-language channel on nomad life, technology and Web3. Unfiltered."}
               </p>
               <a href="https://t.me/nomadglobalview" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
                 <button className="btn-ghost" style={{ width: "100%", justifyContent: "center", color: C.text }}>
-                  Подписаться →
+                  {language === "ru" ? "Подписаться →" : "Subscribe →"}
                 </button>
               </a>
             </div>

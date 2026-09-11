@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import Script from "next/script";
 import { Inconsolata, Instrument_Sans, Newsreader, Fraunces, Source_Serif_4, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
@@ -6,6 +7,7 @@ import Providers from "@/components/Providers";
 import ScrollProgress from "@/components/ScrollProgress";
 import SectionRail from "@/components/SectionRail";
 import { TELEGRAM_URL } from "@/lib/constants";
+import { LANG_HEADER } from "@/middleware";
 
 const inconsolata = Inconsolata({
   variable: "--font-inconsolata",
@@ -151,13 +153,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Language resolved by middleware.ts, so <html lang> is correct in the first
+  // byte. It used to be hardcoded "en" and corrected in an effect after
+  // hydration, which meant Russian copy was served inside lang="en" — wrong for
+  // a screen reader, and invisible to a crawler that does not run JS.
+  const lang = (await headers()).get(LANG_HEADER) === "ru" ? "ru" : "en";
+
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang={lang} className="scroll-smooth" suppressHydrationWarning>
       <head>
         {/* Theme and language both have to be settled before the first paint.
             Language was not: it was applied in an effect after hydration, so a
@@ -172,12 +180,12 @@ export default function RootLayout({
             It used to default to dark unconditionally, so a first-time visitor
             whose system is set to light still got the dark site — the OS
             preference was never consulted anywhere in the project. */}
-        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var d=document.documentElement;var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}d.classList.toggle('dark',t==='dark');var q=new URLSearchParams(location.search).get('lang');var l=(q==='ru'||q==='en')?q:localStorage.getItem('pb-lang');if(l==='ru'||l==='en')d.lang=l;}catch(e){}})();` }} />
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var d=document.documentElement;var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}d.classList.toggle('dark',t==='dark');var q=new URLSearchParams(location.search).get('lang');if(q==='ru'||q==='en')d.lang=q;}catch(e){}})();` }} />
       </head>
       <body
         className={`${inconsolata.variable} ${instrumentSans.variable} ${newsreader.variable} ${fraunces.variable} ${sourceSerif.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased overflow-x-hidden`}
       >
-        <Providers>
+        <Providers initialLanguage={lang}>
           {/* First thing in the tab order, before the rail and the navbar. */}
           <a className="skip-link" href="#content">Skip to content</a>
           <ScrollProgress />

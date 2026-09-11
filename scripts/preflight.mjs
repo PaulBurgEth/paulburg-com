@@ -17,8 +17,8 @@
  * non-zero.
  */
 
-import { execSync } from "node:child_process";
-import { existsSync, statSync } from "node:fs";
+import { execSync, spawn } from "node:child_process";
+import { existsSync } from "node:fs";
 
 const REQUIRED_SOURCES = [
   "app/page.tsx",
@@ -31,20 +31,28 @@ const REQUIRED_SOURCES = [
   "components/outbound/OutboundPageClient.tsx",
 ];
 
-// Minimum bytes of prerendered HTML. Floors sit well under the real sizes so
-// ordinary copy edits never trip them; they exist to catch a missing half of a
-// page, not a reworded paragraph.
+// Minimum bytes of served HTML, per route and per language.
+//
+// This used to stat prerendered files under .next/server/app/. Those stopped
+// existing when the language moved to the server: the root layout reads a
+// request header now, so every route renders per request. Checking the actual
+// response is the better test anyway — it measures what a reader receives, and
+// it can check both languages, which the file-based version never could.
+//
+// The Russian floors matter as much as the English ones. Until this release
+// `curl "/outbound?lang=ru"` returned zero Russian words, and nothing in the
+// deploy path noticed that half the site was missing.
 const REQUIRED_ROUTES = [
-  { file: ".next/server/app/index.html", min: 40_000 },
-  { file: ".next/server/app/outbound.html", min: 100_000 },
-  // Was 30 000, which was read off an already-broken page: seven of the ten
-  // sections loaded with `ssr: false`, so a complete /services was 54 KB of
-  // HTML and the floor could never have caught the missing two thirds. With
-  // static imports the page is 92 KB.
-  { file: ".next/server/app/services.html", min: 75_000 },
-  { file: ".next/server/app/mentorship.html", min: 20_000 },
-  { file: ".next/server/app/blog.html", min: 10_000 },
+  { path: "/", min: { en: 40_000, ru: 40_000 } },
+  { path: "/outbound", min: { en: 100_000, ru: 100_000 } },
+  { path: "/services", min: { en: 75_000, ru: 75_000 } },
+  { path: "/mentorship", min: { en: 20_000, ru: 20_000 } },
+  { path: "/blog", min: { en: 10_000, ru: 10_000 } },
 ];
+
+// A Russian page has to actually contain Russian. A floor on bytes alone would
+// pass an English page served under lang="ru".
+const MIN_CYRILLIC = 2_000;
 
 const fail = [];
 const kb = (n) => `${(n / 1024).toFixed(0)} KB`;
@@ -69,15 +77,55 @@ try {
   process.exit(1);
 }
 
-for (const { file, min } of REQUIRED_ROUTES) {
-  if (!existsSync(file)) {
-    fail.push(`маршрут не собрался: ${file}`);
-    continue;
+const port = 3210 + (process.pid % 300);
+const server = spawn("npx", ["next", "start", "-p", String(port)], { stdio: "ignore" });
+const base = `http://127.0.0.1:${port}`;
+const sizes = [];
+
+try {
+  // Wait for the server, then measure every route in both languages.
+  let up = false;
+  for (let i = 0; i < 100 && !up; i++) {
+    try {
+      const r = await fetch(base, { signal: AbortSignal.timeout(2000) });
+      up = r.ok;
+    } catch { /* not yet */ }
+    if (!up) await new Promise((r) => setTimeout(r, 400));
   }
-  const size = statSync(file).size;
-  if (size < min) {
-    fail.push(`${file} — ${kb(size)}, ожидалось от ${kb(min)}. Страница отдаётся неполной.`);
+  if (!up) {
+    fail.push("next start не поднялся — маршруты не проверены");
+  } else {
+    for (const { path, min } of REQUIRED_ROUTES) {
+      for (const lang of ["en", "ru"]) {
+        const url = `${base}${path}${lang === "ru" ? (path.includes("?") ? "&" : "?") + "lang=ru" : ""}`;
+        let html = "";
+        try {
+          const res = await fetch(url);
+          if (!res.ok) { fail.push(`${path} (${lang}) — HTTP ${res.status}`); continue; }
+          html = await res.text();
+        } catch (e) {
+          fail.push(`${path} (${lang}) — запрос упал: ${e.message}`);
+          continue;
+        }
+        const bytes = Buffer.byteLength(html);
+        const declared = /<html[^>]+lang="([a-z]{2})"/.exec(html)?.[1] ?? "?";
+        const cyrillic = (html.match(/[А-Яа-я]/g) ?? []).length;
+        sizes.push({ path, lang, bytes, declared, cyrillic });
+
+        if (bytes < min[lang]) {
+          fail.push(`${path} (${lang}) — ${kb(bytes)}, ожидалось от ${kb(min[lang])}. Страница отдаётся неполной.`);
+        }
+        if (declared !== lang) {
+          fail.push(`${path} (${lang}) — <html lang="${declared}">, ожидалось "${lang}".`);
+        }
+        if (lang === "ru" && cyrillic < MIN_CYRILLIC) {
+          fail.push(`${path} (ru) — только ${cyrillic} кириллических символов. Русская версия не отдаётся.`);
+        }
+      }
+    }
   }
+} finally {
+  server.kill();
 }
 
 if (fail.length) {
@@ -88,7 +136,7 @@ if (fail.length) {
 }
 
 console.log("\n  Preflight пройден:");
-for (const { file } of REQUIRED_ROUTES) {
-  console.log(`   ${file.replace(".next/server/app/", "")} — ${kb(statSync(file).size)}`);
+for (const s of sizes) {
+  console.log(`   ${s.path.padEnd(12)} ${s.lang}  ${kb(s.bytes).padStart(7)}  lang="${s.declared}"${s.lang === "ru" ? `  ${s.cyrillic} кириллических` : ""}`);
 }
 console.log("\n  Выкатываю на продакшен…\n");
