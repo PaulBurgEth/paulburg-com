@@ -70,7 +70,6 @@ function extractToc(content: string): { id: string; text: string; level: 2 | 3 }
 }
 
 function makeHeading(level: 2 | 3) {
-  // eslint-disable-next-line react/display-name
   return function Heading({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
     const text = typeof children === "string" ? children : "";
     const id = text.toLowerCase().replace(/[^a-z0-9а-яёa-z]+/gi, "-").replace(/^-|-$/g, "");
@@ -119,38 +118,54 @@ export default async function ArticlePage({
   const { lang: langParam } = await searchParams;
   const lang = langParam === "ru" ? "ru" : "en";
 
+  // Only the loading and compiling sits in the try. The JSX used to be inside
+  // it too, which React's own lint rule flags: components are not rendered at
+  // the moment they are constructed, so a render-time throw inside
+  // ArticlePageClient would escape this catch anyway — the guard was narrower
+  // than it looked. The bare catch was also swallowing real failures: a syntax
+  // error in an .mdx body or a malformed frontmatter field surfaced as a silent
+  // 404 with the cause discarded, which is the worst possible way to find out.
+  let article: Awaited<ReturnType<typeof loadArticle>>;
   try {
-    const { content, frontmatter } = await getPostBySlug(slug, lang);
-    const { body, sources } = splitSources(content);
-    const toc = extractToc(body);
-    const { content: mdxContent } = await compileMDX({
-      source: body,
+    article = await loadArticle(slug, lang);
+  } catch (err) {
+    // A missing file is a 404. Anything else is a bug, and it should say so.
+    if ((err as NodeJS.ErrnoException)?.code === "ENOENT") notFound();
+    throw err;
+  }
+
+  return (
+    <ArticlePageClient
+      slug={slug}
+      lang={lang}
+      frontmatter={article.frontmatter}
+      toc={article.toc}
+      sources={article.sourcesContent}
+    >
+      {article.mdxContent}
+    </ArticlePageClient>
+  );
+}
+
+async function loadArticle(slug: string, lang: "en" | "ru") {
+  const { content, frontmatter } = await getPostBySlug(slug, lang);
+  const { body, sources } = splitSources(content);
+  const toc = extractToc(body);
+  const { content: mdxContent } = await compileMDX({
+    source: body,
+    options: { parseFrontmatter: false },
+    components: { h2: makeHeading(2), h3: makeHeading(3) },
+  });
+
+  let sourcesContent = null;
+  if (sources) {
+    const compiled = await compileMDX({
+      source: formatSources(sources),
       options: { parseFrontmatter: false },
       components: { h2: makeHeading(2), h3: makeHeading(3) },
     });
-
-    let sourcesContent = null;
-    if (sources) {
-      const compiled = await compileMDX({
-        source: formatSources(sources),
-        options: { parseFrontmatter: false },
-        components: { h2: makeHeading(2), h3: makeHeading(3) },
-      });
-      sourcesContent = compiled.content;
-    }
-
-    return (
-      <ArticlePageClient
-        slug={slug}
-        lang={lang}
-        frontmatter={frontmatter}
-        toc={toc}
-        sources={sourcesContent}
-      >
-        {mdxContent}
-      </ArticlePageClient>
-    );
-  } catch {
-    notFound();
+    sourcesContent = compiled.content;
   }
+
+  return { frontmatter, toc, mdxContent, sourcesContent };
 }

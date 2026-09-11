@@ -87,7 +87,7 @@ export default function OutboundPilot() {
         {t.scheduleTitle}
       </h3>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3" style={{ marginBottom: 14 }}>
-        {t.schedule.map((b, i) => (
+        {t.schedule.map((b) => (
           <motion.div key={b.w} variants={itemVariants} style={{ position: "relative" }}>
             <div className="flex items-center gap-2" style={{ marginBottom: 9 }}>
               <span

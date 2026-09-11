@@ -247,7 +247,10 @@ export default function OutboundHow() {
                   // winner is not guaranteed.
                   borderWidth: 1,
                   borderStyle: isOpenChip && !on ? "dashed" : "solid",
-                  borderColor: on || isOpenChip ? "var(--c-gold)" : "var(--c-border)",
+                  // --c-border-control, not --c-border: these are controls, and
+                  // 1.4.11 holds a control's boundary to 3:1. The hairline
+                  // token measured 1.19:1 behind these tabs.
+                  borderColor: on || isOpenChip ? "var(--c-gold)" : "var(--c-border-control)",
                   borderRadius: 4,
                   padding: "6px 12px",
                   cursor: "pointer",

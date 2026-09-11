@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import { useFocusTrap } from "@/lib/useFocusTrap";
@@ -9,6 +9,7 @@ import { useIntakeModal } from "@/context/IntakeModalContext";
 import { TELEGRAM_HANDLE } from "@/lib/constants";
 
 const en = {
+  ratelimited: "Too many requests — please wait a minute and try again.",
   h2: "Tell me about your task",
   subtitle: "A few lines is enough. I'll take it from there.",
   labels: {
@@ -46,6 +47,7 @@ const en = {
 };
 
 const ru = {
+  ratelimited: "Слишком часто — подождите минуту и попробуйте снова.",
   h2: "Расскажите о задаче",
   subtitle: "Пары строк достаточно. Остальное — моя работа.",
   labels: {
@@ -82,7 +84,7 @@ const ru = {
   close: "Закрыть",
 };
 
-type Status = "idle" | "pending" | "success" | "error";
+type Status = "idle" | "pending" | "success" | "error" | "ratelimited";
 type ContactMethod = "telegram" | "whatsapp" | "email";
 
 export default function IntakeModal() {
@@ -97,6 +99,11 @@ export default function IntakeModal() {
   const [contactMethod, setContactMethod] = useState<ContactMethod>("telegram");
   const [contactInfo, setContactInfo] = useState("");
   const [status, setStatus] = useState<Status>("idle");
+  const successRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (status === "success") successRef.current?.focus();
+  }, [status]);
 
   const dialogRef = useFocusTrap(isOpen);
 
@@ -149,6 +156,10 @@ export default function IntakeModal() {
           language,
         }),
       });
+      // 429 was being thrown like any other failure, so a rate-limited
+      // visitor was told "something went wrong" instead of "wait a minute".
+      // OutboundForm already handled this; these two did not.
+      if (res.status === 429) { setStatus("ratelimited"); return; }
       if (!res.ok) throw new Error("bad status");
       setStatus("success");
     } catch {
@@ -164,7 +175,7 @@ export default function IntakeModal() {
   const inputStyle: React.CSSProperties = {
     width: "100%",
     background: "rgba(255,255,255,0.02)",
-    border: "1px solid var(--c-border)",
+    border: "1px solid var(--c-border-control)",
     borderRadius: 6,
     padding: "10px 12px",
     fontFamily: "var(--font-instrument-sans), sans-serif",
@@ -198,7 +209,7 @@ export default function IntakeModal() {
     padding: "8px 14px",
     borderRadius: 5,
     background: active ? "rgba(200,169,110,0.12)" : "transparent",
-    border: active ? "1px solid rgba(200,169,110,0.5)" : "1px solid var(--c-border)",
+    border: active ? "1px solid var(--c-gold)" : "1px solid var(--c-border-control)",
     color: active ? "var(--c-gold)" : "var(--c-text2)",
     cursor: "pointer",
   });
@@ -295,8 +306,15 @@ export default function IntakeModal() {
             </div>
 
             {status === "success" ? (
+              /* role=status, focused on submit. The form unmounts here, which
+                 destroyed the focused button and left the modal's focus trap
+                 pointing at a removed node. */
               <div
+                ref={successRef}
+                role="status"
+                tabIndex={-1}
                 style={{
+                  outline: "none",
                   background: "rgba(200,169,110,0.08)",
                   border: "1px solid rgba(200,169,110,0.35)",
                   borderRadius: 10,
@@ -317,9 +335,15 @@ export default function IntakeModal() {
                 style={{ display: "flex", flexDirection: "column", gap: 16 }}
               >
                 <div>
-                  <label style={labelStyle}>{t.labels.name}</label>
+                  {/* htmlFor/id. Every field in this modal had a <label> with
+                      no htmlFor and no wrapping, so not one of them had an
+                      accessible name. OutboundForm was the only form on the
+                      site done correctly; this follows it. */}
+                  <label htmlFor="intake-name" style={labelStyle}>{t.labels.name}</label>
                   <input
+                    id="intake-name"
                     type="text"
+                    autoComplete="name"
                     required
                     maxLength={120}
                     value={name}
@@ -329,9 +353,11 @@ export default function IntakeModal() {
                 </div>
 
                 <div>
-                  <label style={labelStyle}>{t.labels.business}</label>
+                  <label htmlFor="intake-business" style={labelStyle}>{t.labels.business}</label>
                   <input
+                    id="intake-business"
                     type="text"
+                    autoComplete="organization"
                     required
                     maxLength={200}
                     value={business}
@@ -342,8 +368,9 @@ export default function IntakeModal() {
                 </div>
 
                 <div>
-                  <label style={labelStyle}>{t.labels.challenge}</label>
+                  <label htmlFor="intake-challenge" style={labelStyle}>{t.labels.challenge}</label>
                   <textarea
+                    id="intake-challenge"
                     required
                     maxLength={1000}
                     rows={4}
@@ -355,15 +382,18 @@ export default function IntakeModal() {
                 </div>
 
                 <div>
-                  <label style={labelStyle}>{t.labels.budget}</label>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 2 }}>
+                  <span id="intake-budget-label" style={labelStyle}>{t.labels.budget}</span>
+                  <div role="radiogroup" aria-labelledby="intake-budget-label" style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 2 }}>
                     {t.budgetOptions.map((o) => (
                       <button
                         type="button"
                         key={o.v}
+                        role="radio"
+                        aria-checked={budget === o.v}
                         onClick={() => setBudget(budget === o.v ? "" : o.v)}
                         style={toggleBtnStyle(budget === o.v)}
                       >
+                        {budget === o.v && <span aria-hidden="true" style={{ marginRight: 6 }}>✓</span>}
                         {o.l}
                       </button>
                     ))}
@@ -371,15 +401,18 @@ export default function IntakeModal() {
                 </div>
 
                 <div>
-                  <label style={labelStyle}>{t.labels.contactMethod}</label>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 2 }}>
+                  <span id="intake-method-label" style={labelStyle}>{t.labels.contactMethod}</span>
+                  <div role="radiogroup" aria-labelledby="intake-method-label" style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 2 }}>
                     {t.contactOptions.map((o) => (
                       <button
                         type="button"
                         key={o.v}
+                        role="radio"
+                        aria-checked={contactMethod === o.v}
                         onClick={() => setContactMethod(o.v as ContactMethod)}
                         style={toggleBtnStyle(contactMethod === o.v)}
                       >
+                        {contactMethod === o.v && <span aria-hidden="true" style={{ marginRight: 6 }}>✓</span>}
                         {o.l}
                       </button>
                     ))}
@@ -387,9 +420,12 @@ export default function IntakeModal() {
                 </div>
 
                 <div>
-                  <label style={labelStyle}>{t.labels.contactInfo}</label>
+                  <label htmlFor="intake-contact" style={labelStyle}>{t.labels.contactInfo}</label>
                   <input
-                    type="text"
+                    id="intake-contact"
+                    type={contactMethod === "email" ? "email" : contactMethod === "whatsapp" ? "tel" : "text"}
+                    autoComplete={contactMethod === "email" ? "email" : contactMethod === "whatsapp" ? "tel" : "off"}
+                    inputMode={contactMethod === "whatsapp" ? "tel" : undefined}
                     required
                     maxLength={200}
                     value={contactInfo}
@@ -399,15 +435,16 @@ export default function IntakeModal() {
                   />
                 </div>
 
-                {status === "error" && (
+                {(status === "error" || status === "ratelimited") && (
                   <div
+                    role="alert"
                     style={{
                       fontFamily: "var(--font-instrument-sans), sans-serif",
                       fontSize: 16,
-                      color: "#e88",
+                      color: status === "error" ? "var(--c-error)" : "var(--c-text2)",
                     }}
                   >
-                    {t.error}
+                    {status === "error" ? t.error : t.ratelimited}
                   </div>
                 )}
 

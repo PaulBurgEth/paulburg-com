@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import { useFocusTrap } from "@/lib/useFocusTrap";
@@ -9,6 +9,8 @@ import { useMentorshipModal } from "@/context/MentorshipModalContext";
 import { TELEGRAM_HANDLE } from "@/lib/constants";
 
 const en = {
+  ratelimited: "Too many requests — please wait a minute and try again.",
+  notSelected: "Not selected",
   h2: "Drop me a hint",
   subtitle: "Three lines is enough. I'll take it from there.",
   labels: {
@@ -49,6 +51,8 @@ const en = {
 };
 
 const ru = {
+  ratelimited: "Слишком часто — подождите минуту и попробуйте снова.",
+  notSelected: "Не выбрано",
   h2: "Оставить заявку",
   subtitle: "Трёх строк достаточно. Остальное — моя работа.",
   labels: {
@@ -88,7 +92,7 @@ const ru = {
   close: "Закрыть",
 };
 
-type Status = "idle" | "pending" | "success" | "error";
+type Status = "idle" | "pending" | "success" | "error" | "ratelimited";
 type ContactMethod = "telegram" | "whatsapp" | "email";
 
 export default function MentorshipIntakeModal() {
@@ -103,6 +107,11 @@ export default function MentorshipIntakeModal() {
   const [contactMethod, setContactMethod] = useState<ContactMethod>("telegram");
   const [contactInfo, setContactInfo] = useState("");
   const [status, setStatus] = useState<Status>("idle");
+  const successRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (status === "success") successRef.current?.focus();
+  }, [status]);
 
   const dialogRef = useFocusTrap(isOpen);
 
@@ -156,6 +165,10 @@ export default function MentorshipIntakeModal() {
           language,
         }),
       });
+      // 429 was being thrown like any other failure, so a rate-limited
+      // visitor was told "something went wrong" instead of "wait a minute".
+      // OutboundForm already handled this; these two did not.
+      if (res.status === 429) { setStatus("ratelimited"); return; }
       if (!res.ok) throw new Error("bad status");
       setStatus("success");
     } catch {
@@ -171,7 +184,7 @@ export default function MentorshipIntakeModal() {
   const inputStyle: React.CSSProperties = {
     width: "100%",
     background: "rgba(255,255,255,0.02)",
-    border: "1px solid var(--c-border)",
+    border: "1px solid var(--c-border-control)",
     borderRadius: 6,
     padding: "10px 12px",
     fontFamily: "var(--font-instrument-sans), sans-serif",
@@ -199,7 +212,7 @@ export default function MentorshipIntakeModal() {
     padding: "8px 14px",
     borderRadius: 5,
     background: active ? "rgba(200,169,110,0.12)" : "transparent",
-    border: active ? "1px solid rgba(200,169,110,0.5)" : "1px solid var(--c-border)",
+    border: active ? "1px solid var(--c-gold)" : "1px solid var(--c-border-control)",
     color: active ? "var(--c-gold)" : "var(--c-text2)",
     cursor: "pointer",
   });
@@ -296,8 +309,15 @@ export default function MentorshipIntakeModal() {
             </div>
 
             {status === "success" ? (
+              /* role=status, focused on submit. The form unmounts here, which
+                 destroyed the focused button and left the modal's focus trap
+                 pointing at a removed node. */
               <div
+                ref={successRef}
+                role="status"
+                tabIndex={-1}
                 style={{
+                  outline: "none",
                   background: "rgba(200,169,110,0.08)",
                   border: "1px solid rgba(200,169,110,0.35)",
                   borderRadius: 10,
@@ -318,9 +338,13 @@ export default function MentorshipIntakeModal() {
                 style={{ display: "flex", flexDirection: "column", gap: 16 }}
               >
                 <div>
-                  <label style={labelStyle}>{t.labels.name}</label>
+                  {/* Same as IntakeModal: every label here was unattached, so
+                      no field had an accessible name. */}
+                  <label htmlFor="ment-name" style={labelStyle}>{t.labels.name}</label>
                   <input
+                    id="ment-name"
                     type="text"
+                    autoComplete="name"
                     required
                     maxLength={120}
                     value={name}
@@ -330,15 +354,18 @@ export default function MentorshipIntakeModal() {
                 </div>
 
                 <div>
-                  <label style={labelStyle}>{t.labels.area}</label>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 2 }}>
+                  <span id="ment-area-label" style={labelStyle}>{t.labels.area}</span>
+                  <div role="radiogroup" aria-labelledby="ment-area-label" style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 2 }}>
                     {t.areaOptions.map((o) => (
                       <button
                         type="button"
                         key={o.v}
+                        role="radio"
+                        aria-checked={area === o.v}
                         onClick={() => setArea(area === o.v ? "" : o.v)}
                         style={toggleBtnStyle(area === o.v)}
                       >
+                        {area === o.v && <span aria-hidden="true" style={{ marginRight: 6 }}>✓</span>}
                         {o.l}
                       </button>
                     ))}
@@ -346,8 +373,9 @@ export default function MentorshipIntakeModal() {
                 </div>
 
                 <div>
-                  <label style={labelStyle}>{t.labels.level}</label>
+                  <label htmlFor="ment-level" style={labelStyle}>{t.labels.level}</label>
                   <select
+                    id="ment-level"
                     value={level}
                     onChange={(e) => setLevel(e.target.value)}
                     style={{
@@ -358,7 +386,8 @@ export default function MentorshipIntakeModal() {
                       cursor: "pointer",
                     }}
                   >
-                    <option value="" disabled>—</option>
+                    {/* Was "—", which a screen reader says as "em dash". */}
+                    <option value="" disabled>{t.notSelected}</option>
                     {t.levelOptions.map((o) => (
                       <option key={o.v} value={o.v}>{o.l}</option>
                     ))}
@@ -366,8 +395,9 @@ export default function MentorshipIntakeModal() {
                 </div>
 
                 <div>
-                  <label style={labelStyle}>{t.labels.goal}</label>
+                  <label htmlFor="ment-goal" style={labelStyle}>{t.labels.goal}</label>
                   <textarea
+                    id="ment-goal"
                     required
                     maxLength={1000}
                     rows={4}
@@ -379,15 +409,18 @@ export default function MentorshipIntakeModal() {
                 </div>
 
                 <div>
-                  <label style={labelStyle}>{t.labels.contactMethod}</label>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 2 }}>
+                  <span id="ment-method-label" style={labelStyle}>{t.labels.contactMethod}</span>
+                  <div role="radiogroup" aria-labelledby="ment-method-label" style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 2 }}>
                     {t.contactOptions.map((o) => (
                       <button
                         type="button"
                         key={o.v}
+                        role="radio"
+                        aria-checked={contactMethod === o.v}
                         onClick={() => setContactMethod(o.v as ContactMethod)}
                         style={toggleBtnStyle(contactMethod === o.v)}
                       >
+                        {contactMethod === o.v && <span aria-hidden="true" style={{ marginRight: 6 }}>✓</span>}
                         {o.l}
                       </button>
                     ))}
@@ -395,9 +428,12 @@ export default function MentorshipIntakeModal() {
                 </div>
 
                 <div>
-                  <label style={labelStyle}>{t.labels.contactInfo}</label>
+                  <label htmlFor="ment-contact" style={labelStyle}>{t.labels.contactInfo}</label>
                   <input
-                    type="text"
+                    id="ment-contact"
+                    type={contactMethod === "email" ? "email" : contactMethod === "whatsapp" ? "tel" : "text"}
+                    autoComplete={contactMethod === "email" ? "email" : contactMethod === "whatsapp" ? "tel" : "off"}
+                    inputMode={contactMethod === "whatsapp" ? "tel" : undefined}
                     required
                     maxLength={200}
                     value={contactInfo}
@@ -407,15 +443,16 @@ export default function MentorshipIntakeModal() {
                   />
                 </div>
 
-                {status === "error" && (
+                {(status === "error" || status === "ratelimited") && (
                   <div
+                    role="alert"
                     style={{
                       fontFamily: "var(--font-instrument-sans), sans-serif",
                       fontSize: 16,
-                      color: "#e88",
+                      color: status === "error" ? "var(--c-error)" : "var(--c-text2)",
                     }}
                   >
-                    {t.error}
+                    {status === "error" ? t.error : t.ratelimited}
                   </div>
                 )}
 

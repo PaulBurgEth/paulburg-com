@@ -38,8 +38,14 @@ export default function BlogPageClient({ enPosts, ruPosts }: Props) {
   }[language];
 
   return (
-    <main style={{ background: "var(--c-bg)", minHeight: "100vh" }}>
+    <>
+      {/* Navbar and Footer sit outside <main> on purpose. They used to be inside
+          it, which strips <footer> of its implicit contentinfo role per the
+          HTML-AAM — so these pages had no banner, no navigation and no
+          contentinfo landmark at all, just one main wrapped around the whole
+          document. The home page was the only one built correctly. */}
       <Navbar />
+      <main id="content" style={{ background: "var(--c-bg)", minHeight: "100vh" }}>
 
       {/* Hero */}
       <section style={{ paddingTop: 96, paddingBottom: 56, background: "var(--c-bg)" }}>
@@ -100,9 +106,18 @@ export default function BlogPageClient({ enPosts, ruPosts }: Props) {
                 href={SUBSTACK}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: "var(--c-gold)", textDecoration: "none" }}
+                // Underlined, not gold-only. A link inside a paragraph
+                // distinguished by colour alone fails 1.4.1 — the reader who
+                // cannot see the hue has nothing to go on.
+                style={{
+                  color: "var(--c-gold)",
+                  textDecoration: "underline",
+                  textDecorationThickness: 1,
+                  textUnderlineOffset: 3,
+                }}
               >
                 {copy.substackCta}
+                <span className="sr-only"> (opens in a new window)</span>
               </Link>
             </p>
           </motion.div>
@@ -117,7 +132,8 @@ export default function BlogPageClient({ enPosts, ruPosts }: Props) {
         </div>
       </section>
 
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

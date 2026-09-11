@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { useFocusTrap } from "@/lib/useFocusTrap";
 import { useLanguage } from "@/context/LanguageContext";
 import ThemeToggle from "@/components/ThemeToggle";
 import BurgMark from "@/components/BurgMark";
@@ -25,9 +26,27 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    const drawerRef = useFocusTrap(isMobileMenuOpen);
+
+    const menuLabel = language === "ru" ? "Меню" : "Menu";
+    const closeLabel = language === "ru" ? "Закрыть меню" : "Close menu";
+    const openLabel = language === "ru" ? "Открыть меню" : "Open menu";
+
     useEffect(() => {
-        document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
-        return () => { document.body.style.overflow = ""; };
+        if (!isMobileMenuOpen) return;
+        // Save and restore rather than blanking it. `= ""` discarded whatever
+        // was there before, so closing the menu on top of an open modal
+        // released that modal's scroll lock.
+        const prevOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        const onKey = (e: KeyboardEvent) => {
+            if (e.key === "Escape") setIsMobileMenuOpen(false);
+        };
+        window.addEventListener("keydown", onKey);
+        return () => {
+            document.body.style.overflow = prevOverflow;
+            window.removeEventListener("keydown", onKey);
+        };
     }, [isMobileMenuOpen]);
 
     // Order matches the redesign mockup: Services → Mentorship → Blog → Projects.
@@ -108,6 +127,7 @@ export default function Navbar() {
                                 key={link.name}
                                 href={link.href}
                                 className={`nav-link transition-colors${isActiveLink(link.href) ? " nav-active" : ""}`}
+                                aria-current={isActiveLink(link.href) ? "page" : undefined}
                                 style={{
                                     color: isActiveLink(link.href) ? "var(--c-gold)" : "var(--c-text2)",
                                     textDecoration: "none",
@@ -192,9 +212,14 @@ export default function Navbar() {
                             className="p-2"
                             style={{ color: "var(--c-text3)" }}
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            aria-label="Toggle menu"
+                            aria-expanded={isMobileMenuOpen}
+                            aria-controls="mobile-menu"
+                            // Was a static English "Toggle menu" on both this and
+                            // the close button, in a header whose other controls
+                            // are bilingual — and it never said which way it goes.
+                            aria-label={isMobileMenuOpen ? closeLabel : openLabel}
                         >
-                            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                            {isMobileMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
                         </button>
                     </div>
                 </div>
@@ -222,6 +247,11 @@ export default function Navbar() {
                         animate={{ x: 0 }}
                         exit={{ x: "100%" }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
+                        ref={drawerRef}
+                        id="mobile-menu"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-label={menuLabel}
                         className="fixed top-[72px] right-0 bottom-0 w-[280px] sm:w-[320px] z-[49] flex flex-col pt-4 px-6 md:hidden"
                         style={{ background: "var(--c-bg)" }}
                     >
@@ -229,20 +259,27 @@ export default function Navbar() {
                             className="absolute top-5 right-5 p-2"
                             style={{ color: "var(--c-text3)" }}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            aria-label="Toggle menu"
+                            aria-label={closeLabel}
                         >
-                            <X size={24} />
+                            <X size={24} aria-hidden="true" />
                         </button>
 
-                        <nav className="flex flex-col mt-4">
+                        <nav className="flex flex-col mt-4" aria-label={menuLabel}>
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
                                     href={link.href}
                                     className="flex items-center min-h-[48px] text-lg font-medium"
+                                    // aria-current, and a left rule as well as the
+                                    // colour: the active entry used to be gold and
+                                    // nothing else, which is colour as the only
+                                    // signal and invisible to a screen reader.
+                                    aria-current={isActiveLink(link.href) ? "page" : undefined}
                                     style={{
                                         color: isActiveLink(link.href) ? "var(--c-gold)" : "var(--c-text)",
                                         borderBottom: "1px solid var(--c-border)",
+                                        borderLeft: isActiveLink(link.href) ? "2px solid var(--c-gold)" : "2px solid transparent",
+                                        paddingLeft: 10,
                                     }}
                                     onClick={(e) => handleNavClick(e, link.href)}
                                 >

@@ -114,11 +114,15 @@ export default function Footer() {
 
                     {/* Middle — Pages */}
                     <div>
-                        <div style={eyebrowStyle} aria-hidden="true">
-                            <span style={{ width: 24, height: 1, background: "var(--c-gold)", display: "inline-block" }} />
+                        {/* aria-hidden used to wrap the hairline AND the heading
+                            text, so both column labels were removed from the
+                            accessibility tree and the lists below them were
+                            unlabelled. Only the rule is decorative. */}
+                        <h2 id="footer-pages" style={eyebrowStyle}>
+                            <span aria-hidden="true" style={{ width: 24, height: 1, background: "var(--c-gold)", display: "inline-block" }} />
                             {t.pagesHeading}
-                        </div>
-                        <ul className="flex flex-col gap-2">
+                        </h2>
+                        <ul className="flex flex-col gap-2" aria-labelledby="footer-pages">
                             <li>
                                 <Link href="/services" className={linkRowClass} style={{ color: "var(--c-text2)" }}>
                                     {t.services}
@@ -144,11 +148,15 @@ export default function Footer() {
 
                     {/* Right — Connect */}
                     <div>
-                        <div style={eyebrowStyle} aria-hidden="true">
-                            <span style={{ width: 24, height: 1, background: "var(--c-gold)", display: "inline-block" }} />
+                        {/* aria-hidden used to wrap the hairline AND the heading
+                            text, so both column labels were removed from the
+                            accessibility tree and the lists below them were
+                            unlabelled. Only the rule is decorative. */}
+                        <h2 id="footer-connect" style={eyebrowStyle}>
+                            <span aria-hidden="true" style={{ width: 24, height: 1, background: "var(--c-gold)", display: "inline-block" }} />
                             {t.connectHeading}
-                        </div>
-                        <ul className="flex flex-col gap-2">
+                        </h2>
+                        <ul className="flex flex-col gap-2" aria-labelledby="footer-connect">
                             <li>
                                 <Link
                                     href={TELEGRAM_URL}
@@ -157,8 +165,9 @@ export default function Footer() {
                                     className={linkRowClass}
                                     style={{ color: "var(--c-text2)" }}
                                 >
-                                    <Send size={14} />
+                                    <Send size={14} aria-hidden="true" />
                                     <span>Telegram</span>
+                                    <span className="sr-only"> (opens in a new window)</span>
                                 </Link>
                             </li>
                             <li>
@@ -169,8 +178,9 @@ export default function Footer() {
                                     className={linkRowClass}
                                     style={{ color: "var(--c-text2)" }}
                                 >
-                                    <Linkedin size={14} />
+                                    <Linkedin size={14} aria-hidden="true" />
                                     <span>LinkedIn</span>
+                                    <span className="sr-only"> (opens in a new window)</span>
                                 </Link>
                             </li>
                             <li>
@@ -181,8 +191,9 @@ export default function Footer() {
                                     className={linkRowClass}
                                     style={{ color: "var(--c-text2)" }}
                                 >
-                                    <Twitter size={14} />
+                                    <Twitter size={14} aria-hidden="true" />
                                     <span>@PaulBurg_</span>
+                                    <span className="sr-only"> (opens in a new window)</span>
                                 </Link>
                             </li>
                             <li>
@@ -193,8 +204,9 @@ export default function Footer() {
                                     className={linkRowClass}
                                     style={{ color: "var(--c-text2)" }}
                                 >
-                                    <BookOpen size={14} />
+                                    <BookOpen size={14} aria-hidden="true" />
                                     <span>Substack</span>
+                                    <span className="sr-only"> (opens in a new window)</span>
                                 </Link>
                             </li>
                             <li>
@@ -205,8 +217,9 @@ export default function Footer() {
                                     className={linkRowClass}
                                     style={{ color: "var(--c-text2)" }}
                                 >
-                                    <Send size={14} />
-                                    <span>{t.channelLabel} <span className="opacity-60" style={{ fontSize: 16 }}>(RU)</span></span>
+                                    <Send size={14} aria-hidden="true" />
+                                    <span>{t.channelLabel} <span style={{ fontSize: 16, color: "var(--c-muted)" }}>(RU)</span></span>
+                                    <span className="sr-only"> (opens in a new window)</span>
                                 </Link>
                             </li>
                             <li>
@@ -225,7 +238,7 @@ export default function Footer() {
                                         cursor: "pointer",
                                     }}
                                 >
-                                    <Mail size={14} />
+                                    <Mail size={14} aria-hidden="true" />
                                     <span>Email</span>
                                 </button>
                             </li>

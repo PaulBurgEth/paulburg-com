@@ -56,7 +56,18 @@
   --c-body:      #3d3833;
   --c-body-lede: #1a1714;
   --c-sage-dim:  rgba(61,122,90,0.1);
-  --c-violet:    #7060a0;
+  /* 4.59:1 on --c-bg2, the darkest band it lands on. #7060a0 held 4.78 against
+     the page and 4.45 on the alternating band — the same miss --c-muted had,
+     arriving a week later on the Russian project cards. */
+  --c-violet:    #6e5e9d;
+  /* Error text. Replaces a raw #e88 hardcoded in all three forms, which
+     measured 2.47:1 on a white card: the site's only error message, unreadable
+     in the light theme. 4.99:1 here. */
+  --c-error:     #c01e1e;
+  /* The boundary of a control, which WCAG 1.4.11 holds to 3:1 — not the same
+     job as --c-border, a decorative hairline at 1.15:1 that every input on the
+     site was using for its edge. */
+  --c-border-control: #88837d;
   --c-shadow:    rgba(0,0,0,0.08);
 
   /* ── Heading scale ── */
@@ -98,6 +109,8 @@
   --c-body-lede: #e5e0d6;
   --c-sage-dim:  rgba(122,171,143,0.1);
   --c-violet:    #9b8ec4;
+  --c-error:     #e07b7b; /* 6.3:1 on the darkest card */
+  --c-border-control: #5a6475; /* 3.04:1 — control edges, not hairlines */
   --c-shadow:    rgba(0,0,0,0.3);
 }
 
@@ -333,6 +346,45 @@ h6 {
   background: rgba(255, 255, 255, 0.2);
 }
 
+/* Screen-reader-only text. Used for the "opens in a new window" hint on
+   external links, which carried no indication at all. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip link. Visually hidden until focused, then it lands in the top-left
+   corner as an ordinary button. The clip-path form is used rather than
+   width:1px so the text is still laid out and announced correctly; every page
+   now carries <main id="content"> for it to point at. */
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  z-index: 200;
+  padding: 10px 16px;
+  border-radius: 6px;
+  background: var(--c-card);
+  border: 1px solid var(--c-gold);
+  color: var(--c-text);
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-size: 15px;
+  text-decoration: none;
+  /* Hidden without being removed from the accessibility tree or the tab order. */
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.skip-link:focus-visible {
+  clip-path: none;
+}
+
 /* Focus-visible styles for keyboard navigation (a11y).
    Fields are included on purpose: the intake form and the modal both set
    `outline: none` inline, and an inline style beats a class but not this — the
@@ -475,29 +527,41 @@ select:focus-visible {
   }
 
   /* Ghost button: border + text go gold on hover */
+  /* Was `color: #c8a96e !important` — the dark theme's gold, forced in both
+     themes, which measured 1.98:1 on the light background. */
   .btn-ghost:hover {
-    border-color: rgba(200,169,110,0.45) !important;
-    color: #c8a96e !important;
+    border-color: var(--c-gold) !important;
+    color: var(--c-gold) !important;
     box-shadow: 0 0 14px rgba(200,169,110,0.07);
   }
 
-  /* Nav link underline animation */
-  .nav-link {
-    position: relative;
-  }
+  /* Nav link underline animation — hover behaviour only; the pseudo-element
+     itself is declared unconditionally outside this query. */
   .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px; left: 0;
-    width: 0; height: 1px;
-    background: var(--c-gold);
     transition: width 0.2s ease;
   }
   .nav-link:hover::after {
     width: 100%;
   }
 }
-/* Active nav link always shows underline */
+/* Active nav link always shows an underline.
+   The ::after that draws it used to be declared *inside* @media (hover: hover)
+   while this rule sat outside, so on a coarse pointer the pseudo-element was
+   never created and the rule below was inert: the active link was gold and
+   nothing else. The base declaration lives here now, and the hover query only
+   adds the grow-on-hover behaviour. */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--c-gold);
+}
 .nav-link.nav-active {
   color: var(--c-gold) !important;
 }
@@ -637,6 +701,29 @@ select:focus-visible {
 
 /* Reduced motion — disable all redesign animation. */
 @media (prefers-reduced-motion: reduce) {
+  /* Global reset first. The site styles almost everything with inline
+     style={{}}, and an inline `transition` cannot be overridden by a media
+     query without !important — so the sticky CTA, the rail, the article links
+     and the blog cards all kept animating no matter what this block said.
+     `animation` is reset the same way, which is what finally reaches
+     .turnkey-banner's borderPulse and .write-new-dot's pulse-dot: two infinite
+     animations that ran through every previous "reduced motion is handled". */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* scroll-behavior: smooth is declared twice — the `scroll-smooth` class on
+     <html> in layout.tsx and again inside the home page's CSS string — and was
+     never reset anywhere. */
+  html {
+    scroll-behavior: auto !important;
+  }
+
   .pb-cursor-blink {
     animation: none;
     opacity: 1;

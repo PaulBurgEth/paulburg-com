@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { TELEGRAM_HANDLE, TELEGRAM_URL, WHATSAPP_URL } from "@/lib/constants";
@@ -44,14 +44,14 @@ const en = {
     { v: "global", l: "No restriction" },
   ],
   cycleOptions: [
-    { v: "", l: "—" },
+    { v: "", l: "Not selected" },
     { v: "lt1m", l: "Under a month" },
     { v: "1-3m", l: "1–3 months" },
     { v: "3-6m", l: "3–6 months" },
     { v: "6m+", l: "Over 6 months" },
   ],
   channelOptions: [
-    { v: "", l: "—" },
+    { v: "", l: "Not selected" },
     { v: "inbound", l: "Inbound / SEO" },
     { v: "ads", l: "Paid ads" },
     { v: "referrals", l: "Referrals" },
@@ -117,14 +117,14 @@ const ru = {
     { v: "global", l: "Без ограничений" },
   ],
   cycleOptions: [
-    { v: "", l: "—" },
+    { v: "", l: "Не выбрано" },
     { v: "lt1m", l: "Меньше месяца" },
     { v: "1-3m", l: "1–3 месяца" },
     { v: "3-6m", l: "3–6 месяцев" },
     { v: "6m+", l: "Больше 6 месяцев" },
   ],
   channelOptions: [
-    { v: "", l: "—" },
+    { v: "", l: "Не выбрано" },
     { v: "inbound", l: "Входящие / SEO" },
     { v: "ads", l: "Платная реклама" },
     { v: "referrals", l: "Рекомендации" },
@@ -158,7 +158,7 @@ type ContactMethod = "telegram" | "whatsapp" | "email";
 const inputStyle: React.CSSProperties = {
   width: "100%",
   background: "rgba(255,255,255,0.02)",
-  border: "1px solid var(--c-border)",
+  border: "1px solid var(--c-border-control)",
   borderRadius: 6,
   padding: "10px 12px",
   fontFamily: SANS,
@@ -188,7 +188,7 @@ const toggleBtnStyle = (active: boolean): React.CSSProperties => ({
   padding: "10px 16px",
   borderRadius: 5,
   background: active ? "rgba(200,169,110,0.12)" : "transparent",
-  border: active ? "1px solid rgba(200,169,110,0.5)" : "1px solid var(--c-border)",
+  border: active ? "1px solid var(--c-gold)" : "1px solid var(--c-border-control)",
   color: active ? "var(--c-gold)" : "var(--c-text2)",
   cursor: "pointer",
 });
@@ -207,6 +207,11 @@ export default function OutboundForm() {
   const [contactMethod, setContactMethod] = useState<ContactMethod>("telegram");
   const [contactInfo, setContactInfo] = useState("");
   const [status, setStatus] = useState<Status>("idle");
+  const successRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (status === "success") successRef.current?.focus();
+  }, [status]);
 
   const contactPlaceholder =
     contactMethod === "telegram"
@@ -271,13 +276,21 @@ export default function OutboundForm() {
           }}
         >
           {status === "success" ? (
+            /* role=status and tabIndex -1, with focus moved here on submit.
+               The form unmounts on success, which destroyed the button that had
+               focus: the caret fell to <body> and nothing was announced, so a
+               screen-reader user got silence and lost their place. */
             <div
+              ref={successRef}
+              role="status"
+              tabIndex={-1}
               style={{
                 background: "rgba(200,169,110,0.08)",
                 border: "1px solid rgba(200,169,110,0.35)",
                 borderRadius: 10,
                 padding: 32,
                 textAlign: "center",
+                outline: "none",
               }}
             >
               <div style={{ fontFamily: SERIF, fontSize: 21, fontWeight: 700, color: "var(--c-heading)", marginBottom: 6 }}>
@@ -291,14 +304,14 @@ export default function OutboundForm() {
                 <div>
                   <label htmlFor="sdr-name" style={labelStyle}>{t.labels.name}</label>
                   <input
-                    id="sdr-name" type="text" required maxLength={120}
+                    id="sdr-name" type="text" autoComplete="name" required maxLength={120}
                     value={name} onChange={(e) => setName(e.target.value)} style={inputStyle}
                   />
                 </div>
                 <div>
                   <label htmlFor="sdr-business" style={labelStyle}>{t.labels.business}</label>
                   <input
-                    id="sdr-business" type="text" required maxLength={200}
+                    id="sdr-business" type="text" autoComplete="organization" required maxLength={200}
                     value={business} onChange={(e) => setBusiness(e.target.value)}
                     placeholder={t.placeholders.business} style={inputStyle}
                   />
@@ -315,14 +328,21 @@ export default function OutboundForm() {
               </div>
 
               <div>
-                <span style={labelStyle}>{t.labels.sdrFormat}</span>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 2 }}>
+                {/* A named group, not a loose <span> over a row of buttons.
+                    Before this, seven toggle groups across three forms had no
+                    accessible name, no group semantics, and selection was
+                    signalled by background colour alone. */}
+                <span style={labelStyle} id="sdr-format-label">{t.labels.sdrFormat}</span>
+                <div role="radiogroup" aria-labelledby="sdr-format-label" style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 2 }}>
                   {t.sdrFormatOptions.map((o) => (
                     <button
                       type="button" key={o.v}
+                      role="radio"
+                      aria-checked={sdrFormat === o.v}
                       onClick={() => setSdrFormat(sdrFormat === o.v ? "" : o.v)}
                       style={toggleBtnStyle(sdrFormat === o.v)}
                     >
+                      {sdrFormat === o.v && <span aria-hidden="true" style={{ marginRight: 6 }}>✓</span>}
                       {o.l}
                     </button>
                   ))}
@@ -330,10 +350,10 @@ export default function OutboundForm() {
               </div>
 
               <div>
-                <span style={labelStyle}>
+                <span style={labelStyle} id="sdr-markets-label">
                   {t.labels.markets} <span style={{ letterSpacing: "0.1em" }}>· {t.optional}</span>
                 </span>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 2 }}>
+                <div role="group" aria-labelledby="sdr-markets-label" style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 2 }}>
                   {t.marketOptions.map((o) => (
                     <button
                       type="button" key={o.v}
@@ -341,6 +361,7 @@ export default function OutboundForm() {
                       aria-pressed={markets.includes(o.v)}
                       style={toggleBtnStyle(markets.includes(o.v))}
                     >
+                      {markets.includes(o.v) && <span aria-hidden="true" style={{ marginRight: 6 }}>✓</span>}
                       {o.l}
                     </button>
                   ))}
@@ -367,14 +388,17 @@ export default function OutboundForm() {
               </div>
 
               <div>
-                <span style={labelStyle}>{t.labels.contactMethod}</span>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 2 }}>
+                <span style={labelStyle} id="sdr-contact-method-label">{t.labels.contactMethod}</span>
+                <div role="radiogroup" aria-labelledby="sdr-contact-method-label" style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 2 }}>
                   {t.contactOptions.map((o) => (
                     <button
                       type="button" key={o.v}
+                      role="radio"
+                      aria-checked={contactMethod === o.v}
                       onClick={() => setContactMethod(o.v as ContactMethod)}
                       style={toggleBtnStyle(contactMethod === o.v)}
                     >
+                      {contactMethod === o.v && <span aria-hidden="true" style={{ marginRight: 6 }}>✓</span>}
                       {o.l}
                     </button>
                   ))}
@@ -384,14 +408,24 @@ export default function OutboundForm() {
               <div>
                 <label htmlFor="sdr-contact" style={labelStyle}>{t.labels.contactInfo}</label>
                 <input
-                  id="sdr-contact" type="text" required maxLength={200}
+                  id="sdr-contact"
+                  // The type follows the chosen channel. It was always
+                  // type="text", so picking "Email" and then typing on a phone
+                  // still gave a letter keyboard and no validation at all.
+                  type={contactMethod === "email" ? "email" : contactMethod === "whatsapp" ? "tel" : "text"}
+                  autoComplete={contactMethod === "email" ? "email" : contactMethod === "whatsapp" ? "tel" : "off"}
+                  inputMode={contactMethod === "whatsapp" ? "tel" : undefined}
+                  required maxLength={200}
                   value={contactInfo} onChange={(e) => setContactInfo(e.target.value)}
                   placeholder={contactPlaceholder} style={inputStyle}
                 />
               </div>
 
               {(status === "error" || status === "ratelimited") && (
-                <div style={{ fontFamily: SANS, fontSize: 15, color: status === "error" ? "#e88" : "var(--c-text2)" }}>
+                /* role=alert so the failure is spoken, and --c-error instead of
+                   a raw #e88, which measured 2.47:1 on a white card — the only
+                   error message on the site, unreadable in the light theme. */
+                <div role="alert" style={{ fontFamily: SANS, fontSize: 15, color: status === "error" ? "var(--c-error)" : "var(--c-text2)" }}>
                   {status === "error" ? t.error : t.ratelimited}
                 </div>
               )}

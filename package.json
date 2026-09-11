@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "preflight": "node scripts/preflight.mjs",
-    "deploy": "node scripts/preflight.mjs && vercel --prod"
+    "deploy": "node scripts/preflight.mjs && vercel --prod",
+    "verify": "node scripts/verify.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.24.12",
@@ -21,10 +22,12 @@
     "reading-time": "^1.5.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "axe-core": "^4.11.1",
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
     "tailwindcss": "^4",

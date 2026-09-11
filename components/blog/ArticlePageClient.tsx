@@ -83,6 +83,10 @@ export default function ArticlePageClient({
       if (h.querySelector(".h2-numeral")) return;
       const span = document.createElement("span");
       span.className = "h2-numeral";
+      // aria-hidden: the numeral is the first child of the heading, so without
+      // it heading navigation announced "01 The Speed of Everything". Every
+      // other decorative numeral on the site is hidden this way.
+      span.setAttribute("aria-hidden", "true");
       span.textContent = String(i + 1).padStart(2, "0");
       h.prepend(span);
     });
@@ -100,8 +104,12 @@ export default function ArticlePageClient({
        inside <html lang="en">. A screen reader then reads Russian with English
        phonetics. Marking the subtree is the standard fix for a language change
        inside a document, and unlike <html lang> it works without JS. */
-    <main lang={lang} style={{ background: "var(--c-bg)", minHeight: "100vh" }}>
+    <div lang={lang} style={{ background: "var(--c-bg)", minHeight: "100vh" }}>
+      {/* Navbar and Footer outside <main>, so the page keeps its banner and
+          contentinfo landmarks. lang stays on the wrapper rather than on
+          <main>: the navbar and footer are in the reader's UI language too. */}
       <Navbar />
+      <main id="content">
 
       <motion.div
         initial={{ opacity: 0, y: 12 }}
@@ -628,7 +636,8 @@ export default function ArticlePageClient({
         }
       `}</style>
 
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 }

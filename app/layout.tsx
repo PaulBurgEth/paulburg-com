@@ -166,16 +166,26 @@ export default function RootLayout({
             in a system fallback — and only then the html[lang="ru"] rule in
             globals.css swapped the faces. <html> already carries
             suppressHydrationWarning, and LanguageContext sets the same value on
-            mount, so the two agree. */}
-        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var d=document.documentElement;var t=localStorage.getItem('theme')||'dark';d.classList.toggle('dark',t==='dark');var q=new URLSearchParams(location.search).get('lang');var l=(q==='ru'||q==='en')?q:localStorage.getItem('pb-lang');if(l==='ru'||l==='en')d.lang=l;}catch(e){}})();` }} />
+            mount, so the two agree.
+
+            Theme falls back to prefers-color-scheme when nothing is stored.
+            It used to default to dark unconditionally, so a first-time visitor
+            whose system is set to light still got the dark site — the OS
+            preference was never consulted anywhere in the project. */}
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var d=document.documentElement;var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}d.classList.toggle('dark',t==='dark');var q=new URLSearchParams(location.search).get('lang');var l=(q==='ru'||q==='en')?q:localStorage.getItem('pb-lang');if(l==='ru'||l==='en')d.lang=l;}catch(e){}})();` }} />
       </head>
       <body
         className={`${inconsolata.variable} ${instrumentSans.variable} ${newsreader.variable} ${fraunces.variable} ${sourceSerif.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased overflow-x-hidden`}
       >
         <Providers>
+          {/* First thing in the tab order, before the rail and the navbar. */}
+          <a className="skip-link" href="#content">Skip to content</a>
           <ScrollProgress />
-          <SectionRail />
           {children}
+          {/* The rail renders fixed, so its position in the document is free —
+              and putting it after the content keeps a dozen section buttons out
+              of the way of a keyboard user heading for the page itself. */}
+          <SectionRail />
         </Providers>
         <script
           type="application/ld+json"

@@ -23,6 +23,9 @@ interface ServiceProps {
 
 export default function ServiceCard({ title, description, lists, prices, buttonText, delay = 0, onToggle }: ServiceProps) {
     const [isExpanded, setIsExpanded] = useState(false);
+    // Stable id so the trigger can point at the panel it controls. Derived from
+    // the title because the three cards are rendered from data, not hand-placed.
+    const panelId = `svc-panel-${title.toLowerCase().replace(/[^a-zа-яё0-9]+/gi, "-").replace(/^-|-$/g, "")}`;
     const [panelHeight, setPanelHeight] = useState(0);
     const panelRef = useRef<HTMLDivElement>(null);
     const { t } = useLanguage();
@@ -45,13 +48,12 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.5, delay }}
             whileHover={{ y: -3, boxShadow: "0 10px 36px rgba(0,0,0,0.3)", borderColor: "rgba(200,169,110,0.22)" }}
-            className="flex flex-col overflow-hidden relative cursor-pointer"
+            className="flex flex-col overflow-hidden relative"
             style={{
                 background: "var(--c-card)",
                 border: "1px solid var(--c-border)",
                 borderRadius: 10,
             }}
-            onClick={toggle}
         >
             <div className="p-8 flex flex-col items-center text-center flex-1 w-full">
                 <h3
@@ -118,9 +120,9 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                     </div>
 
                     <button
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            document.querySelector('#start')?.scrollIntoView({ behavior: 'smooth' });
+                        onClick={() => {
+                            const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                            document.querySelector('#start')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
                         }}
                         className="w-full py-3 rounded-[5px] font-bold transition-all mb-5"
                         style={{
@@ -135,20 +137,40 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                         {buttonText}
                     </button>
 
-                    <div
-                        className="flex items-center justify-center gap-2 font-medium transition-colors"
-                        style={{ color: "var(--c-muted)", fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16 }}
+                    {/* A real button, not a div with onClick on the card.
+                        The whole card used to be the click target and carried no
+                        role, no tabIndex and no key handler, so the panel — which
+                        holds the entire offer — could not be opened from the
+                        keyboard or by a screen reader at all. It also nested this
+                        control inside a clickable parent, with stopPropagation as
+                        the only thing keeping the two apart. */}
+                    <button
+                        type="button"
+                        onClick={toggle}
+                        aria-expanded={isExpanded}
+                        aria-controls={panelId}
+                        className="flex items-center justify-center gap-2 font-medium transition-colors w-full"
+                        style={{
+                            color: "var(--c-muted)",
+                            fontFamily: "var(--font-instrument-sans), sans-serif",
+                            fontSize: 16,
+                            background: "none",
+                            border: "none",
+                            cursor: "pointer",
+                            padding: "6px 0",
+                        }}
                     >
                         <span>{s.more}</span>
                         {/* CSS for the same reason as the panel: the framer rotate wrote
                             no inline style in production, so the chevron never turned. */}
                         <div
                             className="transition-transform duration-300"
+                            aria-hidden="true"
                             style={{ transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)" }}
                         >
                             <ChevronDown size={18} />
                         </div>
-                    </div>
+                    </button>
                 </div>
 
                 {/* CSS, not framer. The old panel animated height 0 → "auto" through
@@ -166,6 +188,7 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                 <div
                     ref={panelRef}
                     className="w-full shrink-0 overflow-hidden transition-[max-height] duration-300 ease-in-out"
+                    id={panelId}
                     style={{ maxHeight: panelHeight }}
                     aria-hidden={!isExpanded}
                 >

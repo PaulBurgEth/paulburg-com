@@ -618,7 +618,6 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
   useRevealObserver();
 
   const blogPosts = latestPosts?.[language] ?? latestPosts?.en ?? [];
-  const visible = blogPosts.length > 0 ? blogPosts : articles.slice(0, 3);
 
   // Mentorship card mouse-glow: update --mouse-x/y on the card element.
   const handleMentorMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
@@ -962,7 +961,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             </span>
             <div className="mentor-card-inner">
               <div className="mentor-content">
-                <div className="mentor-title">{language === "ru" ? "Прокачайте своё преимущество" : "Accelerate Your Edge"}</div>
+                <h3 className="mentor-title">{language === "ru" ? "Прокачайте своё преимущество" : "Accelerate Your Edge"}</h3>
                 <div className="mentor-desc">
                   {language === "ru"
                     ? "Ищете, куда поставить простаивающий капитал, хотите вывести бизнес-идею на рынок или встроить AI в свои процессы — разберём ситуацию и найдём конкретный следующий шаг."
@@ -1024,10 +1023,10 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 </div>
                 <div className="pod-body">
                   <div className="pod-src">{p.src}</div>
-                  <div className="pod-title">
+                  <h3 className="pod-title">
                     {p.title}
                     <span className="pod-ext">↗</span>
-                  </div>
+                  </h3>
                 </div>
               </a>
             ))}
@@ -1067,12 +1066,12 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     </span>
                   )}
                   <div className="write-src" style={{ marginBottom: opts.featured ? 14 : 8 }}>
-                    <span className="write-dot" style={{ background: C.gold }} />
+                    <span className="write-dot" aria-hidden="true" style={{ background: C.gold }} />
                     <span style={{ color: C.gold }}>paulburg.com</span>
                   </div>
-                  <div className="write-title" style={{ fontSize: opts.featured ? 26 : 17, lineHeight: opts.featured ? 1.18 : 1.3, marginBottom: opts.featured ? 12 : 6 }}>
+                  <h3 className="write-title" style={{ fontSize: opts.featured ? 26 : 17, lineHeight: opts.featured ? 1.18 : 1.3, marginBottom: opts.featured ? 12 : 6 }}>
                     {item.title}
-                  </div>
+                  </h3>
                   <p className="write-excerpt" style={{ fontSize: opts.featured ? 17 : 16, marginBottom: opts.featured ? 18 : 10 }}>{item.excerpt}</p>
                   <div className="write-foot">
                     <span>{date}</span>
@@ -1119,7 +1118,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 <rect x="2" y="4" width="44" height="26" rx="2" stroke={C.gold} strokeWidth="1" />
                 <path d="M3 6 L24 18 L45 6" stroke={C.gold} strokeWidth="1" />
               </svg>
-              <div className="follow-title">{language === "ru" ? "Рассылка" : "Newsletter"}</div>
+              <h3 className="follow-title">{language === "ru" ? "Рассылка" : "Newsletter"}</h3>
               <p className="follow-desc">
                 {language === "ru"
                   ? "Заметки фаундера про impact-рынки, health tech, AI-инструменты и жизнь цифрового номада. На английском."
@@ -1138,14 +1137,14 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 <circle cx="20" cy="20" r="18" stroke={C.gold} strokeWidth="1" />
                 <path d="M10 20 L18 24 L24 14 L18 22 L18 28 L21 25" stroke={C.gold} strokeWidth="1" fill="none" strokeLinejoin="round" />
               </svg>
-              <div className="follow-title" style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <h3 className="follow-title" style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 Telegram Channel
                 <span style={{
                   fontFamily: "var(--font-inconsolata), monospace", fontSize: 14, padding: "2px 7px", borderRadius: 3,
                   background: "rgba(155,142,196,0.12)", color: C.violet, border: "1px solid rgba(155,142,196,0.33)",
                   letterSpacing: "0.14em", fontWeight: 700,
                 }}>RU</span>
-              </div>
+              </h3>
               <p className="follow-desc">
                 Русскоязычный канал о жизни цифрового кочевника, технологиях и Web3. Без фильтров.
               </p>
@@ -1168,7 +1167,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
           <p className="sec-sub">{language === "ru" ? "Стартапы и инициативы в impact, health и локальной инфраструктуре" : "Startups and initiatives across impact, health, and local infrastructure"}</p>
 
           <div className="cat-head">
-            <div className="cat-tick" style={{ background: C.sage }} />
+            <div className="cat-tick" aria-hidden="true" style={{ background: C.sage }} />
             <span style={{ color: C.sage }}>{language === "ru" ? "01 — Impact и экосистема общественных благ" : "01 — Impact & Public Goods Ecosystem"}</span>
           </div>
           <div className="proj-grid">
@@ -1177,28 +1176,28 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 <span className={`status ${p.status === "live" ? "st-live" : p.status === "active" ? "st-active" : p.status === "paused" ? "st-paused" : "st-dev"}`}>
                   {p.status}
                 </span>
-                <div className="proj-name">{p.name}</div>
+                <h3 className="proj-name">{p.name}</h3>
                 <div className="proj-desc">{language === "ru" ? p.descRu : p.desc}</div>
               </a>
             ))}
           </div>
 
           <div className="cat-head">
-            <div className="cat-tick" style={{ background: "var(--c-sage)" }} />
+            <div className="cat-tick" aria-hidden="true" style={{ background: "var(--c-sage)" }} />
             <span style={{ color: "var(--c-sage)" }}>{language === "ru" ? "02 — Impact-продукты для НКО · проверка концепции" : "02 — NGO Impact Products · Proof of Concept"}</span>
           </div>
           <div className="proj-grid">
             {projects.ngo.map((p, i) => (
               <a key={i} className="proj-card" href={p.url} target="_blank" rel="noopener noreferrer">
                 <span className="status st-live">live</span>
-                <div className="proj-name">{p.name}</div>
+                <h3 className="proj-name">{p.name}</h3>
                 <div className="proj-desc">{language === "ru" ? p.descRu : p.desc}</div>
               </a>
             ))}
           </div>
 
           <div className="cat-head">
-            <div className="cat-tick" style={{ background: C.gold }} />
+            <div className="cat-tick" aria-hidden="true" style={{ background: C.gold }} />
             <span style={{ color: C.gold }}>{language === "ru" ? "03 — Аренда недвижимости · платформы с AI" : "03 — Property Rental · AI-Powered Platforms"}</span>
           </div>
           <div className="proj-grid">
@@ -1207,14 +1206,14 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 <span className={`status ${p.status === "live" ? "st-live" : p.status === "active" ? "st-active" : p.status === "paused" ? "st-paused" : "st-dev"}`}>
                   {p.status}
                 </span>
-                <div className="proj-name">{p.name}</div>
+                <h3 className="proj-name">{p.name}</h3>
                 <div className="proj-desc">{language === "ru" ? p.descRu : p.desc}</div>
               </a>
             ))}
           </div>
 
           <div className="cat-head">
-            <div className="cat-tick" style={{ background: C.violet }} />
+            <div className="cat-tick" aria-hidden="true" style={{ background: C.violet }} />
             <span style={{ color: C.violet }}>{language === "ru" ? "04 — Здоровье и данные" : "04 — Health Intelligence"}</span>
           </div>
           <div className="proj-grid" style={{ gridTemplateColumns: "1fr" }}>
@@ -1223,7 +1222,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 <span className={`status ${p.status === "live" ? "st-live" : p.status === "active" ? "st-active" : p.status === "paused" ? "st-paused" : "st-dev"}`}>
                   {p.status}
                 </span>
-                <div className="proj-name">{p.name}</div>
+                <h3 className="proj-name">{p.name}</h3>
                 <div className="proj-desc" style={{ maxWidth: "640px" }}>{language === "ru" ? p.descRu : p.desc}</div>
               </a>
             ))}
@@ -1243,24 +1242,24 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             {communities.map((c, i) => (
               <a key={i} className="proj-card" href={c.url} target="_blank" rel="noopener noreferrer">
                 <span className="status st-live">active</span>
-                <div className="proj-name" style={{ fontSize: "16px", color: c.color }}>{c.name}</div>
+                <h3 className="proj-name" style={{ fontSize: "16px", color: c.color }}>{c.name}</h3>
                 <div className="proj-desc">{language === "ru" ? c.descRu : c.desc}</div>
               </a>
             ))}
           </div>
 
           <div className="cat-head">
-            <div className="cat-tick" style={{ background: C.gold }} />
+            <div className="cat-tick" aria-hidden="true" style={{ background: C.gold }} />
             <span style={{ color: C.gold }}>{language === "ru" ? "События и встречи" : "Events & Gatherings"}</span>
           </div>
           <div className="proj-grid">
             {communityEvents.map((e, i) => (
               <a key={i} className="proj-card" href={e.url} target="_blank" rel="noopener noreferrer">
                 <div className="write-src" style={{ marginBottom: "6px" }}>
-                  <span className="write-dot" style={{ background: C.gold }} />
+                  <span className="write-dot" aria-hidden="true" style={{ background: C.gold }} />
                   <span style={{ color: C.gold }}>{e.src}</span>
                 </div>
-                <div className="proj-name" style={{ paddingRight: 0 }}>{e.name}</div>
+                <h3 className="proj-name" style={{ paddingRight: 0 }}>{e.name}</h3>
                 <div style={{ fontFamily: "var(--font-inconsolata),monospace", fontSize: "14px", color: C.text2, marginTop: "12px" }}>
                   <span className="write-read">{language === "ru" ? "Открыть в X →" : "View on X →"}</span>
                 </div>

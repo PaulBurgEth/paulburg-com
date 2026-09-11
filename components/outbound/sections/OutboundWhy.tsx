@@ -160,7 +160,11 @@ export default function OutboundWhy() {
             borderBottom: "1px solid var(--c-border)",
           }}
         >
-          <div role="columnheader" aria-label="" style={{ padding: "13px 16px" }} />
+          {/* The row-label column has no visible header, but an empty
+              aria-label is not the way to say that: axe flags it as an empty
+              table header, and it names nothing. presentation removes it from
+              the header row instead. */}
+          <div role="presentation" style={{ padding: "13px 16px" }} />
           {t.cols.map((c, i) => (
             <div
               key={c}

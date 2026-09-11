@@ -88,9 +88,13 @@ export function useFocusTrap(isOpen: boolean) {
     return () => {
       window.clearTimeout(timer);
       document.removeEventListener("keydown", onKey, true);
-      // Only reclaim focus if it is still inside the dialog we are closing;
-      // if something else has since taken it, leave it alone.
-      if (opener && document.body.contains(opener)) opener.focus();
+      // Only reclaim focus if it is still inside the dialog we are closing.
+      // The guard used to check just that `opener` was still in the document,
+      // which is not the same thing: click something outside before the dialog
+      // unmounts and focus was yanked back to the trigger.
+      const active = document.activeElement;
+      const focusEscaped = !active || active === document.body || !node.contains(active);
+      if (opener && document.body.contains(opener) && !focusEscaped) opener.focus();
     };
   }, [isOpen]);
 

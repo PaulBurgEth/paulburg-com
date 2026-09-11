@@ -14,8 +14,14 @@ import { useRevealObserver } from "@/lib/useStageReveal";
 export default function MentorshipPageClient() {
     useRevealObserver();
     return (
-        <main className="min-h-screen" style={{ background: "var(--c-bg)" }}>
+        <>
+            {/* Navbar and Footer sit outside <main> on purpose. They used to be inside
+                it, which strips <footer> of its implicit contentinfo role per the
+                HTML-AAM — so these pages had no banner, no navigation and no
+                contentinfo landmark at all, just one main wrapped around the whole
+                document. The home page was the only one built correctly. */}
             <Navbar />
+            <main id="content" className="min-h-screen" style={{ background: "var(--c-bg)" }}>
             <MentorshipHero />
             <MentorshipBridge />
             <MentorshipPainPoints />
@@ -23,7 +29,8 @@ export default function MentorshipPageClient() {
             <MentorshipServices />
             <MentorshipFormats />
             <MentorshipCTA />
+            </main>
             <Footer />
-        </main>
+        </>
     );
 }

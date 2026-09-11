@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useFocusTrap } from "@/lib/useFocusTrap";
 import { useLanguage } from "@/context/LanguageContext";
 
 /**
@@ -69,11 +70,19 @@ export default function SectionRail() {
   }, []);
 
   useEffect(() => {
-    scan();
-    // Sections can mount a tick after the page does; one delayed re-scan covers
-    // it without leaving an observer running for the life of the page.
-    const t = window.setTimeout(scan, 600);
-    return () => window.clearTimeout(t);
+    // Both scans are deferred. Calling scan() straight in the effect body sets
+    // state during the commit, which React flags as a cascading render; and it
+    // was the wrong moment anyway — the DOM this reads is the page's sections,
+    // which may not all be mounted on the very tick the rail mounts. A 0ms
+    // timer puts the first scan after paint, and the 600ms one still covers
+    // sections that arrive late, without leaving an observer running for the
+    // life of the page.
+    const first = window.setTimeout(scan, 0);
+    const later = window.setTimeout(scan, 600);
+    return () => {
+      window.clearTimeout(first);
+      window.clearTimeout(later);
+    };
   }, [scan, language]);
 
   useEffect(() => {
@@ -95,6 +104,17 @@ export default function SectionRail() {
     return () => io.disconnect();
   }, [items]);
 
+  const sheetRef = useFocusTrap(open);
+
+  // Escape closes the mobile sheet. It is a dialog over the whole viewport and
+  // had no key handler at all.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   const go = (item: Item) => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     item.el.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
@@ -113,6 +133,11 @@ export default function SectionRail() {
         className="hidden lg:flex"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
+        // Focus as well as hover. With mouse events only, a keyboard user
+        // tabbing into the rail never expanded it, so the labels this rail
+        // exists to show never appeared for them at all.
+        onFocus={() => setHovered(true)}
+        onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setHovered(false); }}
         style={{
           position: "fixed",
           right: 4,
@@ -140,17 +165,24 @@ export default function SectionRail() {
               type="button"
               onClick={() => go(item)}
               aria-current={on ? "true" : undefined}
-              // Some sections are bands with no heading, so `label` comes back
-              // empty and the button announced nothing at all. The § number is
-              // always there and is what the marker on the page says.
+              // aria-label unconditionally. It used to be set only when `label`
+              // was empty, so a section that *had* a label was named by `title`
+              // alone — last resort in the accessible-name algorithm, and
+              // nothing at all for a keyboard user, since the label spans are
+              // not rendered while the rail is collapsed.
               title={item.label || undefined}
-              aria-label={item.label ? undefined : `§ ${item.num}`}
+              aria-label={item.label ? `§ ${item.num} · ${item.label}` : `§ ${item.num}`}
               className="flex items-center justify-end gap-2.5"
               style={{
                 background: "none",
                 border: "none",
                 cursor: "pointer",
-                padding: expanded ? "5px 2px" : "5px 0px",
+                // 24px tall collapsed, against the 24x24 floor in WCAG 2.5.8.
+                // Measured before this: 16x12. The tick inside stays 8x1 —
+                // this is the hit area, not the mark.
+                padding: expanded ? "5px 2px" : "0px",
+                minHeight: 24,
+                minWidth: expanded ? undefined : 24,
                 width: "100%",
                 color: on ? "var(--c-gold)" : "var(--c-text2)",
                 transition: "color 160ms",
@@ -207,6 +239,7 @@ export default function SectionRail() {
         className="lg:hidden"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
+        aria-controls="section-sheet"
         aria-label={language === "ru" ? "Разделы страницы" : "Page sections"}
         style={{
           position: "fixed",
@@ -245,6 +278,10 @@ export default function SectionRail() {
           }}
         >
           <nav
+            ref={sheetRef}
+            id="section-sheet"
+            role="dialog"
+            aria-modal="true"
             aria-label={language === "ru" ? "Разделы страницы" : "Page sections"}
             onClick={(e) => e.stopPropagation()}
             style={{
@@ -262,6 +299,9 @@ export default function SectionRail() {
                 key={`m-${item.num}-${i}`}
                 type="button"
                 onClick={() => go(item)}
+                // The mobile list marked the current section with colour alone
+                // and carried no aria-current at all.
+                aria-current={i === active ? "true" : undefined}
                 className="flex items-baseline gap-3 w-full"
                 style={{
                   background: "none",
@@ -271,6 +311,7 @@ export default function SectionRail() {
                   cursor: "pointer",
                   textAlign: "left",
                   color: i === active ? "var(--c-gold)" : "var(--c-text)",
+                  borderLeft: i === active ? "2px solid var(--c-gold)" : "2px solid transparent",
                 }}
               >
                 <span style={{ fontFamily: "var(--font-inconsolata), monospace", fontSize: 14, fontWeight: 700, flexShrink: 0 }}>
