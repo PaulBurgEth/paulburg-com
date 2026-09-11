@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import PriceGrid from "@/components/ui/PriceGrid";
 import { SectionShell, SectionHead, MidCTA, SERIF, SANS, MONO, T, itemVariants } from "../shared";
 
 /**
@@ -17,9 +18,16 @@ import { SectionShell, SectionHead, MidCTA, SERIF, SANS, MONO, T, itemVariants }
  * defence.
  */
 
-type QA = { q: string; a: string };
+/** priceGrid marks the one answer that gets the two-axis grid under it. */
+type QA = { q: string; a: string; priceGrid?: boolean };
 
 const en = {
+  priceGrid: {
+    segments: "Segments running at once",
+    languages: "Languages they run in",
+    floor: "One segment, one language — the floor",
+    top: "Four segments, three languages — the top",
+  },
   eyebrow: "Straight answers",
   h2: "The seven things people ask before they say yes",
   sub: "Asked in these words, more or less, by everyone who got this far. Answered here so you can decide on the substance.",
@@ -46,6 +54,7 @@ const en = {
     },
     {
       q: "How much is it?",
+      priceGrid: true,
       a: "One fixed price for the pilot, and the next section has how it is paid: in thirds, each one two weeks ahead, with a decision point in front of each. Two things move the number — how many segments you want running, and how many languages they run in. One segment in one language sits at the floor; four segments across three languages sits at the top. What happens after the six weeks gets settled at week six, on your own numbers, rather than guessed at now.",
     },
     {
@@ -58,6 +67,12 @@ const en = {
 };
 
 const ru = {
+  priceGrid: {
+    segments: "Сегментов одновременно",
+    languages: "Языков, на которых идут",
+    floor: "Один сегмент, один язык — нижняя граница",
+    top: "Четыре сегмента, три языка — верхняя",
+  },
   eyebrow: "Прямые ответы",
   h2: "Семь вопросов, которые задают до того, как согласиться",
   sub: "Примерно в этих формулировках их задаёт каждый, кто дочитал до сюда. Отвечено здесь, чтобы вы решали по существу.",
@@ -84,6 +99,7 @@ const ru = {
     },
     {
       q: "Сколько это стоит?",
+      priceGrid: true,
       a: "Одна фиксированная цена за пилот, а в следующей секции — схема оплаты: третями, каждая за две недели вперёд, и перед каждой точка решения. Сумму двигают две вещи — сколько сегментов вы хотите запустить и на скольких языках. Один сегмент на одном языке — нижняя граница, четыре сегмента на трёх языках — верхняя. Что будет после шести недель, решается на шестой неделе, на ваших цифрах, а не угадывается сейчас.",
     },
     {
@@ -154,6 +170,19 @@ export default function OutboundObjections() {
             >
               {item.a}
             </p>
+            {/* The price answer names a complete matrix inside one sentence —
+                both corner cells included — and it is the longest block of copy
+                on the site. The grid is drawn only here, under that answer. */}
+            {item.priceGrid && (
+              <div style={{ padding: "0 0 24px 36px" }}>
+                <PriceGrid
+                  segmentsLabel={t.priceGrid.segments}
+                  languagesLabel={t.priceGrid.languages}
+                  floorLabel={t.priceGrid.floor}
+                  topLabel={t.priceGrid.top}
+                />
+              </div>
+            )}
           </motion.details>
         ))}
         <div style={{ borderTop: "1px solid var(--c-border)" }} />

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { useIntakeModal } from "@/context/IntakeModalContext";
+import FlowChain from "@/components/ui/FlowChain";
 
 interface Pillar {
   heading: string;
@@ -10,6 +11,14 @@ interface Pillar {
 }
 
 const en = {
+  flow: [
+    { label: "Your website", carries: "the enquiry" },
+    { label: "AI bot & automation", carries: "a qualified lead" },
+    { label: "Custom CRM", carries: "the deal" },
+    { label: "Business intelligence", carries: "the numbers" },
+    { label: "Manager dashboards" },
+  ],
+  flowOutcome: "Five systems, one chain. The dashboard shows you where it stalled, which is the part you cannot get from five tools that do not talk to each other.",
   sectionLabel: "Flagship",
   badge: "TURNKEY",
   h2: "AI Bot + Custom CRM + BI",
@@ -43,6 +52,14 @@ const en = {
 };
 
 const ru = {
+  flow: [
+    { label: "Ваш сайт", carries: "заявка" },
+    { label: "AI-бот и автоматизация", carries: "квалифицированный лид" },
+    { label: "Кастомная CRM", carries: "сделка" },
+    { label: "Business intelligence", carries: "цифры" },
+    { label: "Менеджерские дашборды" },
+  ],
+  flowOutcome: "Пять систем, одна цепочка. Дашборд показывает, где встало, — а это ровно то, чего не получить от пяти инструментов, которые друг с другом не разговаривают.",
   sectionLabel: "Флагман",
   badge: "TURNKEY",
   h2: "AI-бот + Кастомная CRM + BI",
@@ -160,6 +177,12 @@ export default function ServicesTurnkey() {
           >
             {t.subtitle}
           </p>
+
+          {/* The chain that sentence describes, drawn. The subtitle carries a
+              counted set of five and a dataflow through them at the same time,
+              for the flagship offer — the densest structure on the site living
+              inside one paragraph. */}
+          <FlowChain nodes={t.flow} outcome={t.flowOutcome} />
 
           {/* 5 pillars — heading + body per pillar */}
           <ol
