@@ -5,10 +5,11 @@ Paul Burg is an entrepreneur since 2011. He does two things for B2B companies: b
 
 ## Services — building systems
 - **AI Chatbots**: Custom lead bots, support agents, and onboarding bots trained on client data.
-- **CRM Systems**: Custom CRM on your own server — roles, pipelines, Telegram alerts.
+- **CRM & BI Systems**: Custom CRM on your own server — roles, pipelines, client history, Telegram alerts — plus BI and manager dashboards over it: lead sources, conversion by step, revenue by segment.
 - **Process Automation**: Workflow automation, integrations, and data pipelines.
 - **Websites**: Custom multilingual websites (Next.js, SEO-ready, mobile-first).
-- **Turnkey Package**: Website + Bot + CRM — complete AI-powered business presence, scoped per project.
+- **AI Matching Engines**: Vertical matching infrastructure for two-sided marketplaces — property rental, accommodation, hiring, services. AI intake, scoring against stated requirements, smart ranking. Built for HelpRent Phangan and again for the Da Nang rental market.
+- **Turnkey Package**: Five production systems end to end — website, AI bot and automation, custom CRM, BI, and manager dashboards, wired so an enquiry lands in the CRM and the CRM lands on the dashboard. Scoped per project, production-ready in 3–14 days.
 
 ## Outbound / Sales Pipeline (SDR as a service)
 Cold outbound built and run end to end for B2B companies. Companies are found in open registries (trade and shipping records, procurement and tender boards, company and seller registries, trademark filings, recall registries, catalogs and reviews), the decision-maker is identified, and each email is written for one company in its own language and sent from the client's domain. Cold digital outbound: written outreach to a named decision-maker, sent from the client's own domain and signed in their name. Working languages: Russian, English, Spanish.
@@ -16,6 +17,15 @@ Cold outbound built and run end to end for B2B companies. Companies are found in
 - **Leads + deal format (stages 01-09)**: the above plus specification, requesting terms from suppliers, quote assembly, and correspondence up to agreed price and lead time.
 - **Six-week pilot**: a fixed scope at a fixed fee. Selection with verified addresses, stepped sending with bounce control, same-working-day inbound triage, and a week-six report with the full funnel and cost per client. The list, domains, mailboxes, copy and stop-list are set up on the client's own accounts and stay with them either way.
 - Pricing: one fixed price for the six-week pilot, paid in thirds, each two weeks ahead of the work it covers, with a decision point before each — the client can stop after any two-week block. Terms for continuing are settled at week six on the client's own funnel numbers. Exclusivity: one business per niche while the work runs.
+
+## Machine-readable data (HelpRent Da Nang)
+The rental board this site's owner runs is readable by software, not just people. It is the reference implementation of what he builds for clients.
+- **MCP server** at `/mcp/`: stateless JSON-RPC, four read-only tools — search listings, fetch one, find buildings, market stats. No handshake, no session.
+- **REST API v1**: documented with an OpenAPI spec. No key, no account.
+- **Paid per request**: 600 calls a day free per address. Past that the endpoint answers HTTP 402 with an x402 challenge and settles in USDC on Base or Solana.
+- **Read-only by design**: no write tools, and contact details are never returned to an agent — it sends the person to the listing page instead.
+- `llms.txt`, schema.org on every listing, ItemList on the catalogues.
+The same thinking goes into client work: if a model is going to be the thing reading a site, it should find structure rather than guess at it.
 
 ## Mentorship
 - **Business Strategy**: From idea to execution, GTM, operations.
@@ -28,6 +38,7 @@ Cold outbound built and run end to end for B2B companies. Companies are found in
 - [Services](https://paulburg.com/services)
 - [Outbound / Sales Pipeline](https://paulburg.com/outbound)
 - [Mentorship](https://paulburg.com/mentorship)
+- [Blog](https://paulburg.com/blog) — thirteen long essays on AI and inequality, wealth and work, Vietnam, and the engineering behind the platform. Every post exists in English and Russian; append `?lang=ru` for the Russian version.
 - [Telegram](https://t.me/paul_burg)
 - [Twitter/X](https://x.com/PaulBurg_)
 - [LinkedIn](https://www.linkedin.com/in/paul-burg)

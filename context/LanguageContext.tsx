@@ -64,15 +64,22 @@ export function LanguageProvider({
     // One-time migration for visitors who chose a language before the cookie
     // existed: without it their stored choice would silently reset to whatever
     // the server guessed.
+    //
+    // Deferred by a timer rather than run in the effect body, for the same
+    // reason as the section rail: setting state during the commit is a
+    // cascading render, and this only ever fires once per browser anyway.
     useEffect(() => {
         if (readCookie(COOKIE_KEY)) return;
-        try {
-            const stored = window.localStorage.getItem(STORAGE_KEY);
-            if (isLanguage(stored) && stored !== language) setLanguageState(stored);
-        } catch {
-            // Blocked storage — nothing to migrate.
-        }
-    }, [language]);
+        const t = window.setTimeout(() => {
+            try {
+                const stored = window.localStorage.getItem(STORAGE_KEY);
+                if (isLanguage(stored)) setLanguageState(stored);
+            } catch {
+                // Blocked storage — nothing to migrate.
+            }
+        }, 0);
+        return () => window.clearTimeout(t);
+    }, []);
 
     useEffect(() => {
         document.documentElement.lang = language;

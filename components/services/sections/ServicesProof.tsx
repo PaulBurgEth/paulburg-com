@@ -6,7 +6,10 @@ import CountUp from "@/components/CountUp";
 
 const en = {
   metrics: [
-    { value: "6 weeks", label: "from a cold list to a client ready to talk" },
+    // One wording for one number. ServicesOutbound described the same six
+    // weeks as "quotes agreed with buyers"; two different promises behind the
+    // same figure on the same page.
+    { value: "6 weeks", label: "from a cold list to quotes agreed with buyers" },
     { value: "3–14 days", label: "from call to production" },
     { value: "EN · VI · RU · DE · HE", label: "languages the systems already run in" },
   ],
@@ -14,7 +17,7 @@ const en = {
 
 const ru = {
   metrics: [
-    { value: "6 недель", label: "от холодного списка до клиента, готового обсуждать" },
+    { value: "6 недель", label: "от холодного списка до согласованных расчётов" },
     { value: "3–14 дней", label: "от звонка до продакшена" },
     { value: "EN · VI · RU · DE · HE", label: "языки, на которых системы уже работают" },
   ],

@@ -32,8 +32,13 @@ export default function BlogList({ posts, lang }: Props) {
           transition={{ duration: 0.5, delay: i * 0.1 }}
           whileHover={{ y: -3, boxShadow: "0 10px 36px rgba(0,0,0,0.3)" }}
         >
+          {/* aria-label, because the link wraps the tag, the reading time, the
+              date, the <h2>, the excerpt and the "Read" affordance — so its
+              computed name was all of that concatenated. The title alone is
+              what a screen reader should hear in a list of links. */}
           <Link
             href={lang === "ru" ? `/blog/${post.slug}?lang=ru` : `/blog/${post.slug}`}
+            aria-label={post.title}
             style={{ textDecoration: "none" }}
           >
             <div

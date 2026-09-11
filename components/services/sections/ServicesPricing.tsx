@@ -43,7 +43,10 @@ const en = {
     {
       name: "Full System",
       amount: "All of it",
-      timeline: "7–21 days delivery",
+      // 3–14, matching the four other places on this page and the home page.
+      // Full System is the Turnkey bundle, and one product cannot carry two
+      // delivery promises.
+      timeline: "3–14 days delivery",
       features: [
         "Everything in Business",
         "Website from scratch",
@@ -96,7 +99,7 @@ const ru = {
     {
       name: "Полная система",
       amount: "Всё сразу",
-      timeline: "Срок: 7–21 день",
+      timeline: "Срок: 3–14 дней",
       features: [
         "Всё из Бизнеса",
         "Сайт с нуля",

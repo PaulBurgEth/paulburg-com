@@ -5,11 +5,39 @@ import { NextResponse } from "next/server";
 const RATE_LIMIT_MS = 30_000;
 const recentSubmissions = new Map<string, number>();
 
+/**
+ * Single-line field: control characters out, and newlines collapsed.
+ *
+ * The old version kept \n and \t deliberately — the character class skipped
+ * \u0009 and \u000A — and only one field, bestClient, collapsed them
+ * afterwards. The notification is assembled by string concatenation into a
+ * list of "Key: value" lines, so any other field could carry a newline and
+ * forge extra lines: a name of "Ivan\nContact: @attacker" produced a message
+ * with two Contact lines, and the reader has no way to tell which is real.
+ *
+ * The author had already found this for bestClient and written the reason in a
+ * comment there. The fix was applied to one field out of eight.
+ */
 function sanitize(value: unknown, maxLen = 500): string {
   if (typeof value !== "string") return "";
-  // Strip control chars (except newline/tab), cap length.
   return value
     .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, "")
+    // Every newline and tab becomes a separator, so the line structure of the
+    // message can only be produced by this file.
+    .replace(/[\t\r\n]+/g, " · ")
+    .trim()
+    .slice(0, maxLen);
+}
+
+/** Multi-line field: newlines kept, but indented so they cannot open a line. */
+function sanitizeMultiline(value: unknown, maxLen = 1000): string {
+  if (typeof value !== "string") return "";
+  return value
+    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, "")
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .join(" · ")
     .trim()
     .slice(0, maxLen);
 }
@@ -59,10 +87,13 @@ const MENTORSHIP_AREA_LABELS: Record<string, string> = {
   ai: "AI & Automation",
 };
 
+// Keys match what MentorshipIntakeModal actually sends. They did not: the
+// modal sends "advanced", which was absent here and fell through to the raw
+// string in the notification, while "deeper" was a key nothing ever produced.
 const MENTORSHIP_LEVEL_LABELS: Record<string, string> = {
-  beginner: "Beginner",
-  some: "Some experience",
-  deeper: "Want to go deeper",
+  beginner: "Beginner — just starting out",
+  some: "Some experience — wants to go deeper",
+  advanced: "Advanced — wants a sparring partner",
 };
 
 const SDR_FORMAT_LABELS: Record<string, string> = {
@@ -96,6 +127,15 @@ const SDR_CHANNEL_LABELS: Record<string, string> = {
   none: "No steady channel",
 };
 
+/**
+ * Values that came from a fixed list stay in that list. sanitizeNeedsArray had
+ * no allow-list, so any 32-character string a submitter chose was passed
+ * straight into the notification body.
+ */
+function keepKnown(values: string[], labels: Record<string, string>): string[] {
+  return values.filter((v) => v in labels);
+}
+
 function sanitizeNeedsArray(value: unknown): string[] {
   if (!Array.isArray(value)) return [];
   return value
@@ -104,8 +144,31 @@ function sanitizeNeedsArray(value: unknown): string[] {
     .slice(0, 10);
 }
 
+/**
+ * Only this site may post here. There was no Origin check at all, so any page
+ * anywhere could submit the form on a visitor's behalf, and robots.ts did not
+ * disallow /api either.
+ */
+const ALLOWED_ORIGINS = new Set([
+  "https://paulburg.com",
+  "https://www.paulburg.com",
+]);
+
+function originAllowed(req: Request): boolean {
+  const origin = req.headers.get("origin");
+  // Same-origin form posts from the site itself send an Origin header. A
+  // missing one is allowed only outside production, where localhost ports vary.
+  if (!origin) return process.env.NODE_ENV !== "production";
+  if (ALLOWED_ORIGINS.has(origin)) return true;
+  // Vercel preview deployments.
+  return /^https:\/\/[\w-]+\.vercel\.app$/.test(origin);
+}
+
 export async function POST(req: Request) {
   try {
+    if (!originAllowed(req)) {
+      return NextResponse.json({ ok: false, error: "forbidden" }, { status: 403 });
+    }
     // Rate limit by IP
     const ip =
       req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
@@ -119,10 +182,16 @@ export async function POST(req: Request) {
         { status: 429 },
       );
     }
+    // Armed here, not after a successful send. It used to be set only on the
+    // happy path, so a 400, a 500 or a failing Telegram left the window open
+    // and retries were unlimited for as long as the failure lasted.
+    recentSubmissions.set(ip, now);
 
     const raw = await req.json().catch(() => null);
     if (!raw || typeof raw !== "object") {
-      console.error("[intake] Invalid body received from IP:", ip);
+      // The IP is not logged. It used to be written on every request — PII
+      // with no stated retention, in a log nobody rotates.
+      console.error("[intake] Invalid body received");
       return NextResponse.json(
         { ok: false, error: "invalid_body" },
         { status: 400 },
@@ -136,16 +205,15 @@ export async function POST(req: Request) {
       name: sanitize(r.name, 120) ? "[present]" : "[missing]",
       contactInfo: sanitize(r.contactInfo, 200) ? "[present]" : "[missing]",
       language: sanitize(r.language, 8) || "—",
-      ip,
     });
     const name = sanitize(r.name, 120);
     const business = sanitize(r.business, 200);
     // Legacy single-select "need" (old form) — still accepted.
     const needRaw = sanitize(r.need, 32);
     // New multi-select needs array (new modal).
-    const needsArr = sanitizeNeedsArray(r.needs);
-    const challenge = sanitize(r.challenge, 1000);
-    const currentSetup = sanitize(r.currentSetup, 1000);
+    const needsArr = keepKnown(sanitizeNeedsArray(r.needs), NEED_LABELS);
+    const challenge = sanitizeMultiline(r.challenge, 1000);
+    const currentSetup = sanitizeMultiline(r.currentSetup, 1000);
     const teamSizeRaw = sanitize(r.teamSize, 32);
     const budgetRaw = sanitize(r.budget, 32);
     const timelineRaw = sanitize(r.timeline, 32);
@@ -198,7 +266,7 @@ export async function POST(req: Request) {
     if (type === "mentorship") {
       const areaRaw = sanitize(r.area, 32);
       const levelRaw = sanitize(r.level, 32);
-      const achievement = sanitize(r.achievement, 1000);
+      const achievement = sanitizeMultiline(r.achievement, 1000);
       const area = MENTORSHIP_AREA_LABELS[areaRaw] || areaRaw || "—";
       const level = MENTORSHIP_LEVEL_LABELS[levelRaw] || levelRaw || "—";
       lines = [
@@ -216,10 +284,8 @@ export async function POST(req: Request) {
       const sdrFormatRaw = sanitize(r.sdrFormat, 32);
       const cycleRaw = sanitize(r.cycle, 32);
       const channelRaw = sanitize(r.channel, 32);
-      const marketsArr = sanitizeNeedsArray(r.markets);
-      // Collapse newlines — a multi-line answer would otherwise break the
-      // "Key: value" layout of the plaintext Telegram message.
-      const bestClient = sanitize(r.bestClient, 1000).replace(/\s*\n+\s*/g, " · ");
+      const marketsArr = keepKnown(sanitizeNeedsArray(r.markets), SDR_MARKET_LABELS);
+      const bestClient = sanitizeMultiline(r.bestClient, 1000);
       const markets = marketsArr
         .map((m) => SDR_MARKET_LABELS[m] || m)
         .join(", ");
@@ -258,7 +324,9 @@ export async function POST(req: Request) {
     }
     const text = lines.join("\n");
 
-    console.log("[intake] Sending to Telegram chat_id:", chatId);
+    // The chat id is not logged. It is not a secret on its own, but it is one
+    // half of the pair that can post into the owner's chat.
+    console.log("[intake] Sending to Telegram");
     const tgRes = await fetch(
       `https://api.telegram.org/bot${token}/sendMessage`,
       {
@@ -282,8 +350,6 @@ export async function POST(req: Request) {
     }
 
     console.log("[intake] Telegram message sent OK, status:", tgRes.status);
-
-    recentSubmissions.set(ip, now);
 
     // Opportunistic cleanup — prevent unbounded growth.
     if (recentSubmissions.size > 1000) {

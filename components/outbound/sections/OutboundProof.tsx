@@ -62,7 +62,13 @@ const en = {
   ],
   pilotsNote: "Two industries rather than one, because the first thing anyone wants to know is whether this only works where it was built. The segments are not named here because the businesses behind them are not.",
   compareTitle: "What one reply is worth here",
-  compareOurs: { n: "91%", l: "of replies reached a priced quote", sub: "68 of the 75 companies that replied" },
+  // Scoped to the first run explicitly. 68 of 75 is the industrial-supply
+  // pilot; the services pilot ten lines above reads 25 of 62, and a reader who
+  // does that arithmetic was landing on 40% under a headline saying 91%. The
+  // figure is not changed — the claim now says which run it is from, which is
+  // also how the canon reports it, per pilot with an interval rather than as
+  // one blended number.
+  compareOurs: { n: "91%", l: "of replies reached a priced quote", sub: "68 of the 75 replies, industrial supply" },
   compareMarket: { n: "14%", l: "of replies carry any interest at all", sub: "market average, cold email" },
   compareNote: "Our bar is the higher one: not a reply that sounds interested, a company that got as far as a price. And the market figure is measured on sequences that run email together with LinkedIn and calls — this is email on its own. Market data: aggregated platform benchmarks, Growth Engineer, 2026.",
   afterTitle: "Where you come in",
@@ -121,7 +127,7 @@ const ru = {
   ],
   pilotsNote: "Две отрасли, а не одна, потому что первое, что хотят понять — работает ли это где-то кроме того места, где строилось. Сегменты здесь не названы, потому что не названы стоящие за ними бизнесы.",
   compareTitle: "Чего стоит здесь один ответ",
-  compareOurs: { n: "91%", l: "ответов дошли до расчёта с ценой", sub: "68 из 75 ответивших компаний" },
+  compareOurs: { n: "91%", l: "ответов дошли до расчёта с ценой", sub: "68 из 75 ответов, металлопрокат и промснаб" },
   compareMarket: { n: "14%", l: "ответов вообще содержат интерес", sub: "среднее по рынку холодной почты" },
   compareNote: "Планка у нас выше: не ответ, который звучит заинтересованно, а компания, дошедшая до цены. И рыночная цифра снята на последовательностях, где почта идёт вместе с LinkedIn и звонками — здесь одна почта. Рыночные данные: агрегация платформенных бенчмарков, Growth Engineer, 2026.",
   afterTitle: "Где вступаете вы",

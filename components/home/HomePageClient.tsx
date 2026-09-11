@@ -32,7 +32,6 @@ const C = {
   text3:    "var(--c-text3)",
   muted:    "var(--c-muted)",
   faint:    "var(--c-faint)",
-  subtle:   "var(--c-subtle)",
   heading:  "var(--c-heading)",
 };
 
@@ -203,17 +202,6 @@ body::after{
   letter-spacing:0.04em;transition:all 0.2s;
 }
 .btn-ghost:hover{border-color:${C.gold};color:${C.gold}}
-.socials{
-  display:flex;gap:18px;padding-top:12px;
-  border-top:1px solid ${C.border2};
-}
-.social{
-  font-family:var(--font-inconsolata),monospace;font-size:14px;
-  color:${C.subtle};cursor:pointer;transition:color 0.2s;
-  letter-spacing:0.08em;text-transform:uppercase;
-  text-decoration:none;
-}
-.social:hover{color:${C.gold}}
 
 /* ── SECTION ── */
 .section{padding:72px 0;position:relative}
@@ -1007,11 +995,11 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <a key={i} className="pod-card" href={p.url} target="_blank" rel="noopener noreferrer">
                 <div className="pod-thumb">
                   {p.img ? (
-                    <Image src={p.img} alt={p.title} fill style={{ objectFit: "cover", zIndex: 0 }} sizes="(max-width:520px) 100vw, 50vw" />
+                    <Image src={p.img} alt="" fill style={{ objectFit: "cover", zIndex: 0 }} sizes="(max-width:520px) 100vw, 50vw" />
                   ) : p.ytId ? (
                     <Image
                       src={`https://img.youtube.com/vi/${p.ytId}/maxresdefault.jpg`}
-                      alt={p.title}
+                      alt=""
                       fill
                       style={{ objectFit: "cover", zIndex: 0 }}
                       sizes="(max-width:520px) 100vw, 50vw"
@@ -1040,7 +1028,11 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
           <SectionNumber n="05" />
           <div className="eyebrow">{language === "ru" ? "Статьи" : "Writing"}</div>
           <h2 className="sec-title">{language === "ru" ? "Статьи и заметки" : "Articles & Insights"}</h2>
-          <p className="sec-sub">{language === "ru" ? "Про impact-рынки, health tech и публичное строительство" : "On impact markets, health tech, and building in public"}</p>
+          {/* Was "impact markets, health tech, building in public" — no post on
+              the site is about any of those. The thirteen are about AI and
+              inequality, how wealth concentrates, work and precarity, Vietnam,
+              and the engineering behind the platform. */}
+          <p className="sec-sub">{language === "ru" ? "Про AI и неравенство, деньги и труд, Вьетнам изнутри" : "On AI and inequality, wealth and work, Vietnam from the inside"}</p>
           {(() => {
             // Editorial layout — 1 featured + up to 3 stacked.
             const items = blogPosts.length > 0 ? blogPosts : (articles.slice(0, 4) as unknown as Post[]);

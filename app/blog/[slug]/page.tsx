@@ -3,6 +3,7 @@ import path from "path";
 import { notFound } from "next/navigation";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { getPostBySlug } from "@/lib/posts";
+import { childText, headingId } from "@/lib/text";
 import ArticlePageClient from "@/components/blog/ArticlePageClient";
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
@@ -39,30 +40,36 @@ export async function generateMetadata({
 }
 
 function extractToc(content: string): { id: string; text: string; level: 2 | 3 }[] {
-  const lines = content.split("\n");
+  const seen = new Set<string>();
   const toc: { id: string; text: string; level: 2 | 3 }[] = [];
-  for (const line of lines) {
-    const m2 = line.match(/^##\s+(.+)/);
-    const m3 = line.match(/^###\s+(.+)/);
-    if (m2) {
-      const text = m2[1].trim();
-      toc.push({ id: text.toLowerCase().replace(/[^a-z0-9а-яёa-z]+/gi, "-").replace(/^-|-$/g, ""), text, level: 2 });
-    } else if (m3) {
-      const text = m3[1].trim();
-      toc.push({ id: text.toLowerCase().replace(/[^a-z0-9а-яёa-z]+/gi, "-").replace(/^-|-$/g, ""), text, level: 3 });
-    }
+  for (const line of content.split("\n")) {
+    const m = line.match(/^(##|###)\s+(.+)/);
+    if (!m) continue;
+    const text = m[2].trim();
+    toc.push({ id: headingId(text, seen), text, level: m[1] === "##" ? 2 : 3 });
   }
   return toc;
 }
 
-function makeHeading(level: 2 | 3) {
-  return function Heading({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
-    const text = typeof children === "string" ? children : "";
-    const id = text.toLowerCase().replace(/[^a-z0-9а-яёa-z]+/gi, "-").replace(/^-|-$/g, "");
-    return level === 2
-      ? <h2 id={id} {...props}>{children}</h2>
-      : <h3 id={id} {...props}>{children}</h3>;
-  };
+/**
+ * The heading ids have to match the ones extractToc produced, in the same
+ * order — so this walks the same counter. Deriving them independently is what
+ * let the two drift apart.
+ */
+function makeHeadings(toc: { id: string; text: string; level: 2 | 3 }[]) {
+  const queue = { 2: toc.filter((t) => t.level === 2), 3: toc.filter((t) => t.level === 3) };
+  const used = { 2: 0, 3: 0 };
+  const make = (level: 2 | 3) =>
+    function Heading({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
+      // Match by position, falling back to deriving from the rendered children
+      // when the two lists disagree — which is better than the old `id=""`.
+      const entry = queue[level][used[level]++];
+      const id = entry?.id ?? headingId(childText(children));
+      return level === 2
+        ? <h2 id={id} {...props}>{children}</h2>
+        : <h3 id={id} {...props}>{children}</h3>;
+    };
+  return { h2: make(2), h3: make(3) };
 }
 
 // Split off the trailing Sources/Footnotes/References/Источники section so it
@@ -140,7 +147,7 @@ async function loadArticle(slug: string, lang: "en" | "ru") {
   const { content: mdxContent } = await compileMDX({
     source: body,
     options: { parseFrontmatter: false },
-    components: { h2: makeHeading(2), h3: makeHeading(3) },
+    components: makeHeadings(toc),
   });
 
   let sourcesContent = null;
@@ -148,7 +155,7 @@ async function loadArticle(slug: string, lang: "en" | "ru") {
     const compiled = await compileMDX({
       source: formatSources(sources),
       options: { parseFrontmatter: false },
-      components: { h2: makeHeading(2), h3: makeHeading(3) },
+      components: makeHeadings([]),
     });
     sourcesContent = compiled.content;
   }
