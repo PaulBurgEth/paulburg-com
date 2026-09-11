@@ -271,7 +271,7 @@ export default function OutboundForm() {
           style={{
             background: "var(--c-card)",
             border: "1px solid var(--c-border)",
-            borderRadius: 12,
+            borderRadius: 10,
             padding: 26,
           }}
         >
@@ -458,7 +458,7 @@ export default function OutboundForm() {
             second card added at this level would drop into the next row under
             the form instead of stacking beside it. */}
         <div className="flex flex-col gap-4">
-        <div style={{ background: "var(--c-card2)", border: "1px solid var(--c-border)", borderRadius: 12, padding: 22 }}>
+        <div style={{ background: "var(--c-card2)", border: "1px solid var(--c-border)", borderRadius: 10, padding: 22 }}>
           <span style={{ fontFamily: MONO, fontSize: 14, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--c-muted)", display: "block", marginBottom: 14 }}>
             {t.orWrite}
           </span>

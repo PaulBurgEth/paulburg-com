@@ -92,7 +92,7 @@ export default function OutboundHero() {
             style={{
               fontFamily: SERIF,
               fontWeight: 700,
-              fontSize: "clamp(34px, 5.2vw, 62px)",
+              fontSize: "clamp(36px, 5vw, 62px)",
               letterSpacing: "-0.02em",
               lineHeight: 1.12,
               color: "var(--c-heading)",

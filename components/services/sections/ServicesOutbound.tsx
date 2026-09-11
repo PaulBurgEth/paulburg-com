@@ -99,7 +99,7 @@ export default function ServicesOutbound() {
                   style={{
                     fontFamily: "var(--font-display)",
                     fontWeight: 700,
-                    fontSize: "clamp(22px, 3vw, 30px)",
+                    fontSize: "clamp(30px, 4vw, 44px)",
                     letterSpacing: "-0.02em",
                     color: "var(--c-heading)",
                   }}
@@ -147,11 +147,11 @@ export default function ServicesOutbound() {
               style={{
                 background: "var(--c-card2)",
                 border: "1px solid var(--c-border)",
-                borderRadius: 8,
+                borderRadius: 10,
                 padding: 20,
               }}
             >
-              <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 30, color: "var(--c-gold)", lineHeight: 1, marginBottom: 8 }}>
+              <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 40, color: "var(--c-gold)", lineHeight: 1, marginBottom: 8 }}>
                 {t.metric}
               </div>
               <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16, color: "var(--c-text2)", lineHeight: 1.6 }}>

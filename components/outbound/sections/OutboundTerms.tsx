@@ -46,7 +46,7 @@ export default function OutboundTerms() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {t.money.map((m) => (
-          <motion.div key={m.k} variants={itemVariants} style={{ background: "var(--c-card)", border: "1px solid var(--c-border)", borderTop: "2px solid rgba(200,169,110,0.35)", borderRadius: 10, padding: 22 }}>
+          <motion.div key={m.k} variants={itemVariants} style={{ background: "var(--c-card)", border: "1px solid var(--c-border)", borderTop: "2px solid var(--c-gold)", borderRadius: 10, padding: 22 }}>
             <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--c-text2)" }}>{m.k}</span>
             <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 21, color: "var(--c-gold)", margin: "9px 0 10px", lineHeight: 1.3 }}>{m.h}</h3>
             <p style={{ fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-body)", lineHeight: 1.6 }}>{m.d}</p>

@@ -21,10 +21,12 @@ export default function MentorshipBridge() {
                     className="max-w-4xl mx-auto text-center relative"
                 >
                     <span
+                        aria-hidden="true"
                         className="absolute -top-12 -left-4 text-9xl font-serif leading-none select-none"
                         style={{ color: "rgba(200,169,110,0.08)" }}
                     >&ldquo;</span>
                     <span
+                        aria-hidden="true"
                         className="absolute -bottom-16 -right-4 text-9xl font-serif leading-none select-none"
                         style={{ color: "rgba(200,169,110,0.08)" }}
                     >&rdquo;</span>
@@ -33,7 +35,7 @@ export default function MentorshipBridge() {
                         className="leading-relaxed mb-8"
                         style={{
                             fontFamily: "var(--font-instrument-sans), sans-serif",
-                            fontSize: "clamp(16px, 2vw, 20px)",
+                            fontSize: "clamp(17px, 2vw, 20px)",
                             color: "var(--c-text2)",
                             fontWeight: 400,
                         }}
@@ -41,38 +43,80 @@ export default function MentorshipBridge() {
                         {b.intro}
                     </h2>
 
-                    <div className="space-y-6 md:space-y-8">
-                        <p
-                            className="leading-relaxed"
-                            style={{
-                                fontFamily: "var(--font-instrument-sans), sans-serif",
-                                fontSize: "clamp(16px, 2vw, 20px)",
-                                color: "var(--c-text)",
-                                fontWeight: 400,
-                            }}
-                        >
-                            <span
-                                className="font-bold hover:scale-105 inline-block transition-transform duration-300"
-                                style={{ color: "var(--c-gold)" }}
-                            >{b.p1}</span> {b.p1_text},
-                            <br className="hidden md:block" />
-                            <span
-                                className="font-bold hover:scale-105 inline-block transition-transform duration-300"
-                                style={{ color: "var(--c-gold)" }}
-                            >{b.p2}</span> {b.p2_text},
-                            <br className="hidden md:block" />
-                            <span
-                                className="font-bold hover:scale-105 inline-block transition-transform duration-300"
-                                style={{ color: "var(--c-gold)" }}
-                            >{b.p3}</span> {b.p3_text}.
-                        </p>
+                    {/* Three pillars as three columns, not one centred
+                        paragraph broken by <br>. Each pillar already had its own
+                        payoff clause — a set of three with a consequence each,
+                        which the prose ran together into a single sentence. The
+                        copy is unchanged, and §02 of this same page already
+                        renders a three-item grid, so this is the page's own
+                        vocabulary rather than a new one. */}
+                    <ul
+                        className="grid grid-cols-1 md:grid-cols-3 text-left"
+                        style={{
+                            listStyle: "none",
+                            padding: 0,
+                            margin: "0 0 8px",
+                            borderTop: "1px solid var(--c-border)",
+                            borderBottom: "1px solid var(--c-border)",
+                        }}
+                    >
+                        {[
+                            { k: b.p1, v: b.p1_text },
+                            { k: b.p2, v: b.p2_text },
+                            { k: b.p3, v: b.p3_text },
+                        ].map((pillar, i) => (
+                            <li
+                                key={pillar.k}
+                                style={{
+                                    padding: "18px 20px",
+                                    borderLeft: i > 0 ? "1px solid var(--c-border)" : undefined,
+                                }}
+                            >
+                                <span
+                                    aria-hidden="true"
+                                    style={{
+                                        display: "block",
+                                        width: 22,
+                                        height: 1,
+                                        background: "var(--c-gold)",
+                                        marginBottom: 12,
+                                    }}
+                                />
+                                <span
+                                    style={{
+                                        display: "block",
+                                        fontFamily: "var(--font-display)",
+                                        fontWeight: 700,
+                                        fontSize: 21,
+                                        color: "var(--c-gold)",
+                                        lineHeight: 1.25,
+                                        marginBottom: 8,
+                                    }}
+                                >
+                                    {pillar.k}
+                                </span>
+                                <span
+                                    style={{
+                                        display: "block",
+                                        fontFamily: "var(--font-instrument-sans), sans-serif",
+                                        fontSize: 16,
+                                        color: "var(--c-text2)",
+                                        lineHeight: 1.6,
+                                    }}
+                                >
+                                    {pillar.v}
+                                </span>
+                            </li>
+                        ))}
+                    </ul>
 
+                    <div className="space-y-6 md:space-y-8">
                         <div className="pt-8">
                             <p
                                 style={{
                                     fontFamily: "var(--font-display)",
                                     fontStyle: "italic",
-                                    fontSize: "clamp(16px, 2vw, 20px)",
+                                    fontSize: "clamp(17px, 2vw, 20px)",
                                     color: "var(--c-gold)",
                                 }}
                             >

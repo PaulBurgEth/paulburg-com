@@ -150,7 +150,7 @@ export default function ArticlePageClient({
                   style={{
                     fontFamily: "var(--font-display)",
                     fontWeight: 600,
-                    fontSize: "clamp(34px, 5.5vw, 52px)",
+                    fontSize: "clamp(36px, 5vw, 62px)",
                     letterSpacing: "-0.022em",
                     color: "var(--c-heading)",
                     lineHeight: 1.15,
@@ -342,7 +342,7 @@ export default function ArticlePageClient({
       <style>{`
         .prose-blog {
           font-family: var(--font-lede);
-          font-size: 19.5px;
+          font-size: 17px;
           line-height: 1.65;
           color: var(--c-body);
           font-feature-settings: "ss01", "kern";
@@ -374,7 +374,7 @@ export default function ArticlePageClient({
         .prose-blog h1 {
           font-family: var(--font-display);
           font-weight: 600;
-          font-size: 30px;
+          font-size: 24px;
           color: var(--c-heading);
           margin: 56px 0 18px;
           line-height: 1.2;
@@ -407,7 +407,7 @@ export default function ArticlePageClient({
           font-family: var(--font-lede);
           font-weight: 600;
           font-style: italic;
-          font-size: 19px;
+          font-size: 20px;
           color: var(--c-gold);
           margin: 36px 0 10px;
           text-transform: none;
@@ -458,7 +458,7 @@ export default function ArticlePageClient({
           font-family: var(--font-display);
           font-style: italic;
           font-weight: 500;
-          font-size: 26px;
+          font-size: 24px;
           line-height: 1.35;
           color: var(--c-body-lede);
           letter-spacing: -0.005em;
@@ -587,11 +587,11 @@ export default function ArticlePageClient({
         }
 
         @media (max-width: 640px) {
-          .prose-blog { font-size: 18px; line-height: 1.7; }
-          .prose-blog > p:first-of-type { font-size: 19px !important; }
+          .prose-blog { font-size: 17px; line-height: 1.7; }
+          .prose-blog > p:first-of-type { font-size: 20px !important; }
           .prose-blog > p:first-of-type::first-letter { font-size: 60px; padding: 4px 10px 0 0; }
           .prose-blog h2 { font-size: 24px; margin-top: 44px; }
-          .prose-blog blockquote { font-size: 22px; }
+          .prose-blog blockquote { font-size: 21px; }
         }
 
         .article-sources {

@@ -288,7 +288,7 @@ export default function MentorshipIntakeModal() {
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 700,
-                  fontSize: "clamp(24px, 3.5vw, 28px)",
+                  fontSize: "clamp(21px, 3vw, 24px)",
                   letterSpacing: "-0.02em",
                   color: "var(--c-heading)",
                   marginBottom: 6,
@@ -325,7 +325,7 @@ export default function MentorshipIntakeModal() {
                   textAlign: "center",
                 }}
               >
-                <div style={{ fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 700, color: "var(--c-heading)", marginBottom: 6 }}>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: 21, fontWeight: 700, color: "var(--c-heading)", marginBottom: 6 }}>
                   {t.success}
                 </div>
                 <div style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16, color: "var(--c-text2)" }}>

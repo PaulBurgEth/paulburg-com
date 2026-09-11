@@ -14,45 +14,14 @@ import { INTAKE_ANCHOR } from "@/lib/constants";
  * forever. Self-contained motion has no such ordering dependency.
  */
 
-// Headings add Source Serif as a Cyrillic fallback — the global
-// html[lang="ru"] rule is overridden by the inline fontFamily below.
-export const SERIF = "var(--font-display)";
-export const SANS = "var(--font-instrument-sans), sans-serif";
-export const MONO = "var(--font-inconsolata), monospace";
-export const LEDE = "var(--font-lede)";
-
-/**
- * Type scale. The page previously ran 232 of its 300 text elements at 13.5px or
- * smaller, with captions at 8-11px in a colour that failed WCAG AA. These are
- * the sizes every section must use — no ad-hoc numbers.
- */
-export const T = {
-  lede: 20,
-  body: 17,
-  bodySm: 16,
-  button: 15,
-  h3: 21,
-  h2: "clamp(30px, 4vw, 44px)",
-  caption: 14,
-  eyebrow: 14,
-  /** Крупное число как объект, а не как заголовок: воронка, счётчики, суммы. */
-  figure: 44,
-  figureSm: 40,
-} as const;
+// The scale and the card vocabulary now live in lib/type.ts so the other four
+// pages can use them too — they were defined here and therefore confined to
+// /outbound. Re-exported, so the thirteen files importing from this module keep
+// working unchanged.
+import { SERIF, SANS, MONO, LEDE, T, cardStyle, cardAccentStyle, cardQuietStyle, cardHover } from "@/lib/type";
+export { SERIF, SANS, MONO, LEDE, T, cardStyle, cardAccentStyle, cardQuietStyle, cardHover };
 
 
-export const cardStyle: CSSProperties = {
-  background: "var(--c-card)",
-  border: "1px solid var(--c-border)",
-  borderRadius: 10,
-  padding: 20,
-};
-
-export const cardHover = {
-  y: -3,
-  boxShadow: "0 10px 36px rgba(0,0,0,0.3)",
-  borderColor: "rgba(200,169,110,0.22)",
-};
 
 export const monoChipStyle: CSSProperties = {
   fontFamily: MONO,

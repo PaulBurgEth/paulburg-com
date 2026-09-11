@@ -87,7 +87,7 @@ export default function ServicesHero() {
             style={{
               fontFamily: "var(--font-display)",
               fontWeight: 700,
-              fontSize: "clamp(30px, 5vw, 52px)",
+              fontSize: "clamp(36px, 5vw, 62px)",
               letterSpacing: "-0.02em",
               lineHeight: 1.1,
               color: "var(--c-heading)",

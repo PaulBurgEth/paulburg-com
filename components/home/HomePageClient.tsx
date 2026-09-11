@@ -122,7 +122,7 @@ body::after{
 .hero-desc{
   font-family:var(--font-lede);
   font-style:italic;
-  font-size:18px;color:var(--c-body-lede);
+  font-size:17px;color:var(--c-body-lede);
   max-width:620px;line-height:1.75;
   margin-bottom:36px;
 }
@@ -203,6 +203,31 @@ body::after{
 }
 .btn-ghost:hover{border-color:${C.gold};color:${C.gold}}
 
+/* Three-source band. Same geometry as the /outbound §01 band: equal columns
+   split by hairlines, the last one carrying the argument. */
+.src-band{
+  display:grid;grid-template-columns:1fr;gap:0;
+  border-top:1px solid ${C.border};border-bottom:1px solid ${C.border};
+  margin-bottom:18px;
+}
+@media (min-width:700px){
+  .src-band{grid-template-columns:repeat(3,1fr)}
+  .src-col + .src-col{border-left:1px solid ${C.border}}
+}
+.src-col{padding:16px 18px 16px 0}
+@media (min-width:700px){.src-col + .src-col{padding-left:18px}}
+.src-col-on .src-k{color:${C.gold}}
+.src-k{
+  font-family:var(--font-inconsolata),monospace;font-size:14px;
+  letter-spacing:0.14em;text-transform:uppercase;color:${C.text2};
+  margin-bottom:7px;
+}
+.src-v{
+  font-family:var(--font-instrument-sans),sans-serif;font-size:16px;
+  color:${C.text2};line-height:1.6;margin:0;
+}
+.src-col-on .src-v{color:${C.text}}
+
 /* ── SECTION ── */
 .section{padding:72px 0;position:relative}
 .section-number{
@@ -221,7 +246,7 @@ body::after{
 .eyebrow::before{content:'';width:32px;height:1px;background:${C.gold};opacity:0.6}
 .sec-title{
   font-family:var(--font-display);
-  font-size:clamp(28px,4vw,38px);font-weight:700;
+  font-size:clamp(30px,4vw,44px);font-weight:700;
   color:${C.heading};margin-bottom:6px;letter-spacing:-0.01em;
 }
 .sec-sub{font-size:17px;color:var(--c-body);margin-bottom:36px}
@@ -266,7 +291,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
   width:42px;height:42px;border-radius:50%;
   border:1px solid ${C.gold};background:rgba(200,169,110,0.15);backdrop-filter:blur(4px);
   display:flex;align-items:center;justify-content:center;
-  color:${C.gold};font-size:12px;transition:all 0.2s;
+  color:${C.gold};font-size:14px;transition:all 0.2s;
 }
 .pod-card:hover .pod-play{
   background:rgba(200,169,110,0.3);
@@ -356,7 +381,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 @media(max-width:500px){.proj-grid{grid-template-columns:1fr}}
 .proj-card{
   background:${C.card};border:1px solid ${C.border};
-  border-radius:9px;padding:16px;
+  border-radius:10px;padding:16px;
   position:relative;cursor:pointer;
   transition:all 0.2s;text-decoration:none;color:inherit;
   display:block;
@@ -369,7 +394,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .mentor-card{
   display:block;text-decoration:none;
   background:linear-gradient(135deg, rgba(200,169,110,0.06) 0%, rgba(200,169,110,0.01) 100%);
-  border:1px solid ${C.border};border-radius:12px;
+  border:1px solid ${C.border};border-radius:10px;
   padding:32px 32px;margin-top:24px;
   transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position:relative;overflow:hidden;
@@ -455,7 +480,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 @media(max-width:640px){.follow-grid{grid-template-columns:1fr}}
 .follow-card{
   background:${C.card};border:1px solid ${C.border};
-  border-radius:12px;padding:32px;display:flex;flex-direction:column;
+  border-radius:10px;padding:32px;display:flex;flex-direction:column;
   transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .follow-card:hover{border-color:rgba(200,169,110,0.25);transform:translateY(-2px)}
@@ -818,7 +843,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 >
                   {language === "ru" ? "ФЛАГМАН" : "FLAGSHIP"}
                 </span>
-                <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 18, color: C.heading, marginBottom: 6, paddingRight: 90 }}>
+                <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 17, color: C.heading, marginBottom: 6, paddingRight: 90 }}>
                   {language === "ru" ? "Turnkey: AI-бот + Кастомная CRM + BI" : "Turnkey: AI Bot + Custom CRM + BI"}
                 </div>
                 <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16, color: C.text2, lineHeight: 1.6, marginBottom: 14 }}>
@@ -891,16 +916,34 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <span style={{ width: 32, height: 32, background: C.goldDim, border: "1px solid rgba(200,169,110,0.22)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 <Crosshair size={15} color={C.gold} />
               </span>
-              <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 18, color: C.heading }}>
+              <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 17, color: C.heading }}>
                 {language === "ru" ? "Клиенты, которые вас ещё не ищут" : "Clients who are not looking for you yet"}
               </div>
             </div>
 
-            <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16, color: C.text2, lineHeight: 1.7, marginBottom: 14, maxWidth: 640 }}>
-              {language === "ru"
-                ? "Сейчас ваш поток — рекомендации плюс те, кто сам вас нашёл. Третий источник собирается по открытым реестрам: компании, у которых только что появился повод покупать. Выход на нужного человека, письмо на его языке — пока повод свежий."
-                : "Right now your pipeline is referrals plus whoever happens to find you. The third source is built from open registries: companies that just had a reason to buy. The right person, reached by name, written to in their own language while the reason is still fresh."}
-            </p>
+            {/* Three named lead sources, drawn as three columns instead of
+                listed inside one sentence. /outbound §01 already renders this
+                exact taxonomy as a band — it was the densest latent structure
+                on the home page and the only page that did not show it. */}
+            <div className="src-band">
+              {(language === "ru"
+                ? [
+                    { k: "Рекомендации", v: "Приходят когда приходят. Два хороших месяца, потом тихий, и ни то ни другое не вы сделали." },
+                    { k: "Входящие", v: "Доходят до тех, кто уже ищет. К этому моменту у них открыто четыре предложения, и вы одно из них." },
+                    { k: "Этот канал", v: "Компании, у которых только что появился повод покупать. Выход на нужного человека, письмо на его языке, пока повод свежий.", on: true },
+                  ]
+                : [
+                    { k: "Referrals", v: "They come when they come. Two good months, then a quiet one, and neither was something you did." },
+                    { k: "Inbound", v: "Reaches whoever is already searching. By then they have four quotes open and you are one of them." },
+                    { k: "This channel", v: "Companies that just had a reason to buy, the right person reached by name, written to in their own language while the reason is fresh.", on: true },
+                  ]
+              ).map((col) => (
+                <div key={col.k} className={col.on ? "src-col src-col-on" : "src-col"}>
+                  <div className="src-k">{col.k}</div>
+                  <p className="src-v">{col.v}</p>
+                </div>
+              ))}
+            </div>
 
             <div className="mentor-features" style={{ marginBottom: 16 }}>
               <span className="tag gold" style={{ background: "transparent", borderColor: "rgba(200,169,110,0.2)" }}>{language === "ru" ? "Русский · English · Español" : "Russian · English · Spanish"}</span>

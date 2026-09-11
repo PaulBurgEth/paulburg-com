@@ -22,7 +22,7 @@ export default function MentorshipTestimonial() {
                         className="leading-relaxed mb-8"
                         style={{
                             fontFamily: "var(--font-display)",
-                            fontSize: "clamp(18px, 2vw, 24px)",
+                            fontSize: "clamp(21px, 3vw, 24px)",
                             color: "var(--c-body-lede)",
                             fontStyle: "italic",
                         }}

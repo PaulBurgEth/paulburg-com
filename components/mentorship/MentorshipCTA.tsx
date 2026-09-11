@@ -43,7 +43,7 @@ export default function MentorshipCTA() {
                         style={{
                             fontFamily: "var(--font-display)",
                             fontWeight: 700,
-                            fontSize: "clamp(28px, 4vw, 44px)",
+                            fontSize: "clamp(30px, 4vw, 44px)",
                             letterSpacing: "-0.02em",
                             color: "var(--c-heading)",
                         }}
@@ -55,7 +55,7 @@ export default function MentorshipCTA() {
                         className="mb-10 leading-relaxed"
                         style={{
                             fontFamily: "var(--font-instrument-sans), sans-serif",
-                            fontSize: "clamp(15px, 1.8vw, 18px)",
+                            fontSize: "clamp(17px, 2vw, 20px)",
                             color: "var(--c-body)",
                         }}
                     >

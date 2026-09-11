@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import StepRail from "@/components/ui/StepRail";
 
 const en = {
   sectionLabel: "Process",
@@ -107,7 +108,7 @@ export default function ServicesProcess() {
             style={{
               fontFamily: "var(--font-display)",
               fontWeight: 700,
-              fontSize: "clamp(26px, 4vw, 38px)",
+              fontSize: "clamp(30px, 4vw, 44px)",
               letterSpacing: "-0.02em",
               color: "var(--c-heading)",
               marginBottom: 6,
@@ -128,60 +129,26 @@ export default function ServicesProcess() {
           </p>
         </motion.div>
 
-        {/* Steps grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          {t.steps.map((step, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              whileHover={{ y: -3, boxShadow: "0 10px 36px rgba(0,0,0,0.3)", borderColor: "rgba(200,169,110,0.22)" }}
-              style={{
-                background: "var(--c-card)",
-                border: "1px solid var(--c-border)",
-                borderRadius: 10,
-                padding: 18,
-              }}
-            >
-              <span
-                style={{
-                  fontFamily: "var(--font-inconsolata), monospace",
-                  fontWeight: 700,
-                  fontSize: 14,
-                  color: "var(--c-gold)",
-                  letterSpacing: "0.15em",
-                  display: "block",
-                  marginBottom: 8,
-                }}
-              >
-                {step.num}
-              </span>
-              <h3
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontWeight: 700,
-                  fontSize: 17,
-                  color: "var(--c-text)",
-                  marginBottom: 6,
-                }}
-              >
-                {step.title}
-              </h3>
-              <p
-                style={{
-                  fontFamily: "var(--font-instrument-sans), sans-serif",
-                  fontSize: 17,
-                  color: "var(--c-body)",
-                  lineHeight: 1.6,
-                }}
-              >
-                {step.desc}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+        {/* The same step rail /outbound draws three times — numbered circles on
+            a hairline — instead of four unrelated cards. This was a sequence
+            with a duration on every step and nothing connecting them: the order
+            existed only in the numbers inside the text. The copy is unchanged. */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <StepRail
+            steps={t.steps.map((step) => ({
+              // The number is the circle's job now, so the label drops it and
+              // keeps the duration, which is the part a reader is scanning for.
+              meta: step.num.split("—")[1]?.trim(),
+              label: step.title,
+              body: step.desc,
+            }))}
+          />
+        </motion.div>
       </div>
     </section>
   );

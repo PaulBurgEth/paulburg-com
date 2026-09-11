@@ -6,6 +6,23 @@ import { useLanguage } from "@/context/LanguageContext";
 import { useIntakeModal } from "@/context/IntakeModalContext";
 
 const en = {
+  matrixYes: "Yes",
+  matrixNo: "No",
+  matrixLabel: "What is in each",
+  matrix: [
+    { k: "AI lead bot on your site", v: [true, true, true] },
+    { k: "Hot / warm / cold qualification", v: [true, true, true] },
+    { k: "Telegram notifications", v: [true, true, true] },
+    { k: "Automatic language detection", v: [true, true, true] },
+    { k: "Installed on your own site", v: [false, true, true] },
+    { k: "CRM, BI dashboards, lead database", v: [false, true, true] },
+    { k: "Integrations with your stack", v: [false, true, true] },
+    { k: "Website built from scratch", v: [false, false, true] },
+    { k: "RAG — bot trained on your documents", v: [false, false, true] },
+    { k: "Source code delivered", v: [false, false, true] },
+    { k: "Revisions", v: ["1", "2", "3"] },
+    { k: "Delivery", v: ["3 days", "5 days", "3–14 days"] },
+  ],
   sectionLabel: "Pricing",
   h2: "How the price is put together",
   subtitle: "Three scopes below. The figure is assembled per task after a short call — what it covers, what it touches, and what it has to integrate with. The outbound channel is priced separately: one fixed price for a six-week pilot, paid in thirds, with a decision point before each.",
@@ -62,6 +79,23 @@ const en = {
 };
 
 const ru = {
+  matrixYes: "Есть",
+  matrixNo: "Нет",
+  matrixLabel: "Что входит",
+  matrix: [
+    { k: "AI-бот для заявок на сайте", v: [true, true, true] },
+    { k: "Квалификация: горячий / тёплый / холодный", v: [true, true, true] },
+    { k: "Уведомления в Telegram", v: [true, true, true] },
+    { k: "Автоопределение языка", v: [true, true, true] },
+    { k: "Установка на ваш сайт", v: [false, true, true] },
+    { k: "CRM, BI-дашборды, база заявок", v: [false, true, true] },
+    { k: "Интеграции с вашими системами", v: [false, true, true] },
+    { k: "Сайт с нуля", v: [false, false, true] },
+    { k: "RAG — бот на ваших документах", v: [false, false, true] },
+    { k: "Исходный код передаётся", v: [false, false, true] },
+    { k: "Правок", v: ["1", "2", "3"] },
+    { k: "Срок", v: ["3 дня", "5 дней", "3–14 дней"] },
+  ],
   sectionLabel: "Цены",
   h2: "Как считается цена",
   subtitle: "Ниже — три объёма. Сумма собирается под задачу после короткого разговора: что входит, чего касается и с чем должно связаться. Холодный канал считается отдельно: одна фиксированная цена за пилот на шесть недель, оплата третями, перед каждой — точка решения.",
@@ -151,7 +185,7 @@ export default function ServicesPricing() {
             style={{
               fontFamily: "var(--font-display)",
               fontWeight: 700,
-              fontSize: "clamp(26px, 4vw, 38px)",
+              fontSize: "clamp(30px, 4vw, 44px)",
               letterSpacing: "-0.02em",
               color: "var(--c-heading)",
               marginBottom: 6,
@@ -232,7 +266,7 @@ export default function ServicesPricing() {
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 700,
-                  fontSize: "clamp(26px, 4vw, 32px)",
+                  fontSize: "clamp(30px, 4vw, 44px)",
                   letterSpacing: "-0.02em",
                   color: "var(--c-text)",
                   marginBottom: 4,
@@ -337,6 +371,160 @@ export default function ServicesPricing() {
             </motion.div>
           ))}
         </div>
+
+        {/* The comparison the copy already was. Three plans whose feature lists
+            say "Everything in Starter" and "Everything in Business" are a
+            matrix with the cells written as cross-references — the reader has
+            to hold two columns in their head to see what the third contains.
+            Same role="table" construction as /outbound §02, including its
+            stacked fallback below md. The cards above keep the pitch; this
+            answers "what exactly is in it". */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.05 }}
+          transition={{ duration: 0.5 }}
+          style={{ marginTop: 34 }}
+        >
+          <div
+            style={{
+              fontFamily: "var(--font-inconsolata), monospace",
+              fontSize: 14,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "var(--c-text2)",
+              marginBottom: 14,
+            }}
+          >
+            {t.matrixLabel}
+          </div>
+
+          {/* Desktop: a real table. */}
+          <div role="table" className="hidden md:block" style={{ border: "1px solid var(--c-border)", borderRadius: 10, overflow: "hidden" }}>
+            <div role="row" style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr 1fr 1fr", background: "var(--c-card2)" }}>
+              <div role="presentation" style={{ padding: "12px 16px" }} />
+              {t.plans.map((plan, i) => (
+                <div
+                  key={plan.name}
+                  role="columnheader"
+                  style={{
+                    padding: "12px 16px",
+                    fontFamily: "var(--font-inconsolata), monospace",
+                    fontSize: 14,
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    fontWeight: 700,
+                    color: plan.popular ? "var(--c-gold)" : "var(--c-text2)",
+                    borderTop: plan.popular ? "2px solid var(--c-gold)" : "2px solid transparent",
+                    borderLeft: i === 0 ? "1px solid var(--c-border)" : "none",
+                  }}
+                >
+                  {plan.name}
+                </div>
+              ))}
+            </div>
+            {t.matrix.map((row, r) => (
+              <div
+                key={row.k}
+                role="row"
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1.6fr 1fr 1fr 1fr",
+                  borderTop: "1px solid var(--c-border)",
+                  background: r % 2 ? "var(--c-bg2)" : "transparent",
+                }}
+              >
+                <div
+                  role="rowheader"
+                  style={{
+                    padding: "11px 16px",
+                    fontFamily: "var(--font-instrument-sans), sans-serif",
+                    fontSize: 16,
+                    color: "var(--c-text)",
+                  }}
+                >
+                  {row.k}
+                </div>
+                {row.v.map((cell, i) => (
+                  <div
+                    key={i}
+                    role="cell"
+                    style={{
+                      padding: "11px 16px",
+                      fontFamily: typeof cell === "string" ? "var(--font-inconsolata), monospace" : undefined,
+                      fontSize: 16,
+                      color: cell === false ? "var(--c-muted)" : "var(--c-text)",
+                      borderLeft: i === 0 ? "1px solid var(--c-border)" : "none",
+                    }}
+                  >
+                    {/* A tick is read out; the dash is decoration over the word
+                        "no", so the cell is never colour or shape alone. */}
+                    {cell === true ? (
+                      <><Check size={15} aria-hidden="true" style={{ color: "var(--c-sage)" }} /><span className="sr-only">{t.matrixYes}</span></>
+                    ) : cell === false ? (
+                      <><span aria-hidden="true">—</span><span className="sr-only">{t.matrixNo}</span></>
+                    ) : (
+                      cell
+                    )}
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+
+          {/* Below md the same data as one list per plan: a four-column grid at
+              phone width is unreadable, and /outbound §02 solved it the same
+              way rather than with a horizontal scroll. */}
+          <div className="md:hidden flex flex-col gap-3">
+            {t.plans.map((plan, pi) => (
+              <dl
+                key={plan.name}
+                style={{
+                  border: "1px solid var(--c-border)",
+                  borderTop: plan.popular ? "2px solid var(--c-gold)" : "1px solid var(--c-border)",
+                  borderRadius: 10,
+                  padding: 16,
+                  margin: 0,
+                }}
+              >
+                <dt
+                  style={{
+                    fontFamily: "var(--font-inconsolata), monospace",
+                    fontSize: 14,
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    fontWeight: 700,
+                    color: plan.popular ? "var(--c-gold)" : "var(--c-text2)",
+                    marginBottom: 8,
+                  }}
+                >
+                  {plan.name}
+                </dt>
+                {t.matrix.map((row) => (
+                  <dd
+                    key={row.k}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      gap: 12,
+                      margin: 0,
+                      padding: "6px 0",
+                      borderTop: "1px solid var(--c-border)",
+                      fontFamily: "var(--font-instrument-sans), sans-serif",
+                      fontSize: 16,
+                      color: row.v[pi] === false ? "var(--c-muted)" : "var(--c-text)",
+                    }}
+                  >
+                    <span>{row.k}</span>
+                    <span style={{ flexShrink: 0, fontFamily: typeof row.v[pi] === "string" ? "var(--font-inconsolata), monospace" : undefined }}>
+                      {row.v[pi] === true ? t.matrixYes : row.v[pi] === false ? t.matrixNo : row.v[pi]}
+                    </span>
+                  </dd>
+                ))}
+              </dl>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

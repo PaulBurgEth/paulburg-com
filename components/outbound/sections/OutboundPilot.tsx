@@ -109,7 +109,7 @@ export default function OutboundPilot() {
               style={{
                 border: "1px solid var(--c-border2)",
                 borderTop: "3px solid var(--c-gold)",
-                borderRadius: 8,
+                borderRadius: 10,
                 background: "var(--c-card)",
                 padding: "14px 16px",
               }}

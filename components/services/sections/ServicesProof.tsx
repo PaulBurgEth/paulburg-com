@@ -57,7 +57,7 @@ export default function ServicesProof() {
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 700,
-                  fontSize: item.value.length > 12 ? 16 : 22,
+                  fontSize: item.value.length > 12 ? 16 : 21,
                   color: "var(--c-gold)",
                   lineHeight: 1.2,
                   textAlign: "center",

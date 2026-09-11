@@ -117,7 +117,7 @@ export default function ServicesCases() {
             style={{
               fontFamily: "var(--font-display)",
               fontWeight: 700,
-              fontSize: "clamp(26px, 4vw, 38px)",
+              fontSize: "clamp(30px, 4vw, 44px)",
               letterSpacing: "-0.02em",
               color: "var(--c-heading)",
               marginBottom: 6,

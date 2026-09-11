@@ -418,7 +418,7 @@ export default function OutboundHow() {
             <li
               key={a}
               className="flex gap-3 items-start"
-              style={{ background: "var(--c-card)", border: "1px solid var(--c-border)", borderRadius: 8, padding: "12px 14px" }}
+              style={{ background: "var(--c-card)", border: "1px solid var(--c-border)", borderRadius: 10, padding: "12px 14px" }}
             >
               <span style={{ fontFamily: MONO, fontSize: T.caption, color: "var(--c-gold)", letterSpacing: "0.1em", flexShrink: 0, paddingTop: 2 }}>
                 {String(i + 1).padStart(2, "0")}

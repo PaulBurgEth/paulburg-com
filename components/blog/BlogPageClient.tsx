@@ -60,7 +60,7 @@ export default function BlogPageClient({ enPosts, ruPosts }: Props) {
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 700,
-                fontSize: "clamp(32px, 6vw, 56px)",
+                fontSize: "clamp(36px, 5vw, 62px)",
                 letterSpacing: "-0.02em",
                 color: "var(--c-heading)",
                 marginTop: 8,
@@ -85,7 +85,7 @@ export default function BlogPageClient({ enPosts, ruPosts }: Props) {
               style={{
                 fontFamily: "var(--font-lede)",
                 fontStyle: "italic",
-                fontSize: 19,
+                fontSize: 20,
                 color: "var(--c-body)",
                 maxWidth: 480,
                 lineHeight: 1.6,
