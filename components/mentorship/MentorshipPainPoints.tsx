@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Wallet, Lightbulb, Brain } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { DISPLAY_AXES } from "@/lib/type";
 
 const iconMap = {
     Capital: Wallet,
@@ -33,7 +34,7 @@ export default function MentorshipPainPoints() {
                     <div style={{
                         fontFamily: "var(--font-inconsolata), monospace",
                         fontSize: 14,
-                        letterSpacing: "0.22em",
+                        letterSpacing: "0.20em",
                         textTransform: "uppercase",
                         color: "var(--c-gold)",
                         display: "flex",
@@ -46,9 +47,9 @@ export default function MentorshipPainPoints() {
                     </div>
                     <h2 style={{
                         fontFamily: "var(--font-display)",
+                        ...DISPLAY_AXES,
                         fontWeight: 700,
                         fontSize: "clamp(30px, 4vw, 44px)",
-                        letterSpacing: "-0.02em",
                         color: "var(--c-heading)",
                     }}>
                         {p.title}

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { TELEGRAM_URL, WHATSAPP_URL, INTAKE_ANCHOR } from "@/lib/constants";
 import BurgMark from "@/components/BurgMark";
-import { SERIF, SANS, MONO, LEDE } from "../shared";
+import { SERIF, DISPLAY_AXES, SANS, MONO, LEDE } from "../shared";
 import ChannelDiagram from "../ChannelDiagram";
 
 const en = {
@@ -91,9 +91,9 @@ export default function OutboundHero() {
             transition={{ duration: 0.5, delay: 0.1 }}
             style={{
               fontFamily: SERIF,
+              ...DISPLAY_AXES,
               fontWeight: 700,
               fontSize: "clamp(36px, 5vw, 62px)",
-              letterSpacing: "-0.02em",
               lineHeight: 1.12,
               color: "var(--c-heading)",
             }}
@@ -108,7 +108,6 @@ export default function OutboundHero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             style={{
               fontFamily: LEDE,
-              fontStyle: "italic",
               fontWeight: 400,
               fontSize: 21,
               color: "var(--c-body-lede)",
@@ -159,7 +158,7 @@ export default function OutboundHero() {
                 style={{
                   fontFamily: MONO,
                   fontSize: 14,
-                  letterSpacing: "0.16em",
+                  letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   color: "var(--c-muted)",
                 }}

@@ -9,10 +9,12 @@ import { useLanguage } from "@/context/LanguageContext";
 import Navbar from "@/components/Navbar";
 import CTARow from "@/components/CTARow";
 import Footer from "@/components/Footer";
+import BurgMark from "@/components/BurgMark";
 import { useIntakeModal } from "@/context/IntakeModalContext";
 import { useMentorshipModal } from "@/context/MentorshipModalContext";
 import { useStageReveal, useRevealObserver } from "@/lib/useStageReveal";
 import type { Post } from "@/lib/posts";
+import { DISPLAY_AXES } from "@/lib/type";
 
 const C = {
   bg:       "var(--c-bg)",
@@ -40,9 +42,8 @@ const CSS = `
 html{scroll-behavior:smooth}
 body{
   background:${C.bg};color:${C.text};
-  /* Body face matches the mockup — Newsreader serif. Per-element fonts
-     (Fraunces for headings, Instrument Sans for UI labels, Inconsolata
-     for mono) override locally. */
+  /* Body face is Onest (via --font-lede). Headings and the mono layer set
+     Martian Mono locally. */
   font-family:var(--font-lede);
   -webkit-font-smoothing:antialiased;
 }
@@ -81,8 +82,8 @@ body::after{
   background:var(--c-card);transition:border-color .24s ease,transform .24s ease;
 }
 .line-card:hover{border-color:rgba(200,169,110,0.35);transform:translateY(-2px)}
-.line-card .lc-k{font-family:var(--font-inconsolata),monospace;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--c-gold)}
-.line-card .lc-t{font-family:var(--font-display);font-weight:700;font-size:21px;color:var(--c-heading);margin:8px 0 6px}
+.line-card .lc-k{font-family:var(--font-inconsolata),monospace;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-gold)}
+.line-card .lc-t{font-family:var(--font-display);letter-spacing:-0.03em;font-variation-settings:'wdth' 86;font-weight:700;font-size:21px;color:var(--c-heading);margin:8px 0 6px}
 .line-card .lc-d{font-family:var(--font-instrument-sans),sans-serif;font-size:16px;line-height:1.55;color:var(--c-text2)}
 .line-card .lc-m{font-family:var(--font-inconsolata),monospace;font-size:14px;color:var(--c-muted);margin-top:12px;display:block}
 .hero-kicker{
@@ -98,17 +99,11 @@ body::after{
   font-feature-settings:"ss01","liga","kern";
   font-size:clamp(64px,10vw,108px);
   font-weight:700;line-height:0.9;
-  letter-spacing:-0.02em;color:${C.heading};
+  letter-spacing:-0.03em;font-variation-settings:'wdth' 86;color:${C.heading};
   margin:0 0 28px;
   position:relative;
 }
-.hero-name em{
-  font-style:italic;
-  font-family:var(--font-display);
-  font-weight:600;
-  color:transparent;
-  -webkit-text-stroke:1.5px rgba(200,169,110,0.7);
-}
+.hero-name .burg-mark{font-weight:600}
 .hero-roles{
   font-family:var(--font-inconsolata),monospace;
   font-size:14px;letter-spacing:0.12em;
@@ -121,7 +116,6 @@ body::after{
 .hero-role-sep{color:${C.muted};opacity:0.6}
 .hero-desc{
   font-family:var(--font-lede);
-  font-style:italic;
   font-size:17px;color:var(--c-body-lede);
   max-width:620px;line-height:1.75;
   margin-bottom:36px;
@@ -219,7 +213,7 @@ body::after{
 .src-col-on .src-k{color:${C.gold}}
 .src-k{
   font-family:var(--font-inconsolata),monospace;font-size:14px;
-  letter-spacing:0.14em;text-transform:uppercase;color:${C.text2};
+  letter-spacing:0.12em;text-transform:uppercase;color:${C.text2};
   margin-bottom:7px;
 }
 .src-v{
@@ -239,7 +233,7 @@ body::after{
 @media(max-width:600px){.section-number{display:none}}
 .eyebrow{
   font-family:var(--font-inconsolata),monospace;
-  font-size:14px;letter-spacing:0.22em;text-transform:uppercase;
+  font-size:14px;letter-spacing:0.20em;text-transform:uppercase;
   color:${C.gold};margin-bottom:14px;
   display:flex;align-items:center;gap:14px;
 }
@@ -247,7 +241,8 @@ body::after{
 .sec-title{
   font-family:var(--font-display);
   font-size:clamp(30px,4vw,44px);font-weight:700;
-  color:${C.heading};margin-bottom:6px;letter-spacing:-0.01em;
+  color:${C.heading};margin-bottom:6px;letter-spacing:-0.03em;
+  font-variation-settings:'wdth' 86;
 }
 .sec-sub{font-size:17px;color:var(--c-body);margin-bottom:36px}
 hr.div{border:none;border-top:1px solid ${C.border}}
@@ -306,7 +301,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .pod-body{padding:14px 16px}
 .pod-src{
   font-family:var(--font-inconsolata),monospace;
-  font-size:14px;letter-spacing:0.15em;text-transform:uppercase;
+  font-size:14px;letter-spacing:0.12em;text-transform:uppercase;
   color:${C.gold};margin-bottom:7px;
 }
 .pod-title{font-size:16px;font-weight:500;color:${C.text3};line-height:1.55}
@@ -327,12 +322,13 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .write-src{
   display:flex;align-items:center;gap:6px;
   font-family:var(--font-inconsolata),monospace;
-  font-size:14px;letter-spacing:0.15em;text-transform:uppercase;
+  font-size:14px;letter-spacing:0.12em;text-transform:uppercase;
   margin-bottom:11px;
 }
 .write-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
 .write-title{
   font-family:var(--font-display);
+  letter-spacing:-0.03em;font-variation-settings:'wdth' 86;
   font-size:17px;font-weight:700;color:${C.text};
   line-height:1.45;margin-bottom:10px;
 }
@@ -347,7 +343,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .write-new{
   display:inline-flex;align-items:center;gap:4px;
   font-family:var(--font-inconsolata),monospace;
-  font-size:14px;font-weight:700;letter-spacing:0.14em;
+  font-size:14px;font-weight:700;letter-spacing:0.12em;
   color:${C.gold};
   background:rgba(200,169,110,0.10);
   border:1px solid rgba(200,169,110,0.30);
@@ -415,7 +411,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
   .mentor-card-inner{flex-direction:row;align-items:center;justify-content:space-between;gap:32px;}
 }
 .mentor-content{flex:1;}
-.mentor-title{font-family:var(--font-display);font-size:24px;color:${C.gold};margin-bottom:8px;}
+.mentor-title{font-family:var(--font-display);letter-spacing:-0.03em;font-variation-settings:'wdth' 86;font-size:24px;color:${C.gold};margin-bottom:8px;}
 .mentor-desc{font-size:16px;color:${C.text2};line-height:1.6;}
 .mentor-features{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;}
 .mentor-btn{
@@ -484,7 +480,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
   transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .follow-card:hover{border-color:rgba(200,169,110,0.25);transform:translateY(-2px)}
-.follow-title{font-family:var(--font-display);font-size:20px;color:${C.gold};margin-bottom:12px}
+.follow-title{font-family:var(--font-display);letter-spacing:-0.03em;font-variation-settings:'wdth' 86;font-size:20px;color:${C.gold};margin-bottom:12px}
 .follow-desc{font-size:16px;color:${C.text2};line-height:1.6;margin-bottom:24px;flex:1}
 .badge-ru{
   background:rgba(200,169,110,0.1);color:${C.gold};
@@ -681,8 +677,8 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
           </div>
           <div className="pb-stage" data-visible={stage >= 2 ? "1" : "0"}>
             <h1 className="hero-name">
-              Paul<br />
-              <em>Burg</em>
+              {language === "ru" ? "Павел" : "Paul"}<br />
+              <BurgMark weight={1.5}>{language === "ru" ? "Бург" : "Burg"}</BurgMark>
               <GoldCursor h={68} w={5} blink style={{ marginLeft: 12, verticalAlign: "baseline", transform: "translateY(8px)" }} />
             </h1>
           </div>
@@ -786,14 +782,14 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     <span aria-hidden="true" style={{
                       position: "absolute", top: 14, right: 16,
                       fontFamily: "var(--font-inconsolata), monospace", fontSize: 14,
-                      letterSpacing: "0.14em", color: C.muted,
+                      letterSpacing: "0.12em", color: C.muted,
                     }}>
                       /{String(i + 1).padStart(2, "0")}
                     </span>
                     <div style={{ width: 32, height: 32, background: C.goldDim, border: "1px solid rgba(200,169,110,0.22)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
                       <Icon size={15} color={C.gold} />
                     </div>
-                    <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 16, color: C.text, marginBottom: 6 }}>{card.title}</div>
+                    <div style={{ fontFamily: "var(--font-display)", ...DISPLAY_AXES, fontWeight: 700, fontSize: 16, color: C.text, marginBottom: 6 }}>{card.title}</div>
                     <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16, color: C.text2, lineHeight: 1.6, marginBottom: 10 }}>{card.desc}</p>
                     <span style={{ fontFamily: "var(--font-inconsolata), monospace", fontWeight: 700, fontSize: 14, color: C.gold }}>{card.price}</span>
                   </motion.div>
@@ -843,7 +839,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 >
                   {language === "ru" ? "ФЛАГМАН" : "FLAGSHIP"}
                 </span>
-                <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 17, color: C.heading, marginBottom: 6, paddingRight: 90 }}>
+                <div style={{ fontFamily: "var(--font-display)", ...DISPLAY_AXES, fontWeight: 700, fontSize: 17, color: C.heading, marginBottom: 6, paddingRight: 90 }}>
                   {language === "ru" ? "Turnkey: AI-бот + Кастомная CRM + BI" : "Turnkey: AI Bot + Custom CRM + BI"}
                 </div>
                 <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16, color: C.text2, lineHeight: 1.6, marginBottom: 14 }}>
@@ -916,7 +912,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <span style={{ width: 32, height: 32, background: C.goldDim, border: "1px solid rgba(200,169,110,0.22)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 <Crosshair size={15} color={C.gold} />
               </span>
-              <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 17, color: C.heading }}>
+              <div style={{ fontFamily: "var(--font-display)", ...DISPLAY_AXES, fontWeight: 700, fontSize: 17, color: C.heading }}>
                 {language === "ru" ? "Клиенты, которые вас ещё не ищут" : "Clients who are not looking for you yet"}
               </div>
             </div>
@@ -1177,7 +1173,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 <span style={{
                   fontFamily: "var(--font-inconsolata), monospace", fontSize: 14, padding: "2px 7px", borderRadius: 3,
                   background: "rgba(155,142,196,0.12)", color: C.violet, border: "1px solid rgba(155,142,196,0.33)",
-                  letterSpacing: "0.14em", fontWeight: 700,
+                  letterSpacing: "0.12em", fontWeight: 700,
                 }}>RU</span>
               </h3>
               {/* The channel is Russian-language, so an English reader needs to

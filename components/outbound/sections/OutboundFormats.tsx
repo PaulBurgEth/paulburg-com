@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
-import { SectionShell, SectionHead, Note, SERIF, SANS, MONO, T, cardHover, itemVariants } from "../shared";
+import { SectionShell, SectionHead, Note, SERIF, DISPLAY_AXES, SANS, MONO, T, cardHover, itemVariants } from "../shared";
 
 const en = {
   eyebrow: "What you get",
@@ -54,20 +54,20 @@ export default function OutboundFormats() {
               padding: 24,
             }}
           >
-            <span style={{ fontFamily: MONO, fontSize: T.caption, fontWeight: 700, letterSpacing: "0.16em", color: "var(--c-gold)" }}>{f.range}</span>
+            <span style={{ fontFamily: MONO, fontSize: T.caption, fontWeight: 700, letterSpacing: "0.12em", color: "var(--c-gold)" }}>{f.range}</span>
             {/* The situation first, the product name second: the reader picks by
                 which sentence describes their office, not by a handover point. */}
             <p style={{ fontFamily: SANS, fontSize: T.body, fontWeight: 600, color: "var(--c-heading)", margin: "11px 0 4px", lineHeight: 1.4 }}>
               {f.situation}
             </p>
-            <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 21, color: "var(--c-gold)", margin: "0 0 11px" }}>{f.name}</h3>
+            <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: 21, color: "var(--c-gold)", margin: "0 0 11px" }}>{f.name}</h3>
             <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65, maxWidth: "58ch" }}>{f.body}</p>
           </motion.div>
         ))}
       </div>
 
       {/* Pipeline strip — replaces a 3x3 grid of nine In/Out prose cards. */}
-      <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "38px 0 16px" }}>
+      <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "38px 0 16px" }}>
         {t.stagesTitle}
       </h3>
       {/* A conveyor, not a chip cloud: a rail runs behind the numbers so the

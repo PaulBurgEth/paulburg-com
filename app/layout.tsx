@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import Script from "next/script";
-import { Inconsolata, Instrument_Sans, Newsreader, Fraunces, Source_Serif_4, Inter, JetBrains_Mono } from "next/font/google";
+import { Martian_Mono, Onest } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -9,93 +9,26 @@ import SectionRail from "@/components/SectionRail";
 import { TELEGRAM_URL } from "@/lib/constants";
 import { LANG_HEADER } from "@/middleware";
 
-const inconsolata = Inconsolata({
-  variable: "--font-inconsolata",
-  subsets: ["latin"],
-  display: "swap",
-});
+// Two families, both with Cyrillic drawn into the face itself. Until 2026-09
+// the site loaded seven: Fraunces, Newsreader, Instrument Sans and Inconsolata
+// (all Latin-only) plus Source Serif 4, Inter and JetBrains Mono as Cyrillic
+// stand-ins — about 1.1 MB, more than half of which never rendered a glyph in
+// any one language, and RU was set in different faces from EN. Now one file per
+// subset carries both alphabets, so both languages render in the same type.
 
-const instrumentSans = Instrument_Sans({
-  variable: "--font-instrument-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-// Variable fonts — load full variable-weight axis + opsz axis so the browser
-// auto-selects display-optimized optical sizes at large hero scales (matches
-// the mockup which uses Fraunces opsz 9..144).
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
-  subsets: ["latin"],
-  display: "swap",
-  axes: ["opsz"],
-  style: ["normal", "italic"],
-});
-
-// SOFT and WONK are dropped. Neither is ever set: there is no
-// font-variation-settings anywhere in the project, so both axes shipped as pure
-// payload inside the variable font. Measured against Google's own files, the
-// latin face is 120 800 bytes carrying all three axes and 67 388 bytes with
-// opsz alone — 53 KB per style, 116 KB across the roman and the italic, for a
-// face that renders identically. opsz stays: it is applied automatically and it
-// is what gives the hero its display cut.
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  display: "swap",
-  axes: ["opsz"],
-  style: ["normal", "italic"],
-});
-
-// Source Serif 4 — Cyrillic-capable serif. Acts as fallback for Fraunces/Newsreader
-// for Cyrillic glyphs, and is the primary face for RU mode (via html[lang="ru"] CSS rule).
-// preload: false — see the note above `inter` below. Weight 500 is gone: it was
-// used three times in the whole project, and each static weight is another eight
-// files (four subsets x roman and italic) in the preload set.
-const sourceSerif = Source_Serif_4({
-  variable: "--font-source-serif",
+// Display and the mono layer. Variable: wdth 75–112.5 and wght 100–800.
+const martianMono = Martian_Mono({
+  variable: "--font-martian-mono",
   subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],
   display: "swap",
-  weight: ["400", "600", "700"],
-  style: ["normal", "italic"],
-  preload: false,
+  axes: ["wdth"],
 });
 
-// Cyrillic counterparts. Inconsolata, Instrument Sans, Newsreader and Fraunces
-// ship Latin only — no subset flag can add Cyrillic, the glyphs do not exist in
-// those families. In RU the browser was therefore falling back to a system mono
-// and a system grotesque for every label, caption, eyebrow and body paragraph,
-// which is why Russian pages looked unrelated to the English ones. These two
-// are swapped in by an html[lang="ru"] rule in globals.css; Inter matches
-// Instrument Sans in proportion and JetBrains Mono keeps the terminal register
-// the section markers depend on.
-//
-// They carry preload: false, and so does Source Serif 4 above.
-//
-// next/font emits a high-priority <link rel="preload"> for every declared family,
-// on every page, in both languages. Measured on /outbound: 22 font files and
-// 1 126 KB, against 273 KB of gzipped JS — fonts were 79% of the first screen.
-// Of that, 531 KB never rendered a glyph in English (Inter 174, JetBrains Mono
-// 68, Source Serif 289), and mirror-image in Russian 591 KB of Fraunces,
-// Newsreader, Instrument Sans and Inconsolata never rendered either.
-//
-// The @font-face declarations stay, so the browser still fetches these the
-// moment a Cyrillic glyph or the html[lang="ru"] rule asks for one — they are
-// simply no longer racing the LCP text for bandwidth on a page that will not
-// use them. Russian pays a swap for it, and already did: the server always
-// renders lang="en" and the switch happens after hydration.
-const inter = Inter({
-  variable: "--font-inter",
+// Body, lede and UI labels.
+const onest = Onest({
+  variable: "--font-onest",
   subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],
   display: "swap",
-  preload: false,
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],
-  display: "swap",
-  preload: false,
 });
 
 const SEO_DESCRIPTION =
@@ -169,10 +102,9 @@ export default async function RootLayout({
       <head>
         {/* Theme and language both have to be settled before the first paint.
             Language was not: it was applied in an effect after hydration, so a
-            Russian reader got a frame of Latin-only Fraunces and Inconsolata
-            with no Cyrillic in them — every heading, eyebrow and § marker drawn
-            in a system fallback — and only then the html[lang="ru"] rule in
-            globals.css swapped the faces. <html> already carries
+            Russian reader got a frame of Russian copy inside lang="en" (and,
+            while the site still ran Latin-only faces, a frame of system
+            fallbacks before a lang rule swapped them). <html> already carries
             suppressHydrationWarning, and LanguageContext sets the same value on
             mount, so the two agree.
 
@@ -183,7 +115,7 @@ export default async function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: `(function(){try{var d=document.documentElement;var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}d.classList.toggle('dark',t==='dark');var q=new URLSearchParams(location.search).get('lang');if(q==='ru'||q==='en')d.lang=q;}catch(e){}})();` }} />
       </head>
       <body
-        className={`${inconsolata.variable} ${instrumentSans.variable} ${newsreader.variable} ${fraunces.variable} ${sourceSerif.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased overflow-x-hidden`}
+        className={`${martianMono.variable} ${onest.variable} antialiased overflow-x-hidden`}
       >
         <Providers initialLanguage={lang}>
           {/* First thing in the tab order, before the rail and the navbar. */}

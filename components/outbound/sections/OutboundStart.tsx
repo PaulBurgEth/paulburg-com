@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
-import { SectionShell, SectionHead, SERIF, SANS, MONO, LEDE, T, itemVariants } from "../shared";
+import { SectionShell, SectionHead, SERIF, DISPLAY_AXES, SANS, MONO, LEDE, T, itemVariants } from "../shared";
 
 const en = {
   eyebrow: "Start",
@@ -64,7 +64,7 @@ export default function OutboundStart() {
               >
                 {s.n}
               </span>
-              <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "13px 0 8px", lineHeight: 1.3 }}>{s.t}</h3>
+              <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "13px 0 8px", lineHeight: 1.3 }}>{s.t}</h3>
               <p style={{ fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-body)", lineHeight: 1.65 }}>{s.d}</p>
             </motion.div>
           ))}
@@ -86,10 +86,10 @@ export default function OutboundStart() {
           <Image src="/about.webp" alt="Paul Burg" width={168} height={168} sizes="168px" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 28%" }} />
         </span>
         <div className="min-w-0">
-          <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--c-text2)", display: "block", marginBottom: 7 }}>
+          <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--c-text2)", display: "block", marginBottom: 7 }}>
             {t.whoTitle}
           </span>
-          <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 21, color: "var(--c-heading)", lineHeight: 1.2 }}>Paul Burg</h3>
+          <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: 21, color: "var(--c-heading)", lineHeight: 1.2 }}>Paul Burg</h3>
           <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.08em", color: "var(--c-gold)", display: "block", margin: "6px 0 13px" }}>
             {t.whoRole}
           </span>

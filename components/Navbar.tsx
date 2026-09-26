@@ -9,6 +9,7 @@ import { useFocusTrap } from "@/lib/useFocusTrap";
 import { useLanguage } from "@/context/LanguageContext";
 import ThemeToggle from "@/components/ThemeToggle";
 import BurgMark from "@/components/BurgMark";
+import { DISPLAY_AXES } from "@/lib/type";
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -102,8 +103,8 @@ export default function Navbar() {
                         style={{
                             color: "var(--c-text)",
                             fontFamily: "var(--font-display)",
+                            ...DISPLAY_AXES,
                             fontSize: 18,
-                            letterSpacing: "-0.01em",
                             textDecoration: "none",
                             /* The brand link was 84x18 — an 18px tap target for
                                the only way back to the home page. Padding only;
@@ -114,7 +115,7 @@ export default function Navbar() {
                             marginBottom: -5,
                         }}
                     >
-                        Paul <BurgMark weight={1.1}>Burg</BurgMark>
+                        {language === "ru" ? <>Павел <BurgMark weight={1.1}>Бург</BurgMark></> : <>Paul <BurgMark weight={1.1}>Burg</BurgMark></>}
                     </Link>
 
                     {/* Desktop nav */}

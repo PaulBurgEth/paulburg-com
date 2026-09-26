@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import CountUp from "@/components/CountUp";
+import { DISPLAY_AXES } from "@/lib/type";
 
 const en = {
   metrics: [
@@ -56,6 +57,7 @@ export default function ServicesProof() {
               <span
                 style={{
                   fontFamily: "var(--font-display)",
+                  ...DISPLAY_AXES,
                   fontWeight: 700,
                   fontSize: item.value.length > 12 ? 16 : 21,
                   color: "var(--c-gold)",

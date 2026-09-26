@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { useIntakeModal } from "@/context/IntakeModalContext";
 import { TELEGRAM_URL, WHATSAPP_URL } from "@/lib/constants";
+import { DISPLAY_AXES } from "@/lib/type";
 
 const en = {
   h2: "Which half do you need?",
@@ -48,9 +49,9 @@ export default function ServicesCTA() {
           transition={{ duration: 0.5 }}
           style={{
             fontFamily: "var(--font-display)",
+            ...DISPLAY_AXES,
             fontWeight: 700,
             fontSize: "clamp(30px, 4vw, 44px)",
-            letterSpacing: "-0.02em",
             color: "var(--c-heading)",
           }}
         >

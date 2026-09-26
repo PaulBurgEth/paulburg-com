@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import { DISPLAY_AXES } from "@/lib/type";
 
 export default function MentorshipBridge() {
     const { t } = useLanguage();
@@ -86,6 +87,7 @@ export default function MentorshipBridge() {
                                     style={{
                                         display: "block",
                                         fontFamily: "var(--font-display)",
+                                        ...DISPLAY_AXES,
                                         fontWeight: 700,
                                         fontSize: 21,
                                         color: "var(--c-gold)",
@@ -115,7 +117,7 @@ export default function MentorshipBridge() {
                             <p
                                 style={{
                                     fontFamily: "var(--font-display)",
-                                    fontStyle: "italic",
+                                    ...DISPLAY_AXES,
                                     fontSize: "clamp(17px, 2vw, 20px)",
                                     color: "var(--c-gold)",
                                 }}

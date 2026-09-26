@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { useIntakeModal } from "@/context/IntakeModalContext";
 import FlowChain from "@/components/ui/FlowChain";
+import { DISPLAY_AXES } from "@/lib/type";
 
 interface Pillar {
   heading: string;
@@ -125,7 +126,7 @@ export default function ServicesTurnkey() {
               fontFamily: "var(--font-inconsolata), monospace",
               fontSize: 14,
               fontWeight: 700,
-              letterSpacing: "0.22em",
+              letterSpacing: "0.20em",
               color: "var(--c-gold)",
               background: "rgba(200,169,110,0.12)",
               border: "1px solid rgba(200,169,110,0.35)",
@@ -142,7 +143,7 @@ export default function ServicesTurnkey() {
             style={{
               fontFamily: "var(--font-inconsolata), monospace",
               fontSize: 14,
-              letterSpacing: "0.22em",
+              letterSpacing: "0.20em",
               textTransform: "uppercase",
               color: "var(--c-muted)",
               marginBottom: 6,
@@ -155,9 +156,9 @@ export default function ServicesTurnkey() {
           <h2
             style={{
               fontFamily: "var(--font-display)",
+              ...DISPLAY_AXES,
               fontWeight: 700,
               fontSize: "clamp(30px, 4vw, 44px)",
-              letterSpacing: "-0.02em",
               color: "var(--c-heading)",
               marginBottom: 10,
             }}
@@ -226,11 +227,11 @@ export default function ServicesTurnkey() {
                   <div
                     style={{
                       fontFamily: "var(--font-display)",
+                      ...DISPLAY_AXES,
                       fontWeight: 700,
                       fontSize: 17,
                       color: "var(--c-text)",
                       marginBottom: 6,
-                      letterSpacing: "-0.005em",
                     }}
                   >
                     {p.heading}
@@ -256,7 +257,7 @@ export default function ServicesTurnkey() {
             style={{
               fontFamily: "var(--font-inconsolata), monospace",
               fontSize: 14,
-              letterSpacing: "0.14em",
+              letterSpacing: "0.12em",
               textTransform: "uppercase",
               color: "var(--c-gold)",
               marginBottom: 22,
@@ -273,6 +274,7 @@ export default function ServicesTurnkey() {
               <div
                 style={{
                   fontFamily: "var(--font-display)",
+                  ...DISPLAY_AXES,
                   fontWeight: 700,
                   fontSize: 24,
                   color: "var(--c-gold)",
@@ -285,7 +287,7 @@ export default function ServicesTurnkey() {
                 style={{
                   fontFamily: "var(--font-inconsolata), monospace",
                   fontSize: 14,
-                  letterSpacing: "0.15em",
+                  letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   color: "var(--c-muted)",
                   marginTop: 4,

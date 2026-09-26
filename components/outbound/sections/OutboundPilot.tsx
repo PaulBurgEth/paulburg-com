@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
-import { SectionShell, SectionHead, SERIF, SANS, MONO, T, itemVariants } from "../shared";
+import { SectionShell, SectionHead, SERIF, DISPLAY_AXES, SANS, MONO, T, itemVariants } from "../shared";
 
 /**
  * The pilot is the strongest instrument on the page, so it stops reading like a
@@ -83,7 +83,7 @@ export default function OutboundPilot() {
 
       {/* Оплата третями — сильнейший механизм секции, и до этого он был одним
           предложением. Три блока по две недели, перед каждым точка решения. */}
-      <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 18 }}>
+      <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 18 }}>
         {t.scheduleTitle}
       </h3>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3" style={{ marginBottom: 14 }}>
@@ -114,7 +114,7 @@ export default function OutboundPilot() {
                 padding: "14px 16px",
               }}
             >
-              <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--c-text2)", display: "block", marginBottom: 6 }}>
+              <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--c-text2)", display: "block", marginBottom: 6 }}>
                 {b.w}
               </span>
               <span style={{ fontFamily: SANS, fontSize: T.bodySm, fontWeight: 600, color: "var(--c-body-lede)", lineHeight: 1.4 }}>
@@ -128,7 +128,7 @@ export default function OutboundPilot() {
         {t.scheduleNote}
       </p>
 
-      <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 16 }}>
+      <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 16 }}>
         {t.holdTitle}
       </h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3" style={{ marginBottom: 38 }}>
@@ -145,7 +145,7 @@ export default function OutboundPilot() {
               padding: 20,
             }}
           >
-            <span style={{ fontFamily: MONO, fontSize: T.caption, fontWeight: 700, letterSpacing: "0.14em", color: "var(--c-gold)", flexShrink: 0, paddingTop: 3 }}>
+            <span style={{ fontFamily: MONO, fontSize: T.caption, fontWeight: 700, letterSpacing: "0.12em", color: "var(--c-gold)", flexShrink: 0, paddingTop: 3 }}>
               {String(i + 1).padStart(2, "0")}
             </span>
             <span style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body-lede)", lineHeight: 1.55 }}>{h}</span>
@@ -155,7 +155,7 @@ export default function OutboundPilot() {
 
       {/* Six weeks on a rail — same device as the nine-stage conveyor, so the
           two schedules on the page read as one visual language. */}
-      <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 18 }}>
+      <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 18 }}>
         {t.rhythmTitle}
       </h3>
       <div style={{ position: "relative" }}>
@@ -182,10 +182,10 @@ export default function OutboundPilot() {
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span style={{ fontFamily: MONO, fontWeight: 700, fontSize: T.caption, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--c-gold)", marginTop: 13 }}>
+                <span style={{ fontFamily: MONO, fontWeight: 700, fontSize: T.caption, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--c-gold)", marginTop: 13 }}>
                   {w.w}
                 </span>
-                <h4 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "5px 0 7px" }}>{w.t}</h4>
+                <h4 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "5px 0 7px" }}>{w.t}</h4>
                 <p style={{ fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-body)", lineHeight: 1.6 }}>{w.d}</p>
               </motion.div>
             );
@@ -194,12 +194,12 @@ export default function OutboundPilot() {
       </div>
 
       <div style={{ marginTop: 34, background: "var(--c-card)", border: "1px solid var(--c-border)", borderLeft: "2px solid var(--c-gold)", borderRadius: 10, padding: 22 }}>
-        <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 9 }}>{t.exclusiveTitle}</h3>
+        <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 9 }}>{t.exclusiveTitle}</h3>
         <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65, maxWidth: "58ch" }}>{t.exclusive}</p>
       </div>
 
       <div style={{ marginTop: 12, background: "var(--c-card2)", border: "1px solid var(--c-border)", borderLeft: "2px solid var(--c-sage)", borderRadius: 10, padding: 22 }}>
-        <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 9 }}>{t.deliverTitle}</h3>
+        <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 9 }}>{t.deliverTitle}</h3>
         <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65, maxWidth: "58ch" }}>{t.deliver}</p>
       </div>
     </SectionShell>

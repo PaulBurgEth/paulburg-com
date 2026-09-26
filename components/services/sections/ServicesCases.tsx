@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import { DISPLAY_AXES } from "@/lib/type";
 
 const en = {
   sectionLabel: "Track record",
@@ -101,7 +102,7 @@ export default function ServicesCases() {
             style={{
               fontFamily: "var(--font-inconsolata), monospace",
               fontSize: 14,
-              letterSpacing: "0.22em",
+              letterSpacing: "0.20em",
               textTransform: "uppercase",
               color: "var(--c-gold)",
               display: "flex",
@@ -116,9 +117,9 @@ export default function ServicesCases() {
           <h2
             style={{
               fontFamily: "var(--font-display)",
+              ...DISPLAY_AXES,
               fontWeight: 700,
               fontSize: "clamp(30px, 4vw, 44px)",
-              letterSpacing: "-0.02em",
               color: "var(--c-heading)",
               marginBottom: 6,
             }}
@@ -195,6 +196,7 @@ export default function ServicesCases() {
                 <h3
                   style={{
                     fontFamily: "var(--font-display)",
+                    ...DISPLAY_AXES,
                     fontWeight: 700,
                     fontSize: 16,
                     color: "var(--c-text)",
@@ -258,6 +260,7 @@ export default function ServicesCases() {
                 <span
                   style={{
                     fontFamily: "var(--font-display)",
+                    ...DISPLAY_AXES,
                     fontWeight: 700,
                     fontSize: c.metricValue.length > 8 ? 14 : 26,
                     color: "var(--c-gold)",

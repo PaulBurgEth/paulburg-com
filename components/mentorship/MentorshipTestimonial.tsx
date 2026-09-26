@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import { DISPLAY_AXES } from "@/lib/type";
 
 export default function MentorshipTestimonial() {
     const { language } = useLanguage();
@@ -22,9 +23,9 @@ export default function MentorshipTestimonial() {
                         className="leading-relaxed mb-8"
                         style={{
                             fontFamily: "var(--font-display)",
+                            ...DISPLAY_AXES,
                             fontSize: "clamp(21px, 3vw, 24px)",
                             color: "var(--c-body-lede)",
-                            fontStyle: "italic",
                         }}
                     >
                         {/* The site's only testimonial was English-only and was

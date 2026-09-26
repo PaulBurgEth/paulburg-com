@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
-import { SectionShell, SectionHead, Note, MidCTA, SERIF, SANS, MONO, T, tagStyle, itemVariants } from "../shared";
+import { SectionShell, SectionHead, Note, MidCTA, SERIF, DISPLAY_AXES, SANS, MONO, T, tagStyle, itemVariants } from "../shared";
 
 /**
  * This section used to be a pilot funnel plus a deliverability table with a
@@ -191,7 +191,7 @@ export default function OutboundProof() {
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1" style={{ marginBottom: 9 }}>
                     <span
                       style={{
-                        fontFamily: MONO, fontSize: T.caption, fontWeight: 700, letterSpacing: "0.16em",
+                        fontFamily: MONO, fontSize: T.caption, fontWeight: 700, letterSpacing: "0.12em",
                         textTransform: "uppercase", color: out ? "var(--c-gold)" : "var(--c-sage)",
                       }}
                     >
@@ -214,7 +214,7 @@ export default function OutboundProof() {
 
       {/* Two runs, led by the end of the funnel. The volume is context under it,
           not the headline: what closes is how many companies reached a price. */}
-      <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "36px 0 14px" }}>
+      <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "36px 0 14px" }}>
         {t.pilotsTitle}
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -224,7 +224,7 @@ export default function OutboundProof() {
             variants={itemVariants}
             style={{ background: "var(--c-card)", border: "1px solid var(--c-border)", borderLeft: "2px solid var(--c-gold)", borderRadius: 10, padding: 24 }}
           >
-            <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--c-text2)", display: "block", marginBottom: 18 }}>
+            <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--c-text2)", display: "block", marginBottom: 18 }}>
               {pl.tag}
             </span>
             {/* Шаги, а не пропорциональные полосы: 75 из 4 235 линейной шкалой
@@ -251,7 +251,7 @@ export default function OutboundProof() {
                   <div className="flex items-baseline gap-3" style={{ flexWrap: "wrap", paddingBottom: last ? 0 : 14 }}>
                     <span
                       style={{
-                        fontFamily: SERIF, fontWeight: 700, lineHeight: 1, letterSpacing: "-0.02em",
+                        fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, lineHeight: 1,
                         fontSize: last ? T.figureSm : T.h3,
                         color: last ? "var(--c-gold)" : "var(--c-text2)",
                       }}
@@ -280,7 +280,7 @@ export default function OutboundProof() {
       {/* Единственное место на странице, где пропорциональная полоса работает
           на нас: 91 против 14 читается мгновенно. В воронке та же полоса читалась
           бы как провал, поэтому там шаги. */}
-      <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "34px 0 16px" }}>
+      <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "34px 0 16px" }}>
         {t.compareTitle}
       </h3>
       <div
@@ -300,7 +300,7 @@ export default function OutboundProof() {
             <div className="flex items-baseline gap-3" style={{ flexWrap: "wrap", marginBottom: 8 }}>
               <span
                 style={{
-                  fontFamily: SERIF, fontWeight: 700, lineHeight: 1, letterSpacing: "-0.02em",
+                  fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, lineHeight: 1,
                   fontSize: row.ours ? T.figureSm : T.h3,
                   color: row.ours ? "var(--c-gold)" : "var(--c-text2)",
                 }}
@@ -339,13 +339,13 @@ export default function OutboundProof() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4" style={{ marginTop: 32 }}>
         <div style={{ background: "var(--c-card)", border: "1px solid var(--c-border)", borderRadius: 10, padding: 22 }}>
-          <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 10 }}>
+          <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 10 }}>
             {t.afterTitle}
           </h3>
           <p style={{ fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-body)", lineHeight: 1.6 }}>{t.after}</p>
         </div>
         <div style={{ background: "var(--c-card)", border: "1px solid var(--c-border)", borderRadius: 10, padding: 22 }}>
-          <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 6 }}>
+          <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 6 }}>
             {t.repliedTitle}
           </h3>
           <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.08em", color: "var(--c-muted)", display: "block", marginBottom: 12 }}>

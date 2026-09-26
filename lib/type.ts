@@ -18,9 +18,19 @@ import type { CSSProperties } from "react";
  * unchanged.
  */
 export const SERIF = "var(--font-display)";
-export const SANS = "var(--font-instrument-sans), sans-serif";
-export const MONO = "var(--font-inconsolata), monospace";
+export const SANS = "var(--font-onest), system-ui, sans-serif";
+export const MONO = "var(--font-martian-mono), ui-monospace, monospace";
 export const LEDE = "var(--font-lede)";
+
+/**
+ * Martian Mono is wider than the serif it replaced at the same size. Spread
+ * into every SERIF / var(--font-display) style so headings keep their measure.
+ * The mono layer gets 'wdth' 95 by inheritance from body (globals.css).
+ */
+export const DISPLAY_AXES = {
+  letterSpacing: "-0.03em",
+  fontVariationSettings: "'wdth' 86",
+} as const;
 
 export const T = {
   lede: 20,

@@ -17,7 +17,7 @@ export const translations = {
         // ─── HOMEPAGE ────────────────────────────────────
         home: {
             hero: {
-                name: "Павел Burg",
+                name: "Павел Бург",
                 tagline: "Строю с 2011 • Founder/CEO • Цифровой номад",
                 description: "Создаю на пересечении Web3, ReFi, AI и инфраструктуры реального воздействия",
             },
@@ -39,7 +39,7 @@ export const translations = {
         // ─── MENTORSHIP PAGE ─────────────────────────────
         mentorship: {
             meta: {
-                title: "Менторство | Павел Burg",
+                title: "Менторство | Павел Бург",
                 description: "Менторство для жизни и бизнеса в глобальном мире. Капитал, бизнес, AI и автоматизация.",
             },
             hero: {
@@ -195,11 +195,11 @@ export const translations = {
                     link: "https://www.cryptoaltruists.com/blog/crypto-altruists-episode-201-web3-localism-for-global-climate-action-from-decentralized-cleanups-to-regenerative-local-economies"
                 },
                 item3: {
-                    title: "Продукты воздействия и Рынок воздействия — Пол Бург, Devcon 7 SEA",
+                    title: "Продукты воздействия и Рынок воздействия — Павел Бург, Devcon 7 SEA",
                     link: "https://youtu.be/40KkjjSW3C8?si=UyItTaLZgIbQm8YM"
                 },
                 item4: {
-                    title: "Super dApp Builders, эпизод 01 | Пол Бург из DeCleanup Network",
+                    title: "Super dApp Builders, эпизод 01 | Павел Бург из DeCleanup Network",
                     link: "https://youtu.be/zVgZX1Nj48E?si=UGF09-fS0DVuJTCb"
                 }
             },

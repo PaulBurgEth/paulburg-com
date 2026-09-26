@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import PriceGrid from "@/components/ui/PriceGrid";
-import { SectionShell, SectionHead, MidCTA, SERIF, SANS, MONO, T, itemVariants } from "../shared";
+import { SectionShell, SectionHead, MidCTA, SERIF, DISPLAY_AXES, SANS, MONO, T, itemVariants } from "../shared";
 
 /**
  * The page had no objection handling at all, which meant every reader who
@@ -137,7 +137,7 @@ export default function OutboundObjections() {
             >
               <span
                 style={{
-                  fontFamily: MONO, fontSize: T.caption, fontWeight: 700, letterSpacing: "0.14em",
+                  fontFamily: MONO, fontSize: T.caption, fontWeight: 700, letterSpacing: "0.12em",
                   color: "var(--c-gold)", flexShrink: 0,
                 }}
               >
@@ -145,8 +145,8 @@ export default function OutboundObjections() {
               </span>
               <h3
                 style={{
-                  fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, lineHeight: 1.35,
-                  color: "var(--c-heading)", letterSpacing: "-0.01em", flex: 1,
+                  fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, lineHeight: 1.35,
+                  color: "var(--c-heading)", flex: 1,
                 }}
               >
                 {item.q}

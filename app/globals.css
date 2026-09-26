@@ -110,58 +110,34 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--color-primary);
 
-  --font-sans: var(--font-instrument-sans), sans-serif;
-  /* Cyrillic glyphs fall through to Source Serif 4 (Fraunces/Newsreader lack Cyrillic subsets). */
-  --font-serif: var(--font-fraunces), var(--font-source-serif), Georgia, serif;
-  --font-serif-display: var(--font-fraunces), var(--font-source-serif), Georgia, serif;
-  --font-serif-body: var(--font-newsreader), var(--font-source-serif), Georgia, serif;
+  /* Token names kept from the serif era because components reference them.
+     --font-serif and --font-serif-display are no longer serif: they resolve to
+     Martian Mono. Renaming them across the codebase was not worth the churn. */
+  --font-sans: var(--font-onest), system-ui, sans-serif;
+  --font-serif: var(--font-martian-mono), ui-monospace, monospace;
+  --font-serif-display: var(--font-martian-mono), ui-monospace, monospace;
+  --font-serif-body: var(--font-onest), system-ui, sans-serif;
 }
 
-/* Display faces resolve per language.
-   Fraunces and Newsreader ship no Cyrillic subset, so a Russian heading would mix a
-   Fraunces "AI" with a system-serif "боты" inside one word. Source Serif 4 is already
-   loaded with Cyrillic and matches Fraunces closely in weight and colour, so RU uses
-   it for the whole string and EN is left untouched.
+/* Two faces, both with native Cyrillic, so there is no per-language swap any
+   more: RU and EN render in the same type.
    These are plain custom properties, not @theme tokens, so the inline styles the
-   sections use (`fontFamily: "var(--font-display)"`) resolve per language — a rule
-   targeting h1..h6 cannot, because an inline style always wins. */
-/* Declared on body, not :root — next/font puts --font-fraunces and friends on the
+   sections use (`fontFamily: "var(--font-display)"`) resolve here. Declared on
+   body, not :root — next/font puts --font-martian-mono and --font-onest on the
    <body> className, so at :root they are undefined, which would make the whole
-   declaration invalid at computed-value time and silently drop headings back to
-   the inherited face. */
+   declaration invalid at computed-value time.
+   --font-instrument-sans and --font-inconsolata are the old next/font names,
+   aliased so the ~250 existing references in components resolve to the new
+   faces without being rewritten. */
 body {
-  --font-display: var(--font-fraunces), var(--font-source-serif), Georgia, serif;
-  --font-lede: var(--font-newsreader), var(--font-source-serif), Georgia, serif;
-}
-html[lang="ru"] body {
-  --font-display: var(--font-source-serif), Georgia, serif;
-  --font-lede: var(--font-source-serif), Georgia, serif;
-
-  /* Cyrillic swap for the two Latin-only workhorses.
-     Redefining the next/font variable names themselves, rather than adding new
-     ones, means every existing `var(--font-instrument-sans)` and
-     `var(--font-inconsolata)` in the components resolves to a Cyrillic face in
-     RU without touching a single component file. Specificity is what makes it
-     work: next/font sets these on `body` through a generated class (0,1,0),
-     and `html[lang="ru"] body` is (0,1,2), so this wins. */
-  --font-instrument-sans: var(--font-inter);
-  --font-inconsolata: var(--font-jetbrains-mono);
-  --font-newsreader: var(--font-source-serif);
-}
-
-/* RU mode — swap primary serif faces to Source Serif 4 for metric consistency.
-   Fraunces Latin and Source Serif 4 Cyrillic have different x-heights; in RU we want
-   one face everywhere. EN mode (default) keeps Fraunces/Newsreader. */
-html[lang="ru"] body {
-  font-family: var(--font-source-serif), Georgia, serif;
-}
-html[lang="ru"] h1,
-html[lang="ru"] h2,
-html[lang="ru"] h3,
-html[lang="ru"] h4,
-html[lang="ru"] h5,
-html[lang="ru"] h6 {
-  font-family: var(--font-source-serif), Georgia, serif;
+  --font-display: var(--font-martian-mono), ui-monospace, monospace;
+  --font-lede: var(--font-onest), system-ui, sans-serif;
+  --font-instrument-sans: var(--font-onest);
+  --font-inconsolata: var(--font-martian-mono);
+  /* Martian Mono's width axis, inherited. 95 is the mono layer (eyebrows,
+     labels, section numbers); display sites override it with 86. Onest has no
+     wdth axis, so it ignores this. */
+  font-variation-settings: 'wdth' 95;
 }
 
 body {
@@ -170,10 +146,8 @@ body {
      pages with transparent section wrappers show light bg in dark mode. */
   background: var(--c-bg);
   color: var(--c-text);
-  /* Default body face matches the redesign mockup: Newsreader serif with
-     Source Serif 4 / Georgia fallbacks. Per-element overrides (Fraunces for
-     headings, Instrument Sans for UI labels, Inconsolata for mono) win. */
-  font-family: var(--font-newsreader), var(--font-source-serif), Georgia, serif;
+  /* Onest by default; display and mono sites set Martian Mono locally. */
+  font-family: var(--font-onest), system-ui, sans-serif;
 }
 
 /* Custom Utilities */
@@ -413,7 +387,7 @@ select:focus-visible {
   font-family: var(--font-inconsolata), monospace;
   font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--c-text2);
 }
@@ -427,7 +401,7 @@ select:focus-visible {
 .pb-section-number {
   font-family: var(--font-inconsolata), monospace;
   font-size: 11px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   color: var(--c-muted);
 }
 

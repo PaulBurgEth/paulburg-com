@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
-import { SectionShell, SectionHead, Note, SERIF, SANS, MONO, T, itemVariants } from "../shared";
+import { SectionShell, SectionHead, Note, SERIF, DISPLAY_AXES, SANS, MONO, T, itemVariants } from "../shared";
 
 /**
  * The only table on the page.
@@ -172,7 +172,7 @@ export default function OutboundWhy() {
               style={{
                 fontFamily: MONO,
                 fontSize: T.caption,
-                letterSpacing: "0.14em",
+                letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 color: i === LAST ? "var(--c-gold)" : "var(--c-text2)",
                 fontWeight: i === LAST ? 700 : 400,
@@ -247,7 +247,7 @@ export default function OutboundWhy() {
               style={{
                 fontFamily: MONO,
                 fontSize: T.caption,
-                letterSpacing: "0.14em",
+                letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 fontWeight: i === LAST ? 700 : 400,
                 color: i === LAST ? "var(--c-gold)" : "var(--c-text2)",
@@ -282,7 +282,7 @@ export default function OutboundWhy() {
           padding: 24,
         }}
       >
-        <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 10 }}>
+        <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 10 }}>
           {t.shortTitle}
         </h3>
         <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.7, maxWidth: "58ch" }}>

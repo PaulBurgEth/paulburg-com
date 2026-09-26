@@ -10,6 +10,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import type { ReactNode } from "react";
 import { splitLastWord } from "@/lib/text";
 import { useRevealObserver } from "@/lib/useStageReveal";
+import { DISPLAY_AXES } from "@/lib/type";
 import { TELEGRAM_URL, WHATSAPP_URL } from "@/lib/constants";
 
 interface Frontmatter {
@@ -125,7 +126,7 @@ export default function ArticlePageClient({
               style={{
                 fontFamily: "var(--font-inconsolata), monospace",
                 fontSize: 14,
-                letterSpacing: "0.15em",
+                letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 color: "var(--c-muted)",
                 textDecoration: "none",
@@ -149,9 +150,9 @@ export default function ArticlePageClient({
                 <h1
                   style={{
                     fontFamily: "var(--font-display)",
+                    ...DISPLAY_AXES,
                     fontWeight: 600,
                     fontSize: "clamp(36px, 5vw, 62px)",
-                    letterSpacing: "-0.022em",
                     color: "var(--c-heading)",
                     lineHeight: 1.15,
                     margin: "0 0 16px",
@@ -159,7 +160,7 @@ export default function ArticlePageClient({
                 >
                   {head}
                   <em style={{
-                    fontStyle: "italic",
+                    fontStyle: "normal",
                     color: "transparent",
                     WebkitTextStroke: "1.5px rgba(200,169,110,0.7)",
                     fontFamily: "var(--font-display)",
@@ -172,7 +173,6 @@ export default function ArticlePageClient({
             <p
               style={{
                 fontFamily: "var(--font-lede)",
-                fontStyle: "italic",
                 fontSize: 21,
                 lineHeight: 1.45,
                 color: "var(--c-body-lede)",
@@ -186,7 +186,7 @@ export default function ArticlePageClient({
             <div style={{
               display: "flex", gap: 18, flexWrap: "wrap", alignItems: "baseline",
               fontFamily: "var(--font-inconsolata), monospace",
-              fontSize: 14, letterSpacing: "0.15em", textTransform: "uppercase",
+              fontSize: 14, letterSpacing: "0.12em", textTransform: "uppercase",
               color: "var(--c-text2)",
               marginBottom: 32,
             }}>
@@ -361,6 +361,7 @@ export default function ArticlePageClient({
 
         .prose-blog > p:first-of-type::first-letter {
           font-family: var(--font-display);
+          font-variation-settings: 'wdth' 86;
           font-weight: 700;
           font-style: normal;
           font-size: 76px;
@@ -378,14 +379,16 @@ export default function ArticlePageClient({
           color: var(--c-heading);
           margin: 56px 0 18px;
           line-height: 1.2;
-          letter-spacing: -0.015em;
+          letter-spacing: -0.03em;
+          font-variation-settings: 'wdth' 86;
         }
 
         .prose-blog h2 {
           font-family: var(--font-display);
           font-weight: 600;
           font-size: clamp(24px, 3vw, 30px);
-          letter-spacing: -0.015em;
+          letter-spacing: -0.03em;
+          font-variation-settings: 'wdth' 86;
           color: var(--c-heading);
           margin: 56px 0 18px;
           line-height: 1.2;
@@ -406,7 +409,6 @@ export default function ArticlePageClient({
         .prose-blog h3 {
           font-family: var(--font-lede);
           font-weight: 600;
-          font-style: italic;
           font-size: 20px;
           color: var(--c-gold);
           margin: 36px 0 10px;
@@ -456,12 +458,12 @@ export default function ArticlePageClient({
           padding: 24px 0;
           position: relative;
           font-family: var(--font-display);
-          font-style: italic;
           font-weight: 500;
           font-size: 24px;
           line-height: 1.35;
           color: var(--c-body-lede);
-          letter-spacing: -0.005em;
+          letter-spacing: -0.03em;
+          font-variation-settings: 'wdth' 86;
         }
 
         .prose-blog blockquote::before,

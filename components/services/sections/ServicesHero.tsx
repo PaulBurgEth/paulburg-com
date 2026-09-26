@@ -6,6 +6,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { useIntakeModal } from "@/context/IntakeModalContext";
 import { TELEGRAM_URL, WHATSAPP_URL } from "@/lib/constants";
 import BurgMark from "@/components/BurgMark";
+import { DISPLAY_AXES } from "@/lib/type";
 
 const en = {
   badge: "Two service lines",
@@ -86,9 +87,9 @@ export default function ServicesHero() {
             transition={{ duration: 0.5, delay: 0.1 }}
             style={{
               fontFamily: "var(--font-display)",
+              ...DISPLAY_AXES,
               fontWeight: 700,
               fontSize: "clamp(36px, 5vw, 62px)",
-              letterSpacing: "-0.02em",
               lineHeight: 1.1,
               color: "var(--c-heading)",
             }}
@@ -118,7 +119,6 @@ export default function ServicesHero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             style={{
               fontFamily: "var(--font-lede)",
-              fontStyle: "italic",
               fontWeight: 400,
               fontSize: 21,
               color: "var(--c-body-lede)",

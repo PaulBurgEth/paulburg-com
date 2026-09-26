@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Crosshair } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { DISPLAY_AXES } from "@/lib/type";
 
 const en = {
   sectionLabel: "Line two — clients",
@@ -59,7 +60,7 @@ export default function ServicesOutbound() {
             style={{
               fontFamily: "var(--font-inconsolata), monospace",
               fontSize: 14,
-              letterSpacing: "0.22em",
+              letterSpacing: "0.20em",
               textTransform: "uppercase",
               color: "var(--c-gold)",
               display: "flex",
@@ -98,9 +99,9 @@ export default function ServicesOutbound() {
                 <h2
                   style={{
                     fontFamily: "var(--font-display)",
+                    ...DISPLAY_AXES,
                     fontWeight: 700,
                     fontSize: "clamp(30px, 4vw, 44px)",
-                    letterSpacing: "-0.02em",
                     color: "var(--c-heading)",
                   }}
                 >
@@ -151,7 +152,7 @@ export default function ServicesOutbound() {
                 padding: 20,
               }}
             >
-              <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 40, color: "var(--c-gold)", lineHeight: 1, marginBottom: 8 }}>
+              <div style={{ fontFamily: "var(--font-display)", ...DISPLAY_AXES, fontWeight: 700, fontSize: 40, color: "var(--c-gold)", lineHeight: 1, marginBottom: 8 }}>
                 {t.metric}
               </div>
               <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16, color: "var(--c-text2)", lineHeight: 1.6 }}>

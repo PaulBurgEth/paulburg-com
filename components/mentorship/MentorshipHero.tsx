@@ -7,6 +7,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { useMentorshipModal } from "@/context/MentorshipModalContext";
 import { WHATSAPP_URL, TELEGRAM_URL } from "@/lib/constants";
 import BurgMark from "@/components/BurgMark";
+import { DISPLAY_AXES } from "@/lib/type";
 
 export default function MentorshipHero() {
     const { t } = useLanguage();
@@ -32,9 +33,9 @@ export default function MentorshipHero() {
                         className="mb-6 leading-tight"
                         style={{
                             fontFamily: "var(--font-display)",
+                            ...DISPLAY_AXES,
                             fontWeight: 700,
                             fontSize: "clamp(36px, 5vw, 62px)",
-                            letterSpacing: "-0.02em",
                             color: "var(--c-heading)",
                         }}
                     >
@@ -58,7 +59,6 @@ export default function MentorshipHero() {
                         className="mb-12 max-w-4xl leading-relaxed"
                         style={{
                             fontFamily: "var(--font-lede)",
-                            fontStyle: "italic",
                             fontSize: 21,
                             color: "var(--c-body-lede)",
                         }}

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Post } from "@/lib/posts";
+import { DISPLAY_AXES } from "@/lib/type";
 
 interface Props {
   posts: Post[];
@@ -108,6 +109,7 @@ export default function BlogList({ posts, lang }: Props) {
               <h2
                 style={{
                   fontFamily: "var(--font-display)",
+                  ...DISPLAY_AXES,
                   fontWeight: 700,
                   fontSize: 20,
                   color: "var(--c-text)",

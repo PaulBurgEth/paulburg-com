@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ShieldCheck, Ban, GitCompareArrows, GaugeCircle, PenLine, Users, AtSign, Fingerprint } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { SectionShell, SectionHead, SERIF, SANS, T, itemVariants } from "../shared";
+import { SectionShell, SectionHead, SERIF, DISPLAY_AXES, SANS, T, itemVariants } from "../shared";
 
 const ICONS = [ShieldCheck, Ban, GitCompareArrows, Users, AtSign, GaugeCircle, Fingerprint, PenLine];
 
@@ -71,7 +71,7 @@ export default function OutboundRules() {
                 <Icon size={16} color="var(--c-gold)" />
               </span>
               <div>
-                <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 6, lineHeight: 1.3 }}>{r.t}</h3>
+                <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 6, lineHeight: 1.3 }}>{r.t}</h3>
                 <p style={{ fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-body)", lineHeight: 1.6 }}>{r.d}</p>
               </div>
             </motion.div>
@@ -80,7 +80,7 @@ export default function OutboundRules() {
       </div>
 
       <div style={{ marginTop: 24, background: "var(--c-card2)", border: "1px solid var(--c-border)", borderLeft: "2px solid var(--c-sage)", borderRadius: 10, padding: 24 }}>
-        <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 9 }}>
+        <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 9 }}>
           {t.brakeTitle}
         </h3>
         <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65, maxWidth: "58ch" }}>

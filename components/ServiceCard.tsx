@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Check, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { DISPLAY_AXES } from "@/lib/type";
 
 interface ServiceProps {
     title: string;
@@ -60,6 +61,7 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                     className="mb-5 flex items-center justify-center"
                     style={{
                         fontFamily: "var(--font-display)",
+                        ...DISPLAY_AXES,
                         fontWeight: 700,
                         fontSize: 20,
                         color: "var(--c-gold)",
@@ -98,7 +100,7 @@ export default function ServiceCard({ title, description, lists, prices, buttonT
                                 fontFamily: "var(--font-inconsolata), monospace",
                                 fontSize: 14,
                                 fontWeight: 700,
-                                letterSpacing: "0.15em",
+                                letterSpacing: "0.12em",
                                 color: "var(--c-muted)",
                             }}
                         >{s.priceTitle}</h4>
