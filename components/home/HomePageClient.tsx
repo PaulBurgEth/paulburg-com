@@ -75,7 +75,6 @@ body::after{
 .hero-grid{display:grid;grid-template-columns:1fr;gap:44px;align-items:center}
 @media(min-width:1024px){.hero-grid{grid-template-columns:1.15fr 0.85fr;gap:64px}}
 .hero-lines{display:flex;flex-direction:column;gap:14px}
-@media(max-width:1023px){.hero-lines{display:none}}
 .line-card{
   display:block;text-decoration:none;
   border:1px solid var(--c-border);border-radius:10px;padding:20px 22px;
@@ -685,66 +684,60 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
           <div className="pb-stage" data-visible={stage >= 3 ? "1" : "0"}>
             <div className="hero-roles">
               <span className="hero-role">
-                <Bot size={12} strokeWidth={1.5} aria-hidden="true" />
-                {language === "ru" ? "AI-СИСТЕМЫ" : "AI SYSTEMS"}
+                <Crosshair size={12} strokeWidth={1.5} aria-hidden="true" />
+                {language === "ru" ? "КЛИЕНТЫ ДЛЯ B2B" : "CLIENTS FOR B2B"}
               </span>
               <span className="hero-role-sep" aria-hidden="true">·</span>
               <span className="hero-role">
-                <Crosshair size={12} strokeWidth={1.5} aria-hidden="true" />
-                {language === "ru" ? "ХОЛОДНЫЙ АУТБАУНД" : "COLD OUTBOUND"}
+                <Database size={12} strokeWidth={1.5} aria-hidden="true" />
+                {language === "ru" ? "СИСТЕМЫ ДЛЯ БИЗНЕСА" : "BUSINESS SYSTEMS"}
               </span>
               <span className="hero-role-sep" aria-hidden="true">·</span>
               <span className="hero-role">
                 <Lightbulb size={12} strokeWidth={1.5} aria-hidden="true" />
-                {language === "ru" ? "СТРОЮ С 2011" : "BUILDING SINCE 2011"}
-              </span>
-              <span className="hero-role-sep" aria-hidden="true">·</span>
-              <span className="hero-role">
-                <Coffee size={12} strokeWidth={1.5} aria-hidden="true" />
-                {language === "ru" ? "КОФЕ И КОД" : "COFFEE & CODE"}
+                {language === "ru" ? "СВОИ ПРОЕКТЫ С 2011" : "BUILDING SINCE 2011"}
               </span>
             </div>
           </div>
           <div className="pb-stage" data-visible={stage >= 4 ? "1" : "0"}>
             <p className="hero-desc">
               {language === "ru"
-                ? "Делаю две вещи для B2B. Строю системы, на которых держится бизнес: боты, CRM и BI-дашборды, автоматизация, сайты. И строю холодный канал, который приводит клиентов, чтобы эти системы было кем наполнять. "
-                : "Two things for B2B. I build the systems a business runs on: bots, CRMs and BI dashboards, automation, websites. And I build the cold channel that brings the clients to fill them. "}
+                ? "Две отдельные услуги для B2B. Первая: нахожу вам клиентов. Каждую компанию читаю до письма, пишу от вашего имени с вашего домена и каждому ответившему отвечаю сам. Вторая: строю системы, на которых держится бизнес: CRM, дашборды, сайты. "
+                : "Two separate services for B2B. First, I find you clients: each company is read before it gets a letter, the letter goes out in your name from your domain, and every reply is answered by me. Second, I build the systems a business runs on: CRMs, dashboards, websites. "}
               <strong>
-                {language === "ru" ? "Не шаблон. Не no-code." : "Not a template. Not a no-code tool."}
+                {language === "ru" ? "Работает человек, а не рассылка." : "A person doing the work, not a mass mailing."}
               </strong>
             </p>
             <div className="tags">
-              <span className="tag gold">{language === "ru" ? "Холодный аутбаунд" : "Cold Outbound"}</span>
-              <span className="tag gold">{language === "ru" ? "AI-боты" : "AI Bots"}</span>
-              <span className="tag gold">{language === "ru" ? "CRM и BI" : "CRM & BI"}</span>
-              <span className="tag">{language === "ru" ? "AI Matching" : "AI Matching"}</span>
-              <span className="tag">{language === "ru" ? "Автоматизация" : "Process Automation"}</span>
+              <span className="tag gold">{language === "ru" ? "Продажи письмами" : "Sales by letter"}</span>
+              <span className="tag gold">{language === "ru" ? "Ресёрч под каждую компанию" : "Research per company"}</span>
+              <span className="tag">{language === "ru" ? "CRM и BI" : "CRM & BI"}</span>
               <span className="tag">{language === "ru" ? "Сайты на заказ" : "Custom Websites"}</span>
+              <span className="tag">{language === "ru" ? "Боты" : "Bots"}</span>
             </div>
           </div>
           </div>
 
           <div className="hero-lines pb-stage" data-visible={stage >= 3 ? "1" : "0"}>
-            <Link href="/services" className="line-card">
-              <span className="lc-k">{language === "ru" ? "Линия первая" : "Line one"}</span>
-              <div className="lc-t">{language === "ru" ? "Системы" : "The systems"}</div>
-              <div className="lc-d">
-                {language === "ru"
-                  ? "Боты, CRM и BI-дашборды, автоматизация, сайты. С нуля под ваш процесс."
-                  : "Bots, CRMs and BI dashboards, automation, websites. Built from scratch around your process."}
-              </div>
-              <span className="lc-m">{language === "ru" ? "От звонка до продакшена — 3–14 дней" : "Call to production — 3–14 days"}</span>
-            </Link>
             <Link href="/outbound" className="line-card">
-              <span className="lc-k">{language === "ru" ? "Линия вторая" : "Line two"}</span>
+              <span className="lc-k">{language === "ru" ? "Услуга первая" : "Service one"}</span>
               <div className="lc-t">{language === "ru" ? "Клиенты" : "The clients"}</div>
               <div className="lc-d">
                 {language === "ru"
-                  ? "Нахожу компании в открытых реестрах, выхожу на ЛПР и пишу от вашего имени."
-                  : "I find companies in open registries, reach the decision-maker and write in your name."}
+                  ? "Каждую компанию читаю до письма. Пишу от вашего имени, с вашего домена, и отвечаю сам."
+                  : "Each company read before the letter. I write in your name, from your domain, and answer every reply myself."}
               </div>
-              <span className="lc-m">{language === "ru" ? "Пилот 6 недель · ваши цифры на выходе" : "6-week pilot · your own numbers"}</span>
+              <span className="lc-m">{language === "ru" ? "Пилот 4 недели · остановка перед любой неделей" : "4-week pilot · stop before any week"}</span>
+            </Link>
+            <Link href="/services" className="line-card">
+              <span className="lc-k">{language === "ru" ? "Услуга вторая" : "Service two"}</span>
+              <div className="lc-t">{language === "ru" ? "Системы" : "The systems"}</div>
+              <div className="lc-d">
+                {language === "ru"
+                  ? "CRM и BI-дашборды, сайты, боты. С нуля под ваш процесс."
+                  : "CRMs and BI dashboards, websites, bots. Built from scratch around your process."}
+              </div>
+              <span className="lc-m">{language === "ru" ? "От звонка до продакшена — 3–14 дней" : "Call to production — 3–14 days"}</span>
             </Link>
           </div>
         </div>
@@ -943,13 +936,13 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
             <div className="mentor-features" style={{ marginBottom: 16 }}>
               <span className="tag gold" style={{ background: "transparent", borderColor: "rgba(200,169,110,0.2)" }}>{language === "ru" ? "Русский · English · Español" : "Russian · English · Spanish"}</span>
-              <span className="tag gold" style={{ background: "transparent", borderColor: "rgba(200,169,110,0.2)" }}>{language === "ru" ? "Пилот 6 недель" : "6-week pilot"}</span>
-              <span className="tag gold" style={{ background: "transparent", borderColor: "rgba(200,169,110,0.2)" }}>{language === "ru" ? "Ваши домены и данные" : "Your domains, your data"}</span>
+              <span className="tag gold" style={{ background: "transparent", borderColor: "rgba(200,169,110,0.2)" }}>{language === "ru" ? "Пилот 4 недели" : "4-week pilot"}</span>
+              <span className="tag gold" style={{ background: "transparent", borderColor: "rgba(200,169,110,0.2)" }}>{language === "ru" ? "Ваш домен, ваши данные" : "Your domain, your data"}</span>
             </div>
 
             <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 14 }}>
               <span style={{ fontFamily: "var(--font-inconsolata), monospace", fontWeight: 700, fontSize: 14, color: C.gold }}>
-                {language === "ru" ? "Пилот 6 недель · ваши цифры на выходе" : "6-week pilot · your own numbers at the end"}
+                {language === "ru" ? "Пилот 4 недели · отчёт каждую неделю" : "4-week pilot · a report every week"}
               </span>
               <Link
                 href="/outbound"
