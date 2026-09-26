@@ -17,12 +17,12 @@ const en = {
     { t: "One company, one email", d: "Deduplicated across the whole database, so no one is contacted twice from two segments." },
     { t: "Competitors and middlemen are filtered out", d: "They come out of the list before anything is sent, not after someone points it out." },
     { t: "Every address is verified before it is written to", d: "An unverified address is a bounce, and bounces are what damage a domain." },
-    { t: "Volume ramps in steps", d: "Each step only after bounces are checked. Above the threshold, sending pauses automatically." },
+    { t: "Volume ramps in steps", d: "Each step only after bounces are checked. Above the threshold, sending pauses on its own." },
     { t: "Every letter is written once", d: "No two companies receive the same text. That is the work, and it is also what keeps the domain clean." },
     { t: "Positioning stays yours", d: "Copy, prices and service wording are approved by you before the first send." },
   ],
   brakeTitle: "Why none of this is a target",
-  brake: "Sending pauses itself before bounces can reach the domain. That is the whole point of the ramp — it is not a number to hit, it is a brake. The rest works the same way: the lists are built from public registries, the emails go to companies at business addresses, and an unsubscribe blocks a whole domain rather than one mailbox. None of it is checked after the fact. All of it is wired in before the first send.",
+  brake: "Sending pauses itself before bounces can reach the domain. That is the whole point of the ramp — it is not a number to hit, it is a brake. The rest works the same way: each company is read before it is written to, the emails go to companies at business addresses, and an unsubscribe blocks a whole domain rather than one mailbox. None of it is checked after the fact. All of it is wired in before the first send.",
 };
 
 const ru = {
@@ -40,7 +40,7 @@ const ru = {
     { t: "Позиционирование за вами", d: "Тексты, цены и формулировки услуг согласуются с вами до первой отправки." },
   ],
   brakeTitle: "Почему всё это не показатели",
-  brake: "Отправка встаёт на паузу раньше, чем отказы дойдут до домена. В этом и смысл ступеней: это не цифра, которую надо выдержать, это тормоз. С остальным так же: списки собираются из открытых реестров, письма уходят компаниям на служебные адреса, а отписка блокирует домен целиком, а не один ящик. Ничего из этого не проверяется постфактум — всё зашито до первой отправки.",
+  brake: "Отправка встаёт на паузу раньше, чем отказы дойдут до домена. В этом и смысл ступеней: это не цифра, которую надо выдержать, это тормоз. С остальным так же: каждая компания прочитана до письма, письма уходят компаниям на служебные адреса, а отписка блокирует домен целиком, а не один ящик. Ничего из этого не проверяется постфактум — всё зашито до первой отправки.",
 };
 
 export default function OutboundRules() {

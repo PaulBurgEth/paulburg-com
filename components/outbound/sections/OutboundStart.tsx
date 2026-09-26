@@ -11,12 +11,12 @@ const en = {
   sub: "You can start in writing today.",
   steps: [
     { n: "01", t: "Ten questions", d: "Which services are the priority, who your best client is, which markets are closed. You answer in writing." },
-    { n: "02", t: "A six-week plan", d: "Concrete segments with volume estimates, launch order, correspondence language, and the first email drafts for approval." },
-    { n: "03", t: "We start", d: "The first letters go out inside week one — not after a month of preparation. Your own numbers land in week six." },
+    { n: "02", t: "A four-week plan", d: "Concrete segments with volume estimates, launch order, correspondence language, and the first email drafts for approval." },
+    { n: "03", t: "We start", d: "The first letters go out inside week one — not after a month of preparation. Your own numbers arrive in the report every week." },
   ],
   whoTitle: "Who you would be working with",
   whoRole: "Cold outbound for B2B · RU, EN, ES",
-  about: "I do cold client acquisition for B2B companies, in Russian, English and Spanish. Before this: my own projects since 2011 and contract development — bots, CRMs, dashboards, automation. That background is why this is built as a system you own rather than a service you rent.",
+  about: "I find clients for B2B companies by writing to them, in Russian, English and Spanish. Every company is read by me before it gets a letter, and every reply is answered by me. My own projects since 2011, three years in Shenzhen inspecting factories for sellers shipping to Amazon, then managing a portfolio of those sellers, so I know physical goods from the factory end.",
 };
 
 const ru = {
@@ -25,12 +25,12 @@ const ru = {
   sub: "Начать можно письмом, сегодня.",
   steps: [
     { n: "01", t: "Десять вопросов", d: "Какие услуги приоритетны, кто ваш лучший клиент, какие рынки закрыты. Отвечаете письменно." },
-    { n: "02", t: "План на шесть недель", d: "Конкретные сегменты с оценкой объёма, порядок запуска, язык переписки и тексты первых писем на согласование." },
-    { n: "03", t: "Стартуем", d: "Первые письма уходят внутри первой недели, а не после месяца подготовки. Ваши собственные цифры — на шестой." },
+    { n: "02", t: "План на четыре недели", d: "Конкретные сегменты с оценкой объёма, порядок запуска, язык переписки и тексты первых писем на согласование." },
+    { n: "03", t: "Стартуем", d: "Первые письма уходят внутри первой недели, а не после месяца подготовки. Ваши собственные цифры — в отчёте каждую неделю." },
   ],
   whoTitle: "С кем вы будете работать",
   whoRole: "Холодный аутбаунд для B2B · RU, EN, ES",
-  about: "Занимаюсь холодным поиском клиентов для B2B на русском, английском и испанском. До этого: свои проекты с 2011 года и разработка на заказ — боты, CRM, дашборды, автоматизация. Из-за этого фона канал и построен как система, которая принадлежит вам, а не услуга в аренду.",
+  about: "Нахожу клиентов для B2B-компаний письмами, на русском, английском и испанском, как внешний торговый представитель. Каждую компанию читаю сам до письма и каждому ответившему отвечаю сам. Свои проекты с 2011 года, три года в Шэньчжэне на инспекциях фабрик для продавцов на Amazon, потом вёл портфель этих продавцов, поэтому товар знаю со стороны фабрики.",
 };
 
 export default function OutboundStart() {
@@ -41,7 +41,7 @@ export default function OutboundStart() {
     <SectionShell num="11">
       <SectionHead eyebrow={t.eyebrow} h2={t.h2} sub={t.sub} />
 
-      {/* Three steps on a rail, matching the six-week schedule above. */}
+      {/* Three steps on a rail, matching the weekly schedule above. */}
       <div style={{ position: "relative" }}>
         <div
           aria-hidden="true"

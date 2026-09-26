@@ -74,7 +74,7 @@ const en = {
   next: [
     "I read it and answer in writing, usually within a few hours.",
     "If it does not fit, I say so in that first reply, and tell you what would.",
-    "If it does, you get the ten questions and a six-week plan with segments and volumes.",
+    "If it does, you get the ten questions and a four-week plan with segments and volumes.",
   ],
   nextNote: "You are answered by me, not by an assistant or a sequence.",
 };
@@ -147,7 +147,7 @@ const ru = {
   next: [
     "Читаю и отвечаю письмом, обычно в течение нескольких часов.",
     "Если не подходит — скажу это в первом же ответе и скажу, что подошло бы.",
-    "Если подходит — присылаю десять вопросов и план на шесть недель с сегментами и объёмами.",
+    "Если подходит — присылаю десять вопросов и план на четыре недели с сегментами и объёмами.",
   ],
   nextNote: "Отвечаю я, а не ассистент и не автоворонка.",
 };

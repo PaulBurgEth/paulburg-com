@@ -7,33 +7,33 @@ import { SectionShell, SectionHead, Note, SERIF, DISPLAY_AXES, SANS, MONO, T, it
 const en = {
   eyebrow: "Commercials",
   h2: "How the money works",
-  sub: "One fixed price for the pilot, and three chances to stop paying it.",
+  sub: "One fixed price for the pilot, paid a week at a time, with a decision before every week.",
   money: [
-    { k: "Pilot", h: "One fixed price", d: "Paid in thirds, each one two weeks ahead of the work it covers. Setup, segmentation, sourcing, the correspondence and the report are all inside it." },
-    { k: "Three exit points", h: "You decide twice more", d: "After each two weeks you decide whether to pay the next third. If you do not, the work stops there. At any moment what you have at risk is a third, not the whole thing." },
-    { k: "After the pilot", h: "Settled at week six", d: "By then you hold your own numbers for every step and you know what a client from this channel costs you. Terms for continuing are a conversation held on those numbers, not before them." },
+    { k: "Pilot", h: "One fixed price", d: "Four weeks, each paid in advance. Setup, research, the letters, the correspondence and the weekly report are all inside it." },
+    { k: "A way out every week", h: "You decide before each week", d: "Before each week you decide whether to pay for it. If you do not, the work stops there. At any moment what you have at risk is one week, not the whole pilot." },
+    { k: "After the pilot", h: "Settled at week four", d: "By then you hold your own numbers for every step and you know what a client from this channel costs you. Terms for continuing are a conversation held on those numbers, not before them." },
   ],
   keepTitle: "What stays with you",
-  keep: "Domains, mailboxes, the database of selected companies, the stop-list and all copy — on your accounts from day one.",
+  keep: "The list of companies, the stop-list, every letter and the funnel stage by stage — yours from day one.",
   railsTitle: "How you pay",
   rails: "Bank transfer, USDT or USDC, or a proper invoice through an invoicing service if your accounting needs the paperwork. Contractor agreement either way. \"We need an invoice\" has never been the reason this did not happen.",
-  note: "Full contract terms — attribution, exclusivity, exit — on request before we start.",
+  note: "Full contract terms — attribution, exit — on request before we start.",
 };
 
 const ru = {
   eyebrow: "Условия",
   h2: "Как устроены деньги",
-  sub: "Одна фиксированная цена за пилот и три возможности перестать её платить.",
+  sub: "Одна фиксированная цена за пилот, оплата по неделе, решение перед каждой неделей.",
   money: [
-    { k: "Пилот", h: "Одна фиксированная цена", d: "Оплата третями, каждая — за две недели вперёд той работы, которую покрывает. Настройка, сегментация, поиск, переписка и отчёт входят в неё." },
-    { k: "Три точки выхода", h: "Решаете ещё дважды", d: "После каждых двух недель вы решаете, платить ли следующую треть. Не платите — работа на этом прекращается. В любой момент под риском у вас треть, а не вся сумма." },
-    { k: "После пилота", h: "Решается на шестой неделе", d: "К этому моменту у вас на руках свои цифры по каждому шагу и понимание, во сколько обходится клиент из этого канала. Условия продолжения обсуждаются на этих цифрах, а не до них." },
+    { k: "Пилот", h: "Одна фиксированная цена", d: "Четыре недели, каждая оплачивается вперёд. Настройка, ресёрч, письма, переписка и еженедельный отчёт входят в неё." },
+    { k: "Выход каждую неделю", h: "Решаете перед каждой неделей", d: "Перед каждой неделей вы решаете, платить ли за неё. Не платите — работа на этом прекращается. В любой момент под риском у вас одна неделя, а не весь пилот." },
+    { k: "После пилота", h: "Решается на четвёртой неделе", d: "К этому моменту у вас на руках свои цифры по каждому шагу и понимание, во сколько обходится клиент из этого канала. Условия продолжения обсуждаются на этих цифрах, а не до них." },
   ],
   keepTitle: "Что остаётся у вас",
-  keep: "Домены, ящики, база отобранных компаний, стоп-лист и все тексты — на ваших аккаунтах с первого дня.",
+  keep: "Список компаний, стоп-лист, все тексты писем и воронка по этапам — ваши с первого дня.",
   railsTitle: "Чем платить",
   rails: "Банковский перевод, USDT или USDC, либо счёт через сервис выставления, если вашей бухгалтерии нужен документ. Договор подряда в любом случае. «Нам нужен инвойс» ещё ни разу не было причиной, по которой это не состоялось.",
-  note: "Полные условия договора — атрибуция, эксклюзивность, выход — по запросу до старта.",
+  note: "Полные условия договора — атрибуция, выход — по запросу до старта.",
 };
 
 export default function OutboundTerms() {

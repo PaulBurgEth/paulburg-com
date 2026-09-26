@@ -9,68 +9,67 @@ import { SectionShell, SectionHead, SERIF, DISPLAY_AXES, SANS, MONO, T, itemVari
  * spec sheet. The four commitment figures that used to open it were vendor-side
  * units of work — companies selected, emails sent, bounce ceiling; what a buyer
  * weighs is what they are left holding if it does not work.
- * The six weeks now run on a rail rather than four cards, matching the stage
- * conveyor in the formats section.
+ * The four weeks run on a rail, matching the stage conveyor in the formats
+ * section. Payment is weekly in advance with a stop before any week (SDR B2B
+ * decision 325); the sum is deliberately not published.
  */
 
 const en = {
   eyebrow: "The pilot",
-  h2: "Six weeks, one fixed price, and three points where you can stop",
-  sub: "Not a retainer that quietly renews. You pay in thirds, each one two weeks ahead of the work it covers, so what you have at risk at any moment is a third. Everything built along the way is on your accounts from day one.",
-  scheduleTitle: "How the six weeks are paid",
+  h2: "Four weeks, paid a week at a time, and you can stop before any week",
+  sub: "Not a retainer that quietly renews. Each week is paid in advance, and before each one you decide whether to continue, so what you have at risk at any moment is one week of work.",
+  scheduleTitle: "How the four weeks are paid",
   schedule: [
-    { w: "Weeks 1–2", pay: "You pay the first third", gate: "You decide to start" },
-    { w: "Weeks 3–4", pay: "You pay the second third", gate: "You decide again" },
-    { w: "Weeks 5–6", pay: "You pay the last third", gate: "You decide again" },
+    { w: "Week 1", pay: "You pay for week one", gate: "You decide to start" },
+    { w: "Week 2", pay: "You pay for week two", gate: "You decide again" },
+    { w: "Week 3", pay: "You pay for week three", gate: "You decide again" },
+    { w: "Week 4", pay: "You pay for week four", gate: "You decide again" },
   ],
-  scheduleNote: "Each third is paid two weeks ahead of the work it covers, so there is a decision in front of every one of them. Stop after any block and the work stops there — what you had at risk was a third.",
-  holdTitle: "What you hold at week six",
+  scheduleNote: "Each week is paid before it starts, so there is a decision in front of every one of them. Stop before any week and the work stops there.",
+  holdTitle: "What you hold at week four",
   hold: [
-    "Your list of companies, every address found and verified",
-    "Your domains and mailboxes, warmed and clean",
-    "The copy you approved, and the stop-list built underneath it",
+    "Your list of companies, each one read before the letter",
+    "The letters you approved, and the stop-list built underneath them",
+    "Your funnel stage by stage: companies, letters, replies, handovers",
     "Your own numbers for every step, and a go or no-go you can defend",
   ],
   rhythmTitle: "What you see, and when",
   rhythm: [
-    { w: "Week one", t: "Letters start going out", d: "Not a month of preparation with nothing to show for it. The mailboxes are configured and the first letters leave inside the first week." },
-    { w: "Every week", t: "A report", d: "What went out, what came back, the numbers under both, and what I am changing because of them. Part of the service, not something you have to ask for." },
-    { w: "Week six", t: "The whole funnel", d: "Your conversion at every step, the cost of a new client from this channel, and which segments returned what." },
+    { w: "Week one", t: "Letters start going out", d: "Not a month of preparation with nothing to show for it. The first letters leave inside the first week, from your own domain." },
+    { w: "Every week", t: "A report", d: "Companies found, letters sent, who replied, who was handed over, and what I am changing because of it. Part of the service, not something you have to ask for." },
+    { w: "Week four", t: "The whole funnel", d: "Your conversion at every step, the cost of a new client from this channel, and which segments returned what." },
   ],
-  exclusiveTitle: "While we work, nobody with your profile does",
-  exclusive: "One business per niche. For as long as this is running I do not take another company that sells what you sell — and a niche, counted honestly, has room for about one client anyway. That is a limit on how much of this I can sell, and it is the reason it is worth buying.",
   deliverTitle: "And if it does not work?",
-  deliver: "Then you have a documented answer for why not — which segment, which trigger, which offer failed to earn a reply — plus the list, the domains, the copy and the stop-list, all of which keep working for whatever you do next. That is a cheaper way to find out than a year of guessing.",
+  deliver: "Then you have a documented answer for why not — which segment, which reason, which offer failed to earn a reply — plus the list, the letters and the stop-list, all of which keep working for whatever you do next. That is a cheaper way to find out than a year of guessing.",
 };
 
 const ru = {
   eyebrow: "Пилот",
-  h2: "Шесть недель, одна фиксированная цена и три точки, где можно остановиться",
-  sub: "Не абонентка, которая тихо продлевается. Оплата третями, каждая — за две недели вперёд той работы, которую покрывает, поэтому под риском у вас в любой момент треть. Всё, что построено по дороге, лежит на ваших аккаунтах с первого дня.",
-  scheduleTitle: "Как оплачиваются шесть недель",
+  h2: "Четыре недели, оплата по неделе, остановиться можно перед любой",
+  sub: "Не абонентка, которая тихо продлевается. Каждая неделя оплачивается вперёд, и перед каждой вы решаете, продолжать ли, поэтому под риском у вас в любой момент одна неделя работы.",
+  scheduleTitle: "Как оплачиваются четыре недели",
   schedule: [
-    { w: "Недели 1–2", pay: "Платите первую треть", gate: "Решаете начать" },
-    { w: "Недели 3–4", pay: "Платите вторую треть", gate: "Решаете снова" },
-    { w: "Недели 5–6", pay: "Платите последнюю треть", gate: "Решаете снова" },
+    { w: "Неделя 1", pay: "Платите первую неделю", gate: "Решаете начать" },
+    { w: "Неделя 2", pay: "Платите вторую неделю", gate: "Решаете снова" },
+    { w: "Неделя 3", pay: "Платите третью неделю", gate: "Решаете снова" },
+    { w: "Неделя 4", pay: "Платите четвёртую неделю", gate: "Решаете снова" },
   ],
-  scheduleNote: "Каждая треть платится за две недели вперёд той работы, которую покрывает, поэтому перед каждой стоит решение. Остановитесь после любого блока — работа на этом прекращается, а под риском была треть.",
-  holdTitle: "Что у вас на руках к шестой неделе",
+  scheduleNote: "Каждая неделя оплачивается до её начала, поэтому перед каждой стоит решение. Остановитесь перед любой неделей — работа на этом прекращается.",
+  holdTitle: "Что у вас на руках к четвёртой неделе",
   hold: [
-    "Ваш список компаний, у каждой найден и проверен адрес",
-    "Ваши домены и ящики, прогретые и чистые",
+    "Ваш список компаний, каждая прочитана до письма",
     "Согласованные вами тексты и собранный под ними стоп-лист",
+    "Воронка по этапам: компании, письма, ответы, передачи",
     "Ваши собственные цифры по каждому шагу и решение, которое можно обосновать",
   ],
   rhythmTitle: "Что вы видите и когда",
   rhythm: [
-    { w: "Первая неделя", t: "Письма начинают уходить", d: "Не месяц подготовки, за который нечего показать. Ящики настраиваются, и первые письма уходят внутри первой недели." },
-    { w: "Каждую неделю", t: "Отчёт", d: "Что ушло, что вернулось, цифры под тем и другим и что я меняю по ним. Входит в услугу, а не выпрашивается." },
-    { w: "Шестая неделя", t: "Вся воронка", d: "Ваша конверсия на каждом шаге, стоимость нового клиента из этого канала и что принёс каждый сегмент." },
+    { w: "Первая неделя", t: "Письма начинают уходить", d: "Не месяц подготовки, за который нечего показать. Первые письма уходят внутри первой недели, с вашего домена." },
+    { w: "Каждую неделю", t: "Отчёт", d: "Сколько компаний найдено, сколько писем ушло, кто ответил, кого передал и что я меняю по итогам. Входит в услугу, а не выпрашивается." },
+    { w: "Четвёртая неделя", t: "Вся воронка", d: "Ваша конверсия на каждом шаге, стоимость нового клиента из этого канала и что принёс каждый сегмент." },
   ],
-  exclusiveTitle: "Пока мы работаем, никто с вашим профилем не работает",
-  exclusive: "Один бизнес на нишу. Пока это идёт, я не беру другую компанию, которая продаёт то же, что и вы — а в нише, если считать честно, и так помещается примерно один заказчик. Это ограничение на то, сколько я могу этого продать, и ровно поэтому это стоит покупать.",
   deliverTitle: "А если не сработает?",
-  deliver: "Тогда у вас есть задокументированный ответ почему — какой сегмент, какой повод, какое предложение не получило ответа — плюс база, домены, тексты и стоп-лист, которые продолжат работать на всё, что вы сделаете дальше. Это дешевле, чем выяснять то же самое год.",
+  deliver: "Тогда у вас есть задокументированный ответ почему — какой сегмент, какой повод, какое предложение не получило ответа — плюс база, тексты и стоп-лист, которые продолжат работать на всё, что вы сделаете дальше. Это дешевле, чем выяснять то же самое год.",
 };
 
 export default function OutboundPilot() {
@@ -81,12 +80,12 @@ export default function OutboundPilot() {
     <SectionShell num="08" id="pilot" alt>
       <SectionHead eyebrow={t.eyebrow} h2={t.h2} sub={t.sub} />
 
-      {/* Оплата третями — сильнейший механизм секции, и до этого он был одним
-          предложением. Три блока по две недели, перед каждым точка решения. */}
+      {/* Понедельная оплата — сильнейший механизм секции. Четыре недели,
+          перед каждой точка решения. */}
       <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 18 }}>
         {t.scheduleTitle}
       </h3>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3" style={{ marginBottom: 14 }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3" style={{ marginBottom: 14 }}>
         {t.schedule.map((b) => (
           <motion.div key={b.w} variants={itemVariants} style={{ position: "relative" }}>
             <div className="flex items-center gap-2" style={{ marginBottom: 9 }}>
@@ -153,7 +152,7 @@ export default function OutboundPilot() {
         ))}
       </div>
 
-      {/* Six weeks on a rail — same device as the nine-stage conveyor, so the
+      {/* The weeks on a rail — same device as the nine-stage conveyor, so the
           two schedules on the page read as one visual language. */}
       <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 18 }}>
         {t.rhythmTitle}
@@ -193,12 +192,7 @@ export default function OutboundPilot() {
         </div>
       </div>
 
-      <div style={{ marginTop: 34, background: "var(--c-card)", border: "1px solid var(--c-border)", borderLeft: "2px solid var(--c-gold)", borderRadius: 10, padding: 22 }}>
-        <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 9 }}>{t.exclusiveTitle}</h3>
-        <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65, maxWidth: "58ch" }}>{t.exclusive}</p>
-      </div>
-
-      <div style={{ marginTop: 12, background: "var(--c-card2)", border: "1px solid var(--c-border)", borderLeft: "2px solid var(--c-sage)", borderRadius: 10, padding: 22 }}>
+      <div style={{ marginTop: 34, background: "var(--c-card2)", border: "1px solid var(--c-border)", borderLeft: "2px solid var(--c-sage)", borderRadius: 10, padding: 22 }}>
         <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 9 }}>{t.deliverTitle}</h3>
         <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65, maxWidth: "58ch" }}>{t.deliver}</p>
       </div>

@@ -20,48 +20,57 @@ const en = {
   cols: ["An SDR in-house", "A lead-gen agency", "Ads", "This channel"],
   rows: [
     {
-      k: "Who it reaches",
+      k: "Who gets a letter",
       v: [
         "Whoever they get through this week",
-        "Whoever their template was pointed at",
+        "A list from a data vendor, everyone in the sector",
         "Whoever is already searching",
-        "Companies you named, each with a reason on public record",
+        "Each company read before the letter: its site shows it needs what you sell",
+      ],
+    },
+    {
+      k: "What the letter says",
+      v: [
+        "Their script, adjusted as they learn",
+        "One template, a name merged in",
+        "The same banner for everyone",
+        "What that company sells and how it differs from its neighbours",
       ],
     },
     {
       k: "Time to the first real reply",
       v: [
         "Three months of ramp, paid throughout",
-        "A month or two, on domains that are not yours",
+        "A month or two of setup first",
         "Immediately, but only against active demand",
-        "Letters go out in week one; replies build across the six",
+        "Letters go out in week one; replies build across the four",
       ],
     },
     {
-      k: "Whose domain and data",
+      k: "What you are promised",
       v: [
-        "Yours, and theirs to learn on",
-        "Theirs. It leaves when they do",
-        "Not applicable",
-        "Yours, on your accounts from day one",
+        "Activity targets",
+        "Guaranteed meetings",
+        "Clicks and impressions",
+        "A weekly report: companies, letters, replies",
+      ],
+    },
+    {
+      k: "What you sign up for",
+      v: [
+        "A salary and a notice period",
+        "A 3–13-month contract",
+        "A monthly budget",
+        "Four weeks, stop before any week",
       ],
     },
     {
       k: "What is left if you stop",
       v: [
         "Nothing. The person left",
-        "Nothing",
+        "Nothing. The list was theirs",
         "Nothing. Traffic ends with the budget",
-        "The list, the stop-list, the copy, the warmed domains",
-      ],
-    },
-    {
-      k: "Cost of being wrong",
-      v: [
-        "A year of salary and a rehire",
-        "A spent quarter",
-        "A spent budget",
-        "Six weeks at a fixed fee",
+        "The list of companies, the stop-list, the letters, the funnel stage by stage",
       ],
     },
   ],
@@ -78,48 +87,57 @@ const ru = {
   cols: ["Свой SDR", "Агентство лидгена", "Реклама", "Этот канал"],
   rows: [
     {
-      k: "До кого доходит",
+      k: "Кому уходит письмо",
       v: [
-        "До тех, кого успел набрать за неделю",
-        "До тех, на кого был нацелен их шаблон",
-        "До тех, кто уже ищет",
-        "До названных вами компаний, у каждой повод в открытом источнике",
+        "Тем, кого успел набрать за неделю",
+        "Выгрузке из базы, всем в отрасли подряд",
+        "Тем, кто уже ищет",
+        "Каждой компании, прочитанной до письма: по её сайту видно, что ей нужен ваш товар",
+      ],
+    },
+    {
+      k: "Что в письме",
+      v: [
+        "Его скрипт, который он правит по ходу",
+        "Один шаблон, подставлено название",
+        "Один баннер на всех",
+        "Что продаёт эта компания и чем она непохожа на соседей",
       ],
     },
     {
       k: "Когда первый живой ответ",
       v: [
         "Три месяца разгона, зарплата всё это время",
-        "Месяц-два, на чужих доменах",
+        "Месяц-два настройки до первого письма",
         "Сразу, но только по активному спросу",
-        "Письма уходят с первой недели, ответы набираются за шесть",
+        "Письма уходят с первой недели, ответы набираются за четыре",
       ],
     },
     {
-      k: "Чьи домены и данные",
+      k: "Что вам обещают",
       v: [
-        "Ваши, и учиться будут на них",
-        "Их. Уйдут вместе с ними",
-        "Не применимо",
-        "Ваши, на ваших аккаунтах с первого дня",
+        "План по звонкам и письмам",
+        "Гарантию встреч",
+        "Клики и показы",
+        "Отчёт каждую неделю: компании, письма, ответы",
+      ],
+    },
+    {
+      k: "На что подписываетесь",
+      v: [
+        "Зарплата и срок увольнения",
+        "Договор на 3–13 месяцев",
+        "Бюджет на месяц",
+        "Четыре недели, остановиться можно перед любой",
       ],
     },
     {
       k: "Что остаётся, если остановить",
       v: [
         "Ничего. Человек ушёл",
-        "Ничего",
+        "Ничего. База была их",
         "Ничего. Трафик кончается вместе с бюджетом",
-        "База, стоп-лист, тексты, прогретые домены",
-      ],
-    },
-    {
-      k: "Цена ошибки",
-      v: [
-        "Год зарплаты и наём заново",
-        "Потраченный квартал",
-        "Потраченный бюджет",
-        "Шесть недель по фиксированной цене",
+        "Список компаний, стоп-лист, тексты писем, воронка по этапам",
       ],
     },
   ],

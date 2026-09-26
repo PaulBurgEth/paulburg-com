@@ -5,72 +5,80 @@ import { useLanguage } from "@/context/LanguageContext";
 import { SectionShell, SectionHead, Note, MidCTA, SERIF, DISPLAY_AXES, SANS, MONO, T, tagStyle, itemVariants } from "../shared";
 
 /**
- * This section used to be a pilot funnel plus a deliverability table with a
- * "market" column. Three problems. The reader could divide two of the rows and
- * get a reply rate that reads as weak, the funnel stopped short of any money,
- * and bounce rates are a vendor-side concern the buyer never bought on.
- * Exact figures and the reasoning are in docs/DECISIONS.md.
- * What replaces them is the artifact — the shape of a real exchange — and one
- * line offering the numbers to anyone who actually wants them.
+ * Two things on this page are shown rather than claimed. The letters are real
+ * first letters from Paul's own campaign, sent as they stand, recipient hidden;
+ * both got an interested reply. The numbers are the two pilots set against
+ * the market on one measure — the share of companies written to that reached a
+ * commercial step — with the same sources and caveat as the approved offers
+ * (SDR B2B, VLOGIC / ROCKWELL §03, cut of 19.09.2026; market rows from
+ * Бенчмарки_и_источники.md §17). The bare reply rate is not shown: it is not
+ * the strong number, reaching a price or terms is.
  */
 
-type Turn = { side: "out" | "in"; who: string; when: string; text: string };
+type Letter = { meta: string; body: string[]; note: string };
+type Bar = { n: string; l: string; pct: number; ours: boolean };
 
 const en = {
   eyebrow: "In practice",
-  h2: "From a cold email to a company asking for a price",
-  sub: "The email does not sell anything. Its whole job is to earn a reply from the person who decides — everything after that is an ordinary conversation about a deal.",
-  disclaimer: "An example of how it goes.",
-  turns: [
+  h2: "From a cold letter to a company asking for a price",
+  sub: "The letter does not sell anything. Its whole job is to earn a reply from the person who decides, and it earns it by being about that company's business.",
+  lettersTitle: "Two letters, exactly as they were sent",
+  lettersNote: "First letters from my own campaign, recipient hidden. Letters for you are built the same way, in your name, from your domain.",
+  letters: [
     {
-      side: "out",
-      who: "You",
-      when: "Week 3 · first touch",
-      text: "Saw you switched suppliers around April. We are on the ground where your factories are, and inspection is live — you join by video and watch the cartons opened. Worth a look at your next order?",
+      meta: "To a prep centre · replied: \u201cI\u2019m the right person to talk to. I\u2019m interested\u201d",
+      body: [
+        "Hello team at [company],",
+        "I read that you work with independent retail as well as with e-commerce sellers.",
+        "Independent retail is a different buyer from an Amazon seller, and you take both.",
+        "Reaching the half you talk to less is the work I would take on.",
+        "I work as your outbound department: looking for companies, writing, answering, qualifying. The lower step is a client who has confirmed a need. The upper is the spec, your terms and the price.",
+        "Are you the right person to talk to about this, or should I write to someone else?",
+      ],
+      note: "What in it is theirs: the half of their business most prep centres do not serve, taken from their own site.",
     },
     {
-      side: "in",
-      who: "Them",
-      when: "Week 4 · their reply",
-      text: "We do have a batch going out in about six weeks. What does inspection cost, and can you cover two factories in the same window?",
+      meta: "To a prep centre · replied: \u201cdefinitely of interest\u201d",
+      body: [
+        "Hello team at [company],",
+        "I read that you cover storage and kitting alongside the FBA and FBM prep.",
+        "Kitting inside a prep centre is unusual, which is why [company] stopped me.",
+        "Sellers who need it are exactly who I go after, and reaching them is my work.",
+        "Hand me the client search and you get companies that need your service. Two sizes: I stop when someone has confirmed what they need, or I carry on to your terms and an agreed price.",
+        "Is this of interest, and who is the right person to talk to?",
+      ],
+      note: "What in it is theirs: the one service that sets them apart from the prep centre next door.",
     },
-    {
-      side: "out",
-      who: "You",
-      when: "Weeks 4–5 · into the deal",
-      text: "Both factories, one window, one invoice. Sending the checklist and a price for that batch today — if it fits, we book the window.",
-    },
-  ] as Turn[],
-  pilotsTitle: "Two runs, two different industries",
+  ] as Letter[],
+  pilotsTitle: "Two runs, two different markets",
   pilots: [
     {
-      tag: "Industrial supply",
+      tag: "A metals supplier, from its own domain",
       steps: [
-        { n: "4 235", l: "companies written to" },
-        { n: "75", l: "came back with a real reply" },
-        { n: "68", l: "received a priced quote" },
+        { n: "4 531", l: "companies written to" },
+        { n: "86", l: "answered on substance" },
+        { n: "55", l: "asked for a price" },
       ],
     },
     {
-      tag: "A services business, nine sectors at once",
+      tag: "My own campaign, finding clients for this service",
       steps: [
-        { n: "2 082", l: "companies written to" },
-        { n: "62", l: "came back with a real reply" },
-        { n: "25", l: "asked for terms" },
+        { n: "2 687", l: "companies written to" },
+        { n: "69", l: "answered on substance" },
+        { n: "51", l: "reached a talk about terms" },
       ],
     },
   ],
-  pilotsNote: "Two industries rather than one, because the first thing anyone wants to know is whether this only works where it was built. The segments are not named here because the businesses behind them are not.",
-  compareTitle: "What one reply is worth here",
-  // Scoped to the first run explicitly. 68 of 75 is the industrial-supply
-  // pilot; the services pilot ten lines above reads 25 of 62, and a reader who
-  // does that arithmetic was landing on 40% under a headline saying 91%. The
-  // figure is not changed — the claim now says which run it is from, which is
-  // also how the canon reports it, per pilot with an interval rather than as
-  // one blended number.
-  compareOurs: { n: "91%", l: "of replies reached a priced quote", sub: "68 of the 75 replies, industrial supply" },
-  compareMarket: { n: "14%", l: "of replies carry any interest at all", sub: "market average, cold email" },
-  compareNote: "Our bar is the higher one: not a reply that sounds interested, a company that got as far as a price. And the market figure is measured on sequences that run email together with LinkedIn and calls — this is email on its own. Market data: aggregated platform benchmarks, Growth Engineer, 2026.",
+  pilotsNote: "Sending logs, 19 September 2026. Email only.",
+  compareTitle: "Companies that reached a commercial step",
+  compareLead: "Two to four times more companies reach a price or terms than the market gets positive replies. And a commercial step sits deeper than a positive reply, so the comparison is a conservative one.",
+  bars: [
+    { n: "2.2%", l: "My own campaign: reached terms", pct: 2.2, ours: true },
+    { n: "1.2%", l: "Metals supplier: asked for a price", pct: 1.2, ours: true },
+    { n: "0.5–1.5%", l: "Market: email to meeting", pct: 1.5, ours: false },
+    { n: "≈0.5%", l: "Market: positive reply", pct: 0.48, ours: false },
+  ] as Bar[],
+  compareNote: "Own campaign: 51 of 2,339 companies. Metals supplier: 55 of 4,531. Market, email to meeting: 0.5–1.5% of emails sent, LeadHaste, Cold email conversion rate benchmarks 2026. Market, positive reply: about 0.48% of recipients (3.43% average reply rate, Instantly, × 14.1% of replies that are genuinely positive, Sales.co, 2026). Market figures come mostly from sequences combining email, LinkedIn and calls; the pilots were email only. For the pilots the step is the company's next commercial move, for the market a meeting or a positive reply.",
   afterTitle: "Where you come in",
   after: "Not at the first email, and not at the tenth. You come in when a company has agreed on the substance and wants to talk terms. Everything before that point is mine.",
   repliedTitle: "The kind of company that answers",
@@ -83,53 +91,65 @@ const en = {
 
 const ru = {
   eyebrow: "В работе",
-  h2: "От холодного письма до компании, которая просит расчёт",
-  sub: "Письмо ничего не продаёт. Его единственная задача — получить ответ от того, кто решает. Всё дальше — обычный разговор о сделке.",
-  disclaimer: "Пример того, как это идёт.",
-  turns: [
+  h2: "От холодного письма до компании, которая просит цену",
+  sub: "Письмо ничего не продаёт. Его единственная задача — получить ответ от того, кто решает, и оно его получает тем, что написано про дело этой компании.",
+  lettersTitle: "Два письма, как они ушли",
+  lettersNote: "Первые письма моей собственной кампании, получатель скрыт. Письма для вас устроены так же, от вашего имени и с вашего домена.",
+  letters: [
     {
-      side: "out",
-      who: "Вы",
-      when: "Неделя 3 · первое касание",
-      text: "Увидел, что примерно в апреле вы сменили поставщика. Мы на земле там, где ваши фабрики, и инспекция идёт вживую: вы подключаетесь по видео и смотрите, как вскрывают коробки. Посмотрим на следующем заказе?",
+      meta: "Производителю напитков для кафе · ответили с интересом",
+      body: [
+        "Здравствуйте, команда [компания]!",
+        "Вы производите напитки и экстракты, которых нет у обычного кофейного поставщика: цикорий, шиповник, боярышник, какао, сироп топинамбура.",
+        "Заведению всё чаще нужна альтернатива кофе — для тех, кто его не пьёт, и для позднего вечера. Цикорий и шиповник закрывают этот запрос, но их не ищут: о них узнают, когда предложили.",
+        "Моя работа — искать вам клиентов. Подбираю компании, которым нужна ваша услуга, выхожу на того, кто решает, пишу лично и разбираю ответы. Дальше на выбор: передать вам клиента, который подтвердил потребность и готов обсуждать условия, или вести до цены и срока.",
+        "Если это не ваша тема, подскажете, к кому обратиться?",
+        "С уважением, Павел",
+      ],
+      note: "Что здесь под компанию: их необычная линейка по названиям и причина, по которой её покупают, но не ищут.",
     },
     {
-      side: "in",
-      who: "Они",
-      when: "Неделя 4 · их ответ",
-      text: "Партия действительно уходит примерно через шесть недель. Сколько стоит инспекция и можете ли вы закрыть две фабрики в одно окно?",
+      meta: "Поставщику мебели для кафе и ресторанов · ответили с интересом",
+      body: [
+        "Здравствуйте, команда [компания]!",
+        "Вы держите мебель для кафе, баров и ресторанов, и сразу предупреждаете, что цена на сайте не окончательная, а считается под проект.",
+        "Ресторатор, который открывает зал, сравнивает не стулья, а сроки: мебель приходит последней и держит дату открытия. Он выбирает того, кто отвечает за срок, а не того, у кого дешевле позиция.",
+        "Я нахожу вам клиентов. Разбираюсь, кто покупает то, что вы продаёте, и по какому признаку это видно со стороны. Пишу в каждую компанию отдельным письмом, про её дело, а не рассылкой. Отвечаю сам и передаю вам того, кто уже сказал, что ему нужно.",
+        "Если это полезно, соберу предложение под вашу услугу и пришлю.",
+        "С уважением, Павел",
+      ],
+      note: "Что здесь под компанию: деталь с их сайта (цена под проект) и настоящий критерий выбора их покупателя — срок, а не цена стула.",
     },
-    {
-      side: "out",
-      who: "Вы",
-      when: "Недели 4–5 · переход в сделку",
-      text: "Обе фабрики, одно окно, один счёт. Сегодня отправляю чек-лист и цену под эту партию — если подходит, бронируем окно.",
-    },
-  ] as Turn[],
-  pilotsTitle: "Два прогона, две разные отрасли",
+  ] as Letter[],
+  pilotsTitle: "Два пилота, два разных рынка",
   pilots: [
     {
-      tag: "Промышленное снабжение",
+      tag: "Поставщик металлопроката, с его домена",
       steps: [
-        { n: "4 235", l: "компаниям написали" },
-        { n: "75", l: "ответили по существу" },
-        { n: "68", l: "получили расчёт с ценой" },
+        { n: "4 531", l: "компаний получили письмо" },
+        { n: "86", l: "ответили по делу" },
+        { n: "55", l: "прислали запрос цены" },
       ],
     },
     {
-      tag: "Сервисный бизнес, девять направлений сразу",
+      tag: "Собственная кампания: клиенты для этой услуги",
       steps: [
-        { n: "2 082", l: "компаниям написали" },
-        { n: "62", l: "ответили по существу" },
-        { n: "25", l: "запросили условия" },
+        { n: "2 687", l: "компаний получили письмо" },
+        { n: "69", l: "ответили по делу" },
+        { n: "51", l: "дошла до разговора об условиях" },
       ],
     },
   ],
-  pilotsNote: "Две отрасли, а не одна, потому что первое, что хотят понять — работает ли это где-то кроме того места, где строилось. Сегменты здесь не названы, потому что не названы стоящие за ними бизнесы.",
-  compareTitle: "Чего стоит здесь один ответ",
-  compareOurs: { n: "91%", l: "ответов дошли до расчёта с ценой", sub: "68 из 75 ответов, металлопрокат и промснаб" },
-  compareMarket: { n: "14%", l: "ответов вообще содержат интерес", sub: "среднее по рынку холодной почты" },
-  compareNote: "Планка у нас выше: не ответ, который звучит заинтересованно, а компания, дошедшая до цены. И рыночная цифра снята на последовательностях, где почта идёт вместе с LinkedIn и звонками — здесь одна почта. Рыночные данные: агрегация платформенных бенчмарков, Growth Engineer, 2026.",
+  pilotsNote: "Журналы отправки, срез 19.09.2026. Только почта.",
+  compareTitle: "Доля компаний, дошедших до коммерческого шага",
+  compareLead: "До цены или условий доходит в 2–4 раза больше компаний, чем рынок получает положительных ответов. А коммерческий шаг глубже положительного ответа, поэтому сравнение консервативное.",
+  bars: [
+    { n: "2,2 %", l: "Собственная кампания: условия", pct: 2.2, ours: true },
+    { n: "1,2 %", l: "Металлопрокат: запрос цены", pct: 1.2, ours: true },
+    { n: "0,5–1,5 %", l: "Рынок: письмо → встреча", pct: 1.5, ours: false },
+    { n: "≈0,5 %", l: "Рынок: положительный ответ", pct: 0.48, ours: false },
+  ] as Bar[],
+  compareNote: "Собственная кампания: 51 из 2 339 компаний. Металлопрокат: 55 из 4 531 компании. Рынок, письмо → встреча: 0,5–1,5 % отправленных писем, LeadHaste, «Cold email conversion rate benchmarks 2026». Рынок, положительный ответ: ≈0,48 % адресатов (средний отклик 3,43 % по Instantly × доля по-настоящему положительных ответов 14,1 %, Sales.co, 2026). Рыночные цифры собраны в основном на многоканальных цепочках (почта, LinkedIn, звонок); пилоты шли только почтой. У пилотов считается следующий коммерческий шаг компании, у рынка — встреча и положительный ответ.",
   afterTitle: "Где вступаете вы",
   after: "Не на первом письме и не на десятом. Вы вступаете, когда компания уже согласилась по сути и хочет обсуждать условия. Всё до этой точки — на мне.",
   repliedTitle: "Кто отвечает",
@@ -148,69 +168,36 @@ export default function OutboundProof() {
     <SectionShell num="05" id="proof">
       <SectionHead eyebrow={t.eyebrow} h2={t.h2} sub={t.sub} />
 
-      {/* Transcript, not cards: a vertical spine with the two sides indented
-          against each other, so the exchange reads as correspondence. */}
-      <div style={{ position: "relative", paddingLeft: 2 }}>
-        <div
-          aria-hidden="true"
-          className="hidden sm:block"
-          style={{ position: "absolute", left: 7, top: 10, bottom: 10, width: 1, background: "var(--c-border2)" }}
-        />
-        <div className="flex flex-col gap-3">
-          {t.turns.map((turn, i) => {
-            const out = turn.side === "out";
-            return (
-              <motion.div
-                key={i}
-                variants={itemVariants}
-                className="relative flex flex-col sm:pl-8"
-                style={{ marginLeft: out ? 0 : undefined }}
-              >
-                <span
-                  aria-hidden="true"
-                  className="hidden sm:block"
-                  style={{
-                    position: "absolute", left: 0, top: 14, width: 15, height: 15, borderRadius: "50%",
-                    background: out ? "var(--c-gold)" : "var(--c-bg)",
-                    border: `1px solid ${out ? "var(--c-gold)" : "var(--c-border2)"}`,
-                  }}
-                />
-                <div
-                  className="sm:max-w-[86%]"
-                  style={{
-                    alignSelf: out ? "flex-start" : "flex-end",
-                    background: out ? "var(--c-card)" : "var(--c-card2)",
-                    border: "1px solid var(--c-border)",
-                    borderLeft: out ? "2px solid var(--c-gold)" : "1px solid var(--c-border)",
-                    borderRight: out ? "1px solid var(--c-border)" : "2px solid var(--c-sage)",
-                    borderRadius: 10,
-                    padding: "16px 20px",
-                    width: "100%",
-                  }}
-                >
-                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1" style={{ marginBottom: 9 }}>
-                    <span
-                      style={{
-                        fontFamily: MONO, fontSize: T.caption, fontWeight: 700, letterSpacing: "0.12em",
-                        textTransform: "uppercase", color: out ? "var(--c-gold)" : "var(--c-sage)",
-                      }}
-                    >
-                      {turn.who}
-                    </span>
-                    <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.06em", color: "var(--c-muted)" }}>
-                      {turn.when}
-                    </span>
-                  </div>
-                  <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.65, maxWidth: "58ch" }}>
-                    {turn.text}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+      {/* Letters as documents: a mono header line, then the body paragraph by
+          paragraph, then one line naming what in it belongs to that company. */}
+      <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 14 }}>
+        {t.lettersTitle}
+      </h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {t.letters.map((lt) => (
+          <motion.div
+            key={lt.meta}
+            variants={itemVariants}
+            className="flex flex-col"
+            style={{ background: "var(--c-card)", border: "1px solid var(--c-border)", borderLeft: "2px solid var(--c-gold)", borderRadius: 10, padding: "18px 20px" }}
+          >
+            <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.06em", color: "var(--c-gold)", display: "block", marginBottom: 14, lineHeight: 1.5 }}>
+              {lt.meta}
+            </span>
+            <div className="flex flex-col gap-3" style={{ flex: 1 }}>
+              {lt.body.map((para, pi) => (
+                <p key={pi} style={{ fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-body)", lineHeight: 1.6 }}>
+                  {para}
+                </p>
+              ))}
+            </div>
+            <p style={{ fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-text2)", lineHeight: 1.55, marginTop: 16, paddingTop: 12, borderTop: "1px solid var(--c-border)" }}>
+              {lt.note}
+            </p>
+          </motion.div>
+        ))}
       </div>
-      <Note>{t.disclaimer}</Note>
+      <Note>{t.lettersNote}</Note>
 
       {/* Two runs, led by the end of the funnel. The volume is context under it,
           not the headline: what closes is how many companies reached a price. */}
@@ -227,7 +214,7 @@ export default function OutboundProof() {
             <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--c-text2)", display: "block", marginBottom: 18 }}>
               {pl.tag}
             </span>
-            {/* Шаги, а не пропорциональные полосы: 75 из 4 235 линейной шкалой
+            {/* Шаги, а не пропорциональные полосы: 86 из 4 531 линейной шкалой
                 превращается в невидимую полоску, и весь блок начинает читаться
                 как провал вместо результата. */}
             {pl.steps.map((st, si) => {
@@ -277,9 +264,9 @@ export default function OutboundProof() {
       </div>
       <Note>{t.pilotsNote}</Note>
 
-      {/* Единственное место на странице, где пропорциональная полоса работает
-          на нас: 91 против 14 читается мгновенно. В воронке та же полоса читалась
-          бы как провал, поэтому там шаги. */}
+      {/* The one place a proportional bar works for us: every row is the same
+          measure, companies written to that reached a commercial step, scaled
+          to the largest. Ours in gold, the market in the hairline colour. */}
       <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "34px 0 16px" }}>
         {t.compareTitle}
       </h3>
@@ -292,24 +279,25 @@ export default function OutboundProof() {
           padding: 24,
         }}
       >
-        {[
-          { ...t.compareOurs, pct: 91, ours: true },
-          { ...t.compareMarket, pct: 14, ours: false },
-        ].map((row) => (
-          <motion.div key={row.l} variants={itemVariants} style={{ marginBottom: row.ours ? 22 : 0 }}>
-            <div className="flex items-baseline gap-3" style={{ flexWrap: "wrap", marginBottom: 8 }}>
+        <p style={{ fontFamily: SANS, fontSize: T.body, fontWeight: 600, color: "var(--c-body-lede)", lineHeight: 1.55, maxWidth: "58ch", marginBottom: 24 }}>
+          {t.compareLead}
+        </p>
+        {t.bars.map((row, ri) => (
+          <motion.div key={row.l} variants={itemVariants} style={{ marginBottom: ri === t.bars.length - 1 ? 0 : 18 }}>
+            <div className="flex items-baseline gap-3" style={{ flexWrap: "wrap", marginBottom: 7 }}>
               <span
                 style={{
                   fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, lineHeight: 1,
                   fontSize: row.ours ? T.figureSm : T.h3,
                   color: row.ours ? "var(--c-gold)" : "var(--c-text2)",
+                  minWidth: "4.2em",
                 }}
               >
                 {row.n}
               </span>
               <span
                 style={{
-                  fontFamily: SANS, fontSize: T.body, lineHeight: 1.4,
+                  fontFamily: SANS, fontSize: T.bodySm, lineHeight: 1.4,
                   fontWeight: row.ours ? 600 : 400,
                   color: row.ours ? "var(--c-body-lede)" : "var(--c-text2)",
                 }}
@@ -321,17 +309,13 @@ export default function OutboundProof() {
               aria-hidden="true"
               style={{
                 height: row.ours ? 12 : 8,
-                width: `${row.pct}%`,
+                width: `${(row.pct / 2.2) * 100}%`,
                 borderRadius: 3,
                 background: row.ours
                   ? "linear-gradient(90deg, var(--c-gold), var(--c-gold-glow))"
                   : "var(--c-border2)",
-                border: row.ours ? "none" : "1px solid var(--c-border2)",
               }}
             />
-            <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.06em", color: "var(--c-muted)", display: "block", marginTop: 7 }}>
-              {row.sub}
-            </span>
           </motion.div>
         ))}
       </div>

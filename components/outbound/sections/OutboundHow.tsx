@@ -100,7 +100,7 @@ const en = {
   sources: [
     "Trade & shipping records",
     "Procurement & tender boards",
-    "Company & seller registries",
+    "The company's own site",
     "Trademark & brand filings",
     "Recall & safety registries",
     "Catalogs & storefronts",
@@ -189,7 +189,7 @@ const ru = {
   sources: [
     "Торговые и отгрузочные записи",
     "Закупочные и тендерные площадки",
-    "Реестры компаний и продавцов",
+    "Сайт самой компании",
     "Заявки на товарные знаки",
     "Реестры отзывов и безопасности",
     "Каталоги и витрины",

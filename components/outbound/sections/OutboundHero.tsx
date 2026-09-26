@@ -16,7 +16,7 @@ const en = {
   ctaPrimary: "Tell me about your market",
   ctaTelegram: "Text me on Telegram",
   ctaWhatsApp: "Text me on WhatsApp",
-  strip: ["RU · EN · ES", "A reason behind every email", "Your domains, your data"],
+  strip: ["RU · EN · ES", "A reason behind every email", "Your domain, your data"],
 };
 
 const ru = {
@@ -29,7 +29,7 @@ const ru = {
   ctaPrimary: "Расскажите о вашем рынке",
   ctaTelegram: "Написать в Telegram",
   ctaWhatsApp: "Написать в WhatsApp",
-  strip: ["RU · EN · ES", "У каждого письма свой повод", "Ваши домены, ваши данные"],
+  strip: ["RU · EN · ES", "У каждого письма свой повод", "Ваш домен, ваши данные"],
 };
 
 const btnBase: React.CSSProperties = {
