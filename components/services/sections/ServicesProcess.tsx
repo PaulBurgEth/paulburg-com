@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import StepRail from "@/components/ui/StepRail";
+import { DISPLAY_AXES } from "@/lib/type";
 
 const en = {
   sectionLabel: "Process",
@@ -92,7 +93,7 @@ export default function ServicesProcess() {
             style={{
               fontFamily: "var(--font-inconsolata), monospace",
               fontSize: 14,
-              letterSpacing: "0.22em",
+              letterSpacing: "0.20em",
               textTransform: "uppercase",
               color: "var(--c-gold)",
               display: "flex",
@@ -107,9 +108,9 @@ export default function ServicesProcess() {
           <h2
             style={{
               fontFamily: "var(--font-display)",
+              ...DISPLAY_AXES,
               fontWeight: 700,
               fontSize: "clamp(30px, 4vw, 44px)",
-              letterSpacing: "-0.02em",
               color: "var(--c-heading)",
               marginBottom: 6,
             }}

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Ship, Gavel, Building2, BadgeCheck, ShieldAlert, Store } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { INTAKE_ANCHOR } from "@/lib/constants";
-import { SectionShell, SectionHead, MidCTA, SERIF, SANS, MONO, T, itemVariants } from "../shared";
+import { SectionShell, SectionHead, MidCTA, SERIF, DISPLAY_AXES, SANS, MONO, T, itemVariants } from "../shared";
 
 const ICONS = [Ship, Gavel, Building2, BadgeCheck, ShieldAlert, Store];
 
@@ -100,7 +100,7 @@ const en = {
   sources: [
     "Trade & shipping records",
     "Procurement & tender boards",
-    "Company & seller registries",
+    "The company's own site",
     "Trademark & brand filings",
     "Recall & safety registries",
     "Catalogs & storefronts",
@@ -189,7 +189,7 @@ const ru = {
   sources: [
     "Торговые и отгрузочные записи",
     "Закупочные и тендерные площадки",
-    "Реестры компаний и продавцов",
+    "Сайт самой компании",
     "Заявки на товарные знаки",
     "Реестры отзывов и безопасности",
     "Каталоги и витрины",
@@ -218,7 +218,7 @@ export default function OutboundHow() {
       <div style={{ marginBottom: 18 }}>
         <span
           style={{
-            fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.16em",
+            fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.12em",
             textTransform: "uppercase", color: "var(--c-text2)", display: "block", marginBottom: 11,
           }}
         >
@@ -275,7 +275,7 @@ export default function OutboundHow() {
             padding: 28,
           }}
         >
-          <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 21, color: "var(--c-heading)", marginBottom: 12, lineHeight: 1.25 }}>
+          <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: 21, color: "var(--c-heading)", marginBottom: 12, lineHeight: 1.25 }}>
             {t.openTitle}
           </h3>
           <p style={{ fontFamily: SANS, fontSize: T.body, color: "var(--c-body)", lineHeight: 1.7, maxWidth: "58ch", marginBottom: 20 }}>
@@ -402,7 +402,7 @@ export default function OutboundHow() {
                   email line it marks, and the shared grid row would stretch the
                   paragraph spacing along with it. */}
               <span className="flex items-baseline gap-2 min-w-0" style={{ paddingTop: 3 }}>
-                <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.14em", color: "var(--c-gold)", flexShrink: 0 }}>
+                <span style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.12em", color: "var(--c-gold)", flexShrink: 0 }}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span style={{ fontFamily: SANS, fontSize: T.bodySm, color: "var(--c-body)", lineHeight: 1.45 }}>
@@ -431,7 +431,7 @@ export default function OutboundHow() {
       )}
 
       {/* Triggers — four, not six; the event and the addressee are the point. */}
-      <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "38px 0 14px" }}>
+      <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "38px 0 14px" }}>
         {t.triggerTitle}
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -442,10 +442,10 @@ export default function OutboundHow() {
             style={{ background: "var(--c-card)", border: "1px solid var(--c-border)", borderRadius: 10, padding: 20 }}
           >
             <div className="flex items-baseline gap-3" style={{ marginBottom: 10 }}>
-              <span style={{ fontFamily: MONO, fontSize: T.caption, fontWeight: 700, letterSpacing: "0.14em", color: "var(--c-gold)", flexShrink: 0 }}>
+              <span style={{ fontFamily: MONO, fontSize: T.caption, fontWeight: 700, letterSpacing: "0.12em", color: "var(--c-gold)", flexShrink: 0 }}>
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span style={{ fontFamily: SERIF, fontSize: T.h3, fontWeight: 700, color: "var(--c-heading)", lineHeight: 1.3 }}>
+              <span style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontSize: T.h3, fontWeight: 700, color: "var(--c-heading)", lineHeight: 1.3 }}>
                 {row.a}
               </span>
             </div>
@@ -462,7 +462,7 @@ export default function OutboundHow() {
 
       {/* Sources — names only. The refresh cadence used to sit here as a chip on
           every card; it is vendor-side detail and it read as a spec sheet. */}
-      <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "38px 0 14px" }}>
+      <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "38px 0 14px" }}>
         {t.sourceTitle}
       </h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">

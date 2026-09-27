@@ -9,6 +9,7 @@ import type { Post } from "@/lib/posts";
 import Link from "next/link";
 import BurgMark from "@/components/BurgMark";
 import { useRevealObserver } from "@/lib/useStageReveal";
+import { DISPLAY_AXES } from "@/lib/type";
 
 const SUBSTACK = "https://paulburg.substack.com";
 
@@ -59,9 +60,9 @@ export default function BlogPageClient({ enPosts, ruPosts }: Props) {
             <h1
               style={{
                 fontFamily: "var(--font-display)",
+                ...DISPLAY_AXES,
                 fontWeight: 700,
                 fontSize: "clamp(36px, 5vw, 62px)",
-                letterSpacing: "-0.02em",
                 color: "var(--c-heading)",
                 marginTop: 8,
               }}
@@ -84,7 +85,6 @@ export default function BlogPageClient({ enPosts, ruPosts }: Props) {
             <p
               style={{
                 fontFamily: "var(--font-lede)",
-                fontStyle: "italic",
                 fontSize: 20,
                 color: "var(--c-body)",
                 maxWidth: 480,

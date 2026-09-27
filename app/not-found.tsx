@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { LANG_HEADER } from "@/middleware";
+import { DISPLAY_AXES } from "@/lib/type";
 
 /**
  * A styled 404 in the visitor's language.
@@ -48,7 +49,7 @@ export default async function NotFound() {
               style={{
                 fontFamily: "var(--font-inconsolata), monospace",
                 fontSize: 14,
-                letterSpacing: "0.22em",
+                letterSpacing: "0.20em",
                 color: "var(--c-gold)",
                 marginBottom: 18,
               }}
@@ -58,10 +59,10 @@ export default async function NotFound() {
             <h1
               style={{
                 fontFamily: "var(--font-display)",
+                ...DISPLAY_AXES,
                 fontSize: "clamp(30px, 4vw, 44px)",
                 fontWeight: 700,
                 color: "var(--c-heading)",
-                letterSpacing: "-0.02em",
                 marginBottom: 16,
               }}
             >
@@ -69,7 +70,7 @@ export default async function NotFound() {
             </h1>
             <p
               style={{
-                fontFamily: "var(--font-newsreader), serif",
+                fontFamily: "var(--font-lede)",
                 fontSize: 17,
                 lineHeight: 1.65,
                 color: "var(--c-text2)",

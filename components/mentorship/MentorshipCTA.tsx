@@ -6,6 +6,7 @@ import { Sparkles, MessageCircle } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useMentorshipModal } from "@/context/MentorshipModalContext";
 import { WHATSAPP_URL, TELEGRAM_URL } from "@/lib/constants";
+import { DISPLAY_AXES } from "@/lib/type";
 
 export default function MentorshipCTA() {
     const { language, t } = useLanguage();
@@ -30,7 +31,7 @@ export default function MentorshipCTA() {
                     <div style={{
                         fontFamily: "var(--font-inconsolata), monospace",
                         fontSize: 14,
-                        letterSpacing: "0.22em",
+                        letterSpacing: "0.20em",
                         textTransform: "uppercase",
                         color: "var(--c-gold)",
                         marginBottom: 16,
@@ -42,9 +43,9 @@ export default function MentorshipCTA() {
                         className="mb-6"
                         style={{
                             fontFamily: "var(--font-display)",
+                            ...DISPLAY_AXES,
                             fontWeight: 700,
                             fontSize: "clamp(30px, 4vw, 44px)",
-                            letterSpacing: "-0.02em",
                             color: "var(--c-heading)",
                         }}
                     >

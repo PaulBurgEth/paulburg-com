@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import ServiceCard from "@/components/ServiceCard";
+import { DISPLAY_AXES } from "@/lib/type";
 
 export default function MentorshipServices() {
     const { language, t } = useLanguage();
@@ -29,7 +30,7 @@ export default function MentorshipServices() {
                     <div style={{
                         fontFamily: "var(--font-inconsolata), monospace",
                         fontSize: 14,
-                        letterSpacing: "0.22em",
+                        letterSpacing: "0.20em",
                         textTransform: "uppercase",
                         color: "var(--c-gold)",
                         display: "flex",
@@ -42,9 +43,9 @@ export default function MentorshipServices() {
                     </div>
                     <h2 style={{
                         fontFamily: "var(--font-display)",
+                        ...DISPLAY_AXES,
                         fontWeight: 700,
                         fontSize: "clamp(30px, 4vw, 44px)",
-                        letterSpacing: "-0.02em",
                         color: "var(--c-heading)",
                     }}>
                         {s.title}

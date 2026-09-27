@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { TELEGRAM_HANDLE, TELEGRAM_URL, WHATSAPP_URL } from "@/lib/constants";
-import { SectionShell, SectionHead, SERIF, SANS, MONO } from "../shared";
+import { SectionShell, SectionHead, SERIF, DISPLAY_AXES, SANS, MONO } from "../shared";
 
 const en = {
   eyebrow: "Talk to me",
@@ -74,7 +74,7 @@ const en = {
   next: [
     "I read it and answer in writing, usually within a few hours.",
     "If it does not fit, I say so in that first reply, and tell you what would.",
-    "If it does, you get the ten questions and a six-week plan with segments and volumes.",
+    "If it does, you get the ten questions and a four-week plan with segments and volumes.",
   ],
   nextNote: "You are answered by me, not by an assistant or a sequence.",
 };
@@ -147,7 +147,7 @@ const ru = {
   next: [
     "Читаю и отвечаю письмом, обычно в течение нескольких часов.",
     "Если не подходит — скажу это в первом же ответе и скажу, что подошло бы.",
-    "Если подходит — присылаю десять вопросов и план на шесть недель с сегментами и объёмами.",
+    "Если подходит — присылаю десять вопросов и план на четыре недели с сегментами и объёмами.",
   ],
   nextNote: "Отвечаю я, а не ассистент и не автоворонка.",
 };
@@ -175,7 +175,7 @@ const labelStyle: React.CSSProperties = {
   display: "block",
   fontFamily: MONO,
   fontSize: 14,
-  letterSpacing: "0.22em",
+  letterSpacing: "0.20em",
   textTransform: "uppercase",
   color: "var(--c-muted)",
   marginBottom: 6,
@@ -293,7 +293,7 @@ export default function OutboundForm() {
                 outline: "none",
               }}
             >
-              <div style={{ fontFamily: SERIF, fontSize: 21, fontWeight: 700, color: "var(--c-heading)", marginBottom: 6 }}>
+              <div style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontSize: 21, fontWeight: 700, color: "var(--c-heading)", marginBottom: 6 }}>
                 {t.success}
               </div>
               <div style={{ fontFamily: SANS, fontSize: 14, color: "var(--c-text2)" }}>{t.successSub}</div>
@@ -459,7 +459,7 @@ export default function OutboundForm() {
             the form instead of stacking beside it. */}
         <div className="flex flex-col gap-4">
         <div style={{ background: "var(--c-card2)", border: "1px solid var(--c-border)", borderRadius: 10, padding: 22 }}>
-          <span style={{ fontFamily: MONO, fontSize: 14, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--c-muted)", display: "block", marginBottom: 14 }}>
+          <span style={{ fontFamily: MONO, fontSize: 14, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--c-muted)", display: "block", marginBottom: 14 }}>
             {t.orWrite}
           </span>
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -489,13 +489,13 @@ export default function OutboundForm() {
             beside the form on desktop. This is the slot where a reader decides
             whether sending costs them a sales call. */}
         <div style={{ background: "var(--c-card)", border: "1px solid var(--c-border)", borderLeft: "2px solid var(--c-sage)", borderRadius: 12, padding: 22 }}>
-          <h3 style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 21, color: "var(--c-heading)", marginBottom: 13, lineHeight: 1.3 }}>
+          <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: 21, color: "var(--c-heading)", marginBottom: 13, lineHeight: 1.3 }}>
             {t.nextTitle}
           </h3>
           <ol style={{ display: "flex", flexDirection: "column", gap: 11 }}>
             {t.next.map((n, i) => (
               <li key={n} className="flex gap-3">
-                <span style={{ fontFamily: MONO, fontSize: 14, fontWeight: 700, letterSpacing: "0.14em", color: "var(--c-gold)", flexShrink: 0, paddingTop: 2 }}>
+                <span style={{ fontFamily: MONO, fontSize: 14, fontWeight: 700, letterSpacing: "0.12em", color: "var(--c-gold)", flexShrink: 0, paddingTop: 2 }}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span style={{ fontFamily: SANS, fontSize: 16, color: "var(--c-body)", lineHeight: 1.55 }}>{n}</span>

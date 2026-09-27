@@ -5,6 +5,7 @@ import { Twitter, Mail, Send, Linkedin, BookOpen } from "lucide-react";
 import { TELEGRAM_URL } from "@/lib/constants";
 import BurgMark from "@/components/BurgMark";
 import { useLanguage } from "@/context/LanguageContext";
+import { DISPLAY_AXES } from "@/lib/type";
 
 const linkRowClass = "flex items-center gap-2 text-sm transition-colors";
 
@@ -24,7 +25,7 @@ export default function Footer() {
             ? "Строю системы для бизнеса и привожу клиентов, которые их наполняют. Из Дананга."
             : "Building the systems that run your business — and the pipeline that fills them. From Da Nang.",
         copyright: language === "ru"
-            ? `© ${currentYear} Paul Burg. Все права защищены.`
+            ? `© ${currentYear} Павел Бург. Все права защищены.`
             : `© ${currentYear} Paul Burg. All rights reserved.`,
         pagesHeading: language === "ru" ? "Страницы" : "Pages",
         connectHeading: language === "ru" ? "Контакты" : "Connect",
@@ -39,7 +40,7 @@ export default function Footer() {
     const eyebrowStyle: React.CSSProperties = {
         fontFamily: "var(--font-inconsolata), monospace",
         fontSize: 14,
-        letterSpacing: "0.16em",
+        letterSpacing: "0.12em",
         textTransform: "uppercase",
         color: "var(--c-text2)",
         marginBottom: 14,
@@ -68,10 +69,11 @@ export default function Footer() {
                             style={{
                                 color: "var(--c-heading)",
                                 fontFamily: "var(--font-display)",
+                                ...DISPLAY_AXES,
                                 textDecoration: "none",
                             }}
                         >
-                            Paul <BurgMark weight={1.2}>Burg</BurgMark>
+                            {language === "ru" ? <>Павел <BurgMark weight={1.2}>Бург</BurgMark></> : <>Paul <BurgMark weight={1.2}>Burg</BurgMark></>}
                             <span
                                 className="pb-cursor-blink"
                                 aria-hidden="true"
@@ -91,7 +93,6 @@ export default function Footer() {
                             style={{
                                 marginTop: 14,
                                 fontFamily: "var(--font-lede)",
-                                fontStyle: "italic",
                                 fontSize: 17,
                                 lineHeight: 1.55,
                                 color: "var(--c-text2)",

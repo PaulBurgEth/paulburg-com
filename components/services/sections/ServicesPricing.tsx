@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useIntakeModal } from "@/context/IntakeModalContext";
+import { DISPLAY_AXES } from "@/lib/type";
 
 const en = {
   matrixYes: "Yes",
@@ -169,7 +170,7 @@ export default function ServicesPricing() {
             style={{
               fontFamily: "var(--font-inconsolata), monospace",
               fontSize: 14,
-              letterSpacing: "0.22em",
+              letterSpacing: "0.20em",
               textTransform: "uppercase",
               color: "var(--c-gold)",
               display: "flex",
@@ -184,9 +185,9 @@ export default function ServicesPricing() {
           <h2
             style={{
               fontFamily: "var(--font-display)",
+              ...DISPLAY_AXES,
               fontWeight: 700,
               fontSize: "clamp(30px, 4vw, 44px)",
-              letterSpacing: "-0.02em",
               color: "var(--c-heading)",
               marginBottom: 6,
             }}
@@ -251,7 +252,7 @@ export default function ServicesPricing() {
                   fontFamily: "var(--font-inconsolata), monospace",
                   fontWeight: 600,
                   fontSize: 14,
-                  letterSpacing: "0.15em",
+                  letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   color: "var(--c-muted)",
                   display: "block",
@@ -265,9 +266,9 @@ export default function ServicesPricing() {
               <div
                 style={{
                   fontFamily: "var(--font-display)",
+                  ...DISPLAY_AXES,
                   fontWeight: 700,
                   fontSize: "clamp(30px, 4vw, 44px)",
-                  letterSpacing: "-0.02em",
                   color: "var(--c-text)",
                   marginBottom: 4,
                 }}

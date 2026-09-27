@@ -3,7 +3,7 @@
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { SERIF, SANS, MONO, T, sectionVariants } from "../shared";
+import { SERIF, DISPLAY_AXES, SANS, MONO, T, sectionVariants } from "../shared";
 
 /**
  * Second screen. This slot used to hold four pilot metrics; the numbers came
@@ -80,8 +80,8 @@ export default function OutboundProblem() {
             >
               <span
                 style={{
-                  fontFamily: SERIF, fontWeight: 700, fontSize: 21, color: "var(--c-gold)",
-                  lineHeight: 1.15, letterSpacing: "-0.02em",
+                  fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: 21, color: "var(--c-gold)",
+                  lineHeight: 1.15,
                 }}
               >
                 {m.k}

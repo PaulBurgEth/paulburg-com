@@ -17,7 +17,7 @@ export const translations = {
         // ─── HOMEPAGE ────────────────────────────────────
         home: {
             hero: {
-                name: "Павел Burg",
+                name: "Павел Бург",
                 tagline: "Строю с 2011 • Founder/CEO • Цифровой номад",
                 description: "Создаю на пересечении Web3, ReFi, AI и инфраструктуры реального воздействия",
             },
@@ -39,7 +39,7 @@ export const translations = {
         // ─── MENTORSHIP PAGE ─────────────────────────────
         mentorship: {
             meta: {
-                title: "Менторство | Павел Burg",
+                title: "Менторство | Павел Бург",
                 description: "Менторство для жизни и бизнеса в глобальном мире. Капитал, бизнес, AI и автоматизация.",
             },
             hero: {
@@ -195,11 +195,11 @@ export const translations = {
                     link: "https://www.cryptoaltruists.com/blog/crypto-altruists-episode-201-web3-localism-for-global-climate-action-from-decentralized-cleanups-to-regenerative-local-economies"
                 },
                 item3: {
-                    title: "Продукты воздействия и Рынок воздействия — Пол Бург, Devcon 7 SEA",
+                    title: "Продукты воздействия и Рынок воздействия — Павел Бург, Devcon 7 SEA",
                     link: "https://youtu.be/40KkjjSW3C8?si=UyItTaLZgIbQm8YM"
                 },
                 item4: {
-                    title: "Super dApp Builders, эпизод 01 | Пол Бург из DeCleanup Network",
+                    title: "Super dApp Builders, эпизод 01 | Павел Бург из DeCleanup Network",
                     link: "https://youtu.be/zVgZX1Nj48E?si=UGF09-fS0DVuJTCb"
                 }
             },
@@ -469,11 +469,11 @@ export const projectTranslations = {
     ru: {
         ecosynthesisx: {
             name: "EcoSynthesisX",
-            description: "Open-source студия общественных благ, пионер токенизации реального воздействия. Строим инфраструктуру Глобального рынка воздействия — от Impact Products до маркетплейса токенизированных общественных благ.",
+            description: "Open-source студия общественных благ, пионер токенизации реального воздействия. Строим инфраструктуру Глобального рынка воздействия — от пилотов tRWI (Tokenized Real-World Impact, токенизированное реальное воздействие) до маркетплейса, где их может профинансировать любой.",
         },
         regenbazaar: {
-            name: "Regen Bazaar & Impact Products",
-            description: "Децентрализованный маркетплейс для токенизированных общественных благ. Хостит Impact Products: EcoThailand и Clean Phangan — финансирование локальных экологических инициатив с криптографической верификацией.",
+            name: "Regen Bazaar",
+            description: "Маркетплейс tRWI (Tokenized Real-World Impact, токенизированное реальное воздействие). НКО описывает сделанное, формула оценивает результат, заявка записывается он-чейн, и любой может профинансировать её в стейблкоине. Пилоты: EcoThailand и Clean Phangan.",
         },
         decleanup: {
             name: "DeCleanup",
@@ -495,11 +495,11 @@ export const projectTranslations = {
     en: {
         ecosynthesisx: {
             name: "EcoSynthesisX",
-            description: "An open-source public good studio pioneering the tokenization of real-world impact. Building infrastructure for a Global Impact Market — from Impact Products and decentralized cleanups to a marketplace for tokenized public goods.",
+            description: "An open-source public good studio pioneering the tokenization of real-world impact. Building infrastructure for a Global Impact Market — from tRWI (Tokenized Real-World Impact) pilots and decentralized cleanups to a marketplace where anyone can fund them.",
         },
         regenbazaar: {
-            name: "Regen Bazaar & Impact Products",
-            description: "A decentralized marketplace for tokenized public goods. Hosts Impact Products like EcoThailand and Clean Phangan — funding local environmental initiatives with on-chain verification.",
+            name: "Regen Bazaar",
+            description: "Marketplace for tRWI, Tokenized Real-World Impact. NGOs describe the good they did, a published formula scores it, the claim is recorded onchain, and anyone can fund it in a stablecoin. Pilots: EcoThailand and Clean Phangan.",
         },
         decleanup: {
             name: "DeCleanup",

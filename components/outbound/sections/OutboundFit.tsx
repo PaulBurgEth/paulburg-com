@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Check, Minus } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { SectionShell, SectionHead, SERIF, SANS, MONO, T, itemVariants } from "../shared";
+import { SectionShell, SectionHead, SERIF, DISPLAY_AXES, SANS, MONO, T, itemVariants } from "../shared";
 
 /**
  * Qualification, both ways.
@@ -70,7 +70,7 @@ export default function OutboundFit() {
     fontFamily: MONO,
     fontSize: T.caption,
     fontWeight: 700,
-    letterSpacing: "0.16em",
+    letterSpacing: "0.12em",
     textTransform: "uppercase",
     display: "block",
     marginBottom: 16,
@@ -106,7 +106,7 @@ export default function OutboundFit() {
         </div>
       </div>
 
-      <p style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: T.lede, color: "var(--c-body-lede)", lineHeight: 1.6, marginTop: 34, maxWidth: "58ch" }}>
+      <p style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontSize: T.lede, color: "var(--c-body-lede)", lineHeight: 1.6, marginTop: 34, maxWidth: "58ch" }}>
         {t.note}
       </p>
     </SectionShell>

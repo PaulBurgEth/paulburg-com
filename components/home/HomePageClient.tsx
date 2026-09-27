@@ -9,10 +9,12 @@ import { useLanguage } from "@/context/LanguageContext";
 import Navbar from "@/components/Navbar";
 import CTARow from "@/components/CTARow";
 import Footer from "@/components/Footer";
+import BurgMark from "@/components/BurgMark";
 import { useIntakeModal } from "@/context/IntakeModalContext";
 import { useMentorshipModal } from "@/context/MentorshipModalContext";
 import { useStageReveal, useRevealObserver } from "@/lib/useStageReveal";
 import type { Post } from "@/lib/posts";
+import { DISPLAY_AXES } from "@/lib/type";
 
 const C = {
   bg:       "var(--c-bg)",
@@ -40,9 +42,8 @@ const CSS = `
 html{scroll-behavior:smooth}
 body{
   background:${C.bg};color:${C.text};
-  /* Body face matches the mockup — Newsreader serif. Per-element fonts
-     (Fraunces for headings, Instrument Sans for UI labels, Inconsolata
-     for mono) override locally. */
+  /* Body face is Onest (via --font-lede). Headings and the mono layer set
+     Martian Mono locally. */
   font-family:var(--font-lede);
   -webkit-font-smoothing:antialiased;
 }
@@ -74,15 +75,14 @@ body::after{
 .hero-grid{display:grid;grid-template-columns:1fr;gap:44px;align-items:center}
 @media(min-width:1024px){.hero-grid{grid-template-columns:1.15fr 0.85fr;gap:64px}}
 .hero-lines{display:flex;flex-direction:column;gap:14px}
-@media(max-width:1023px){.hero-lines{display:none}}
 .line-card{
   display:block;text-decoration:none;
   border:1px solid var(--c-border);border-radius:10px;padding:20px 22px;
   background:var(--c-card);transition:border-color .24s ease,transform .24s ease;
 }
 .line-card:hover{border-color:rgba(200,169,110,0.35);transform:translateY(-2px)}
-.line-card .lc-k{font-family:var(--font-inconsolata),monospace;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--c-gold)}
-.line-card .lc-t{font-family:var(--font-display);font-weight:700;font-size:21px;color:var(--c-heading);margin:8px 0 6px}
+.line-card .lc-k{font-family:var(--font-inconsolata),monospace;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-gold)}
+.line-card .lc-t{font-family:var(--font-display);letter-spacing:-0.03em;font-variation-settings:'wdth' 86;font-weight:700;font-size:21px;color:var(--c-heading);margin:8px 0 6px}
 .line-card .lc-d{font-family:var(--font-instrument-sans),sans-serif;font-size:16px;line-height:1.55;color:var(--c-text2)}
 .line-card .lc-m{font-family:var(--font-inconsolata),monospace;font-size:14px;color:var(--c-muted);margin-top:12px;display:block}
 .hero-kicker{
@@ -98,17 +98,11 @@ body::after{
   font-feature-settings:"ss01","liga","kern";
   font-size:clamp(64px,10vw,108px);
   font-weight:700;line-height:0.9;
-  letter-spacing:-0.02em;color:${C.heading};
+  letter-spacing:-0.03em;font-variation-settings:'wdth' 86;color:${C.heading};
   margin:0 0 28px;
   position:relative;
 }
-.hero-name em{
-  font-style:italic;
-  font-family:var(--font-display);
-  font-weight:600;
-  color:transparent;
-  -webkit-text-stroke:1.5px rgba(200,169,110,0.7);
-}
+.hero-name .burg-mark{font-weight:600}
 .hero-roles{
   font-family:var(--font-inconsolata),monospace;
   font-size:14px;letter-spacing:0.12em;
@@ -121,7 +115,6 @@ body::after{
 .hero-role-sep{color:${C.muted};opacity:0.6}
 .hero-desc{
   font-family:var(--font-lede);
-  font-style:italic;
   font-size:17px;color:var(--c-body-lede);
   max-width:620px;line-height:1.75;
   margin-bottom:36px;
@@ -219,7 +212,7 @@ body::after{
 .src-col-on .src-k{color:${C.gold}}
 .src-k{
   font-family:var(--font-inconsolata),monospace;font-size:14px;
-  letter-spacing:0.14em;text-transform:uppercase;color:${C.text2};
+  letter-spacing:0.12em;text-transform:uppercase;color:${C.text2};
   margin-bottom:7px;
 }
 .src-v{
@@ -239,7 +232,7 @@ body::after{
 @media(max-width:600px){.section-number{display:none}}
 .eyebrow{
   font-family:var(--font-inconsolata),monospace;
-  font-size:14px;letter-spacing:0.22em;text-transform:uppercase;
+  font-size:14px;letter-spacing:0.20em;text-transform:uppercase;
   color:${C.gold};margin-bottom:14px;
   display:flex;align-items:center;gap:14px;
 }
@@ -247,7 +240,8 @@ body::after{
 .sec-title{
   font-family:var(--font-display);
   font-size:clamp(30px,4vw,44px);font-weight:700;
-  color:${C.heading};margin-bottom:6px;letter-spacing:-0.01em;
+  color:${C.heading};margin-bottom:6px;letter-spacing:-0.03em;
+  font-variation-settings:'wdth' 86;
 }
 .sec-sub{font-size:17px;color:var(--c-body);margin-bottom:36px}
 hr.div{border:none;border-top:1px solid ${C.border}}
@@ -306,7 +300,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .pod-body{padding:14px 16px}
 .pod-src{
   font-family:var(--font-inconsolata),monospace;
-  font-size:14px;letter-spacing:0.15em;text-transform:uppercase;
+  font-size:14px;letter-spacing:0.12em;text-transform:uppercase;
   color:${C.gold};margin-bottom:7px;
 }
 .pod-title{font-size:16px;font-weight:500;color:${C.text3};line-height:1.55}
@@ -327,12 +321,13 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .write-src{
   display:flex;align-items:center;gap:6px;
   font-family:var(--font-inconsolata),monospace;
-  font-size:14px;letter-spacing:0.15em;text-transform:uppercase;
+  font-size:14px;letter-spacing:0.12em;text-transform:uppercase;
   margin-bottom:11px;
 }
 .write-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
 .write-title{
   font-family:var(--font-display);
+  letter-spacing:-0.03em;font-variation-settings:'wdth' 86;
   font-size:17px;font-weight:700;color:${C.text};
   line-height:1.45;margin-bottom:10px;
 }
@@ -347,7 +342,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
 .write-new{
   display:inline-flex;align-items:center;gap:4px;
   font-family:var(--font-inconsolata),monospace;
-  font-size:14px;font-weight:700;letter-spacing:0.14em;
+  font-size:14px;font-weight:700;letter-spacing:0.12em;
   color:${C.gold};
   background:rgba(200,169,110,0.10);
   border:1px solid rgba(200,169,110,0.30);
@@ -415,7 +410,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
   .mentor-card-inner{flex-direction:row;align-items:center;justify-content:space-between;gap:32px;}
 }
 .mentor-content{flex:1;}
-.mentor-title{font-family:var(--font-display);font-size:24px;color:${C.gold};margin-bottom:8px;}
+.mentor-title{font-family:var(--font-display);letter-spacing:-0.03em;font-variation-settings:'wdth' 86;font-size:24px;color:${C.gold};margin-bottom:8px;}
 .mentor-desc{font-size:16px;color:${C.text2};line-height:1.6;}
 .mentor-features{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;}
 .mentor-btn{
@@ -484,7 +479,7 @@ hr.div{border:none;border-top:1px solid ${C.border}}
   transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .follow-card:hover{border-color:rgba(200,169,110,0.25);transform:translateY(-2px)}
-.follow-title{font-family:var(--font-display);font-size:20px;color:${C.gold};margin-bottom:12px}
+.follow-title{font-family:var(--font-display);letter-spacing:-0.03em;font-variation-settings:'wdth' 86;font-size:20px;color:${C.gold};margin-bottom:12px}
 .follow-desc{font-size:16px;color:${C.text2};line-height:1.6;margin-bottom:24px;flex:1}
 .badge-ru{
   background:rgba(200,169,110,0.1);color:${C.gold};
@@ -543,13 +538,13 @@ const articles = [
    in both — they are the products' own names, not labels. */
 const projects = {
   impact: [
-    { name:"EcoSynthesisX", desc:"Web3 public good studio collaborating with real-world NGOs to tokenize environmental and community impact into verifiable on-chain assets.", descRu:"Студия общественных благ на Web3: вместе с реальными НКО превращает экологический и социальный результат в проверяемые он-чейн активы.", status:"paused", url:"https://ecosynthesisx.com" },
+    { name:"EcoSynthesisX", desc:"Web3 public good studio working with real-world NGOs to turn environmental and community impact into tRWI (Tokenized Real-World Impact): verified, recorded onchain and open for anyone to fund.", descRu:"Студия общественных благ на Web3: вместе с реальными НКО превращает экологический и социальный результат в tRWI (Tokenized Real-World Impact, токенизированное реальное воздействие): проверенный, записанный он-чейн и открытый для финансирования.", status:"paused", url:"https://ecosynthesisx.com" },
     { name:"DeCleanup Network", desc:"Transforms environmental cleanups into transparent, verifiable digital impact. Your cleanups become tokenized assets that unlock rewards, reputation, and community recognition.", descRu:"Превращает уборки территорий в прозрачный проверяемый цифровой результат. Уборка становится токеном, который даёт вознаграждение, репутацию и признание сообщества.", status:"live", url:"https://decleanup.net" },
-    { name:"Regen Bazaar", desc:"Marketplace where real-world impact meets market value — tokenizing NGO activities such as cleanups, reforestation, and animal care, bridging nonprofits with global buyers.", descRu:"Маркетплейс, где реальный результат встречается с рыночной ценой: работа НКО — уборки, высадка леса, помощь животным — становится токеном и находит покупателя по всему миру.", status:"mvp", url:"https://regenbazaar.com" },
+    { name:"Regen Bazaar", desc:"Marketplace for tRWI, Tokenized Real-World Impact. NGOs describe the good they did (cleanups, reforestation, animal care), a published formula scores it, the claim is recorded onchain, and anyone can fund it in a stablecoin, with the organisation paid in the same transaction.", descRu:"Маркетплейс tRWI, Tokenized Real-World Impact (токенизированное реальное воздействие). НКО описывает сделанное (уборки, высадка леса, помощь животным), опубликованная формула оценивает результат, заявка записывается он-чейн, и любой может профинансировать её в стейблкоине. Организация получает деньги в той же транзакции.", status:"beta", url:"https://regenbazaar.com" },
   ],
   ngo: [
-    { name:"Clean Phangan Impact Product", desc:"First MVP Impact Product built with the Clean Phangan NGO: the community runs cleanups every week, and the verified result is tokenized into sellable impact assets for impact investors. Live totals are on the collection page.", descRu:"Первый Impact Product, собранный с НКО Clean Phangan: сообщество проводит уборки каждую неделю, проверенный результат превращается в актив для impact-инвесторов. Текущие цифры — на странице коллекции.", status:"live", url:"https://cleanphangan.regenbazaar.com/" },
-    { name:"EcoThailand Foundation Impact Product", desc:"Impact product framework built for EcoThailand Foundation — tokenizing volunteer contributions and environmental education into fundable, verifiable on-chain capital.", descRu:"Каркас impact-продукта для фонда EcoThailand: вклад волонтёров и экологическое просвещение становятся проверяемым он-чейн капиталом, который можно профинансировать.", status:"live", url:"https://ecothailand.regenbazaar.com/" },
+    { name:"Clean Phangan tRWI Pilot Collection", desc:"First tRWI (Tokenized Real-World Impact) pilot, built with the Clean Phangan NGO before the Regen Bazaar marketplace: the community runs cleanups every week, and each verified result becomes a token anyone can fund. Live totals are on the collection page.", descRu:"Первый пилот tRWI (Tokenized Real-World Impact, токенизированное реальное воздействие), собранный с НКО Clean Phangan ещё до маркетплейса Regen Bazaar: сообщество проводит уборки каждую неделю, и каждый проверенный результат становится токеном, который может профинансировать любой. Текущие цифры на странице коллекции.", status:"live", url:"https://cleanphangan.regenbazaar.com/" },
+    { name:"EcoThailand Foundation tRWI Pilot Collection", desc:"tRWI (Tokenized Real-World Impact) pilot built for EcoThailand Foundation: volunteer work and environmental education become verified onchain tokens that anyone can fund.", descRu:"Пилот tRWI (Tokenized Real-World Impact, токенизированное реальное воздействие) для фонда EcoThailand: работа волонтёров и экологическое просвещение становятся проверенными он-чейн токенами, которые может профинансировать любой.", status:"live", url:"https://ecothailand.regenbazaar.com/" },
   ],
   phangan: [
     { name:"HelpRent Da Nang", desc:"Da Nang's whole rental market on one board — fresh listings, mapped buildings with direct manager contacts, and Mai, an AI concierge that searches by plain sentence or map screenshot in EN, VI & RU.", descRu:"Весь рынок аренды Да Нанга на одной доске: свежие объявления, здания на карте с прямыми контактами менеджеров и Mai — AI-консьерж, который ищет обычной фразой или по скриншоту карты на EN, VI и RU.", status:"live", url:"https://helprentdanang.com" },
@@ -681,74 +676,68 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
           </div>
           <div className="pb-stage" data-visible={stage >= 2 ? "1" : "0"}>
             <h1 className="hero-name">
-              Paul<br />
-              <em>Burg</em>
+              {language === "ru" ? "Павел" : "Paul"}<br />
+              <BurgMark weight={1.5}>{language === "ru" ? "Бург" : "Burg"}</BurgMark>
               <GoldCursor h={68} w={5} blink style={{ marginLeft: 12, verticalAlign: "baseline", transform: "translateY(8px)" }} />
             </h1>
           </div>
           <div className="pb-stage" data-visible={stage >= 3 ? "1" : "0"}>
             <div className="hero-roles">
               <span className="hero-role">
-                <Bot size={12} strokeWidth={1.5} aria-hidden="true" />
-                {language === "ru" ? "AI-СИСТЕМЫ" : "AI SYSTEMS"}
+                <Crosshair size={12} strokeWidth={1.5} aria-hidden="true" />
+                {language === "ru" ? "КЛИЕНТЫ ДЛЯ B2B" : "CLIENTS FOR B2B"}
               </span>
               <span className="hero-role-sep" aria-hidden="true">·</span>
               <span className="hero-role">
-                <Crosshair size={12} strokeWidth={1.5} aria-hidden="true" />
-                {language === "ru" ? "ХОЛОДНЫЙ АУТБАУНД" : "COLD OUTBOUND"}
+                <Database size={12} strokeWidth={1.5} aria-hidden="true" />
+                {language === "ru" ? "СИСТЕМЫ ДЛЯ БИЗНЕСА" : "BUSINESS SYSTEMS"}
               </span>
               <span className="hero-role-sep" aria-hidden="true">·</span>
               <span className="hero-role">
                 <Lightbulb size={12} strokeWidth={1.5} aria-hidden="true" />
-                {language === "ru" ? "СТРОЮ С 2011" : "BUILDING SINCE 2011"}
-              </span>
-              <span className="hero-role-sep" aria-hidden="true">·</span>
-              <span className="hero-role">
-                <Coffee size={12} strokeWidth={1.5} aria-hidden="true" />
-                {language === "ru" ? "КОФЕ И КОД" : "COFFEE & CODE"}
+                {language === "ru" ? "СВОИ ПРОЕКТЫ С 2011" : "BUILDING SINCE 2011"}
               </span>
             </div>
           </div>
           <div className="pb-stage" data-visible={stage >= 4 ? "1" : "0"}>
             <p className="hero-desc">
               {language === "ru"
-                ? "Делаю две вещи для B2B. Строю системы, на которых держится бизнес: боты, CRM и BI-дашборды, автоматизация, сайты. И строю холодный канал, который приводит клиентов, чтобы эти системы было кем наполнять. "
-                : "Two things for B2B. I build the systems a business runs on: bots, CRMs and BI dashboards, automation, websites. And I build the cold channel that brings the clients to fill them. "}
+                ? "Две отдельные услуги для B2B. Первая: нахожу вам клиентов. Каждую компанию читаю до письма, пишу от вашего имени с вашего домена и каждому ответившему отвечаю сам. Вторая: строю системы, на которых держится бизнес: CRM, дашборды, сайты. "
+                : "Two separate services for B2B. First, I find you clients: each company is read before it gets a letter, the letter goes out in your name from your domain, and every reply is answered by me. Second, I build the systems a business runs on: CRMs, dashboards, websites. "}
               <strong>
-                {language === "ru" ? "Не шаблон. Не no-code." : "Not a template. Not a no-code tool."}
+                {language === "ru" ? "Работает человек, а не рассылка." : "A person doing the work, not a mass mailing."}
               </strong>
             </p>
             <div className="tags">
-              <span className="tag gold">{language === "ru" ? "Холодный аутбаунд" : "Cold Outbound"}</span>
-              <span className="tag gold">{language === "ru" ? "AI-боты" : "AI Bots"}</span>
-              <span className="tag gold">{language === "ru" ? "CRM и BI" : "CRM & BI"}</span>
-              <span className="tag">{language === "ru" ? "AI Matching" : "AI Matching"}</span>
-              <span className="tag">{language === "ru" ? "Автоматизация" : "Process Automation"}</span>
+              <span className="tag gold">{language === "ru" ? "Продажи письмами" : "Sales by letter"}</span>
+              <span className="tag gold">{language === "ru" ? "Ресёрч под каждую компанию" : "Research per company"}</span>
+              <span className="tag">{language === "ru" ? "CRM и BI" : "CRM & BI"}</span>
               <span className="tag">{language === "ru" ? "Сайты на заказ" : "Custom Websites"}</span>
+              <span className="tag">{language === "ru" ? "Боты" : "Bots"}</span>
             </div>
           </div>
           </div>
 
           <div className="hero-lines pb-stage" data-visible={stage >= 3 ? "1" : "0"}>
-            <Link href="/services" className="line-card">
-              <span className="lc-k">{language === "ru" ? "Линия первая" : "Line one"}</span>
-              <div className="lc-t">{language === "ru" ? "Системы" : "The systems"}</div>
-              <div className="lc-d">
-                {language === "ru"
-                  ? "Боты, CRM и BI-дашборды, автоматизация, сайты. С нуля под ваш процесс."
-                  : "Bots, CRMs and BI dashboards, automation, websites. Built from scratch around your process."}
-              </div>
-              <span className="lc-m">{language === "ru" ? "От звонка до продакшена — 3–14 дней" : "Call to production — 3–14 days"}</span>
-            </Link>
             <Link href="/outbound" className="line-card">
-              <span className="lc-k">{language === "ru" ? "Линия вторая" : "Line two"}</span>
+              <span className="lc-k">{language === "ru" ? "Услуга первая" : "Service one"}</span>
               <div className="lc-t">{language === "ru" ? "Клиенты" : "The clients"}</div>
               <div className="lc-d">
                 {language === "ru"
-                  ? "Нахожу компании в открытых реестрах, выхожу на ЛПР и пишу от вашего имени."
-                  : "I find companies in open registries, reach the decision-maker and write in your name."}
+                  ? "Каждую компанию читаю до письма. Пишу от вашего имени, с вашего домена, и отвечаю сам."
+                  : "Each company read before the letter. I write in your name, from your domain, and answer every reply myself."}
               </div>
-              <span className="lc-m">{language === "ru" ? "Пилот 6 недель · ваши цифры на выходе" : "6-week pilot · your own numbers"}</span>
+              <span className="lc-m">{language === "ru" ? "Пилот 4 недели · остановка перед любой неделей" : "4-week pilot · stop before any week"}</span>
+            </Link>
+            <Link href="/services" className="line-card">
+              <span className="lc-k">{language === "ru" ? "Услуга вторая" : "Service two"}</span>
+              <div className="lc-t">{language === "ru" ? "Системы" : "The systems"}</div>
+              <div className="lc-d">
+                {language === "ru"
+                  ? "CRM и BI-дашборды, сайты, боты. С нуля под ваш процесс."
+                  : "CRMs and BI dashboards, websites, bots. Built from scratch around your process."}
+              </div>
+              <span className="lc-m">{language === "ru" ? "От звонка до продакшена — 3–14 дней" : "Call to production — 3–14 days"}</span>
             </Link>
           </div>
         </div>
@@ -786,14 +775,14 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                     <span aria-hidden="true" style={{
                       position: "absolute", top: 14, right: 16,
                       fontFamily: "var(--font-inconsolata), monospace", fontSize: 14,
-                      letterSpacing: "0.14em", color: C.muted,
+                      letterSpacing: "0.12em", color: C.muted,
                     }}>
                       /{String(i + 1).padStart(2, "0")}
                     </span>
                     <div style={{ width: 32, height: 32, background: C.goldDim, border: "1px solid rgba(200,169,110,0.22)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
                       <Icon size={15} color={C.gold} />
                     </div>
-                    <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 16, color: C.text, marginBottom: 6 }}>{card.title}</div>
+                    <div style={{ fontFamily: "var(--font-display)", ...DISPLAY_AXES, fontWeight: 700, fontSize: 16, color: C.text, marginBottom: 6 }}>{card.title}</div>
                     <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16, color: C.text2, lineHeight: 1.6, marginBottom: 10 }}>{card.desc}</p>
                     <span style={{ fontFamily: "var(--font-inconsolata), monospace", fontWeight: 700, fontSize: 14, color: C.gold }}>{card.price}</span>
                   </motion.div>
@@ -843,7 +832,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 >
                   {language === "ru" ? "ФЛАГМАН" : "FLAGSHIP"}
                 </span>
-                <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 17, color: C.heading, marginBottom: 6, paddingRight: 90 }}>
+                <div style={{ fontFamily: "var(--font-display)", ...DISPLAY_AXES, fontWeight: 700, fontSize: 17, color: C.heading, marginBottom: 6, paddingRight: 90 }}>
                   {language === "ru" ? "Turnkey: AI-бот + Кастомная CRM + BI" : "Turnkey: AI Bot + Custom CRM + BI"}
                 </div>
                 <p style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16, color: C.text2, lineHeight: 1.6, marginBottom: 14 }}>
@@ -916,7 +905,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <span style={{ width: 32, height: 32, background: C.goldDim, border: "1px solid rgba(200,169,110,0.22)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 <Crosshair size={15} color={C.gold} />
               </span>
-              <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 17, color: C.heading }}>
+              <div style={{ fontFamily: "var(--font-display)", ...DISPLAY_AXES, fontWeight: 700, fontSize: 17, color: C.heading }}>
                 {language === "ru" ? "Клиенты, которые вас ещё не ищут" : "Clients who are not looking for you yet"}
               </div>
             </div>
@@ -947,13 +936,13 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
             <div className="mentor-features" style={{ marginBottom: 16 }}>
               <span className="tag gold" style={{ background: "transparent", borderColor: "rgba(200,169,110,0.2)" }}>{language === "ru" ? "Русский · English · Español" : "Russian · English · Spanish"}</span>
-              <span className="tag gold" style={{ background: "transparent", borderColor: "rgba(200,169,110,0.2)" }}>{language === "ru" ? "Пилот 6 недель" : "6-week pilot"}</span>
-              <span className="tag gold" style={{ background: "transparent", borderColor: "rgba(200,169,110,0.2)" }}>{language === "ru" ? "Ваши домены и данные" : "Your domains, your data"}</span>
+              <span className="tag gold" style={{ background: "transparent", borderColor: "rgba(200,169,110,0.2)" }}>{language === "ru" ? "Пилот 4 недели" : "4-week pilot"}</span>
+              <span className="tag gold" style={{ background: "transparent", borderColor: "rgba(200,169,110,0.2)" }}>{language === "ru" ? "Ваш домен, ваши данные" : "Your domain, your data"}</span>
             </div>
 
             <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 14 }}>
               <span style={{ fontFamily: "var(--font-inconsolata), monospace", fontWeight: 700, fontSize: 14, color: C.gold }}>
-                {language === "ru" ? "Пилот 6 недель · ваши цифры на выходе" : "6-week pilot · your own numbers at the end"}
+                {language === "ru" ? "Пилот 4 недели · отчёт каждую неделю" : "4-week pilot · a report every week"}
               </span>
               <Link
                 href="/outbound"
@@ -1177,7 +1166,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 <span style={{
                   fontFamily: "var(--font-inconsolata), monospace", fontSize: 14, padding: "2px 7px", borderRadius: 3,
                   background: "rgba(155,142,196,0.12)", color: C.violet, border: "1px solid rgba(155,142,196,0.33)",
-                  letterSpacing: "0.14em", fontWeight: 700,
+                  letterSpacing: "0.12em", fontWeight: 700,
                 }}>RU</span>
               </h3>
               {/* The channel is Russian-language, so an English reader needs to
@@ -1225,7 +1214,10 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
           <div className="cat-head">
             <div className="cat-tick" aria-hidden="true" style={{ background: "var(--c-sage)" }} />
-            <span style={{ color: "var(--c-sage)" }}>{language === "ru" ? "02 — Impact-продукты для НКО · проверка концепции" : "02 — NGO Impact Products · Proof of Concept"}</span>
+            <span style={{ color: "var(--c-sage)" }}>{/* tRWI keeps its lowercase t inside the uppercase heading */}
+              {language === "ru" ? "02 — Пилоты " : "02 — NGO "}
+              <span style={{ textTransform: "none" }}>tRWI</span>
+              {language === "ru" ? " для НКО · токенизированное реальное воздействие" : " Pilots · Tokenized Real-World Impact"}</span>
           </div>
           <div className="proj-grid">
             {projects.ngo.map((p, i) => (

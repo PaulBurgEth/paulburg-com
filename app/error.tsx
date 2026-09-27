@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import { DISPLAY_AXES } from "@/lib/type";
 
 /**
  * A styled error boundary.
@@ -52,7 +53,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
           style={{
             fontFamily: "var(--font-inconsolata), monospace",
             fontSize: 14,
-            letterSpacing: "0.22em",
+            letterSpacing: "0.20em",
             color: "var(--c-gold)",
             marginBottom: 18,
           }}
@@ -62,10 +63,10 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
         <h1
           style={{
             fontFamily: "var(--font-display)",
+            ...DISPLAY_AXES,
             fontSize: "clamp(28px, 4vw, 40px)",
             fontWeight: 700,
             color: "var(--c-heading)",
-            letterSpacing: "-0.02em",
             marginBottom: 14,
           }}
         >
@@ -73,7 +74,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
         </h1>
         <p
           style={{
-            fontFamily: "var(--font-newsreader), serif",
+            fontFamily: "var(--font-lede)",
             fontSize: 17,
             lineHeight: 1.65,
             color: "var(--c-text2)",

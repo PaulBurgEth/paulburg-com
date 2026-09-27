@@ -18,8 +18,8 @@ import { INTAKE_ANCHOR } from "@/lib/constants";
 // pages can use them too — they were defined here and therefore confined to
 // /outbound. Re-exported, so the thirteen files importing from this module keep
 // working unchanged.
-import { SERIF, SANS, MONO, LEDE, T, cardStyle, cardAccentStyle, cardQuietStyle, cardHover } from "@/lib/type";
-export { SERIF, SANS, MONO, LEDE, T, cardStyle, cardAccentStyle, cardQuietStyle, cardHover };
+import { SERIF, DISPLAY_AXES, SANS, MONO, LEDE, T, cardStyle, cardAccentStyle, cardQuietStyle, cardHover } from "@/lib/type";
+export { SERIF, DISPLAY_AXES, SANS, MONO, LEDE, T, cardStyle, cardAccentStyle, cardQuietStyle, cardHover };
 
 
 
@@ -27,7 +27,7 @@ export const monoChipStyle: CSSProperties = {
   fontFamily: MONO,
   fontSize: T.caption,
   fontWeight: 600,
-  letterSpacing: "0.16em",
+  letterSpacing: "0.12em",
   textTransform: "uppercase",
   color: "var(--c-gold)",
   background: "rgba(200,169,110,0.08)",
@@ -169,9 +169,9 @@ export function SectionHead({
       <h2
         style={{
           fontFamily: SERIF,
+          ...DISPLAY_AXES,
           fontWeight: 700,
           fontSize: T.h2,
-          letterSpacing: "-0.02em",
           lineHeight: 1.15,
           color: "var(--c-heading)",
           marginBottom: sub ? 10 : 0,

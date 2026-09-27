@@ -9,24 +9,24 @@ import { useLanguage } from "@/context/LanguageContext";
  */
 const en = {
   steps: [
-    { k: "01", t: "Registries", d: "customs, tenders, filings" },
-    { k: "02", t: "Filter", d: "a reason to write" },
+    { k: "01", t: "Research", d: "each company read before the letter" },
+    { k: "02", t: "Filter", d: "why this company needs you" },
     { k: "03", t: "The email", d: "one company, its language" },
-    { k: "04", t: "Reply", d: "answered same day" },
+    { k: "04", t: "Reply", d: "answered by me" },
     { k: "05", t: "Handover", d: "a client ready to talk terms" },
   ],
-  caption: "Open data in, a client ready to talk out",
+  caption: "A company read in, a client ready to talk out",
 };
 
 const ru = {
   steps: [
-    { k: "01", t: "Реестры", d: "таможня, тендеры, знаки" },
-    { k: "02", t: "Отбор", d: "повод для письма" },
+    { k: "01", t: "Ресёрч", d: "каждая компания прочитана до письма" },
+    { k: "02", t: "Отбор", d: "зачем этой компании вы" },
     { k: "03", t: "Письмо", d: "одна компания, её язык" },
-    { k: "04", t: "Ответ", d: "ответ в тот же день" },
+    { k: "04", t: "Ответ", d: "отвечаю сам" },
     { k: "05", t: "Передача", d: "клиент, готовый обсуждать условия" },
   ],
-  caption: "На входе открытые данные, на выходе готовый к разговору клиент",
+  caption: "На входе прочитанная компания, на выходе готовый к разговору клиент",
 };
 
 export default function ChannelDiagram() {
@@ -54,7 +54,7 @@ export default function ChannelDiagram() {
               </div>
               <div style={{ paddingBottom: last ? 0 : 18 }}>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 9 }}>
-                  <span style={{ fontFamily: "var(--font-inconsolata), monospace", fontSize: 14, letterSpacing: "0.14em", color: "var(--c-gold)" }}>
+                  <span style={{ fontFamily: "var(--font-inconsolata), monospace", fontSize: 14, letterSpacing: "0.12em", color: "var(--c-gold)" }}>
                     {s.k}
                   </span>
                   <span style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16, fontWeight: 600, color: "var(--c-heading)" }}>

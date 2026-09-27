@@ -7,6 +7,7 @@ import { useFocusTrap } from "@/lib/useFocusTrap";
 import { useLanguage } from "@/context/LanguageContext";
 import { useIntakeModal } from "@/context/IntakeModalContext";
 import { TELEGRAM_HANDLE } from "@/lib/constants";
+import { DISPLAY_AXES } from "@/lib/type";
 
 const en = {
   ratelimited: "Too many requests — please wait a minute and try again.",
@@ -196,7 +197,7 @@ export default function IntakeModal() {
     display: "block",
     fontFamily: "var(--font-inconsolata), monospace",
     fontSize: 14,
-    letterSpacing: "0.22em",
+    letterSpacing: "0.20em",
     textTransform: "uppercase",
     color: "var(--c-muted)",
     marginBottom: 6,
@@ -284,9 +285,9 @@ export default function IntakeModal() {
                 id="intake-modal-title"
                 style={{
                   fontFamily: "var(--font-display)",
+                  ...DISPLAY_AXES,
                   fontWeight: 700,
                   fontSize: "clamp(21px, 3vw, 24px)",
-                  letterSpacing: "-0.02em",
                   color: "var(--c-heading)",
                   marginBottom: 6,
                 }}
@@ -322,7 +323,7 @@ export default function IntakeModal() {
                   textAlign: "center",
                 }}
               >
-                <div style={{ fontFamily: "var(--font-display)", fontSize: 21, fontWeight: 700, color: "var(--c-heading)", marginBottom: 6 }}>
+                <div style={{ fontFamily: "var(--font-display)", ...DISPLAY_AXES, fontSize: 21, fontWeight: 700, color: "var(--c-heading)", marginBottom: 6 }}>
                   {t.success}
                 </div>
                 <div style={{ fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 16, color: "var(--c-text2)" }}>
