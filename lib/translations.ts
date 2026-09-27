@@ -469,11 +469,11 @@ export const projectTranslations = {
     ru: {
         ecosynthesisx: {
             name: "EcoSynthesisX",
-            description: "Open-source студия общественных благ, пионер токенизации реального воздействия. Строим инфраструктуру Глобального рынка воздействия — от Impact Products до маркетплейса токенизированных общественных благ.",
+            description: "Open-source студия общественных благ, пионер токенизации реального воздействия. Строим инфраструктуру Глобального рынка воздействия — от пилотов tRWI (Tokenized Real-World Impact, токенизированное реальное воздействие) до маркетплейса, где их может профинансировать любой.",
         },
         regenbazaar: {
-            name: "Regen Bazaar & Impact Products",
-            description: "Децентрализованный маркетплейс для токенизированных общественных благ. Хостит Impact Products: EcoThailand и Clean Phangan — финансирование локальных экологических инициатив с криптографической верификацией.",
+            name: "Regen Bazaar",
+            description: "Маркетплейс tRWI (Tokenized Real-World Impact, токенизированное реальное воздействие). НКО описывает сделанное, формула оценивает результат, заявка записывается он-чейн, и любой может профинансировать её в стейблкоине. Пилоты: EcoThailand и Clean Phangan.",
         },
         decleanup: {
             name: "DeCleanup",
@@ -495,11 +495,11 @@ export const projectTranslations = {
     en: {
         ecosynthesisx: {
             name: "EcoSynthesisX",
-            description: "An open-source public good studio pioneering the tokenization of real-world impact. Building infrastructure for a Global Impact Market — from Impact Products and decentralized cleanups to a marketplace for tokenized public goods.",
+            description: "An open-source public good studio pioneering the tokenization of real-world impact. Building infrastructure for a Global Impact Market — from tRWI (Tokenized Real-World Impact) pilots and decentralized cleanups to a marketplace where anyone can fund them.",
         },
         regenbazaar: {
-            name: "Regen Bazaar & Impact Products",
-            description: "A decentralized marketplace for tokenized public goods. Hosts Impact Products like EcoThailand and Clean Phangan — funding local environmental initiatives with on-chain verification.",
+            name: "Regen Bazaar",
+            description: "Marketplace for tRWI, Tokenized Real-World Impact. NGOs describe the good they did, a published formula scores it, the claim is recorded onchain, and anyone can fund it in a stablecoin. Pilots: EcoThailand and Clean Phangan.",
         },
         decleanup: {
             name: "DeCleanup",

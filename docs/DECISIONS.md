@@ -1666,3 +1666,10 @@ Source Serif 4 / Inter / JetBrains Mono как кириллические под
   это смысловая разметка текста.
 - Мокап `Home_fonts_only.html` мельче сайта по кеглям. Сверять с ним можно
   только гарнитуру и трекинг, не размеры.
+
+## 2026-09-27 · "Impact Product" renamed to tRWI on the homepage
+
+- **What:** `components/home/HomePageClient.tsx` cards for EcoSynthesisX, Regen Bazaar, Clean Phangan and EcoThailand (EN + RU), and the group 02 heading, now use tRWI (Tokenized Real-World Impact); first mention in each card carries the expansion. The NGO cards are named "… tRWI Pilot Collection". The unused `projectTranslations` in `lib/translations.ts` were synced too.
+- **Why:** Regen Bazaar moved from "Impact Product" to tRWI; canon wording comes from `RegenBazaar/index.html` ("fund real-world impact"). "Pilot" because both collections predate tRWI v2.
+- **Kept on purpose:** the Devcon 7 video title and the Clean Phangan Mirror article title still say "Impact Product(s)"; they are titles of external publications.
+- **Fragile:** the group heading is uppercased by CSS; `tRWI` sits in a `textTransform: none` span to keep its lowercase t. Any new uppercase label containing tRWI needs the same.
