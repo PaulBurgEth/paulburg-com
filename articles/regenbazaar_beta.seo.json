@@ -1,0 +1,8 @@
+{
+  "slug": "regen-bazaar-beta-plain-text-to-funded-token",
+  "title_en": "From a Plain-Text Report to a Funded Token",
+  "title_ru": "От отчёта обычным текстом до оплаченного токена",
+  "excerpt_en": "Building the Regen Bazaar beta: an AI model chosen by test that extracts and never scores, a single transaction that mints the token and pays the NGO in USDG, and a testnet faucet that went quiet shortly before launch.",
+  "excerpt_ru": "Как собиралась бета Regen Bazaar: модель, выбранная тестом, которая извлекает данные и ничего не оценивает, одна транзакция, которая выпускает токен и платит организации в USDG, и тестовый кран, замолчавший незадолго до запуска.",
+  "tags": ["AI", "Impact", "Web3", "Engineering"]
+}
