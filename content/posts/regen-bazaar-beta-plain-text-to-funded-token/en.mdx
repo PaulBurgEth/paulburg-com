@@ -1,17 +1,17 @@
 ---
-title: "From a Plain-Text Report to a Funded Token"
+title: "From a Plain-Text Report to a Token Anyone Can Buy"
 date: "2026-09-30"
 tags: ["AI", "Impact", "Web3", "Engineering"]
-excerpt: "Building the Regen Bazaar beta: an AI model chosen by test that extracts and never scores, a single transaction that mints the token and pays the NGO in USDG, and a testnet faucet that went quiet shortly before launch."
+excerpt: "Building the Regen Bazaar beta: an AI model chosen by test that extracts and never scores, a single transaction that mints the token and pays the creator in USDG, and a testnet faucet that went quiet shortly before launch."
 ---
 
-## Building the Regen Bazaar beta: a model that reads reports and never scores them, a purchase that pays the NGO in the same transaction, and a faucet that went quiet
+## Building the Regen Bazaar beta: a model that reads reports and never scores them, a purchase that pays the creator in the same transaction, and a faucet that went quiet
 
 ### The problem this is about
 
 A beach-cleanup group on Koh Phangan ends each cleanup with a count: how many volunteers came, how many kilograms of waste went into the bags. A foundation replanting mangroves in Thailand ends a season with its own: seedlings in the ground, hectares of coast restored. The counts are real, and they do almost nothing for someone who would like to pay for more of that work. A private donor can send money and get a thank-you. A company with a sustainability budget can do the same and get a receipt it has no way to audit. The certification schemes that make environmental work tradable were designed for large projects, and certifying a small one costs more than the project raises.
 
-Regen Bazaar tries to give small organisations a way to sell their measured work to funders who can check what they bought. Before the platform existed, the idea was tried with those two organisations as separate pilots. This piece is about the shared platform that came after: how it was built, what it does today, and the parts that were harder than they looked. It opened as a public beta in September at https://app.regenbazaar.com, on test networks, with test money.
+Regen Bazaar tries to give the people who do this work, small organisations, informal groups and individuals, a way to sell impact they have already delivered to buyers who can check what they bought. The buyer pays for a result, not for a promise, and the money goes straight to whoever did the work. That is how it funds more of it: after the fact, as a reason to keep going and as money for the next cleanup or planting season. Before the platform existed, the idea was tried with those two organisations as separate pilots. This piece is about the shared platform that came after: how it was built, what it does today, and the parts that were harder than they looked. It opened as a public beta in September at https://app.regenbazaar.com, on test networks, with test money.
 
 ![Regen Bazaar beta home page](/blog/regen-bazaar-beta/1-home.webp)
 
@@ -19,7 +19,7 @@ Regen Bazaar tries to give small organisations a way to sell their measured work
 
 ### The pipeline
 
-An organisation writes what it did in its own words and attaches public links that show the work happened. A language model reads the text and returns a list of actions with quantities: 380 kilograms of waste collected, 42 volunteers, 1,500 mangroves planted. A fixed formula converts those actions into physical units and a number called Impact Value. A reviewer checks the proof, sets a proof level, and approves or rejects. On approval, the metadata is pinned to IPFS, the claim is attested on-chain with EAS (the Ethereum Attestation Service), and a listing appears in the marketplace. A funder buys editions of that claim in a dollar stablecoin, and the organisation's share of the payment arrives in the same transaction that creates the token.
+A creator, an organisation, a group or a single person, writes what it did in its own words and attaches public links that show the work happened. A language model reads the text and returns a list of actions with quantities: 380 kilograms of waste collected, 42 volunteers, 1,500 mangroves planted. A fixed formula converts those actions into physical units and a number called Impact Value. A reviewer checks the proof, sets a proof level, and approves or rejects. On approval, the metadata is pinned to IPFS, the claim is attested on-chain with EAS (the Ethereum Attestation Service), and a listing appears in the marketplace. A funder buys editions of that claim in a dollar stablecoin, and the organisation's share of the payment arrives in the same transaction that creates the token.
 
 ### The model reads, the formula scores
 
@@ -63,13 +63,13 @@ Approving a report mints nothing. The listing stays off-chain until someone pays
 
 The price comes from the impact. The Impact Value, multiplied by a rate per point (one US dollar for now) and by a factor for the proof level, gives the price in US dollars, split across editions. The group can also declare what the work took: volunteer hours, the value of one hour and the money it spent. That cost raises the price by at most half; it is never added as dollars. The reviewer sees the country's statutory minimum hourly wage next to the declared value, as a reference and not a cap.
 
-When a funder clicks buy, the server signs an EIP-712 voucher for that listing. The voucher fixes the price, the currency, the platform fee, the royalty, a deadline and a per-token nonce, so the frontend has no way to change any of them, and repricing a listing invalidates the old voucher. The funder approves the exact stablecoin amount and calls `redeem` on the sale contract. In that single call the contract checks the signature, the deadline, the nonce, the currency allowlist and the EAS attestation behind the claim, sends 97.5% of the payment to the organisation's payout wallet and 2.5% to the platform, and mints the editions to the buyer.
+When a buyer clicks buy, the server signs an EIP-712 voucher for that listing. The voucher fixes the price, the currency, the platform fee, the royalty, a deadline and a per-token nonce, so the frontend has no way to change any of them, and repricing a listing invalidates the old voucher. The buyer approves the exact stablecoin amount and calls `redeem` on the sale contract. In that single call the contract checks the signature, the deadline, the nonce, the currency allowlist and the EAS attestation behind the claim, sends 97.5% of the payment to the creator's payout wallet and 2.5% to the platform, and mints the editions to the buyer. Since October the sale contract can also pay a partner share in the same call, for example 2.5% to a partner that verified the work, so the creator receives between 95% and 97.5%.
 
 On Arbitrum Sepolia a full purchase used between 465,000 and 518,000 gas and cost about 0.000022 test ETH. The approve before it cost 0.0000023. On Robinhood Chain testnet the purchase cost 0.0000052. Testnet gas prices are a rough guide to mainnet at best, but the gas count carries over, and it is the figure that will decide whether an edition priced under a dollar is worth selling.
 
 The contracts are built on OpenZeppelin 5.1, have 75 Foundry tests including fuzz tests, and went through a self-audit in June with Slither and a manual review. Roles are separated: the deployer cannot mint the impact token, and only the sale contract can. There has been no external audit yet. The roadmap makes one a condition for mainnet.
 
-After buying, the funder sees their holdings on a page called My impact, with the Impact Value they funded, and can retire editions there, which burns them and claims the impact permanently.
+After buying, the buyer sees their holdings on a page called My impact, with the Impact Value they own, and can retire editions there in their name: a retired edition is burned, can never be resold, and the chain records who retired it.
 
 ![Marketplace on Arbitrum Sepolia](/blog/regen-bazaar-beta/5-marketplace.webp)
 
@@ -97,7 +97,7 @@ Every token needs an image, and the obvious ways to get one were wrong for this 
 
 So the image is drawn by code from the impact data: a palette picked by domain, a ring in the official colours of the SDGs the report maps to, and a pattern seeded from the report's id whose density grows with the Impact Value, plus the title, the organisation and the period. It is a small SVG, and it is deterministic: the same data always gives the same picture, so the site can redraw it at any time and the copy pinned to IPFS as the token image stays identical. User-supplied text is XML-escaped before it goes into the SVG, since a report title is user input like any other.
 
-It costs nothing, there is nothing to moderate, and a funder can tell the domain and the rough size of the impact from the card before reading a word.
+It costs nothing, there is nothing to moderate, and a buyer can tell the domain and the rough size of the impact from the card before reading a word.
 
 ![A tRWI token card](/blog/regen-bazaar-beta/4-token-card.webp)
 
@@ -119,4 +119,4 @@ Check the chain before the interface. A faucet page can look fine while the fauc
 
 Put every economic term in the signed message. With price, fee, royalty and deadline inside the voucher, the frontend can change as often as it needs to without touching how the money is split.
 
-The next step is one that code cannot do: organisations submitting real reports, and funders saying what they would need to see before real budgets go in. The guide at https://app.regenbazaar.com/guide walks through the wallet and the test tokens.
+The next step is one that code cannot do: creators submitting real reports, and buyers saying what they would need to see before real budgets go in. The guide at https://app.regenbazaar.com/guide walks through the wallet and the test tokens.
