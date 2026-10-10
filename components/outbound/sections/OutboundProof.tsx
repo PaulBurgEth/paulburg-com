@@ -6,11 +6,12 @@ import { SectionShell, SectionHead, Note, MidCTA, SERIF, DISPLAY_AXES, SANS, MON
 
 /**
  * Two things on this page are shown rather than claimed. The letters are real
- * first letters from Paul's own campaign, sent as they stand, recipient hidden;
- * both got an interested reply. The numbers are the two pilots set against
+ * first letters from Paul's own campaign (28.09–07.10.2026), company name hidden;
+ * each got a reply asking for more. The RU instrument letter has one sentence
+ * removed ("не закупаю и не перепродаю", banned by SDR B2B decision 471). The numbers are the two pilots set against
  * the market on one measure — the share of companies written to that reached a
  * commercial step — with the same sources and caveat as the approved offers
- * (SDR B2B, VLOGIC / ROCKWELL §03, cut of 19.09.2026; market rows from
+ * (SDR B2B, Профиль_Павла.md §5, own campaign cut of 03.10.2026; market rows from
  * Бенчмарки_и_источники.md §17). The bare reply rate is not shown: it is not
  * the strong number, reaching a price or terms is.
  */
@@ -23,31 +24,30 @@ const en = {
   h2: "From a cold letter to a company asking for a price",
   sub: "The letter does not sell anything. Its whole job is to earn a reply from the person who decides, and it earns it by being about that company's business.",
   lettersTitle: "Two letters, exactly as they were sent",
-  lettersNote: "First letters from my own campaign, recipient hidden. Letters for you are built the same way, in your name, from your domain.",
+  lettersNote: "First letters from my own campaign, company name hidden. Letters for you are built the same way, in your name, from your domain.",
   letters: [
     {
-      meta: "To a prep centre · replied: \u201cI\u2019m the right person to talk to. I\u2019m interested\u201d",
+      meta: "To a Turkish maker of roll-forming lines · replied: “We are interested in exploring cooperation with you”",
       body: [
         "Hello team at [company],",
-        "I read that you work with independent retail as well as with e-commerce sellers.",
-        "Independent retail is a different buyer from an Amazon seller, and you take both.",
-        "Reaching the half you talk to less is the work I would take on.",
-        "I work as your outbound department: looking for companies, writing, answering, qualifying. The lower step is a client who has confirmed a need. The upper is the spec, your terms and the price.",
-        "Are you the right person to talk to about this, or should I write to someone else?",
+        "[Company] builds a cable lug production line alongside its gypsum board profile lines, and I haven't seen that from the other Turkish roll forming makers I looked at.",
+        "Your dealers page lists Romania and Ukraine, but not Kazakhstan.",
+        "I find distributors and trade buyers abroad for manufacturers. I write to each company separately, after looking at what it sells, and bring you those who reply that they want your products.",
+        "In Kazakhstan I would look for buyers of your cornerbead and gypsumboard lines among plants that roll ceiling and wall profiles, drywall system producers and metal building product makers.",
+        "If someone else looks after export sales, could you point me to them?",
       ],
-      note: "What in it is theirs: the half of their business most prep centres do not serve, taken from their own site.",
+      note: "What in it is theirs: a line the other makers in their market do not build, and a country missing from their own dealers page.",
     },
     {
-      meta: "To a prep centre · replied: \u201cdefinitely of interest\u201d",
+      meta: "To a software company · replied: “please feel free to send over the list of companies you're thinking of targeting”",
       body: [
         "Hello team at [company],",
-        "I read that you cover storage and kitting alongside the FBA and FBM prep.",
-        "Kitting inside a prep centre is unusual, which is why [company] stopped me.",
-        "Sellers who need it are exactly who I go after, and reaching them is my work.",
-        "Hand me the client search and you get companies that need your service. Two sizes: I stop when someone has confirmed what they need, or I carry on to your terms and an agreed price.",
-        "Is this of interest, and who is the right person to talk to?",
+        "[Company] puts no cap on how many inboxes a team can add, and I didn't see that on the other response-time tool sites I read.",
+        "I'm an outside sales rep who works week by week on contract. I choose the companies, write each one its own letter, handle the replies, and hand over those ready to buy.",
+        "For [company] I would look among property management, legal and accounting firms, and inside sales and order desks that answer clients through shared mailboxes like support@.",
+        "Would it help to see which companies I would start with, before anything is agreed?",
       ],
-      note: "What in it is theirs: the one service that sets them apart from the prep centre next door.",
+      note: "What in it is theirs: the one product detail their competitors' sites do not offer, and the firms that live in shared inboxes.",
     },
   ] as Letter[],
   pilotsTitle: "Two runs, two different markets",
@@ -63,22 +63,22 @@ const en = {
     {
       tag: "My own campaign, finding clients for this service",
       steps: [
-        { n: "2 687", l: "companies written to" },
-        { n: "69", l: "answered on substance" },
-        { n: "51", l: "reached a talk about terms" },
+        { n: "4 498", l: "companies written to" },
+        { n: "149", l: "a person replied" },
+        { n: "94", l: "reached a talk about terms" },
       ],
     },
   ],
-  pilotsNote: "Sending logs, 19 September 2026. Email only.",
+  pilotsNote: "Sending logs; own campaign as of 3 October 2026. Email only.",
   compareTitle: "Companies that reached a commercial step",
   compareLead: "Two to four times more companies reach a price or terms than the market gets positive replies. And a commercial step sits deeper than a positive reply, so the comparison is a conservative one.",
   bars: [
-    { n: "2.2%", l: "My own campaign: reached terms", pct: 2.2, ours: true },
+    { n: "2.1%", l: "My own campaign: reached terms", pct: 2.1, ours: true },
     { n: "1.2%", l: "Metals supplier: asked for a price", pct: 1.2, ours: true },
     { n: "0.5–1.5%", l: "Market: email to meeting", pct: 1.5, ours: false },
     { n: "≈0.5%", l: "Market: positive reply", pct: 0.48, ours: false },
   ] as Bar[],
-  compareNote: "Own campaign: 51 of 2,339 companies. Metals supplier: 55 of 4,531. Market, email to meeting: 0.5–1.5% of emails sent, LeadHaste, Cold email conversion rate benchmarks 2026. Market, positive reply: about 0.48% of recipients (3.43% average reply rate, Instantly, × 14.1% of replies that are genuinely positive, Sales.co, 2026). Market figures come mostly from sequences combining email, LinkedIn and calls; the pilots were email only. For the pilots the step is the company's next commercial move, for the market a meeting or a positive reply.",
+  compareNote: "Own campaign: 94 of 4,498 companies. Metals supplier: 55 of 4,531. Market, email to meeting: 0.5–1.5% of emails sent, LeadHaste, Cold email conversion rate benchmarks 2026. Market, positive reply: about 0.48% of recipients (3.43% average reply rate, Instantly, × 14.1% of replies that are genuinely positive, Sales.co, 2026). Market figures come mostly from sequences combining email, LinkedIn and calls; the pilots were email only. For the pilots the step is the company's next commercial move, for the market a meeting or a positive reply.",
   afterTitle: "Where you come in",
   after: "Not at the first email, and not at the tenth. You come in when a company has agreed on the substance and wants to talk terms. Everything before that point is mine.",
   repliedTitle: "The kind of company that answers",
@@ -93,32 +93,32 @@ const ru = {
   eyebrow: "В работе",
   h2: "От холодного письма до компании, которая просит цену",
   sub: "Письмо ничего не продаёт. Его единственная задача — получить ответ от того, кто решает, и оно его получает тем, что написано про дело этой компании.",
-  lettersTitle: "Два письма, как они ушли",
-  lettersNote: "Первые письма моей собственной кампании, получатель скрыт. Письма для вас устроены так же, от вашего имени и с вашего домена.",
+  lettersTitle: "Два письма из моей кампании",
+  lettersNote: "Первые письма моей собственной кампании, название компании скрыто. Письма для вас устроены так же, от вашего имени и с вашего домена.",
   letters: [
     {
-      meta: "Производителю напитков для кафе · ответили с интересом",
+      meta: "Производителю КИПиА · коммерческий директор: «предложение для нас интересное… давайте обсуждать условия»",
       body: [
-        "Здравствуйте, команда [компания]!",
-        "Вы производите напитки и экстракты, которых нет у обычного кофейного поставщика: цикорий, шиповник, боярышник, какао, сироп топинамбура.",
-        "Заведению всё чаще нужна альтернатива кофе — для тех, кто его не пьёт, и для позднего вечера. Цикорий и шиповник закрывают этот запрос, но их не ищут: о них узнают, когда предложили.",
-        "Моя работа — искать вам клиентов. Подбираю компании, которым нужна ваша услуга, выхожу на того, кто решает, пишу лично и разбираю ответы. Дальше на выбор: передать вам клиента, который подтвердил потребность и готов обсуждать условия, или вести до цены и срока.",
-        "Если это не ваша тема, подскажете, к кому обратиться?",
+        "Здравствуйте!",
+        "У [компании] рядом с датчиками температуры и давления в каталоге есть свой запатентованный иммерсионный нагреватель для бесконтактного расплавления алюминия, а у других российских производителей КИПиА я такого не видел.",
+        "Я нахожу заводам покупателей и дилеров за рубежом и веду с ними переписку до разговора о заказе, как внешний отдел продаж.",
+        "В Армении я бы искал для [компании] покупателей среди литейных цехов алюминиевого литья и заводов с печами термообработки, которым нужны многозонные датчики температуры, а дилеров среди поставщиков КИПиА для промышленных предприятий.",
+        "Если это не к вам, подскажите, кто у вас занимается продажами в другие страны.",
         "С уважением, Павел",
       ],
-      note: "Что здесь под компанию: их необычная линейка по названиям и причина, по которой её покупают, но не ищут.",
+      note: "Что здесь под компанию: изделие в их каталоге, которого нет у других производителей, и те, кому оно нужно в конкретной стране.",
     },
     {
-      meta: "Поставщику мебели для кафе и ресторанов · ответили с интересом",
+      meta: "Переработчику ягод · ответили: «Условия?»",
       body: [
-        "Здравствуйте, команда [компания]!",
-        "Вы держите мебель для кафе, баров и ресторанов, и сразу предупреждаете, что цена на сайте не окончательная, а считается под проект.",
-        "Ресторатор, который открывает зал, сравнивает не стулья, а сроки: мебель приходит последней и держит дату открытия. Он выбирает того, кто отвечает за срок, а не того, у кого дешевле позиция.",
-        "Я нахожу вам клиентов. Разбираюсь, кто покупает то, что вы продаёте, и по какому признаку это видно со стороны. Пишу в каждую компанию отдельным письмом, про её дело, а не рассылкой. Отвечаю сам и передаю вам того, кто уже сказал, что ему нужно.",
-        "Если это полезно, соберу предложение под вашу услугу и пришлю.",
+        "Здравствуйте!",
+        "Ягоду жимолости для соков и начинок вы берёте с собственных садов, а облепиху перерабатываете вплоть до масла и косточки. У других переработчиков ягод, чьи сайты я смотрел, своих садов жимолости я не видел.",
+        "Я работаю внешним менеджером по продажам у производителей: нахожу пищевые предприятия, которым подходит ваш продукт, пишу каждому отдельно, про его производство, и передаю вам тех, кто попросил образец или цену. Договор и поставка остаются между вами и покупателем.",
+        "Для [компании] я бы искал покупателей среди производителей мороженого и йогуртов, глазированных сырков, кондитерских и хлебопекарных предприятий, а также HoReCa.",
+        "Интересно посмотреть, какие предприятия я бы выбрал для начала?",
         "С уважением, Павел",
       ],
-      note: "Что здесь под компанию: деталь с их сайта (цена под проект) и настоящий критерий выбора их покупателя — срок, а не цена стула.",
+      note: "Что здесь под компанию: собственные сады, которых нет у соседей по рынку, и производства, которым подходят их начинки.",
     },
   ] as Letter[],
   pilotsTitle: "Два пилота, два разных рынка",
@@ -134,22 +134,22 @@ const ru = {
     {
       tag: "Собственная кампания: клиенты для этой услуги",
       steps: [
-        { n: "2 687", l: "компаний получили письмо" },
-        { n: "69", l: "ответили по делу" },
-        { n: "51", l: "дошла до разговора об условиях" },
+        { n: "4 498", l: "компаний получили письмо" },
+        { n: "149", l: "ответил живой человек" },
+        { n: "94", l: "дошли до разговора об условиях" },
       ],
     },
   ],
-  pilotsNote: "Журналы отправки, срез 19.09.2026. Только почта.",
+  pilotsNote: "Журналы отправки; собственная кампания на 03.10.2026. Только почта.",
   compareTitle: "Доля компаний, дошедших до коммерческого шага",
   compareLead: "До цены или условий доходит в 2–4 раза больше компаний, чем рынок получает положительных ответов. А коммерческий шаг глубже положительного ответа, поэтому сравнение консервативное.",
   bars: [
-    { n: "2,2 %", l: "Собственная кампания: условия", pct: 2.2, ours: true },
+    { n: "2,1 %", l: "Собственная кампания: условия", pct: 2.1, ours: true },
     { n: "1,2 %", l: "Металлопрокат: запрос цены", pct: 1.2, ours: true },
     { n: "0,5–1,5 %", l: "Рынок: письмо → встреча", pct: 1.5, ours: false },
     { n: "≈0,5 %", l: "Рынок: положительный ответ", pct: 0.48, ours: false },
   ] as Bar[],
-  compareNote: "Собственная кампания: 51 из 2 339 компаний. Металлопрокат: 55 из 4 531 компании. Рынок, письмо → встреча: 0,5–1,5 % отправленных писем, LeadHaste, «Cold email conversion rate benchmarks 2026». Рынок, положительный ответ: ≈0,48 % адресатов (средний отклик 3,43 % по Instantly × доля по-настоящему положительных ответов 14,1 %, Sales.co, 2026). Рыночные цифры собраны в основном на многоканальных цепочках (почта, LinkedIn, звонок); пилоты шли только почтой. У пилотов считается следующий коммерческий шаг компании, у рынка — встреча и положительный ответ.",
+  compareNote: "Собственная кампания: 94 из 4 498 компаний. Металлопрокат: 55 из 4 531 компании. Рынок, письмо → встреча: 0,5–1,5 % отправленных писем, LeadHaste, «Cold email conversion rate benchmarks 2026». Рынок, положительный ответ: ≈0,48 % адресатов (средний отклик 3,43 % по Instantly × доля по-настоящему положительных ответов 14,1 %, Sales.co, 2026). Рыночные цифры собраны в основном на многоканальных цепочках (почта, LinkedIn, звонок); пилоты шли только почтой. У пилотов считается следующий коммерческий шаг компании, у рынка — встреча и положительный ответ.",
   afterTitle: "Где вступаете вы",
   after: "Не на первом письме и не на десятом. Вы вступаете, когда компания уже согласилась по сути и хочет обсуждать условия. Всё до этой точки — на мне.",
   repliedTitle: "Кто отвечает",
@@ -309,7 +309,7 @@ export default function OutboundProof() {
               aria-hidden="true"
               style={{
                 height: row.ours ? 12 : 8,
-                width: `${(row.pct / 2.2) * 100}%`,
+                width: `${(row.pct / 2.1) * 100}%`,
                 borderRadius: 3,
                 background: row.ours
                   ? "linear-gradient(90deg, var(--c-gold), var(--c-gold-glow))"

@@ -29,7 +29,7 @@ const en = {
   holdTitle: "What you hold at week four",
   hold: [
     "Your list of companies, each one read before the letter",
-    "The letters you approved, and the stop-list built underneath them",
+    "Every letter sent, and the stop-list built underneath them",
     "Your funnel stage by stage: companies, letters and messages, replies, handovers",
     "Your own numbers for every step, and a go or no-go you can defend",
   ],
@@ -58,7 +58,7 @@ const ru = {
   holdTitle: "Что у вас на руках к четвёртой неделе",
   hold: [
     "Ваш список компаний, каждая прочитана до письма",
-    "Согласованные вами тексты и собранный под ними стоп-лист",
+    "Все отправленные тексты и собранный под ними стоп-лист",
     "Воронка по этапам: компании, письма и сообщения, ответы, передачи",
     "Ваши собственные цифры по каждому шагу и решение, которое можно обосновать",
   ],

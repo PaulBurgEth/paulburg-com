@@ -11,7 +11,7 @@ const en = {
   sub: "You can start in writing today.",
   steps: [
     { n: "01", t: "Ten questions", d: "Which services are the priority, who your best client is, which markets are closed. You answer in writing." },
-    { n: "02", t: "A four-week plan", d: "Concrete segments with volume estimates, launch order, correspondence language, and the first email drafts for approval." },
+    { n: "02", t: "A four-week plan", d: "Concrete segments with volume estimates, launch order and correspondence language." },
     { n: "03", t: "We start", d: "The first letters go out inside week one — not after a month of preparation. Your own numbers arrive in the report every week." },
   ],
   whoTitle: "Who you would be working with",
@@ -25,7 +25,7 @@ const ru = {
   sub: "Начать можно письмом, сегодня.",
   steps: [
     { n: "01", t: "Десять вопросов", d: "Какие услуги приоритетны, кто ваш лучший клиент, какие рынки закрыты. Отвечаете письменно." },
-    { n: "02", t: "План на четыре недели", d: "Конкретные сегменты с оценкой объёма, порядок запуска, язык переписки и тексты первых писем на согласование." },
+    { n: "02", t: "План на четыре недели", d: "Конкретные сегменты с оценкой объёма, порядок запуска и язык переписки." },
     { n: "03", t: "Стартуем", d: "Первые письма уходят внутри первой недели, а не после месяца подготовки. Ваши собственные цифры — в отчёте каждую неделю." },
   ],
   whoTitle: "С кем вы будете работать",
