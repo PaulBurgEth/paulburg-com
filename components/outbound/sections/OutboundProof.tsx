@@ -11,7 +11,7 @@ import { SectionShell, SectionHead, Note, MidCTA, SERIF, DISPLAY_AXES, SANS, MON
  * removed ("не закупаю и не перепродаю", banned by SDR B2B decision 471). The numbers are the two pilots set against
  * the market on one measure — the share of companies written to that reached a
  * commercial step — with the same sources and caveat as the approved offers
- * (SDR B2B, Профиль_Павла.md §5, own campaign cut of 03.10.2026; market rows from
+ * (SDR B2B, Профиль_Павла.md §5, own campaign cut of 03.10.2026, counted by decision 477; market rows from
  * Бенчмарки_и_источники.md §17). The bare reply rate is not shown: it is not
  * the strong number, reaching a price or terms is.
  */
@@ -65,7 +65,7 @@ const en = {
       steps: [
         { n: "4 498", l: "companies written to" },
         { n: "149", l: "a person replied" },
-        { n: "94", l: "reached a talk about terms" },
+        { n: "103", l: "reached a talk about terms" },
       ],
     },
   ],
@@ -73,12 +73,12 @@ const en = {
   compareTitle: "Companies that reached a commercial step",
   compareLead: "Two to four times more companies reach a price or terms than the market gets positive replies. And a commercial step sits deeper than a positive reply, so the comparison is a conservative one.",
   bars: [
-    { n: "2.1%", l: "My own campaign: reached terms", pct: 2.1, ours: true },
+    { n: "2.3%", l: "My own campaign: reached terms", pct: 2.3, ours: true },
     { n: "1.2%", l: "Metals supplier: asked for a price", pct: 1.2, ours: true },
     { n: "0.5–1.5%", l: "Market: email to meeting", pct: 1.5, ours: false },
     { n: "≈0.5%", l: "Market: positive reply", pct: 0.48, ours: false },
   ] as Bar[],
-  compareNote: "Own campaign: 94 of 4,498 companies. Metals supplier: 55 of 4,531. Market, email to meeting: 0.5–1.5% of emails sent, LeadHaste, Cold email conversion rate benchmarks 2026. Market, positive reply: about 0.48% of recipients (3.43% average reply rate, Instantly, × 14.1% of replies that are genuinely positive, Sales.co, 2026). Market figures come mostly from sequences combining email, LinkedIn and calls; the pilots were email only. For the pilots the step is the company's next commercial move, for the market a meeting or a positive reply.",
+  compareNote: "Own campaign: 103 of 4,498 companies. Metals supplier: 55 of 4,531. Market, email to meeting: 0.5–1.5% of emails sent, LeadHaste, Cold email conversion rate benchmarks 2026. Market, positive reply: about 0.48% of recipients (3.43% average reply rate, Instantly, × 14.1% of replies that are genuinely positive, Sales.co, 2026). Market figures come mostly from sequences combining email, LinkedIn and calls; the pilots were email only. For the pilots the step is the company's next commercial move, for the market a meeting or a positive reply.",
   afterTitle: "Where you come in",
   after: "Not at the first email, and not at the tenth. You come in when a company has agreed on the substance and wants to talk terms. Everything before that point is mine.",
   repliedTitle: "The kind of company that answers",
@@ -136,7 +136,7 @@ const ru = {
       steps: [
         { n: "4 498", l: "компаний получили письмо" },
         { n: "149", l: "ответил живой человек" },
-        { n: "94", l: "дошли до разговора об условиях" },
+        { n: "103", l: "дошли до разговора об условиях" },
       ],
     },
   ],
@@ -144,12 +144,12 @@ const ru = {
   compareTitle: "Доля компаний, дошедших до коммерческого шага",
   compareLead: "До цены или условий доходит в 2–4 раза больше компаний, чем рынок получает положительных ответов. А коммерческий шаг глубже положительного ответа, поэтому сравнение консервативное.",
   bars: [
-    { n: "2,1 %", l: "Собственная кампания: условия", pct: 2.1, ours: true },
+    { n: "2,3 %", l: "Собственная кампания: условия", pct: 2.3, ours: true },
     { n: "1,2 %", l: "Металлопрокат: запрос цены", pct: 1.2, ours: true },
     { n: "0,5–1,5 %", l: "Рынок: письмо → встреча", pct: 1.5, ours: false },
     { n: "≈0,5 %", l: "Рынок: положительный ответ", pct: 0.48, ours: false },
   ] as Bar[],
-  compareNote: "Собственная кампания: 94 из 4 498 компаний. Металлопрокат: 55 из 4 531 компании. Рынок, письмо → встреча: 0,5–1,5 % отправленных писем, LeadHaste, «Cold email conversion rate benchmarks 2026». Рынок, положительный ответ: ≈0,48 % адресатов (средний отклик 3,43 % по Instantly × доля по-настоящему положительных ответов 14,1 %, Sales.co, 2026). Рыночные цифры собраны в основном на многоканальных цепочках (почта, LinkedIn, звонок); пилоты шли только почтой. У пилотов считается следующий коммерческий шаг компании, у рынка — встреча и положительный ответ.",
+  compareNote: "Собственная кампания: 103 из 4 498 компаний. Металлопрокат: 55 из 4 531 компании. Рынок, письмо → встреча: 0,5–1,5 % отправленных писем, LeadHaste, «Cold email conversion rate benchmarks 2026». Рынок, положительный ответ: ≈0,48 % адресатов (средний отклик 3,43 % по Instantly × доля по-настоящему положительных ответов 14,1 %, Sales.co, 2026). Рыночные цифры собраны в основном на многоканальных цепочках (почта, LinkedIn, звонок); пилоты шли только почтой. У пилотов считается следующий коммерческий шаг компании, у рынка — встреча и положительный ответ.",
   afterTitle: "Где вступаете вы",
   after: "Не на первом письме и не на десятом. Вы вступаете, когда компания уже согласилась по сути и хочет обсуждать условия. Всё до этой точки — на мне.",
   repliedTitle: "Кто отвечает",
@@ -309,7 +309,7 @@ export default function OutboundProof() {
               aria-hidden="true"
               style={{
                 height: row.ours ? 12 : 8,
-                width: `${(row.pct / 2.1) * 100}%`,
+                width: `${(row.pct / 2.3) * 100}%`,
                 borderRadius: 3,
                 background: row.ours
                   ? "linear-gradient(90deg, var(--c-gold), var(--c-gold-glow))"
