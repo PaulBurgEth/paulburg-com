@@ -1673,3 +1673,10 @@ Source Serif 4 / Inter / JetBrains Mono как кириллические под
 - **Why:** Regen Bazaar moved from "Impact Product" to tRWI; canon wording comes from `RegenBazaar/index.html` ("fund real-world impact"). "Pilot" because both collections predate tRWI v2.
 - **Kept on purpose:** the Devcon 7 video title and the Clean Phangan Mirror article title still say "Impact Product(s)"; they are titles of external publications.
 - **Fragile:** the group heading is uppercased by CSS; `tRWI` sits in a `textTransform: none` span to keep its lowercase t. Any new uppercase label containing tRWI needs the same.
+
+## 2026-10-10 — /outbound and outbound copy across the site brought to the SDR B2B canon (PRs #30–#39)
+
+- **What:** digital outbound (email first, LinkedIn where it fits, ninth rule in OutboundRules); no client approval of letters; Mechanism examples rebuilt on the letter canon (first line about the company vs its neighbours, event optional); Proof leads with percentages against the market (2.3% / 1.2% vs ≈0.5% positive replies, headline "2.5–5× above the market"), absolute counts only in the note; current sample letters; own campaign 103 of 4,498 (SDR B2B decision 477 count); "Leads" kept but set apart from contact lists (SDR B2B decision 478); same fixes on home, /services, footer; page titles "Digital Outbound".
+- **Why:** SDR B2B decisions 423, 424, 430, 462, 476, 477, 478; Paul's word in session.
+- **Workflow:** no local dev server; tsc + greps, PR merged into main, `npm run deploy`, screenshots on prod.
+- **Fragile:** Proof bar width divides by the largest own percentage (`row.pct / 2.3`); update it with the numbers. OutboundRules `ICONS` must match the rules count. OutboundHow annotations map one-to-one to four body lines per letter.
