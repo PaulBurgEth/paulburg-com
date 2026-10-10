@@ -16,7 +16,7 @@ const en = {
   keepTitle: "What stays with you",
   keep: "The list of companies, the stop-list, every letter and message, the accounts the work ran through, and the funnel stage by stage — yours from day one.",
   railsTitle: "How you pay",
-  rails: "Bank transfer, USDT or USDC, or a proper invoice through an invoicing service if your accounting needs the paperwork. Contractor agreement either way. \"We need an invoice\" has never been the reason this did not happen.",
+  rails: "A service agreement as an independent contractor. You pay the way you already pay contractors: an invoice through a payment platform your accounting accepts, with paperwork included.",
   note: "Full contract terms — attribution, exit — on request before we start.",
 };
 
@@ -32,7 +32,7 @@ const ru = {
   keepTitle: "Что остаётся у вас",
   keep: "Список компаний, стоп-лист, все тексты писем и сообщений, аккаунты, через которые шла работа, и воронка по этапам — ваши с первого дня.",
   railsTitle: "Чем платить",
-  rails: "Банковский перевод, USDT или USDC, либо счёт через сервис выставления, если вашей бухгалтерии нужен документ. Договор подряда в любом случае. «Нам нужен инвойс» ещё ни разу не было причиной, по которой это не состоялось.",
+  rails: "Договор на оказание услуг с независимым подрядчиком. Платите так же, как обычно платите подрядчикам: счёт через платёжную платформу, с документами для бухгалтерии.",
   note: "Полные условия договора — атрибуция, выход — по запросу до старта.",
 };
 

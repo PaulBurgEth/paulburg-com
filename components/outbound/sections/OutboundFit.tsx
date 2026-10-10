@@ -24,7 +24,7 @@ const en = {
     "The purchase is considered, not impulsive",
     "The buyer is an identifiable legal entity",
     "The deal justifies a month of correspondence",
-    "The buying event leaves a public trace",
+    "Your buyers can be found by name: catalogues, exhibitor lists, registries",
   ],
   noTitle: "This is not for you if",
   no: [
@@ -48,7 +48,7 @@ const ru = {
     "Покупка обдуманная, а не импульсная",
     "Покупатель — определяемое юридическое лицо",
     "Сделка оправдывает месяц переписки",
-    "Событие покупки оставляет публичный след",
+    "Ваших покупателей видно поимённо: каталоги, выставки, реестры",
   ],
   noTitle: "Это не для вас, если",
   no: [

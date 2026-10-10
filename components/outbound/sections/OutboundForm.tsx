@@ -9,7 +9,7 @@ import { SectionShell, SectionHead, SERIF, DISPLAY_AXES, SANS, MONO } from "../s
 const en = {
   eyebrow: "Talk to me",
   h2: "Tell me who your best client is",
-  sub: "Two minutes. I answer personally, usually within a few hours.",
+  sub: "Two minutes. I answer personally.",
   labels: {
     name: "Your name",
     business: "Company or product",
@@ -66,23 +66,23 @@ const en = {
   submit: "Send →",
   sending: "Sending…",
   success: "Got it.",
-  successSub: "I'll come back in writing, usually within a few hours.",
+  successSub: "I'll come back in writing.",
   error: `Something went wrong. Message me directly: @${TELEGRAM_HANDLE} on Telegram.`,
   ratelimited: "You just sent one — give it a minute and try again.",
   orWrite: "Or write to me directly:",
   nextTitle: "What happens after you send",
   next: [
-    "I read it and answer in writing, usually within a few hours.",
+    "I read it and answer in writing.",
     "If it does not fit, I say so in that first reply, and tell you what would.",
     "If it does, you get the ten questions and a four-week plan with segments and volumes.",
   ],
-  nextNote: "You are answered by me, not by an assistant or a sequence.",
+  nextNote: "The person who answers is the one who will write to your buyers.",
 };
 
 const ru = {
   eyebrow: "Связаться",
   h2: "Расскажите, кто ваш лучший клиент",
-  sub: "Две минуты. Отвечаю лично, обычно в течение нескольких часов.",
+  sub: "Две минуты. Отвечаю лично.",
   labels: {
     name: "Ваше имя",
     business: "Компания или продукт",
@@ -139,17 +139,17 @@ const ru = {
   submit: "Отправить →",
   sending: "Отправка…",
   success: "Принято.",
-  successSub: "Вернусь письменно, обычно в течение нескольких часов.",
+  successSub: "Вернусь письменно.",
   error: `Что-то пошло не так. Напишите напрямую: @${TELEGRAM_HANDLE} в Telegram.`,
   ratelimited: "Только что уже отправляли — подождите минуту и попробуйте снова.",
   orWrite: "Или напишите напрямую:",
   nextTitle: "Что будет после отправки",
   next: [
-    "Читаю и отвечаю письмом, обычно в течение нескольких часов.",
+    "Читаю и отвечаю письмом.",
     "Если не подходит — скажу это в первом же ответе и скажу, что подошло бы.",
     "Если подходит — присылаю десять вопросов и план на четыре недели с сегментами и объёмами.",
   ],
-  nextNote: "Отвечаю я, а не ассистент и не автоворонка.",
+  nextNote: "Отвечает тот же человек, который будет писать вашим покупателям.",
 };
 
 type Status = "idle" | "pending" | "success" | "error" | "ratelimited";

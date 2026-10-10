@@ -30,7 +30,7 @@ const en = {
   },
   eyebrow: "Straight answers",
   h2: "The seven things people ask before they say yes",
-  sub: "Asked in these words, more or less, by everyone who got this far. Answered here so you can decide on the substance.",
+  sub: "Questions that come up before a pilot. Answered here so you can decide on the substance.",
   qa: [
     {
       q: "Cold email does not work any more. Everyone gets two hundred of these.",
@@ -54,12 +54,11 @@ const en = {
     },
     {
       q: "How much is it?",
-      priceGrid: true,
-      a: "One fixed price for the pilot, and the next section has how it is paid: week by week in advance, with a decision in front of every week. Two things move the number — how many segments you want running, and how many languages they run in. One segment in one language sits at the floor; four segments across three languages sits at the top. What happens after the four weeks gets settled at the end of them, on your own numbers, rather than guessed at now.",
+      a: "One fixed price for the pilot, the same for every client: four weeks, each paid in advance, with a decision before every week. The figure comes with the plan for your market. What happens after the four weeks is settled at the end of them, on your own numbers.",
     },
     {
       q: "Is this you, or a team?",
-      a: "Me. The selection, the copy and the correspondence are mine personally. That is also what limits how many clients I take at once, and I would rather say so now than after you have signed.",
+      a: "Me. The selection, the copy and the correspondence are mine personally, and whoever wrote to a company is the one who answers it. While I work for you, I don't take on a competitor in your segment.",
     },
   ] as QA[],
   ctaNote: "Still holding a question that is not on this list?",
@@ -75,7 +74,7 @@ const ru = {
   },
   eyebrow: "Прямые ответы",
   h2: "Семь вопросов, которые задают до того, как согласиться",
-  sub: "Примерно в этих формулировках их задаёт каждый, кто дочитал до сюда. Отвечено здесь, чтобы вы решали по существу.",
+  sub: "Вопросы, которые возникают до пилота. Отвечено здесь, чтобы вы решали по существу.",
   qa: [
     {
       q: "Холодные письма больше не работают. Всем приходит по двести таких.",
@@ -99,12 +98,11 @@ const ru = {
     },
     {
       q: "Сколько это стоит?",
-      priceGrid: true,
-      a: "Одна фиксированная цена за пилот, а в следующей секции — схема оплаты: понедельно вперёд, и перед каждой неделей решение. Сумму двигают две вещи — сколько сегментов вы хотите запустить и на скольких языках. Один сегмент на одном языке — нижняя граница, четыре сегмента на трёх языках — верхняя. Что будет после четырёх недель, решается в их конце, на ваших цифрах, а не угадывается сейчас.",
+      a: "Одна фиксированная цена за пилот, одна для всех: четыре недели, каждая оплачивается вперёд, перед каждой решение. Сумму присылаю вместе с планом под ваш рынок. Что после четырёх недель, решается в их конце, на ваших цифрах.",
     },
     {
       q: "Это вы или команда?",
-      a: "Я. Отбор, тексты и переписка — лично. Это же и ограничивает, сколько клиентов я беру одновременно, и лучше сказать это сейчас, а не после подписания.",
+      a: "Я. Отбор, тексты и переписка — лично, и отвечает компании тот же, кто ей писал. Пока работаю на вас, конкурента в вашем сегменте не беру.",
     },
   ] as QA[],
   ctaNote: "Остался вопрос, которого нет в списке?",

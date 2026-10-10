@@ -2,200 +2,202 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Ship, Gavel, Building2, BadgeCheck, ShieldAlert, Store } from "lucide-react";
+import { Ship, Gavel, Building2, BadgeCheck, Handshake, Store } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { INTAKE_ANCHOR } from "@/lib/constants";
 import { SectionShell, SectionHead, MidCTA, SERIF, DISPLAY_AXES, SANS, MONO, T, itemVariants } from "../shared";
 
-const ICONS = [Ship, Gavel, Building2, BadgeCheck, ShieldAlert, Store];
+const ICONS = [Ship, Gavel, Building2, BadgeCheck, Handshake, Store];
 
 /**
  * The centrepiece.
  *
- * The email used to be a single metals-adjacent sample, which told four readers
- * out of five that this was not their industry. It is now one artifact per
- * market, switched by the reader. The four annotations stay constant across all
- * five on purpose: the market changes, the anatomy of the email does not, and
- * that is the actual argument.
+ * One example letter per market, switched by the reader. Built to the letter
+ * canon in SDR B2B (05_Письма/Правила_и_структура.md, decisions 64, 395, 424):
+ * the first line is about that company's business, taken from its own site and
+ * compared with its neighbours; an event is an amplifier, never a condition;
+ * letters go to the company, no promise of reaching a named person. The four
+ * annotations stay constant across all five on purpose: the market changes,
+ * the anatomy of the letter does not, and that is the actual argument.
  */
 
 type Variant = { label: string; meta: string[]; subject: string; body: string[] };
 
 const en = {
   eyebrow: "The mechanism",
-  h2: "Every email has a reason attached to that company",
-  sub: "Nothing goes out as a template. Something happened at that company, it is on public record, and the email is about that. Read the real email for any of these markets — or ask for the one written for yours.",
+  h2: "Every letter is about that company's business",
+  sub: "Nothing goes out as a template. The letter starts from what that company does and what sets it apart from its neighbours, checked on its own site. Read one for any of these markets, or ask for the one written for yours.",
   pick: "Five examples. Yours works the same way",
   openLabel: "Your market",
   openTitle: "Your market is not on that list",
-  openBody: "Those five are examples, not the boundary. The mechanism needs one thing: that whatever creates demand in your market leaves a public trace. In most of B2B it does — a contract awarded, a filing made, a shipment cleared, a licence granted, a plant hired. Tell me what you sell and I will write the example email for your market, with the trigger it is built on, before you commit to anything.",
+  openBody: "Those five are examples, not the boundary. The mechanism needs one thing: that your buyers can be found and read before they are written to. In most of B2B they can: a catalogue, a dealer page, an exhibitor list, their own site. Tell me what you sell and I will write the example letter for your market before you commit to anything.",
   openCta: "Write the example for my market →",
   variants: [
     {
       label: "Metals & industrial supply",
-      meta: ["To: head of procurement, machine-building plant", "Reason: won a state contract in May, steel not yet booked"],
-      subject: "Subject: Your May contract, before the steel is booked",
+      meta: ["To: a machine-building plant", "First line from: their product range"],
+      subject: "Subject: Steel for your made-to-order [crane girders]",
       body: [
-        "Saw [Plant] won the [tender] in May — delivery falls on you by autumn, and the rolled steel is not booked yet.",
-        "We hold that grade in stock and can fix the price for the whole run, not per shipment.",
-        "Mill certificates go out with the first delivery, so acceptance does not stall.",
-        "Worth a price on your volume?",
+        "[Plant] builds [crane girders] to order next to its standard range, and I haven't seen that from the other machine builders I looked at.",
+        "Orders like that are what we keep stock for: the grade is on hand the day your order lands.",
+        "We fix the price for the whole run, not per shipment, and the mill certificates travel with the first delivery.",
+        "Worth a price on your next order?",
       ],
     },
     {
       label: "Sourcing & logistics",
-      meta: ["To: founder, home goods brand", "Reason: new supplier since April, two shipments"],
-      subject: "Subject: New supplier since April",
+      meta: ["To: a home goods brand", "First line from: their catalogue and about page"],
+      subject: "Subject: Inspection for your [stoneware] line",
       body: [
-        "Saw [Company] switched to a new [supplier] around April — first two shipments already landed.",
-        "We are on the ground where your factories are. Inspection is live: you join by video and watch the cartons opened.",
-        "Then the same team moves the shipment door to door, customs included. One chain, one invoice.",
+        "[Company] makes its [stoneware] at two factories and says so on its own site, which the other home goods brands I looked at do not.",
+        "Two factories means two sets of cartons to check before anything ships.",
+        "We are on the ground where your factories are: you join the inspection by video, and the same team moves the goods door to door, customs included.",
         "Worth a look at your next order?",
       ],
     },
     {
       label: "Equipment & components",
-      meta: ["To: chief engineer, food production", "Reason: new line commissioned in March"],
-      subject: "Subject: Spares for the line you commissioned in March",
+      meta: ["To: a food production plant", "First line from: their product pages"],
+      subject: "Subject: Wear parts for your [bottling line]",
       body: [
-        "Saw [Company] commissioned a new [line] in March — the first service interval lands around now.",
-        "We stock the wear parts for it, so a stoppage does not wait three weeks on the manufacturer.",
-        "One list, one supplier, and your kit sits with us instead of being ordered from scratch each time.",
+        "[Company] bottles its [juices] on its own line instead of using a co-packer, and I haven't seen that from the other producers I looked at.",
+        "A line you run yourself stops when a wear part is three weeks away.",
+        "We stock the wear parts for it and keep your kit with us, so it is not ordered from scratch each time.",
         "Want the parts list for your configuration?",
       ],
     },
     {
       label: "Contract manufacturing",
-      meta: ["To: founder, cosmetics brand", "Reason: trademark filed in February, nothing in production"],
-      subject: "Subject: Your February filing, before you pick a factory",
+      meta: ["To: a cosmetics brand", "First line from: their shop and ingredient pages"],
+      subject: "Subject: Small batches for your [solid shampoo] range",
       body: [
-        "Saw [Brand] filed a [trademark] in February — the line is named but not made anywhere yet.",
-        "We run that category at small batch, so the first run does not have to be a container.",
-        "Formulation, packaging and the certification pack come from one contract, not three.",
-        "Worth costing your first batch?",
+        "[Brand] sells [solid shampoos] in five scents with the full ingredient list on every page, which the other small brands I looked at do not publish.",
+        "A range that wide usually wants a small run per scent, not one container.",
+        "We make that category in small batches, with formulation, packaging and the certification pack under one contract.",
+        "Worth costing your next batch?",
       ],
     },
     {
       label: "Named-account B2B services",
-      meta: ["To: operations director, distribution company", "Reason: opened a second warehouse in June"],
-      subject: "Subject: The second warehouse you opened in June",
+      meta: ["To: a distribution company", "First line from: their locations page"],
+      subject: "Subject: One view of stock across your [two warehouses]",
       body: [
-        "Saw [Company] opened a second [warehouse] in June — two sites usually means two sets of numbers that stop agreeing.",
-        "We put both on one view of stock and orders, without replacing the system you already run.",
-        "Two weeks to the first working dashboard, on your data, not on a demo set.",
+        "[Company] ships from [two warehouses] and promises next-day delivery from both, and I haven't seen that from the other distributors in your region.",
+        "Two sites with one promise means two sets of stock numbers that have to agree.",
+        "We put both on one view of stock and orders without replacing the system you already run, and the first working dashboard is on your data within two weeks.",
         "Worth a look before the season?",
       ],
     },
   ] as Variant[],
-  annotations: ["One fact they can verify", "One specific offer", "One question, no pitch", "No attachment, no deck"],
-  triggerTitle: "Where the reason comes from",
-  triggerCols: ["Event", "What the email is about", "Who gets it"],
+  annotations: ["What sets them apart, from their own site", "Why we write, in one sentence", "One specific offer", "One question, answered by email"],
+  triggerTitle: "What the first line is built from",
+  triggerCols: ["What", "What the line says", "Checked on"],
   triggers: [
-    { a: "Changed supplier", b: "An audit before the first large order", c: "Whoever owns quality" },
-    { a: "Moved sourcing abroad", b: "Sourcing in the new market", c: "Whoever owns procurement" },
-    { a: "Lost a batch to defects", b: "An acceptance protocol for that defect", c: "Whoever owns quality" },
-    { a: "First purchase ever", b: "Sourcing from zero, before competitors", c: "The founder" },
+    { a: "A product their neighbours don't have", b: "One line: what they have that others in their market don't", c: "their catalogue and 3–5 competitor sites" },
+    { a: "A gap on their own site", b: "What they do not offer or do not do themselves, which is what you sell", c: "their own site" },
+    { a: "How they sell", b: "Price per project, small batches, own production: the detail that shows who buys from them", c: "their own site" },
+    { a: "Something that just happened", b: "A new line, a new market, a trade show: makes the letter sharper, never required", c: "news, exhibitor lists, registries" },
   ],
   sourceTitle: "Where the companies come from",
   sources: [
     "Trade & shipping records",
     "Procurement & tender boards",
     "The company's own site",
-    "Trademark & brand filings",
-    "Recall & safety registries",
+    "Trade show exhibitor lists",
+    "Dealer & distributor pages",
     "Catalogs & storefronts",
   ],
-  sourceNote: "Every first line has to be traceable back to a source you could open yourself — most often the company's own site: what it sells, how it describes itself, where it is listed. An event makes the letter sharper, but a company is never written to on an event nobody can check. Registries refresh at different speeds, so a reason that appears on Monday is written to the same week. All of it is public record: nothing is bought from a list broker, and nothing comes from a scraped inbox.",
-  ctaNote: "Want the trigger list for your segment?",
+  sourceNote: "Every first line is traceable to a page you could open yourself, most often the company's own site: what it sells, how it describes itself, where it is listed. The line comparing it with its neighbours is checked against three to five competitor sites. An event, when there is one, makes the letter sharper, but a letter never depends on one. All of it is public: nothing is bought from a list broker, and nothing comes from a scraped inbox.",
+  ctaNote: "Want to see which companies I would start with in your segment?",
   cta: "Ask for it →",
 };
 
 const ru = {
   eyebrow: "Механика",
-  h2: "У каждого письма есть повод, привязанный к этой компании",
-  sub: "Ничего не уходит шаблоном. В компании что-то произошло, это есть в открытом источнике, и письмо про это. Прочитайте настоящее письмо по любому из этих рынков — или запросите то, что написано под ваш.",
+  h2: "Каждое письмо про дело этой компании",
+  sub: "Ничего не уходит шаблоном. Письмо начинается с того, что делает эта компания и чем она отличается от соседей, по её же сайту. Прочитайте письмо по любому из этих рынков или запросите то, что написано под ваш.",
   pick: "Пять примеров. Ваш работает так же",
   openLabel: "Ваша ниша",
   openTitle: "Вашего рынка в этом списке нет",
-  openBody: "Эти пять — примеры, а не граница. Механике нужно одно: чтобы то, что рождает спрос на вашем рынке, оставляло публичный след. В большинстве B2B оно оставляет — выигранный контракт, поданная заявка, прошедшая таможню поставка, полученная лицензия, набор людей на производство. Напишите, что вы продаёте, и я соберу пример письма под ваш рынок вместе с поводом, на котором оно построено, до любых обязательств.",
+  openBody: "Эти пять — примеры, а не граница. Механике нужно одно: чтобы ваших покупателей можно было найти и прочитать до письма. В большинстве B2B это так: каталог, страница дилеров, список экспонентов, их собственный сайт. Напишите, что вы продаёте, и я соберу пример письма под ваш рынок до любых обязательств.",
   openCta: "Собрать пример под мой рынок →",
   variants: [
     {
       label: "Металлопрокат и промснабжение",
-      meta: ["Кому: руководителю снабжения, машиностроительный завод", "Повод: выиграл госконтракт в мае, прокат ещё не законтрактован"],
-      subject: "Тема: Ваш майский контракт, пока прокат не законтрактован",
+      meta: ["Кому: машиностроительный завод", "Первая строка: их линейка на сайте"],
+      subject: "Тема: Прокат под ваши [крановые балки] на заказ",
       body: [
-        "Увидел, что [Завод] выиграл [тендер] в мае — отгрузка на вас к осени, а прокат ещё не законтрактован.",
-        "Эта марка есть у нас на складе, и цену можно зафиксировать на весь объём, а не на каждую партию.",
-        "Сертификаты качества идут с первой поставкой, чтобы приёмка не встала.",
-        "Посчитать под ваш объём?",
+        "[Завод] делает [крановые балки] под заказ рядом со стандартной линейкой, а у других машиностроителей, которых я смотрел, такого не видел.",
+        "Под такие заказы мы и держим склад: нужная марка есть в день, когда приходит ваш заказ.",
+        "Цену фиксируем на весь объём, а не на каждую партию, а сертификаты качества идут с первой поставкой.",
+        "Посчитать под ваш следующий заказ?",
       ],
     },
     {
       label: "Сорсинг и логистика",
-      meta: ["Кому: основателю, бренд товаров для дома", "Повод: с апреля новый поставщик, две поставки"],
-      subject: "Тема: Новый поставщик с апреля",
+      meta: ["Кому: бренд товаров для дома", "Первая строка: их каталог и страница «о нас»"],
+      subject: "Тема: Инспекция для вашей [керамики]",
       body: [
-        "Увидел, что [Компания] примерно в апреле перешла на нового [поставщика] — первые две поставки уже пришли.",
-        "Мы на земле там, где ваши фабрики. Инспекция идёт вживую: вы подключаетесь по видео и смотрите, как вскрывают коробки.",
-        "Дальше та же команда везёт партию от двери до двери, вместе с таможней. Одна цепочка, один счёт.",
+        "[Компания] делает [керамику] на двух фабриках и прямо пишет об этом на сайте, а у других брендов товаров для дома, которых я смотрел, такого не видел.",
+        "Две фабрики — это две партии коробок, которые нужно проверить до отгрузки.",
+        "Мы на месте там, где ваши фабрики: вы подключаетесь к инспекции по видео, и та же команда везёт партию от двери до двери, вместе с таможней.",
         "Посмотрим на следующем заказе?",
       ],
     },
     {
       label: "Оборудование и комплектующие",
-      meta: ["Кому: главному инженеру, пищевое производство", "Повод: в марте запущена новая линия"],
-      subject: "Тема: Запчасти к линии, которую вы запустили в марте",
+      meta: ["Кому: пищевое производство", "Первая строка: страницы их продукции"],
+      subject: "Тема: Изнашиваемые части для вашей [линии розлива]",
       body: [
-        "Увидел, что [Компания] в марте запустила новую [линию] — первый сервисный интервал приходится примерно на сейчас.",
-        "Изнашиваемые части к ней у нас на складе, чтобы простой не ждал три недели поставку от производителя.",
-        "Один список, один поставщик, и комплект под вас лежит у нас, а не заказывается каждый раз заново.",
+        "[Компания] разливает [соки] на своей линии, а не отдаёт на контрактный розлив, а у других производителей, которых я смотрел, такого не видел.",
+        "Своя линия встаёт, когда изнашиваемая деталь едет три недели.",
+        "Изнашиваемые части к ней у нас на складе, и комплект под вас лежит у нас, а не заказывается каждый раз заново.",
         "Прислать перечень под вашу конфигурацию?",
       ],
     },
     {
       label: "Контрактное производство",
-      meta: ["Кому: основателю, косметический бренд", "Повод: товарный знак подан в феврале, производства ещё нет"],
-      subject: "Тема: Ваша февральская заявка, пока фабрика не выбрана",
+      meta: ["Кому: косметический бренд", "Первая строка: их магазин и страницы составов"],
+      subject: "Тема: Малые партии для ваших [твёрдых шампуней]",
       body: [
-        "Увидел, что [Бренд] подал [товарный знак] в феврале — линейка названа, но нигде ещё не производится.",
-        "Мы делаем эту категорию малыми партиями, поэтому первый тираж не обязан быть контейнером.",
-        "Рецептура, упаковка и пакет сертификации идут одним договором, а не тремя.",
-        "Посчитать первую партию?",
+        "[Бренд] продаёт [твёрдые шампуни] в пяти ароматах и публикует полный состав на каждой странице, а у других небольших брендов, которых я смотрел, такого не видел.",
+        "Такой линейке обычно нужны малые партии под каждый аромат, а не контейнер.",
+        "Мы делаем эту категорию малыми партиями, а рецептура, упаковка и пакет сертификации идут одним договором.",
+        "Посчитать следующую партию?",
       ],
     },
     {
       label: "B2B-услуги под именованных клиентов",
-      meta: ["Кому: операционному директору, дистрибуция", "Повод: в июне открыт второй склад"],
-      subject: "Тема: Второй склад, который вы открыли в июне",
+      meta: ["Кому: дистрибьютор", "Первая строка: страница их складов"],
+      subject: "Тема: Единый учёт остатков на ваших [двух складах]",
       body: [
-        "Увидел, что [Компания] в июне открыла второй [склад] — две площадки обычно означают два набора цифр, которые перестают сходиться.",
-        "Мы сводим обе в один вид по остаткам и заказам, не заменяя систему, в которой вы уже работаете.",
-        "Две недели до первого рабочего дашборда, на ваших данных, а не на демо.",
+        "[Компания] отгружает с [двух складов] и обещает доставку на следующий день с обоих, а у других дистрибьюторов в вашем регионе я такого не видел.",
+        "Два склада с одним обещанием — это два набора остатков, которые должны сходиться.",
+        "Мы сводим оба в один вид по остаткам и заказам, не заменяя вашу систему, и первый рабочий дашборд на ваших данных готов через две недели.",
         "Посмотрим до сезона?",
       ],
     },
   ] as Variant[],
-  annotations: ["Один факт, который можно проверить", "Одно конкретное предложение", "Один вопрос, без презентации", "Ни вложений, ни питч-дека"],
-  triggerTitle: "Откуда берётся повод",
-  triggerCols: ["Событие", "О чём письмо", "Кому уходит"],
+  annotations: ["Чем они отличаются, по их же сайту", "Зачем пишем, одной фразой", "Одно конкретное предложение", "Один вопрос, ответ письмом"],
+  triggerTitle: "Из чего строится первая строка",
+  triggerCols: ["Что", "О чём строка", "Где проверяется"],
   triggers: [
-    { a: "Сменили поставщика", b: "Аудит перед первым крупным заказом", c: "Кто отвечает за качество" },
-    { a: "Перенесли закупки за рубеж", b: "Сорсинг на новом рынке", c: "Кто отвечает за закупки" },
-    { a: "Потеряли партию на браке", b: "Протокол приёмки под этот брак", c: "Кто отвечает за качество" },
-    { a: "Первая закупка вообще", b: "Сорсинг с нуля, раньше конкурентов", c: "Основатель" },
+    { a: "Товар, которого нет у соседей", b: "Одна фраза: что есть у них и нет у других на их рынке", c: "их каталог и 3–5 сайтов конкурентов" },
+    { a: "Пробел на их же сайте", b: "Чего они не предлагают или не делают сами, а вы продаёте именно это", c: "их собственный сайт" },
+    { a: "Как они продают", b: "Цена под проект, малые партии, своё производство: деталь, по которой видно, кто у них покупает", c: "их собственный сайт" },
+    { a: "Что у них только что произошло", b: "Новая линия, новый рынок, выставка: делает письмо острее, но не обязательно", c: "новости, списки экспонентов, реестры" },
   ],
   sourceTitle: "Откуда берутся компании",
   sources: [
     "Торговые и отгрузочные записи",
     "Закупочные и тендерные площадки",
     "Сайт самой компании",
-    "Заявки на товарные знаки",
-    "Реестры отзывов и безопасности",
+    "Списки экспонентов выставок",
+    "Страницы дилеров и дистрибьюторов",
     "Каталоги и витрины",
   ],
-  sourceNote: "Каждая первая строка должна прослеживаться до источника, который вы можете открыть сами — чаще всего это сайт самой компании: что она продаёт, как себя описывает, где числится. Событие делает письмо острее, но на непроверяемом событии компании не пишут. Реестры обновляются с разной скоростью, поэтому повод, появившийся в понедельник, отрабатывается на той же неделе. Всё это открытые данные: ничего не покупается у продавцов баз и не собирается из чужих почтовых ящиков.",
-  ctaNote: "Нужен список триггеров под ваш сегмент?",
+  sourceNote: "Каждая первая строка прослеживается до страницы, которую вы можете открыть сами, чаще всего до сайта самой компании: что она продаёт, как себя описывает, где числится. Строка сравнения с соседями проверяется по трём–пяти сайтам конкурентов. Событие, если оно есть, делает письмо острее, но письмо от него не зависит. Всё это открытые данные: ничего не покупается у продавцов баз и не собирается из чужих почтовых ящиков.",
+  ctaNote: "Показать, с каких компаний я бы начал в вашем сегменте?",
   cta: "Запросить →",
 };
 
@@ -430,7 +432,7 @@ export default function OutboundHow() {
         </>
       )}
 
-      {/* Triggers — four, not six; the event and the addressee are the point. */}
+      {/* What the first line is built from — four rows; the event is the last and optional one. */}
       <h3 style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", margin: "38px 0 14px" }}>
         {t.triggerTitle}
       </h3>
