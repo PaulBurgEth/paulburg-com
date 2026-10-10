@@ -22,8 +22,8 @@ type Bar = { n: string; l: string; pct: number; ours: boolean };
 
 const en = {
   eyebrow: "In practice",
-  h2: "From a cold letter to a company asking for a price",
-  sub: "The letter does not sell anything. Its whole job is to earn a reply from the person who decides, and it earns it by being about that company's business.",
+  h2: "Two and a half to five times above the market",
+  sub: "One measure, set against the market average: the share of companies written to that took the next commercial step, a price or terms. Below it, two letters that show how it is done.",
   lettersTitle: "Two letters, exactly as they were sent",
   lettersNote: "First letters from my own campaign, company name hidden. Letters for you are built the same way, in your name, from your domain.",
   letters: [
@@ -72,8 +72,8 @@ const en = {
 
 const ru = {
   eyebrow: "В работе",
-  h2: "От холодного письма до компании, которая просит цену",
-  sub: "Письмо ничего не продаёт. Его единственная задача — получить ответ от того, кто решает, и оно его получает тем, что написано про дело этой компании.",
+  h2: "В 2,5–5 раз выше рынка",
+  sub: "Одна мера рядом со средним по рынку: доля компаний, получивших письмо и сделавших следующий коммерческий шаг, — цена или условия. Ниже два письма, которые показывают, как это сделано.",
   lettersTitle: "Два письма из моей кампании",
   lettersNote: "Первые письма моей собственной кампании, название компании скрыто. Письма для вас устроены так же, от вашего имени и с вашего домена.",
   letters: [
