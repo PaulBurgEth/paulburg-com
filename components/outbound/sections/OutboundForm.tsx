@@ -30,7 +30,7 @@ const en = {
   },
   optional: "optional",
   sdrFormatOptions: [
-    { v: "leads", l: "Leads — qualified prospects" },
+    { v: "leads", l: "Leads — a client who confirmed a need, not a contact" },
     { v: "deal", l: "Leads + deal — up to agreed terms" },
     { v: "not-sure", l: "Not sure yet" },
   ],
@@ -74,7 +74,7 @@ const en = {
   next: [
     "I read it and answer in writing.",
     "If it does not fit, I say so in that first reply, and tell you what would.",
-    "If it does, you get the ten questions and a four-week plan with segments and volumes.",
+    "If it does, you get where I would start, the first companies, and the terms.",
   ],
   nextNote: "The person who answers is the one who will write to your buyers.",
 };
@@ -103,7 +103,7 @@ const ru = {
   },
   optional: "необязательно",
   sdrFormatOptions: [
-    { v: "leads", l: "Лиды — квалифицированные клиенты" },
+    { v: "leads", l: "Лиды — клиент, подтвердивший потребность, а не контакт" },
     { v: "deal", l: "Лиды и сделка — до согласованных условий" },
     { v: "not-sure", l: "Пока не знаю" },
   ],
@@ -147,7 +147,7 @@ const ru = {
   next: [
     "Читаю и отвечаю письмом.",
     "Если не подходит — скажу это в первом же ответе и скажу, что подошло бы.",
-    "Если подходит — присылаю десять вопросов и план на четыре недели с сегментами и объёмами.",
+    "Если подходит, присылаю, с чего начну, первые компании и условия.",
   ],
   nextNote: "Отвечает тот же человек, который будет писать вашим покупателям.",
 };
