@@ -6,7 +6,7 @@ const SERVICES_DESCRIPTION =
   "AI systems built from scratch: bots, CRM and BI, dashboards, matching engines, websites, scoped per project. Plus a cold outbound channel that brings clients.";
 
 export const metadata: Metadata = pageMetadata({
-  title: "AI Systems & Client Pipelines — Paul Burg",
+  title: "AI Systems & Digital Outbound — Paul Burg",
   description: SERVICES_DESCRIPTION,
   path: "/services",
 });

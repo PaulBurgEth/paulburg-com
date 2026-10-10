@@ -2,15 +2,13 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
-import CountUp from "@/components/CountUp";
 import { DISPLAY_AXES } from "@/lib/type";
 
 const en = {
   metrics: [
-    // One wording for one number. ServicesOutbound described the same six
-    // weeks as "quotes agreed with buyers"; two different promises behind the
-    // same figure on the same page.
-    { value: "6 weeks", label: "from a cold list to quotes agreed with buyers" },
+    // Percentage against the market, not a time-to-result promise (SDR B2B
+    // decisions 462 and 184); same claim as the /outbound Proof headline.
+    { value: "2.5–5×", label: "more companies reach a price than the market gets positive replies" },
     { value: "3–14 days", label: "from call to production" },
     { value: "EN · VI · RU · DE · HE", label: "languages the systems already run in" },
   ],
@@ -18,7 +16,7 @@ const en = {
 
 const ru = {
   metrics: [
-    { value: "6 недель", label: "от холодного списка до согласованных расчётов" },
+    { value: "в 2,5–5 раз", label: "больше компаний доходят до цены, чем рынок получает положительных ответов" },
     { value: "3–14 дней", label: "от звонка до продакшена" },
     { value: "EN · VI · RU · DE · HE", label: "языки, на которых системы уже работают" },
   ],
@@ -65,7 +63,7 @@ export default function ServicesProof() {
                   textAlign: "center",
                 }}
               >
-                {i === 0 ? <CountUp target={6} suffix={language === "ru" ? " недель" : " weeks"} /> : item.value}
+                {item.value}
               </span>
               <span
                 style={{

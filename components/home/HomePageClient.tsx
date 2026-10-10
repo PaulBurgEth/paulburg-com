@@ -898,7 +898,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
           <SectionNumber n="02" />
           <div className="eyebrow">{language === "ru" ? "Второе — клиенты" : "Second — the clients"}</div>
           <h2 className="sec-title">{language === "ru" ? "Не система, а поток клиентов" : "Not a system — a stream of clients"}</h2>
-          <p className="sec-sub">{language === "ru" ? "Холодный канал под ключ: нахожу компании, выхожу на ЛПР и пишу от вашего имени" : "A cold channel, end to end: I find the companies, reach the decision-maker, and write in your name"}</p>
+          <p className="sec-sub">{language === "ru" ? "Холодный канал под ключ: отбираю компании, пишу каждой от вашего имени и веду ответы" : "A cold channel, end to end: I pick the companies, write to each in your name, and handle the replies"}</p>
 
           <div style={{ background: C.card, border: `1px solid ${C.border}`, borderLeft: `2px solid ${C.gold}`, borderRadius: 10, padding: 24 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
@@ -919,12 +919,12 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 ? [
                     { k: "Рекомендации", v: "Приходят когда приходят. Два хороших месяца, потом тихий, и ни то ни другое не вы сделали." },
                     { k: "Входящие", v: "Доходят до тех, кто уже ищет. К этому моменту у них открыто четыре предложения, и вы одно из них." },
-                    { k: "Этот канал", v: "Компании, у которых только что появился повод покупать. Выход на нужного человека, письмо на его языке, пока повод свежий.", on: true },
+                    { k: "Этот канал", v: "Компании, которым нужно то, что вы продаёте. Каждая прочитана до письма, письмо на её языке, от имени вашей компании.", on: true },
                   ]
                 : [
                     { k: "Referrals", v: "They come when they come. Two good months, then a quiet one, and neither was something you did." },
                     { k: "Inbound", v: "Reaches whoever is already searching. By then they have four quotes open and you are one of them." },
-                    { k: "This channel", v: "Companies that just had a reason to buy, the right person reached by name, written to in their own language while the reason is fresh.", on: true },
+                    { k: "This channel", v: "Companies that need what you sell, each read before it is written to, in its own language, in your company's name.", on: true },
                   ]
               ).map((col) => (
                 <div key={col.k} className={col.on ? "src-col src-col-on" : "src-col"}>

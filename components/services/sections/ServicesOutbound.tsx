@@ -10,15 +10,15 @@ const en = {
   sectionLabel: "Line two — clients",
   h2: "Not a system — a stream of clients",
   subtitle:
-    "Everything above builds the machine. This fills it: I find the companies, reach the decision-maker, and write in your name until a client is ready to talk terms.",
+    "Everything above builds the machine. This fills it: I pick the companies, write to each in your name, and handle the replies until a client is ready to talk terms.",
   points: [
-    "Companies found in open registries, each with a reason to be written to",
-    "Emails in the recipient's own language — Russian, English, Spanish",
+    "Companies picked one by one, each read before it is written to",
+    "In the recipient's own language — Russian, English, Spanish: email first, LinkedIn where it fits",
     "Cold digital outbound. Your domains, your data, from day one",
-    "Three pipelines run in parallel — a client's and my own",
+    "A report every week: who was written to, who replied, what they said",
   ],
-  metric: "6 weeks",
-  metricLabel: "from a cold list to quotes agreed with buyers, with your own funnel numbers at the end",
+  metric: "4 weeks",
+  metricLabel: "a fixed-price pilot, paid week by week, with your own numbers at the end",
   cta: "How the channel works →",
 };
 
@@ -26,15 +26,15 @@ const ru = {
   sectionLabel: "Линия вторая — клиенты",
   h2: "Не система, а поток клиентов",
   subtitle:
-    "Всё выше собирает машину. Это её наполняет: нахожу компании, выхожу на ЛПР и пишу от вашего имени, пока клиент не будет готов обсуждать условия.",
+    "Всё выше собирает машину. Это её наполняет: отбираю компании, пишу каждой от вашего имени и веду ответы, пока клиент не будет готов обсуждать условия.",
   points: [
-    "Компании из открытых реестров, у каждой — повод для письма",
-    "Письма на языке получателя: русский, английский, испанский",
+    "Компании отобраны поимённо, каждая прочитана до письма",
+    "На языке получателя — русский, английский, испанский: письмом, а где уместно, в LinkedIn",
     "Холодный цифровой аутбаунд. Ваши домены и данные с первого дня",
-    "Три пайплайна идут параллельно — клиентский и мои собственные",
+    "Отчёт каждую неделю: кому написано, кто ответил, что сказал",
   ],
-  metric: "6 недель",
-  metricLabel: "от холодного списка до расчётов, согласованных с покупателями, и ваши собственные цифры воронки на выходе",
+  metric: "4 недели",
+  metricLabel: "пилот по фиксированной цене, оплата понедельно, и ваши собственные цифры на выходе",
   cta: "Как устроен канал →",
 };
 
