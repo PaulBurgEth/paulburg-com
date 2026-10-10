@@ -70,13 +70,13 @@ const en = {
         "Nothing. The person left",
         "Nothing. The list was theirs",
         "Nothing. Traffic ends with the budget",
-        "The list of companies, the stop-list, the letters, the funnel stage by stage",
+        "The list of companies, the stop-list, the letters and messages, the accounts, the funnel stage by stage",
       ],
     },
   ],
-  shortTitle: "Why the timing matters more than the pitch",
+  shortTitle: "Why being first matters",
   shortBody:
-    "By the time a company starts searching for a vendor, the shortlist is already written — mostly from names the buyer knew before the search began, and research on B2B buying keeps finding that the vendor who made contact first wins most of the time. Advertising cannot get you onto that list; it only appears after the search starts. This can, because it starts from the event that causes the search.",
+    "By the time a company starts searching for a vendor, the shortlist is already written — mostly from names the buyer knew before the search began, and research on B2B buying keeps finding that the vendor who made contact first wins most of the time. Advertising cannot get you onto that list; it only appears after the search starts. This can, because the letter reaches the company before it starts searching, and it is about that company's business.",
   source: "6sense, 2025 B2B Buyer Experience Report",
 };
 
@@ -137,13 +137,13 @@ const ru = {
         "Ничего. Человек ушёл",
         "Ничего. База была их",
         "Ничего. Трафик кончается вместе с бюджетом",
-        "Список компаний, стоп-лист, тексты писем, воронка по этапам",
+        "Список компаний, стоп-лист, тексты писем и сообщений, аккаунты, воронка по этапам",
       ],
     },
   ],
-  shortTitle: "Почему момент важнее формулировок",
+  shortTitle: "Почему важно быть первым",
   shortBody:
-    "К тому моменту, когда компания начинает искать поставщика, шорт-лист уже составлен — в основном из имён, которые покупатель знал до начала поиска, и исследования B2B-закупок раз за разом показывают, что чаще всего выигрывает тот, кто вышел на связь первым. Реклама в этот список не заводит: она появляется уже после начала поиска. Этот канал заводит, потому что стартует от события, которое поиск и вызовет.",
+    "К тому моменту, когда компания начинает искать поставщика, шорт-лист уже составлен — в основном из имён, которые покупатель знал до начала поиска, и исследования B2B-закупок раз за разом показывают, что чаще всего выигрывает тот, кто вышел на связь первым. Реклама в этот список не заводит: она появляется уже после начала поиска. Этот канал заводит: письмо приходит до начала поиска, и оно про дело этой компании.",
   source: "6sense, 2025 B2B Buyer Experience Report",
 };
 
