@@ -11,7 +11,7 @@ const en = {
   steps: [
     { k: "01", t: "Research", d: "each company read before the letter" },
     { k: "02", t: "Filter", d: "why this company needs you" },
-    { k: "03", t: "The email", d: "one company, its language" },
+    { k: "03", t: "The message", d: "email first, LinkedIn where it fits" },
     { k: "04", t: "Reply", d: "answered by me" },
     { k: "05", t: "Handover", d: "a client ready to talk terms" },
   ],
@@ -22,7 +22,7 @@ const ru = {
   steps: [
     { k: "01", t: "Ресёрч", d: "каждая компания прочитана до письма" },
     { k: "02", t: "Отбор", d: "зачем этой компании вы" },
-    { k: "03", t: "Письмо", d: "одна компания, её язык" },
+    { k: "03", t: "Обращение", d: "почта, где уместно LinkedIn" },
     { k: "04", t: "Ответ", d: "отвечаю сам" },
     { k: "05", t: "Передача", d: "клиент, готовый обсуждать условия" },
   ],
