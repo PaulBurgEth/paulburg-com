@@ -20,7 +20,7 @@ const en = {
   cols: ["An SDR in-house", "A lead-gen agency", "Ads", "This channel"],
   rows: [
     {
-      k: "Who gets a letter",
+      k: "Who gets a message",
       v: [
         "Whoever they get through this week",
         "A list from a data vendor, everyone in the sector",
@@ -29,7 +29,7 @@ const en = {
       ],
     },
     {
-      k: "What the letter says",
+      k: "What the message says",
       v: [
         "Their script, adjusted as they learn",
         "One template, a name merged in",
@@ -87,7 +87,7 @@ const ru = {
   cols: ["Свой SDR", "Агентство лидгена", "Реклама", "Этот канал"],
   rows: [
     {
-      k: "Кому уходит письмо",
+      k: "Кому уходит обращение",
       v: [
         "Тем, кого успел набрать за неделю",
         "Выгрузке из базы, всем в отрасли подряд",
@@ -96,7 +96,7 @@ const ru = {
       ],
     },
     {
-      k: "Что в письме",
+      k: "Что в обращении",
       v: [
         "Его скрипт, который он правит по ходу",
         "Один шаблон, подставлено название",

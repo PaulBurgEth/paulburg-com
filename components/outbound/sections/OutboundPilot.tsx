@@ -30,13 +30,13 @@ const en = {
   hold: [
     "Your list of companies, each one read before the letter",
     "The letters you approved, and the stop-list built underneath them",
-    "Your funnel stage by stage: companies, letters, replies, handovers",
+    "Your funnel stage by stage: companies, letters and messages, replies, handovers",
     "Your own numbers for every step, and a go or no-go you can defend",
   ],
   rhythmTitle: "What you see, and when",
   rhythm: [
     { w: "Week one", t: "Letters start going out", d: "Not a month of preparation with nothing to show for it. The first letters leave inside the first week, from your own domain." },
-    { w: "Every week", t: "A report", d: "Companies found, letters sent, who replied, who was handed over, and what I am changing because of it. Part of the service, not something you have to ask for." },
+    { w: "Every week", t: "A report", d: "Companies found, letters and messages sent, who replied, who was handed over, and what I am changing because of it. Part of the service, not something you have to ask for." },
     { w: "Week four", t: "The whole funnel", d: "Your conversion at every step, the cost of a new client from this channel, and which segments returned what." },
   ],
   deliverTitle: "And if it does not work?",
@@ -59,13 +59,13 @@ const ru = {
   hold: [
     "Ваш список компаний, каждая прочитана до письма",
     "Согласованные вами тексты и собранный под ними стоп-лист",
-    "Воронка по этапам: компании, письма, ответы, передачи",
+    "Воронка по этапам: компании, письма и сообщения, ответы, передачи",
     "Ваши собственные цифры по каждому шагу и решение, которое можно обосновать",
   ],
   rhythmTitle: "Что вы видите и когда",
   rhythm: [
     { w: "Первая неделя", t: "Письма начинают уходить", d: "Не месяц подготовки, за который нечего показать. Первые письма уходят внутри первой недели, с вашего домена." },
-    { w: "Каждую неделю", t: "Отчёт", d: "Сколько компаний найдено, сколько писем ушло, кто ответил, кого передал и что я меняю по итогам. Входит в услугу, а не выпрашивается." },
+    { w: "Каждую неделю", t: "Отчёт", d: "Сколько компаний найдено, сколько писем и сообщений ушло, кто ответил, кого передал и что я меняю по итогам. Входит в услугу, а не выпрашивается." },
     { w: "Четвёртая неделя", t: "Вся воронка", d: "Ваша конверсия на каждом шаге, стоимость нового клиента из этого канала и что принёс каждый сегмент." },
   ],
   deliverTitle: "А если не сработает?",

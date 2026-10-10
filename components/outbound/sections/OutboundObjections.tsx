@@ -34,7 +34,7 @@ const en = {
   qa: [
     {
       q: "Cold email does not work any more. Everyone gets two hundred of these.",
-      a: "Everyone gets two hundred templates. What is described on this page is one email per company, built on what that company sells and how it differs from its neighbours, sent from your domain under your signature. Nobody replies to a campaign. People do reply to someone who clearly looked.",
+      a: "Everyone gets two hundred templates. What is described on this page is one email per company, built on what that company sells and how it differs from its neighbours, sent from your domain under your signature. Nobody replies to a campaign. People do reply to someone who clearly looked. And email is not the only way in: where it fits, I write to the same companies on LinkedIn and other channels.",
     },
     {
       q: "We tried an agency once. It burned a quarter and delivered nothing.",
@@ -79,7 +79,7 @@ const ru = {
   qa: [
     {
       q: "Холодные письма больше не работают. Всем приходит по двести таких.",
-      a: "Приходит по двести шаблонов. На этой странице описано другое: одно письмо на одну компанию, про то, что она продаёт и чем непохожа на соседей, с вашего домена и за вашей подписью. На рассылку не отвечают. Отвечают тому, кто явно посмотрел.",
+      a: "Приходит по двести шаблонов. На этой странице описано другое: одно письмо на одну компанию, про то, что она продаёт и чем непохожа на соседей, с вашего домена и за вашей подписью. На рассылку не отвечают. Отвечают тому, кто явно посмотрел. И почта не единственный путь: где это уместно, пишу тем же компаниям в LinkedIn и других каналах.",
     },
     {
       q: "Мы уже пробовали агентство. Ушёл квартал, результата нет.",

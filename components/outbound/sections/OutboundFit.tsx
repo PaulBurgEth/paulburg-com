@@ -17,7 +17,7 @@ import { SectionShell, SectionHead, SERIF, DISPLAY_AXES, SANS, MONO, T, itemVari
 const en = {
   eyebrow: "Fit",
   h2: "Who this works for, and who it does not",
-  sub: "It is a narrow channel on purpose. Below is the honest version of both lists — if the right column describes you, say so and I will tell you straight.",
+  sub: "The selection is narrow on purpose. Below is the honest version of both lists — if the right column describes you, say so and I will tell you straight.",
   yesTitle: "This works when",
   yes: [
     "You sell to businesses",
@@ -31,7 +31,7 @@ const en = {
     "You sell to consumers, or the decision is made by a person rather than a company",
     "The average deal is small enough that a month of correspondence costs more than it returns",
     "You need signed business this week. Letters go out in week one, but a considered purchase does not turn around that fast",
-    "You want everyone who clicked. This channel is narrow by design and stays narrow",
+    "You want everyone who clicked. The selection is narrow by design and stays narrow",
     "Buying this needs vendor onboarding, a security questionnaire or a tender. You would be buying work from one contractor, and that process is not built for it",
     "A decision-maker's answer takes weeks to approve on your side. The company moves on before you reply",
   ],
@@ -41,7 +41,7 @@ const en = {
 const ru = {
   eyebrow: "Кому подходит",
   h2: "Кому это работает, а кому нет",
-  sub: "Канал узкий намеренно. Ниже честная версия обоих списков — если про вас правая колонка, напишите, и я скажу прямо.",
+  sub: "Отбор узкий намеренно. Ниже честная версия обоих списков — если про вас правая колонка, напишите, и я скажу прямо.",
   yesTitle: "Это работает, если",
   yes: [
     "Вы продаёте бизнесу",
@@ -55,7 +55,7 @@ const ru = {
     "Вы продаёте физлицам или решение принимает человек, а не компания",
     "Средний чек такой, что месяц переписки стоит дороже, чем приносит",
     "Подписанные сделки нужны на этой неделе. Письма уходят с первой, но обдуманная покупка так быстро не разворачивается",
-    "Нужны все, кто кликнул. Этот канал узкий по устройству и таким остаётся",
+    "Нужны все, кто кликнул. Отбор узкий по устройству и таким остаётся",
     "Покупка проходит через вендорский онбординг, опросник по безопасности или тендер. Вы покупали бы работу у одного подрядчика, а эта процедура сделана не под это",
     "Ответ ЛПР согласуется у вас неделями. Компания уйдёт раньше, чем вы ответите",
   ],

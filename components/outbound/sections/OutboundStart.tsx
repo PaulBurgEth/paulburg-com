@@ -16,7 +16,7 @@ const en = {
   ],
   whoTitle: "Who you would be working with",
   whoRole: "Cold outbound for B2B · RU, EN, ES",
-  about: "I find clients for B2B companies by writing to them, in Russian, English and Spanish. Every company is read by me before it gets a letter, and every reply is answered by me. My own projects since 2011, three years in Shenzhen inspecting factories for sellers shipping to Amazon, then managing a portfolio of those sellers, so I know physical goods from the factory end.",
+  about: "I find clients for B2B companies by writing to them, by email and on LinkedIn, in Russian, English and Spanish. Every company is read by me before it gets a letter, and every reply is answered by me. My own projects since 2011, three years in Shenzhen inspecting factories for sellers shipping to Amazon, then managing a portfolio of those sellers, so I know physical goods from the factory end.",
 };
 
 const ru = {
@@ -30,7 +30,7 @@ const ru = {
   ],
   whoTitle: "С кем вы будете работать",
   whoRole: "Холодный аутбаунд для B2B · RU, EN, ES",
-  about: "Нахожу клиентов для B2B-компаний письмами, на русском, английском и испанском, как внешний торговый представитель. Каждую компанию читаю сам до письма и каждому ответившему отвечаю сам. Свои проекты с 2011 года, три года в Шэньчжэне на инспекциях фабрик для продавцов на Amazon, потом вёл портфель этих продавцов, поэтому товар знаю со стороны фабрики.",
+  about: "Нахожу клиентов для B2B-компаний письмами и в LinkedIn, на русском, английском и испанском, как внешний торговый представитель. Каждую компанию читаю сам до письма и каждому ответившему отвечаю сам. Свои проекты с 2011 года, три года в Шэньчжэне на инспекциях фабрик для продавцов на Amazon, потом вёл портфель этих продавцов, поэтому товар знаю со стороны фабрики.",
 };
 
 export default function OutboundStart() {

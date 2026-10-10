@@ -12,11 +12,11 @@ const en = {
   badge: "Cold digital outbound · B2B",
   h1a: "New clients, found by name — ",
   h1gold: "before they start looking",
-  lede: "Right now your pipeline is referrals plus whoever happens to find you. This is the third source: companies that just had a reason to buy what you sell, reached by name, in their own language, in an email that comes from your domain and carries your signature.",
+  lede: "Right now your pipeline is referrals plus whoever happens to find you. This is the third source: companies that just had a reason to buy what you sell, reached by name, in their own language: by email from your own domain and, where it fits, on LinkedIn and other channels, always in your company's name.",
   ctaPrimary: "Tell me about your market",
   ctaTelegram: "Text me on Telegram",
   ctaWhatsApp: "Text me on WhatsApp",
-  strip: ["RU · EN · ES", "A reason behind every email", "Your domain, your data"],
+  strip: ["RU · EN · ES", "A reason behind every message", "Your domain, your data"],
 };
 
 const ru = {
@@ -25,11 +25,11 @@ const ru = {
   // buttons drop below the fold, so this one is cut to the same line count.
   h1a: "Клиенты, найденные поимённо — ",
   h1gold: "до того, как начнут искать",
-  lede: "Сейчас ваш поток — рекомендации плюс те, кто сам вас нашёл. Третий источник: компании, у которых только что появился повод покупать то, что вы продаёте. Поимённо, на их языке, письмом с вашего домена и за вашей подписью.",
+  lede: "Сейчас ваш поток — рекомендации плюс те, кто сам вас нашёл. Третий источник: компании, у которых только что появился повод покупать то, что вы продаёте. Поимённо, на их языке: письмом с вашего домена, а где это уместно, в LinkedIn и других каналах, всегда от имени вашей компании.",
   ctaPrimary: "Расскажите о вашем рынке",
   ctaTelegram: "Написать в Telegram",
   ctaWhatsApp: "Написать в WhatsApp",
-  strip: ["RU · EN · ES", "У каждого письма свой повод", "Ваш домен, ваши данные"],
+  strip: ["RU · EN · ES", "У каждого обращения свой повод", "Ваш домен, ваши данные"],
 };
 
 const btnBase: React.CSSProperties = {
