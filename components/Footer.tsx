@@ -23,7 +23,7 @@ export default function Footer() {
     const t = {
         tagline: language === "ru"
             ? "Строю системы для бизнеса и привожу клиентов, которые их наполняют. Из Дананга."
-            : "Building the systems that run your business — and the pipeline that fills them. From Da Nang.",
+            : "Building the systems that run your business — and bringing the clients that fill them. From Da Nang.",
         copyright: language === "ru"
             ? `© ${currentYear} Павел Бург. Все права защищены.`
             : `© ${currentYear} Paul Burg. All rights reserved.`,
