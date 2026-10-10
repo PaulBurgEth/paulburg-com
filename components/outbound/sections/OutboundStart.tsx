@@ -10,8 +10,8 @@ const en = {
   h2: "Three moves to the first email",
   sub: "You can start in writing today.",
   steps: [
-    { n: "01", t: "Ten questions", d: "Which services are the priority, who your best client is, which markets are closed. You answer in writing." },
-    { n: "02", t: "A four-week plan", d: "Concrete segments with volume estimates, launch order and correspondence language." },
+    { n: "01", t: "Where I would start", d: "Two or three directions from your site and the first companies I would write to, with the terms." },
+    { n: "02", t: "Setup", d: "Your mailbox, who not to write to, and a few questions about your best client." },
     { n: "03", t: "We start", d: "The first letters go out inside week one — not after a month of preparation. Your own numbers arrive in the report every week." },
   ],
   whoTitle: "Who you would be working with",
@@ -24,8 +24,8 @@ const ru = {
   h2: "Три шага до первого письма",
   sub: "Начать можно письмом, сегодня.",
   steps: [
-    { n: "01", t: "Десять вопросов", d: "Какие услуги приоритетны, кто ваш лучший клиент, какие рынки закрыты. Отвечаете письменно." },
-    { n: "02", t: "План на четыре недели", d: "Конкретные сегменты с оценкой объёма, порядок запуска и язык переписки." },
+    { n: "01", t: "С чего начну", d: "Два-три направления по вашему сайту и первые компании, которым напишу, вместе с условиями." },
+    { n: "02", t: "Настройка", d: "Ваша почта, кому не писать и несколько вопросов о вашем лучшем клиенте." },
     { n: "03", t: "Стартуем", d: "Первые письма уходят внутри первой недели, а не после месяца подготовки. Ваши собственные цифры — в отчёте каждую неделю." },
   ],
   whoTitle: "С кем вы будете работать",

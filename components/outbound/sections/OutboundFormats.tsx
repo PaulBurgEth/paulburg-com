@@ -9,7 +9,7 @@ const en = {
   h2: "Two formats. Pick by who is going to work the replies.",
   sub: "The work is the same up to the handover. The only question is whether you have someone free to take the conversation from there.",
   formats: [
-    { range: "01 — 06", situation: "You have someone to work the replies", name: "Leads", body: "Selection, contact finding, emails and, where it fits, LinkedIn, correspondence, qualification. You get a client who confirmed a need and is ready to talk terms. Your manager picks up a conversation that is already running." },
+    { range: "01 — 06", situation: "You have someone to work the replies", name: "Leads", body: "Selection, contact finding, emails and, where it fits, LinkedIn, correspondence, qualification. Not a list of contacts: you get a client who confirmed a need and is ready to talk terms. Your manager picks up a conversation that is already running." },
     { range: "01 — 09", situation: "You do not, and one more inbound only gets in the way", name: "Leads + deal", body: "All of the above plus the deal: pinning the specification, requesting terms from your suppliers, assembling the quote, and running the correspondence to an agreed price and lead time. Your account manager receives a finished order." },
   ],
   stagesTitle: "Nine stages, every company goes through them in order",
@@ -23,7 +23,7 @@ const ru = {
   h2: "Два формата. Выбирают по тому, кто будет разбирать ответы.",
   sub: "До передачи работа одинаковая. Вопрос только в том, есть ли у вас свободный человек, чтобы вести разговор дальше.",
   formats: [
-    { range: "01 — 06", situation: "Есть кому разбирать ответы", name: "Лиды", body: "Отбор, поиск контактов, письма и, где уместно, LinkedIn, переписка, квалификация. Вы получаете клиента, который подтвердил потребность и готов обсуждать условия. Ваш менеджер продолжает разговор, который уже идёт." },
+    { range: "01 — 06", situation: "Есть кому разбирать ответы", name: "Лиды", body: "Отбор, поиск контактов, письма и, где уместно, LinkedIn, переписка, квалификация. Не база контактов: вы получаете клиента, который подтвердил потребность и готов обсуждать условия. Ваш менеджер продолжает разговор, который уже идёт." },
     { range: "01 — 09", situation: "Некому, и лишний входящий только мешает", name: "Лиды и сделка", body: "Всё то же плюс работа по сделке: уточнение спецификации, запрос условий у ваших поставщиков, сбор расчёта и переписка до согласованных цены и сроков. Аккаунт-менеджер получает готовый заказ." },
   ],
   stagesTitle: "Девять этапов, каждая компания проходит их по порядку",
