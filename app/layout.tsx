@@ -58,7 +58,6 @@ export const metadata: Metadata = {
     "SDR as a service",
     "sales pipeline",
     "cold email",
-    "outbound agency",
   ],
   icons: {
     icon: "/favicon.png",
