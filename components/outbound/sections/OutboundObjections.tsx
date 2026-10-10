@@ -38,7 +38,7 @@ const en = {
     },
     {
       q: "We tried an agency once. It burned a quarter and delivered nothing.",
-      a: "Usually because the list came from a data vendor, it was shared across their whole client roster, and the copy was a template with your name dropped into it. Here each company is read before it gets a letter, the list is built for you alone, and you approve every line before the first send. If we part ways, the list, the stop-list and the letters stay with you.",
+      a: "Usually because the list came from a data vendor, it was shared across their whole client roster, and the copy was a template with your name dropped into it. Here each company is read before it gets a letter, and the list is built for you alone. If we part ways, the list, the stop-list and the letters stay with you.",
     },
     {
       q: "Our product is too complex to sell over email.",
@@ -83,7 +83,7 @@ const ru = {
     },
     {
       q: "Мы уже пробовали агентство. Ушёл квартал, результата нет.",
-      a: "Обычно потому, что база была выгрузкой от поставщика данных, общей на всех их клиентов, а текст — шаблон с подставленным названием. Здесь каждая компания прочитана до письма, список собирается только под вас, и каждую строку вы согласуете до первой отправки. Если расходимся, список, стоп-лист и тексты остаются у вас.",
+      a: "Обычно потому, что база была выгрузкой от поставщика данных, общей на всех их клиентов, а текст — шаблон с подставленным названием. Здесь каждая компания прочитана до письма, а список собирается только под вас. Если расходимся, список, стоп-лист и тексты остаются у вас.",
     },
     {
       q: "Наш продукт слишком сложный, чтобы продавать его письмом.",
