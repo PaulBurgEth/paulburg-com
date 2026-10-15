@@ -205,6 +205,7 @@ body::after{
 }
 @media (min-width:700px){
   .src-band{grid-template-columns:repeat(3,1fr)}
+  .src-band-2{grid-template-columns:repeat(2,1fr)}
   .src-col + .src-col{border-left:1px solid ${C.border}}
 }
 .src-col{padding:16px 18px 16px 0}
@@ -702,8 +703,8 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
           <div className="pb-stage" data-visible={stage >= 4 ? "1" : "0"}>
             <p className="hero-desc">
               {language === "ru"
-                ? "Две отдельные услуги для B2B. Первая: нахожу вам клиентов. Каждую компанию читаю до письма, пишу от вашего имени с вашего домена и каждому ответившему отвечаю сам. Вторая: строю системы, на которых держится бизнес: CRM, дашборды, сайты. "
-                : "Two separate services for B2B. First, I find you clients: each company is read before it gets a letter, the letter goes out in your name from your domain, and every reply is answered by me. Second, I build the systems a business runs on: CRMs, dashboards, websites. "}
+                ? "Три услуги для B2B. Нахожу вам клиентов: каждую компанию читаю до письма, пишу от вашего имени с вашего домена и каждому ответившему отвечаю сам. Делаю так, чтобы вас называли ChatGPT и Google AI Mode, а заявки с сайта получали ответ за минуту. Строю системы, на которых держится бизнес: CRM, дашборды, сайты. "
+                : "Three services for B2B. I find you clients: each company is read before it gets a letter, the letter goes out in your name from your domain, and every reply is answered by me. I get you named by ChatGPT and Google AI Mode, and make sure inquiries on your site are answered in a minute. I build the systems a business runs on: CRMs, dashboards, websites. "}
               <strong>
                 {language === "ru" ? "Работает человек, а не рассылка." : "A person doing the work, not a mass mailing."}
               </strong>
@@ -711,6 +712,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             <div className="tags">
               <span className="tag gold">{language === "ru" ? "Продажи письмами" : "Sales by letter"}</span>
               <span className="tag gold">{language === "ru" ? "Ресёрч под каждую компанию" : "Research per company"}</span>
+              <span className="tag gold">{language === "ru" ? "AI-ответы и AI-продавец" : "AI answers & AI Sales Manager"}</span>
               <span className="tag">{language === "ru" ? "CRM и BI" : "CRM & BI"}</span>
               <span className="tag">{language === "ru" ? "Сайты на заказ" : "Custom Websites"}</span>
               <span className="tag">{language === "ru" ? "Боты" : "Bots"}</span>
@@ -729,8 +731,18 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               </div>
               <span className="lc-m">{language === "ru" ? "Пилот 4 недели · остановка перед любой неделей" : "4-week pilot · stop before any week"}</span>
             </Link>
-            <Link href="/services" className="line-card">
+            <Link href="/ai-clients" className="line-card">
               <span className="lc-k">{language === "ru" ? "Услуга вторая" : "Service two"}</span>
+              <div className="lc-t">{language === "ru" ? "AI-ответы и AI-продавец" : "AI answers & AI Sales Manager"}</div>
+              <div className="lc-d">
+                {language === "ru"
+                  ? "Вас называют в ChatGPT и Google AI Mode, а каждая заявка на сайте получает ответ за минуту, днём и ночью."
+                  : "Named in ChatGPT and Google AI Mode answers, and every inquiry on your site answered in a minute, day and night."}
+              </div>
+              <span className="lc-m">{language === "ru" ? "Замеры на 30-й и 60-й день" : "Measured on day 30 and day 60"}</span>
+            </Link>
+            <Link href="/services" className="line-card">
+              <span className="lc-k">{language === "ru" ? "Услуга третья" : "Service three"}</span>
               <div className="lc-t">{language === "ru" ? "Системы" : "The systems"}</div>
               <div className="lc-d">
                 {language === "ru"
@@ -957,9 +969,52 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         <hr className="div" />
 
+        {/* ══════════ AI ANSWERS + AI SALES MANAGER ══════════ */}
+        <section className="section pb-reveal" id="ai-clients">
+          <SectionNumber n="03" />
+          <div className="eyebrow">{language === "ru" ? "Третье: AI-ответы и AI-продавец" : "Third: AI answers and AI Sales Manager"}</div>
+          <h2 className="sec-title">{language === "ru" ? "Чтобы вас назвали и чтобы покупатель не ушёл" : "Get named, then keep the buyer"}</h2>
+          <p className="sec-sub">{language === "ru" ? "Покупатель спрашивает ChatGPT, к кому обратиться, и пишет тем, кого он назвал. Чьим клиентом он станет, решают два момента." : "The buyer asks ChatGPT who to call and writes to the names it gives. Two moments decide whose client they become."}</p>
+
+          <div style={{ background: C.card, border: `1px solid ${C.border}`, borderLeft: `2px solid ${C.gold}`, borderRadius: 10, padding: 24 }}>
+            <div className="src-band src-band-2">
+              {(language === "ru"
+                ? [
+                    { k: "AI-ответы", v: "Вашу компанию называют, когда покупатель спрашивает ChatGPT и Google AI Mode, к кому обратиться. Замеры на 30-й и 60-й день." },
+                    { k: "AI-продавец", v: "Каждая заявка на сайте получает ответ примерно за минуту, днём и ночью, и попадает к менеджеру покупателем, готовым к разговору." },
+                  ]
+                : [
+                    { k: "AI answers", v: "Your company named when buyers ask ChatGPT and Google AI Mode who to use. Measured on day 30 and day 60." },
+                    { k: "AI Sales Manager", v: "Every inquiry on your site answered in about a minute, day and night, and handed to your manager as a buyer ready to talk." },
+                  ]
+              ).map((col) => (
+                <div key={col.k} className="src-col src-col-on">
+                  <div className="src-k">{col.k}</div>
+                  <p className="src-v">{col.v}</p>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 14 }}>
+              <span style={{ fontFamily: "var(--font-inconsolata), monospace", fontWeight: 700, fontSize: 14, color: C.gold }}>
+                {language === "ru" ? "900 млн человек пользуются ChatGPT каждую неделю · OpenAI, 2026" : "900M people use ChatGPT every week · OpenAI, 2026"}
+              </span>
+              <Link
+                href="/ai-clients"
+                className="btn-primary"
+                style={{ padding: "12px 24px", background: C.gold, border: `1px solid ${C.gold}`, borderRadius: 8, color: "var(--c-on-gold)", fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 15, fontWeight: 600, textDecoration: "none", display: "inline-block" }}
+              >
+                {language === "ru" ? "Что видят ваши покупатели →" : "What your buyers see →"}
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <hr className="div" />
+
         {/* ══════════ MENTORSHIP ══════════ */}
         <section className="section pb-reveal" id="mentorship">
-          <SectionNumber n="03" />
+          <SectionNumber n="04" />
           <div className="eyebrow">{language === "ru" ? "Менторство" : "Mentorship"}</div>
           <h2 className="sec-title">{language === "ru" ? "Капитал · Бизнес · AI и Автоматизация" : "Capital · Business · AI & Automation"}</h2>
           <p className="sec-sub">{language === "ru" ? "Индивидуальные сессии для предпринимателей и цифровых номадов" : "1-on-1 sessions for entrepreneurs and digital nomads"}</p>
@@ -1018,7 +1073,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ PODCASTS & TALKS ══════════ */}
         <section className="section pb-reveal" id="media">
-          <SectionNumber n="04" />
+          <SectionNumber n="05" />
           <div className="eyebrow">{language === "ru" ? "Медиа" : "Media"}</div>
           <h2 className="sec-title">{language === "ru" ? "Подкасты и выступления" : "Podcasts & Talks"}</h2>
           <p className="sec-sub">{language === "ru" ? "Разговоры про ReFi, impact-рынки и публичное строительство" : "Conversations on ReFi, impact markets, and building in public"}</p>
@@ -1057,7 +1112,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ WRITING ══════════ */}
         <section className="section pb-reveal" id="writing">
-          <SectionNumber n="05" />
+          <SectionNumber n="06" />
           <div className="eyebrow">{language === "ru" ? "Статьи" : "Writing"}</div>
           <h2 className="sec-title">{language === "ru" ? "Статьи и заметки" : "Articles & Insights"}</h2>
           {/* Was "impact markets, health tech, building in public" — no post on
@@ -1130,7 +1185,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ FOLLOW THE JOURNEY ══════════ */}
         <section className="section pb-reveal" id="follow">
-          <SectionNumber n="06" />
+          <SectionNumber n="07" />
           <div className="eyebrow">{language === "ru" ? "Контакты" : "Connect"}</div>
           <h2 className="sec-title">{language === "ru" ? "Следить за журналом" : "Follow the Journey"}</h2>
           <p className="sec-sub">{language === "ru" ? "Выберите формат и язык" : "Choose your format and language"}</p>
@@ -1191,7 +1246,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ PROJECTS ══════════ */}
         <section className="section pb-reveal" id="projects">
-          <SectionNumber n="07" />
+          <SectionNumber n="08" />
           <div className="eyebrow">{language === "ru" ? "Проекты" : "Projects"}</div>
           <h2 className="sec-title">{language === "ru" ? "Что я строю" : "What I Build"}</h2>
           <p className="sec-sub">{language === "ru" ? "Стартапы и инициативы в impact, health и локальной инфраструктуре" : "Startups and initiatives across impact, health, and local infrastructure"}</p>
@@ -1266,7 +1321,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ COMMUNITIES ══════════ */}
         <section className="section pb-reveal" id="communities" style={{ background: C.bg2, borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`, margin: "0 -28px", padding: "72px 28px" }}>
-          <SectionNumber n="08" />
+          <SectionNumber n="09" />
           <div className="eyebrow">{language === "ru" ? "Сообщества" : "Communities"}</div>
           <h2 className="sec-title">{language === "ru" ? "Локальная Web3-экосистема" : "Local Web3 Ecosystem"}</h2>
           <p className="sec-sub">{language === "ru" ? "Регенеративная инфраструктура и децентрализованная координация на Ко Панган" : "Building regenerative infrastructure and decentralized coordination on Koh Phangan"}</p>
@@ -1305,7 +1360,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
         {/* ══════════ ABOUT ══════════ */}
         <section className="section pb-reveal" id="about">
-          <SectionNumber n="09" />
+          <SectionNumber n="10" />
           <div className="eyebrow">{language === "ru" ? "О себе" : "About"}</div>
           <h2 className="sec-title">{language === "ru" ? "Кто я" : "Who I Am"}</h2>
           <div className="about-layout">

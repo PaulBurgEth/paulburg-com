@@ -32,7 +32,7 @@ const onest = Onest({
 });
 
 const SEO_DESCRIPTION =
-  "I build custom AI systems — chatbots, CRMs, BI dashboards, automation — and run the cold outbound channel that fills them with B2B clients.";
+  "I build AI systems, get companies named in ChatGPT answers with an AI sales manager on their site, and run cold outbound that brings B2B clients.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://paulburg.com"),
@@ -58,6 +58,14 @@ export const metadata: Metadata = {
     "SDR as a service",
     "sales pipeline",
     "cold email",
+    "GEO",
+    "generative engine optimization",
+    "AI search visibility",
+    "ChatGPT visibility",
+    "Google AI Mode",
+    "AI sales manager",
+    "AI sales assistant",
+    "lead response time",
   ],
   icons: {
     icon: "/favicon.png",
@@ -139,8 +147,8 @@ export default async function RootLayout({
                 "https://www.linkedin.com/in/paul-burg",
                 TELEGRAM_URL
               ],
-              "jobTitle": "AI Systems Builder & B2B Outbound",
-              "description": "Two things for B2B companies: I build the systems that run the business — chatbots, CRMs and BI dashboards, matching engines, automated workflows, web platforms — and I run the cold outbound channel that fills them with clients. Entrepreneur since 2011."
+              "jobTitle": "AI Systems Builder, AI Answers & B2B Outbound",
+              "description": "Three things for B2B companies: I build the systems that run the business (chatbots, CRMs and BI dashboards, matching engines, automated workflows, web platforms); I get companies named in ChatGPT and Google AI Mode answers and put an AI sales manager on their site; and I run the cold outbound channel that brings them clients. Entrepreneur since 2011."
             }),
           }}
         />

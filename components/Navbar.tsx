@@ -54,6 +54,7 @@ export default function Navbar() {
     const navLinks = [
         { name: language === "ru" ? "Услуги" : "Services", href: "/services" },
         { name: language === "ru" ? "Аутбаунд" : "Outbound", href: "/outbound" },
+        { name: language === "ru" ? "AI-клиенты" : "AI Clients", href: "/ai-clients" },
         { name: language === "ru" ? "Менторство" : "Mentorship", href: "/mentorship" },
         { name: language === "ru" ? "Блог" : "Blog", href: "/blog" },
     ];
