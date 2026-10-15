@@ -6,13 +6,13 @@ import { SectionShell, SERIF, DISPLAY_AXES, SANS, MONO, T, itemVariants } from "
 
 const en = {
   title: "Who you would be working with",
-  role: "AI answers · AI Sales Manager · RU, EN",
+  role: "AI visibility · AI Sales Manager · RU, EN",
   about: "Paul Burg. My own projects since 2011. I run HelpRent Da Nang, a rental platform that AI answers already quote for its own price data. You deal with me directly.",
 };
 
 const ru = {
   title: "С кем вы будете работать",
-  role: "AI-ответы · AI-продавец · RU, EN",
+  role: "AI-видимость · AI-продавец · RU, EN",
   about: "Павел Бург. Свои проекты с 2011 года. Веду HelpRent Da Nang, платформу аренды, которую AI-ответы уже цитируют по её собственным данным о ценах. Работаете со мной напрямую.",
 };
 

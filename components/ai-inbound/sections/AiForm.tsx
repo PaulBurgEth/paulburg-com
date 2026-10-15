@@ -21,7 +21,7 @@ const en = {
   optional: "optional",
   placeholders: { website: "yourcompany.com", telegram: "@username", whatsapp: "+66 00 000 0000", email: "you@example.com" },
   interestOptions: [
-    { v: "answers", l: "AI answers" },
+    { v: "visibility", l: "AI visibility" },
     { v: "agent", l: "AI Sales Manager" },
     { v: "both", l: "Both" },
   ],
@@ -54,7 +54,7 @@ const ru = {
   optional: "необязательно",
   placeholders: { website: "yourcompany.com", telegram: "@username", whatsapp: "+7 900 000 0000", email: "you@example.com" },
   interestOptions: [
-    { v: "answers", l: "AI-ответы" },
+    { v: "visibility", l: "AI-видимость" },
     { v: "agent", l: "AI-продавец" },
     { v: "both", l: "Оба" },
   ],

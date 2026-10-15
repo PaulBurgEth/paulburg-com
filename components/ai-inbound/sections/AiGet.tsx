@@ -5,7 +5,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { SectionShell, SectionHead, SERIF, DISPLAY_AXES, MONO, T, itemVariants } from "@/components/outbound/shared";
 
 const en = {
-  eyebrow: "AI answers · what you get",
+  eyebrow: "AI visibility · what you get",
   h2: "AI can see your company, and you can check it",
   items: [
     "You know where you lose buyers: the questions where you are missing and who is named instead.",
@@ -15,7 +15,7 @@ const en = {
 };
 
 const ru = {
-  eyebrow: "AI-ответы · что вы получаете",
+  eyebrow: "AI-видимость · что вы получаете",
   h2: "Нейросети видят вашу компанию, и это можно проверить",
   items: [
     "Вы знаете, где теряете покупателей: вопросы, где вас нет, и кого называют вместо вас.",

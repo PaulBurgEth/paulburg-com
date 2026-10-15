@@ -4,7 +4,7 @@ import HomePageClient from "@/components/home/HomePageClient";
 import { getAllPosts } from "@/lib/posts";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Paul Burg — AI Systems, AI Answers & B2B Outbound",
+  title: "Paul Burg — AI Systems, AI Visibility & B2B Outbound",
   description:
     "AI systems built around your process, your company visible to ChatGPT with an AI sales manager on your site, and cold outbound for B2B clients.",
   path: "",

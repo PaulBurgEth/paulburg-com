@@ -717,7 +717,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             <div className="tags">
               <span className="tag gold">{language === "ru" ? "Продажи письмами" : "Sales by letter"}</span>
               <span className="tag gold">{language === "ru" ? "Ресёрч под каждую компанию" : "Research per company"}</span>
-              <span className="tag gold">{language === "ru" ? "AI-ответы и AI-продавец" : "AI answers & AI Sales Manager"}</span>
+              <span className="tag gold">{language === "ru" ? "AI-видимость и AI-продавец" : "AI visibility & AI Sales Manager"}</span>
               <span className="tag">{language === "ru" ? "CRM и BI" : "CRM & BI"}</span>
               <span className="tag">{language === "ru" ? "Сайты на заказ" : "Custom Websites"}</span>
               <span className="tag">{language === "ru" ? "Боты" : "Bots"}</span>
@@ -738,7 +738,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             </Link>
             <Link href="/ai-inbound" className="line-card">
               <span className="lc-k">{language === "ru" ? "AI-инбаунд" : "AI Inbound"}</span>
-              <div className="lc-t">{language === "ru" ? "AI-ответы и AI-продавец" : "AI answers & AI Sales Manager"}</div>
+              <div className="lc-t">{language === "ru" ? "AI-видимость и AI-продавец" : "AI visibility & AI Sales Manager"}</div>
               <div className="lc-d">
                 {language === "ru"
                   ? "Ваш сайт и данные видны ChatGPT и ответам Google, а каждая заявка на сайте получает ответ за минуту, днём и ночью."
@@ -985,11 +985,11 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             <div className="src-band src-band-2">
               {(language === "ru"
                 ? [
-                    { k: "AI-ответы", v: "Ваш сайт и данные видны ChatGPT, Gemini и ответам Google, и им есть что о вас процитировать." },
+                    { k: "AI-видимость", v: "Ваш сайт и данные видны ChatGPT, Gemini и ответам Google, и им есть что о вас процитировать." },
                     { k: "AI-продавец", v: "Каждая заявка на сайте получает ответ примерно за минуту, днём и ночью, и попадает к менеджеру покупателем, готовым к разговору." },
                   ]
                 : [
-                    { k: "AI answers", v: "Your site and data visible to ChatGPT, Gemini and Google's AI answers, with something of yours to quote." },
+                    { k: "AI visibility", v: "Your site and data visible to ChatGPT, Gemini and Google's AI answers, with something of yours to quote." },
                     { k: "AI Sales Manager", v: "Every inquiry on your site answered in about a minute, day and night, and handed to your manager as a buyer ready to talk." },
                   ]
               ).map((col) => (

@@ -10,7 +10,7 @@ import { SectionShell, SectionHead, SERIF, DISPLAY_AXES, SANS, MONO, T, itemVari
 const COUNTS = { never: 56, some: 49, regular: 5 };
 
 const en = {
-  eyebrow: "AI answers · the problem",
+  eyebrow: "AI visibility · the problem",
   h2: "An answer has no second page",
   sub: "A search gives ten links and the buyer scrolls. An AI answer names a few companies, and that is the list.",
   checkLabel: "A real check, October 2026, name removed",
@@ -26,7 +26,7 @@ const en = {
 };
 
 const ru = {
-  eyebrow: "AI-ответы · проблема",
+  eyebrow: "AI-видимость · проблема",
   h2: "У ответа нет второй страницы",
   sub: "Поиск даёт десять ссылок, и покупатель листает. Ответ нейросети называет несколько компаний, и это весь список.",
   checkLabel: "Настоящая проверка, октябрь 2026, без названия",
