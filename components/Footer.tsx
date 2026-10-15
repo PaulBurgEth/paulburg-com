@@ -31,7 +31,7 @@ export default function Footer() {
         connectHeading: language === "ru" ? "Контакты" : "Connect",
         services: language === "ru" ? "Услуги" : "Services",
         outbound: language === "ru" ? "Аутбаунд" : "Outbound",
-        aiClients: language === "ru" ? "AI-клиенты" : "AI Clients",
+        aiInbound: language === "ru" ? "AI-инбаунд" : "AI Inbound",
         mentorship: language === "ru" ? "Менторство" : "Mentorship",
         blog: language === "ru" ? "Блог" : "Blog",
         projects: language === "ru" ? "Проекты" : "Projects",
@@ -136,8 +136,8 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/ai-clients" className={linkRowClass} style={{ color: "var(--c-text2)" }}>
-                                    {t.aiClients}
+                                <Link href="/ai-inbound" className={linkRowClass} style={{ color: "var(--c-text2)" }}>
+                                    {t.aiInbound}
                                 </Link>
                             </li>
                             <li>

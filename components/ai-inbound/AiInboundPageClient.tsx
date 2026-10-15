@@ -75,7 +75,7 @@ function MobileCTA() {
   );
 }
 
-export default function AiClientsPageClient() {
+export default function AiInboundPageClient() {
   return (
     <div className="min-h-screen" style={{ background: "var(--c-bg)", position: "relative" }}>
       <div style={{ position: "fixed", top: "-30%", left: "-10%", width: "60%", height: "70%", background: "radial-gradient(ellipse, rgba(200,169,110,0.04) 0%, transparent 70%)", pointerEvents: "none", zIndex: 0 }} />

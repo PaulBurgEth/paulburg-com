@@ -1,15 +1,15 @@
 import { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
-import AiClientsPageClient from "@/components/ai-clients/AiClientsPageClient";
+import AiInboundPageClient from "@/components/ai-inbound/AiInboundPageClient";
 
 // Kept at 155 chars or under — see docs/DECISIONS.md (Ahrefs meta-description fix).
-const AI_CLIENTS_DESCRIPTION =
+const AI_INBOUND_DESCRIPTION =
   "Get named when buyers ask ChatGPT and Google AI Mode who to use, and answer every inquiry on your site in about a minute with an AI Sales Manager.";
 
 export const metadata: Metadata = pageMetadata({
-  title: "AI Answers and AI Sales Manager · Paul Burg",
-  description: AI_CLIENTS_DESCRIPTION,
-  path: "/ai-clients",
+  title: "AI Inbound: AI Answers and AI Sales Manager · Paul Burg",
+  description: AI_INBOUND_DESCRIPTION,
+  path: "/ai-inbound",
 });
 
 // Two services, no prices on purpose (decision 2026-10-15).
@@ -22,7 +22,7 @@ const SERVICES_LD = [
     description: "Getting a company named when its buyers ask ChatGPT and Google AI Mode who to use, with re-measurement on day 30 and day 60.",
     provider: { "@type": "Person", name: "Paul Burg", url: "https://paulburg.com" },
     areaServed: "Worldwide",
-    url: "https://paulburg.com/ai-clients",
+    url: "https://paulburg.com/ai-inbound",
   },
   {
     "@context": "https://schema.org",
@@ -32,14 +32,14 @@ const SERVICES_LD = [
     description: "An assistant on the company's site that answers every inquiry in about a minute, day and night, qualifies the buyer and hands the manager a buyer ready to talk.",
     provider: { "@type": "Person", name: "Paul Burg", url: "https://paulburg.com" },
     areaServed: "Worldwide",
-    url: "https://paulburg.com/ai-clients",
+    url: "https://paulburg.com/ai-inbound",
   },
 ];
 
 export default function Page() {
   return (
     <>
-      <AiClientsPageClient />
+      <AiInboundPageClient />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICES_LD) }} />
     </>
   );
