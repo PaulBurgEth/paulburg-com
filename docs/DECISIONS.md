@@ -1680,3 +1680,12 @@ Source Serif 4 / Inter / JetBrains Mono как кириллические под
 - **Why:** SDR B2B decisions 423, 424, 430, 462, 476, 477, 478; Paul's word in session.
 - **Workflow:** no local dev server; tsc + greps, PR merged into main, `npm run deploy`, screenshots on prod.
 - **Fragile:** Proof bar width divides by the largest own percentage (`row.pct / 2.3`); update it with the numbers. OutboundRules `ICONS` must match the rules count. OutboundHow annotations map one-to-one to four body lines per letter.
+
+## 2026-10-15 · /ai-clients: AI answers + AI Sales Manager (PRs #42, #43)
+
+- **What:** new EN/RU page `/ai-clients` (`app/ai-clients/page.tsx`, `components/ai-clients/`), 11 sections on one buyer path: being named in ChatGPT / Google AI Mode answers, then answering the inquiry in a minute. `/api/intake` got a `type: "ai"` branch; sitemap and `llms.txt` list the page. Reuses `components/outbound/shared.tsx` primitives without changing them.
+- **Why:** signature link for GEO cold letters (Paul 15.10). URL covers both products, picked by Paul over `/geo` and `/ai-search`.
+- **Evidence rule:** every figure carries its source under it. External: OpenAI, Alphabet, BrightLocal, G2, SOCi, HBR (`components/ai-clients/shared.tsx` `SOURCES`). Own checks are gold-bordered and labelled "our check, October 2026". Fact map with commands: `docs/prompts/СТРАНИЦА_GEO_АГЕНТ_черновик_20261015.md` §2, §2б. Rejected for lack of a primary source: "78% buy from first responder", "21× in 5 minutes", NAR, AI Mode 1B.
+- **Not on the page by decision:** prices, how the GEO work is done, agent stages/scope, prospect names.
+- **Deploy:** no local build (Paul's rule). Remote `vercel deploy` preview build as the build check, PR merged, `vercel deploy --prod` from `main`, curl checks of all routes in both languages, screenshots on prod. `npm run deploy` was not used because its preflight builds locally.
+- **Fragile:** HBR figures are from secondary reviews (primary paywalled). The 26/30 bar counts balivillahub.com as an agency site; 25/30 if not. The anonymised real check in §03 shows the English query in both languages on purpose. HelpRent "8 times" left out until the raw answer is found.
