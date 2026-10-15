@@ -1695,3 +1695,9 @@ Source Serif 4 / Inter / JetBrains Mono как кириллические под
 - **What:** "AI Clients" / "AI-клиенты" in Navbar and Footer; home hero says three services, new tag, third line card, new home §03 section (later sections renumbered 04-10); `/services` hero badge "Three service lines" plus one sentence; home and global meta (title, description, keywords incl. GEO / AI sales manager), Person JSON-LD; Service JSON-LD (two services, no prices) on `/ai-clients`; `llms.txt` About.
 - **Why:** Paul 15.10: the whole site must read coherently with the new segment.
 - **Fragile:** home section numbers are hard-coded `SectionNumber n="NN"`; inserting a section means renumbering by hand. `/services` beyond its hero still describes two lines.
+
+## 2026-10-15 · /ai-clients renamed to /ai-inbound (PR #48)
+
+- **What:** route `app/ai-inbound`, components `components/ai-inbound`, nav/footer "AI Inbound" / "AI-инбаунд", home §03 eyebrow and links, page title and hero badge, sitemap, llms.txt, JSON-LD. `next.config.ts` redirects `/ai-clients` permanently (Next answers 308).
+- **Why:** Paul: "AI-клиенты" read as if the clients themselves were artificial. "Inbound" pairs with "Outbound" in the nav: outbound goes to the client, inbound is the client who comes (named in AI answers) and gets answered (AI Sales Manager).
+- **Keep:** the redirect, in case `/ai-clients` was shared anywhere.
