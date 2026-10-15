@@ -7,7 +7,7 @@ import { SERIF, DISPLAY_AXES, SANS, MONO, T, itemVariants } from "@/components/o
 export type Source = { label: string; href?: string };
 
 /**
- * Every figure on /ai-clients carries its source under it. External sources
+ * Every figure on /ai-inbound carries its source under it. External sources
  * link out; our own checks are marked "own" and drawn with a gold border, so a
  * reader never mistakes our measurement for a market study or the reverse.
  * Fact map: docs/prompts/СТРАНИЦА_GEO_АГЕНТ_черновик_20261015.md §2, §2б.

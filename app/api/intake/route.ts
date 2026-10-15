@@ -315,7 +315,7 @@ export async function POST(req: Request) {
       const interestRaw = sanitize(r.interest, 32);
       const question = sanitizeMultiline(r.question, 1000);
       lines = [
-        "🔎 New AI answers / AI Sales Manager request from paulburg.com/ai-clients",
+        "🔎 New AI answers / AI Sales Manager request from paulburg.com/ai-inbound",
         "",
         `Name: ${name}`,
         `Website: ${business}`,

@@ -36,7 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { url: BASE, changeFrequency: 'weekly', priority: 1 },
         { url: `${BASE}/services`, changeFrequency: 'monthly', priority: 0.9 },
         { url: `${BASE}/outbound`, changeFrequency: 'monthly', priority: 0.9 },
-        { url: `${BASE}/ai-clients`, changeFrequency: 'monthly', priority: 0.9 },
+        { url: `${BASE}/ai-inbound`, changeFrequency: 'monthly', priority: 0.9 },
         { url: `${BASE}/mentorship`, changeFrequency: 'monthly', priority: 0.9 },
         { url: `${BASE}/blog`, changeFrequency: 'weekly', priority: 0.8 },
     ]

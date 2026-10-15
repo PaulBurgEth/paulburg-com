@@ -9,7 +9,7 @@ import { SERIF, DISPLAY_AXES, SANS, MONO, LEDE, T } from "@/components/outbound/
 import { SourceLink, SOURCES } from "../shared";
 
 const en = {
-  badge: "AI answers · AI Sales Manager",
+  badge: "AI Inbound · AI answers · AI Sales Manager",
   h1a: "Your next client asks ChatGPT who to call, then writes to the names it gives. Will one of them be ",
   h1mark: "yours?",
   lede: "Two moments decide whose client they become: whether the answer names you, and who replies first. I cover both.",
@@ -29,7 +29,7 @@ const en = {
 };
 
 const ru = {
-  badge: "AI-ответы · AI-продавец",
+  badge: "AI-инбаунд · AI-ответы · AI-продавец",
   h1a: "Ваш следующий клиент спрашивает ChatGPT, к кому обратиться, и пишет тем, кого он назвал. Будете ли среди них ",
   h1mark: "вы?",
   lede: "Чьим клиентом он станет, решают два момента: назовёт ли вас ответ и кто ответит первым. Закрываю оба.",

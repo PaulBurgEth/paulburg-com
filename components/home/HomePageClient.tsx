@@ -731,7 +731,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               </div>
               <span className="lc-m">{language === "ru" ? "Пилот 4 недели · остановка перед любой неделей" : "4-week pilot · stop before any week"}</span>
             </Link>
-            <Link href="/ai-clients" className="line-card">
+            <Link href="/ai-inbound" className="line-card">
               <span className="lc-k">{language === "ru" ? "Услуга вторая" : "Service two"}</span>
               <div className="lc-t">{language === "ru" ? "AI-ответы и AI-продавец" : "AI answers & AI Sales Manager"}</div>
               <div className="lc-d">
@@ -970,9 +970,9 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         <hr className="div" />
 
         {/* ══════════ AI ANSWERS + AI SALES MANAGER ══════════ */}
-        <section className="section pb-reveal" id="ai-clients">
+        <section className="section pb-reveal" id="ai-inbound">
           <SectionNumber n="03" />
-          <div className="eyebrow">{language === "ru" ? "Третье: AI-ответы и AI-продавец" : "Third: AI answers and AI Sales Manager"}</div>
+          <div className="eyebrow">{language === "ru" ? "Третье: AI-инбаунд" : "Third: AI Inbound"}</div>
           <h2 className="sec-title">{language === "ru" ? "Чтобы вас назвали и чтобы покупатель не ушёл" : "Get named, then keep the buyer"}</h2>
           <p className="sec-sub">{language === "ru" ? "Покупатель спрашивает ChatGPT, к кому обратиться, и пишет тем, кого он назвал. Чьим клиентом он станет, решают два момента." : "The buyer asks ChatGPT who to call and writes to the names it gives. Two moments decide whose client they become."}</p>
 
@@ -1000,7 +1000,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
                 {language === "ru" ? "900 млн человек пользуются ChatGPT каждую неделю · OpenAI, 2026" : "900M people use ChatGPT every week · OpenAI, 2026"}
               </span>
               <Link
-                href="/ai-clients"
+                href="/ai-inbound"
                 className="btn-primary"
                 style={{ padding: "12px 24px", background: C.gold, border: `1px solid ${C.gold}`, borderRadius: 8, color: "var(--c-on-gold)", fontFamily: "var(--font-instrument-sans), sans-serif", fontSize: 15, fontWeight: 600, textDecoration: "none", display: "inline-block" }}
               >

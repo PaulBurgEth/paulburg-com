@@ -10,6 +10,12 @@ const nextConfig: NextConfig = {
         destination: "https://paulburg.com/:path*",
         permanent: true,
       },
+      // Renamed 2026-10-15: "AI Clients" read as if the clients were artificial.
+      {
+        source: "/ai-clients",
+        destination: "/ai-inbound",
+        permanent: true,
+      },
     ];
   },
   images: {
