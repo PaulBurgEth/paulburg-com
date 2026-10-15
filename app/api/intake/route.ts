@@ -127,6 +127,12 @@ const SDR_CHANNEL_LABELS: Record<string, string> = {
   none: "No steady channel",
 };
 
+const AI_INTEREST_LABELS: Record<string, string> = {
+  answers: "AI answers (ChatGPT / Google AI Mode)",
+  agent: "AI Sales Manager",
+  both: "Both",
+};
+
 /**
  * Values that came from a fixed list stay in that list. sanitizeNeedsArray had
  * no allow-list, so any 32-character string a submitter chose was passed
@@ -305,6 +311,20 @@ export async function POST(req: Request) {
       // Last, after a blank line, so a long answer cannot push the contact
       // details out of the Telegram notification preview.
       if (bestClient) lines.push("", `Best client: ${bestClient}`);
+    } else if (type === "ai") {
+      const interestRaw = sanitize(r.interest, 32);
+      const question = sanitizeMultiline(r.question, 1000);
+      lines = [
+        "🔎 New AI answers / AI Sales Manager request from paulburg.com/ai-clients",
+        "",
+        `Name: ${name}`,
+        `Website: ${business}`,
+        `Interest: ${AI_INTEREST_LABELS[interestRaw] || "—"}`,
+        `Contact via: ${contactMethod}`,
+        `Contact: ${contactInfo}`,
+        `Language: ${language || "—"}`,
+      ];
+      if (question) lines.push("", `Question: ${question}`);
     } else {
       lines = [
         "🆕 New intake from paulburg.com",
