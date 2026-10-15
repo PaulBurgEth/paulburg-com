@@ -26,7 +26,7 @@ const en = {
     { t: "Hands over a ready buyer.", d: "Who they are, what they want, their budget and when they can view, waiting for your manager in the morning." },
   ],
   money: "One deal is your commission. Count the inquiries that arrive in the evening and at weekends. One buyer a year who would have gone to whoever answered first is the measure.",
-  form: "It does not replace your form or your team. A large purchase still closes with a person; the AI Sales Manager makes sure that person starts with a buyer, not a question. It works on its own too, with or without the AI answers work.",
+  form: "It does not replace your form or your team. A large purchase still closes with a person; the AI Sales Manager makes sure that person starts with a buyer, not a question. It works on its own too, with or without the AI visibility work.",
   cta: "Tell me how inquiries reach you now",
 };
 
@@ -52,7 +52,7 @@ const ru = {
     { t: "Передаёт готового покупателя.", d: "Кто он, что ищет, какой бюджет и когда может смотреть: утром это ждёт менеджера." },
   ],
   money: "Одна сделка равна вашей комиссии. Посчитайте заявки, которые приходят вечером и в выходные. Один покупатель в год, который ушёл бы к ответившему первым, и есть мерка.",
-  form: "Он не заменяет ни форму, ни команду. Дорогая сделка всё равно закрывается человеком; AI-продавец делает так, чтобы этот человек начинал с покупателя, а не с вопроса. Работает и отдельно, с AI-ответами или без них.",
+  form: "Он не заменяет ни форму, ни команду. Дорогая сделка всё равно закрывается человеком; AI-продавец делает так, чтобы этот человек начинал с покупателя, а не с вопроса. Работает и отдельно, с AI-видимостью или без неё.",
   cta: "Расскажите, как к вам сейчас приходят заявки",
 };
 

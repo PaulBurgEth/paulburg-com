@@ -60,6 +60,7 @@ export const metadata: Metadata = {
     "cold email",
     "GEO",
     "generative engine optimization",
+    "AI visibility",
     "AI search visibility",
     "ChatGPT visibility",
     "Google AI Mode",
@@ -147,7 +148,7 @@ export default async function RootLayout({
                 "https://www.linkedin.com/in/paul-burg",
                 TELEGRAM_URL
               ],
-              "jobTitle": "AI Systems Builder, AI Answers & B2B Outbound",
+              "jobTitle": "AI Systems Builder, AI Visibility & B2B Outbound",
               "description": "Three things for B2B companies: I build the systems that run the business (chatbots, CRMs and BI dashboards, matching engines, automated workflows, web platforms); I make companies visible to ChatGPT, Gemini and Google's AI answers and put an AI sales manager on their site; and I run the cold outbound channel that brings them clients. Entrepreneur since 2011."
             }),
           }}

@@ -128,7 +128,7 @@ const SDR_CHANNEL_LABELS: Record<string, string> = {
 };
 
 const AI_INTEREST_LABELS: Record<string, string> = {
-  answers: "AI answers (ChatGPT / Google AI Mode)",
+  visibility: "AI visibility (ChatGPT / Gemini / Google AI)",
   agent: "AI Sales Manager",
   both: "Both",
 };
@@ -315,7 +315,7 @@ export async function POST(req: Request) {
       const interestRaw = sanitize(r.interest, 32);
       const question = sanitizeMultiline(r.question, 1000);
       lines = [
-        "🔎 New AI answers / AI Sales Manager request from paulburg.com/ai-inbound",
+        "🔎 New AI Visibility / AI Sales Manager request from paulburg.com/ai-inbound",
         "",
         `Name: ${name}`,
         `Website: ${business}`,

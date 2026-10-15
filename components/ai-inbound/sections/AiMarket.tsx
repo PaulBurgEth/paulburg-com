@@ -6,7 +6,7 @@ import { SectionShell, SectionHead, SANS, T } from "@/components/outbound/shared
 import { ProofCard, SOURCES } from "../shared";
 
 const en = {
-  eyebrow: "AI answers · the market",
+  eyebrow: "AI visibility · the market",
   h2: "Your buyers already ask AI who to use",
   sub: "Before they open your site, many of them have asked ChatGPT or Google for a shortlist.",
   cards: [
@@ -19,7 +19,7 @@ const en = {
 };
 
 const ru = {
-  eyebrow: "AI-ответы · рынок",
+  eyebrow: "AI-видимость · рынок",
   h2: "Ваши покупатели уже спрашивают нейросети, к кому обратиться",
   sub: "Многие из них, ещё не открыв ваш сайт, попросили у ChatGPT или Google короткий список.",
   cards: [
