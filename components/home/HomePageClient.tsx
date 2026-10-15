@@ -690,8 +690,13 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               </span>
               <span className="hero-role-sep" aria-hidden="true">·</span>
               <span className="hero-role">
+                <Bot size={12} strokeWidth={1.5} aria-hidden="true" />
+                {language === "ru" ? "AI-ИНБАУНД" : "AI INBOUND"}
+              </span>
+              <span className="hero-role-sep" aria-hidden="true">·</span>
+              <span className="hero-role">
                 <Database size={12} strokeWidth={1.5} aria-hidden="true" />
-                {language === "ru" ? "СИСТЕМЫ ДЛЯ БИЗНЕСА" : "BUSINESS SYSTEMS"}
+                {language === "ru" ? "AI-АВТОМАТИЗАЦИЯ" : "AI AUTOMATION"}
               </span>
               <span className="hero-role-sep" aria-hidden="true">·</span>
               <span className="hero-role">
@@ -722,7 +727,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
 
           <div className="hero-lines pb-stage" data-visible={stage >= 3 ? "1" : "0"}>
             <Link href="/outbound" className="line-card">
-              <span className="lc-k">{language === "ru" ? "Услуга первая" : "Service one"}</span>
+              <span className="lc-k">{language === "ru" ? "Аутбаунд" : "Outbound"}</span>
               <div className="lc-t">{language === "ru" ? "Клиенты" : "The clients"}</div>
               <div className="lc-d">
                 {language === "ru"
@@ -732,18 +737,18 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <span className="lc-m">{language === "ru" ? "Пилот 4 недели · остановка перед любой неделей" : "4-week pilot · stop before any week"}</span>
             </Link>
             <Link href="/ai-inbound" className="line-card">
-              <span className="lc-k">{language === "ru" ? "Услуга вторая" : "Service two"}</span>
+              <span className="lc-k">{language === "ru" ? "AI-инбаунд" : "AI Inbound"}</span>
               <div className="lc-t">{language === "ru" ? "AI-ответы и AI-продавец" : "AI answers & AI Sales Manager"}</div>
               <div className="lc-d">
                 {language === "ru"
                   ? "Ваш сайт и данные видны ChatGPT и ответам Google, а каждая заявка на сайте получает ответ за минуту, днём и ночью."
                   : "Your site and data visible to ChatGPT and Google's AI answers, and every inquiry on your site answered in a minute, day and night."}
               </div>
-              <span className="lc-m">{language === "ru" ? "Замеры на 30-й и 60-й день" : "Measured on day 30 and day 60"}</span>
+              <span className="lc-m">{language === "ru" ? "ChatGPT · Gemini · Google · ответ 24/7" : "ChatGPT · Gemini · Google · replies 24/7"}</span>
             </Link>
-            <Link href="/services" className="line-card">
-              <span className="lc-k">{language === "ru" ? "Услуга третья" : "Service three"}</span>
-              <div className="lc-t">{language === "ru" ? "Системы" : "The systems"}</div>
+            <Link href="/services#automation" className="line-card">
+              <span className="lc-k">{language === "ru" ? "AI-автоматизация" : "AI automation"}</span>
+              <div className="lc-t">{language === "ru" ? "Боты, CRM, дашборды, сайты" : "Bots, CRM, dashboards, websites"}</div>
               <div className="lc-d">
                 {language === "ru"
                   ? "CRM и BI-дашборды, сайты, боты. С нуля под ваш процесс."
@@ -763,9 +768,9 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
           <SectionNumber n="01" />
           <div style={{ maxWidth: 1240, margin: "0 auto" }}>
             <div style={{ marginBottom: 32 }}>
-              <div className="eyebrow">{language === "ru" ? "Первое — системы" : "First — the systems"}</div>
+              <div className="eyebrow">{language === "ru" ? "AI-автоматизация" : "AI automation"}</div>
               <h2 className="sec-title">
-                {language === "ru" ? "AI-системы под ключ" : "AI systems, end to end"}
+                {language === "ru" ? "AI-автоматизация под ключ" : "AI automation, end to end"}
               </h2>
               <p className="sec-sub">
                 {language === "ru" ? "Боты, CRM, BI, дашборды, matching-движки, сайты — с нуля, без платформенной зависимости." : "Bots, CRMs, BI, dashboards, matching engines, websites — built from scratch, no platform lock-in."}
@@ -908,7 +913,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         {/* ══════════ OUTBOUND ══════════ */}
         <section className="section pb-reveal" id="outbound">
           <SectionNumber n="02" />
-          <div className="eyebrow">{language === "ru" ? "Второе — клиенты" : "Second — the clients"}</div>
+          <div className="eyebrow">{language === "ru" ? "Аутбаунд" : "Outbound"}</div>
           <h2 className="sec-title">{language === "ru" ? "Не система, а поток клиентов" : "Not a system — a stream of clients"}</h2>
           <p className="sec-sub">{language === "ru" ? "Холодный канал под ключ: отбираю компании, пишу каждой от вашего имени и веду ответы" : "A cold channel, end to end: I pick the companies, write to each in your name, and handle the replies"}</p>
 
@@ -930,12 +935,12 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               {(language === "ru"
                 ? [
                     { k: "Рекомендации", v: "Приходят когда приходят. Два хороших месяца, потом тихий, и ни то ни другое не вы сделали." },
-                    { k: "Входящие", v: "Доходят до тех, кто уже ищет. К этому моменту у них открыто четыре предложения, и вы одно из них." },
+                    { k: "Входящие", v: "Доходят от тех, кто уже ищет, и достаются тому, кто ответил первым." },
                     { k: "Этот канал", v: "Компании, которым нужно то, что вы продаёте. Каждая прочитана до письма, письмо на её языке, от имени вашей компании.", on: true },
                   ]
                 : [
                     { k: "Referrals", v: "They come when they come. Two good months, then a quiet one, and neither was something you did." },
-                    { k: "Inbound", v: "Reaches whoever is already searching. By then they have four quotes open and you are one of them." },
+                    { k: "Inbound", v: "Come from people already searching, and go to whoever answers first." },
                     { k: "This channel", v: "Companies that need what you sell, each read before it is written to, in its own language, in your company's name.", on: true },
                   ]
               ).map((col) => (
@@ -972,7 +977,7 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         {/* ══════════ AI ANSWERS + AI SALES MANAGER ══════════ */}
         <section className="section pb-reveal" id="ai-inbound">
           <SectionNumber n="03" />
-          <div className="eyebrow">{language === "ru" ? "Третье: AI-инбаунд" : "Third: AI Inbound"}</div>
+          <div className="eyebrow">{language === "ru" ? "AI-инбаунд" : "AI Inbound"}</div>
           <h2 className="sec-title">{language === "ru" ? "Чтобы нейросети вас видели и покупатель не ушёл" : "Visible to AI, then keep the buyer"}</h2>
           <p className="sec-sub">{language === "ru" ? "Покупатель спрашивает ChatGPT, к кому обратиться, и пишет тем, кого он назвал. Чьим клиентом он станет, решают два момента." : "The buyer asks ChatGPT who to call and writes to the names it gives. Two moments decide whose client they become."}</p>
 
@@ -980,11 +985,11 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
             <div className="src-band src-band-2">
               {(language === "ru"
                 ? [
-                    { k: "AI-ответы", v: "Ваш сайт и данные видны ChatGPT, Gemini и ответам Google, и им есть что процитировать. Замер до работы, на 30-й и 60-й день." },
+                    { k: "AI-ответы", v: "Ваш сайт и данные видны ChatGPT, Gemini и ответам Google, и им есть что о вас процитировать." },
                     { k: "AI-продавец", v: "Каждая заявка на сайте получает ответ примерно за минуту, днём и ночью, и попадает к менеджеру покупателем, готовым к разговору." },
                   ]
                 : [
-                    { k: "AI answers", v: "Your site and data visible to ChatGPT, Gemini and Google's AI answers, with something of yours to quote. Measured before the work, on day 30 and day 60." },
+                    { k: "AI answers", v: "Your site and data visible to ChatGPT, Gemini and Google's AI answers, with something of yours to quote." },
                     { k: "AI Sales Manager", v: "Every inquiry on your site answered in about a minute, day and night, and handed to your manager as a buyer ready to talk." },
                   ]
               ).map((col) => (

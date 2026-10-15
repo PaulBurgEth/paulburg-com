@@ -11,7 +11,7 @@ const en: { eyebrow: string; h2: string; items: QA[] } = {
   eyebrow: "Questions",
   h2: "Six things people ask",
   items: [
-    { q: "How do I know it worked?", a: "From three numbers, measured before the work and on day 30 and day 60: how AI describes your company, whether your site is among the sources of its answers, and the visits AI sends you. If none of them has moved by day 60, I keep working for another month at my cost." },
+    { q: "How do I know it worked?", a: "From three numbers, measured before the work and on day 30 and day 60: how AI describes your company, whether your site is among the sources of its answers, and the visits AI sends you." },
     { q: "We already do SEO.", a: "SEO is about Google search: where your page sits among ten links. This is about the answer ChatGPT and Google AI Mode write. One does not cover the other: fewer than half of the businesses leading Google's local results also appear in AI recommendations.", source: SOURCES.soci },
     { q: "AI makes things up anyway.", a: "Answers do vary from one ask to the next. That is why I measure on repeated asks, and measure more than the answer itself: how AI describes you, which sites it cites, and the visits it sends you." },
     { q: "We have a form, it is enough.", a: "For a large purchase it is right. The question is what happens between the form and your manager's morning." },
@@ -24,7 +24,7 @@ const ru: typeof en = {
   eyebrow: "Вопросы",
   h2: "Шесть вопросов, которые задают",
   items: [
-    { q: "Как понять, что сработало?", a: "По трём цифрам, до работы, на 30-й и 60-й день: как нейросеть описывает вашу компанию, есть ли ваш сайт среди источников её ответов и сколько заходов она к вам приводит. Если к 60-му дню ни одна не сдвинулась, продолжаю работать ещё месяц за свой счёт." },
+    { q: "Как понять, что сработало?", a: "По трём цифрам, до работы, на 30-й и 60-й день: как нейросеть описывает вашу компанию, есть ли ваш сайт среди источников её ответов и сколько заходов она к вам приводит." },
     { q: "SEO у нас уже есть.", a: "SEO про поиск Google: где ваша страница среди десяти ссылок. Здесь речь об ответе, который пишут ChatGPT и Google AI Mode. Одно не закрывает другое: меньше половины компаний, лидирующих в местной выдаче Google, есть в рекомендациях нейросетей.", source: SOURCES.soci },
     { q: "Нейросети всё равно врут.", a: "Ответы действительно меняются от раза к разу. Поэтому замер идёт на повторных вопросах и не только по самому ответу: как нейросеть вас описывает, какие сайты цитирует и сколько заходов к вам приводит." },
     { q: "У нас форма, этого хватает.", a: "Для дорогой покупки форма правильна. Вопрос в том, что происходит между формой и утром менеджера." },
@@ -38,7 +38,7 @@ export default function AiQuestions() {
   const t = language === "ru" ? ru : en;
 
   return (
-    <SectionShell num="09" alt>
+    <SectionShell num="08">
       <SectionHead eyebrow={t.eyebrow} h2={t.h2} />
       {/* A plain text stack, no cards: the same form /outbound uses for objections. */}
       <dl className="grid grid-cols-1 lg:grid-cols-2 gap-x-12">

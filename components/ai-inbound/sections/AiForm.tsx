@@ -151,7 +151,7 @@ export default function AiForm() {
   }
 
   return (
-    <SectionShell num="11" id="intake" alt>
+    <SectionShell num="10" id="intake">
       <SectionHead eyebrow={t.eyebrow} h2={t.h2} sub={t.sub} />
 
       <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-6 items-start">

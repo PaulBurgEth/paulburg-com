@@ -13,7 +13,6 @@ import AiNamed from "./sections/AiNamed";
 import AiGet from "./sections/AiGet";
 import AiSpeed from "./sections/AiSpeed";
 import AiAgent from "./sections/AiAgent";
-import AiFit from "./sections/AiFit";
 import AiQuestions from "./sections/AiQuestions";
 import AiWho from "./sections/AiWho";
 import AiForm from "./sections/AiForm";
@@ -90,7 +89,6 @@ export default function AiInboundPageClient() {
           <AiGet />
           <AiSpeed />
           <AiAgent />
-          <AiFit />
           <AiQuestions />
           <AiWho />
           <AiForm />

@@ -21,7 +21,7 @@ export default function AiWho() {
   const t = language === "ru" ? ru : en;
 
   return (
-    <SectionShell num="10">
+    <SectionShell num="09" alt>
       <motion.div variants={itemVariants} style={{ borderLeft: "2px solid var(--c-gold)", paddingLeft: 22, maxWidth: "72ch" }}>
         <div style={{ fontFamily: SERIF, ...DISPLAY_AXES, fontWeight: 700, fontSize: T.h3, color: "var(--c-heading)", marginBottom: 4 }}>{t.title}</div>
         <div style={{ fontFamily: MONO, fontSize: T.caption, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--c-gold)", marginBottom: 12 }}>{t.role}</div>

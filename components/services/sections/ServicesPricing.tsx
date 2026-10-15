@@ -26,7 +26,7 @@ const en = {
   ],
   sectionLabel: "Pricing",
   h2: "How the price is put together",
-  subtitle: "Three scopes below. The figure is assembled per task after a short call — what it covers, what it touches, and what it has to integrate with. The outbound channel is priced separately: one fixed price for a six-week pilot, paid in thirds, with a decision point before each.",
+  subtitle: "Three scopes below. The figure is assembled per task after a short call — what it covers, what it touches, and what it has to integrate with. Outbound and AI Inbound are priced separately.",
   plans: [
     {
       name: "Starter",
@@ -99,7 +99,7 @@ const ru = {
   ],
   sectionLabel: "Цены",
   h2: "Как считается цена",
-  subtitle: "Ниже — три объёма. Сумма собирается под задачу после короткого разговора: что входит, чего касается и с чем должно связаться. Холодный канал считается отдельно: одна фиксированная цена за пилот на шесть недель, оплата третями, перед каждой — точка решения.",
+  subtitle: "Ниже — три объёма. Сумма собирается под задачу после короткого разговора: что входит, чего касается и с чем должно связаться. Аутбаунд и AI-инбаунд считаются отдельно.",
   plans: [
     {
       name: "Стартер",
