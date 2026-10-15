@@ -1,7 +1,7 @@
 # Paul Burg — AI Systems & B2B Outbound
 
 ## About
-Paul Burg is an entrepreneur since 2011. He does two things for B2B companies: builds the systems that run the business — chatbots, CRMs, BI dashboards, automated workflows, web platforms — and runs the cold outbound channel that fills them with clients. Works remotely with businesses and founders globally.
+Paul Burg is an entrepreneur since 2011. He does three things for B2B companies: builds the systems that run the business (chatbots, CRMs, BI dashboards, automated workflows, web platforms); gets companies named in ChatGPT and Google AI Mode answers and puts an AI sales manager on their site; and runs the cold outbound channel that brings them clients. Works remotely with businesses and founders globally.
 
 ## Services — building systems
 - **AI Chatbots**: Custom lead bots, support agents, and onboarding bots trained on client data.

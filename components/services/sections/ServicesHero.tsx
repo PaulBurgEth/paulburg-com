@@ -9,24 +9,24 @@ import BurgMark from "@/components/BurgMark";
 import { DISPLAY_AXES } from "@/lib/type";
 
 const en = {
-  badge: "Two service lines",
+  badge: "Three service lines",
   h1a: "I build the systems ",
   h1gold: "and bring",
   h1b: " the clients that fill them",
   subtitle:
-    "Chatbots, AI agents, CRMs and BI dashboards, matching engines, websites — built from scratch around your process. And a cold outbound channel that finds B2B clients in open data and writes to them in your name.",
+    "Chatbots, AI agents, CRMs and BI dashboards, matching engines, websites — built from scratch around your process. And a cold outbound channel that finds B2B clients in open data and writes to them in your name. And getting you named in ChatGPT and Google AI Mode answers, with an AI sales manager on your site.",
   ctaPrimary: "Tell me about your task",
   ctaTelegram: "Text me on Telegram",
   ctaWhatsApp: "Text me on WhatsApp",
 };
 
 const ru = {
-  badge: "Две линии услуг",
+  badge: "Три линии услуг",
   h1a: "Строю системы ",
   h1gold: "и привожу",
   h1b: " клиентов, которые их наполняют",
   subtitle:
-    "Чат-боты, AI-агенты, CRM и BI-дашборды, matching-движки, сайты — с нуля под ваш процесс. И холодный канал, который находит B2B-клиентов в открытых данных и пишет им от вашего имени.",
+    "Чат-боты, AI-агенты, CRM и BI-дашборды, matching-движки, сайты — с нуля под ваш процесс. И холодный канал, который находит B2B-клиентов в открытых данных и пишет им от вашего имени. И чтобы вас называли ChatGPT и Google AI Mode, а на сайте отвечал AI-продавец.",
   ctaPrimary: "Расскажите о задаче",
   ctaTelegram: "Написать в Telegram",
   ctaWhatsApp: "Написать в WhatsApp",
