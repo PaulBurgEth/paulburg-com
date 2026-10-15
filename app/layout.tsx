@@ -32,7 +32,7 @@ const onest = Onest({
 });
 
 const SEO_DESCRIPTION =
-  "I build AI systems, get companies named in ChatGPT answers with an AI sales manager on their site, and run cold outbound that brings B2B clients.";
+  "I build AI systems, make companies visible to ChatGPT and Google's AI answers with an AI sales manager on their site, and run B2B cold outbound.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://paulburg.com"),
@@ -148,7 +148,7 @@ export default async function RootLayout({
                 TELEGRAM_URL
               ],
               "jobTitle": "AI Systems Builder, AI Answers & B2B Outbound",
-              "description": "Three things for B2B companies: I build the systems that run the business (chatbots, CRMs and BI dashboards, matching engines, automated workflows, web platforms); I get companies named in ChatGPT and Google AI Mode answers and put an AI sales manager on their site; and I run the cold outbound channel that brings them clients. Entrepreneur since 2011."
+              "description": "Three things for B2B companies: I build the systems that run the business (chatbots, CRMs and BI dashboards, matching engines, automated workflows, web platforms); I make companies visible to ChatGPT, Gemini and Google's AI answers and put an AI sales manager on their site; and I run the cold outbound channel that brings them clients. Entrepreneur since 2011."
             }),
           }}
         />

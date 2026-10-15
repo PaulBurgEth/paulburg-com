@@ -13,7 +13,7 @@ const en = {
     { n: "900M", d: "people use ChatGPT every week.", s: SOURCES.openai },
     { n: "2B", d: "people a month see an AI answer on top of Google search.", s: SOURCES.alphabet },
     { n: "45%", d: "of consumers use ChatGPT or other AI tools to get a local business recommended.", s: SOURCES.brightlocal },
-    { n: "33%", d: "of business software buyers bought from a company they had never heard of until an AI chat named it. For 54%, AI chats are the main source of their shortlist.", s: SOURCES.g2 },
+    { n: "33%", d: "of business software buyers bought from a company they had never heard of until an AI chat suggested it. For 54%, AI chats are the main source of their shortlist.", s: SOURCES.g2 },
   ],
   foot: "A buyer who gets a shortlist from an answer writes to the names on it.",
 };
@@ -26,7 +26,7 @@ const ru = {
     { n: "900 млн", d: "человек пользуются ChatGPT каждую неделю.", s: SOURCES.openai },
     { n: "2 млрд", d: "человек в месяц видят AI-ответ над выдачей Google.", s: SOURCES.alphabet },
     { n: "45%", d: "потребителей используют ChatGPT или другие AI-инструменты, чтобы им порекомендовали местный бизнес.", s: SOURCES.brightlocal },
-    { n: "33%", d: "покупателей B2B-софта купили у компании, о которой не слышали, пока её не назвал AI-чат. Для 54% AI-чаты главный источник короткого списка.", s: SOURCES.g2 },
+    { n: "33%", d: "покупателей B2B-софта купили у компании, о которой не слышали, пока её не предложил AI-чат. Для 54% AI-чаты главный источник короткого списка.", s: SOURCES.g2 },
   ],
   foot: "Покупатель, получивший короткий список из ответа, пишет тем, кто в нём есть.",
 };

@@ -9,7 +9,7 @@ import { SectionShell, SectionHead, SERIF, DISPLAY_AXES, SANS, MONO } from "@/co
 const en = {
   eyebrow: "Talk to me",
   h2: "Send your site. I'll show you where buyers slip away.",
-  sub: "I'll reply in writing: what ChatGPT tells your buyer, who is named instead of you, and what happens to an inquiry on your site after hours.",
+  sub: "I'll reply in writing: what ChatGPT tells your buyer, whether AI can read your site, and what happens to an inquiry on your site after hours.",
   labels: {
     name: "Your name",
     website: "Company website",
@@ -42,7 +42,7 @@ const en = {
 const ru = {
   eyebrow: "Связаться",
   h2: "Пришлите сайт. Покажу, где уходят покупатели.",
-  sub: "Отвечу лично: что ChatGPT отвечает вашему покупателю, кого называют вместо вас и что происходит с заявкой на вашем сайте вечером.",
+  sub: "Отвечу лично: что ChatGPT отвечает вашему покупателю, могут ли нейросети прочитать ваш сайт и что происходит с заявкой на вашем сайте вечером.",
   labels: {
     name: "Ваше имя",
     website: "Сайт компании",

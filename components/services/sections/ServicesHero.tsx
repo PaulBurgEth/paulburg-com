@@ -14,7 +14,7 @@ const en = {
   h1gold: "keep them from slipping away",
   h1b: " and automate the work behind them",
   subtitle:
-    "Three directions, one goal: more deals with the same team. Outbound brings clients by name, AI Inbound gets you named in ChatGPT answers and replies in a minute, AI automation runs the rest.",
+    "Three directions, one goal: more deals with the same team. Outbound brings clients by name, AI Inbound makes you visible to ChatGPT and replies in a minute, AI automation runs the rest.",
   ctaPrimary: "Tell me about your task",
   ctaTelegram: "Text me on Telegram",
   ctaWhatsApp: "Text me on WhatsApp",
@@ -26,7 +26,7 @@ const ru = {
   h1gold: "не даю им уйти",
   h1b: " и автоматизирую работу за ними",
   subtitle:
-    "Три направления, одна цель: больше сделок той же командой. Аутбаунд приводит клиентов поимённо, AI-инбаунд делает так, чтобы вас называл ChatGPT, и отвечает за минуту, AI-автоматизация берёт на себя остальное.",
+    "Три направления, одна цель: больше сделок той же командой. Аутбаунд приводит клиентов поимённо, AI-инбаунд делает вашу компанию видимой для ChatGPT и отвечает за минуту, AI-автоматизация берёт на себя остальное.",
   ctaPrimary: "Расскажите о задаче",
   ctaTelegram: "Написать в Telegram",
   ctaWhatsApp: "Написать в WhatsApp",

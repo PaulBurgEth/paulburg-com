@@ -11,7 +11,7 @@ const OWN = 26;
 const TOTAL = 30;
 
 const en = {
-  eyebrow: "AI answers · who gets named",
+  eyebrow: "AI answers · what they quote",
   h2: "Answers quote the companies whose own pages answer the question",
   barLead: "In 169 answers that showed their sources, the 30 most-cited sites:",
   barOwn: "the companies' own sites",
@@ -23,7 +23,7 @@ const en = {
 };
 
 const ru = {
-  eyebrow: "AI-ответы · кого называют",
+  eyebrow: "AI-ответы · что они цитируют",
   h2: "Ответ цитирует компании, чьи страницы отвечают на вопрос",
   barLead: "В 169 ответах с источниками, 30 самых цитируемых сайтов:",
   barOwn: "сайты самих компаний",

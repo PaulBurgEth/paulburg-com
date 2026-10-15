@@ -703,8 +703,8 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
           <div className="pb-stage" data-visible={stage >= 4 ? "1" : "0"}>
             <p className="hero-desc">
               {language === "ru"
-                ? "Три услуги для B2B. Нахожу вам клиентов: каждую компанию читаю до письма, пишу от вашего имени с вашего домена и каждому ответившему отвечаю сам. Делаю так, чтобы вас называли ChatGPT и Google AI Mode, а заявки с сайта получали ответ за минуту. Строю системы, на которых держится бизнес: CRM, дашборды, сайты. "
-                : "Three services for B2B. I find you clients: each company is read before it gets a letter, the letter goes out in your name from your domain, and every reply is answered by me. I get you named by ChatGPT and Google AI Mode, and make sure inquiries on your site are answered in a minute. I build the systems a business runs on: CRMs, dashboards, websites. "}
+                ? "Три услуги для B2B. Нахожу вам клиентов: каждую компанию читаю до письма, пишу от вашего имени с вашего домена и каждому ответившему отвечаю сам. Делаю так, чтобы вашу компанию видели ChatGPT и ответы Google, а заявки с сайта получали ответ за минуту. Строю системы, на которых держится бизнес: CRM, дашборды, сайты. "
+                : "Three services for B2B. I find you clients: each company is read before it gets a letter, the letter goes out in your name from your domain, and every reply is answered by me. I make your company visible to ChatGPT and Google's AI answers, and make sure inquiries on your site are answered in a minute. I build the systems a business runs on: CRMs, dashboards, websites. "}
               <strong>
                 {language === "ru" ? "Работает человек, а не рассылка." : "A person doing the work, not a mass mailing."}
               </strong>
@@ -736,8 +736,8 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
               <div className="lc-t">{language === "ru" ? "AI-ответы и AI-продавец" : "AI answers & AI Sales Manager"}</div>
               <div className="lc-d">
                 {language === "ru"
-                  ? "Вас называют в ChatGPT и Google AI Mode, а каждая заявка на сайте получает ответ за минуту, днём и ночью."
-                  : "Named in ChatGPT and Google AI Mode answers, and every inquiry on your site answered in a minute, day and night."}
+                  ? "Ваш сайт и данные видны ChatGPT и ответам Google, а каждая заявка на сайте получает ответ за минуту, днём и ночью."
+                  : "Your site and data visible to ChatGPT and Google's AI answers, and every inquiry on your site answered in a minute, day and night."}
               </div>
               <span className="lc-m">{language === "ru" ? "Замеры на 30-й и 60-й день" : "Measured on day 30 and day 60"}</span>
             </Link>
@@ -973,18 +973,18 @@ export default function HomePageClient({ latestPosts }: HomePageClientProps) {
         <section className="section pb-reveal" id="ai-inbound">
           <SectionNumber n="03" />
           <div className="eyebrow">{language === "ru" ? "Третье: AI-инбаунд" : "Third: AI Inbound"}</div>
-          <h2 className="sec-title">{language === "ru" ? "Чтобы вас назвали и чтобы покупатель не ушёл" : "Get named, then keep the buyer"}</h2>
+          <h2 className="sec-title">{language === "ru" ? "Чтобы нейросети вас видели и покупатель не ушёл" : "Visible to AI, then keep the buyer"}</h2>
           <p className="sec-sub">{language === "ru" ? "Покупатель спрашивает ChatGPT, к кому обратиться, и пишет тем, кого он назвал. Чьим клиентом он станет, решают два момента." : "The buyer asks ChatGPT who to call and writes to the names it gives. Two moments decide whose client they become."}</p>
 
           <div style={{ background: C.card, border: `1px solid ${C.border}`, borderLeft: `2px solid ${C.gold}`, borderRadius: 10, padding: 24 }}>
             <div className="src-band src-band-2">
               {(language === "ru"
                 ? [
-                    { k: "AI-ответы", v: "Вашу компанию называют, когда покупатель спрашивает ChatGPT и Google AI Mode, к кому обратиться. Замеры на 30-й и 60-й день." },
+                    { k: "AI-ответы", v: "Ваш сайт и данные видны ChatGPT, Gemini и ответам Google, и им есть что процитировать. Замер до работы, на 30-й и 60-й день." },
                     { k: "AI-продавец", v: "Каждая заявка на сайте получает ответ примерно за минуту, днём и ночью, и попадает к менеджеру покупателем, готовым к разговору." },
                   ]
                 : [
-                    { k: "AI answers", v: "Your company named when buyers ask ChatGPT and Google AI Mode who to use. Measured on day 30 and day 60." },
+                    { k: "AI answers", v: "Your site and data visible to ChatGPT, Gemini and Google's AI answers, with something of yours to quote. Measured before the work, on day 30 and day 60." },
                     { k: "AI Sales Manager", v: "Every inquiry on your site answered in about a minute, day and night, and handed to your manager as a buyer ready to talk." },
                   ]
               ).map((col) => (

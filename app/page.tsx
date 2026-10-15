@@ -6,7 +6,7 @@ import { getAllPosts } from "@/lib/posts";
 export const metadata: Metadata = pageMetadata({
   title: "Paul Burg — AI Systems, AI Answers & B2B Outbound",
   description:
-    "AI systems built around your process, your company named in ChatGPT answers with an AI sales manager on your site, and cold outbound for B2B clients.",
+    "AI systems built around your process, your company visible to ChatGPT with an AI sales manager on your site, and cold outbound for B2B clients.",
   path: "",
 });
 
