@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import ServicesHero from "./sections/ServicesHero";
 import ServicesProof from "./sections/ServicesProof";
 import ServicesGrid from "./sections/ServicesGrid";
-import ServicesOutbound from "./sections/ServicesOutbound";
+import ServicesHub from "./sections/ServicesHub";
 import { useRevealObserver } from "@/lib/useStageReveal";
 
 // Static imports, not `dynamic(..., { ssr: false })`.
@@ -43,11 +43,11 @@ export default function ServicesPageClient() {
         <main id="content">
         <ServicesHero />
         <ServicesProof />
+        <ServicesHub />
         <ServicesGrid />
         <ServicesTurnkey />
         <ServicesCases />
         <ServicesMachines />
-        <ServicesOutbound />
         <ServicesProcess />
         <ServicesPricing />
         <ServicesCTA />

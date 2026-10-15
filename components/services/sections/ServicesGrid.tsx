@@ -7,7 +7,7 @@ import { useIntakeModal } from "@/context/IntakeModalContext";
 import { DISPLAY_AXES } from "@/lib/type";
 
 const en = {
-  sectionLabel: "Line one — systems",
+  sectionLabel: "AI automation",
   h2: "Production AI systems I ship",
   subtitle:
     "Each built from scratch. No platform lock-in. Your data on your server.",
@@ -47,7 +47,7 @@ const en = {
 };
 
 const ru = {
-  sectionLabel: "Линия первая — системы",
+  sectionLabel: "AI-автоматизация",
   h2: "Продакшен AI-системы, которые я делаю",
   subtitle:
     "Каждая с нуля. Без привязки к платформам. Ваши данные на вашем сервере.",
@@ -94,8 +94,8 @@ export default function ServicesGrid() {
   const t = language === "ru" ? ru : en;
 
   return (
-    <section id="services" className="pb-reveal" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
-      <span aria-hidden="true" className="section-number" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 14, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 02</span>
+    <section id="automation" className="pb-reveal scroll-mt-20" style={{ background: "var(--c-bg)", padding: "72px 0", position: "relative" }}>
+      <span aria-hidden="true" className="section-number" style={{ position: "absolute", top: 24, right: 28, fontFamily: "var(--font-inconsolata), monospace", fontSize: 14, letterSpacing: "0.18em", color: "var(--c-muted)" }}>§ 03</span>
       <div className="container-custom">
         {/* Header */}
         <motion.div

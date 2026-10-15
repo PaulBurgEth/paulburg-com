@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Cpu } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { DISPLAY_AXES } from "@/lib/type";
@@ -16,6 +17,7 @@ import { DISPLAY_AXES } from "@/lib/type";
 const en = {
   sectionLabel: "Also built",
   h2: "Systems that machines can read",
+  aiLink: "The same principle, for your company: AI Inbound →",
   subtitle:
     "Search engines answer with models now, and the model has to be able to fetch the data. On HelpRent Da Nang that is not a plan, it is an endpoint.",
   rows: [
@@ -46,6 +48,7 @@ const en = {
 const ru = {
   sectionLabel: "Ещё построено",
   h2: "Системы, которые читают машины",
+  aiLink: "Тот же принцип для вашей компании: AI-инбаунд →",
   subtitle:
     "Поисковики теперь отвечают моделями, и модель должна суметь забрать данные. В HelpRent Da Nang это не план, а работающий эндпоинт.",
   rows: [
@@ -95,7 +98,7 @@ export default function ServicesMachines() {
           color: "var(--c-muted)",
         }}
       >
-        § 05
+        § 06
       </span>
       <div className="container-custom">
         <motion.div
@@ -144,6 +147,9 @@ export default function ServicesMachines() {
           >
             {t.subtitle}
           </p>
+          <Link href="/ai-inbound" style={{ display: "inline-block", marginTop: 10, fontFamily: "var(--font-instrument-sans), sans-serif", fontWeight: 600, fontSize: 15, color: "var(--c-gold)", textDecoration: "none" }}>
+            {t.aiLink}
+          </Link>
         </motion.div>
 
         <motion.div

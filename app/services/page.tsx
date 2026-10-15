@@ -3,10 +3,10 @@ import { pageMetadata } from "@/lib/seo";
 import ServicesPageClient from "@/components/services/ServicesPageClient";
 
 const SERVICES_DESCRIPTION =
-  "AI systems built from scratch: bots, CRM and BI, dashboards, matching engines, websites, scoped per project. Plus a cold outbound channel that brings clients.";
+  "Three B2B services: outbound that finds clients by name, AI Inbound for ChatGPT answers and fast replies, and AI automation: bots, CRM, dashboards.";
 
 export const metadata: Metadata = pageMetadata({
-  title: "AI Systems & Digital Outbound — Paul Burg",
+  title: "Services: Outbound, AI Inbound and AI Automation · Paul Burg",
   description: SERVICES_DESCRIPTION,
   path: "/services",
 });

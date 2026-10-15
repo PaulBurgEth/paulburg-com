@@ -9,24 +9,24 @@ import BurgMark from "@/components/BurgMark";
 import { DISPLAY_AXES } from "@/lib/type";
 
 const en = {
-  badge: "Three service lines",
-  h1a: "I build the systems ",
-  h1gold: "and bring",
-  h1b: " the clients that fill them",
+  badge: "Services · B2B",
+  h1a: "I bring clients, ",
+  h1gold: "keep them from slipping away",
+  h1b: " and automate the work behind them",
   subtitle:
-    "Chatbots, AI agents, CRMs and BI dashboards, matching engines, websites — built from scratch around your process. And a cold outbound channel that finds B2B clients in open data and writes to them in your name. And getting you named in ChatGPT and Google AI Mode answers, with an AI sales manager on your site.",
+    "Three directions, one goal: more deals with the same team. Outbound brings clients by name, AI Inbound gets you named in ChatGPT answers and replies in a minute, AI automation runs the rest.",
   ctaPrimary: "Tell me about your task",
   ctaTelegram: "Text me on Telegram",
   ctaWhatsApp: "Text me on WhatsApp",
 };
 
 const ru = {
-  badge: "Три линии услуг",
-  h1a: "Строю системы ",
-  h1gold: "и привожу",
-  h1b: " клиентов, которые их наполняют",
+  badge: "Услуги · B2B",
+  h1a: "Привожу клиентов, ",
+  h1gold: "не даю им уйти",
+  h1b: " и автоматизирую работу за ними",
   subtitle:
-    "Чат-боты, AI-агенты, CRM и BI-дашборды, matching-движки, сайты — с нуля под ваш процесс. И холодный канал, который находит B2B-клиентов в открытых данных и пишет им от вашего имени. И чтобы вас называли ChatGPT и Google AI Mode, а на сайте отвечал AI-продавец.",
+    "Три направления, одна цель: больше сделок той же командой. Аутбаунд приводит клиентов поимённо, AI-инбаунд делает так, чтобы вас называл ChatGPT, и отвечает за минуту, AI-автоматизация берёт на себя остальное.",
   ctaPrimary: "Расскажите о задаче",
   ctaTelegram: "Написать в Telegram",
   ctaWhatsApp: "Написать в WhatsApp",
