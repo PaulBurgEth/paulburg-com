@@ -9,7 +9,7 @@ import { ProofCard, SOURCES } from "../shared";
 // Pool csv: ai_bot != '?' → 97 readable sites; ai_bot != 'нет' → 3.
 const en = {
   eyebrow: "AI Sales Manager · the problem",
-  h2: "You were named. Now the buyer writes at 10 pm, to you and two others.",
+  h2: "The buyer found you. Now they write at 10 pm, to you and two others.",
   sub: "The deal goes to whoever replies with something useful first. Nearly half of companies reply the next day, or never.",
   cards: [
     { n: "×7", d: "Companies that answered a web inquiry within an hour were about 7 times as likely to reach the person who decides as those that answered later. 2,241 US companies.", s: SOURCES.hbr },
@@ -24,7 +24,7 @@ const en = {
 
 const ru = {
   eyebrow: "AI-продавец · проблема",
-  h2: "Вас назвали. Теперь покупатель пишет в 22:00, вам и ещё двоим.",
+  h2: "Покупатель вас нашёл. Теперь он пишет в 22:00, вам и ещё двоим.",
   sub: "Сделка достаётся тому, кто первым ответил по делу. Почти половина компаний отвечает на следующий день или не отвечает вовсе.",
   cards: [
     { n: "×7", d: "Компании, ответившие на заявку с сайта в течение часа, примерно в 7 раз чаще доходили до того, кто решает, чем ответившие позже. 2 241 компания США.", s: SOURCES.hbr },

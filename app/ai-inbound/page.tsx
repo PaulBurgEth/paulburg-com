@@ -4,7 +4,7 @@ import AiInboundPageClient from "@/components/ai-inbound/AiInboundPageClient";
 
 // Kept at 155 chars or under — see docs/DECISIONS.md (Ahrefs meta-description fix).
 const AI_INBOUND_DESCRIPTION =
-  "Get named when buyers ask ChatGPT and Google AI Mode who to use, and answer every inquiry on your site in about a minute with an AI Sales Manager.";
+  "Your company visible to ChatGPT and Google's AI answers, and every inquiry answered in a minute.";
 
 export const metadata: Metadata = pageMetadata({
   title: "AI Inbound: AI Answers and AI Sales Manager · Paul Burg",
@@ -19,7 +19,7 @@ const SERVICES_LD = [
     "@type": "Service",
     name: "AI answers (GEO)",
     serviceType: "Generative engine optimization",
-    description: "Getting a company named when its buyers ask ChatGPT and Google AI Mode who to use, with re-measurement on day 30 and day 60.",
+    description: "Making a company's site and data visible to ChatGPT, Gemini and Google's AI answers, measured before the work and on day 30 and day 60.",
     provider: { "@type": "Person", name: "Paul Burg", url: "https://paulburg.com" },
     areaServed: "Worldwide",
     url: "https://paulburg.com/ai-inbound",

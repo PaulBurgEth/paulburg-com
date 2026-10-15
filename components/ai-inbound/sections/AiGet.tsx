@@ -6,30 +6,30 @@ import { SectionShell, SectionHead, SERIF, DISPLAY_AXES, SANS, MONO, T, itemVari
 
 const en = {
   eyebrow: "AI answers · what you get",
-  h2: "Your company in the answers your buyers read",
+  h2: "AI can see your company, and you can check it",
   items: [
     "You know where you lose buyers: the questions where you are missing and who is named instead.",
-    "The answers get something of yours to quote, on the questions that bring you money.",
-    "On day 30 and day 60 the same questions are asked again, so you see what moved, not what was promised.",
+    "Your site is open to ChatGPT, Google and other AI crawlers, and your pages carry your own prices and facts, with markup, so the answers have something of yours to read and quote.",
+    "Measured before the work, on day 30 and day 60: whether AI describes your company correctly, whether your site shows up among the sources of the answers, and visits from ChatGPT and other AI in your analytics.",
   ],
   promiseT: "What I promise",
-  promise: "If on day 60 your company is not in a single new answer, I work one more month at my cost.",
+  promise: "The work, done and shown: AI can reach and read your site, your pages and data are in place, and three measurements. If on day 60 none of the measurements has moved, I work one more month at my cost.",
   notT: "What I do not promise",
-  not: "A place in the answer. No one controls it, and anyone who sells one is selling the promise.",
+  not: "A place in a specific answer. No one controls it, and anyone who sells one is selling the promise. If you get named, the measurements will show it.",
 };
 
 const ru = {
   eyebrow: "AI-ответы · что вы получаете",
-  h2: "Ваша компания в ответах, которые читают ваши покупатели",
+  h2: "Нейросети видят вашу компанию, и это можно проверить",
   items: [
     "Вы знаете, где теряете покупателей: вопросы, где вас нет, и кого называют вместо вас.",
-    "У ответов появляется, что процитировать у вас, по тем вопросам, которые приносят деньги.",
-    "На 30-й и 60-й день те же вопросы задаются снова: вы видите, что сдвинулось, а не что обещано.",
+    "Сайт открыт для ботов ChatGPT, Google и других нейросетей, на ваших страницах ваши цены и факты с разметкой: ответам есть что о вас прочитать и процитировать.",
+    "Замер до работы, на 30-й и 60-й день: верно ли нейросеть описывает компанию, есть ли ваш сайт среди источников ответов, сколько заходов из ChatGPT и других нейросетей в вашей аналитике.",
   ],
   promiseT: "Что обещаю",
-  promise: "Если на 60-й день вашей компании нет ни в одном новом ответе, работаю ещё месяц за свой счёт.",
+  promise: "Работу, сделанную и показанную: нейросети могут зайти на сайт и прочитать его, страницы и данные на месте, три замера. Если на 60-й день ни один замер не сдвинулся, работаю ещё месяц за свой счёт.",
   notT: "Чего не обещаю",
-  not: "Места в ответе. Им не управляет никто, и тот, кто его продаёт, продаёт обещание.",
+  not: "Места в конкретном ответе. Им не управляет никто, и тот, кто его продаёт, продаёт обещание. Если вас начнут называть, это покажут замеры.",
 };
 
 const corner = (pos: Record<string, number>) => ({

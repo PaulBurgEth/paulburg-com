@@ -11,9 +11,9 @@ const en: { eyebrow: string; h2: string; items: QA[] } = {
   eyebrow: "Questions",
   h2: "Six things people ask",
   items: [
-    { q: "And if they still don't name us?", a: "Then on day 60 you see it in the re-measurement, and I work one more month at my cost. What I promise is the work and two measurements, not a place in the answer." },
+    { q: "And if they still don't name us?", a: "Being named is a good result, and the measurements will show it if it comes. What I promise is that AI can see and quote you, measured three ways. If on day 60 none of them has moved, I work one more month at my cost." },
     { q: "We already do SEO.", a: "SEO is about Google search: where your page sits among ten links. This is about the answer ChatGPT and Google AI Mode write. One does not cover the other: fewer than half of the businesses leading Google's local results also appear in AI recommendations.", source: SOURCES.soci },
-    { q: "AI makes things up anyway.", a: "Answers do vary from one ask to the next. That is why results are measured on repeated asks and twice after the work, not on one screenshot." },
+    { q: "AI makes things up anyway.", a: "Answers do vary from one ask to the next. That is why I measure on repeated asks, and measure more than the answer itself: how AI describes you, which sites it cites, and the visits it sends you." },
     { q: "We have a form, it is enough.", a: "For a large purchase it is right. The question is what happens between the form and your manager's morning." },
     { q: "We already have a chat on the site.", a: "A chat that waits for an operator answers when the operator is there. The AI Sales Manager answers when the buyer is there." },
     { q: "Will buyers mind talking to AI?", a: "They get an answer at 10 pm instead of silence until morning, and a person takes over as soon as there is something to discuss." },
@@ -24,9 +24,9 @@ const ru: typeof en = {
   eyebrow: "Вопросы",
   h2: "Шесть вопросов, которые задают",
   items: [
-    { q: "А если всё равно не назовут?", a: "Тогда вы увидите это в замере на 60-й день, и я работаю ещё месяц за свой счёт. Обещаю работу и два замера, а не место в ответе." },
+    { q: "А если всё равно не назовут?", a: "Если назовут, это хороший результат, и замеры его покажут. Обещаю другое: нейросети вас видят и могут цитировать, и это меряется тремя способами. Если на 60-й день ни один не сдвинулся, работаю ещё месяц за свой счёт." },
     { q: "SEO у нас уже есть.", a: "SEO про поиск Google: где ваша страница среди десяти ссылок. Здесь речь об ответе, который пишут ChatGPT и Google AI Mode. Одно не закрывает другое: меньше половины компаний, лидирующих в местной выдаче Google, есть в рекомендациях нейросетей.", source: SOURCES.soci },
-    { q: "Нейросети всё равно врут.", a: "Ответы действительно меняются от раза к разу. Поэтому результат замеряется на повторных вопросах и дважды после работы, а не по одному скриншоту." },
+    { q: "Нейросети всё равно врут.", a: "Ответы действительно меняются от раза к разу. Поэтому замер идёт на повторных вопросах и не только по самому ответу: как нейросеть вас описывает, какие сайты цитирует и сколько заходов к вам приводит." },
     { q: "У нас форма, этого хватает.", a: "Для дорогой покупки форма правильна. Вопрос в том, что происходит между формой и утром менеджера." },
     { q: "У нас уже стоит чат.", a: "Чат, который ждёт оператора, отвечает, когда на месте оператор. AI-продавец отвечает, когда на месте покупатель." },
     { q: "Покупателям не понравится говорить с AI.", a: "Они получают ответ в 22:00 вместо тишины до утра, а человек подключается, как только есть что обсуждать." },

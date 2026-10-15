@@ -12,7 +12,7 @@ const en = {
   h2: "Pick one or combine them",
   cards: [
     { k: "Outbound", t: "Clients found by name", d: "I pick the companies that need what you sell and write to each in your name, by email and, where it fits, on LinkedIn.", href: "/outbound", cta: "How the channel works →" },
-    { k: "AI Inbound", t: "Named in AI answers, answered in a minute", d: "Your company named when buyers ask ChatGPT and Google AI Mode who to use, and an AI Sales Manager that answers every inquiry on your site day and night.", href: "/ai-inbound", cta: "What your buyers see →" },
+    { k: "AI Inbound", t: "Visible to AI, answered in a minute", d: "Your site and data visible to ChatGPT, Gemini and Google's AI answers, and an AI Sales Manager that answers every inquiry on your site day and night.", href: "/ai-inbound", cta: "What your buyers see →" },
     { k: "AI automation", t: "Bots, CRM, dashboards, websites", d: "The systems a business runs on, built from scratch around your process. Your data on your server.", href: "#automation", cta: "See below ↓" },
   ],
 };
@@ -22,7 +22,7 @@ const ru = {
   h2: "Выберите одно или сочетайте",
   cards: [
     { k: "Аутбаунд", t: "Клиенты, найденные поимённо", d: "Отбираю компании, которым нужно то, что вы продаёте, и пишу каждой от вашего имени: письмом, а где уместно, в LinkedIn.", href: "/outbound", cta: "Как устроен канал →" },
-    { k: "AI-инбаунд", t: "Вас называют нейросети, заявка получает ответ за минуту", d: "Вашу компанию называют, когда покупатель спрашивает ChatGPT и Google AI Mode, к кому обратиться, а AI-продавец отвечает на каждую заявку на сайте днём и ночью.", href: "/ai-inbound", cta: "Что видят ваши покупатели →" },
+    { k: "AI-инбаунд", t: "Нейросети вас видят, заявка получает ответ за минуту", d: "Ваш сайт и данные видны ChatGPT, Gemini и ответам Google, а AI-продавец отвечает на каждую заявку на сайте днём и ночью.", href: "/ai-inbound", cta: "Что видят ваши покупатели →" },
     { k: "AI-автоматизация", t: "Боты, CRM, дашборды, сайты", d: "Системы, на которых держится бизнес, с нуля под ваш процесс. Ваши данные на вашем сервере.", href: "#automation", cta: "Ниже на странице ↓" },
   ],
 };
