@@ -1689,3 +1689,9 @@ Source Serif 4 / Inter / JetBrains Mono как кириллические под
 - **Not on the page by decision:** prices, how the GEO work is done, agent stages/scope, prospect names.
 - **Deploy:** no local build (Paul's rule). Remote `vercel deploy` preview build as the build check, PR merged, `vercel deploy --prod` from `main`, curl checks of all routes in both languages, screenshots on prod. `npm run deploy` was not used because its preflight builds locally.
 - **Fragile:** HBR figures are from secondary reviews (primary paywalled). The 26/30 bar counts balivillahub.com as an agency site; 25/30 if not. The anonymised real check in §03 shows the English query in both languages on purpose. HelpRent "8 times" left out until the raw answer is found.
+
+## 2026-10-15 · /ai-clients made site-wide (PRs #45, #46)
+
+- **What:** "AI Clients" / "AI-клиенты" in Navbar and Footer; home hero says three services, new tag, third line card, new home §03 section (later sections renumbered 04-10); `/services` hero badge "Three service lines" plus one sentence; home and global meta (title, description, keywords incl. GEO / AI sales manager), Person JSON-LD; Service JSON-LD (two services, no prices) on `/ai-clients`; `llms.txt` About.
+- **Why:** Paul 15.10: the whole site must read coherently with the new segment.
+- **Fragile:** home section numbers are hard-coded `SectionNumber n="NN"`; inserting a section means renumbering by hand. `/services` beyond its hero still describes two lines.
