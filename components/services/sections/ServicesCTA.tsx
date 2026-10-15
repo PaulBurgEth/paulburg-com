@@ -8,9 +8,9 @@ import { TELEGRAM_URL, WHATSAPP_URL } from "@/lib/constants";
 import { DISPLAY_AXES } from "@/lib/type";
 
 const en = {
-  h2: "Which half do you need?",
+  h2: "Which of the three do you need?",
   subtitle:
-    "Systems, clients, or both. Tell me about your business and I will say what is worth doing first.",
+    "Outbound, AI Inbound, automation, or a mix. Tell me about your business and I will say what is worth doing first.",
   ctaPrimary: "Tell me about your task",
   ctaTelegram: "Text me on Telegram",
   ctaWhatsApp: "Text me on WhatsApp",
@@ -19,7 +19,7 @@ const en = {
 const ru = {
   h2: "Что из этого вам нужно?",
   subtitle:
-    "Системы, клиенты или и то и другое. Расскажите о бизнесе — скажу, с чего начать.",
+    "Аутбаунд, AI-инбаунд, автоматизация или сочетание. Расскажите о бизнесе, и я скажу, с чего начать.",
   ctaPrimary: "Расскажите о задаче",
   ctaTelegram: "Написать в Telegram",
   ctaWhatsApp: "Написать в WhatsApp",
