@@ -1,0 +1,8 @@
+{
+  "slug": "regen-bazaar-proof-levels-who-checks-the-work",
+  "title_en": "How Regen Bazaar Checks That the Work Was Done",
+  "title_ru": "Как Regen Bazaar проверяет, что работа действительно сделана",
+  "excerpt_en": "The last piece of the series: proof levels from P0 to P4, what the machine checks on a proof page, why a person sets the level and a model cannot, and what is still missing.",
+  "excerpt_ru": "Заключительная статья серии: уровни подтверждения от P0 до P4, что машина проверяет на странице-доказательстве, почему уровень ставит человек, а не модель, и чего пока нет.",
+  "tags": ["Impact", "AI", "Trust", "Engineering"]
+}
